@@ -14,6 +14,11 @@
     "check": "npm run svelte-check && eslint . && npm run lint",
     "check:fix": "npm run svelte-check && eslint . && npm run format"
   },
+  "homepage": "https://siddacool.github.io/dodo-ui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siddacool/dodo-ui.git"
+  },
   "files": [
     "dist",
     "!dist/**/*.test.*",
