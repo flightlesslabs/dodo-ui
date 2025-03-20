@@ -1,0 +1,42 @@
+.glc-theme--dark {
+  .sbdocs-wrapper {
+    background-color: #292c2e;
+  }
+
+  .sbdocs-title {
+    color: #c9cdcf;
+  }
+
+  .sbdocs-preview {
+    border-color: rgb(86 86 86 / 97%);
+  }
+
+  h3 {
+    color: #c9cdcf;
+  }
+
+  p {
+    color: #c9cdcf;
+  }
+
+  .sb-bar {
+    background-color: #292c2e;
+  }
+
+  .sbdocs {
+    .docs-story {
+      > div {
+        background: #212324 !important;
+      }
+    }
+  }
+
+  thead {
+    background: rgb(246, 249, 252);
+    border-radius: 4px;
+  }
+}
+
+.glc-theme--dark.sb-show-main {
+  background-color: #292c2e !important;
+}
