@@ -1,6 +1,6 @@
 {
   "name": "@siddacoolpkg/dodo-ui",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "build": "vite build && npm run prepack",
     "preview": "vite preview",
