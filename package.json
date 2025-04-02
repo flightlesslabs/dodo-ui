@@ -10,7 +10,7 @@
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint .",
     "dev": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build-storybook": "storybook build && touch ./storybook-static/.nojekyll",
     "check": "pnpm run svelte-check && eslint . && pnpm run lint",
     "check:fix": "pnpm run svelte-check && eslint . && pnpm run format"
   },
