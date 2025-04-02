@@ -1,5 +1,6 @@
 {
   "extends": "./.svelte-kit/tsconfig.json",
+  "declarationMap": true,
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
@@ -10,6 +11,6 @@
     "sourceMap": true,
     "strict": true,
     "module": "NodeNext",
-    "moduleResolution": "NodeNext"
+    "moduleResolution": "NodeNext",
   }
 }
