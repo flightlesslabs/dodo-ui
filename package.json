@@ -1,6 +1,6 @@
 {
   "name": "@siddacoolpkg/dodo-ui",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "scripts": {
     "build:css": "sass src/lib/styles/global.scss dist/global.css",
     "build": "vite build && pnpm run prepack && pnpm build:css",
