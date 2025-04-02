@@ -1,21 +1,19 @@
-name: Deploy to GitHub Pages
+name: Deploy Storybook to GitHub Pages
 
 on:
   push:
     branches:
-      - main # Change if using a different default branch
+      - main # Adjust if using a different default branch
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Setup pnpm
@@ -23,13 +21,13 @@ jobs:
         with:
           version: 10
 
-      - name: Setup Node.js 22
+      - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'pnpm'
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Build Storybook
