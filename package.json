@@ -2,7 +2,8 @@
   "name": "@siddacoolpkg/dodo-ui",
   "version": "0.0.8",
   "scripts": {
-    "build": "vite build && pnpm run prepack",
+    "build:css": "sass src/lib/styles/global.scss dist/global.css",
+    "build": "vite build && pnpm run prepack && pnpm build:css",
     "preview": "vite preview",
     "prepare": "svelte-kit sync || echo ''",
     "prepack": "svelte-kit sync && svelte-package && publint",
