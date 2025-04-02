@@ -20,12 +20,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: 'pnpm'
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Install pnpm
+        run: corepack enable && corepack prepare pnpm@10 --activate
+
+      - name: Install Dependencies with pnpm
+        run: pnpm install
 
       - name: Build Storybook
-        run: npm run build-storybook
+        run: pnpm run build-storybook
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
