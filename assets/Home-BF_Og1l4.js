@@ -1,0 +1,1 @@
+import{j as o}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as r}from"./index-P9OXKMel.js";import"./index-6otl1p8d.js";function e(n){const t={h1:"h1",...r(),...n.components};return o.jsx(t.h1,{id:"home",children:"Home"})}function i(n={}){const{wrapper:t}={...r(),...n.components};return t?o.jsx(t,{...n,children:o.jsx(e,{...n})}):e(n)}export{i as default};

@@ -1,1 +1,0 @@
-import{_ as r}from"./index-BNk7OSbZ.js";const a={parameters:{controls:{matchers:{color:/(background|color)$/i,date:/Date$/i}},darkMode:{current:"light",dark:{...r.dark,appBg:"#212324"},light:{...r.normal},stylePreview:!0,darkClass:["glc-theme--dark"],lightClass:["glc-theme--light"]}}};export{a as default};
