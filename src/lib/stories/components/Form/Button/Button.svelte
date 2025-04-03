@@ -15,7 +15,7 @@
     variant?: 'text' | 'solid';
     /** Add a border around the button */
     outline?: boolean;
-    /** Make it compact */
+    /** Compact button for icons */
     compact?: boolean;
     /** Button disabled state */
     disabled?: boolean;

@@ -2,6 +2,7 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import { fn } from '@storybook/test';
   import Button from './Button.svelte';
+  import Icon from '@iconify/svelte';
 
   export const storyButtonArgTypes = {
     type: {
@@ -45,11 +46,7 @@
 </Story>
 
 <!-- Button with border around it -->
-<Story name="Outline Button" args={{ outline: true }}>
+<Story name="Outline" args={{ outline: true }}>
   <Button outline>Click me!</Button>
 </Story>
 
-<!-- Compact button with paddings stripped out -->
-<Story name="Compact Button" args={{ compact: true }}>
-  <Button compact>Click me!</Button>
-</Story>
