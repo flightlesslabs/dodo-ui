@@ -14,12 +14,17 @@ const preview: Preview = {
       // Set the initial theme
       current: 'light',
       // Override the default dark theme
-      dark: { ...themes.dark, appBg: '#212324' },
+      dark: themes.dark,
       // Override the default light theme
-      light: { ...themes.normal },
+      light: themes.light,
       stylePreview: true,
       darkClass: ['glc-theme--dark'],
       lightClass: ['glc-theme--light'],
+    },
+    options: {
+      storySort: {
+        order: ['Home', 'Getting Started', 'Configure', 'components'],
+      },
     },
   },
 };

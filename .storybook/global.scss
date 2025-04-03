@@ -11,7 +11,12 @@
     border-color: rgb(86 86 86 / 97%);
   }
 
-  h3 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: #c9cdcf;
   }
 
@@ -32,11 +37,35 @@
   }
 
   thead {
-    background: rgb(246, 249, 252);
-    border-radius: 4px;
+    th {
+      color: #c9cdcf !important;
+    }
+  }
+
+  tbody > tr > * {
+    background-color: #212324 !important;
+  }
+
+  tr:hover {
+    td {
+      background-color: #212324 !important;
+    }
+  }
+
+  td {
+    color: #c9cdcf !important;
+
+    span {
+      opacity: 0.8;
+    }
   }
 }
 
 .glc-theme--dark.sb-show-main {
   background-color: #292c2e !important;
+}
+
+pre.prismjs {
+  font-size: 1rem;
+  font-weight: 500;
 }

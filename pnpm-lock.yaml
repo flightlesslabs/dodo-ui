@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@iconify/svelte':
+        specifier: ^4.2.0
+        version: 4.2.0(svelte@5.25.6)
     devDependencies:
       '@chromatic-com/storybook':
         specifier: ^3
@@ -38,6 +42,9 @@ importers:
       '@storybook/test':
         specifier: ^8.6.7
         version: 8.6.11(storybook@8.6.11(prettier@3.5.3))
+      '@storybook/theming':
+        specifier: ^8.6.12
+        version: 8.6.12(storybook@8.6.11(prettier@3.5.3))
       '@sveltejs/adapter-auto':
         specifier: ^4.0.0
         version: 4.0.0(@sveltejs/kit@2.20.3(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.25.6)(vite@6.2.4(sass@1.86.1)))(svelte@5.25.6)(vite@6.2.4(sass@1.86.1)))
@@ -388,6 +395,14 @@ packages:
   '@humanwhocodes/retry@0.4.2':
     resolution: {integrity: sha512-xeO57FpIu4p1Ri3Jq/EXq4ClRm86dVF2z/+kvFnyqVYRavTZmaFaUBbWCOuuTh0o/g7DSsk6kc2vrS4Vl5oPOQ==}
     engines: {node: '>=18.18'}
+
+  '@iconify/svelte@4.2.0':
+    resolution: {integrity: sha512-fEl0T7SAPonK7xk6xUlRPDmFDZVDe2Z7ZstlqeDS/sS8ve2uyU+Qa8rTWbIqzZJlRvONkK5kVXiUf9nIc+6OOQ==}
+    peerDependencies:
+      svelte: '>4.0.0'
+
+  '@iconify/types@2.0.0':
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -810,6 +825,11 @@ packages:
 
   '@storybook/theming@8.6.11':
     resolution: {integrity: sha512-G7IK5P9gzofUjfYhMo9Pdgbqcr22eoKFLD808Q8RxJopDoypdZKg4tes2iD+6YnrtnHS0nEoP/soMmfFYl9FIw==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+
+  '@storybook/theming@8.6.12':
+    resolution: {integrity: sha512-6VjZg8HJ2Op7+KV7ihJpYrDnFtd9D1jrQnUS8LckcpuBXrIEbaut5+34ObY8ssQnSqkk2GwIZBBBQYQBCVvkOw==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
@@ -2734,6 +2754,13 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.2': {}
 
+  '@iconify/svelte@4.2.0(svelte@5.25.6)':
+    dependencies:
+      '@iconify/types': 2.0.0
+      svelte: 5.25.6
+
+  '@iconify/types@2.0.0': {}
+
   '@isaacs/cliui@8.0.2':
     dependencies:
       string-width: 5.1.2
@@ -3183,6 +3210,10 @@ snapshots:
       storybook: 8.6.11(prettier@3.5.3)
 
   '@storybook/theming@8.6.11(storybook@8.6.11(prettier@3.5.3))':
+    dependencies:
+      storybook: 8.6.11(prettier@3.5.3)
+
+  '@storybook/theming@8.6.12(storybook@8.6.11(prettier@3.5.3))':
     dependencies:
       storybook: 8.6.11(prettier@3.5.3)
 
@@ -4601,7 +4632,7 @@ snapshots:
       '@storybook/global': 5.0.0
       '@storybook/icons': 1.4.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@storybook/manager-api': 8.6.11(storybook@8.6.11(prettier@3.5.3))
-      '@storybook/theming': 8.6.11(storybook@8.6.11(prettier@3.5.3))
+      '@storybook/theming': 8.6.12(storybook@8.6.11(prettier@3.5.3))
       fast-deep-equal: 3.1.3
       memoizerific: 1.11.3
     transitivePeerDependencies:
