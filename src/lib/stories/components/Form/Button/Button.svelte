@@ -33,6 +33,24 @@
     class?: string;
     /** The onclick event handler */
     onclick?: (e: MouseEvent) => void;
+    /** Turn Button into link */
+    href?: string | undefined | null;
+    /** Link button: download  */
+    download?: any;
+    /** Link button: hreflang  */
+    hreflang?: string | undefined | null;
+    /** Link button: media  */
+    media?: string | undefined | null;
+    /** Link button: ping  */
+    ping?: string | undefined | null;
+    /** Link button: rel  */
+    rel?: string | undefined | null;
+    /** Link button: target  */
+    target?: '_self' | '_blank' | '_parent' | '_top' | (string & {}) | undefined | null;
+    /** Link button: Type  */
+    anchorMediaType?: string | undefined | null;
+    /** Link button: referrerpolicy  */
+    referrerpolicy?: ReferrerPolicy | undefined | null;
   }
 
   const {
@@ -51,22 +69,19 @@
     onclick,
     before,
     after,
+    href,
+    download,
+    hreflang,
+    media,
+    ping,
+    rel,
+    target,
+    anchorMediaType,
+    referrerpolicy,
   }: ButtonProps = $props();
 </script>
 
-<button
-  class:outline
-  class:compact
-  class={['dodo-button', `size--${size}`, `color--${color}`, `variant--${variant}`, className].join(
-    ' ',
-  )}
-  {type}
-  {name}
-  {id}
-  {title}
-  {disabled}
-  {onclick}
->
+{#snippet buttonContent()}
   {#if before}
     <span class="button-content--before">
       {@render before()}
@@ -82,7 +97,55 @@
       {@render after()}
     </span>
   {/if}
-</button>
+{/snippet}
+
+{#if href}
+  <a
+    {title}
+    {id}
+    {href}
+    {download}
+    {hreflang}
+    {media}
+    {ping}
+    {rel}
+    {target}
+    type={anchorMediaType}
+    {referrerpolicy}
+    class:outline
+    class:compact
+    class:disabled
+    class={[
+      'dodo-button',
+      `size--${size}`,
+      `color--${color}`,
+      `variant--${variant}`,
+      className,
+    ].join(' ')}
+  >
+    {@render buttonContent()}
+  </a>
+{:else}
+  <button
+    class:outline
+    class:compact
+    class={[
+      'dodo-button',
+      `size--${size}`,
+      `color--${color}`,
+      `variant--${variant}`,
+      className,
+    ].join(' ')}
+    {type}
+    {name}
+    {id}
+    {title}
+    {disabled}
+    {onclick}
+  >
+    {@render buttonContent()}
+  </button>
+{/if}
 
 <style lang="scss">
 </style>

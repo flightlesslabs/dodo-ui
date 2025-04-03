@@ -50,3 +50,15 @@
   <Button outline>Click me!</Button>
 </Story>
 
+<!-- Form submit button -->
+<Story name="Sumbit Button" args={{ type: 'submit' }}>
+  <Button type="submit">Submit Form</Button>
+</Story>
+
+<!-- Anchor Link styled like a Button -->
+<Story
+  name="Link Button"
+  args={{ href: 'https://www.w3schools.com/tags/tag_a.asp', target: '_blank' }}
+>
+  <Button href="https://www.w3schools.com/tags/tag_a.asp" target="_blank">Link</Button>
+</Story>
