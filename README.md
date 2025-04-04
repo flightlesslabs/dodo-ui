@@ -1,3 +1,3 @@
 # Dodo Ui
 
-UI framework for Svelte
+An open-source, opinionated UI framework for Svelte.
