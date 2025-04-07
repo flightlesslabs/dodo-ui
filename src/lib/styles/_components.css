@@ -1,0 +1,10 @@
+:root {
+  --dodo-ui-element-height-normal: 40px;
+  --dodo-ui-element-height-small: 34px;
+  --dodo-ui-element-height-large: 48px;
+
+  --dodo-ui-element-roundness-unit: 7px;
+  --dodo-ui-element-roundness-1: var(--dodo-ui-element-roundness-unit);
+  --dodo-ui-element-roundness-2: calc(var(--dodo-ui-element-roundness-unit) * 2);
+  --dodo-ui-element-roundness-3: calc(var(--dodo-ui-element-roundness-unit) * 4);
+}

@@ -1,1 +1,3 @@
-export type ComponentSize = 'small' | 'normal' | 'large';
+export type ComponentSize = 'normal' | 'small' | 'large';
+
+export type ComponentRoundness = false | 1 | 2 | 3 | 'full';

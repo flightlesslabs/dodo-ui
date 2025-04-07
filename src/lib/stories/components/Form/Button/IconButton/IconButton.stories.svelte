@@ -20,8 +20,10 @@
 </script>
 
 <!-- Compact button with paddings stripped out and fixed size. We are using this icon library https://iconify.design/docs/icon-components/svelte/ -->
-<Story name="Icon Button" args={{ compact: true }}>
-  <Button compact><Icon icon="material-symbols:app-badging" width="24" height="24" /></Button>
+<Story name="Icon Button" args={{ compact: true, roundness: 'full' }}>
+  <Button roundness="full" compact>
+    <Icon icon="material-symbols:app-badging" width="18" height="18" />
+  </Button>
 </Story>
 
 <!-- Button with an icon in front. -->
