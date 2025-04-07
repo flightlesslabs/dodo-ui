@@ -1,5 +1,19 @@
+<script lang="ts" module>
+  export type ButtonColor = 'default' | 'primary' | 'safe' | 'warning' | 'danger' | 'info';
+  export type ButtonRoundness = ComponentRoundness | false | ComponentRoundnessFull;
+  export type ButtonLinkTarget =
+    | '_self'
+    | '_blank'
+    | '_parent'
+    | '_top'
+    | (string & {})
+    | undefined
+    | null;
+  export type ButtonLinkReferrerpolicy = ReferrerPolicy | undefined | null;
+</script>
+
 <script lang="ts">
-  import type { ComponentRoundness, ComponentSize } from '$lib/types.js';
+  import type { ComponentRoundness, ComponentRoundnessFull, ComponentSize } from '$lib/types.js';
   import type { Snippet } from 'svelte';
 
   interface ButtonProps {
@@ -10,9 +24,9 @@
     /** How large should the button be? */
     size?: ComponentSize;
     /** What color to use? */
-    color?: 'default' | 'primary' | 'safe' | 'warning' | 'danger' | 'info';
+    color?: ButtonColor;
     /** How round should the border radius be? */
-    roundness?: ComponentRoundness;
+    roundness?: ButtonRoundness;
     /** How should the button appear? */
     variant?: 'text' | 'solid';
     /** Add a border around the button */
@@ -36,8 +50,9 @@
     /** The onclick event handler */
     onclick?: (e: MouseEvent) => void;
     /** Turn Button into link */
-    href?: string | undefined | null;
+    href?: string;
     /** Link button: download  */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     download?: any;
     /** Link button: hreflang  */
     hreflang?: string | undefined | null;
@@ -48,11 +63,13 @@
     /** Link button: rel  */
     rel?: string | undefined | null;
     /** Link button: target  */
-    target?: '_self' | '_blank' | '_parent' | '_top' | (string & {}) | undefined | null;
+    target?: ButtonLinkTarget;
     /** Link button: Type  */
     anchorMediaType?: string | undefined | null;
     /** Link button: referrerpolicy  */
-    referrerpolicy?: ReferrerPolicy | undefined | null;
+    referrerpolicy?: ButtonLinkReferrerpolicy;
+    /** Test: ⚠️ Unsafe Children String. Do Not use*/
+    _unsafeChildrenStringForTesting?: string;
   }
 
   const {
@@ -81,6 +98,7 @@
     target,
     anchorMediaType,
     referrerpolicy,
+    _unsafeChildrenStringForTesting,
   }: ButtonProps = $props();
 </script>
 
@@ -93,6 +111,8 @@
 
   {#if children}
     {@render children()}
+  {:else if _unsafeChildrenStringForTesting}
+    {_unsafeChildrenStringForTesting}
   {/if}
 
   {#if after}
@@ -153,6 +173,32 @@
 {/if}
 
 <style lang="scss">
+  @use 'utils/scss/mixins.scss' as *;
+
+  :global(:root) {
+    --dodo-ui-button-disabled-color: var(--dodo-color-default-400);
+    --dodo-ui-button-disabled-bg: var(--dodo-color-default-200);
+
+    @include generate-dodo-ui-button-colors(default);
+    @include generate-dodo-ui-button-colors(primary);
+    @include generate-dodo-ui-button-colors(safe);
+    @include generate-dodo-ui-button-colors(warning);
+    @include generate-dodo-ui-button-colors(danger);
+    @include generate-dodo-ui-button-colors(info);
+  }
+
+  :global(.dodo-theme--dark) {
+    --dodo-ui-button-disabled-bg: var(--dodo-color-default-100);
+    --dodo-ui-button-disabled-color: var(--dodo-color-default-500);
+
+    @include generate-dodo-ui-button-colors-dark(default);
+    @include generate-dodo-ui-button-colors-dark(primary);
+    @include generate-dodo-ui-button-colors-dark(safe);
+    @include generate-dodo-ui-button-colors-dark(warning);
+    @include generate-dodo-ui-button-colors-dark(danger);
+    @include generate-dodo-ui-button-colors-dark(info);
+  }
+
   .dodo-ui-button {
     cursor: pointer;
     outline: none;
@@ -217,209 +263,12 @@
     }
 
     &.color {
-      &--default {
-        &.variant {
-          &--text {
-            color: var(--dodo-color-default-800);
-            background-color: var(--dodo-color-default-100);
-
-            &:hover {
-              background-color: var(--dodo-color-default-200);
-            }
-
-            &:active {
-              background-color: var(--dodo-color-default-300);
-            }
-
-            &.outline {
-              border-color: var(--dodo-color-default-400);
-            }
-          }
-
-          &--solid {
-            color: var(--dodo-color-white);
-            background-color: var(--dodo-color-default-500);
-
-            &:hover {
-              background-color: var(--dodo-color-default-600);
-            }
-
-            &:active {
-              background-color: var(--dodo-color-default-700);
-            }
-          }
-        }
-      }
-
-      &--primary {
-        &.variant {
-          &--text {
-            color: var(--dodo-color-primary-800);
-            background-color: var(--dodo-color-primary-100);
-
-            &:hover {
-              background-color: var(--dodo-color-primary-200);
-            }
-
-            &:active {
-              background-color: var(--dodo-color-primary-300);
-            }
-
-            &.outline {
-              border-color: var(--dodo-color-primary-400);
-            }
-          }
-
-          &--solid {
-            color: var(--dodo-color-white);
-            background-color: var(--dodo-color-primary-500);
-
-            &:hover {
-              background-color: var(--dodo-color-primary-600);
-            }
-
-            &:active {
-              background-color: var(--dodo-color-primary-700);
-            }
-          }
-        }
-      }
-
-      &--safe {
-        &.variant {
-          &--text {
-            color: var(--dodo-color-safe-800);
-            background-color: var(--dodo-color-safe-100);
-
-            &:hover {
-              background-color: var(--dodo-color-safe-200);
-            }
-
-            &:active {
-              background-color: var(--dodo-color-safe-300);
-            }
-
-            &.outline {
-              border-color: var(--dodo-color-safe-400);
-            }
-          }
-
-          &--solid {
-            color: var(--dodo-color-white);
-            background-color: var(--dodo-color-safe-500);
-
-            &:hover {
-              background-color: var(--dodo-color-safe-600);
-            }
-
-            &:active {
-              background-color: var(--dodo-color-safe-700);
-            }
-          }
-        }
-      }
-
-      &--warning {
-        &.variant {
-          &--text {
-            color: var(--dodo-color-warning-800);
-            background-color: var(--dodo-color-warning-100);
-
-            &:hover {
-              background-color: var(--dodo-color-warning-200);
-            }
-
-            &:active {
-              background-color: var(--dodo-color-warning-300);
-            }
-
-            &.outline {
-              border-color: var(--dodo-color-warning-400);
-            }
-          }
-
-          &--solid {
-            color: var(--dodo-color-white);
-            background-color: var(--dodo-color-warning-500);
-
-            &:hover {
-              background-color: var(--dodo-color-warning-600);
-            }
-
-            &:active {
-              background-color: var(--dodo-color-warning-700);
-            }
-          }
-        }
-      }
-
-      &--danger {
-        &.variant {
-          &--text {
-            color: var(--dodo-color-danger-800);
-            background-color: var(--dodo-color-danger-100);
-
-            &:hover {
-              background-color: var(--dodo-color-danger-200);
-            }
-
-            &:active {
-              background-color: var(--dodo-color-danger-300);
-            }
-
-            &.outline {
-              border-color: var(--dodo-color-danger-400);
-            }
-          }
-
-          &--solid {
-            color: var(--dodo-color-white);
-            background-color: var(--dodo-color-danger-500);
-
-            &:hover {
-              background-color: var(--dodo-color-danger-600);
-            }
-
-            &:active {
-              background-color: var(--dodo-color-danger-700);
-            }
-          }
-        }
-      }
-
-      &--info {
-        &.variant {
-          &--text {
-            color: var(--dodo-color-info-800);
-            background-color: var(--dodo-color-info-100);
-
-            &:hover {
-              background-color: var(--dodo-color-info-200);
-            }
-
-            &:active {
-              background-color: var(--dodo-color-info-300);
-            }
-
-            &.outline {
-              border-color: var(--dodo-color-info-400);
-            }
-          }
-
-          &--solid {
-            color: var(--dodo-color-white);
-            background-color: var(--dodo-color-info-500);
-
-            &:hover {
-              background-color: var(--dodo-color-info-600);
-            }
-
-            &:active {
-              background-color: var(--dodo-color-info-700);
-            }
-          }
-        }
-      }
+      @include generate-dodo-ui-button-color(default);
+      @include generate-dodo-ui-button-color(primary);
+      @include generate-dodo-ui-button-color(safe);
+      @include generate-dodo-ui-button-color(warning);
+      @include generate-dodo-ui-button-color(danger);
+      @include generate-dodo-ui-button-color(info);
     }
 
     &[disabled] {
@@ -428,17 +277,17 @@
       &.variant {
         &--text,
         &--solid {
-          background-color: var(--dodo-color-default-200);
-          color: var(--dodo-color-default-400);
+          background-color: var(--dodo-ui-button-disabled-bg);
+          color: var(--dodo-ui-button-disabled-color);
 
           &:hover {
-            background-color: var(--dodo-color-default-200);
-            color: var(--dodo-color-default-400);
+            background-color: var(--dodo-ui-button-disabled-bg);
+            color: var(--dodo-ui-button-disabled-color);
           }
 
           &:active {
-            background-color: var(--dodo-color-default-200);
-            color: var(--dodo-color-default-400);
+            background-color: var(--dodo-ui-button-disabled-bg);
+            color: var(--dodo-ui-button-disabled-color);
           }
 
           &.outline {

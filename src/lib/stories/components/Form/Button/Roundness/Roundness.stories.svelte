@@ -8,10 +8,7 @@
   const { Story } = defineMeta({
     component: Button,
     tags: ['autodocs'],
-    // @ts-ignore
-    argTypes: {
-      ...storyButtonArgTypes,
-    },
+    argTypes: storyButtonArgTypes,
     args: {
       onclick: fn(),
     },
@@ -40,6 +37,7 @@
   <Button roundness={false}>Click me!</Button>
 </Story>
 
+<!-- Button with 50% roundness usefull for icon (Compact) buttons -->
 <Story
   name="RoundnessFull"
   args={{ outline: false, disabled: false, compact: false, roundness: 'full' }}

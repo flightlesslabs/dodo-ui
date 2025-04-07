@@ -8,10 +8,7 @@
   const { Story } = defineMeta({
     component: Button,
     tags: ['autodocs'],
-    // @ts-ignore
-    argTypes: {
-      ...storyButtonArgTypes,
-    },
+    argTypes: storyButtonArgTypes,
     args: {
       onclick: fn(),
     },

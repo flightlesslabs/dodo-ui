@@ -2,8 +2,9 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import { fn } from '@storybook/test';
   import Button from './Button.svelte';
+  import type { StoryBookArgTypes } from '$lib/storybook-types.js';
 
-  export const storyButtonArgTypes = {
+  export const storyButtonArgTypes: StoryBookArgTypes = {
     type: {
       control: { type: 'select' },
       options: ['button', 'submit'],
@@ -30,16 +31,25 @@
   const { Story } = defineMeta({
     component: Button,
     tags: ['autodocs'],
-    // @ts-ignore
-    argTypes: {
-      ...storyButtonArgTypes,
-    },
+    argTypes: storyButtonArgTypes,
     args: {
       onclick: fn(),
     },
   });
 </script>
 
+<!-- ⚠️ Test Button: Do not use! -->
+<Story
+  name="Test Button"
+  args={{
+    outline: false,
+    disabled: false,
+    compact: false,
+    _unsafeChildrenStringForTesting: 'Click me!',
+  }}
+/>
+
+<!-- Button with default style -->
 <Story name="Default" args={{ outline: false, disabled: false, compact: false }}>
   <Button>Click me!</Button>
 </Story>

@@ -18,8 +18,8 @@ const preview: Preview = {
       // Override the default light theme
       light: themes.light,
       stylePreview: true,
-      darkClass: ['glc-theme--dark'],
-      lightClass: ['glc-theme--light'],
+      darkClass: ['dodo-theme--dark'],
+      lightClass: ['dodo-theme--light'],
     },
     options: {
       storySort: {
