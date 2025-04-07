@@ -11,7 +11,7 @@
     },
     color: {
       control: { type: 'select' },
-      options: ['primary', 'secondary', 'safe', 'warning', 'danger', 'info'],
+      options: ['default', 'primary', 'safe', 'warning', 'danger', 'info'],
     },
     variant: {
       control: { type: 'select' },
@@ -23,7 +23,7 @@
     },
     size: {
       control: { type: 'select' },
-      options: ['small', 'medium', 'large'],
+      options: ['normal', 'small', 'large'],
     },
   };
 
