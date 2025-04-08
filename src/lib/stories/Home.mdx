@@ -1,10 +1,13 @@
 import { Source } from '@storybook/blocks';
+import item from '../../../package.json?raw';
 
 <main style={{ textAlign: 'center' }}>
 
 <img src="dodo-circle-6.png" style={{ width: 200, height: 'auto' }} />
 
 # Dodo UI
+
+<h3 style={{ fontWeight: 500 }}>v{JSON.parse(item)?.version}</h3>
 
 <h3 style={{ fontWeight: 400 }}>An open-source, opinionated UI framework for Svelte.</h3>
 </main>
@@ -14,13 +17,25 @@ import { Source } from '@storybook/blocks';
 
 ## Install
 
-<Source dark language='bash' code={`
-// pnpm
-pnpm add @flightlesslabs/dodo-ui
+pnpm
 
-// npm
+<Source
+  dark
+  language="bash"
+  code={`
+pnpm add @flightlesslabs/dodo-ui
+`}
+/>
+
+npm
+
+<Source
+  dark
+  language="bash"
+  code={`
 npm i @flightlesslabs/dodo-ui
-`} />
+`}
+/>
 
 ## Use one of the components
 
@@ -35,3 +50,11 @@ import { Button } '@flightlesslabs/dodo-ui';
 />
 
 Checkout documentation for [Button](?path=/docs/components-form-button--docs)
+
+## Explore more
+
+- [Themes](?path=/docs/philosophy-themes--docs)
+- [Colors](?path=/docs/philosophy-colors--docs)
+- [Adjust Color Opacity](?path=/docs/philosophy-colors--docs#adjusting-opacity)
+- [Github](https://github.com/flightlesslabs/dodo-ui)
+- [NPM](https://www.npmjs.com/package/@flightlesslabs/dodo-ui)

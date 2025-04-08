@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Palette from './Palette.svelte';
+
   interface SwatchProps {
     colorPalette: string;
     colorPaletteValue?: string;
@@ -10,12 +12,9 @@
 
 <div class="Swatch">
   {#if colorPaletteValue}
-    <div
-      class="color"
-      style={`background-color: var(${prefix}${colorPalette}-${colorPaletteValue});`}
-    ></div>
+    <Palette backgroundColor={`var(${prefix}${colorPalette}-${colorPaletteValue})`} />
   {:else}
-    <div class="color" style={`background-color: var(${prefix}${colorPalette});`}></div>
+    <Palette backgroundColor={`var(${prefix}${colorPalette})`} />
   {/if}
   <div class="colorPaletteValue">{colorPaletteValue}</div>
 </div>
@@ -25,14 +24,5 @@
     color: var(--dodo-color-default-900);
     display: flex;
     align-items: center;
-
-    .color {
-      display: flex;
-      width: 30px;
-      height: 30px;
-      margin-right: 8px;
-      border-radius: 4px;
-      border: 1px solid oklab(0 0 0 / 0.07);
-    }
   }
 </style>

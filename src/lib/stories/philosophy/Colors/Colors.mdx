@@ -1,5 +1,6 @@
-import { Meta, Story } from '@storybook/blocks';
+import { Meta, Story, Source } from '@storybook/blocks';
 import * as ColorsStories from './Colors.stories.svelte';
+import * as OpacityStories from './Opacity.stories.svelte';
 
 <Meta of={ColorsStories} />
 
@@ -26,3 +27,17 @@ Constant Colors
 Neutral pallet
 
 <Story of={ColorsStories.BaseColorsNeutral} />
+
+## Adjusting opacity
+
+Opacity can be adjusted using css `color-mix` function.
+
+<Source
+  dark
+  language="css"
+  code={`
+color-mix(in oklab, var(--dodo-color-primary-800) 10%, transparent)
+`}
+/>
+
+<Story of={OpacityStories.Main} meta={OpacityStories} />

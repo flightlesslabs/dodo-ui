@@ -5,6 +5,12 @@ html {
   font-family: 'Nunito', sans-serif;
 }
 
+p {
+  &:where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)) {
+    font-size: 15px !important;
+  }
+}
+
 .dodo-theme--dark {
   .sbdocs-wrapper {
     background-color: #292c2e;
