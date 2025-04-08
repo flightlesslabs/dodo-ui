@@ -29,7 +29,8 @@
     "!src/lib/**/*.spec.*",
     "!src/lib/stories/*.stories.*",
     "!src/lib/stories/*.mdx",
-    "!src/lib/stories/assets"
+    "!src/lib/stories/assets",
+    "!src/lib/stories/philosophy"
   ],
   "sideEffects": [
     "**/*.css"

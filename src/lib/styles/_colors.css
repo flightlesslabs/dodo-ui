@@ -1,9 +1,9 @@
 :root {
-  /* Base colors */
+  /* Neutral colors */
   --dodo-color-black: var(--dodo-color-base-black);
   --dodo-color-white: var(--dodo-color-base-white);
 
-  /* Base colors constants */
+  /* Constants colors */
   --dodo-color-constant-black: var(--dodo-color-base-black);
   --dodo-color-constant-white: var(--dodo-color-base-white);
 

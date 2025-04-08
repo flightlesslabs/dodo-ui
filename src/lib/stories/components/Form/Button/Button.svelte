@@ -77,7 +77,7 @@
     type = 'button',
     size = 'normal',
     color = 'default',
-    roundness = 1,
+    roundness = '1x',
     variant = 'text',
     outline = false,
     compact = false,
@@ -241,20 +241,16 @@
     }
 
     &.roundness {
-      &--1 {
+      &--1x {
         border-radius: var(--dodo-ui-element-roundness-1);
       }
 
-      &--2 {
+      &--2x {
         border-radius: var(--dodo-ui-element-roundness-2);
       }
 
-      &--3 {
+      &--3x {
         border-radius: var(--dodo-ui-element-roundness-3);
-      }
-
-      &--4 {
-        border-radius: var(--dodo-ui-element-roundness-4);
       }
 
       &--full {
