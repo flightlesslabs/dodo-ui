@@ -1,11 +1,37 @@
+import { Source } from '@storybook/blocks';
+
 <main style={{ textAlign: 'center' }}>
 
 <img src="dodo-circle-6.png" style={{ width: 200, height: 'auto' }} />
 
 # Dodo UI
 
-An open-source, opinionated UI framework for Svelte.
-
-[Getting Started](?path=/docs/getting-started--docs)
-
+<h3 style={{ fontWeight: 400 }}>An open-source, opinionated UI framework for Svelte.</h3>
 </main>
+
+<br />
+<br />
+
+## Install
+
+<Source dark language='bash' code={`
+// pnpm
+pnpm add @flightlesslabs/dodo-ui
+
+// npm
+npm i @flightlesslabs/dodo-ui
+`} />
+
+## Use one of the components
+
+Lets import [Button](?path=/docs/components-form-button--docs) component
+
+<Source
+  dark
+  language="js"
+  code={`
+import { Button } '@flightlesslabs/dodo-ui';
+`}
+/>
+
+Checkout documentation for [Button](?path=/docs/components-form-button--docs)
