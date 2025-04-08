@@ -1,0 +1,1 @@
+import{_ as o}from"./index-B30WeTR7.js";const e={parameters:{controls:{matchers:{color:/(background|color)$/i,date:/Date$/i}},darkMode:{current:"light",dark:o.dark,light:o.light,stylePreview:!0,darkClass:["dodo-theme--dark"],lightClass:["dodo-theme--light"]},options:{storySort:{order:["Home","philosophy","components"]}}}};export{e as default};

@@ -1,3 +1,0 @@
-import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as r}from"./index-P9OXKMel.js";import"./index-6otl1p8d.js";function o(t){const n={p:"p",...r(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx("img",{src:"dodo-circle-6.png",style:{width:200,height:"auto",display:"flex",justifySelf:"center"}}),`
-`,e.jsx("h1",{style:{textAlign:"center"},children:"Dodo UI"}),`
-`,e.jsx("div",{style:{textAlign:"center",fontSize:"1rem",fontWeight:400},children:e.jsx(n.p,{children:"An open-source, opinionated UI framework for Svelte."})})]})}function l(t={}){const{wrapper:n}={...r(),...t.components};return n?e.jsx(n,{...t,children:e.jsx(o,{...t})}):o(t)}export{l as default};
