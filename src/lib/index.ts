@@ -10,3 +10,10 @@ export type {
   ButtonLinkTarget,
   ButtonLinkReferrerpolicy,
 } from '$lib/stories/components/Form/Button/Button.svelte';
+
+/** Form: TextInput */
+export { default as TextInput } from '$lib/stories/components/Form/TextInput/TextInput.svelte';
+export type {
+  TextInputRoundness,
+  TextInputType,
+} from '$lib/stories/components/Form/TextInput/TextInput.svelte';

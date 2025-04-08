@@ -19,7 +19,7 @@
     },
     roundness: {
       control: { type: 'select' },
-      options: [false, 1, 2, 3, 'full'],
+      options: [false, '1x', '2x', '3x', 'full'],
     },
     size: {
       control: { type: 'select' },

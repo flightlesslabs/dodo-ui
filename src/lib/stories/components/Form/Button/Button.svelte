@@ -15,6 +15,7 @@
 <script lang="ts">
   import type { ComponentRoundness, ComponentRoundnessFull, ComponentSize } from '$lib/types.js';
   import type { Snippet } from 'svelte';
+  import type { MouseEventHandler } from 'svelte/elements';
 
   interface ButtonProps {
     /** Button contents goes here*/
@@ -48,7 +49,7 @@
     /** Custom css class*/
     class?: string;
     /** The onclick event handler */
-    onclick?: (e: MouseEvent) => void;
+    onclick?: MouseEventHandler<HTMLButtonElement>;
     /** Turn Button into link */
     href?: string;
     /** Link button: download  */
@@ -104,7 +105,7 @@
 
 {#snippet buttonContent()}
   {#if before}
-    <span class="button-content--before">
+    <span class="content--before">
       {@render before()}
     </span>
   {/if}
@@ -116,7 +117,7 @@
   {/if}
 
   {#if after}
-    <span class="button-content--after">
+    <span class="content--after">
       {@render after()}
     </span>
   {/if}
@@ -139,7 +140,7 @@
     class:compact
     class:disabled
     class={[
-      'dodo-ui-button',
+      'dodo-ui-Button',
       `size--${size}`,
       `color--${color}`,
       `variant--${variant}`,
@@ -154,7 +155,7 @@
     class:outline
     class:compact
     class={[
-      'dodo-ui-button',
+      'dodo-ui-Button',
       `size--${size}`,
       `color--${color}`,
       `variant--${variant}`,
@@ -199,7 +200,7 @@
     @include generate-dodo-ui-button-colors-dark(info);
   }
 
-  .dodo-ui-button {
+  .dodo-ui-Button {
     cursor: pointer;
     outline: none;
     transition: all 150ms;
@@ -316,7 +317,7 @@
       }
     }
 
-    .button-content {
+    .content {
       &--after,
       &--before {
         display: inline-flex;
