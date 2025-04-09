@@ -9,7 +9,6 @@ export type {
   ButtonRoundness,
   ButtonLinkTarget,
   ButtonLinkReferrerpolicy,
-  ButtonClickEvent,
 } from '$lib/stories/components/Form/Button/Button.svelte';
 
 /** Form: TextInput */
@@ -17,4 +16,6 @@ export { default as TextInput } from '$lib/stories/components/Form/TextInput/Tex
 export type {
   TextInputRoundness,
   TextInputType,
+  TextInputFocusEvent,
+  TextInputClipboardEvent,
 } from '$lib/stories/components/Form/TextInput/TextInput.svelte';

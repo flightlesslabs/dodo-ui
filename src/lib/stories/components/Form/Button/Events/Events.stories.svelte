@@ -3,7 +3,6 @@
   import { fn } from '@storybook/test';
   import Button from '../Button.svelte';
   import { storyButtonArgTypes } from '../Button.stories.svelte';
-  import type { ButtonClickEvent } from '../Button.svelte';
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
   const { Story } = defineMeta({
@@ -16,23 +15,26 @@
   });
 </script>
 
-<!-- Click Event: `e: ButtonClickEvent` -->
 <Story
-  name="Click Event"
+  name="Click"
   args={{
     outline: false,
     disabled: false,
     compact: false,
-    onclick: (e: ButtonClickEvent) => {
+    onclick: (e: Event) => {
+      const target = e.target as HTMLButtonElement;
+
       alert('Button Clicked');
-      console.log('Button Clicked', e);
+      console.log('Button Clicked', target);
     },
   }}
 >
   <Button
-    onclick={(e: ButtonClickEvent) => {
+    onclick={(e: Event) => {
+      const target = e.target as HTMLButtonElement;
+
       alert('Button Clicked');
-      console.log('Button Clicked', e);
+      console.log('Button Clicked', target);
     }}
   >
     Click me!

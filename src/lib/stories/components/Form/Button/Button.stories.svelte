@@ -1,7 +1,7 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import { fn } from '@storybook/test';
-  import Button, { type ButtonClickEvent } from './Button.svelte';
+  import Button from './Button.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
 
   export const storyButtonArgTypes: StoryBookArgTypes = {
@@ -54,23 +54,6 @@
   <Button>Click me!</Button>
 </Story>
 
-<Story
-  name="Click Test"
-  args={{
-    onclick: (e: ButtonClickEvent) => {
-      alert('Button Clicked');
-      console.log('Button Clicked', e);
-    },
-  }}
->
-  <Button
-    onclick={(e: ButtonClickEvent) => {
-      alert('Button Clicked');
-      console.log('Button Clicked', e);
-    }}>Click me!</Button
-  >
-</Story>
-
 <!-- Button with border around it -->
 <Story name="Outline" args={{ outline: true }}>
   <Button outline>Click me!</Button>
@@ -83,6 +66,11 @@
 <!-- Form submit button -->
 <Story name="Sumbit Button" args={{ type: 'submit' }}>
   <Button type="submit">Submit Form</Button>
+</Story>
+
+<!-- Form submit button -->
+<Story name="Full width Button" args={{ fullWidth: true }}>
+  <Button fullWidth>Click me!</Button>
 </Story>
 
 <!-- Anchor Link styled like a Button -->

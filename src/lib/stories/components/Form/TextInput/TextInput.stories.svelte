@@ -1,6 +1,5 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import { fn } from '@storybook/test';
   import TextInput from './TextInput.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
 
@@ -33,5 +32,8 @@
 
 <Story name="Placeholder" args={{ value: '', placeholder: 'Type something...' }} />
 
-<!-- No Outline -->
 <Story name="No Outline" args={{ outline: false }} />
+
+<Story name="Error" args={{ error: true }} />
+
+<Story name="Disabled" args={{ disabled: true }} />

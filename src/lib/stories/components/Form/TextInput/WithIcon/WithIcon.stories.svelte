@@ -29,3 +29,19 @@
     {/snippet}
   </TextInput>
 </Story>
+
+<Story name="Small" args={{ size: 'small' }}>
+  <TextInput size="small">
+    {#snippet before()}
+      <Icon icon="material-symbols:content-copy" />
+    {/snippet}
+  </TextInput>
+</Story>
+
+<Story name="Large" args={{ size: 'large' }}>
+  <TextInput size="large">
+    {#snippet before()}
+      <Icon icon="material-symbols:content-copy" />
+    {/snippet}
+  </TextInput>
+</Story>
