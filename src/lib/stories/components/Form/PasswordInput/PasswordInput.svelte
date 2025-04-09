@@ -1,18 +1,12 @@
 <script lang="ts" module>
-  export type TextInputRoundness = ComponentRoundness | false;
-  export type TextInputType = 'text' | 'tel' | 'email' | 'password' | 'url' | 'number';
-
-  export type TextInputFocusEvent = FocusEvent & {
-    currentTarget: EventTarget & HTMLInputElement;
-  };
-
-  export type TextInputClipboardEvent = ClipboardEvent & {
-    currentTarget: EventTarget & HTMLInputElement;
+  export type PasswordInputToggleEvent = {
+    event: Event;
+    toggle: boolean;
   };
 </script>
 
 <script lang="ts">
-  import type { ComponentRoundness, ComponentSize } from '$lib/types.js';
+  import type { ComponentSize } from '$lib/types.js';
   import type { Snippet } from 'svelte';
   import type {
     ChangeEventHandler,
@@ -20,12 +14,18 @@
     FocusEventHandler,
     FormEventHandler,
   } from 'svelte/elements';
+  import type { TextInputFocusEvent, TextInputRoundness } from '../TextInput/TextInput.svelte';
+  import Icon from '@iconify/svelte';
 
-  interface TextInputProps {
-    /** Input type? */
-    type?: TextInputType;
+  interface PasswordInputProps {
     /** How large should the button be? */
     size?: ComponentSize;
+    /** Toggle Password */
+    passwordToggle?: boolean;
+    /** Default Password Toggle State */
+    defaultPasswordToggleState?: boolean;
+    /** Toggle Password Icon */
+    passwordToggleIcon?: Snippet;
     /** How round should the border radius be? */
     roundness?: TextInputRoundness;
     /** Add a border around the button. Default True */
@@ -62,10 +62,11 @@
     oncopy?: ClipboardEventHandler<HTMLInputElement>;
     /** oncut event handler */
     oncut?: ClipboardEventHandler<HTMLInputElement>;
+    /** ontoggle event handler */
+    ontoggle?: (e: PasswordInputToggleEvent) => void;
   }
 
   let {
-    type = 'text',
     size = 'normal',
     roundness = '1x',
     outline = true,
@@ -82,12 +83,17 @@
     oncut,
     before,
     after,
+    passwordToggleIcon,
     error = false,
+    passwordToggle = true,
+    defaultPasswordToggleState = false,
     value = $bindable<string>(),
     placeholder,
-  }: TextInputProps = $props();
+    ontoggle,
+  }: PasswordInputProps = $props();
 
   let focused: boolean = $state(false);
+  let toggle: boolean = $state(defaultPasswordToggleState);
 
   function onfocusMod(e: TextInputFocusEvent) {
     focused = true;
@@ -104,6 +110,19 @@
       onblur(e);
     }
   }
+
+  function ontoggleMod(e: Event) {
+    toggle = !toggle;
+
+    const customEvent: PasswordInputToggleEvent = {
+      event: e,
+      toggle,
+    };
+
+    if (ontoggle) {
+      ontoggle(customEvent);
+    }
+  }
 </script>
 
 <div
@@ -111,7 +130,8 @@
   class:disabled
   class:error
   class:focused
-  class={['dodo-ui-TextInput', `size--${size}`, `roundness--${roundness}`, className].join(' ')}
+  class:toggle
+  class={['dodo-ui-PasswordInput', `size--${size}`, `roundness--${roundness}`, className].join(' ')}
 >
   {#if before}
     <span class="content--before">
@@ -119,7 +139,7 @@
     </span>
   {/if}
   <input
-    {type}
+    type={passwordToggle && toggle ? 'text' : 'password'}
     {name}
     {id}
     {disabled}
@@ -133,6 +153,19 @@
     {placeholder}
     bind:value
   />
+
+  {#if passwordToggle && !disabled}
+    <button class="passwordToggle" title="Toggle password" onclick={ontoggleMod} class:toggle>
+      {#if passwordToggleIcon}
+        {@render passwordToggleIcon()}
+      {:else if toggle}
+        <Icon icon="mdi:eye-off" width="24" height="24" />
+      {:else}
+        <Icon icon="mdi:eye" width="24" height="24" />
+      {/if}
+    </button>
+  {/if}
+
   {#if after}
     <span class="content--after">
       {@render after()}
@@ -142,24 +175,28 @@
 
 <style lang="scss">
   :global(:root) {
-    --dodo-ui-TextInput-border-color: var(--dodo-color-default-500);
-    --dodo-ui-TextInput-focus-border-color: var(--dodo-color-primary-500);
-    --dodo-ui-TextInput-error-border-color: var(--dodo-color-danger-500);
+    --dodo-ui-PasswordInput-border-color: var(--dodo-color-default-500);
+    --dodo-ui-PasswordInput-focus-border-color: var(--dodo-color-primary-500);
+    --dodo-ui-PasswordInput-error-border-color: var(--dodo-color-danger-500);
 
-    --dodo-ui-TextInput-disabled-color: var(--dodo-color-default-400);
-    --dodo-ui-TextInput-disabled-bg: var(--dodo-color-default-200);
+    --dodo-ui-PasswordInput-disabled-color: var(--dodo-color-default-400);
+    --dodo-ui-PasswordInput-disabled-bg: var(--dodo-color-default-200);
+
+    --dodo-ui-PasswordInput-ToggleButton-hover: var(--dodo-color-primary-700);
   }
 
   :global(.dodo-theme--dark) {
-    --dodo-ui-TextInput-border-color: var(--dodo-color-default-600);
-    --dodo-ui-TextInput-focus-border-color: var(--dodo-color-primary-600);
-    --dodo-ui-TextInput-error-border-color: var(--dodo-color-danger-600);
+    --dodo-ui-PasswordInput-border-color: var(--dodo-color-default-600);
+    --dodo-ui-PasswordInput-focus-border-color: var(--dodo-color-primary-600);
+    --dodo-ui-PasswordInput-error-border-color: var(--dodo-color-danger-600);
 
-    --dodo-ui-TextInput-disabled-bg: var(--dodo-color-default-100);
-    --dodo-ui-TextInput-disabled-color: var(--dodo-color-default-500);
+    --dodo-ui-PasswordInput-disabled-bg: var(--dodo-color-default-100);
+    --dodo-ui-PasswordInput-disabled-color: var(--dodo-color-default-500);
+
+    --dodo-ui-PasswordInput-ToggleButton-hover: var(--dodo-color-primary-600);
   }
 
-  .dodo-ui-TextInput {
+  .dodo-ui-PasswordInput {
     display: flex;
     overflow: hidden;
     color: var(--dodo-color-default-800);
@@ -180,22 +217,22 @@
     &.outline {
       border-style: solid;
       border-width: var(--dodo-ui-element-border-width);
-      border-color: var(--dodo-ui-TextInput-border-color);
+      border-color: var(--dodo-ui-PasswordInput-border-color);
     }
 
     &.focused {
-      border-color: var(--dodo-ui-TextInput-focus-border-color);
+      border-color: var(--dodo-ui-PasswordInput-focus-border-color);
     }
 
     &.error {
-      border-color: var(--dodo-ui-TextInput-error-border-color);
+      border-color: var(--dodo-ui-PasswordInput-error-border-color);
     }
 
     &.disabled {
       cursor: initial;
-      background-color: var(--dodo-ui-TextInput-disabled-bg);
-      color: var(--dodo-ui-TextInput-disabled-color);
-      border-color: var(--dodo-ui-TextInput-disabled-bg);
+      background-color: var(--dodo-ui-PasswordInput-disabled-bg);
+      color: var(--dodo-ui-PasswordInput-disabled-color);
+      border-color: var(--dodo-ui-PasswordInput-disabled-bg);
     }
 
     .content {
@@ -233,6 +270,10 @@
             margin-left: -4px;
           }
         }
+
+        .passwordToggle {
+          width: var(--dodo-ui-element-height-normal);
+        }
       }
 
       &--small {
@@ -252,6 +293,10 @@
             margin-right: 8px;
             margin-left: -2px;
           }
+        }
+
+        .passwordToggle {
+          width: var(--dodo-ui-element-height-small);
         }
       }
 
@@ -273,6 +318,10 @@
             margin-left: -4px;
           }
         }
+
+        .passwordToggle {
+          width: var(--dodo-ui-element-height-large);
+        }
       }
     }
 
@@ -287,6 +336,25 @@
 
       &--3x {
         border-radius: var(--dodo-ui-element-roundness-3x);
+      }
+    }
+
+    .passwordToggle {
+      background-color: transparent;
+      outline: 0;
+      border: 0;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      cursor: pointer;
+      padding: 0;
+      margin-right: 4px;
+      color: var(--dodo-color-default-700);
+      transition: all 150ms;
+
+      &:hover {
+        color: var(--dodo-ui-PasswordInput-ToggleButton-hover);
       }
     }
   }

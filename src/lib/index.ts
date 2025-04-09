@@ -19,3 +19,7 @@ export type {
   TextInputFocusEvent,
   TextInputClipboardEvent,
 } from '$lib/stories/components/Form/TextInput/TextInput.svelte';
+
+/** Form: PasswordInput */
+export { default as PasswordInput } from '$lib/stories/components/Form/PasswordInput/PasswordInput.svelte';
+export type { PasswordInputToggleEvent } from '$lib/stories/components/Form/PasswordInput/PasswordInput.svelte';
