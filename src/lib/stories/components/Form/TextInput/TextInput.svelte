@@ -29,7 +29,7 @@
     /** Button disabled state */
     disabled?: boolean;
     /** is there any associated Error ? */
-    error?: string | boolean;
+    error?: boolean;
     /** Name */
     name?: string;
     /** Id */
@@ -79,15 +79,14 @@
     placeholder,
   }: TextInputProps = $props();
 
-  const isError = $derived(error ? true : false);
-  let isFocused: boolean = $state(false);
+  let focused: boolean = $state(false);
 
   function onfocusMod(
     e: FocusEvent & {
       currentTarget: EventTarget & HTMLInputElement;
     },
   ) {
-    isFocused = true;
+    focused = true;
 
     if (onfocus) {
       onfocus(e);
@@ -99,7 +98,7 @@
       currentTarget: EventTarget & HTMLInputElement;
     },
   ) {
-    isFocused = false;
+    focused = false;
 
     if (onblur) {
       onblur(e);
@@ -110,8 +109,8 @@
 <div
   class:outline
   class:disabled
-  class:isError
-  class:isFocused
+  class:error
+  class:focused
   class={['dodo-ui-TextInput', `size--${size}`, `roundness--${roundness}`, className].join(' ')}
 >
   {#if before}
@@ -160,6 +159,7 @@
     overflow: hidden;
     color: var(--dodo-color-default-800);
     transition: all 150ms;
+    border: 0;
 
     input {
       flex: 1;
@@ -173,15 +173,16 @@
     }
 
     &.outline {
-      border: 1px solid;
+      border-style: solid;
+      border-width: var(--dodo-ui-element-border-width);
       border-color: var(--dodo-ui-TextInput-border-color);
     }
 
-    &.isFocused {
+    &.focused {
       border-color: var(--dodo-ui-TextInput-focus-border-color);
     }
 
-    &.isError {
+    &.error {
       border-color: var(--dodo-ui-TextInput-error-border-color);
     }
 

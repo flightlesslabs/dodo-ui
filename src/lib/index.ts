@@ -9,6 +9,7 @@ export type {
   ButtonRoundness,
   ButtonLinkTarget,
   ButtonLinkReferrerpolicy,
+  ButtonClickEvent,
 } from '$lib/stories/components/Form/Button/Button.svelte';
 
 /** Form: TextInput */

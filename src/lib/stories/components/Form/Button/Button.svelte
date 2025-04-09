@@ -10,6 +10,9 @@
     | undefined
     | null;
   export type ButtonLinkReferrerpolicy = ReferrerPolicy | undefined | null;
+  export type ButtonClickEvent = MouseEvent & {
+    currentTarget: EventTarget & HTMLButtonElement;
+  };
 </script>
 
 <script lang="ts">
@@ -212,7 +215,8 @@
     font-family: inherit;
     font-weight: 500;
     background-color: transparent;
-    border: 1px solid;
+    border-style: solid;
+    border-width: var(--dodo-ui-element-border-width);
     border-color: transparent;
     outline: 0;
     color: inherit;

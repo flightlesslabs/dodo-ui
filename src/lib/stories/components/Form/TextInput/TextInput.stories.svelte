@@ -32,3 +32,6 @@
 <Story name="Default" />
 
 <Story name="Placeholder" args={{ value: '', placeholder: 'Type something...' }} />
+
+<!-- No Outline -->
+<Story name="No Outline" args={{ outline: false }} />

@@ -9,6 +9,9 @@
     tags: ['autodocs'],
     argTypes: storyTextInputArgTypes,
     args: { value: 'Hello world!' },
+    parameters: {
+      controls: { include: [] },
+    },
   });
 </script>
 
