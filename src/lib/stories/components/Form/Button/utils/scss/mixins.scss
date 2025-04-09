@@ -3,15 +3,15 @@
 /// across different interaction states (default, hover, active).
 /// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
 @mixin generate-dodo-ui-button-colors($color-name) {
-  --dodo-ui-button-outline-#{$color-name}: var(--dodo-color-#{$color-name}-400);
+  --dodo-ui-Button-outline-#{$color-name}: var(--dodo-color-#{$color-name}-400);
 
-  --dodo-ui-button-text-#{$color-name}-bg: var(--dodo-color-#{$color-name}-100);
-  --dodo-ui-button-text-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-200);
-  --dodo-ui-button-text-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-300);
+  --dodo-ui-Button-text-#{$color-name}-bg: var(--dodo-color-#{$color-name}-100);
+  --dodo-ui-Button-text-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-200);
+  --dodo-ui-Button-text-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-300);
 
-  --dodo-ui-button-solid-#{$color-name}-bg: var(--dodo-color-#{$color-name}-500);
-  --dodo-ui-button-solid-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-600);
-  --dodo-ui-button-solid-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-700);
+  --dodo-ui-Button-solid-#{$color-name}-bg: var(--dodo-color-#{$color-name}-500);
+  --dodo-ui-Button-solid-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-600);
+  --dodo-ui-Button-solid-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-700);
 }
 
 /// Mixin: generate-dodo-ui-button-colors
@@ -19,15 +19,15 @@
 /// across different interaction states (default, hover, active).
 /// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
 @mixin generate-dodo-ui-button-colors-dark($color-name) {
-  --dodo-ui-button-outline-#{$color-name}: var(--dodo-color-#{$color-name}-300);
+  --dodo-ui-Button-outline-#{$color-name}: var(--dodo-color-#{$color-name}-300);
 
-  --dodo-ui-button-text-#{$color-name}-bg: var(--dodo-color-#{$color-name}-50);
-  --dodo-ui-button-text-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-100);
-  --dodo-ui-button-text-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-200);
+  --dodo-ui-Button-text-#{$color-name}-bg: var(--dodo-color-#{$color-name}-50);
+  --dodo-ui-Button-text-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-100);
+  --dodo-ui-Button-text-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-200);
 
-  --dodo-ui-button-solid-#{$color-name}-bg: var(--dodo-color-#{$color-name}-300);
-  --dodo-ui-button-solid-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-200);
-  --dodo-ui-button-solid-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-100);
+  --dodo-ui-Button-solid-#{$color-name}-bg: var(--dodo-color-#{$color-name}-300);
+  --dodo-ui-Button-solid-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-200);
+  --dodo-ui-Button-solid-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-100);
 }
 
 /// Mixin: generate-dodo-ui-button-color
@@ -38,31 +38,31 @@
     &.variant {
       &--text {
         color: var(--dodo-color-#{$theme}-800);
-        background-color: var(--dodo-ui-button-text-#{$theme}-bg);
+        background-color: var(--dodo-ui-Button-text-#{$theme}-bg);
 
         &:hover {
-          background-color: var(--dodo-ui-button-text-#{$theme}-hover-bg);
+          background-color: var(--dodo-ui-Button-text-#{$theme}-hover-bg);
         }
 
         &:active {
-          background-color: var(--dodo-ui-button-text-#{$theme}-active-bg);
+          background-color: var(--dodo-ui-Button-text-#{$theme}-active-bg);
         }
 
         &.outline {
-          border-color: var(--dodo-ui-button-outline-#{$theme});
+          border-color: var(--dodo-ui-Button-outline-#{$theme});
         }
       }
 
       &--solid {
         color: var(--dodo-color-constant-white);
-        background-color: var(--dodo-ui-button-solid-#{$theme}-bg);
+        background-color: var(--dodo-ui-Button-solid-#{$theme}-bg);
 
         &:hover {
-          background-color: var(--dodo-ui-button-solid-#{$theme}-hover-bg);
+          background-color: var(--dodo-ui-Button-solid-#{$theme}-hover-bg);
         }
 
         &:active {
-          background-color: var(--dodo-ui-button-solid-#{$theme}-active-bg);
+          background-color: var(--dodo-ui-Button-solid-#{$theme}-active-bg);
         }
       }
     }

@@ -19,7 +19,7 @@
     },
     roundness: {
       control: { type: 'select' },
-      options: [false, 1, 2, 3, 'full'],
+      options: [false, '1x', '2x', '3x', 'full'],
     },
     size: {
       control: { type: 'select' },
@@ -54,18 +54,23 @@
   <Button>Click me!</Button>
 </Story>
 
-<Story name="Disabled" args={{ disabled: true }}>
-  <Button disabled>Click me!</Button>
-</Story>
-
 <!-- Button with border around it -->
 <Story name="Outline" args={{ outline: true }}>
   <Button outline>Click me!</Button>
 </Story>
 
+<Story name="Disabled" args={{ disabled: true }}>
+  <Button disabled>Click me!</Button>
+</Story>
+
 <!-- Form submit button -->
 <Story name="Sumbit Button" args={{ type: 'submit' }}>
   <Button type="submit">Submit Form</Button>
+</Story>
+
+<!-- Form submit button -->
+<Story name="Full width Button" args={{ fullWidth: true }}>
+  <Button fullWidth>Click me!</Button>
 </Story>
 
 <!-- Anchor Link styled like a Button -->

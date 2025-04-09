@@ -15,6 +15,7 @@
 <script lang="ts">
   import type { ComponentRoundness, ComponentRoundnessFull, ComponentSize } from '$lib/types.js';
   import type { Snippet } from 'svelte';
+  import type { MouseEventHandler } from 'svelte/elements';
 
   interface ButtonProps {
     /** Button contents goes here*/
@@ -23,6 +24,8 @@
     type?: 'button' | 'submit';
     /** How large should the button be? */
     size?: ComponentSize;
+    /** Full width button? */
+    fullWidth?: boolean;
     /** What color to use? */
     color?: ButtonColor;
     /** How round should the border radius be? */
@@ -48,7 +51,7 @@
     /** Custom css class*/
     class?: string;
     /** The onclick event handler */
-    onclick?: (e: MouseEvent) => void;
+    onclick?: MouseEventHandler<HTMLButtonElement>;
     /** Turn Button into link */
     href?: string;
     /** Link button: download  */
@@ -81,6 +84,7 @@
     variant = 'text',
     outline = false,
     compact = false,
+    fullWidth = false,
     name,
     id,
     title,
@@ -104,7 +108,7 @@
 
 {#snippet buttonContent()}
   {#if before}
-    <span class="button-content--before">
+    <span class="content--before">
       {@render before()}
     </span>
   {/if}
@@ -116,7 +120,7 @@
   {/if}
 
   {#if after}
-    <span class="button-content--after">
+    <span class="content--after">
       {@render after()}
     </span>
   {/if}
@@ -138,8 +142,9 @@
     class:outline
     class:compact
     class:disabled
+    class:fullWidth
     class={[
-      'dodo-ui-button',
+      'dodo-ui-Button',
       `size--${size}`,
       `color--${color}`,
       `variant--${variant}`,
@@ -153,8 +158,9 @@
   <button
     class:outline
     class:compact
+    class:fullWidth
     class={[
-      'dodo-ui-button',
+      'dodo-ui-Button',
       `size--${size}`,
       `color--${color}`,
       `variant--${variant}`,
@@ -176,8 +182,8 @@
   @use 'utils/scss/mixins.scss' as *;
 
   :global(:root) {
-    --dodo-ui-button-disabled-color: var(--dodo-color-default-400);
-    --dodo-ui-button-disabled-bg: var(--dodo-color-default-200);
+    --dodo-ui-Button-disabled-color: var(--dodo-color-default-400);
+    --dodo-ui-Button-disabled-bg: var(--dodo-color-default-200);
 
     @include generate-dodo-ui-button-colors(default);
     @include generate-dodo-ui-button-colors(primary);
@@ -188,8 +194,8 @@
   }
 
   :global(.dodo-theme--dark) {
-    --dodo-ui-button-disabled-bg: var(--dodo-color-default-100);
-    --dodo-ui-button-disabled-color: var(--dodo-color-default-500);
+    --dodo-ui-Button-disabled-bg: var(--dodo-color-default-100);
+    --dodo-ui-Button-disabled-color: var(--dodo-color-default-500);
 
     @include generate-dodo-ui-button-colors-dark(default);
     @include generate-dodo-ui-button-colors-dark(primary);
@@ -199,7 +205,7 @@
     @include generate-dodo-ui-button-colors-dark(info);
   }
 
-  .dodo-ui-button {
+  .dodo-ui-Button {
     cursor: pointer;
     outline: none;
     transition: all 150ms;
@@ -209,9 +215,9 @@
     justify-content: center;
     align-items: center;
     font-family: inherit;
-    font-weight: 500;
     background-color: transparent;
-    border: 1px solid;
+    border-style: solid;
+    border-width: var(--dodo-ui-element-border-width);
     border-color: transparent;
     outline: 0;
     color: inherit;
@@ -242,15 +248,15 @@
 
     &.roundness {
       &--1x {
-        border-radius: var(--dodo-ui-element-roundness-1);
+        border-radius: var(--dodo-ui-element-roundness-1x);
       }
 
       &--2x {
-        border-radius: var(--dodo-ui-element-roundness-2);
+        border-radius: var(--dodo-ui-element-roundness-2x);
       }
 
       &--3x {
-        border-radius: var(--dodo-ui-element-roundness-3);
+        border-radius: var(--dodo-ui-element-roundness-3x);
       }
 
       &--full {
@@ -273,17 +279,17 @@
       &.variant {
         &--text,
         &--solid {
-          background-color: var(--dodo-ui-button-disabled-bg);
-          color: var(--dodo-ui-button-disabled-color);
+          background-color: var(--dodo-ui-Button-disabled-bg);
+          color: var(--dodo-ui-Button-disabled-color);
 
           &:hover {
-            background-color: var(--dodo-ui-button-disabled-bg);
-            color: var(--dodo-ui-button-disabled-color);
+            background-color: var(--dodo-ui-Button-disabled-bg);
+            color: var(--dodo-ui-Button-disabled-color);
           }
 
           &:active {
-            background-color: var(--dodo-ui-button-disabled-bg);
-            color: var(--dodo-ui-button-disabled-color);
+            background-color: var(--dodo-ui-Button-disabled-bg);
+            color: var(--dodo-ui-Button-disabled-color);
           }
 
           &.outline {
@@ -316,7 +322,11 @@
       }
     }
 
-    .button-content {
+    &.fullWidth {
+      width: 100%;
+    }
+
+    .content {
       &--after,
       &--before {
         display: inline-flex;
