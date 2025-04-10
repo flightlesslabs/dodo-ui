@@ -5,6 +5,9 @@ export type { ComponentSize, ComponentRoundness, ComponentRoundnessFull } from '
 /** developer tools: components: UtilityButton */
 export { default as UtilityButton } from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
 
+/** developer tools: components: InputEnclosure */
+export { default as InputEnclosure } from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
+
 /** Form: Button */
 export { default as Button } from '$lib/stories/components/Form/Button/Button.svelte';
 export type {
@@ -17,7 +20,6 @@ export type {
 /** Form: TextInput */
 export { default as TextInput } from '$lib/stories/components/Form/TextInput/TextInput.svelte';
 export type {
-  TextInputRoundness,
   TextInputType,
   TextInputFocusEvent,
   TextInputClipboardEvent,

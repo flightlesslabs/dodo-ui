@@ -6,7 +6,7 @@
 </script>
 
 <script lang="ts">
-  import type { ComponentSize } from '$lib/types.js';
+  import type { ComponentRoundness, ComponentSize } from '$lib/types.js';
   import type { Snippet } from 'svelte';
   import type {
     ChangeEventHandler,
@@ -14,9 +14,10 @@
     FocusEventHandler,
     FormEventHandler,
   } from 'svelte/elements';
-  import type { TextInputFocusEvent, TextInputRoundness } from '../TextInput/TextInput.svelte';
+  import type { TextInputFocusEvent } from '../TextInput/TextInput.svelte';
   import Icon from '@iconify/svelte';
   import UtilityButton from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
+  import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
 
   interface PasswordInputProps {
     /** How large should the button be? */
@@ -30,7 +31,7 @@
     /** Toggle Password Icon */
     customPasswordToggleIcon?: (toggle: boolean) => Snippet;
     /** How round should the border radius be? */
-    roundness?: TextInputRoundness;
+    roundness?: ComponentRoundness | false;
     /** Add a border around the button. Default True */
     outline?: boolean;
     /** Input value */
@@ -143,74 +144,41 @@
   class:toggle
   class={['dodo-ui-PasswordInput', `size--${size}`, `roundness--${roundness}`, className].join(' ')}
 >
-  {#if before}
-    <span class="content--before">
-      {@render before()}
-    </span>
-  {/if}
-  <input
-    type={passwordToggle && toggle ? 'text' : 'password'}
-    {name}
-    {id}
-    {disabled}
-    {oninput}
-    {onchange}
-    onfocus={onfocusMod}
-    onblur={onblurMod}
-    {onpaste}
-    {oncopy}
-    {oncut}
-    {placeholder}
-    bind:value
-    bind:this={ref}
-    {readonly}
-  />
+  <InputEnclosure {outline} {disabled} {error} {focused} {size} {roundness} {before} {after}>
+    <input
+      type={passwordToggle && toggle ? 'text' : 'password'}
+      {name}
+      {id}
+      {disabled}
+      {oninput}
+      {onchange}
+      onfocus={onfocusMod}
+      onblur={onblurMod}
+      {onpaste}
+      {oncopy}
+      {oncut}
+      {placeholder}
+      bind:value
+      bind:this={ref}
+      {readonly}
+    />
 
-  {#if passwordToggle && !disabled}
-    <UtilityButton {size} title="Toggle password" class="passwordToggle" onclick={ontoggleMod}>
-      {#if customPasswordToggleIcon}
-        {@render customPasswordToggleIconTyped(toggle)}
-      {:else if toggle}
-        <Icon icon="mdi:eye-off" width="24" height="24" />
-      {:else}
-        <Icon icon="mdi:eye" width="24" height="24" />
-      {/if}
-    </UtilityButton>
-  {/if}
-
-  {#if after}
-    <span class="content--after">
-      {@render after()}
-    </span>
-  {/if}
+    {#if passwordToggle && !disabled}
+      <UtilityButton {size} title="Toggle password" class="passwordToggle" onclick={ontoggleMod}>
+        {#if customPasswordToggleIcon}
+          {@render customPasswordToggleIconTyped(toggle)}
+        {:else if toggle}
+          <Icon icon="mdi:eye-off" width="24" height="24" />
+        {:else}
+          <Icon icon="mdi:eye" width="24" height="24" />
+        {/if}
+      </UtilityButton>
+    {/if}
+  </InputEnclosure>
 </div>
 
 <style lang="scss">
-  :global(:root) {
-    --dodo-ui-PasswordInput-border-color: var(--dodo-color-default-500);
-    --dodo-ui-PasswordInput-focus-border-color: var(--dodo-color-primary-500);
-    --dodo-ui-PasswordInput-error-border-color: var(--dodo-color-danger-500);
-
-    --dodo-ui-PasswordInput-disabled-color: var(--dodo-color-default-400);
-    --dodo-ui-PasswordInput-disabled-bg: var(--dodo-color-default-200);
-  }
-
-  :global(.dodo-theme--dark) {
-    --dodo-ui-PasswordInput-border-color: var(--dodo-color-default-600);
-    --dodo-ui-PasswordInput-focus-border-color: var(--dodo-color-primary-600);
-    --dodo-ui-PasswordInput-error-border-color: var(--dodo-color-danger-600);
-
-    --dodo-ui-PasswordInput-disabled-bg: var(--dodo-color-default-100);
-    --dodo-ui-PasswordInput-disabled-color: var(--dodo-color-default-500);
-  }
-
   .dodo-ui-PasswordInput {
-    display: flex;
-    overflow: hidden;
-    color: var(--dodo-color-default-800);
-    transition: all 150ms;
-    border: 0;
-
     input {
       flex: 1;
       border: 0;
@@ -222,116 +190,26 @@
       letter-spacing: 0.3px;
     }
 
-    &.outline {
-      border-style: solid;
-      border-width: var(--dodo-ui-element-border-width);
-      border-color: var(--dodo-ui-PasswordInput-border-color);
-    }
-
-    &.focused {
-      border-color: var(--dodo-ui-PasswordInput-focus-border-color);
-    }
-
-    &.error {
-      border-color: var(--dodo-ui-PasswordInput-error-border-color);
-    }
-
-    &.disabled {
-      cursor: initial;
-      background-color: var(--dodo-ui-PasswordInput-disabled-bg);
-      color: var(--dodo-ui-PasswordInput-disabled-color);
-      border-color: var(--dodo-ui-PasswordInput-disabled-bg);
-    }
-
-    .content {
-      &--after,
-      &--before {
-        &:empty {
-          display: none;
-        }
-      }
-
-      &--after,
-      &--before {
-        display: inline-flex;
-        height: 100%;
-        align-items: center;
-      }
-    }
-
     &.size {
       &--normal {
-        height: var(--dodo-ui-element-height-normal);
         input {
           font-size: 1rem;
           padding: 0 12px;
         }
-
-        .content {
-          &--before {
-            margin-left: 12px;
-            margin-right: -4px;
-          }
-
-          &--after {
-            margin-right: 12px;
-            margin-left: -4px;
-          }
-        }
       }
 
       &--small {
-        height: var(--dodo-ui-element-height-small);
         input {
           padding: 0 8px;
           font-size: 0.9rem;
         }
-
-        .content {
-          &--before {
-            margin-left: 8px;
-            margin-right: -2px;
-          }
-
-          &--after {
-            margin-right: 8px;
-            margin-left: -2px;
-          }
-        }
       }
 
       &--large {
-        height: var(--dodo-ui-element-height-large);
         input {
           font-size: 1.1rem;
           padding: 0 14px;
         }
-
-        .content {
-          &--before {
-            margin-left: 14px;
-            margin-right: -4px;
-          }
-
-          &--after {
-            margin-right: 14px;
-            margin-left: -4px;
-          }
-        }
-      }
-    }
-
-    &.roundness {
-      &--1x {
-        border-radius: var(--dodo-ui-element-roundness-1x);
-      }
-
-      &--2x {
-        border-radius: var(--dodo-ui-element-roundness-2x);
-      }
-
-      &--3x {
-        border-radius: var(--dodo-ui-element-roundness-3x);
       }
     }
   }
