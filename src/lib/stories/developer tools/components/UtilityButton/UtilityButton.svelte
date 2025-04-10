@@ -82,6 +82,7 @@
     padding: 0;
     color: var(--dodo-color-default-700);
     border-radius: 50%;
+    font-family: inherit;
 
     &:hover {
       color: var(--dodo-ui-UtilityButton-hover);

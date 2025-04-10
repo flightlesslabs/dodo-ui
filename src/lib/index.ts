@@ -29,3 +29,10 @@ export type { PasswordInputToggleEvent } from '$lib/stories/components/Form/Pass
 
 /** Form: Label */
 export { default as Label } from '$lib/stories/components/Form/Label/Label.svelte';
+
+/** Form: FormControl */
+export { default as FormControl } from '$lib/stories/components/Form/FormControl/FormControl.svelte';
+
+/** Form: Message */
+export { default as Message } from '$lib/stories/components/Form/Message/Message.svelte';
+export type { MessageColor } from '$lib/stories/components/Form/Message/Message.svelte';
