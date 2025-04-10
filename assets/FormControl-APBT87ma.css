@@ -1,0 +1,1 @@
+:root{--dodo-ui-FormControl-LabelSection-gap: 8px;--dodo-ui-FormControl-errorMessage-gap: 16px}.dodo-ui-FormControl.svelte-1lyijki .LabelSection:where(.svelte-1lyijki){margin-bottom:var(--dodo-ui-FormControl-LabelSection-gap)}.dodo-ui-FormControl.svelte-1lyijki .errorMessage:where(.svelte-1lyijki){margin-top:var(--dodo-ui-FormControl-errorMessage-gap)}
