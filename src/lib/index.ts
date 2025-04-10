@@ -42,7 +42,6 @@ export type { MessageColor } from '$lib/stories/components/Form/Message/Message.
 /** Form: SimpleSelect */
 export { default as SimpleSelect } from '$lib/stories/components/Form/SimpleSelect/SimpleSelect.svelte';
 export type {
-  SimpleSelectRoundness,
   SimpleSelectFocusEvent,
   SimpleSelectOption,
 } from '$lib/stories/components/Form/SimpleSelect/SimpleSelect.svelte';

@@ -1,6 +1,4 @@
 <script lang="ts" module>
-  export type SimpleSelectRoundness = ComponentRoundness | false;
-
   export type SimpleSelectFocusEvent = FocusEvent & {
     currentTarget: EventTarget & HTMLSelectElement;
   };
@@ -13,6 +11,8 @@
 </script>
 
 <script lang="ts">
+  import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
+
   import type { ComponentRoundness, ComponentSize } from '$lib/types.js';
   import type { Snippet } from 'svelte';
   import type { ChangeEventHandler, FocusEventHandler } from 'svelte/elements';
@@ -23,7 +23,7 @@
     /** How large should the button be? */
     size?: ComponentSize;
     /** How round should the border radius be? */
-    roundness?: SimpleSelectRoundness;
+    roundness?: ComponentRoundness | false;
     /** How round should the border radius be? */
     options: SimpleSelectOption[];
     /** Add a border around the button. Default True */
@@ -100,60 +100,28 @@
   class:focused
   class={['dodo-ui-SimpleSelect', `size--${size}`, `roundness--${roundness}`, className].join(' ')}
 >
-  {#if before}
-    <span class="content--before">
-      {@render before()}
-    </span>
-  {/if}
-  <select
-    {name}
-    {id}
-    {disabled}
-    {onchange}
-    onfocus={onfocusMod}
-    onblur={onblurMod}
-    {placeholder}
-    bind:this={ref}
-  >
-    {#each options as option (option.value)}
-      <option value={option.value} disabled={option.disabled} selected={value === option.value}>
-        {option.label}
-      </option>
-    {/each}
-  </select>
-  {#if after}
-    <span class="content--after">
-      {@render after()}
-    </span>
-  {/if}
+  <InputEnclosure {outline} {disabled} {error} {focused} {size} {roundness} {before} {after}>
+    <select
+      {name}
+      {id}
+      {disabled}
+      {onchange}
+      onfocus={onfocusMod}
+      onblur={onblurMod}
+      {placeholder}
+      bind:this={ref}
+    >
+      {#each options as option (option.value)}
+        <option value={option.value} disabled={option.disabled} selected={value === option.value}>
+          {option.label}
+        </option>
+      {/each}
+    </select>
+  </InputEnclosure>
 </div>
 
 <style lang="scss">
-  :global(:root) {
-    --dodo-ui-SimpleSelect-border-color: var(--dodo-color-default-500);
-    --dodo-ui-SimpleSelect-focus-border-color: var(--dodo-color-primary-500);
-    --dodo-ui-SimpleSelect-error-border-color: var(--dodo-color-danger-500);
-
-    --dodo-ui-SimpleSelect-disabled-color: var(--dodo-color-default-400);
-    --dodo-ui-SimpleSelect-disabled-bg: var(--dodo-color-default-200);
-  }
-
-  :global(.dodo-theme--dark) {
-    --dodo-ui-SimpleSelect-border-color: var(--dodo-color-default-600);
-    --dodo-ui-SimpleSelect-focus-border-color: var(--dodo-color-primary-600);
-    --dodo-ui-SimpleSelect-error-border-color: var(--dodo-color-danger-600);
-
-    --dodo-ui-SimpleSelect-disabled-bg: var(--dodo-color-default-100);
-    --dodo-ui-SimpleSelect-disabled-color: var(--dodo-color-default-500);
-  }
-
   .dodo-ui-SimpleSelect {
-    display: flex;
-    overflow: hidden;
-    color: var(--dodo-color-default-800);
-    transition: all 150ms;
-    border: 0;
-
     select {
       flex: 1;
       border: 0;
@@ -165,116 +133,26 @@
       letter-spacing: 0.3px;
     }
 
-    &.outline {
-      border-style: solid;
-      border-width: var(--dodo-ui-element-border-width);
-      border-color: var(--dodo-ui-SimpleSelect-border-color);
-    }
-
-    &.focused {
-      border-color: var(--dodo-ui-SimpleSelect-focus-border-color);
-    }
-
-    &.error {
-      border-color: var(--dodo-ui-SimpleSelect-error-border-color);
-    }
-
-    &.disabled {
-      cursor: initial;
-      background-color: var(--dodo-ui-SimpleSelect-disabled-bg);
-      color: var(--dodo-ui-SimpleSelect-disabled-color);
-      border-color: var(--dodo-ui-SimpleSelect-disabled-bg);
-    }
-
-    .content {
-      &--after,
-      &--before {
-        &:empty {
-          display: none;
-        }
-      }
-
-      &--after,
-      &--before {
-        display: inline-flex;
-        height: 100%;
-        align-items: center;
-      }
-    }
-
     &.size {
       &--normal {
-        height: var(--dodo-ui-element-height-normal);
         select {
           font-size: 1rem;
           padding: 0 12px;
         }
-
-        .content {
-          &--before {
-            margin-left: 12px;
-            margin-right: -4px;
-          }
-
-          &--after {
-            margin-right: 12px;
-            margin-left: -4px;
-          }
-        }
       }
 
       &--small {
-        height: var(--dodo-ui-element-height-small);
         select {
           padding: 0 8px;
           font-size: 0.9rem;
         }
-
-        .content {
-          &--before {
-            margin-left: 8px;
-            margin-right: -2px;
-          }
-
-          &--after {
-            margin-right: 8px;
-            margin-left: -2px;
-          }
-        }
       }
 
       &--large {
-        height: var(--dodo-ui-element-height-large);
         select {
           font-size: 1.1rem;
           padding: 0 14px;
         }
-
-        .content {
-          &--before {
-            margin-left: 14px;
-            margin-right: -4px;
-          }
-
-          &--after {
-            margin-right: 14px;
-            margin-left: -4px;
-          }
-        }
-      }
-    }
-
-    &.roundness {
-      &--1x {
-        border-radius: var(--dodo-ui-element-roundness-1x);
-      }
-
-      &--2x {
-        border-radius: var(--dodo-ui-element-roundness-2x);
-      }
-
-      &--3x {
-        border-radius: var(--dodo-ui-element-roundness-3x);
       }
     }
   }
