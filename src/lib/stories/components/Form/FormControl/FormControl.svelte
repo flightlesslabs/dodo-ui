@@ -52,7 +52,7 @@
 <style lang="scss">
   :global(:root) {
     --dodo-ui-FormControl-LabelSection-gap: 8px;
-    --dodo-ui-FormControl-errorMessage-gap: 16px;
+    --dodo-ui-FormControl-errorMessage-gap: 10px;
   }
 
   .dodo-ui-FormControl {

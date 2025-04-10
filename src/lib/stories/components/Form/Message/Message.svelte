@@ -3,6 +3,8 @@
 </script>
 
 <script lang="ts">
+  import type { ComponentSize } from '$lib/types.js';
+
   import type { Snippet } from 'svelte';
 
   interface MessageProps {
@@ -12,6 +14,8 @@
     ref?: HTMLDivElement;
     /** What color to use? */
     color?: MessageColor;
+    /** Message size */
+    size?: ComponentSize;
     /** Custom css class*/
     class?: string;
     /** Test: ⚠️ Unsafe Children String. Do Not use*/
@@ -24,10 +28,14 @@
     color = 'default',
     ref = $bindable<HTMLDivElement>(),
     _unsafeChildrenStringForTesting,
+    size = 'normal',
   }: MessageProps = $props();
 </script>
 
-<div class={['dodo-ui-Message', `color--${color}`, className].join(' ')} bind:this={ref}>
+<div
+  class={['dodo-ui-Message', `color--${color}`, `size--${size}`, className].join(' ')}
+  bind:this={ref}
+>
   {#if children}
     {@render children()}
   {:else if _unsafeChildrenStringForTesting}
@@ -37,10 +45,23 @@
 
 <style lang="scss">
   .dodo-ui-Message {
-    font-size: 1rem;
     letter-spacing: 0.3px;
     display: flex;
     font-family: inherit;
+
+    &.size {
+      &--normal {
+        font-size: 1rem;
+      }
+
+      &--small {
+        font-size: 0.9rem;
+      }
+
+      &--large {
+        font-size: 1.1rem;
+      }
+    }
 
     &.color {
       &--default {
