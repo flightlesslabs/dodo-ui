@@ -99,6 +99,9 @@
   let focused: boolean = $state(false);
   let toggle: boolean = $state(defaultPasswordToggleState);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let customPasswordToggleIconTyped = customPasswordToggleIcon as any;
+
   function onfocusMod(e: TextInputFocusEvent) {
     focused = true;
 
@@ -162,7 +165,7 @@
   {#if passwordToggle && !disabled}
     <UtilityButton {size} title="Toggle password" class="passwordToggle" onclick={ontoggleMod}>
       {#if customPasswordToggleIcon}
-        {@render (customPasswordToggleIcon as any)(toggle)}
+        {@render customPasswordToggleIconTyped(toggle)}
       {:else if toggle}
         <Icon icon="mdi:eye-off" width="24" height="24" />
       {:else}

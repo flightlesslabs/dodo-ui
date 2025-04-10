@@ -26,3 +26,6 @@ export type {
 /** Form: PasswordInput */
 export { default as PasswordInput } from '$lib/stories/components/Form/PasswordInput/PasswordInput.svelte';
 export type { PasswordInputToggleEvent } from '$lib/stories/components/Form/PasswordInput/PasswordInput.svelte';
+
+/** Form: Label */
+export { default as Label } from '$lib/stories/components/Form/Label/Label.svelte';
