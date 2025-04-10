@@ -24,6 +24,8 @@
   interface TextInputProps {
     /** Input type? */
     type?: TextInputType;
+    /** Input ref */
+    ref?: HTMLInputElement;
     /** How large should the button be? */
     size?: ComponentSize;
     /** How round should the border radius be? */
@@ -85,6 +87,7 @@
     error = false,
     value = $bindable<string>(),
     placeholder,
+    ref = $bindable<HTMLInputElement>(),
   }: TextInputProps = $props();
 
   let focused: boolean = $state(false);
@@ -132,6 +135,7 @@
     {oncut}
     {placeholder}
     bind:value
+    bind:this={ref}
   />
   {#if after}
     <span class="content--after">

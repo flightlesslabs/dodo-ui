@@ -2,6 +2,9 @@ import '$lib/styles/global.css';
 
 export type { ComponentSize, ComponentRoundness, ComponentRoundnessFull } from './types.js';
 
+/** developer tools: components: UtilityButton */
+export { default as UtilityButton } from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
+
 /** Form: Button */
 export { default as Button } from '$lib/stories/components/Form/Button/Button.svelte';
 export type {

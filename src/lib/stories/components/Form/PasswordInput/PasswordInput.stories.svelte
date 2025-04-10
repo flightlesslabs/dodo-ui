@@ -2,6 +2,7 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import PasswordInput from './PasswordInput.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
+  import Icon from '@iconify/svelte';
 
   export const storyPasswordInputArgTypes: StoryBookArgTypes = {
     roundness: {
@@ -39,3 +40,16 @@
 
 <!-- Show Password by default -->
 <Story name="Show Password" args={{ defaultPasswordToggleState: true }} />
+
+<!-- Show Password by default -->
+<Story name="Custom toggle icon">
+  <PasswordInput>
+    {#snippet customPasswordToggleIcon(toggle)}
+      {#if toggle}
+        <Icon icon="mingcute:eye-close-line" width="24" height="24" />
+      {:else}
+        <Icon icon="mingcute:eye-2-line" width="24" height="24" />
+      {/if}
+    {/snippet}
+  </PasswordInput>
+</Story>

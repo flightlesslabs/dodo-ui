@@ -18,8 +18,10 @@
   import type { MouseEventHandler } from 'svelte/elements';
 
   interface ButtonProps {
-    /** Button contents goes here*/
+    /** Button contents goes here */
     children?: Snippet;
+    /** Button ref */
+    ref?: HTMLButtonElement | HTMLAnchorElement;
     /** Regular button or submit button? */
     type?: 'button' | 'submit';
     /** How large should the button be? */
@@ -75,7 +77,7 @@
     _unsafeChildrenStringForTesting?: string;
   }
 
-  const {
+  let {
     children,
     type = 'button',
     size = 'normal',
@@ -103,6 +105,7 @@
     anchorMediaType,
     referrerpolicy,
     _unsafeChildrenStringForTesting,
+    ref = $bindable<HTMLButtonElement | HTMLAnchorElement>(),
   }: ButtonProps = $props();
 </script>
 
@@ -151,6 +154,7 @@
       `roundness--${roundness}`,
       className,
     ].join(' ')}
+    bind:this={ref}
   >
     {@render buttonContent()}
   </a>
@@ -173,6 +177,7 @@
     {title}
     {disabled}
     {onclick}
+    bind:this={ref}
   >
     {@render buttonContent()}
   </button>
