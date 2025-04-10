@@ -24,6 +24,8 @@
   interface TextInputProps {
     /** Input type? */
     type?: TextInputType;
+    /** Input ref */
+    ref?: HTMLInputElement;
     /** How large should the button be? */
     size?: ComponentSize;
     /** How round should the border radius be? */
@@ -34,8 +36,10 @@
     value?: string;
     /** How round should the border radius be? */
     placeholder?: string;
-    /** Button disabled state */
+    /** disabled state */
     disabled?: boolean;
+    /** Read only ? */
+    readonly?: boolean;
     /** is there any associated Error ? */
     error?: boolean;
     /** Name */
@@ -85,6 +89,8 @@
     error = false,
     value = $bindable<string>(),
     placeholder,
+    ref = $bindable<HTMLInputElement>(),
+    readonly = false,
   }: TextInputProps = $props();
 
   let focused: boolean = $state(false);
@@ -131,7 +137,9 @@
     {oncopy}
     {oncut}
     {placeholder}
+    {readonly}
     bind:value
+    bind:this={ref}
   />
   {#if after}
     <span class="content--after">

@@ -37,3 +37,5 @@
 <Story name="Error" args={{ error: true }} />
 
 <Story name="Disabled" args={{ disabled: true }} />
+
+<Story name="Read only" args={{ readonly: true }} />
