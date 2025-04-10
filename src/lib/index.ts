@@ -36,3 +36,11 @@ export { default as FormControl } from '$lib/stories/components/Form/FormControl
 /** Form: Message */
 export { default as Message } from '$lib/stories/components/Form/Message/Message.svelte';
 export type { MessageColor } from '$lib/stories/components/Form/Message/Message.svelte';
+
+/** Form: SimpleSelect */
+export { default as SimpleSelect } from '$lib/stories/components/Form/SimpleSelect/SimpleSelect.svelte';
+export type {
+  SimpleSelectRoundness,
+  SimpleSelectFocusEvent,
+  SimpleSelectOption,
+} from '$lib/stories/components/Form/SimpleSelect/SimpleSelect.svelte';
