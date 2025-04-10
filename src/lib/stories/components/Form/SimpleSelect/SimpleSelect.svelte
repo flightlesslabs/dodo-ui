@@ -1,12 +1,12 @@
 <script lang="ts" module>
-  export type TextInputType = 'text' | 'tel' | 'email' | 'password' | 'url' | 'number';
-
-  export type TextInputFocusEvent = FocusEvent & {
-    currentTarget: EventTarget & HTMLInputElement;
+  export type SimpleSelectFocusEvent = FocusEvent & {
+    currentTarget: EventTarget & HTMLSelectElement;
   };
 
-  export type TextInputClipboardEvent = ClipboardEvent & {
-    currentTarget: EventTarget & HTMLInputElement;
+  export type SimpleSelectOption = {
+    value: string;
+    label: string;
+    disabled?: boolean;
   };
 </script>
 
@@ -15,32 +15,25 @@
 
   import type { ComponentRoundness, ComponentSize } from '$lib/types.js';
   import type { Snippet } from 'svelte';
-  import type {
-    ChangeEventHandler,
-    ClipboardEventHandler,
-    FocusEventHandler,
-    FormEventHandler,
-  } from 'svelte/elements';
+  import type { ChangeEventHandler, FocusEventHandler } from 'svelte/elements';
 
-  interface TextInputProps {
-    /** Input type? */
-    type?: TextInputType;
-    /** Input ref */
-    ref?: HTMLInputElement;
+  interface SimpleSelectProps {
+    /** Select ref */
+    ref?: HTMLSelectElement;
     /** How large should the button be? */
     size?: ComponentSize;
     /** How round should the border radius be? */
     roundness?: ComponentRoundness | false;
+    /** How round should the border radius be? */
+    options: SimpleSelectOption[];
     /** Add a border around the button. Default True */
     outline?: boolean;
-    /** Input value */
+    /** Select value */
     value?: string;
     /** How round should the border radius be? */
     placeholder?: string;
     /** disabled state */
     disabled?: boolean;
-    /** Read only ? */
-    readonly?: boolean;
     /** is there any associated Error ? */
     error?: boolean;
     /** Name */
@@ -53,24 +46,15 @@
     after?: Snippet;
     /** Custom css class*/
     class?: string;
-    /** oninput event handler */
-    oninput?: FormEventHandler<HTMLInputElement>;
     /** onchange event handler */
-    onchange?: ChangeEventHandler<HTMLInputElement>;
+    onchange?: ChangeEventHandler<HTMLSelectElement>;
     /** onblur event handler */
-    onblur?: FocusEventHandler<HTMLInputElement>;
+    onblur?: FocusEventHandler<HTMLSelectElement>;
     /** onfocus event handler */
-    onfocus?: FocusEventHandler<HTMLInputElement>;
-    /** onpaste event handler */
-    onpaste?: ClipboardEventHandler<HTMLInputElement>;
-    /** oncopy event handler */
-    oncopy?: ClipboardEventHandler<HTMLInputElement>;
-    /** oncut event handler */
-    oncut?: ClipboardEventHandler<HTMLInputElement>;
+    onfocus?: FocusEventHandler<HTMLSelectElement>;
   }
 
   let {
-    type = 'text',
     size = 'normal',
     roundness = '1x',
     outline = true,
@@ -78,25 +62,21 @@
     id,
     class: className = '',
     disabled = false,
-    oninput,
     onchange,
     onblur,
     onfocus,
-    onpaste,
-    oncopy,
-    oncut,
     before,
     after,
     error = false,
-    value = $bindable<string>(),
+    value,
     placeholder,
-    ref = $bindable<HTMLInputElement>(),
-    readonly = false,
-  }: TextInputProps = $props();
+    ref = $bindable<HTMLSelectElement>(),
+    options,
+  }: SimpleSelectProps = $props();
 
   let focused: boolean = $state(false);
 
-  function onfocusMod(e: TextInputFocusEvent) {
+  function onfocusMod(e: SimpleSelectFocusEvent) {
     focused = true;
 
     if (onfocus) {
@@ -104,7 +84,7 @@
     }
   }
 
-  function onblurMod(e: TextInputFocusEvent) {
+  function onblurMod(e: SimpleSelectFocusEvent) {
     focused = false;
 
     if (onblur) {
@@ -118,32 +98,31 @@
   class:disabled
   class:error
   class:focused
-  class={['dodo-ui-TextInput', `size--${size}`, `roundness--${roundness}`, className].join(' ')}
+  class={['dodo-ui-SimpleSelect', `size--${size}`, `roundness--${roundness}`, className].join(' ')}
 >
   <InputEnclosure {outline} {disabled} {error} {focused} {size} {roundness} {before} {after}>
-    <input
-      {type}
+    <select
       {name}
       {id}
       {disabled}
-      {oninput}
       {onchange}
       onfocus={onfocusMod}
       onblur={onblurMod}
-      {onpaste}
-      {oncopy}
-      {oncut}
       {placeholder}
-      {readonly}
-      bind:value
       bind:this={ref}
-    />
+    >
+      {#each options as option (option.value)}
+        <option value={option.value} disabled={option.disabled} selected={value === option.value}>
+          {option.label}
+        </option>
+      {/each}
+    </select>
   </InputEnclosure>
 </div>
 
 <style lang="scss">
-  .dodo-ui-TextInput {
-    input {
+  .dodo-ui-SimpleSelect {
+    select {
       flex: 1;
       border: 0;
       outline: 0;
@@ -156,21 +135,21 @@
 
     &.size {
       &--normal {
-        input {
+        select {
           font-size: 1rem;
           padding: 0 12px;
         }
       }
 
       &--small {
-        input {
+        select {
           padding: 0 8px;
           font-size: 0.9rem;
         }
       }
 
       &--large {
-        input {
+        select {
           font-size: 1.1rem;
           padding: 0 14px;
         }
