@@ -9,6 +9,14 @@
   });
 </script>
 
+<!-- ⚠️ Test Label: Do not use! -->
+<Story
+  name="Test Label"
+  args={{
+    _unsafeChildrenStringForTesting: 'This is a form label',
+  }}
+/>
+
 <!-- Label with default style -->
 <Story name="Default">
   <Label>This is a form label</Label>

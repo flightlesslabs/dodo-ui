@@ -14,6 +14,8 @@
     color?: MessageColor;
     /** Custom css class*/
     class?: string;
+    /** Test: ⚠️ Unsafe Children String. Do Not use*/
+    _unsafeChildrenStringForTesting?: string;
   }
 
   let {
@@ -21,12 +23,15 @@
     class: className = '',
     color = 'default',
     ref = $bindable<HTMLDivElement>(),
+    _unsafeChildrenStringForTesting,
   }: MessageProps = $props();
 </script>
 
 <div class={['dodo-ui-Message', `color--${color}`, className].join(' ')} bind:this={ref}>
   {#if children}
     {@render children()}
+  {:else if _unsafeChildrenStringForTesting}
+    {_unsafeChildrenStringForTesting}
   {/if}
 </div>
 

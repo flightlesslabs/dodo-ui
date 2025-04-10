@@ -36,8 +36,10 @@
     value?: string;
     /** How round should the border radius be? */
     placeholder?: string;
-    /** Button disabled state */
+    /** disabled state */
     disabled?: boolean;
+    /** Read only ? */
+    readonly?: boolean;
     /** is there any associated Error ? */
     error?: boolean;
     /** Name */
@@ -88,6 +90,7 @@
     value = $bindable<string>(),
     placeholder,
     ref = $bindable<HTMLInputElement>(),
+    readonly = false,
   }: TextInputProps = $props();
 
   let focused: boolean = $state(false);
@@ -134,6 +137,7 @@
     {oncopy}
     {oncut}
     {placeholder}
+    {readonly}
     bind:value
     bind:this={ref}
   />

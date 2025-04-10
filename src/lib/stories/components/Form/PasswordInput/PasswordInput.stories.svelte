@@ -39,11 +39,13 @@
 <Story name="No toggle" args={{ passwordToggle: false }} />
 
 <!-- Show Password by default -->
-<Story name="Show Password" args={{ defaultPasswordToggleState: true }} />
+<Story name="Show Password" args={{ passwordToggleState: true }} />
+
+<Story name="Read only" args={{ readonly: true }} />
 
 <!-- Show Password by default -->
 <Story name="Custom toggle icon">
-  <PasswordInput>
+  <PasswordInput value="Hello world!">
     {#snippet customPasswordToggleIcon(toggle)}
       {#if toggle}
         <Icon icon="mingcute:eye-close-line" width="24" height="24" />

@@ -26,7 +26,7 @@
     /** Toggle Password */
     passwordToggle?: boolean;
     /** Default Password Toggle State */
-    defaultPasswordToggleState?: boolean;
+    passwordToggleState?: boolean;
     /** Toggle Password Icon */
     customPasswordToggleIcon?: (toggle: boolean) => Snippet;
     /** How round should the border radius be? */
@@ -37,8 +37,10 @@
     value?: string;
     /** How round should the border radius be? */
     placeholder?: string;
-    /** Button disabled state */
+    /** disabled state */
     disabled?: boolean;
+    /** Read only ? */
+    readonly?: boolean;
     /** is there any associated Error ? */
     error?: boolean;
     /** Name */
@@ -89,15 +91,16 @@
     customPasswordToggleIcon,
     error = false,
     passwordToggle = true,
-    defaultPasswordToggleState = false,
+    passwordToggleState = $bindable<boolean>(),
     value = $bindable<string>(),
     placeholder,
     ontoggle,
     ref = $bindable<HTMLInputElement>(),
+    readonly = false,
   }: PasswordInputProps = $props();
 
   let focused: boolean = $state(false);
-  let toggle: boolean = $state(defaultPasswordToggleState);
+  let toggle: boolean = $state(passwordToggleState);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customPasswordToggleIconTyped = customPasswordToggleIcon as any;
@@ -160,6 +163,7 @@
     {placeholder}
     bind:value
     bind:this={ref}
+    {readonly}
   />
 
   {#if passwordToggle && !disabled}

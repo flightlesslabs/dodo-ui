@@ -15,6 +15,14 @@
   });
 </script>
 
+<!-- ⚠️ Test Message: Do not use! -->
+<Story
+  name="Test Message"
+  args={{
+    _unsafeChildrenStringForTesting: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+  }}
+/>
+
 <Story name="Default">
   <Message>Lorem ipsum dolor sit amet, consectetur adipiscing elit</Message>
 </Story>
