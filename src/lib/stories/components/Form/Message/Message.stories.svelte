@@ -8,6 +8,10 @@
       control: { type: 'select' },
       options: ['default', 'primary', 'safe', 'warning', 'danger', 'info'],
     },
+    size: {
+      control: { type: 'select' },
+      options: ['normal', 'small', 'large'],
+    },
   };
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
