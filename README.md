@@ -1,4 +1,4 @@
-![Sonny and Mariel high fiving.](https://flightlesslabs.github.io/dodo-ui/og.png)
+![Dodo logo](https://flightlesslabs.github.io/dodo-ui/og.png)
 
 # Dodo Ui
 
