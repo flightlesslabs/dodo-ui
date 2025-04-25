@@ -16,8 +16,12 @@
     roundness?: PaperRoundness;
     /** Shadow elevation */
     shadow?: PaperShadow;
-    /** Custom css class*/
+    /** Custom css class */
     class?: string;
+    /** Paper Width */
+    width?: string;
+    /** Paper Height */
+    height?: string;
     /** Id */
     id?: string;
     /** Test: ⚠️ Unsafe Children String. Do Not use*/
@@ -31,6 +35,8 @@
     id,
     class: className = '',
     _unsafeChildrenStringForTesting,
+    width,
+    height,
     ref = $bindable<HTMLDivElement>(),
   }: PaperProps = $props();
 </script>
@@ -44,6 +50,7 @@
   ].join(' ')}
   {id}
   bind:this={ref}
+  style={`${width ? `width:${width};` : ''}${height ? `height:${height};` : ''}`}
 >
   {#if children}
     {@render children()}

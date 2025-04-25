@@ -34,3 +34,8 @@
 <Story name="Default">
   <Paper>Hola!</Paper>
 </Story>
+
+<!-- Paper with width and height -->
+<Story name="WidthAndHeight">
+  <Paper width="200px" height="200px">Hola!</Paper>
+</Story>
