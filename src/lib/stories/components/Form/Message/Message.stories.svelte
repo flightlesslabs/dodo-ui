@@ -6,7 +6,7 @@
   export const storyMessageArgTypes: StoryBookArgTypes = {
     color: {
       control: { type: 'select' },
-      options: ['default', 'primary', 'safe', 'warning', 'danger', 'info'],
+      options: ['default', 'primary', 'secondary', 'safe', 'warning', 'danger'],
     },
     size: {
       control: { type: 'select' },

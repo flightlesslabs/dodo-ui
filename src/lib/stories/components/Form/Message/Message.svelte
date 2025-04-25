@@ -1,5 +1,5 @@
 <script lang="ts" module>
-  export type MessageColor = 'default' | 'primary' | 'safe' | 'warning' | 'danger' | 'info';
+  export type MessageColor = 'default' | 'primary' | 'secondary' | 'safe' | 'warning' | 'danger';
 </script>
 
 <script lang="ts">
@@ -72,6 +72,10 @@
         color: var(--dodo-color-primary-600);
       }
 
+      &--secondary {
+        color: var(--dodo-color-secondary-600);
+      }
+
       &--safe {
         color: var(--dodo-color-safe-600);
       }
@@ -82,10 +86,6 @@
 
       &--danger {
         color: var(--dodo-color-danger-600);
-      }
-
-      &--info {
-        color: var(--dodo-color-info-600);
       }
     }
   }
