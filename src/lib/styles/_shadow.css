@@ -33,7 +33,7 @@
   box-shadow: var(--dodo-shadow);
 }
 
-.dodo-shadow-6x {
+.dodo-shadow-7x {
   --dodo-shadow: 0 25px 50px -12px var(--dodo-shadow-color);
   box-shadow: var(--dodo-shadow);
 }
