@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as l}from"./index-P9OXKMel.js";import{a as t}from"./index-BVKvsh4z.js";import"./index-6otl1p8d.js";import"./iframe-BjJKNO2w.js";import"./index-Daw7QRpi.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";const r=`{
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as r}from"./index-P9OXKMel.js";import{a as t}from"./index-DdWFk_xD.js";import"./index-6otl1p8d.js";import"./iframe-BUX6aDD5.js";import"./index-Daw7QRpi.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";const l=`{
   "name": "@flightlesslabs/dodo-ui",
   "version": "0.6.1",
   "scripts": {
@@ -96,7 +96,7 @@ import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as l}from"
     "@iconify/svelte": "^4.2.0"
   }
 }
-`;function i(s){var o;const n={a:"a",h1:"h1",h2:"h2",li:"li",p:"p",ul:"ul",...l(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsxs("main",{style:{textAlign:"center"},children:[e.jsx("img",{src:"dodo-circle-6.png",style:{width:200,height:"auto"}}),e.jsx(n.h1,{id:"dodo-ui",children:"Dodo UI"}),e.jsxs("h3",{style:{fontWeight:500},children:["v",(o=JSON.parse(r))==null?void 0:o.version]}),e.jsx("h3",{style:{fontWeight:400},children:"An open-source, opinionated UI framework for Svelte."})]}),`
+`;function i(s){var o;const n={a:"a",h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",ul:"ul",...r(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsxs("main",{style:{textAlign:"center"},children:[e.jsx("img",{src:"dodo-circle-6.png",style:{width:200,height:"auto"}}),e.jsx(n.h1,{id:"dodo-ui",children:"Dodo UI"}),e.jsxs("h3",{style:{fontWeight:500},children:["v",(o=JSON.parse(l))==null?void 0:o.version]}),e.jsx("h3",{style:{fontWeight:400},children:"An open-source, opinionated UI framework for Svelte."}),e.jsxs(n.h3,{id:"github---npm",children:[e.jsx(n.a,{href:"https://github.com/flightlesslabs/dodo-ui",rel:"nofollow",children:"Github"})," - ",e.jsx(n.a,{href:"https://www.npmjs.com/package/@flightlesslabs/dodo-ui",rel:"nofollow",children:"npm"})]})]}),`
 `,e.jsx("br",{}),`
 `,e.jsx("br",{}),`
 `,e.jsx(n.h2,{id:"install",children:"Install"}),`
@@ -119,6 +119,4 @@ import { Button } '@flightlesslabs/dodo-ui';
 `,e.jsx(n.li,{children:e.jsx(n.a,{href:"?path=/docs/philosophy-themes--docs",children:"Themes"})}),`
 `,e.jsx(n.li,{children:e.jsx(n.a,{href:"?path=/docs/philosophy-colors--docs",children:"Colors"})}),`
 `,e.jsx(n.li,{children:e.jsx(n.a,{href:"?path=/docs/philosophy-colors--docs#adjusting-opacity",children:"Adjust Color Opacity"})}),`
-`,e.jsx(n.li,{children:e.jsx(n.a,{href:"https://github.com/flightlesslabs/dodo-ui",rel:"nofollow",children:"Github"})}),`
-`,e.jsx(n.li,{children:e.jsx(n.a,{href:"https://www.npmjs.com/package/@flightlesslabs/dodo-ui",rel:"nofollow",children:"NPM"})}),`
-`]})]})}function x(s={}){const{wrapper:n}={...l(),...s.components};return n?e.jsx(n,{...s,children:e.jsx(i,{...s})}):i(s)}export{x as default};
+`]})]})}function x(s={}){const{wrapper:n}={...r(),...s.components};return n?e.jsx(n,{...s,children:e.jsx(i,{...s})}):i(s)}export{x as default};
