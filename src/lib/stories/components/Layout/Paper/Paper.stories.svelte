@@ -27,7 +27,6 @@
   name="Test Paper"
   args={{
     _unsafeChildrenStringForTesting: 'Hola!',
-    _unsafePaddingForTesting: true,
   }}
 />
 

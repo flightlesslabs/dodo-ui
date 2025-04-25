@@ -22,8 +22,6 @@
     id?: string;
     /** Test: ⚠️ Unsafe Children String. Do Not use*/
     _unsafeChildrenStringForTesting?: string;
-    /** Test: ⚠️ Unsafe Padding. Do Not use*/
-    _unsafePaddingForTesting?: boolean;
   }
 
   let {
@@ -33,7 +31,6 @@
     id,
     class: className = '',
     _unsafeChildrenStringForTesting,
-    _unsafePaddingForTesting = false,
     ref = $bindable<HTMLDivElement>(),
   }: PaperProps = $props();
 </script>
@@ -43,7 +40,6 @@
     'dodo-ui-Paper',
     `roundness--${roundness}`,
     `${shadow ? `shadow--${shadow} dodo-shadow-${shadow}` : `shadow--${shadow}`}`,
-    `${_unsafePaddingForTesting ? '_unsafePaddingForTesting' : ''}`,
     className,
   ].join(' ')}
   {id}
@@ -90,10 +86,6 @@
       &--full {
         border-radius: 50%;
       }
-    }
-
-    &._unsafePaddingForTesting {
-      padding: 16px;
     }
   }
 </style>
