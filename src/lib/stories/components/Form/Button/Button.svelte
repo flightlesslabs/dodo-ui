@@ -1,5 +1,5 @@
 <script lang="ts" module>
-  export type ButtonColor = 'default' | 'primary' | 'safe' | 'warning' | 'danger' | 'info';
+  export type ButtonColor = 'default' | 'primary' | 'secondary' | 'safe' | 'warning' | 'danger';
   export type ButtonRoundness = ComponentRoundness | false | ComponentRoundnessFull;
   export type ButtonLinkTarget =
     | '_self'
@@ -192,10 +192,10 @@
 
     @include generate-dodo-ui-button-colors(default);
     @include generate-dodo-ui-button-colors(primary);
+    @include generate-dodo-ui-button-colors(secondary);
     @include generate-dodo-ui-button-colors(safe);
     @include generate-dodo-ui-button-colors(warning);
     @include generate-dodo-ui-button-colors(danger);
-    @include generate-dodo-ui-button-colors(info);
   }
 
   :global(.dodo-theme--dark) {
@@ -204,10 +204,10 @@
 
     @include generate-dodo-ui-button-colors-dark(default);
     @include generate-dodo-ui-button-colors-dark(primary);
+    @include generate-dodo-ui-button-colors-dark(secondary);
     @include generate-dodo-ui-button-colors-dark(safe);
     @include generate-dodo-ui-button-colors-dark(warning);
     @include generate-dodo-ui-button-colors-dark(danger);
-    @include generate-dodo-ui-button-colors-dark(info);
   }
 
   .dodo-ui-Button {
@@ -273,10 +273,10 @@
     &.color {
       @include generate-dodo-ui-button-color(default);
       @include generate-dodo-ui-button-color(primary);
+      @include generate-dodo-ui-button-color(secondary);
       @include generate-dodo-ui-button-color(safe);
       @include generate-dodo-ui-button-color(warning);
       @include generate-dodo-ui-button-color(danger);
-      @include generate-dodo-ui-button-color(info);
     }
 
     &[disabled] {

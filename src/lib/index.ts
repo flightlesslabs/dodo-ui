@@ -45,3 +45,10 @@ export type {
   SimpleSelectFocusEvent,
   SimpleSelectOption,
 } from '$lib/stories/components/Form/SimpleSelect/SimpleSelect.svelte';
+
+/** Layout: Paper */
+export { default as Paper } from '$lib/stories/components/Layout/Paper/Paper.svelte';
+export type {
+  PaperRoundness,
+  PaperShadow,
+} from '$lib/stories/components/Layout/Paper/Paper.svelte';
