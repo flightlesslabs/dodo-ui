@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as r}from"./index-P9OXKMel.js";import{a as t}from"./index-B-PRUwcB.js";import"./index-6otl1p8d.js";import"./iframe-Cyf9hFqf.js";import"./index-Daw7QRpi.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";const l=`{
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as r}from"./index-P9OXKMel.js";import{a as t}from"./index-6es2VFnK.js";import"./index-6otl1p8d.js";import"./iframe-DkCQJzBa.js";import"./index-Daw7QRpi.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";const l=`{
   "name": "@flightlesslabs/dodo-ui",
   "version": "0.6.2",
   "scripts": {
