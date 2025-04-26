@@ -1,6 +1,6 @@
-import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as r}from"./index-P9OXKMel.js";import{a as t}from"./index-6es2VFnK.js";import"./index-6otl1p8d.js";import"./iframe-DkCQJzBa.js";import"./index-Daw7QRpi.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";const l=`{
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as r}from"./index-P9OXKMel.js";import{a as t}from"./index-Bls9M5SV.js";import"./index-6otl1p8d.js";import"./iframe-BgpbsAti.js";import"./index-Daw7QRpi.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";const l=`{
   "name": "@flightlesslabs/dodo-ui",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "scripts": {
     "build": "vite build && pnpm run prepack",
     "preview": "vite preview",
@@ -27,8 +27,8 @@ import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as r}from"
     "src/lib",
     "!src/lib/**/*.test.*",
     "!src/lib/**/*.spec.*",
-    "!src/lib/stories/*.stories.*",
-    "!src/lib/stories/*.mdx",
+    "!src/lib/stories/**/*.stories.*",
+    "!src/lib/stories/**/*.mdx",
     "!src/lib/stories/assets",
     "!src/lib/stories/philosophy"
   ],
