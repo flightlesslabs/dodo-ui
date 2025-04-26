@@ -41,6 +41,6 @@
 <style lang="scss">
   .Colors {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
   }
 </style>

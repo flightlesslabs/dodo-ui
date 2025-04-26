@@ -16,6 +16,7 @@
   {:else}
     <Palette backgroundColor={`var(${prefix}${colorPalette})`} />
   {/if}
+
   <div class="colorPaletteValue">{colorPaletteValue}</div>
 </div>
 
@@ -24,5 +25,11 @@
     color: var(--dodo-color-default-900);
     display: flex;
     align-items: center;
+    flex-direction: column;
+    margin: 4px;
+
+    .colorPaletteValue {
+      margin-top: 8px;
+    }
   }
 </style>

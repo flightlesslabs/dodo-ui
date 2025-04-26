@@ -32,14 +32,18 @@
     color: var(--dodo-color-default-900);
     margin: 0;
     padding: 0;
-    width: 100px;
+    width: 150px;
     margin: 16px 0;
+    display: flex;
+    width: 100%;
 
     b {
       text-transform: capitalize;
-      margin-bottom: 16px;
-      display: block;
+      display: flex;
       font-weight: 500;
+      width: 100px;
+      align-items: center;
+      margin-bottom: 30px;
     }
 
     li {
