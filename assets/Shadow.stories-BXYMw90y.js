@@ -1,0 +1,17 @@
+import{i as g,t as C,a as t,b as o}from"./props-DjujHgll.js";import{p as H,f as y,s as h,a as F}from"./context-D350OWv3.js";import{c as b,d as T}from"./create-runtime-stories-BmhrnokL.js";import{s as k,P as r}from"./Paper.stories-GJnhEtHG.js";import"./index-CfOrKyLd.js";import"./attributes-BgNp7-AK.js";import"./class-D-tO7f_P.js";import"./style-CgXbQjLK.js";import"./this-JyHDzNFV.js";const A={component:r,tags:["autodocs"],argTypes:k,parameters:{docs:{description:{component:""}}}},{Story:d}=T();var E=C("<!> <!> <!> <!> <!> <!> <!> <!>",1);function m(u,_){H(_,!1),g();var $=E(),w=y($);d(w,{name:"Shadow 1x",children:(a,p)=>{r(a,{children:(s,n)=>{var e=t("Hola!");o(s,e)},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Paper {...args}>
+  <Paper>Hola!</Paper>
+</Paper>`}}});var x=h(w,2);d(x,{name:"Shadow 2x",args:{shadow:"2x"},children:(a,p)=>{r(a,{shadow:"2x",children:(s,n)=>{var e=t("Hola!");o(s,e)},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Paper {...args}>
+  <Paper shadow="2x">Hola!</Paper>
+</Paper>`}}});var P=h(x,2);d(P,{name:"Shadow 3x",args:{shadow:"3x"},children:(a,p)=>{r(a,{shadow:"3x",children:(s,n)=>{var e=t("Hola!");o(s,e)},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Paper {...args}>
+  <Paper shadow="3x">Hola!</Paper>
+</Paper>`}}});var c=h(P,2);d(c,{name:"Shadow 4x",args:{shadow:"4x"},children:(a,p)=>{r(a,{shadow:"4x",children:(s,n)=>{var e=t("Hola!");o(s,e)},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Paper {...args}>
+  <Paper shadow="4x">Hola!</Paper>
+</Paper>`}}});var f=h(c,2);d(f,{name:"Shadow 5x",args:{shadow:"5x"},children:(a,p)=>{r(a,{shadow:"5x",children:(s,n)=>{var e=t("Hola!");o(s,e)},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Paper {...args}>
+  <Paper shadow="5x">Hola!</Paper>
+</Paper>`}}});var v=h(f,2);d(v,{name:"Shadow 6x",args:{shadow:"6x"},children:(a,p)=>{r(a,{shadow:"6x",children:(s,n)=>{var e=t("Hola!");o(s,e)},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Paper {...args}>
+  <Paper shadow="6x">Hola!</Paper>
+</Paper>`}}});var i=h(v,2);d(i,{name:"Shadow 7x",args:{shadow:"7x"},children:(a,p)=>{r(a,{shadow:"7x",children:(s,n)=>{var e=t("Hola!");o(s,e)},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Paper {...args}>
+  <Paper shadow="7x">Hola!</Paper>
+</Paper>`}}});var S=h(i,2);d(S,{name:"Shadow False",args:{shadow:!1},children:(a,p)=>{r(a,{shadow:!1,children:(s,n)=>{var e=t("Hola!");o(s,e)},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Paper {...args}>
+  <Paper shadow={false}>Hola!</Paper>
+</Paper>`}}}),o(u,$),F()}m.__docgen={version:3,name:"Shadow.stories.svelte",data:[],computed:[],methods:[],components:[],description:null,keywords:[],events:[],slots:[],refs:[]};const l=b(m,A),I=["Shadow1x","Shadow2x","Shadow3x","Shadow4x","Shadow5x","Shadow6x","Shadow7x","ShadowFalse"],J={...l.Shadow1x,tags:["svelte-csf-v5"]},K={...l.Shadow2x,tags:["svelte-csf-v5"]},L={...l.Shadow3x,tags:["svelte-csf-v5"]},N={...l.Shadow4x,tags:["svelte-csf-v5"]},Q={...l.Shadow5x,tags:["svelte-csf-v5"]},U={...l.Shadow6x,tags:["svelte-csf-v5"]},V={...l.Shadow7x,tags:["svelte-csf-v5"]},W={...l.ShadowFalse,tags:["svelte-csf-v5"]};export{J as Shadow1x,K as Shadow2x,L as Shadow3x,N as Shadow4x,Q as Shadow5x,U as Shadow6x,V as Shadow7x,W as ShadowFalse,I as __namedExportsOrder,A as default};
