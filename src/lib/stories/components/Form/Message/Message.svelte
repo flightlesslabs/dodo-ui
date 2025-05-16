@@ -1,9 +1,9 @@
 <script lang="ts" module>
-  export type MessageColor = 'default' | 'primary' | 'secondary' | 'safe' | 'warning' | 'danger';
+  export type MessageColor = 'primary' | ComponentColorSeverity;
 </script>
 
 <script lang="ts">
-  import type { ComponentSize } from '$lib/types.js';
+  import type { ComponentColorSeverity, ComponentSize } from '$lib/types.js';
 
   import type { Snippet } from 'svelte';
 
@@ -25,7 +25,7 @@
   let {
     children,
     class: className = '',
-    color = 'default',
+    color = 'primary',
     ref = $bindable<HTMLDivElement>(),
     _unsafeChildrenStringForTesting,
     size = 'normal',
@@ -64,10 +64,6 @@
     }
 
     &.color {
-      &--default {
-        color: var(--dodo-color-default-800);
-      }
-
       &--primary {
         color: var(--dodo-color-primary-600);
       }

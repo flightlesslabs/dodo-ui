@@ -8,17 +8,17 @@
   --dodo-color-constant-white: var(--dodo-color-base-white);
 
   /* Default color */
-  --dodo-color-default-50: var(--dodo-color-base-gray-50);
-  --dodo-color-default-100: var(--dodo-color-base-gray-100);
-  --dodo-color-default-200: var(--dodo-color-base-gray-200);
-  --dodo-color-default-300: var(--dodo-color-base-gray-300);
-  --dodo-color-default-400: var(--dodo-color-base-gray-400);
-  --dodo-color-default-500: var(--dodo-color-base-gray-500);
-  --dodo-color-default-600: var(--dodo-color-base-gray-600);
-  --dodo-color-default-700: var(--dodo-color-base-gray-700);
-  --dodo-color-default-800: var(--dodo-color-base-gray-800);
-  --dodo-color-default-900: var(--dodo-color-base-gray-900);
-  --dodo-color-default-950: var(--dodo-color-base-gray-950);
+  --dodo-color-neutral-50: var(--dodo-color-base-gray-50);
+  --dodo-color-neutral-100: var(--dodo-color-base-gray-100);
+  --dodo-color-neutral-200: var(--dodo-color-base-gray-200);
+  --dodo-color-neutral-300: var(--dodo-color-base-gray-300);
+  --dodo-color-neutral-400: var(--dodo-color-base-gray-400);
+  --dodo-color-neutral-500: var(--dodo-color-base-gray-500);
+  --dodo-color-neutral-600: var(--dodo-color-base-gray-600);
+  --dodo-color-neutral-700: var(--dodo-color-base-gray-700);
+  --dodo-color-neutral-800: var(--dodo-color-base-gray-800);
+  --dodo-color-neutral-900: var(--dodo-color-base-gray-900);
+  --dodo-color-neutral-950: var(--dodo-color-base-gray-950);
 
   /* Primary color */
   --dodo-color-primary-50: var(--dodo-color-base-violet-50);
@@ -34,17 +34,17 @@
   --dodo-color-primary-950: var(--dodo-color-base-violet-950);
 
   /* Secondary color */
-  --dodo-color-secondary-50: var(--dodo-color-base-cyan-50);
-  --dodo-color-secondary-100: var(--dodo-color-base-cyan-100);
-  --dodo-color-secondary-200: var(--dodo-color-base-cyan-200);
-  --dodo-color-secondary-300: var(--dodo-color-base-cyan-300);
-  --dodo-color-secondary-400: var(--dodo-color-base-cyan-400);
-  --dodo-color-secondary-500: var(--dodo-color-base-cyan-500);
-  --dodo-color-secondary-600: var(--dodo-color-base-cyan-600);
-  --dodo-color-secondary-700: var(--dodo-color-base-cyan-700);
-  --dodo-color-secondary-800: var(--dodo-color-base-cyan-800);
-  --dodo-color-secondary-900: var(--dodo-color-base-cyan-900);
-  --dodo-color-secondary-950: var(--dodo-color-base-cyan-950);
+  --dodo-color-secondary-50: var(--dodo-color-base-blue-50);
+  --dodo-color-secondary-100: var(--dodo-color-base-blue-100);
+  --dodo-color-secondary-200: var(--dodo-color-base-blue-200);
+  --dodo-color-secondary-300: var(--dodo-color-base-blue-300);
+  --dodo-color-secondary-400: var(--dodo-color-base-blue-400);
+  --dodo-color-secondary-500: var(--dodo-color-base-blue-500);
+  --dodo-color-secondary-600: var(--dodo-color-base-blue-600);
+  --dodo-color-secondary-700: var(--dodo-color-base-blue-700);
+  --dodo-color-secondary-800: var(--dodo-color-base-blue-800);
+  --dodo-color-secondary-900: var(--dodo-color-base-blue-900);
+  --dodo-color-secondary-950: var(--dodo-color-base-blue-950);
 
   /* Safe color */
   --dodo-color-safe-50: var(--dodo-color-base-emerald-50);
@@ -92,17 +92,17 @@
   --dodo-color-white: var(--dodo-color-base-black);
 
   /* Dark: Default color */
-  --dodo-color-default-50: var(--dodo-color-base-gray-950);
-  --dodo-color-default-100: var(--dodo-color-base-gray-900);
-  --dodo-color-default-200: var(--dodo-color-base-gray-800);
-  --dodo-color-default-300: var(--dodo-color-base-gray-700);
-  --dodo-color-default-400: var(--dodo-color-base-gray-600);
-  --dodo-color-default-500: var(--dodo-color-base-gray-500);
-  --dodo-color-default-600: var(--dodo-color-base-gray-400);
-  --dodo-color-default-700: var(--dodo-color-base-gray-300);
-  --dodo-color-default-800: var(--dodo-color-base-gray-200);
-  --dodo-color-default-900: var(--dodo-color-base-gray-100);
-  --dodo-color-default-950: var(--dodo-color-base-gray-50);
+  --dodo-color-neutral-50: var(--dodo-color-base-gray-950);
+  --dodo-color-neutral-100: var(--dodo-color-base-gray-900);
+  --dodo-color-neutral-200: var(--dodo-color-base-gray-800);
+  --dodo-color-neutral-300: var(--dodo-color-base-gray-700);
+  --dodo-color-neutral-400: var(--dodo-color-base-gray-600);
+  --dodo-color-neutral-500: var(--dodo-color-base-gray-500);
+  --dodo-color-neutral-600: var(--dodo-color-base-gray-400);
+  --dodo-color-neutral-700: var(--dodo-color-base-gray-300);
+  --dodo-color-neutral-800: var(--dodo-color-base-gray-200);
+  --dodo-color-neutral-900: var(--dodo-color-base-gray-100);
+  --dodo-color-neutral-950: var(--dodo-color-base-gray-50);
 
   /* Dark: Primary color */
   --dodo-color-primary-50: var(--dodo-color-base-violet-950);
@@ -118,17 +118,17 @@
   --dodo-color-primary-950: var(--dodo-color-base-violet-50);
 
   /* Dark: Secondary color */
-  --dodo-color-secondary-50: var(--dodo-color-base-cyan-950);
-  --dodo-color-secondary-100: var(--dodo-color-base-cyan-900);
-  --dodo-color-secondary-200: var(--dodo-color-base-cyan-800);
-  --dodo-color-secondary-300: var(--dodo-color-base-cyan-700);
-  --dodo-color-secondary-400: var(--dodo-color-base-cyan-600);
-  --dodo-color-secondary-500: var(--dodo-color-base-cyan-500);
-  --dodo-color-secondary-600: var(--dodo-color-base-cyan-400);
-  --dodo-color-secondary-700: var(--dodo-color-base-cyan-300);
-  --dodo-color-secondary-800: var(--dodo-color-base-cyan-200);
-  --dodo-color-secondary-900: var(--dodo-color-base-cyan-100);
-  --dodo-color-secondary-950: var(--dodo-color-base-cyan-50);
+  --dodo-color-secondary-50: var(--dodo-color-base-blue-950);
+  --dodo-color-secondary-100: var(--dodo-color-base-blue-900);
+  --dodo-color-secondary-200: var(--dodo-color-base-blue-800);
+  --dodo-color-secondary-300: var(--dodo-color-base-blue-700);
+  --dodo-color-secondary-400: var(--dodo-color-base-blue-600);
+  --dodo-color-secondary-500: var(--dodo-color-base-blue-500);
+  --dodo-color-secondary-600: var(--dodo-color-base-blue-400);
+  --dodo-color-secondary-700: var(--dodo-color-base-blue-300);
+  --dodo-color-secondary-800: var(--dodo-color-base-blue-200);
+  --dodo-color-secondary-900: var(--dodo-color-base-blue-100);
+  --dodo-color-secondary-950: var(--dodo-color-base-blue-50);
 
   /* Dark: Safe color */
   --dodo-color-safe-50: var(--dodo-color-base-emerald-950);

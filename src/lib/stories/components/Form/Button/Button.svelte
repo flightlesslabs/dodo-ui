@@ -1,5 +1,5 @@
 <script lang="ts" module>
-  export type ButtonColor = 'default' | 'primary' | 'secondary' | 'safe' | 'warning' | 'danger';
+  export type ButtonColor = ComponentColorPriority | ComponentColorSeverity;
   export type ButtonRoundness = ComponentRoundness | false | ComponentRoundnessFull;
   export type ButtonLinkTarget =
     | '_self'
@@ -13,7 +13,14 @@
 </script>
 
 <script lang="ts">
-  import type { ComponentRoundness, ComponentRoundnessFull, ComponentSize } from '$lib/types.js';
+  import type {
+    ComponentColorPriority,
+    ComponentColorSeverity,
+    ComponentRoundness,
+    ComponentRoundnessFull,
+    ComponentSize,
+    ComponentWeight,
+  } from '$lib/types.js';
   import type { Snippet } from 'svelte';
   import type { MouseEventHandler } from 'svelte/elements';
 
@@ -33,7 +40,7 @@
     /** How round should the border radius be? */
     roundness?: ButtonRoundness;
     /** How should the button appear? */
-    variant?: 'text' | 'solid';
+    variant?: ComponentWeight;
     /** Add a border around the button */
     outline?: boolean;
     /** Compact button for icons */
@@ -81,9 +88,9 @@
     children,
     type = 'button',
     size = 'normal',
-    color = 'default',
+    color = 'primary',
     roundness = '1x',
-    variant = 'text',
+    variant = 'solid',
     outline = false,
     compact = false,
     fullWidth = false,
@@ -187,10 +194,10 @@
   @use 'utils/scss/mixins.scss' as *;
 
   :global(:root) {
-    --dodo-ui-Button-disabled-color: var(--dodo-color-default-400);
-    --dodo-ui-Button-disabled-bg: var(--dodo-color-default-200);
+    --dodo-ui-Button-disabled-color: var(--dodo-color-neutral-400);
+    --dodo-ui-Button-disabled-bg: var(--dodo-color-neutral-200);
 
-    @include generate-dodo-ui-button-colors(default);
+    @include generate-dodo-ui-button-colors(neutral);
     @include generate-dodo-ui-button-colors(primary);
     @include generate-dodo-ui-button-colors(secondary);
     @include generate-dodo-ui-button-colors(safe);
@@ -199,10 +206,10 @@
   }
 
   :global(.dodo-theme--dark) {
-    --dodo-ui-Button-disabled-bg: var(--dodo-color-default-100);
-    --dodo-ui-Button-disabled-color: var(--dodo-color-default-500);
+    --dodo-ui-Button-disabled-bg: var(--dodo-color-neutral-100);
+    --dodo-ui-Button-disabled-color: var(--dodo-color-neutral-500);
 
-    @include generate-dodo-ui-button-colors-dark(default);
+    @include generate-dodo-ui-button-colors-dark(neutral);
     @include generate-dodo-ui-button-colors-dark(primary);
     @include generate-dodo-ui-button-colors-dark(secondary);
     @include generate-dodo-ui-button-colors-dark(safe);
@@ -271,7 +278,7 @@
     }
 
     &.color {
-      @include generate-dodo-ui-button-color(default);
+      @include generate-dodo-ui-button-color(neutral);
       @include generate-dodo-ui-button-color(primary);
       @include generate-dodo-ui-button-color(secondary);
       @include generate-dodo-ui-button-color(safe);

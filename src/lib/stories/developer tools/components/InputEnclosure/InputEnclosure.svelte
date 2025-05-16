@@ -70,27 +70,27 @@
 
 <style lang="scss">
   :global(:root) {
-    --dodo-ui-InputEnclosure-border-color: var(--dodo-color-default-500);
+    --dodo-ui-InputEnclosure-border-color: var(--dodo-color-neutral-500);
     --dodo-ui-InputEnclosure-focus-border-color: var(--dodo-color-primary-500);
     --dodo-ui-InputEnclosure-error-border-color: var(--dodo-color-danger-500);
 
-    --dodo-ui-InputEnclosure-disabled-color: var(--dodo-color-default-400);
-    --dodo-ui-InputEnclosure-disabled-bg: var(--dodo-color-default-200);
+    --dodo-ui-InputEnclosure-disabled-color: var(--dodo-color-neutral-400);
+    --dodo-ui-InputEnclosure-disabled-bg: var(--dodo-color-neutral-200);
   }
 
   :global(.dodo-theme--dark) {
-    --dodo-ui-InputEnclosure-border-color: var(--dodo-color-default-600);
+    --dodo-ui-InputEnclosure-border-color: var(--dodo-color-neutral-600);
     --dodo-ui-InputEnclosure-focus-border-color: var(--dodo-color-primary-600);
     --dodo-ui-InputEnclosure-error-border-color: var(--dodo-color-danger-600);
 
-    --dodo-ui-InputEnclosure-disabled-bg: var(--dodo-color-default-100);
-    --dodo-ui-InputEnclosure-disabled-color: var(--dodo-color-default-500);
+    --dodo-ui-InputEnclosure-disabled-bg: var(--dodo-color-neutral-100);
+    --dodo-ui-InputEnclosure-disabled-color: var(--dodo-color-neutral-500);
   }
 
   .dodo-ui-InputEnclosure {
     display: flex;
     overflow: hidden;
-    color: var(--dodo-color-default-800);
+    color: var(--dodo-color-neutral-800);
     transition: all 150ms;
     border: 0;
 

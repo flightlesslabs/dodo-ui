@@ -1,3 +1,10 @@
+/** Component Color*/
+export type ComponentColorPriority = 'primary' | 'secondary' | 'neutral';
+export type ComponentColorSeverity = 'safe' | 'warning' | 'danger';
+
+/** Component Weight */
+export type ComponentWeight = 'solid' | 'text';
+
 /** Component Size */
 export type ComponentSize = 'normal' | 'small' | 'large';
 

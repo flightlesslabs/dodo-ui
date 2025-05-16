@@ -11,7 +11,7 @@
     },
     color: {
       control: { type: 'select' },
-      options: ['default', 'secondary', 'primary', 'safe', 'warning', 'danger'],
+      options: ['neutral', 'secondary', 'primary', 'safe', 'warning', 'danger'],
     },
     variant: {
       control: { type: 'select' },
@@ -50,13 +50,13 @@
 />
 
 <!-- Button with default style -->
-<Story name="Default" args={{ outline: false, disabled: false, compact: false }}>
+<Story name="Primary" args={{ outline: false, disabled: false, compact: false }}>
   <Button>Click me!</Button>
 </Story>
 
 <!-- Button with border around it -->
-<Story name="Outline" args={{ outline: true }}>
-  <Button outline>Click me!</Button>
+<Story name="Outline" args={{ outline: true, variant: 'text' }}>
+  <Button variant="text" outline>Click me!</Button>
 </Story>
 
 <Story name="Disabled" args={{ disabled: true }}>

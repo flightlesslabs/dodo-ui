@@ -1,6 +1,13 @@
 import '$lib/styles/global.css';
 
-export type { ComponentSize, ComponentRoundness, ComponentRoundnessFull } from './types.js';
+export type {
+  ComponentColorPriority,
+  ComponentColorSeverity,
+  ComponentWeight,
+  ComponentSize,
+  ComponentRoundness,
+  ComponentRoundnessFull,
+} from './types.js';
 
 /** developer tools: components: UtilityButton */
 export { default as UtilityButton } from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';

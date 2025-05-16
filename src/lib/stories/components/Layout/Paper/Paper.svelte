@@ -65,7 +65,7 @@
   }
 
   :global(.dodo-theme--dark) {
-    --dodo-ui-Paper-bg: var(--dodo-color-default-100);
+    --dodo-ui-Paper-bg: var(--dodo-color-neutral-100);
   }
 
   .dodo-ui-Paper {

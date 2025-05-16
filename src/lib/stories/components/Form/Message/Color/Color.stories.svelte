@@ -11,16 +11,8 @@
   });
 </script>
 
-<Story name="Default">
-  <Message>Lorem ipsum dolor sit amet, consectetur adipiscing elit</Message>
-</Story>
-
 <Story name="Primary" args={{ color: 'primary' }}>
   <Message color="primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Message>
-</Story>
-
-<Story name="Secondary" args={{ color: 'secondary' }}>
-  <Message color="secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Message>
 </Story>
 
 <Story name="Safe" args={{ color: 'safe' }}>

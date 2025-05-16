@@ -37,7 +37,7 @@
 <style lang="scss">
   .dodo-ui-Label {
     font-size: 0.95rem;
-    color: var(--dodo-color-default-700);
+    color: var(--dodo-color-neutral-700);
     display: flex;
     align-items: center;
     font-family: inherit;

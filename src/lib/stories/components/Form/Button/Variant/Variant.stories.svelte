@@ -15,7 +15,10 @@
   });
 </script>
 
-<Story name="Text" args={{ outline: false, disabled: false, compact: false }}>
+<Story name="Solid" args={{ outline: false, disabled: false, compact: false }}>
   <Button>Click me!</Button>
 </Story>
-<Story name="Solid" args={{ variant: 'solid' }}><Button variant="solid">Click me!</Button></Story>
+
+<Story name="Text" args={{ outline: false, disabled: false, compact: false, variant: 'text' }}>
+  <Button variant="text">Click me!</Button>
+</Story>

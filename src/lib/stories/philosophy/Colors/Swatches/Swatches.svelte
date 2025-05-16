@@ -29,7 +29,7 @@
 
 <style lang="scss">
   .Swatches {
-    color: var(--dodo-color-default-900);
+    color: var(--dodo-color-neutral-900);
     margin: 0;
     padding: 0;
     width: 150px;
