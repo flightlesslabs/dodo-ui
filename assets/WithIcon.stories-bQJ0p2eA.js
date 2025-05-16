@@ -1,0 +1,9 @@
+import{i as y,t as I,b as u}from"./props-CSR5yLpU.js";import{p as _,f as $,s as b,a as v}from"./context-BFm1olXO.js";import{c as g,d as h}from"./create-runtime-stories-B6GSnrD3.js";import{I as i}from"./Icon-Dh_ItA69.js";import{s as t,a as w,S as s}from"./SimpleSelect.stories-D6bBK1UC.js";import"./index-CfOrKyLd.js";import"./attributes-BMbukfXv.js";import"./class-8xQF_grn.js";import"./style-CdYSE7u6.js";import"./index-client-CDLWwPMC.js";import"./each-BxBqiGNN.js";import"./this-H1qM013v.js";import"./InputEnclosure-D0cLqyUc.js";const A={component:s,tags:["autodocs"],argTypes:w,args:{options:t},parameters:{docs:{description:{component:""}}}},{Story:p}=h();var B=I("<!> <!>",1);function a(l,m){_(m,!1),y();var r=B(),n=$(r);p(n,{name:"Icon Before",children:(e,d)=>{s(e,{options:t,before:o=>{i(o,{icon:"material-symbols:content-copy"})},$$slots:{before:!0}})},$$slots:{default:!0},parameters:{docs:{description:{story:"SimpleSelect icon in front."}},__svelteCsf:{rawCode:`<SimpleSelect options={storySimpleSelectOptions}>
+  {#snippet before()}
+    <Icon icon="material-symbols:content-copy" />
+  {/snippet}
+</SimpleSelect>`}}});var f=b(n,2);p(f,{name:"Icon After",children:(e,d)=>{s(e,{options:t,after:o=>{i(o,{icon:"material-symbols:download-2"})},$$slots:{after:!0}})},$$slots:{default:!0},parameters:{docs:{description:{story:"SimpleSelect icon in front."}},__svelteCsf:{rawCode:`<SimpleSelect options={storySimpleSelectOptions}>
+  {#snippet after()}
+    <Icon icon="material-symbols:download-2" />
+  {/snippet}
+</SimpleSelect>`}}}),u(l,r),v()}a.__docgen={version:3,name:"WithIcon.stories.svelte",data:[],computed:[],methods:[],components:[],description:null,keywords:[],events:[],slots:[],refs:[]};const c=g(a,A),D=["IconBefore","IconAfter"],F=c.IconBefore,G=c.IconAfter;export{G as IconAfter,F as IconBefore,D as __namedExportsOrder,A as default};
