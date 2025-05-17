@@ -1,9 +1,13 @@
 <script lang="ts" module>
-  export type MessageColor = 'primary' | ComponentColorSeverity;
+  export type MessageColor = ComponentColorPriority | ComponentColorSeverity;
 </script>
 
 <script lang="ts">
-  import type { ComponentColorSeverity, ComponentSize } from '$lib/types.js';
+  import type {
+    ComponentColorPriority,
+    ComponentColorSeverity,
+    ComponentSize,
+  } from '$lib/types.js';
 
   import type { Snippet } from 'svelte';
 
@@ -70,6 +74,10 @@
 
       &--secondary {
         color: var(--dodo-color-secondary-600);
+      }
+
+      &--neutral {
+        color: var(--dodo-color-neutral-600);
       }
 
       &--safe {

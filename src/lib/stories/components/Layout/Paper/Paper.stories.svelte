@@ -10,7 +10,7 @@
     },
     shadow: {
       control: { type: 'select' },
-      options: [false, '1x', '2x', '3x', '4x', '5x', '6x', '7x'],
+      options: [false, '1x', '2x', '3x', '4x', '5x'],
     },
   };
 

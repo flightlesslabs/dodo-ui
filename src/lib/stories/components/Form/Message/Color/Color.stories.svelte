@@ -15,6 +15,14 @@
   <Message color="primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Message>
 </Story>
 
+<Story name="Secondary" args={{ color: 'secondary' }}>
+  <Message color="secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Message>
+</Story>
+
+<Story name="Neutral" args={{ color: 'neutral' }}>
+  <Message color="neutral">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Message>
+</Story>
+
 <Story name="Safe" args={{ color: 'safe' }}>
   <Message color="safe">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Message>
 </Story>

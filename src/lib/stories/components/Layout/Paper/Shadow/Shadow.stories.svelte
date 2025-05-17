@@ -11,32 +11,26 @@
   });
 </script>
 
-<Story name="Shadow 1x">
-  <Paper>Hola!</Paper>
+<Story name="Shadow 1x" args={{ height: '100px' }}>
+  <Paper height="100px">Hola!</Paper>
 </Story>
 
-<Story name="Shadow 2x" args={{ shadow: '2x' }}><Paper shadow="2x">Hola!</Paper></Story>
-
-<Story name="Shadow 3x" args={{ shadow: '3x' }}>
-  <Paper shadow="3x">Hola!</Paper>
+<Story name="Shadow 2x" args={{ shadow: '2x', height: '100px' }}>
+  <Paper shadow="2x" height="100px">Hola!</Paper>
 </Story>
 
-<Story name="Shadow 4x" args={{ shadow: '4x' }}>
-  <Paper shadow="4x">Hola!</Paper>
+<Story name="Shadow 3x" args={{ shadow: '3x', height: '100px' }}>
+  <Paper shadow="3x" height="100px">Hola!</Paper>
 </Story>
 
-<Story name="Shadow 5x" args={{ shadow: '5x' }}>
-  <Paper shadow="5x">Hola!</Paper>
+<Story name="Shadow 4x" args={{ shadow: '4x', height: '100px' }}>
+  <Paper shadow="4x" height="100px">Hola!</Paper>
 </Story>
 
-<Story name="Shadow 6x" args={{ shadow: '6x' }}>
-  <Paper shadow="6x">Hola!</Paper>
+<Story name="Shadow 5x" args={{ shadow: '5x', height: '100px' }}>
+  <Paper shadow="5x" height="100px">Hola!</Paper>
 </Story>
 
-<Story name="Shadow 7x" args={{ shadow: '7x' }}>
-  <Paper shadow="7x">Hola!</Paper>
-</Story>
-
-<Story name="Shadow False" args={{ shadow: false }}>
-  <Paper shadow={false}>Hola!</Paper>
+<Story name="Shadow False" args={{ shadow: false, height: '100px' }}>
+  <Paper shadow={false} height="100px">Hola!</Paper>
 </Story>

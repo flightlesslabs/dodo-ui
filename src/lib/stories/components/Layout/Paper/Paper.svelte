@@ -1,6 +1,6 @@
 <script lang="ts" module>
   export type PaperRoundness = ComponentRoundness | false | ComponentRoundnessFull;
-  export type PaperShadow = false | '1x' | '2x' | '3x' | '4x' | '5x' | '6x' | '7x';
+  export type PaperShadow = false | '1x' | '2x' | '3x' | '4x' | '5x';
 </script>
 
 <script lang="ts">

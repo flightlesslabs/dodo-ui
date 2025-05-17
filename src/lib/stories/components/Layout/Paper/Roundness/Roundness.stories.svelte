@@ -11,20 +11,22 @@
   });
 </script>
 
-<Story name="Roundness 1x">
-  <Paper>Hola!</Paper>
+<Story name="Roundness 1x" args={{ height: '100px' }}>
+  <Paper height="100px">Hola!</Paper>
 </Story>
 
-<Story name="Roundness 2x" args={{ roundness: '2x' }}><Paper roundness="2x">Hola!</Paper></Story>
-
-<Story name="Roundness 3x" args={{ roundness: '3x' }}>
-  <Paper roundness="3x">Hola!</Paper>
+<Story name="Roundness 2x" args={{ roundness: '2x', height: '100px' }}>
+  <Paper roundness="2x" height="100px">Hola!</Paper>
 </Story>
 
-<Story name="Roundness False" args={{ roundness: false }}>
-  <Paper roundness={false}>Hola!</Paper>
+<Story name="Roundness 3x" args={{ roundness: '3x', height: '100px' }}>
+  <Paper roundness="3x" height="100px">Hola!</Paper>
 </Story>
 
-<Story name="Roundness Full" args={{ roundness: 'full' }}>
-  <Paper roundness="full">Hola!</Paper>
+<Story name="Roundness False" args={{ roundness: false, height: '100px' }}>
+  <Paper roundness={false} height="100px">Hola!</Paper>
+</Story>
+
+<Story name="Roundness Full" args={{ roundness: 'full', height: '100px', width: '100%' }}>
+  <Paper roundness="full" height="100px" width="100px">Hola!</Paper>
 </Story>
