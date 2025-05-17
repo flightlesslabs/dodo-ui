@@ -1,11 +1,18 @@
 :root {
+  /* Size */
   --dodo-ui-element-height-small: 34px;
   --dodo-ui-element-height-normal: 40px;
   --dodo-ui-element-height-large: 50px;
 
+  /* Roundness */
   --dodo-ui-element-roundness-1x: 7px;
   --dodo-ui-element-roundness-2x: 13px;
   --dodo-ui-element-roundness-3x: 31px;
 
+  /* Border */
   --dodo-ui-element-border-width: 1px;
+
+  /* Space */
+  /* Example: calc(var(--dodo-ui-space) * 2), calc(var(--dodo-ui-space) / 2) */
+  --dodo-ui-space: 8px;
 }
