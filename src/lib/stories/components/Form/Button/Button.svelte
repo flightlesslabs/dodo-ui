@@ -1,6 +1,4 @@
 <script lang="ts" module>
-  export type ButtonColor = ComponentColorPriority | ComponentColorSeverity;
-  export type ButtonRoundness = ComponentRoundness | false | ComponentRoundnessFull;
   export type ButtonLinkTarget =
     | '_self'
     | '_blank'
@@ -13,14 +11,11 @@
 </script>
 
 <script lang="ts">
-  import type {
-    ComponentColorPriority,
-    ComponentColorSeverity,
-    ComponentRoundness,
-    ComponentRoundnessFull,
-    ComponentSize,
-    ComponentWeight,
-  } from '$lib/types.js';
+  import type { ComponentColor } from '$lib/types/colors.js';
+  import type { ComponentRoundness } from '$lib/types/roundness.js';
+  import type { ComponentSize } from '$lib/types/size.js';
+  import type { ComponentWeight } from '$lib/types/weight.js';
+
   import type { Snippet } from 'svelte';
   import type { MouseEventHandler } from 'svelte/elements';
 
@@ -36,9 +31,9 @@
     /** Full width button? */
     fullWidth?: boolean;
     /** What color to use? */
-    color?: ButtonColor;
+    color?: ComponentColor;
     /** How round should the border radius be? */
-    roundness?: ButtonRoundness;
+    roundness?: ComponentRoundness;
     /** How should the button appear? */
     variant?: ComponentWeight;
     /** Add a border around the button */
@@ -89,7 +84,7 @@
     type = 'button',
     size = 'normal',
     color = 'primary',
-    roundness = '1x',
+    roundness = 1,
     variant = 'solid',
     outline = false,
     compact = false,
@@ -240,13 +235,13 @@
       &--normal {
         height: var(--dodo-ui-element-height-normal);
         font-size: 1rem;
-        padding: 0 12px;
+        padding: 0 calc(var(--dodo-ui-space-small) * 2);
         min-width: 45px;
       }
 
       &--small {
         height: var(--dodo-ui-element-height-small);
-        padding: 0 8px;
+        padding: 0 var(--dodo-ui-space);
         font-size: 0.9rem;
         min-width: 35px;
       }
@@ -254,22 +249,22 @@
       &--large {
         height: var(--dodo-ui-element-height-large);
         font-size: 1.1rem;
-        padding: 0 16px;
+        padding: 0 calc(var(--dodo-ui-space) * 2);
         min-width: 85px;
       }
     }
 
     &.roundness {
-      &--1x {
-        border-radius: var(--dodo-ui-element-roundness-1x);
+      &--1 {
+        border-radius: var(--dodo-ui-element-roundness-1);
       }
 
-      &--2x {
-        border-radius: var(--dodo-ui-element-roundness-2x);
+      &--2 {
+        border-radius: var(--dodo-ui-element-roundness-2);
       }
 
-      &--3x {
-        border-radius: var(--dodo-ui-element-roundness-3x);
+      &--3 {
+        border-radius: var(--dodo-ui-element-roundness-3);
       }
 
       &--full {

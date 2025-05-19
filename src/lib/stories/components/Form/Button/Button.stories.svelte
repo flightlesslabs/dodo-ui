@@ -3,6 +3,10 @@
   import { fn } from '@storybook/test';
   import Button from './Button.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
+  import { componentRoundnessArray } from '$lib/types/roundness.js';
+  import { componentColorArray } from '$lib/types/colors.js';
+  import { componentWeightArray } from '$lib/types/weight.js';
+  import { componentSizeArray } from '$lib/types/size.js';
 
   export const storyButtonArgTypes: StoryBookArgTypes = {
     type: {
@@ -11,19 +15,19 @@
     },
     color: {
       control: { type: 'select' },
-      options: ['neutral', 'secondary', 'primary', 'safe', 'warning', 'danger'],
+      options: componentColorArray,
     },
     variant: {
       control: { type: 'select' },
-      options: ['text', 'solid'],
+      options: componentWeightArray,
     },
     roundness: {
       control: { type: 'select' },
-      options: [false, '1x', '2x', '3x', 'full'],
+      options: componentRoundnessArray,
     },
     size: {
       control: { type: 'select' },
-      options: ['normal', 'small', 'large'],
+      options: componentSizeArray,
     },
   };
 

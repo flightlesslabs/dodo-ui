@@ -1,6 +1,15 @@
 <script lang="ts" module>
   export type TextInputType = 'text' | 'tel' | 'email' | 'password' | 'url' | 'number';
 
+  export const textInputTypeArray: TextInputType[] = [
+    'text',
+    'tel',
+    'email',
+    'password',
+    'url',
+    'number',
+  ];
+
   export type TextInputFocusEvent = FocusEvent & {
     currentTarget: EventTarget & HTMLInputElement;
   };
@@ -12,8 +21,9 @@
 
 <script lang="ts">
   import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
+  import type { ComponentRoundness } from '$lib/types/roundness.js';
+  import type { ComponentSize } from '$lib/types/size.js';
 
-  import type { ComponentRoundness, ComponentSize } from '$lib/types.js';
   import type { Snippet } from 'svelte';
   import type {
     ChangeEventHandler,
@@ -30,7 +40,7 @@
     /** How large should the button be? */
     size?: ComponentSize;
     /** How round should the border radius be? */
-    roundness?: ComponentRoundness | false;
+    roundness?: ComponentRoundness;
     /** Add a border around the button. Default True */
     outline?: boolean;
     /** Input value */
@@ -72,7 +82,7 @@
   let {
     type = 'text',
     size = 'normal',
-    roundness = '1x',
+    roundness = 1,
     outline = true,
     name,
     id,

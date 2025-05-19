@@ -6,7 +6,6 @@
 </script>
 
 <script lang="ts">
-  import type { ComponentRoundness, ComponentSize } from '$lib/types.js';
   import type { Snippet } from 'svelte';
   import type {
     ChangeEventHandler,
@@ -18,6 +17,8 @@
   import Icon from '@iconify/svelte';
   import UtilityButton from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
   import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
+  import type { ComponentSize } from '$lib/types/size.js';
+  import type { ComponentRoundness } from '$lib/types/roundness.js';
 
   interface PasswordInputProps {
     /** How large should the button be? */
@@ -31,7 +32,7 @@
     /** Toggle Password Icon */
     customPasswordToggleIcon?: (toggle: boolean) => Snippet;
     /** How round should the border radius be? */
-    roundness?: ComponentRoundness | false;
+    roundness?: ComponentRoundness;
     /** Add a border around the button. Default True */
     outline?: boolean;
     /** Input value */
@@ -74,7 +75,7 @@
 
   let {
     size = 'normal',
-    roundness = '1x',
+    roundness = 1,
     outline = true,
     name,
     id,
@@ -194,13 +195,13 @@
       &--normal {
         input {
           font-size: 1rem;
-          padding: 0 12px;
+          padding: 0 calc(var(--dodo-ui-space-small) * 2);
         }
       }
 
       &--small {
         input {
-          padding: 0 8px;
+          padding: 0 var(--dodo-ui-space);
           font-size: 0.9rem;
         }
       }
@@ -208,7 +209,7 @@
       &--large {
         input {
           font-size: 1.1rem;
-          padding: 0 14px;
+          padding: 0 calc(var(--dodo-ui-space) * 2);
         }
       }
     }

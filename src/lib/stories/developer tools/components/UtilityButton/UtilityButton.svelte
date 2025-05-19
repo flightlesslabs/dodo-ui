@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ComponentSize } from '$lib/types.js';
+  import type { ComponentSize } from '$lib/types/size.js';
   import type { Snippet } from 'svelte';
   import type { MouseEventHandler } from 'svelte/elements';
 

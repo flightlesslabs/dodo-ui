@@ -1,5 +1,6 @@
 <script lang="ts">
-  import type { ComponentRoundness, ComponentSize } from '$lib/types.js';
+  import type { ComponentRoundness } from '$lib/types/roundness.js';
+  import type { ComponentSize } from '$lib/types/size.js';
   import type { Snippet } from 'svelte';
 
   interface InputEnclosureProps {
@@ -10,7 +11,7 @@
     /** How large should the button be? */
     size?: ComponentSize;
     /** How round should the border radius be? */
-    roundness?: ComponentRoundness | false;
+    roundness?: ComponentRoundness;
     /** Add a border around the button. Default True */
     outline?: boolean;
     /** disabled state */
@@ -29,7 +30,7 @@
 
   let {
     size = 'normal',
-    roundness = '1x',
+    roundness = 1,
     outline = true,
     class: className = '',
     disabled = false,
@@ -182,16 +183,16 @@
     }
 
     &.roundness {
-      &--1x {
-        border-radius: var(--dodo-ui-element-roundness-1x);
+      &--1 {
+        border-radius: var(--dodo-ui-element-roundness-1);
       }
 
-      &--2x {
-        border-radius: var(--dodo-ui-element-roundness-2x);
+      &--2 {
+        border-radius: var(--dodo-ui-element-roundness-2);
       }
 
-      &--3x {
-        border-radius: var(--dodo-ui-element-roundness-3x);
+      &--3 {
+        border-radius: var(--dodo-ui-element-roundness-3);
       }
     }
   }

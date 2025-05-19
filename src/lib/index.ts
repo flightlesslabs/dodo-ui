@@ -3,11 +3,14 @@ import '$lib/styles/global.css';
 export type {
   ComponentColorPriority,
   ComponentColorSeverity,
-  ComponentWeight,
-  ComponentSize,
-  ComponentRoundness,
-  ComponentRoundnessFull,
-} from './types.js';
+  ComponentColor,
+} from './types/colors.js';
+
+export type { ComponentRoundness } from './types/roundness.js';
+
+export type { ComponentSize } from './types/size.js';
+
+export type { ComponentWeight } from './types/weight.js';
 
 /** developer tools: components: UtilityButton */
 export { default as UtilityButton } from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
@@ -18,8 +21,6 @@ export { default as InputEnclosure } from '$lib/stories/developer tools/componen
 /** Form: Button */
 export { default as Button } from '$lib/stories/components/Form/Button/Button.svelte';
 export type {
-  ButtonColor,
-  ButtonRoundness,
   ButtonLinkTarget,
   ButtonLinkReferrerpolicy,
 } from '$lib/stories/components/Form/Button/Button.svelte';

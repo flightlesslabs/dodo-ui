@@ -79,15 +79,15 @@
 
     &.roundness {
       &--1x {
-        border-radius: var(--dodo-ui-element-roundness-1x);
+        border-radius: var(--dodo-ui-element-roundness-1);
       }
 
       &--2x {
-        border-radius: var(--dodo-ui-element-roundness-2x);
+        border-radius: var(--dodo-ui-element-roundness-2);
       }
 
       &--3x {
-        border-radius: var(--dodo-ui-element-roundness-3x);
+        border-radius: var(--dodo-ui-element-roundness-3);
       }
 
       &--full {
