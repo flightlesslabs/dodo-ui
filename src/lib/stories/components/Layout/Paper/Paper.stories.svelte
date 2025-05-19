@@ -2,15 +2,17 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Paper from './Paper.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
+  import { componentRoundnessArray } from '$lib/types/roundness.js';
+  import { componentShadowArray } from '$lib/types/shadow.js';
 
   export const storyPaperArgTypes: StoryBookArgTypes = {
     roundness: {
       control: { type: 'select' },
-      options: [false, '1x', '2x', '3x', 'full'],
+      options: componentRoundnessArray,
     },
     shadow: {
       control: { type: 'select' },
-      options: [false, '1x', '2x', '3x', '4x', '5x'],
+      options: componentShadowArray,
     },
   };
 

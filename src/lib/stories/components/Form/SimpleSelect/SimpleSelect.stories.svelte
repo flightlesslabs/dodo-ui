@@ -3,19 +3,17 @@
   import { type SimpleSelectOption } from './SimpleSelect.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
   import SimpleSelect from './SimpleSelect.svelte';
+  import { componentRoundnessArray } from '$lib/types/roundness.js';
+  import { componentSizeArray } from '$lib/types/size.js';
 
   export const storySimpleSelectArgTypes: StoryBookArgTypes = {
-    type: {
-      control: { type: 'select' },
-      options: ['text', 'tel', 'email', 'password', 'url', 'number'],
-    },
     roundness: {
       control: { type: 'select' },
-      options: [false, '1x', '2x', '3x'],
+      options: componentRoundnessArray,
     },
     size: {
       control: { type: 'select' },
-      options: ['normal', 'small', 'large'],
+      options: componentSizeArray,
     },
   };
 

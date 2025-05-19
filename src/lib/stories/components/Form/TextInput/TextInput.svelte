@@ -168,13 +168,13 @@
       &--normal {
         input {
           font-size: 1rem;
-          padding: 0 12px;
+          padding: 0 calc(var(--dodo-ui-space-small) * 2);
         }
       }
 
       &--small {
         input {
-          padding: 0 8px;
+          padding: 0 var(--dodo-ui-space);
           font-size: 0.9rem;
         }
       }
@@ -182,7 +182,7 @@
       &--large {
         input {
           font-size: 1.1rem;
-          padding: 0 14px;
+          padding: 0 calc(var(--dodo-ui-space) * 2);
         }
       }
     }

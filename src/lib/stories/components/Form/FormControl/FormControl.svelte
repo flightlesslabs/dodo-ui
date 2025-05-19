@@ -50,18 +50,13 @@
 </div>
 
 <style lang="scss">
-  :global(:root) {
-    --dodo-ui-FormControl-LabelSection-gap: 8px;
-    --dodo-ui-FormControl-errorMessage-gap: 10px;
-  }
-
   .dodo-ui-FormControl {
     .LabelSection {
-      margin-bottom: var(--dodo-ui-FormControl-LabelSection-gap);
+      margin-bottom: var(--dodo-ui-space);
     }
 
     .errorMessage {
-      margin-top: var(--dodo-ui-FormControl-errorMessage-gap);
+      margin-top: var(--dodo-ui-space-large);
     }
   }
 </style>

@@ -8,6 +8,8 @@
     | undefined
     | null;
   export type ButtonLinkReferrerpolicy = ReferrerPolicy | undefined | null;
+  export type ButtonType = 'button' | 'submit';
+  export const buttonTypeArray: ButtonType[] = ['button', 'submit'];
 </script>
 
 <script lang="ts">
@@ -25,7 +27,7 @@
     /** Button ref */
     ref?: HTMLButtonElement | HTMLAnchorElement;
     /** Regular button or submit button? */
-    type?: 'button' | 'submit';
+    type?: ButtonType;
     /** How large should the button be? */
     size?: ComponentSize;
     /** Full width button? */

@@ -15,29 +15,20 @@
   });
 </script>
 
-<Story name="Roundness 1x" args={{ outline: false, disabled: false, compact: false }}>
+<Story name="Roundness 1" args={{ outline: false, disabled: false, compact: false }}>
   <Button>Click me!</Button>
 </Story>
 
-<Story
-  name="Roundness 2x"
-  args={{ outline: false, disabled: false, compact: false, roundness: '2x' }}
->
-  <Button roundness="2x">Click me!</Button>
+<Story name="Roundness 2" args={{ outline: false, disabled: false, compact: false, roundness: 2 }}>
+  <Button roundness={2}>Click me!</Button>
 </Story>
 
-<Story
-  name="Roundness 3x"
-  args={{ outline: false, disabled: false, compact: false, roundness: '3x' }}
->
-  <Button roundness="3x">Click me!</Button>
+<Story name="Roundness 3" args={{ outline: false, disabled: false, compact: false, roundness: 3 }}>
+  <Button roundness={3}>Click me!</Button>
 </Story>
 
-<Story
-  name="Roundness False"
-  args={{ outline: false, disabled: false, compact: false, roundness: false }}
->
-  <Button roundness={false}>Click me!</Button>
+<Story name="Roundness 0" args={{ outline: false, disabled: false, compact: false, roundness: 0 }}>
+  <Button roundness={0}>Click me!</Button>
 </Story>
 
 <!-- Button with 50% roundness usefull for icon (Compact) buttons -->

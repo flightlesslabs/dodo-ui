@@ -2,15 +2,17 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Message from './Message.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
+  import { componentColorArray } from '$lib/types/colors.js';
+  import { componentSizeArray } from '$lib/types/size.js';
 
   export const storyMessageArgTypes: StoryBookArgTypes = {
     color: {
       control: { type: 'select' },
-      options: ['primary', 'secondary', 'neutral', 'safe', 'warning', 'danger'],
+      options: componentColorArray,
     },
     size: {
       control: { type: 'select' },
-      options: ['normal', 'small', 'large'],
+      options: componentSizeArray,
     },
   };
 

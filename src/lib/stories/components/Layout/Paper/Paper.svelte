@@ -1,10 +1,7 @@
-<script lang="ts" module>
-  export type PaperRoundness = ComponentRoundness | false | ComponentRoundnessFull;
-  export type PaperShadow = false | '1x' | '2x' | '3x' | '4x' | '5x';
-</script>
-
 <script lang="ts">
-  import type { ComponentRoundness, ComponentRoundnessFull } from '$lib/types.js';
+  import type { ComponentRoundness } from '$lib/types/roundness.js';
+  import type { ComponentShadow } from '$lib/types/shadow.js';
+
   import type { Snippet } from 'svelte';
 
   interface PaperProps {
@@ -13,9 +10,9 @@
     /** Paper ref */
     ref?: HTMLDivElement;
     /** How round should the border radius be? */
-    roundness?: PaperRoundness;
+    roundness?: ComponentRoundness;
     /** Shadow elevation */
-    shadow?: PaperShadow;
+    shadow?: ComponentShadow;
     /** Custom css class */
     class?: string;
     /** Paper Width */
@@ -30,8 +27,8 @@
 
   let {
     children,
-    roundness = '1x',
-    shadow = '1x',
+    roundness = 1,
+    shadow = 0,
     id,
     class: className = '',
     _unsafeChildrenStringForTesting,
@@ -78,15 +75,15 @@
     overflow: hidden;
 
     &.roundness {
-      &--1x {
+      &--1 {
         border-radius: var(--dodo-ui-element-roundness-1);
       }
 
-      &--2x {
+      &--2 {
         border-radius: var(--dodo-ui-element-roundness-2);
       }
 
-      &--3x {
+      &--3 {
         border-radius: var(--dodo-ui-element-roundness-3);
       }
 

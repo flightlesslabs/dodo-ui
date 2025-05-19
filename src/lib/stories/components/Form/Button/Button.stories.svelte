@@ -1,7 +1,7 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import { fn } from '@storybook/test';
-  import Button from './Button.svelte';
+  import Button, { buttonTypeArray } from './Button.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
   import { componentRoundnessArray } from '$lib/types/roundness.js';
   import { componentColorArray } from '$lib/types/colors.js';
@@ -11,7 +11,7 @@
   export const storyButtonArgTypes: StoryBookArgTypes = {
     type: {
       control: { type: 'select' },
-      options: ['button', 'submit'],
+      options: buttonTypeArray,
     },
     color: {
       control: { type: 'select' },

@@ -3,15 +3,17 @@
   import PasswordInput from './PasswordInput.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
   import Icon from '@iconify/svelte';
+  import { componentRoundnessArray } from '$lib/types/roundness.js';
+  import { componentSizeArray } from '$lib/types/size.js';
 
   export const storyPasswordInputArgTypes: StoryBookArgTypes = {
     roundness: {
       control: { type: 'select' },
-      options: [false, '1x', '2x', '3x'],
+      options: componentRoundnessArray,
     },
     size: {
       control: { type: 'select' },
-      options: ['normal', 'small', 'large'],
+      options: componentSizeArray,
     },
   };
 

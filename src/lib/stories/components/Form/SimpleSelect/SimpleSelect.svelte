@@ -138,13 +138,13 @@
       &--normal {
         select {
           font-size: 1rem;
-          padding: 0 12px;
+          padding: 0 calc(var(--dodo-ui-space-small) * 2);
         }
       }
 
       &--small {
         select {
-          padding: 0 8px;
+          padding: 0 var(--dodo-ui-space);
           font-size: 0.9rem;
         }
       }
@@ -152,7 +152,7 @@
       &--large {
         select {
           font-size: 1.1rem;
-          padding: 0 14px;
+          padding: 0 calc(var(--dodo-ui-space) * 2);
         }
       }
     }

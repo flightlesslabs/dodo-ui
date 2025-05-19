@@ -23,6 +23,7 @@ export { default as Button } from '$lib/stories/components/Form/Button/Button.sv
 export type {
   ButtonLinkTarget,
   ButtonLinkReferrerpolicy,
+  ButtonType,
 } from '$lib/stories/components/Form/Button/Button.svelte';
 
 /** Form: TextInput */
@@ -45,7 +46,6 @@ export { default as FormControl } from '$lib/stories/components/Form/FormControl
 
 /** Form: Message */
 export { default as Message } from '$lib/stories/components/Form/Message/Message.svelte';
-export type { MessageColor } from '$lib/stories/components/Form/Message/Message.svelte';
 
 /** Form: SimpleSelect */
 export { default as SimpleSelect } from '$lib/stories/components/Form/SimpleSelect/SimpleSelect.svelte';
@@ -56,7 +56,3 @@ export type {
 
 /** Layout: Paper */
 export { default as Paper } from '$lib/stories/components/Layout/Paper/Paper.svelte';
-export type {
-  PaperRoundness,
-  PaperShadow,
-} from '$lib/stories/components/Layout/Paper/Paper.svelte';

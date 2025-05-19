@@ -11,10 +11,10 @@
   });
 </script>
 
-<Story name="Roundness 1x" />
+<Story name="Roundness 1" />
 
-<Story name="Roundness 2x" args={{ roundness: '2x' }} />
+<Story name="Roundness 2" args={{ roundness: 2 }} />
 
-<Story name="Roundness 3x" args={{ roundness: '3x' }} />
+<Story name="Roundness 3" args={{ roundness: 3 }} />
 
-<Story name="Roundness False" args={{ roundness: false }} />
+<Story name="Roundness 0" args={{ roundness: 0 }} />

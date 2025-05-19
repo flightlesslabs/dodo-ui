@@ -1,13 +1,7 @@
-<script lang="ts" module>
-  export type MessageColor = ComponentColorPriority | ComponentColorSeverity;
-</script>
-
 <script lang="ts">
-  import type {
-    ComponentColorPriority,
-    ComponentColorSeverity,
-    ComponentSize,
-  } from '$lib/types.js';
+  import type { ComponentColor } from '$lib/types/colors.js';
+
+  import type { ComponentSize } from '$lib/types/size.js';
 
   import type { Snippet } from 'svelte';
 
@@ -17,7 +11,7 @@
     /** Message ref */
     ref?: HTMLDivElement;
     /** What color to use? */
-    color?: MessageColor;
+    color?: ComponentColor;
     /** Message size */
     size?: ComponentSize;
     /** Custom css class*/
