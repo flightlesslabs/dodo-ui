@@ -86,3 +86,9 @@ pre.prismjs {
   font-size: 1rem;
   font-weight: 500;
 }
+
+li:not(.sb-anchor, .sb-unstyled, .sb-unstyled li) {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+}
