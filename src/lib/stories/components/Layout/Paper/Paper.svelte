@@ -64,6 +64,7 @@
     `roundness--${roundness}`,
     `color--${color}`,
     `variant--${variant}`,
+    `shadow--${shadow}`,
     `${shadow ? `shadow--${shadow} dodo-shadow-${shadow}` : `shadow--${shadow}`}`,
     className,
   ].join(' ')}
@@ -84,6 +85,13 @@
   @use 'utils/scss/mixins.scss' as *;
 
   :global(:root) {
+    --dodo-ui-Paper-default-bg: var(--dodo-color-white);
+    --dodo-ui-Paper-default-bg-shadow-1: var(--dodo-color-white);
+    --dodo-ui-Paper-default-bg-shadow-2: var(--dodo-color-white);
+    --dodo-ui-Paper-default-bg-shadow-3: var(--dodo-color-white);
+    --dodo-ui-Paper-default-bg-shadow-4: var(--dodo-color-white);
+    --dodo-ui-Paper-default-bg-shadow-5: var(--dodo-color-white);
+
     --dodo-ui-Paper-outline-default: var(--dodo-color-neutral-300);
 
     @include generate-dodo-ui-paper-colors(neutral);
@@ -95,6 +103,39 @@
   }
 
   :global(.dodo-theme--dark) {
+    --dodo-ui-Paper-default-bg-mixer: #999999fd;
+
+    --dodo-ui-Paper-default-bg: color-mix(
+      in oklab,
+      var(--dodo-color-neutral-50) 98%,
+      var(--dodo-ui-Paper-default-bg-mixer)
+    );
+    --dodo-ui-Paper-default-bg-shadow-1: color-mix(
+      in oklab,
+      var(--dodo-color-neutral-50) 95%,
+      var(--dodo-ui-Paper-default-bg-mixer)
+    );
+    --dodo-ui-Paper-default-bg-shadow-2: color-mix(
+      in oklab,
+      var(--dodo-color-neutral-50) 90%,
+      var(--dodo-ui-Paper-default-bg-mixer)
+    );
+    --dodo-ui-Paper-default-bg-shadow-3: color-mix(
+      in oklab,
+      var(--dodo-color-neutral-50) 85%,
+      var(--dodo-ui-Paper-default-bg-mixer)
+    );
+    --dodo-ui-Paper-default-bg-shadow-4: color-mix(
+      in oklab,
+      var(--dodo-color-neutral-50) 80%,
+      var(--dodo-ui-Paper-default-bg-mixer)
+    );
+    --dodo-ui-Paper-default-bg-shadow-5: color-mix(
+      in oklab,
+      var(--dodo-color-neutral-50) 75%,
+      var(--dodo-ui-Paper-default-bg-mixer)
+    );
+
     --dodo-ui-Paper-outline-default: var(--dodo-color-neutral-200);
 
     @include generate-dodo-ui-paper-colors-dark(neutral);
@@ -135,7 +176,7 @@
 
     &.color {
       &--default {
-        background-color: var(--dodo-color-white);
+        background-color: var(--dodo-ui-Paper-default-bg);
 
         &.outline {
           border-color: var(--dodo-ui-Paper-outline-default);
@@ -148,6 +189,28 @@
       @include generate-dodo-ui-paper-color(safe);
       @include generate-dodo-ui-paper-color(warning);
       @include generate-dodo-ui-paper-color(danger);
+    }
+
+    &.color--default.shadow {
+      &--1 {
+        background-color: var(--dodo-ui-Paper-default-bg-shadow-1);
+      }
+
+      &--2 {
+        background-color: var(--dodo-ui-Paper-default-bg-shadow-2);
+      }
+
+      &--3 {
+        background-color: var(--dodo-ui-Paper-default-bg-shadow-3);
+      }
+
+      &--4 {
+        background-color: var(--dodo-ui-Paper-default-bg-shadow-4);
+      }
+
+      &--5 {
+        background-color: var(--dodo-ui-Paper-default-bg-shadow-5);
+      }
     }
   }
 </style>
