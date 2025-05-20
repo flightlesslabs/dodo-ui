@@ -41,7 +41,7 @@
     /** Click Outside event */
     onClickOutside?: () => void;
     /** Custom Popup */
-    customPopup?: (toggle: boolean) => Snippet;
+    customPopup?: (popperLocation?: DOMRect) => Snippet;
   }
 </script>
 
@@ -62,7 +62,11 @@
     popupPositionY,
     popupOffset,
     onClickOutside = () => {},
+    customPopup,
   }: PopperProps = $props();
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let customPopupTyped = customPopup as any;
 
   let popperContainerRef = $state<HTMLDivElement>();
   let popperLocation = $state<DOMRect>();
@@ -102,7 +106,9 @@
     {/if}
   </div>
 
-  {#if open && popperLocation}
+  {#if customPopupTyped}
+    {@render customPopupTyped(popperLocation)}
+  {:else if open && popperLocation}
     <PopperPopup
       {popperLocation}
       {paperProps}

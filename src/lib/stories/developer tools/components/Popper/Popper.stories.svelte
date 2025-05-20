@@ -7,6 +7,7 @@
     popperPopupPositionYArray,
   } from './PopperPopup/PopperPopup.svelte';
   import Button from '$lib/stories/components/Form/Button/Button.svelte';
+  import PopperPopup from './PopperPopup/PopperPopup.stories.svelte';
 
   export const storyPopperArgTypes: StoryBookArgTypes = {
     popupPositionX: {
@@ -77,6 +78,24 @@
         <li>One</li>
         <li>Two</li>
         <li>Three</li>
+      </ul>
+    {/snippet}
+  </Popper>
+</Story>
+
+<Story
+  name="CustomPopup"
+  args={{
+    open: true,
+  }}
+  asChild
+>
+  <Popper open>
+    Hello! how are you doing?
+    {#snippet customPopup(popperLocation)}
+      <ul>
+        <li>{popperLocation?.height}</li>
+        <li>{popperLocation?.width}</li>
       </ul>
     {/snippet}
   </Popper>
