@@ -17,7 +17,7 @@
     /** Popup ref */
     ref?: HTMLDivElement;
     /** PaperProps: Paper component props */
-    paperProps?: PaperProps;
+    paperProps?: Partial<PaperProps>;
     /** Max height. Use css compatible value */
     popupMaxHeight?: string;
     /** Max Width. Use css compatible value */
@@ -25,7 +25,7 @@
     /** Custom css class */
     class?: string;
     /** Position of Popper content */
-    popperLocation: DOMRect;
+    popperLocation?: DOMRect;
     /** Popup stick horizontally  */
     popupPositionX?: PopperPopupPositionX;
     /** Popup stick vertically  */
@@ -85,7 +85,7 @@
   }
 
   $effect(() => {
-    setPopupPosition(positionX, positionY, popperLocation.height, offset);
+    setPopupPosition(positionX, positionY, popperLocation?.height || 0, offset);
   });
 </script>
 

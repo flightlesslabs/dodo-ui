@@ -3,7 +3,7 @@
   import PopperPopup, {
     type PopperPopupPositionX,
     type PopperPopupPositionY,
-  } from './PopperPopup.svelte';
+  } from './PopperPopup/PopperPopup.svelte';
   import type { PaperProps } from '$lib/stories/components/Layout/Paper/Paper.svelte';
   import { clickOutside } from '$lib/stories/developer tools/directives/clickOutside/clickOutside.js';
 
@@ -25,7 +25,7 @@
     /** PopperPopup contents goes here */
     popupChildren?: Snippet;
     /** PaperProps: Paper component props for PopperPopup */
-    paperProps?: PaperProps;
+    paperProps?: Partial<PaperProps>;
     /** PopperPopup Max height. Use css compatible value */
     popupMaxHeight?: string;
     /** PopperPopup Max Width. Use css compatible value */
@@ -40,6 +40,8 @@
     popupOffset?: number;
     /** Click Outside event */
     onClickOutside?: () => void;
+    /** Custom Popup */
+    customPopup?: (toggle: boolean) => Snippet;
   }
 </script>
 
