@@ -13,7 +13,7 @@
 </script>
 
 <!-- PasswordInput icon in front. -->
-<Story name="Icon Before">
+<Story name="Icon Before" asChild>
   <PasswordInput>
     {#snippet before()}
       <Icon icon="material-symbols:content-copy" />
@@ -22,7 +22,7 @@
 </Story>
 
 <!-- PasswordInput icon in front. -->
-<Story name="Icon After">
+<Story name="Icon After" asChild>
   <PasswordInput>
     {#snippet after()}
       <Icon icon="material-symbols:download-2" />

@@ -1,6 +1,5 @@
 <script module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import { fn } from '@storybook/test';
   import Button from '../Button.svelte';
   import { storyButtonArgTypes } from '../Button.stories.svelte';
 
@@ -9,16 +8,11 @@
     component: Button,
     tags: ['autodocs'],
     argTypes: storyButtonArgTypes,
-    args: {
-      onclick: fn(),
-    },
   });
 </script>
 
-<Story name="Solid" args={{ outline: false, disabled: false, compact: false }}>
-  <Button>Click me!</Button>
-</Story>
+<Story name="Solid">Click me!</Story>
 
-<Story name="Text" args={{ outline: false, disabled: false, compact: false, variant: 'text' }}>
-  <Button variant="text">Click me!</Button>
-</Story>
+<Story name="Text" args={{ variant: 'text' }}>Click me!</Story>
+
+<Story name="Text Outline" args={{ variant: 'text', outline: true }}>Click me!</Story>

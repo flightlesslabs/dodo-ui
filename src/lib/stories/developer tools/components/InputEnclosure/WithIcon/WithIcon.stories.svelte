@@ -13,7 +13,7 @@
 </script>
 
 <!-- InputEnclosure icon in front. -->
-<Story name="Icon Before">
+<Story name="Icon Before" asChild>
   <InputEnclosure>
     {#snippet before()}
       <Icon icon="material-symbols:content-copy" />
@@ -22,7 +22,7 @@
 </Story>
 
 <!-- InputEnclosure icon in front. -->
-<Story name="Icon After">
+<Story name="Icon After" asChild>
   <InputEnclosure>
     {#snippet after()}
       <Icon icon="material-symbols:download-2" />
@@ -30,7 +30,7 @@
   </InputEnclosure>
 </Story>
 
-<Story name="Small" args={{ size: 'small' }}>
+<Story name="Small" args={{ size: 'small' }} asChild>
   <InputEnclosure size="small">
     {#snippet before()}
       <Icon icon="material-symbols:content-copy" />
@@ -38,7 +38,7 @@
   </InputEnclosure>
 </Story>
 
-<Story name="Large" args={{ size: 'large' }}>
+<Story name="Large" args={{ size: 'large' }} asChild>
   <InputEnclosure size="large">
     {#snippet before()}
       <Icon icon="material-symbols:content-copy" />

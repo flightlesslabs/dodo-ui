@@ -21,8 +21,6 @@
     height?: string;
     /** Id */
     id?: string;
-    /** Test: ⚠️ Unsafe Children String. Do Not use*/
-    _unsafeChildrenStringForTesting?: string;
   }
 
   let {
@@ -31,7 +29,6 @@
     shadow = 0,
     id,
     class: className = '',
-    _unsafeChildrenStringForTesting,
     width,
     height,
     ref = $bindable<HTMLDivElement>(),
@@ -51,8 +48,6 @@
 >
   {#if children}
     {@render children()}
-  {:else if _unsafeChildrenStringForTesting}
-    {_unsafeChildrenStringForTesting}
   {/if}
 </div>
 

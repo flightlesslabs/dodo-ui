@@ -16,8 +16,6 @@
     size?: ComponentSize;
     /** Custom css class*/
     class?: string;
-    /** Test: ⚠️ Unsafe Children String. Do Not use*/
-    _unsafeChildrenStringForTesting?: string;
   }
 
   let {
@@ -25,7 +23,6 @@
     class: className = '',
     color = 'primary',
     ref = $bindable<HTMLDivElement>(),
-    _unsafeChildrenStringForTesting,
     size = 'normal',
   }: MessageProps = $props();
 </script>
@@ -36,8 +33,6 @@
 >
   {#if children}
     {@render children()}
-  {:else if _unsafeChildrenStringForTesting}
-    {_unsafeChildrenStringForTesting}
   {/if}
 </div>
 

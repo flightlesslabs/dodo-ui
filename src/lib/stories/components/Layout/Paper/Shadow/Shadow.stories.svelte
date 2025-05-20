@@ -11,26 +11,14 @@
   });
 </script>
 
-<Story name="Shadow 0" args={{ height: '100px' }}>
-  <Paper height="100px">Hola!</Paper>
-</Story>
+<Story name="Shadow 0" args={{ height: '100px' }}>Hola!</Story>
 
-<Story name="Shadow 1" args={{ shadow: 1, height: '100px' }}>
-  <Paper shadow={1} height="100px">Hola!</Paper>
-</Story>
+<Story name="Shadow 1" args={{ shadow: 1, height: '100px' }}>Hola!</Story>
 
-<Story name="Shadow 2" args={{ shadow: 2, height: '100px' }}>
-  <Paper shadow={2} height="100px">Hola!</Paper>
-</Story>
+<Story name="Shadow 2" args={{ shadow: 2, height: '100px' }}>Hola!</Story>
 
-<Story name="Shadow 3" args={{ shadow: 3, height: '100px' }}>
-  <Paper shadow={3} height="100px">Hola!</Paper>
-</Story>
+<Story name="Shadow 3" args={{ shadow: 3, height: '100px' }}>Hola!</Story>
 
-<Story name="Shadow 4" args={{ shadow: 4, height: '100px' }}>
-  <Paper shadow={4} height="100px">Hola!</Paper>
-</Story>
+<Story name="Shadow 4" args={{ shadow: 4, height: '100px' }}>Hola!</Story>
 
-<Story name="Shadow 5" args={{ shadow: 5, height: '100px' }}>
-  <Paper shadow={5} height="100px">Hola!</Paper>
-</Story>
+<Story name="Shadow 5" args={{ shadow: 5, height: '100px' }}>Hola!</Story>

@@ -24,14 +24,4 @@
   });
 </script>
 
-<!-- ⚠️ Test Message: Do not use! -->
-<Story
-  name="Test Message"
-  args={{
-    _unsafeChildrenStringForTesting: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-  }}
-/>
-
-<Story name="Primary">
-  <Message>Lorem ipsum dolor sit amet, consectetur adipiscing elit</Message>
-</Story>
+<Story name="Primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Story>

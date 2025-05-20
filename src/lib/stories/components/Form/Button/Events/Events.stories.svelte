@@ -1,6 +1,5 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import { fn } from '@storybook/test';
   import Button from '../Button.svelte';
   import { storyButtonArgTypes } from '../Button.stories.svelte';
 
@@ -9,18 +8,12 @@
     component: Button,
     tags: ['autodocs'],
     argTypes: storyButtonArgTypes,
-    args: {
-      onclick: fn(),
-    },
   });
 </script>
 
 <Story
   name="Click"
   args={{
-    outline: false,
-    disabled: false,
-    compact: false,
     onclick: (e: Event) => {
       const target = e.target as HTMLButtonElement;
 
@@ -28,6 +21,7 @@
       console.log('Button Clicked', target);
     },
   }}
+  asChild
 >
   <Button
     onclick={(e: Event) => {

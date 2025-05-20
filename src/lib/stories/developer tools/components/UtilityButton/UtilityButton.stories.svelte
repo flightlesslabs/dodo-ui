@@ -26,9 +26,9 @@
 
 <!-- Button with default style -->
 <Story name="Default">
-  <UtilityButton><Icon icon="mdi:eye" width="24" height="24" /></UtilityButton>
+  <Icon icon="mdi:eye" width="24" height="24" />
 </Story>
 
 <Story name="Disabled" args={{ disabled: true }}>
-  <UtilityButton disabled><Icon icon="mdi:eye" width="24" height="24" /></UtilityButton>
+  <Icon icon="mdi:eye" width="24" height="24" />
 </Story>

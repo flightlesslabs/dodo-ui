@@ -34,7 +34,5 @@
 <Story name="Disabled" args={{ disabled: true }} />
 
 <Story name="Input example">
-  <InputEnclosure>
-    <input type="text" style="flex: 1; border: 0;" placeholder="Enter name" />
-  </InputEnclosure>
+  <input type="text" style="flex: 1; border: 0;" placeholder="Enter name" />
 </Story>

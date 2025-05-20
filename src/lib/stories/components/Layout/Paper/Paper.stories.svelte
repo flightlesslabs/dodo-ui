@@ -24,20 +24,8 @@
   });
 </script>
 
-<!-- ⚠️ Test Paper: Do not use! -->
-<Story
-  name="Test Paper"
-  args={{
-    _unsafeChildrenStringForTesting: 'Hola!',
-  }}
-/>
-
 <!-- Paper with default style -->
-<Story name="Default">
-  <Paper>Hola!</Paper>
-</Story>
+<Story name="Default">Hola!</Story>
 
 <!-- Paper with width and height -->
-<Story name="WidthAndHeight">
-  <Paper width="200px" height="200px">Hola!</Paper>
-</Story>
+<Story name="WidthAndHeight" args={{ width: '200px', height: '200px' }}>Hola!</Story>

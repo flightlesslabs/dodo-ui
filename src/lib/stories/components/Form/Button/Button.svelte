@@ -77,8 +77,6 @@
     anchorMediaType?: string | undefined | null;
     /** Link button: referrerpolicy  */
     referrerpolicy?: ButtonLinkReferrerpolicy;
-    /** Test: ⚠️ Unsafe Children String. Do Not use*/
-    _unsafeChildrenStringForTesting?: string;
   }
 
   let {
@@ -108,7 +106,6 @@
     target,
     anchorMediaType,
     referrerpolicy,
-    _unsafeChildrenStringForTesting,
     ref = $bindable<HTMLButtonElement | HTMLAnchorElement>(),
   }: ButtonProps = $props();
 </script>
@@ -122,8 +119,6 @@
 
   {#if children}
     {@render children()}
-  {:else if _unsafeChildrenStringForTesting}
-    {_unsafeChildrenStringForTesting}
   {/if}
 
   {#if after}
