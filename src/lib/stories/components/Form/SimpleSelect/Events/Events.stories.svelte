@@ -25,16 +25,7 @@
       console.log('onChange Event', target.value);
     },
   }}
->
-  <SimpleSelect
-    onchange={(e: Event) => {
-      const target = e.target as HTMLSelectElement;
-
-      console.log('onchange Event', target.value);
-    }}
-    options={storySimpleSelectOptions}
-  />
-</Story>
+/>
 
 <!-- `e: SimpleSelectFocusEvent` -->
 <Story
@@ -46,16 +37,7 @@
       console.log('onfocus Event', target);
     },
   }}
->
-  <SimpleSelect
-    onfocus={(e: SimpleSelectFocusEvent) => {
-      const target = e.target as HTMLSelectElement;
-
-      console.log('onfocus Event', target);
-    }}
-    options={storySimpleSelectOptions}
-  />
-</Story>
+/>
 
 <!-- `e: SimpleSelectFocusEvent` -->
 <Story
@@ -67,13 +49,4 @@
       console.log('onblur Event', target);
     },
   }}
->
-  <SimpleSelect
-    onblur={(e: SimpleSelectFocusEvent) => {
-      const target = e.target as HTMLSelectElement;
-
-      console.log('onblur Event', target);
-    }}
-    options={storySimpleSelectOptions}
-  />
-</Story>
+/>

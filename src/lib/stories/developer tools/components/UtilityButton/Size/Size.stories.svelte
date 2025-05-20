@@ -17,11 +17,11 @@
 </script>
 
 <Story name="Normal" args={{ disabled: false }}>
-  <UtilityButton><Icon icon="mdi:eye" width="24" height="24" /></UtilityButton>
+  <Icon icon="mdi:eye" width="24" height="24" />
 </Story>
 <Story name="Small" args={{ size: 'small' }}>
-  <UtilityButton size="small"><Icon icon="mdi:eye" width="22" height="22" /></UtilityButton>
+  <Icon icon="mdi:eye" width="24" height="24" />
 </Story>
 <Story name="Large" args={{ size: 'large' }}>
-  <UtilityButton size="large"><Icon icon="mdi:eye" width="28" height="28" /></UtilityButton>
+  <Icon icon="mdi:eye" width="24" height="24" />
 </Story>

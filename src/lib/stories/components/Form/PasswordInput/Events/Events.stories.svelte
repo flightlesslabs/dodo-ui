@@ -24,15 +24,7 @@
       console.log('Input Event', target.value);
     },
   }}
->
-  <PasswordInput
-    oninput={(e: Event) => {
-      const target = e.target as HTMLInputElement;
-
-      console.log('Input Event', target.value);
-    }}
-  />
-</Story>
+/>
 
 <Story
   name="Change"
@@ -43,15 +35,7 @@
       console.log('onChange Event', target.value);
     },
   }}
->
-  <PasswordInput
-    onchange={(e: Event) => {
-      const target = e.target as HTMLInputElement;
-
-      console.log('onchange Event', target.value);
-    }}
-  />
-</Story>
+/>
 
 <!-- `e: PasswordInputToggleEvent` -->
 <Story
@@ -63,15 +47,7 @@
       console.log('ontoggle Event', e, target);
     },
   }}
->
-  <PasswordInput
-    ontoggle={(e: PasswordInputToggleEvent) => {
-      const target = e.event.target as HTMLButtonElement;
-
-      console.log('ontoggle Event', e, target);
-    }}
-  />
-</Story>
+/>
 
 <!-- `e: TextInputFocusEvent` -->
 <Story
@@ -83,15 +59,7 @@
       console.log('onfocus Event', target);
     },
   }}
->
-  <PasswordInput
-    onfocus={(e: TextInputFocusEvent) => {
-      const target = e.target as HTMLInputElement;
-
-      console.log('onfocus Event', target);
-    }}
-  />
-</Story>
+/>
 
 <!-- `e: TextInputFocusEvent` -->
 <Story
@@ -103,15 +71,7 @@
       console.log('onblur Event', target);
     },
   }}
->
-  <PasswordInput
-    onblur={(e: TextInputFocusEvent) => {
-      const target = e.target as HTMLInputElement;
-
-      console.log('onblur Event', target);
-    }}
-  />
-</Story>
+/>
 
 <!-- `e: TextInputClipboardEvent` -->
 <Story
@@ -123,15 +83,7 @@
       console.log('oncopy Event', target);
     },
   }}
->
-  <PasswordInput
-    oncopy={(e: TextInputClipboardEvent) => {
-      const target = e.target as HTMLInputElement;
-
-      console.log('oncopy Event', target);
-    }}
-  />
-</Story>
+/>
 
 <!-- `e: TextInputClipboardEvent` -->
 <Story
@@ -143,15 +95,7 @@
       console.log('oncut Event', target);
     },
   }}
->
-  <PasswordInput
-    oncut={(e: TextInputClipboardEvent) => {
-      const target = e.target as HTMLInputElement;
-
-      console.log('oncut Event', target);
-    }}
-  />
-</Story>
+/>
 
 <!-- `e: TextInputClipboardEvent` -->
 <Story
@@ -163,12 +107,4 @@
       console.log('onpaste Event', target);
     },
   }}
->
-  <PasswordInput
-    onpaste={(e: TextInputClipboardEvent) => {
-      const target = e.target as HTMLInputElement;
-
-      console.log('onpaste Event', target);
-    }}
-  />
-</Story>
+/>

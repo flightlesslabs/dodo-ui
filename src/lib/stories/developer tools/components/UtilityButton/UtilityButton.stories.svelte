@@ -4,11 +4,12 @@
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
   import Icon from '@iconify/svelte';
   import { fn } from '@storybook/test';
+  import { componentSizeArray } from '$lib/types/size.js';
 
   export const storyUtilityButtonArgTypes: StoryBookArgTypes = {
     size: {
       control: { type: 'select' },
-      options: ['normal', 'small', 'large'],
+      options: componentSizeArray,
     },
   };
 
@@ -25,9 +26,9 @@
 
 <!-- Button with default style -->
 <Story name="Default">
-  <UtilityButton><Icon icon="mdi:eye" width="24" height="24" /></UtilityButton>
+  <Icon icon="mdi:eye" width="24" height="24" />
 </Story>
 
 <Story name="Disabled" args={{ disabled: true }}>
-  <UtilityButton disabled><Icon icon="mdi:eye" width="24" height="24" /></UtilityButton>
+  <Icon icon="mdi:eye" width="24" height="24" />
 </Story>

@@ -2,15 +2,17 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Message from './Message.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
+  import { componentColorArray } from '$lib/types/colors.js';
+  import { componentSizeArray } from '$lib/types/size.js';
 
   export const storyMessageArgTypes: StoryBookArgTypes = {
     color: {
       control: { type: 'select' },
-      options: ['default', 'primary', 'secondary', 'safe', 'warning', 'danger'],
+      options: componentColorArray,
     },
     size: {
       control: { type: 'select' },
-      options: ['normal', 'small', 'large'],
+      options: componentSizeArray,
     },
   };
 
@@ -22,14 +24,4 @@
   });
 </script>
 
-<!-- ⚠️ Test Message: Do not use! -->
-<Story
-  name="Test Message"
-  args={{
-    _unsafeChildrenStringForTesting: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-  }}
-/>
-
-<Story name="Default">
-  <Message>Lorem ipsum dolor sit amet, consectetur adipiscing elit</Message>
-</Story>
+<Story name="Primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Story>

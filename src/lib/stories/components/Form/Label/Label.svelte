@@ -12,8 +12,6 @@
     form?: string;
     /** Custom css class*/
     class?: string;
-    /** Test: ⚠️ Unsafe Children String. Do Not use*/
-    _unsafeChildrenStringForTesting?: string;
   }
 
   let {
@@ -21,7 +19,6 @@
     class: className = '',
     for: htmlFor,
     form,
-    _unsafeChildrenStringForTesting,
     ref = $bindable<HTMLLabelElement>(),
   }: LabelProps = $props();
 </script>
@@ -29,15 +26,13 @@
 <label class={['dodo-ui-Label', className].join(' ')} for={htmlFor} {form} bind:this={ref}>
   {#if children}
     {@render children()}
-  {:else if _unsafeChildrenStringForTesting}
-    {_unsafeChildrenStringForTesting}
   {/if}
 </label>
 
 <style lang="scss">
   .dodo-ui-Label {
     font-size: 0.95rem;
-    color: var(--dodo-color-default-700);
+    color: var(--dodo-color-neutral-700);
     display: flex;
     align-items: center;
     font-family: inherit;

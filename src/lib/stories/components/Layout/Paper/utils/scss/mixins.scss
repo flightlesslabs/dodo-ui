@@ -1,0 +1,46 @@
+/// Mixin: generate-dodo-ui-paper-colors
+/// Generates CSS custom properties for Dodo UI paper styles (text & solid)
+/// across different interaction states (default, hover, active).
+/// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
+@mixin generate-dodo-ui-paper-colors($color-name) {
+  --dodo-ui-Paper-outline-#{$color-name}: var(--dodo-color-#{$color-name}-400);
+  --dodo-ui-Paper-text-#{$color-name}-bg: var(--dodo-color-#{$color-name}-100);
+  --dodo-ui-Paper-solid-#{$color-name}-bg: var(--dodo-color-#{$color-name}-500);
+}
+
+/// Mixin: generate-dodo-ui-paper-colors
+/// Generates CSS custom properties for Dodo UI paper styles (text & solid)
+/// across different interaction states (default, hover, active).
+/// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
+@mixin generate-dodo-ui-paper-colors-dark($color-name) {
+  --dodo-ui-Paper-outline-#{$color-name}: var(--dodo-color-#{$color-name}-300);
+  --dodo-ui-Paper-text-#{$color-name}-bg: color-mix(
+    in oklab,
+    var(--dodo-color-#{$color-name}-50) 80%,
+    #00000080
+  );
+  --dodo-ui-Paper-solid-#{$color-name}-bg: var(--dodo-color-#{$color-name}-300);
+}
+
+/// Mixin: generate-dodo-ui-paper-color
+/// Auto-generates .color--[theme] > .variant--text & .variant--solid styles
+/// @param {String} $theme - e.g., default, safe, danger, etc.
+@mixin generate-dodo-ui-paper-color($theme) {
+  &--#{$theme} {
+    &.variant {
+      &--text {
+        color: var(--dodo-color-#{$theme}-800);
+        background-color: var(--dodo-ui-Paper-text-#{$theme}-bg);
+
+        &.outline {
+          border-color: var(--dodo-ui-Paper-outline-#{$theme});
+        }
+      }
+
+      &--solid {
+        color: var(--dodo-color-constant-white);
+        background-color: var(--dodo-ui-Paper-solid-#{$theme}-bg);
+      }
+    }
+  }
+}

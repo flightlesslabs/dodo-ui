@@ -1,6 +1,16 @@
 import '$lib/styles/global.css';
 
-export type { ComponentSize, ComponentRoundness, ComponentRoundnessFull } from './types.js';
+export type {
+  ComponentColorPriority,
+  ComponentColorSeverity,
+  ComponentColor,
+} from './types/colors.js';
+
+export type { ComponentRoundness } from './types/roundness.js';
+
+export type { ComponentSize } from './types/size.js';
+
+export type { ComponentWeight } from './types/weight.js';
 
 /** developer tools: components: UtilityButton */
 export { default as UtilityButton } from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
@@ -11,10 +21,9 @@ export { default as InputEnclosure } from '$lib/stories/developer tools/componen
 /** Form: Button */
 export { default as Button } from '$lib/stories/components/Form/Button/Button.svelte';
 export type {
-  ButtonColor,
-  ButtonRoundness,
   ButtonLinkTarget,
   ButtonLinkReferrerpolicy,
+  ButtonType,
 } from '$lib/stories/components/Form/Button/Button.svelte';
 
 /** Form: TextInput */
@@ -37,7 +46,6 @@ export { default as FormControl } from '$lib/stories/components/Form/FormControl
 
 /** Form: Message */
 export { default as Message } from '$lib/stories/components/Form/Message/Message.svelte';
-export type { MessageColor } from '$lib/stories/components/Form/Message/Message.svelte';
 
 /** Form: SimpleSelect */
 export { default as SimpleSelect } from '$lib/stories/components/Form/SimpleSelect/SimpleSelect.svelte';
@@ -48,7 +56,4 @@ export type {
 
 /** Layout: Paper */
 export { default as Paper } from '$lib/stories/components/Layout/Paper/Paper.svelte';
-export type {
-  PaperRoundness,
-  PaperShadow,
-} from '$lib/stories/components/Layout/Paper/Paper.svelte';
+export type { PaperColor } from '$lib/stories/components/Layout/Paper/Paper.svelte';

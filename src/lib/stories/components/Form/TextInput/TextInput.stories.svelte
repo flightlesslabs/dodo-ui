@@ -1,20 +1,22 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import TextInput from './TextInput.svelte';
+  import TextInput, { textInputTypeArray } from './TextInput.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
+  import { componentRoundnessArray } from '$lib/types/roundness.js';
+  import { componentSizeArray } from '$lib/types/size.js';
 
   export const storyTextInputArgTypes: StoryBookArgTypes = {
     type: {
       control: { type: 'select' },
-      options: ['text', 'tel', 'email', 'password', 'url', 'number'],
+      options: textInputTypeArray,
     },
     roundness: {
       control: { type: 'select' },
-      options: [false, '1x', '2x', '3x'],
+      options: componentRoundnessArray,
     },
     size: {
       control: { type: 'select' },
-      options: ['normal', 'small', 'large'],
+      options: componentSizeArray,
     },
   };
 

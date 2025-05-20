@@ -12,8 +12,9 @@
 
 <script lang="ts">
   import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
+  import type { ComponentRoundness } from '$lib/types/roundness.js';
+  import type { ComponentSize } from '$lib/types/size.js';
 
-  import type { ComponentRoundness, ComponentSize } from '$lib/types.js';
   import type { Snippet } from 'svelte';
   import type { ChangeEventHandler, FocusEventHandler } from 'svelte/elements';
 
@@ -23,7 +24,7 @@
     /** How large should the button be? */
     size?: ComponentSize;
     /** How round should the border radius be? */
-    roundness?: ComponentRoundness | false;
+    roundness?: ComponentRoundness;
     /** How round should the border radius be? */
     options: SimpleSelectOption[];
     /** Add a border around the button. Default True */
@@ -56,7 +57,7 @@
 
   let {
     size = 'normal',
-    roundness = '1x',
+    roundness = 1,
     outline = true,
     name,
     id,
@@ -137,13 +138,13 @@
       &--normal {
         select {
           font-size: 1rem;
-          padding: 0 12px;
+          padding: 0 calc(var(--dodo-ui-space-small) * 2);
         }
       }
 
       &--small {
         select {
-          padding: 0 8px;
+          padding: 0 var(--dodo-ui-space);
           font-size: 0.9rem;
         }
       }
@@ -151,7 +152,7 @@
       &--large {
         select {
           font-size: 1.1rem;
-          padding: 0 14px;
+          padding: 0 calc(var(--dodo-ui-space) * 2);
         }
       }
     }

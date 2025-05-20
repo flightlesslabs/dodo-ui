@@ -23,15 +23,7 @@
       console.log('Input Event', target.value);
     },
   }}
->
-  <TextInput
-    oninput={(e: Event) => {
-      const target = e.target as HTMLInputElement;
-
-      console.log('Input Event', target.value);
-    }}
-  />
-</Story>
+/>
 
 <Story
   name="Change"
@@ -42,15 +34,7 @@
       console.log('onChange Event', target.value);
     },
   }}
->
-  <TextInput
-    onchange={(e: Event) => {
-      const target = e.target as HTMLInputElement;
-
-      console.log('onchange Event', target.value);
-    }}
-  />
-</Story>
+/>
 
 <!-- `e: TextInputFocusEvent` -->
 <Story
@@ -62,15 +46,7 @@
       console.log('onfocus Event', target);
     },
   }}
->
-  <TextInput
-    onfocus={(e: TextInputFocusEvent) => {
-      const target = e.target as HTMLInputElement;
-
-      console.log('onfocus Event', target);
-    }}
-  />
-</Story>
+/>
 
 <!-- `e: TextInputFocusEvent` -->
 <Story
@@ -82,15 +58,7 @@
       console.log('onblur Event', target);
     },
   }}
->
-  <TextInput
-    onblur={(e: TextInputFocusEvent) => {
-      const target = e.target as HTMLInputElement;
-
-      console.log('onblur Event', target);
-    }}
-  />
-</Story>
+/>
 
 <!-- `e: TextInputClipboardEvent` -->
 <Story
@@ -102,15 +70,7 @@
       console.log('oncopy Event', target);
     },
   }}
->
-  <TextInput
-    oncopy={(e: TextInputClipboardEvent) => {
-      const target = e.target as HTMLInputElement;
-
-      console.log('oncopy Event', target);
-    }}
-  />
-</Story>
+/>
 
 <!-- `e: TextInputClipboardEvent` -->
 <Story
@@ -122,15 +82,7 @@
       console.log('oncut Event', target);
     },
   }}
->
-  <TextInput
-    oncut={(e: TextInputClipboardEvent) => {
-      const target = e.target as HTMLInputElement;
-
-      console.log('oncut Event', target);
-    }}
-  />
-</Story>
+/>
 
 <!-- `e: TextInputClipboardEvent` -->
 <Story
@@ -142,12 +94,4 @@
       console.log('onpaste Event', target);
     },
   }}
->
-  <TextInput
-    onpaste={(e: TextInputClipboardEvent) => {
-      const target = e.target as HTMLInputElement;
-
-      console.log('onpaste Event', target);
-    }}
-  />
-</Story>
+/>

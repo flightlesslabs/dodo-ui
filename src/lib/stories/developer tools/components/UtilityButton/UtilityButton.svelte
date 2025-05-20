@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ComponentSize } from '$lib/types.js';
+  import type { ComponentSize } from '$lib/types/size.js';
   import type { Snippet } from 'svelte';
   import type { MouseEventHandler } from 'svelte/elements';
 
@@ -56,14 +56,14 @@
     --dodo-ui-UtilityButton-hover: var(--dodo-color-primary-600);
     --dodo-ui-UtilityButton-active: var(--dodo-color-primary-600);
 
-    --dodo-ui-UtilityButton-disabled-color: var(--dodo-color-default-400);
+    --dodo-ui-UtilityButton-disabled-color: var(--dodo-color-neutral-400);
   }
 
   :global(.dodo-theme--dark) {
     --dodo-ui-UtilityButton-hover: var(--dodo-color-primary-600);
     --dodo-ui-UtilityButton-active: var(--dodo-color-primary-600);
 
-    --dodo-ui-UtilityButton-disabled-color: var(--dodo-color-default-500);
+    --dodo-ui-UtilityButton-disabled-color: var(--dodo-color-neutral-500);
   }
 
   .dodo-ui-UtilityButton {
@@ -80,7 +80,7 @@
     border: 0;
     outline: 0;
     padding: 0;
-    color: var(--dodo-color-default-700);
+    color: var(--dodo-color-neutral-700);
     border-radius: 50%;
     font-family: inherit;
 

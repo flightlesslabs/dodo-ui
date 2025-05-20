@@ -24,7 +24,7 @@ export const colorPaletteBase = [
 
 export const colorPaletteNeutral = ['black', 'white'];
 
-export const colorPalette = ['default', 'primary', 'safe', 'warning', 'danger', 'secondary'];
+export const colorPalette = ['primary', 'secondary', 'neutral', 'safe', 'warning', 'danger'];
 
 export const colorPaletteValues = [
   '50',

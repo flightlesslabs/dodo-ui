@@ -13,7 +13,7 @@
 </script>
 
 <!-- TextInput icon in front. -->
-<Story name="Icon Before">
+<Story name="Icon Before" asChild>
   <TextInput>
     {#snippet before()}
       <Icon icon="material-symbols:content-copy" />
@@ -22,7 +22,7 @@
 </Story>
 
 <!-- TextInput icon in front. -->
-<Story name="Icon After">
+<Story name="Icon After" asChild>
   <TextInput>
     {#snippet after()}
       <Icon icon="material-symbols:download-2" />
@@ -30,7 +30,7 @@
   </TextInput>
 </Story>
 
-<Story name="Small" args={{ size: 'small' }}>
+<Story name="Small" args={{ size: 'small' }} asChild>
   <TextInput size="small">
     {#snippet before()}
       <Icon icon="material-symbols:content-copy" />
@@ -38,7 +38,7 @@
   </TextInput>
 </Story>
 
-<Story name="Large" args={{ size: 'large' }}>
+<Story name="Large" args={{ size: 'large' }} asChild>
   <TextInput size="large">
     {#snippet before()}
       <Icon icon="material-symbols:content-copy" />

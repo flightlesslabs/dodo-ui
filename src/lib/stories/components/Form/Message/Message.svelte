@@ -1,9 +1,7 @@
-<script lang="ts" module>
-  export type MessageColor = 'default' | 'primary' | 'secondary' | 'safe' | 'warning' | 'danger';
-</script>
-
 <script lang="ts">
-  import type { ComponentSize } from '$lib/types.js';
+  import type { ComponentColor } from '$lib/types/colors.js';
+
+  import type { ComponentSize } from '$lib/types/size.js';
 
   import type { Snippet } from 'svelte';
 
@@ -13,21 +11,18 @@
     /** Message ref */
     ref?: HTMLDivElement;
     /** What color to use? */
-    color?: MessageColor;
+    color?: ComponentColor;
     /** Message size */
     size?: ComponentSize;
     /** Custom css class*/
     class?: string;
-    /** Test: ⚠️ Unsafe Children String. Do Not use*/
-    _unsafeChildrenStringForTesting?: string;
   }
 
   let {
     children,
     class: className = '',
-    color = 'default',
+    color = 'primary',
     ref = $bindable<HTMLDivElement>(),
-    _unsafeChildrenStringForTesting,
     size = 'normal',
   }: MessageProps = $props();
 </script>
@@ -38,8 +33,6 @@
 >
   {#if children}
     {@render children()}
-  {:else if _unsafeChildrenStringForTesting}
-    {_unsafeChildrenStringForTesting}
   {/if}
 </div>
 
@@ -64,16 +57,16 @@
     }
 
     &.color {
-      &--default {
-        color: var(--dodo-color-default-800);
-      }
-
       &--primary {
         color: var(--dodo-color-primary-600);
       }
 
       &--secondary {
         color: var(--dodo-color-secondary-600);
+      }
+
+      &--neutral {
+        color: var(--dodo-color-neutral-600);
       }
 
       &--safe {

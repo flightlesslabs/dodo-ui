@@ -2,15 +2,17 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import InputEnclosure from './InputEnclosure.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
+  import { componentRoundnessArray } from '$lib/types/roundness.js';
+  import { componentSizeArray } from '$lib/types/size.js';
 
   export const storyInputEnclosureArgTypes: StoryBookArgTypes = {
     roundness: {
       control: { type: 'select' },
-      options: [false, '1x', '2x', '3x'],
+      options: componentRoundnessArray,
     },
     size: {
       control: { type: 'select' },
-      options: ['normal', 'small', 'large'],
+      options: componentSizeArray,
     },
   };
 
@@ -32,7 +34,5 @@
 <Story name="Disabled" args={{ disabled: true }} />
 
 <Story name="Input example">
-  <InputEnclosure>
-    <input type="text" style="flex: 1; border: 0;" placeholder="Enter name" />
-  </InputEnclosure>
+  <input type="text" style="flex: 1; border: 0;" placeholder="Enter name" />
 </Story>

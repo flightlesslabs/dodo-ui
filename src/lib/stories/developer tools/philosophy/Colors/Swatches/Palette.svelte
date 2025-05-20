@@ -25,7 +25,7 @@
     height: 60px;
     border-radius: 4px;
     border: 1px solid;
-    border-color: color-mix(in oklab, var(--dodo-color-default-800) 20%, transparent);
+    border-color: color-mix(in oklab, var(--dodo-color-neutral-800) 20%, transparent);
     background: transparent;
     min-width: initial;
     margin: 0;

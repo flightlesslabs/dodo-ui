@@ -12,18 +12,17 @@
 
 <Story name="Default" args={{ label: 'Hello there' }} />
 
-<Story name="Example TextInput" args={{ label: 'Whats your first name?' }}>
-  <FormControl label="Whats your first name?" for="first-name-01">
-    <TextInput placeholder="First name" id="first-name-01" />
-  </FormControl>
+<Story name="Example TextInput" args={{ label: 'Whats your first name?', for: 'first-name-01' }}>
+  <TextInput placeholder="First name" id="first-name-01" />
 </Story>
 
-<Story name="ErrorMessage" args={{ label: 'Whats your first name?' }}>
-  <FormControl
-    label="Whats your first name?"
-    for="first-name-02"
-    errorMessage="This is an error message"
-  >
-    <TextInput value="John Smith" id="first-name-02" error />
-  </FormControl>
+<Story
+  name="ErrorMessage"
+  args={{
+    label: 'Whats your first name?',
+    for: 'first-name-02',
+    errorMessage: 'This is an error message',
+  }}
+>
+  <TextInput value="John Smith" id="first-name-02" error />
 </Story>

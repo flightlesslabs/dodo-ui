@@ -11,14 +11,12 @@
   });
 </script>
 
-<Story name="Normal">
-  <Message>Lorem ipsum dolor sit amet, consectetur adipiscing elit</Message>
-</Story>
+<Story name="Normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Story>
 
 <Story name="Small" args={{ size: 'small' }}>
-  <Message size="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Message>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit
 </Story>
 
 <Story name="Large" args={{ size: 'large' }}>
-  <Message size="large">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Message>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit
 </Story>

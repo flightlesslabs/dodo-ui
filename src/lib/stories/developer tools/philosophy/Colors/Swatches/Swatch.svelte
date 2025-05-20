@@ -22,7 +22,7 @@
 
 <style lang="scss">
   .Swatch {
-    color: var(--dodo-color-default-900);
+    color: var(--dodo-color-neutral-900);
     display: flex;
     align-items: center;
     flex-direction: column;

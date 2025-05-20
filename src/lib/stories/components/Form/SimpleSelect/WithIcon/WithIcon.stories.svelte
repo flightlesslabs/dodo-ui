@@ -18,7 +18,7 @@
 </script>
 
 <!-- SimpleSelect icon in front. -->
-<Story name="Icon Before">
+<Story name="Icon Before" asChild>
   <SimpleSelect options={storySimpleSelectOptions}>
     {#snippet before()}
       <Icon icon="material-symbols:content-copy" />
@@ -27,7 +27,7 @@
 </Story>
 
 <!-- SimpleSelect icon in front. -->
-<Story name="Icon After">
+<Story name="Icon After" asChild>
   <SimpleSelect options={storySimpleSelectOptions}>
     {#snippet after()}
       <Icon icon="material-symbols:download-2" />

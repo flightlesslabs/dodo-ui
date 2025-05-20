@@ -1,16 +1,27 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Paper from './Paper.svelte';
+  import Paper, { paperColorArray } from './Paper.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
+  import { componentRoundnessArray } from '$lib/types/roundness.js';
+  import { componentShadowArray } from '$lib/types/shadow.js';
+  import { componentWeightArray } from '$lib/types/weight.js';
 
   export const storyPaperArgTypes: StoryBookArgTypes = {
+    color: {
+      control: { type: 'select' },
+      options: paperColorArray,
+    },
+    variant: {
+      control: { type: 'select' },
+      options: componentWeightArray,
+    },
     roundness: {
       control: { type: 'select' },
-      options: [false, '1x', '2x', '3x', 'full'],
+      options: componentRoundnessArray,
     },
     shadow: {
       control: { type: 'select' },
-      options: [false, '1x', '2x', '3x', '4x', '5x', '6x', '7x'],
+      options: componentShadowArray,
     },
   };
 
@@ -22,20 +33,18 @@
   });
 </script>
 
-<!-- ⚠️ Test Paper: Do not use! -->
-<Story
-  name="Test Paper"
-  args={{
-    _unsafeChildrenStringForTesting: 'Hola!',
-  }}
-/>
-
 <!-- Paper with default style -->
-<Story name="Default">
-  <Paper>Hola!</Paper>
-</Story>
+<Story name="Default">Hola!</Story>
 
 <!-- Paper with width and height -->
-<Story name="WidthAndHeight">
-  <Paper width="200px" height="200px">Hola!</Paper>
+<Story name="WidthAndHeight" args={{ width: '200px', height: '200px', color: 'primary' }}>
+  Hola!
+</Story>
+
+<!-- Paper with Custom Backgroun and Border colors -->
+<Story
+  name="Custom Color"
+  args={{ height: '100px', customBackgroundColor: '#ffdfad', customBorderColor: '#fbc674' }}
+>
+  Hola!
 </Story>
