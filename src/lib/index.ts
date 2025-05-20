@@ -56,3 +56,4 @@ export type {
 
 /** Layout: Paper */
 export { default as Paper } from '$lib/stories/components/Layout/Paper/Paper.svelte';
+export type { PaperColor } from '$lib/stories/components/Layout/Paper/Paper.svelte';

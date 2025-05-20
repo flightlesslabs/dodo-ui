@@ -1,7 +1,17 @@
 <script lang="ts" module>
-  import type { ComponentColor } from '$lib/types/colors.js';
+  import {
+    componentColorPriorityArray,
+    componentColorSeverityArray,
+    type ComponentColor,
+  } from '$lib/types/colors.js';
 
   export type PaperColor = 'default' | ComponentColor;
+
+  export const paperColorArray: PaperColor[] = [
+    'default',
+    ...componentColorPriorityArray,
+    ...componentColorSeverityArray,
+  ];
 </script>
 
 <script lang="ts">
@@ -34,9 +44,9 @@
     color?: PaperColor;
     /** How should paper appear? */
     variant?: ComponentWeight;
-    /** Custom background color */
+    /** Custom background color. Use CSS compatible value */
     customBackgroundColor?: string;
-    /** Custom border color */
+    /** Custom border color. Use CSS compatible value */
     customBorderColor?: string;
   }
 

@@ -12,6 +12,7 @@
 </script>
 
 <Story name="Default" args={{ height: '100px' }}>Hola!</Story>
+
 <Story name="Primary" args={{ color: 'primary', height: '100px' }}>Hola!</Story>
 <Story name="Secondary" args={{ color: 'secondary', height: '100px' }}>Hola!</Story>
 <Story name="Neutral" args={{ color: 'neutral', height: '100px' }}>Hola!</Story>
@@ -50,5 +51,13 @@
   Hola!
 </Story>
 <Story name="Danger Solid" args={{ color: 'danger', variant: 'solid', height: '100px' }}>
+  Hola!
+</Story>
+
+<!-- Paper with Custom Backgroun and Border colors -->
+<Story
+  name="Custom Color"
+  args={{ height: '100px', customBackgroundColor: '#ffdfad', customBorderColor: '#fbc674' }}
+>
   Hola!
 </Story>
