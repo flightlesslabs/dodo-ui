@@ -1,0 +1,87 @@
+<script module lang="ts">
+  import { defineMeta } from '@storybook/addon-svelte-csf';
+  import type { StoryBookArgTypes } from '$lib/storybook-types.js';
+  import { Popper } from '$lib/index.js';
+  import { popperPopupPositionXArray, popperPopupPositionYArray } from './PopperPopup.svelte';
+  import Button from '$lib/stories/components/Form/Button/Button.svelte';
+
+  export const storyPopperArgTypes: StoryBookArgTypes = {
+    popupPositionX: {
+      control: { type: 'select' },
+      options: popperPopupPositionXArray,
+    },
+    popupPositionY: {
+      control: { type: 'select' },
+      options: popperPopupPositionYArray,
+    },
+  };
+
+  // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
+  const { Story } = defineMeta({
+    component: Popper,
+    tags: ['autodocs'],
+    argTypes: storyPopperArgTypes,
+  });
+
+  let open = $state(false);
+</script>
+
+<Story name="Default" args={{ open, onClickOutside: () => (open = false) }} asChild>
+  <Popper {open} onClickOutside={() => (open = false)}>
+    <Button onclick={() => (open = true)}>Click to see Popup</Button>
+    {#snippet popupChildren()}
+      <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+      </ul>
+    {/snippet}
+  </Popper>
+</Story>
+
+<Story name="MenuOpen" args={{ open: true }} asChild>
+  <Popper open>
+    Hello! how are you doing?
+    {#snippet popupChildren()}
+      <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+      </ul>
+    {/snippet}
+  </Popper>
+</Story>
+
+<Story
+  name="PositionTop"
+  args={{ open, onClickOutside: () => (open = false), popupPositionY: 'top' }}
+  asChild
+>
+  <Popper {open} popupPositionY="top" onClickOutside={() => (open = false)}>
+    <Button onclick={() => (open = true)}>Click to see Popup</Button>
+    {#snippet popupChildren()}
+      <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+      </ul>
+    {/snippet}
+  </Popper>
+</Story>
+
+<Story
+  name="PositionRight"
+  args={{ open, onClickOutside: () => (open = false), popupPositionX: 'right' }}
+  asChild
+>
+  <Popper {open} popupPositionX="right" onClickOutside={() => (open = false)}>
+    <Button onclick={() => (open = true)}>Click to see Popup</Button>
+    {#snippet popupChildren()}
+      <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+      </ul>
+    {/snippet}
+  </Popper>
+</Story>

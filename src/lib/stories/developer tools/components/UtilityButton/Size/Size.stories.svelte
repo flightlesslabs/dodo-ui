@@ -1,6 +1,5 @@
 <script module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import { fn } from '@storybook/test';
   import UtilityButton from '../UtilityButton.svelte';
   import { storyUtilityButtonArgTypes } from '../UtilityButton.stories.svelte';
   import Icon from '@iconify/svelte';
@@ -10,18 +9,17 @@
     component: UtilityButton,
     tags: ['autodocs'],
     argTypes: storyUtilityButtonArgTypes,
-    args: {
-      onclick: fn(),
-    },
   });
 </script>
 
-<Story name="Normal" args={{ disabled: false }}>
+<Story name="Normal">
   <Icon icon="mdi:eye" width="24" height="24" />
 </Story>
+
 <Story name="Small" args={{ size: 'small' }}>
   <Icon icon="mdi:eye" width="24" height="24" />
 </Story>
+
 <Story name="Large" args={{ size: 'large' }}>
   <Icon icon="mdi:eye" width="24" height="24" />
 </Story>

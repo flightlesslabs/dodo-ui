@@ -12,6 +12,9 @@ export type { ComponentSize } from './types/size.js';
 
 export type { ComponentWeight } from './types/weight.js';
 
+/** developer tools: directives: clickOutside */
+export { clickOutside } from '$lib/stories/developer tools/directives/clickOutside/clickOutside.js';
+
 /** developer tools: components: UtilityButton */
 export { default as UtilityButton } from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
 export type { UtilityButtonProps } from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
@@ -19,6 +22,16 @@ export type { UtilityButtonProps } from '$lib/stories/developer tools/components
 /** developer tools: components: InputEnclosure */
 export { default as InputEnclosure } from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
 export type { InputEnclosureProps } from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
+
+/** developer tools: components: Popper */
+export { default as Popper } from '$lib/stories/developer tools/components/Popper/Popper.svelte';
+export type { PopperProps } from '$lib/stories/developer tools/components/Popper/Popper.svelte';
+export { default as PopperPopup } from '$lib/stories/developer tools/components/Popper/PopperPopup.svelte';
+export type {
+  PopperPopupPositionY,
+  PopperPopupPositionX,
+  PopperPopupProps,
+} from '$lib/stories/developer tools/components/Popper/PopperPopup.svelte';
 
 /** Form: Button */
 export { default as Button } from '$lib/stories/components/Form/Button/Button.svelte';
