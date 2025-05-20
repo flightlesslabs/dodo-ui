@@ -28,4 +28,6 @@
 <Story name="Default">Hola!</Story>
 
 <!-- Paper with width and height -->
-<Story name="WidthAndHeight" args={{ width: '200px', height: '200px' }}>Hola!</Story>
+<Story name="WidthAndHeight" args={{ width: '200px', height: '200px', color: 'primary' }}>
+  Hola!
+</Story>
