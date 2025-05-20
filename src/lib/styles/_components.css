@@ -11,10 +11,4 @@
 
   /* Border */
   --dodo-ui-element-border-width: 1px;
-
-  /* Space */
-  /* Example: calc(var(--dodo-ui-space) * 2), calc(var(--dodo-ui-space) / 2) */
-  --dodo-ui-space-small: 6px;
-  --dodo-ui-space: 8px;
-  --dodo-ui-space-large: 10px;
 }

@@ -1,6 +1,7 @@
 @import '_minimal-reset.css';
 @import '_colors-base.css';
 @import '_colors.css';
+@import '_space.css';
 @import '_breakpoint.css';
 @import '_shadow.css';
 @import '_components.css';
