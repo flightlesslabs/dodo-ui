@@ -54,7 +54,7 @@
   Hola!
 </Story>
 
-<!-- Paper with Custom Backgroun and Border colors -->
+<!-- Paper with Custom Background and Border colors -->
 <Story
   name="Custom Color"
   args={{ height: '100px', customBackgroundColor: '#ffdfad', customBorderColor: '#fbc674' }}

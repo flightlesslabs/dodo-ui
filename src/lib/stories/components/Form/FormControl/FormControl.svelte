@@ -1,9 +1,7 @@
-<script lang="ts">
+<script lang="ts" module>
   import type { Snippet } from 'svelte';
-  import Label from '../Label/Label.svelte';
-  import Message from '../Message/Message.svelte';
 
-  interface FormControlProps {
+  export interface FormControlProps {
     /** FormControl contents goes here */
     children?: Snippet;
     /** Label for FormControl */
@@ -19,6 +17,11 @@
     /** Custom css class*/
     class?: string;
   }
+</script>
+
+<script lang="ts">
+  import Label from '../Label/Label.svelte';
+  import Message from '../Message/Message.svelte';
 
   let {
     children,

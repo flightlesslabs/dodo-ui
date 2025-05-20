@@ -1,9 +1,9 @@
-<script lang="ts">
+<script lang="ts" module>
   import type { ComponentRoundness } from '$lib/types/roundness.js';
   import type { ComponentSize } from '$lib/types/size.js';
   import type { Snippet } from 'svelte';
 
-  interface InputEnclosureProps {
+  export interface InputEnclosureProps {
     /** InputEnclosure contents goes here */
     children?: Snippet;
     /** InputEnclosure ref */
@@ -27,7 +27,9 @@
     /** Custom css class*/
     class?: string;
   }
+</script>
 
+<script lang="ts">
   let {
     size = 'normal',
     roundness = 1,

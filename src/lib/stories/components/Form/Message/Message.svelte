@@ -1,11 +1,11 @@
-<script lang="ts">
+<script lang="ts" module>
   import type { ComponentColor } from '$lib/types/colors.js';
 
   import type { ComponentSize } from '$lib/types/size.js';
 
   import type { Snippet } from 'svelte';
 
-  interface MessageProps {
+  export interface MessageProps {
     /** Message contents goes here */
     children?: Snippet;
     /** Message ref */
@@ -17,7 +17,9 @@
     /** Custom css class*/
     class?: string;
   }
+</script>
 
+<script lang="ts">
   let {
     children,
     class: className = '',

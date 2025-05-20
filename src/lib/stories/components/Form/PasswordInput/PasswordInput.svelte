@@ -1,11 +1,6 @@
 <script lang="ts" module>
-  export type PasswordInputToggleEvent = {
-    event: Event;
-    toggle: boolean;
-  };
-</script>
-
-<script lang="ts">
+  import type { ComponentSize } from '$lib/types/size.js';
+  import type { ComponentRoundness } from '$lib/types/roundness.js';
   import type { Snippet } from 'svelte';
   import type {
     ChangeEventHandler,
@@ -13,14 +8,13 @@
     FocusEventHandler,
     FormEventHandler,
   } from 'svelte/elements';
-  import type { TextInputFocusEvent } from '../TextInput/TextInput.svelte';
-  import Icon from '@iconify/svelte';
-  import UtilityButton from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
-  import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
-  import type { ComponentSize } from '$lib/types/size.js';
-  import type { ComponentRoundness } from '$lib/types/roundness.js';
 
-  interface PasswordInputProps {
+  export type PasswordInputToggleEvent = {
+    event: Event;
+    toggle: boolean;
+  };
+
+  export interface PasswordInputProps {
     /** How large should the button be? */
     size?: ComponentSize;
     /** Input ref */
@@ -72,6 +66,13 @@
     /** ontoggle event handler */
     ontoggle?: (e: PasswordInputToggleEvent) => void;
   }
+</script>
+
+<script lang="ts">
+  import Icon from '@iconify/svelte';
+  import UtilityButton from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
+  import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
+  import type { TextInputFocusEvent } from '../TextInput/TextInput.svelte';
 
   let {
     size = 'normal',

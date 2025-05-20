@@ -1,4 +1,10 @@
 <script lang="ts" module>
+  import type { ComponentRoundness } from '$lib/types/roundness.js';
+  import type { ComponentSize } from '$lib/types/size.js';
+
+  import type { Snippet } from 'svelte';
+  import type { ChangeEventHandler, FocusEventHandler } from 'svelte/elements';
+
   export type SimpleSelectFocusEvent = FocusEvent & {
     currentTarget: EventTarget & HTMLSelectElement;
   };
@@ -8,17 +14,8 @@
     label: string;
     disabled?: boolean;
   };
-</script>
 
-<script lang="ts">
-  import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
-  import type { ComponentRoundness } from '$lib/types/roundness.js';
-  import type { ComponentSize } from '$lib/types/size.js';
-
-  import type { Snippet } from 'svelte';
-  import type { ChangeEventHandler, FocusEventHandler } from 'svelte/elements';
-
-  interface SimpleSelectProps {
+  export interface SimpleSelectProps {
     /** Select ref */
     ref?: HTMLSelectElement;
     /** How large should the button be? */
@@ -54,6 +51,10 @@
     /** onfocus event handler */
     onfocus?: FocusEventHandler<HTMLSelectElement>;
   }
+</script>
+
+<script lang="ts">
+  import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
 
   let {
     size = 'normal',

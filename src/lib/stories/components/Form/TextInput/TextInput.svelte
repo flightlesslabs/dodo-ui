@@ -1,4 +1,15 @@
 <script lang="ts" module>
+  import type { ComponentRoundness } from '$lib/types/roundness.js';
+  import type { ComponentSize } from '$lib/types/size.js';
+
+  import type { Snippet } from 'svelte';
+  import type {
+    ChangeEventHandler,
+    ClipboardEventHandler,
+    FocusEventHandler,
+    FormEventHandler,
+  } from 'svelte/elements';
+
   export type TextInputType = 'text' | 'tel' | 'email' | 'password' | 'url' | 'number';
 
   export const textInputTypeArray: TextInputType[] = [
@@ -17,22 +28,8 @@
   export type TextInputClipboardEvent = ClipboardEvent & {
     currentTarget: EventTarget & HTMLInputElement;
   };
-</script>
 
-<script lang="ts">
-  import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
-  import type { ComponentRoundness } from '$lib/types/roundness.js';
-  import type { ComponentSize } from '$lib/types/size.js';
-
-  import type { Snippet } from 'svelte';
-  import type {
-    ChangeEventHandler,
-    ClipboardEventHandler,
-    FocusEventHandler,
-    FormEventHandler,
-  } from 'svelte/elements';
-
-  interface TextInputProps {
+  export interface TextInputProps {
     /** Input type? */
     type?: TextInputType;
     /** Input ref */
@@ -78,6 +75,10 @@
     /** oncut event handler */
     oncut?: ClipboardEventHandler<HTMLInputElement>;
   }
+</script>
+
+<script lang="ts">
+  import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
 
   let {
     type = 'text',
