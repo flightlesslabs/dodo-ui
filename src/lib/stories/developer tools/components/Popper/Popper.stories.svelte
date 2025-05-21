@@ -87,6 +87,20 @@
   </Popper>
 </Story>
 
+<Story name="FullWidth" asChild>
+  <Popper {open} fullWidth onClickOutside={() => (open = false)}>
+    <Button onclick={() => (open = true)}>Click to see Popup</Button>
+
+    {#snippet popupChildren()}
+      <Menu>
+        <MenuItem>One</MenuItem>
+        <MenuItem>Two</MenuItem>
+        <MenuItem>Three</MenuItem>
+      </Menu>
+    {/snippet}
+  </Popper>
+</Story>
+
 <Story
   name="CustomPopup"
   args={{

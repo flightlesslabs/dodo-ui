@@ -18,6 +18,8 @@
     class?: string;
     /** Open popper */
     open?: boolean;
+    /** Full width Popper? */
+    fullWidth?: boolean;
     /** PopperPopup ref */
     popupRef?: HTMLDivElement;
     /** PopperPopup contents goes here */
@@ -70,6 +72,7 @@
     customPopup,
     popperHeightForVerticalPosition,
     lockPoistions,
+    fullWidth = false,
   }: PopperProps = $props();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -102,6 +105,7 @@
 </script>
 
 <div
+  class:fullWidth
   class={['dodo-ui-Popper', className].join(' ')}
   bind:this={ref}
   {id}
@@ -141,5 +145,15 @@
     position: relative;
     display: inline-flex;
     flex-wrap: wrap;
+
+    &.fullWidth {
+      display: flex;
+      width: 100%;
+
+      .PopperContainer {
+        display: block;
+        width: 100%;
+      }
+    }
   }
 </style>
