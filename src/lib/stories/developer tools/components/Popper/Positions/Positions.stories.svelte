@@ -13,7 +13,7 @@
       layout: 'centered',
       docs: {
         story: {
-          height: '250px',
+          height: '280px',
           inline: false,
         },
       },
@@ -29,6 +29,50 @@
   asChild
 >
   <Popper {open} onClickOutside={() => (open = false)} popupWidth="100px">
+    <Button onclick={() => (open = true)}>Click to see Popup</Button>
+    {#snippet popupChildren()}
+      <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+      </ul>
+    {/snippet}
+  </Popper>
+</Story>
+
+<Story
+  name="BottomCenter"
+  args={{
+    open,
+    onClickOutside: () => (open = false),
+    popupPositionX: 'center',
+    popupWidth: '100px',
+  }}
+  asChild
+>
+  <Popper {open} popupPositionX="center" onClickOutside={() => (open = false)} popupWidth="100px">
+    <Button onclick={() => (open = true)}>Click to see Popup</Button>
+    {#snippet popupChildren()}
+      <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+      </ul>
+    {/snippet}
+  </Popper>
+</Story>
+
+<Story
+  name="BottomRight"
+  args={{
+    open,
+    onClickOutside: () => (open = false),
+    popupPositionX: 'right',
+    popupWidth: '100px',
+  }}
+  asChild
+>
+  <Popper {open} popupPositionX="right" onClickOutside={() => (open = false)} popupWidth="100px">
     <Button onclick={() => (open = true)}>Click to see Popup</Button>
     {#snippet popupChildren()}
       <ul>
@@ -58,16 +102,23 @@
 </Story>
 
 <Story
-  name="BottomRight"
+  name="TopCenter"
   args={{
     open,
     onClickOutside: () => (open = false),
-    popupPositionX: 'right',
+    popupPositionY: 'top',
+    popupPositionX: 'center',
     popupWidth: '100px',
   }}
   asChild
 >
-  <Popper {open} popupPositionX="right" onClickOutside={() => (open = false)} popupWidth="100px">
+  <Popper
+    {open}
+    popupPositionY="top"
+    popupPositionX="center"
+    onClickOutside={() => (open = false)}
+    popupWidth="100px"
+  >
     <Button onclick={() => (open = true)}>Click to see Popup</Button>
     {#snippet popupChildren()}
       <ul>

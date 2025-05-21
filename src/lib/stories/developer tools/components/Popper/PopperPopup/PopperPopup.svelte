@@ -1,15 +1,9 @@
 <script lang="ts" module>
   import { Paper } from '$lib/index.js';
   import type { PaperProps } from '$lib/stories/components/Layout/Paper/Paper.svelte';
+  import type { PositionX, PositionY } from '$lib/types/position.js';
   import type { Snippet } from 'svelte';
-
-  export type PopperPopupPositionY = 'top' | 'bottom';
-
-  export type PopperPopupPositionX = 'left' | 'center' | 'right';
-
-  export const popperPopupPositionYArray: PopperPopupPositionY[] = ['top', 'bottom'];
-
-  export const popperPopupPositionXArray: PopperPopupPositionX[] = ['left', 'center', 'right'];
+  import { getPopupPosition } from './utils/getPopupPosition.js';
 
   export interface PopperPopupProps {
     /** Popup contents goes here*/
@@ -27,11 +21,17 @@
     /** Position of Popper content */
     popperLocation?: DOMRect;
     /** Popup stick horizontally  */
-    popupPositionX?: PopperPopupPositionX;
+    popupPositionX?: PositionX;
     /** Popup stick vertically  */
-    popupPositionY?: PopperPopupPositionY;
-    /** offset/gap between Popup and content  */
-    popupOffset?: number;
+    popupPositionY?: PositionY;
+    /** vertical offset/gap between Popup and content  */
+    popupOffsetY?: number;
+    /** Horizontal offset/gap between Popup and content  */
+    popupOffsetX?: number;
+    /** Lock positions, disable auto top, bottom position based  */
+    lockPoistions?: boolean;
+    /** Popper Height For Vertical Position, default 300 */
+    popperHeightForVerticalPosition?: number;
   }
 </script>
 
@@ -46,7 +46,10 @@
     popupPositionY: positionY = 'bottom',
     popperLocation,
     ref = $bindable<HTMLDivElement>(),
-    popupOffset: offset = 12,
+    popupOffsetX: offsetX = 0,
+    popupOffsetY: offsetY = 12,
+    popperHeightForVerticalPosition = 100,
+    lockPoistions = false,
   }: PopperPopupProps = $props();
 
   const popperWidth = $derived(width || '100%');
@@ -57,38 +60,26 @@
   let top = $state<number | null>(null);
   let bottom = $state<number | null>(null);
 
-  function setPopupPosition(
-    positionX: PopperPopupPositionX,
-    positionY: PopperPopupPositionY,
-    popperHeight: number,
-    offset: number,
-  ) {
-    switch (positionX) {
-      case 'left':
-      case 'center':
-        left = 0;
-        right = null;
-        break;
-      case 'right':
-        left = null;
-        right = 0;
-        break;
-    }
-
-    switch (positionY) {
-      case 'top':
-        top = null;
-        bottom = popperHeight + offset;
-        break;
-      case 'bottom':
-        top = popperHeight + offset;
-        bottom = null;
-        break;
-    }
-  }
-
   $effect(() => {
-    setPopupPosition(positionX, positionY, popperLocation?.height || 0, offset);
+    const values = getPopupPosition({
+      positionX,
+      positionY,
+      height: popperLocation?.height || 0,
+      width: popperLocation?.width || 0,
+      top: popperLocation?.top || 0,
+      bottom: popperLocation?.bottom || 0,
+      left: popperLocation?.left || 0,
+      right: popperLocation?.right || 0,
+      offsetX: offsetX,
+      offsetY: offsetY,
+      popperHeight: popperHeightForVerticalPosition,
+      lockPoistions,
+    });
+
+    left = values.left;
+    right = values.right;
+    top = values.top;
+    bottom = values.bottom;
   });
 </script>
 
@@ -105,6 +96,7 @@
   ${right !== null ? `right: ${right}px;` : ''}
   ${top !== null ? `top: ${top}px;` : ''}
   ${bottom !== null ? `bottom: ${bottom}px;` : ''}
+  ${positionX === 'center' ? `margin: auto;` : ''}
   `}
 >
   <Paper shadow={3} {...paperProps}>

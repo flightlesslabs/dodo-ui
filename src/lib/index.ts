@@ -12,6 +12,8 @@ export type { ComponentSize } from './types/size.js';
 
 export type { ComponentWeight } from './types/weight.js';
 
+export type { PositionY, PositionX } from './types/position.js';
+
 /** developer tools: directives: clickOutside */
 export { clickOutside } from '$lib/stories/developer tools/directives/clickOutside/clickOutside.js';
 
@@ -27,11 +29,7 @@ export type { InputEnclosureProps } from '$lib/stories/developer tools/component
 export { default as Popper } from '$lib/stories/developer tools/components/Popper/Popper.svelte';
 export type { PopperProps } from '$lib/stories/developer tools/components/Popper/Popper.svelte';
 export { default as PopperPopup } from '$lib/stories/developer tools/components/Popper/PopperPopup/PopperPopup.svelte';
-export type {
-  PopperPopupPositionY,
-  PopperPopupPositionX,
-  PopperPopupProps,
-} from '$lib/stories/developer tools/components/Popper/PopperPopup/PopperPopup.svelte';
+export type { PopperPopupProps } from '$lib/stories/developer tools/components/Popper/PopperPopup/PopperPopup.svelte';
 
 /** Form: Button */
 export { default as Button } from '$lib/stories/components/Form/Button/Button.svelte';

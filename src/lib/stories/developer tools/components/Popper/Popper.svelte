@@ -1,11 +1,9 @@
 <script lang="ts" module>
   import type { Snippet } from 'svelte';
-  import PopperPopup, {
-    type PopperPopupPositionX,
-    type PopperPopupPositionY,
-  } from './PopperPopup/PopperPopup.svelte';
+  import PopperPopup from './PopperPopup/PopperPopup.svelte';
   import type { PaperProps } from '$lib/stories/components/Layout/Paper/Paper.svelte';
   import { clickOutside } from '$lib/stories/developer tools/directives/clickOutside/clickOutside.js';
+  import type { PositionX, PositionY } from '$lib/types/position.js';
 
   export interface PopperProps {
     /** Popper contents goes here */
@@ -33,11 +31,17 @@
     /** popup Custom css class*/
     popupClass?: string;
     /** Popup stick horizontally  */
-    popupPositionX?: PopperPopupPositionX;
+    popupPositionX?: PositionX;
     /** Popup stick vertically  */
-    popupPositionY?: PopperPopupPositionY;
-    /** offset/gap between Popup and content  */
-    popupOffset?: number;
+    popupPositionY?: PositionY;
+    /** vertical offset/gap between Popup and content  */
+    popupOffsetY?: number;
+    /** Horizontal offset/gap between Popup and content  */
+    popupOffsetX?: number;
+    /** Lock positions, disable auto top, bottom position based  */
+    lockPoistions?: boolean;
+    /** Popper Height For Vertical Position, default 300 */
+    popperHeightForVerticalPosition?: number;
     /** Click Outside event */
     onClickOutside?: () => void;
     /** Custom Popup */
@@ -60,9 +64,12 @@
     popupClass,
     popupPositionX,
     popupPositionY,
-    popupOffset,
+    popupOffsetX,
+    popupOffsetY,
     onClickOutside = () => {},
     customPopup,
+    popperHeightForVerticalPosition,
+    lockPoistions,
   }: PopperProps = $props();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -116,7 +123,10 @@
       {popupWidth}
       {popupPositionX}
       {popupPositionY}
-      {popupOffset}
+      {popupOffsetX}
+      {popupOffsetY}
+      {popperHeightForVerticalPosition}
+      {lockPoistions}
       class={popupClass}
     >
       {#if popupChildren}

@@ -2,16 +2,16 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
   import { PopperPopup } from '$lib/index.js';
-  import { popperPopupPositionXArray, popperPopupPositionYArray } from './PopperPopup.svelte';
+  import { positionXArray, positionYArray } from '$lib/types/position.js';
 
   export const storyPopperPopupArgTypes: StoryBookArgTypes = {
     popupPositionX: {
       control: { type: 'select' },
-      options: popperPopupPositionXArray,
+      options: positionXArray,
     },
     popupPositionY: {
       control: { type: 'select' },
-      options: popperPopupPositionYArray,
+      options: positionYArray,
     },
   };
 
