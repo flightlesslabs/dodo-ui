@@ -79,3 +79,19 @@ export type {
 /** Layout: Paper */
 export { default as Paper } from '$lib/stories/components/Layout/Paper/Paper.svelte';
 export type { PaperColor, PaperProps } from '$lib/stories/components/Layout/Paper/Paper.svelte';
+
+/** Layout: Separator */
+export { default as Separator } from '$lib/stories/components/Layout/Separator/Separator.svelte';
+export type {
+  SeparatorProps,
+  SeparatorOrientation,
+} from '$lib/stories/components/Layout/Separator/Separator.svelte';
+
+/** Layout: Menu */
+export { default as Menu } from '$lib/stories/components/Layout/Menu/Menu.svelte';
+export type { MenuProps } from '$lib/stories/components/Layout/Menu/Menu.svelte';
+export { default as MenuItem } from '$lib/stories/components/Layout/Menu/MenuItem/MenuItem.svelte';
+export type {
+  MenuItemType,
+  MenuItemProps,
+} from '$lib/stories/components/Layout/Menu/MenuItem/MenuItem.svelte';
