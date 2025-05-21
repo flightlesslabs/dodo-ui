@@ -166,15 +166,17 @@
     />
 
     {#if passwordToggle && !disabled}
-      <UtilityButton {size} title="Toggle password" class="passwordToggle" onclick={ontoggleMod}>
-        {#if customPasswordToggleIcon}
-          {@render customPasswordToggleIconTyped(toggle)}
-        {:else if toggle}
-          <Icon icon="mdi:eye-off" width="24" height="24" />
-        {:else}
-          <Icon icon="mdi:eye" width="24" height="24" />
-        {/if}
-      </UtilityButton>
+      <div class:after class="passwordToggle">
+        <UtilityButton {size} title="Toggle password" onclick={ontoggleMod}>
+          {#if customPasswordToggleIcon}
+            {@render customPasswordToggleIconTyped(toggle)}
+          {:else if toggle}
+            <Icon icon="mdi:eye-off" width="24" height="24" />
+          {:else}
+            <Icon icon="mdi:eye" width="24" height="24" />
+          {/if}
+        </UtilityButton>
+      </div>
     {/if}
   </InputEnclosure>
 </div>
@@ -198,6 +200,12 @@
           font-size: 1rem;
           padding: 0 calc(var(--dodo-ui-space-small) * 2);
         }
+
+        .passwordToggle {
+          &.after {
+            margin-right: calc(var(--dodo-ui-space-small) * 2);
+          }
+        }
       }
 
       &--small {
@@ -205,12 +213,24 @@
           padding: 0 var(--dodo-ui-space);
           font-size: 0.9rem;
         }
+
+        .passwordToggle {
+          &.after {
+            margin-right: var(--dodo-ui-space);
+          }
+        }
       }
 
       &--large {
         input {
           font-size: 1.1rem;
           padding: 0 calc(var(--dodo-ui-space) * 2);
+        }
+
+        .passwordToggle {
+          &.after {
+            margin-right: calc(var(--dodo-ui-space) * 2);
+          }
         }
       }
     }
