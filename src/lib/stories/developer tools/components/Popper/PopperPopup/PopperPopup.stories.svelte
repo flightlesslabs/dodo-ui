@@ -20,6 +20,14 @@
     component: PopperPopup,
     tags: ['autodocs'],
     argTypes: storyPopperPopupArgTypes,
+    parameters: {
+      docs: {
+        story: {
+          height: '200px',
+          inline: false,
+        },
+      },
+    },
   });
 </script>
 

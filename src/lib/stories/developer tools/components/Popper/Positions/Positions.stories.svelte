@@ -9,13 +9,26 @@
     component: Popper,
     tags: ['autodocs'],
     argTypes: storyPopperArgTypes,
+    parameters: {
+      layout: 'centered',
+      docs: {
+        story: {
+          height: '250px',
+          inline: false,
+        },
+      },
+    },
   });
 
   let open = $state(false);
 </script>
 
-<Story name="BottomLeft" args={{ open, onClickOutside: () => (open = false) }} asChild>
-  <Popper {open} onClickOutside={() => (open = false)}>
+<Story
+  name="BottomLeft"
+  args={{ open, onClickOutside: () => (open = false), popupWidth: '100px' }}
+  asChild
+>
+  <Popper {open} onClickOutside={() => (open = false)} popupWidth="100px">
     <Button onclick={() => (open = true)}>Click to see Popup</Button>
     {#snippet popupChildren()}
       <ul>
@@ -29,10 +42,10 @@
 
 <Story
   name="TopLeft"
-  args={{ open, onClickOutside: () => (open = false), popupPositionY: 'top' }}
+  args={{ open, onClickOutside: () => (open = false), popupPositionY: 'top', popupWidth: '100px' }}
   asChild
 >
-  <Popper {open} popupPositionY="top" onClickOutside={() => (open = false)}>
+  <Popper {open} popupPositionY="top" onClickOutside={() => (open = false)} popupWidth="100px">
     <Button onclick={() => (open = true)}>Click to see Popup</Button>
     {#snippet popupChildren()}
       <ul>
@@ -46,10 +59,15 @@
 
 <Story
   name="BottomRight"
-  args={{ open, onClickOutside: () => (open = false), popupPositionX: 'right' }}
+  args={{
+    open,
+    onClickOutside: () => (open = false),
+    popupPositionX: 'right',
+    popupWidth: '100px',
+  }}
   asChild
 >
-  <Popper {open} popupPositionX="right" onClickOutside={() => (open = false)}>
+  <Popper {open} popupPositionX="right" onClickOutside={() => (open = false)} popupWidth="100px">
     <Button onclick={() => (open = true)}>Click to see Popup</Button>
     {#snippet popupChildren()}
       <ul>
@@ -68,10 +86,17 @@
     onClickOutside: () => (open = false),
     popupPositionY: 'top',
     popupPositionX: 'right',
+    popupWidth: '100px',
   }}
   asChild
 >
-  <Popper {open} popupPositionY="top" popupPositionX="right" onClickOutside={() => (open = false)}>
+  <Popper
+    {open}
+    popupPositionY="top"
+    popupPositionX="right"
+    onClickOutside={() => (open = false)}
+    popupWidth="100px"
+  >
     <Button onclick={() => (open = true)}>Click to see Popup</Button>
     {#snippet popupChildren()}
       <ul>

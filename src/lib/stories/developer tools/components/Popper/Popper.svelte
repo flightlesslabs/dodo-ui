@@ -28,8 +28,8 @@
     paperProps?: Partial<PaperProps>;
     /** PopperPopup Max height. Use css compatible value */
     popupMaxHeight?: string;
-    /** PopperPopup Max Width. Use css compatible value */
-    popupMaxWidth?: string;
+    /** PopperPopup Width. Use css compatible value */
+    popupWidth?: string;
     /** popup Custom css class*/
     popupClass?: string;
     /** Popup stick horizontally  */
@@ -56,7 +56,7 @@
     popupRef = $bindable<HTMLDivElement>(),
     paperProps,
     popupMaxHeight,
-    popupMaxWidth,
+    popupWidth,
     popupClass,
     popupPositionX,
     popupPositionY,
@@ -113,7 +113,7 @@
       {popperLocation}
       {paperProps}
       {popupMaxHeight}
-      {popupMaxWidth}
+      {popupWidth}
       {popupPositionX}
       {popupPositionY}
       {popupOffset}

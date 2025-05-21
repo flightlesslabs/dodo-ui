@@ -7,7 +7,6 @@
     popperPopupPositionYArray,
   } from './PopperPopup/PopperPopup.svelte';
   import Button from '$lib/stories/components/Form/Button/Button.svelte';
-  import PopperPopup from './PopperPopup/PopperPopup.stories.svelte';
 
   export const storyPopperArgTypes: StoryBookArgTypes = {
     popupPositionX: {
@@ -25,6 +24,14 @@
     component: Popper,
     tags: ['autodocs'],
     argTypes: storyPopperArgTypes,
+    parameters: {
+      docs: {
+        story: {
+          height: '200px',
+          inline: false,
+        },
+      },
+    },
   });
 
   let open = $state(false);
@@ -86,17 +93,21 @@
 <Story
   name="CustomPopup"
   args={{
-    open: true,
+    open,
+    onClickOutside: () => (open = false),
   }}
   asChild
 >
-  <Popper open>
-    Hello! how are you doing?
+  <Popper {open} onClickOutside={() => (open = false)}>
+    <Button onclick={() => (open = true)}>Click to see Popup</Button>
+
     {#snippet customPopup(popperLocation)}
-      <ul>
-        <li>{popperLocation?.height}</li>
-        <li>{popperLocation?.width}</li>
-      </ul>
+      {#if open}
+        <ul>
+          <li>{popperLocation?.height}</li>
+          <li>{popperLocation?.width}</li>
+        </ul>
+      {/if}
     {/snippet}
   </Popper>
 </Story>

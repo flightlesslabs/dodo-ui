@@ -20,8 +20,8 @@
     paperProps?: Partial<PaperProps>;
     /** Max height. Use css compatible value */
     popupMaxHeight?: string;
-    /** Max Width. Use css compatible value */
-    popupMaxWidth?: string;
+    /** popup Width. Use css compatible value */
+    popupWidth?: string;
     /** Custom css class */
     class?: string;
     /** Position of Popper content */
@@ -40,7 +40,7 @@
     children,
     paperProps = {},
     class: className = '',
-    popupMaxWidth: maxWidth,
+    popupWidth: width,
     popupMaxHeight: maxHeight,
     popupPositionX: positionX = 'left',
     popupPositionY: positionY = 'bottom',
@@ -48,6 +48,9 @@
     ref = $bindable<HTMLDivElement>(),
     popupOffset: offset = 12,
   }: PopperPopupProps = $props();
+
+  const popperWidth = $derived(width || '100%');
+  const popupMaxHeight = $derived(maxHeight || '400px');
 
   let left = $state<number | null>(null);
   let right = $state<number | null>(null);
@@ -97,7 +100,7 @@
     className,
   ].join(' ')}
   bind:this={ref}
-  style={`${maxWidth ? `max-width: ${maxWidth};` : ''}
+  style={`width: ${popperWidth};
   ${left !== null ? `left: ${left}px;` : ''}
   ${right !== null ? `right: ${right}px;` : ''}
   ${top !== null ? `top: ${top}px;` : ''}
@@ -105,7 +108,7 @@
   `}
 >
   <Paper shadow={3} {...paperProps}>
-    <section style={`${maxHeight ? `max-height: ${maxHeight};` : ''}`}>
+    <section style={`max-height: ${popupMaxHeight};`}>
       {#if children}
         {@render children()}
       {/if}
