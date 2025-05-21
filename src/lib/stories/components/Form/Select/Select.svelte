@@ -30,7 +30,7 @@
     /** onclear event handler */
     onclear?: MouseEventHandler<HTMLButtonElement>;
     /** Select ref */
-    ref?: HTMLInputElement;
+    ref?: HTMLInputElement | HTMLButtonElement;
     /** How round should the border radius be? */
     roundness?: ComponentRoundness;
     /** Add a border around the button. Default True */
@@ -60,24 +60,31 @@
     /** oninput event handler */
     oninput?: FormEventHandler<HTMLInputElement>;
     /** onblur event handler */
-    onblur?: FocusEventHandler<HTMLInputElement>;
+    onblur?: FocusEventHandler<HTMLInputElement | HTMLButtonElement>;
     /** onfocus event handler */
-    onfocus?: FocusEventHandler<HTMLInputElement>;
+    onfocus?: FocusEventHandler<HTMLInputElement | HTMLButtonElement>;
     /** onpaste event handler */
     onpaste?: ClipboardEventHandler<HTMLInputElement>;
     /** oncopy event handler */
     oncopy?: ClipboardEventHandler<HTMLInputElement>;
     /** oncut event handler */
     oncut?: ClipboardEventHandler<HTMLInputElement>;
+    /** custom Content Formatting for variant button */
+    customContentFormat?: (val: SelectOption) => Snippet;
   }
 </script>
 
 <script lang="ts">
   import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
-  import type { TextInputFocusEvent } from '../TextInput/TextInput.svelte';
   import UtilityButton from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
   import Icon from '@iconify/svelte';
-  import { Menu, MenuItem, Popper } from '$lib/index.js';
+  import {
+    AdvancedInput,
+    Menu,
+    MenuItem,
+    Popper,
+    type AdvancedInputFocusEvent,
+  } from '$lib/index.js';
 
   let {
     size = 'normal',
@@ -100,19 +107,23 @@
     error = false,
     value,
     placeholder,
-    ref = $bindable<HTMLInputElement>(),
+    ref = $bindable<HTMLInputElement | HTMLButtonElement>(),
     readonly = false,
     searchable = false,
     clearable = false,
     onclear,
     options,
+    customContentFormat: customContentFormatInternal,
   }: SelectProps = $props();
 
   let focused: boolean = $state(false);
   let open: boolean = $state(false);
   const selectedOption = $derived(value);
 
-  function onfocusMod(e: TextInputFocusEvent) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let customContentFormatTyped = customContentFormatInternal as any;
+
+  function onfocusMod(e: AdvancedInputFocusEvent) {
     focused = true;
     open = true;
 
@@ -121,7 +132,7 @@
     }
   }
 
-  function onblurMod(e: TextInputFocusEvent) {
+  function onblurMod(e: AdvancedInputFocusEvent) {
     focused = false;
 
     if (onblur) {
@@ -152,11 +163,12 @@
       class={['Select', `size--${size}`, `roundness--${roundness}`, className].join(' ')}
     >
       <InputEnclosure {outline} {disabled} {error} {focused} {size} {roundness} {before} {after}>
-        <input
+        <AdvancedInput
           type="text"
           {name}
           {id}
           {disabled}
+          {ref}
           {oninput}
           {onchange}
           onfocus={onfocusMod}
@@ -166,16 +178,26 @@
           {oncut}
           {placeholder}
           value={selectedOption?.label}
-          bind:this={ref}
-          readonly={readonly || !searchable}
-        />
-      </InputEnclosure>
+          {readonly}
+          variant={searchable ? 'input' : 'button'}
+        >
+          {#snippet customContentFormat()}
+            {#if customContentFormatTyped}
+              {@render customContentFormatTyped(selectedOption)}
+            {:else}
+              {selectedOption?.label || placeholder}
+            {/if}
+          {/snippet}
+        </AdvancedInput>
 
-      {#if selectedOption.label && clearable && !disabled}
-        <UtilityButton {size} title="Clear" class="SelectClear" onclick={onclear}>
-          <Icon icon="material-symbols:close-small" width="24" height="24" />
-        </UtilityButton>
-      {/if}
+        {#if selectedOption.label && clearable && !disabled}
+          <div class:after class="SelectClear">
+            <UtilityButton {size} title="Clear" onclick={onclear}>
+              <Icon icon="material-symbols:close-small" width="24" height="24" />
+            </UtilityButton>
+          </div>
+        {/if}
+      </InputEnclosure>
     </div>
 
     {#snippet popupChildren()}
@@ -198,36 +220,28 @@
 <style lang="scss">
   .dodo-ui-Select {
     .Select {
-      input {
-        flex: 1;
-        border: 0;
-        outline: 0;
-        height: 100%;
-        background-color: transparent;
-        font-family: inherit;
-        color: inherit;
-        letter-spacing: 0.3px;
-      }
-
       &.size {
         &--normal {
-          input {
-            font-size: 1rem;
-            padding: 0 calc(var(--dodo-ui-space-small) * 2);
+          .SelectClear {
+            &.after {
+              margin-right: calc(var(--dodo-ui-space-small) * 2);
+            }
           }
         }
 
         &--small {
-          input {
-            padding: 0 var(--dodo-ui-space);
-            font-size: 0.9rem;
+          .SelectClear {
+            &.after {
+              margin-right: var(--dodo-ui-space);
+            }
           }
         }
 
         &--large {
-          input {
-            font-size: 1.1rem;
-            padding: 0 calc(var(--dodo-ui-space) * 2);
+          .SelectClear {
+            &.after {
+              margin-right: calc(var(--dodo-ui-space) * 2);
+            }
           }
         }
       }

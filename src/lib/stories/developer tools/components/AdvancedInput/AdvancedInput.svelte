@@ -1,27 +1,37 @@
 <script lang="ts" module>
-  import type { ComponentSize } from '$lib/types/size.js';
-  import type { ComponentRoundness } from '$lib/types/roundness.js';
+  import { type ComponentSize, type TextInputType } from '$lib/index.js';
   import type { Snippet } from 'svelte';
   import type {
     ChangeEventHandler,
     ClipboardEventHandler,
     FocusEventHandler,
     FormEventHandler,
+    MouseEventHandler,
   } from 'svelte/elements';
 
-  export type AdvancedInputOption = {
-    value: string | number | boolean | null | undefined;
-    label: string;
-    disabled?: boolean;
+  export type AdvancedInputVariant = 'input' | 'button';
+
+  export const advancedInputVariantArray: AdvancedInputVariant[] = ['input', 'button'];
+
+  export type AdvancedInputClickEvent = MouseEvent & {
+    currentTarget: EventTarget & HTMLButtonElement;
+  };
+
+  export type AdvancedInputFocusEvent = FocusEvent & {
+    currentTarget: EventTarget & (HTMLInputElement | HTMLButtonElement);
   };
 
   export interface AdvancedInputProps {
+    /** How large should the button be? */
+    size?: ComponentSize;
     /** Input type? */
     type?: TextInputType;
     /** Input ref */
-    ref?: HTMLInputElement;
+    ref?: HTMLInputElement | HTMLButtonElement;
     /** Input value */
-    value?: string;
+    value?: string | number;
+    /** variant */
+    variant?: AdvancedInputVariant;
     /** How round should the border radius be? */
     placeholder?: string;
     /** disabled state */
@@ -38,114 +48,148 @@
     after?: Snippet;
     /** Custom css class*/
     class?: string;
+    /** The onclick event handler */
+    onclick?: MouseEventHandler<HTMLButtonElement>;
     /** oninput event handler */
     oninput?: FormEventHandler<HTMLInputElement>;
     /** onchange event handler */
     onchange?: ChangeEventHandler<HTMLInputElement>;
     /** onblur event handler */
-    onblur?: FocusEventHandler<HTMLInputElement>;
+    onblur?: FocusEventHandler<HTMLInputElement | HTMLButtonElement>;
     /** onfocus event handler */
-    onfocus?: FocusEventHandler<HTMLInputElement>;
+    onfocus?: FocusEventHandler<HTMLInputElement | HTMLButtonElement>;
     /** onpaste event handler */
     onpaste?: ClipboardEventHandler<HTMLInputElement>;
     /** oncopy event handler */
     oncopy?: ClipboardEventHandler<HTMLInputElement>;
     /** oncut event handler */
     oncut?: ClipboardEventHandler<HTMLInputElement>;
+    /** custom Content Formatting for variant button */
+    customContentFormat?: (value: string | number) => Snippet;
   }
 </script>
 
 <script lang="ts">
-  import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
-  import type { TextInputFocusEvent } from '../TextInput/TextInput.svelte';
-  import UtilityButton from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
-  import Icon from '@iconify/svelte';
-  import { Menu, MenuItem, Popper, type TextInputType } from '$lib/index.js';
-
   let {
     type = 'text',
-    size = 'normal',
-    roundness = 1,
-    outline = true,
     name,
     id,
     class: className = '',
     disabled = false,
     onchange,
     oninput,
-    onadvancedInput,
     onblur,
     onfocus,
     onpaste,
     oncopy,
     oncut,
-    before,
-    after,
-    error = false,
-    value = $bindable<string>(),
+    value = $bindable<string | number>(),
     placeholder,
-    ref = $bindable<HTMLInputElement>(),
+    ref = $bindable<HTMLInputElement | HTMLButtonElement>(),
     readonly = false,
-    searchable = false,
-    clearable = false,
-    onclear,
-    options,
+    variant = 'input',
+    size = 'normal',
+    onclick,
+    customContentFormat,
   }: AdvancedInputProps = $props();
 
-  let focused: boolean = $state(false);
-  let open: boolean = $state(false);
-  const advancedInputedOption = $derived(value);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let customContentFormatTyped = customContentFormat as any;
 
-  function onfocusMod(e: TextInputFocusEvent) {
-    focused = true;
-    open = true;
-
+  function onclickMod(e: AdvancedInputClickEvent) {
     if (onfocus) {
       onfocus(e);
     }
-  }
 
-  function onblurMod(e: TextInputFocusEvent) {
-    focused = false;
-
-    if (onblur) {
-      onblur(e);
+    if (onclick) {
+      onclick(e);
     }
-  }
-
-  function onClickOutside() {
-    open = false;
-  }
-
-  function onadvancedInputMod(val: AdvancedInputOption) {
-    if (onadvancedInput) {
-      onadvancedInput(val);
-    }
-
-    open = false;
   }
 </script>
 
-<input
-  class={['dodo-ui-AdvancedInput', className].join(' ')}
-  {type}
-  {name}
-  {id}
-  {disabled}
-  {oninput}
-  {onchange}
-  onfocus={onfocusMod}
-  onblur={onblurMod}
-  {onpaste}
-  {oncopy}
-  {oncut}
-  {placeholder}
-  bind:value
-  bind:this={ref}
-  readonly={readonly || !searchable}
-/>
+{#if variant === 'button'}
+  <button
+    {id}
+    class={[
+      'dodo-ui-AdvancedInput',
+      `size--${size}`,
+      `variant--${variant}`,
+      `${`${value}`.trim() === '' ? 'placeholder' : ''}`,
+      className,
+    ].join(' ')}
+    bind:this={ref}
+    onclick={onclickMod}
+    {onblur}
+    {disabled}
+  >
+    {#if customContentFormatTyped}
+      {@render customContentFormatTyped(value)}
+    {:else}
+      {`${value}` || placeholder}
+    {/if}
+  </button>
+{:else}
+  <input
+    class={['dodo-ui-AdvancedInput', `size--${size}`, `variant--${variant}`, className].join(' ')}
+    {type}
+    {name}
+    {id}
+    {disabled}
+    {oninput}
+    {onchange}
+    {onfocus}
+    {onblur}
+    {onpaste}
+    {oncopy}
+    {oncut}
+    {placeholder}
+    bind:value
+    bind:this={ref}
+    {readonly}
+  />
+{/if}
 
 <style lang="scss">
   .dodo-ui-AdvancedInput {
+    flex: 1;
+    border: 0;
+    outline: 0;
+    height: 100%;
+    background-color: transparent;
+    font-family: inherit;
+    color: inherit;
+    letter-spacing: 0.3px;
+
+    margin: 0;
+
+    &.variant {
+      &--button {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        cursor: pointer;
+
+        &.placeholder {
+          opacity: 0.6;
+        }
+      }
+    }
+
+    &.size {
+      &--normal {
+        font-size: 1rem;
+        padding: 0 calc(var(--dodo-ui-space-small) * 2);
+      }
+
+      &--small {
+        padding: 0 var(--dodo-ui-space);
+        font-size: 0.9rem;
+      }
+
+      &--large {
+        font-size: 1.1rem;
+        padding: 0 calc(var(--dodo-ui-space) * 2);
+      }
+    }
   }
 </style>

@@ -53,3 +53,11 @@
 <Story name="Default" asChild>
   <Select {options} {value} onselect={(val: SelectOption) => (value = val)} />
 </Story>
+
+<Story name="Searchable" asChild>
+  <Select {options} {value} searchable onselect={(val: SelectOption) => (value = val)} />
+</Story>
+
+<Story name="Clearable" asChild>
+  <Select {options} {value} clearable onselect={(val: SelectOption) => (value = val)} />
+</Story>
