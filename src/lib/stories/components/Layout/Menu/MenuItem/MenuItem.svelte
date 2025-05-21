@@ -19,8 +19,10 @@
     class?: string;
     /** Id */
     id?: string;
-    /** Menu type */
+    /** Menu Item type */
     type?: MenuItemType;
+    /** Menu Item type */
+    selected?: boolean;
     /** Separator */
     separator?: boolean;
     /** How large should the Menu Items be? */
@@ -69,6 +71,7 @@
     anchorMediaType,
     referrerpolicy,
     disabled = false,
+    selected = false,
     separator: separatorInternal,
     onclick,
     size: sizeInternal,
@@ -95,6 +98,7 @@
 <li
   class:disabled
   class:separator
+  class:selected
   class={['dodo-ui-MenuItem', `size--${size}`, className].join(' ')}
   {id}
   bind:this={ref}
@@ -102,6 +106,7 @@
   {#if type === 'link'}
     <a
       class:disabled
+      class:selected
       class={['MenuItem-type', `MenuItem-type--${type}`, `size--${size}`].join(' ')}
       {href}
       {download}
@@ -118,6 +123,7 @@
   {:else if type === 'button'}
     <button
       class:disabled
+      class:selected
       class={['MenuItem-type', `MenuItem-type--${type}`, `size--${size}`].join(' ')}
       {onclick}
       {disabled}
@@ -127,6 +133,7 @@
   {:else}
     <div
       class:disabled
+      class:selected
       class={['MenuItem-type', `MenuItem-type--${type}`, `size--${size}`].join(' ')}
     >
       {@render menuItemContent()}
@@ -136,10 +143,15 @@
 
 <style lang="scss">
   :global(:root) {
-    --dodo-ui-MenuItem-hover-bg: color-mix(in oklab, var(--dodo-color-neutral-800) 1%, transparent);
+    --dodo-ui-MenuItem-selected-bg: color-mix(
+      in oklab,
+      var(--dodo-color-neutral-800) 4%,
+      transparent
+    );
+    --dodo-ui-MenuItem-hover-bg: color-mix(in oklab, var(--dodo-color-neutral-800) 8%, transparent);
     --dodo-ui-MenuItem-active-bg: color-mix(
       in oklab,
-      var(--dodo-color-neutral-800) 7%,
+      var(--dodo-color-neutral-800) 11%,
       transparent
     );
 
@@ -149,6 +161,11 @@
   }
 
   :global(.dodo-theme--dark) {
+    --dodo-ui-MenuItem-selected-bg: color-mix(
+      in oklab,
+      var(--dodo-color-neutral-800) 4%,
+      transparent
+    );
     --dodo-ui-MenuItem-hover-bg: color-mix(in oklab, var(--dodo-color-neutral-800) 8%, transparent);
     --dodo-ui-MenuItem-active-bg: color-mix(
       in oklab,
@@ -171,12 +188,6 @@
       border-bottom: 1px solid var(--dodo-ui-MenuItem-separator-color);
     }
 
-    &:not(.disabled) {
-      &:hover {
-        background-color: #00000015;
-      }
-    }
-
     .MenuItem-type {
       cursor: pointer;
       transition: all 70ms;
@@ -191,6 +202,10 @@
       color: inherit;
       font-family: inherit;
       width: 100%;
+
+      &.selected {
+        background-color: var(--dodo-ui-MenuItem-selected-bg);
+      }
 
       &:hover {
         background-color: var(--dodo-ui-MenuItem-hover-bg);

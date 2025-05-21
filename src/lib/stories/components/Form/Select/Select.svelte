@@ -171,7 +171,7 @@
         />
       </InputEnclosure>
 
-      {#if selectedOption?.label && clearable && !disabled}
+      {#if selectedOption.label && clearable && !disabled}
         <UtilityButton {size} title="Clear" class="SelectClear" onclick={onclear}>
           <Icon icon="material-symbols:close-small" width="24" height="24" />
         </UtilityButton>
@@ -181,7 +181,12 @@
     {#snippet popupChildren()}
       <Menu>
         {#each options as option (option.value)}
-          <MenuItem onclick={() => onselectMod(option)} type="button" disabled={option.disabled}>
+          <MenuItem
+            onclick={() => onselectMod(option)}
+            type="button"
+            disabled={option.disabled}
+            selected={selectedOption.value === option.value}
+          >
             {option.label}
           </MenuItem>
         {/each}
