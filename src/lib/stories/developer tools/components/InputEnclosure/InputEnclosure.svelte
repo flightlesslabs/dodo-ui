@@ -64,6 +64,7 @@
   {#if children}
     {@render children()}
   {/if}
+
   {#if after}
     <span class="content--after">
       {@render after()}

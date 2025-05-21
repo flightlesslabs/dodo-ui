@@ -28,3 +28,5 @@
 
 <!-- With Separator -->
 <Story name="WithSeparator" args={{ separator: true }}>Menu Item</Story>
+
+<Story name="Disabled" args={{ disabled: true }}>Menu Item</Story>

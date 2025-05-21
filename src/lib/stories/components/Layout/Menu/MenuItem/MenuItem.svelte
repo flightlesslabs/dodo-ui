@@ -146,7 +146,6 @@
     --dodo-ui-MenuItem-separator-color: var(--dodo-color-neutral-300);
 
     --dodo-ui-MenuItem-disabled-color: var(--dodo-color-neutral-400);
-    --dodo-ui-MenuItem-disabled-bg: var(--dodo-color-neutral-200);
   }
 
   :global(.dodo-theme--dark) {
@@ -160,7 +159,6 @@
     --dodo-ui-MenuItem-separator-color: var(--dodo-color-neutral-300);
 
     --dodo-ui-MenuItem-disabled-color: var(--dodo-color-neutral-500);
-    --dodo-ui-MenuItem-disabled-bg: var(--dodo-color-neutral-100);
   }
 
   .dodo-ui-MenuItem {
@@ -225,16 +223,16 @@
       &.disabled {
         cursor: initial;
 
-        background-color: var(--dodo-ui-MenuItem-disabled-bg);
+        background-color: transparent;
         color: var(--dodo-ui-MenuItem-disabled-color);
 
         &:hover {
-          background-color: var(--dodo-ui-MenuItem-disabled-bg);
+          background-color: transparent;
           color: var(--dodo-ui-MenuItem-disabled-color);
         }
 
         &:active {
-          background-color: var(--dodo-ui-MenuItem-disabled-bg);
+          background-color: transparent;
           color: var(--dodo-ui-MenuItem-disabled-color);
         }
       }

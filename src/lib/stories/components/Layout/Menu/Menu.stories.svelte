@@ -58,3 +58,12 @@
     <MenuItem>Paste Selected</MenuItem>
   </Menu>
 </Story>
+
+<!-- MenuItems With some options disabled -->
+<Story name="Disabled" asChild>
+  <Menu>
+    <MenuItem>Cut</MenuItem>
+    <MenuItem disabled>Copy</MenuItem>
+    <MenuItem>Paste</MenuItem>
+  </Menu>
+</Story>
