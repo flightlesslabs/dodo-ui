@@ -1,6 +1,6 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import { Popper } from '$lib/index.js';
+  import { Menu, MenuItem, Popper } from '$lib/index.js';
   import Button from '$lib/stories/components/Form/Button/Button.svelte';
   import { storyPopperArgTypes } from '../Popper.stories.svelte';
 
@@ -13,7 +13,7 @@
       layout: 'centered',
       docs: {
         story: {
-          height: '280px',
+          height: '400px',
           inline: false,
         },
       },
@@ -23,95 +23,59 @@
   let open = $state(false);
 </script>
 
-<Story
-  name="BottomLeft"
-  args={{ open, onClickOutside: () => (open = false), popupWidth: '100px' }}
-  asChild
->
+<Story name="BottomLeft" asChild>
   <Popper {open} onClickOutside={() => (open = false)} popupWidth="100px">
     <Button onclick={() => (open = true)}>Click to see Popup</Button>
     {#snippet popupChildren()}
-      <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-      </ul>
+      <Menu>
+        <MenuItem>One</MenuItem>
+        <MenuItem>Two</MenuItem>
+        <MenuItem>Three</MenuItem>
+      </Menu>
     {/snippet}
   </Popper>
 </Story>
 
-<Story
-  name="BottomCenter"
-  args={{
-    open,
-    onClickOutside: () => (open = false),
-    popupPositionX: 'center',
-    popupWidth: '100px',
-  }}
-  asChild
->
+<Story name="BottomCenter" asChild>
   <Popper {open} popupPositionX="center" onClickOutside={() => (open = false)} popupWidth="100px">
     <Button onclick={() => (open = true)}>Click to see Popup</Button>
     {#snippet popupChildren()}
-      <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-      </ul>
+      <Menu>
+        <MenuItem>One</MenuItem>
+        <MenuItem>Two</MenuItem>
+        <MenuItem>Three</MenuItem>
+      </Menu>
     {/snippet}
   </Popper>
 </Story>
 
-<Story
-  name="BottomRight"
-  args={{
-    open,
-    onClickOutside: () => (open = false),
-    popupPositionX: 'right',
-    popupWidth: '100px',
-  }}
-  asChild
->
+<Story name="BottomRight" asChild>
   <Popper {open} popupPositionX="right" onClickOutside={() => (open = false)} popupWidth="100px">
     <Button onclick={() => (open = true)}>Click to see Popup</Button>
     {#snippet popupChildren()}
-      <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-      </ul>
+      <Menu>
+        <MenuItem>One</MenuItem>
+        <MenuItem>Two</MenuItem>
+        <MenuItem>Three</MenuItem>
+      </Menu>
     {/snippet}
   </Popper>
 </Story>
 
-<Story
-  name="TopLeft"
-  args={{ open, onClickOutside: () => (open = false), popupPositionY: 'top', popupWidth: '100px' }}
-  asChild
->
+<Story name="TopLeft" asChild>
   <Popper {open} popupPositionY="top" onClickOutside={() => (open = false)} popupWidth="100px">
     <Button onclick={() => (open = true)}>Click to see Popup</Button>
     {#snippet popupChildren()}
-      <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-      </ul>
+      <Menu>
+        <MenuItem>One</MenuItem>
+        <MenuItem>Two</MenuItem>
+        <MenuItem>Three</MenuItem>
+      </Menu>
     {/snippet}
   </Popper>
 </Story>
 
-<Story
-  name="TopCenter"
-  args={{
-    open,
-    onClickOutside: () => (open = false),
-    popupPositionY: 'top',
-    popupPositionX: 'center',
-    popupWidth: '100px',
-  }}
-  asChild
->
+<Story name="TopCenter" asChild>
   <Popper
     {open}
     popupPositionY="top"
@@ -121,26 +85,16 @@
   >
     <Button onclick={() => (open = true)}>Click to see Popup</Button>
     {#snippet popupChildren()}
-      <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-      </ul>
+      <Menu>
+        <MenuItem>One</MenuItem>
+        <MenuItem>Two</MenuItem>
+        <MenuItem>Three</MenuItem>
+      </Menu>
     {/snippet}
   </Popper>
 </Story>
 
-<Story
-  name="TopRight"
-  args={{
-    open,
-    onClickOutside: () => (open = false),
-    popupPositionY: 'top',
-    popupPositionX: 'right',
-    popupWidth: '100px',
-  }}
-  asChild
->
+<Story name="TopRight" asChild>
   <Popper
     {open}
     popupPositionY="top"
@@ -150,11 +104,11 @@
   >
     <Button onclick={() => (open = true)}>Click to see Popup</Button>
     {#snippet popupChildren()}
-      <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-      </ul>
+      <Menu>
+        <MenuItem>One</MenuItem>
+        <MenuItem>Two</MenuItem>
+        <MenuItem>Three</MenuItem>
+      </Menu>
     {/snippet}
   </Popper>
 </Story>

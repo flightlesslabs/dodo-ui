@@ -1,6 +1,6 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import { Popper } from '$lib/index.js';
+  import { Menu, MenuItem, Popper } from '$lib/index.js';
   import Button from '$lib/stories/components/Form/Button/Button.svelte';
   import { storyPopperArgTypes } from '../../Popper.stories.svelte';
 
@@ -31,11 +31,11 @@
   <Popper {open} onClickOutside={() => (open = false)} popupPositionY="top">
     <Button onclick={() => (open = true)}>Click to see Popup</Button>
     {#snippet popupChildren()}
-      <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-      </ul>
+      <Menu>
+        <MenuItem>One</MenuItem>
+        <MenuItem>Two</MenuItem>
+        <MenuItem>Three</MenuItem>
+      </Menu>
     {/snippet}
   </Popper>
 </Story>
@@ -54,11 +54,11 @@
   <Popper {open} lockPoistions onClickOutside={() => (open = false)} popupPositionY="top">
     <Button onclick={() => (open = true)}>Click to see Popup</Button>
     {#snippet popupChildren()}
-      <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-      </ul>
+      <Menu>
+        <MenuItem>One</MenuItem>
+        <MenuItem>Two</MenuItem>
+        <MenuItem>Three</MenuItem>
+      </Menu>
     {/snippet}
   </Popper>
 </Story>
@@ -82,11 +82,11 @@
   >
     <Button onclick={() => (open = true)}>Click to see Popup</Button>
     {#snippet popupChildren()}
-      <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-      </ul>
+      <Menu>
+        <MenuItem>One</MenuItem>
+        <MenuItem>Two</MenuItem>
+        <MenuItem>Three</MenuItem>
+      </Menu>
     {/snippet}
   </Popper>
 </Story>

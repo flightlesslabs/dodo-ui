@@ -59,5 +59,6 @@
     padding: 0;
     display: flex;
     flex-direction: column;
+    overflow: inherit;
   }
 </style>

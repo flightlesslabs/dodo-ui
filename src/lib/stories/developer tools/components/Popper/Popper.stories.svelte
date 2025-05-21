@@ -1,7 +1,7 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
-  import { Popper } from '$lib/index.js';
+  import { Menu, MenuItem, Popper } from '$lib/index.js';
   import Button from '$lib/stories/components/Form/Button/Button.svelte';
   import { positionXArray, positionYArray } from '$lib/types/position.js';
 
@@ -38,11 +38,11 @@
   <Popper {open} onClickOutside={() => (open = false)}>
     <Button onclick={() => (open = true)}>Click to see Popup</Button>
     {#snippet popupChildren()}
-      <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-      </ul>
+      <Menu>
+        <MenuItem>One</MenuItem>
+        <MenuItem>Two</MenuItem>
+        <MenuItem>Three</MenuItem>
+      </Menu>
     {/snippet}
   </Popper>
 </Story>
@@ -51,11 +51,11 @@
   <Popper open>
     Hello! how are you doing?
     {#snippet popupChildren()}
-      <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-      </ul>
+      <Menu>
+        <MenuItem>One</MenuItem>
+        <MenuItem>Two</MenuItem>
+        <MenuItem>Three</MenuItem>
+      </Menu>
     {/snippet}
   </Popper>
 </Story>
@@ -78,11 +78,11 @@
   >
     Hello! how are you doing?
     {#snippet popupChildren()}
-      <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-      </ul>
+      <Menu>
+        <MenuItem>One</MenuItem>
+        <MenuItem>Two</MenuItem>
+        <MenuItem>Three</MenuItem>
+      </Menu>
     {/snippet}
   </Popper>
 </Story>
@@ -100,10 +100,10 @@
 
     {#snippet customPopup(popperLocation)}
       {#if open}
-        <ul>
-          <li>{popperLocation?.height}</li>
-          <li>{popperLocation?.width}</li>
-        </ul>
+        <Menu>
+          <MenuItem>{popperLocation?.height}</MenuItem>
+          <MenuItem>{popperLocation?.width}</MenuItem>
+        </Menu>
       {/if}
     {/snippet}
   </Popper>
