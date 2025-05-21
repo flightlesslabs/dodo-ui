@@ -1,7 +1,7 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
-  import { PopperPopup } from '$lib/index.js';
+  import { Menu, MenuItem, PopperPopup } from '$lib/index.js';
   import { positionXArray, positionYArray } from '$lib/types/position.js';
 
   export const storyPopperPopupArgTypes: StoryBookArgTypes = {
@@ -33,11 +33,11 @@
 
 <Story name="Default" asChild>
   <PopperPopup>
-    <ul>
-      <li>One</li>
-      <li>Two</li>
-      <li>Three</li>
-    </ul>
+    <Menu>
+      <MenuItem>One</MenuItem>
+      <MenuItem>Two</MenuItem>
+      <MenuItem>Three</MenuItem>
+    </Menu>
   </PopperPopup>
 </Story>
 
@@ -55,10 +55,10 @@
       color: 'primary',
     }}
   >
-    <ul>
-      <li>One</li>
-      <li>Two</li>
-      <li>Three</li>
-    </ul>
+    <Menu>
+      <MenuItem>One</MenuItem>
+      <MenuItem>Two</MenuItem>
+      <MenuItem>Three</MenuItem>
+    </Menu>
   </PopperPopup>
 </Story>
