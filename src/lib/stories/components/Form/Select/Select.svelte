@@ -70,7 +70,7 @@
     /** oncut event handler */
     oncut?: ClipboardEventHandler<HTMLInputElement>;
     /** custom Content Formatting for variant button */
-    customContentFormat?: (val: SelectOption) => Snippet;
+    customInputContent?: (val: SelectOption) => Snippet;
   }
 </script>
 
@@ -113,7 +113,7 @@
     clearable = false,
     onclear,
     options,
-    customContentFormat: customContentFormatInternal,
+    customInputContent: customInputContentInternal,
   }: SelectProps = $props();
 
   let focused: boolean = $state(false);
@@ -121,7 +121,7 @@
   const selectedOption = $derived(value);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let customContentFormatTyped = customContentFormatInternal as any;
+  let customInputContentTyped = customInputContentInternal as any;
 
   function onfocusMod(e: AdvancedInputFocusEvent) {
     focused = true;
@@ -182,8 +182,8 @@
           variant={searchable ? 'input' : 'button'}
         >
           {#snippet customContentFormat()}
-            {#if customContentFormatTyped}
-              {@render customContentFormatTyped(selectedOption)}
+            {#if customInputContentTyped}
+              {@render customInputContentTyped(selectedOption)}
             {:else}
               {selectedOption?.label || placeholder}
             {/if}

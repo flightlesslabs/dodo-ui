@@ -61,3 +61,12 @@
 <Story name="Clearable" asChild>
   <Select {options} {value} clearable onselect={(val: SelectOption) => (value = val)} />
 </Story>
+
+<!-- Format look and feel of input content.  -->
+<Story name="CustomInputContent" asChild>
+  <Select {options} {value} onselect={(val: SelectOption) => (value = val)}>
+    {#snippet customInputContent(selectedOption)}
+      {selectedOption.label} 💯💯💯
+    {/snippet}
+  </Select>
+</Story>
