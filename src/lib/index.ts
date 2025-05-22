@@ -79,14 +79,6 @@ export type { FormControlProps } from '$lib/stories/components/Form/FormControl/
 export { default as Message } from '$lib/stories/components/Form/Message/Message.svelte';
 export type { MessageProps } from '$lib/stories/components/Form/Message/Message.svelte';
 
-/** Form: SimpleSelect */
-export { default as SimpleSelect } from '$lib/stories/components/Form/SimpleSelect/SimpleSelect.svelte';
-export type {
-  SimpleSelectFocusEvent,
-  SimpleSelectOption,
-  SimpleSelectProps,
-} from '$lib/stories/components/Form/SimpleSelect/SimpleSelect.svelte';
-
 /** Layout: Paper */
 export { default as Paper } from '$lib/stories/components/Layout/Paper/Paper.svelte';
 export type { PaperColor, PaperProps } from '$lib/stories/components/Layout/Paper/Paper.svelte';
