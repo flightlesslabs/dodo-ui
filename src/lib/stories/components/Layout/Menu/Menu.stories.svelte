@@ -67,3 +67,23 @@
     <MenuItem>Paste</MenuItem>
   </Menu>
 </Story>
+
+<Story name="KeyboardNavigation" asChild>
+  <Menu
+    width="200px"
+    enableKeyboardNavigation
+    onEnter={(selectedItemIndex) => console.log(selectedItemIndex)}
+  >
+    <MenuItem>Cut</MenuItem>
+    <MenuItem>Cut Special</MenuItem>
+    <MenuItem>Cut Selected</MenuItem>
+    <Separator />
+    <MenuItem>Copy</MenuItem>
+    <MenuItem>Copy Special</MenuItem>
+    <MenuItem>Copy Selected</MenuItem>
+    <Separator />
+    <MenuItem>Paste</MenuItem>
+    <MenuItem>Paste Special</MenuItem>
+    <MenuItem>Paste Selected</MenuItem>
+  </Menu>
+</Story>

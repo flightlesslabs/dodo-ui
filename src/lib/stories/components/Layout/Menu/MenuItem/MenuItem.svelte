@@ -78,6 +78,8 @@
     ref = $bindable<HTMLLIElement>(),
   }: MenuItemProps = $props();
 
+  const hover = false;
+
   const sizeMenu = (
     getContext<any>('MenuItemSize') ? getContext<any>('MenuItemSize')() : undefined
   ) as ComponentSize | undefined;
@@ -99,6 +101,7 @@
   class:disabled
   class:separator
   class:selected
+  class:hover
   class={['dodo-ui-MenuItem', `size--${size}`, className].join(' ')}
   {id}
   bind:this={ref}
@@ -250,6 +253,12 @@
           background-color: transparent;
           color: var(--dodo-ui-MenuItem-disabled-color);
         }
+      }
+    }
+
+    &.hover {
+      .MenuItem-type {
+        background-color: var(--dodo-ui-MenuItem-hover-bg);
       }
     }
   }

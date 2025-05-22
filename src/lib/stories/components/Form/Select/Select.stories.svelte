@@ -102,7 +102,8 @@
   />
 </Story>
 
-<Story name="PopupMaxHeight" asChild>2
+<Story name="PopupMaxHeight" asChild>
+  <Select
     {options}
     {value}
     onselect={(val: SelectOption) => (value = val)}

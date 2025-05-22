@@ -149,12 +149,12 @@
     optionsPlaceholder = 'No Options',
   }: SelectProps = $props();
 
-  let focused: boolean = $state(false);
   let open: boolean = $state(false);
   let onInputStart: boolean = $state(false);
   const selectedOption = $derived(value);
   let searchTerm = $state(value?.label.trim() || '');
   let options = $state(optionsRaw);
+  let menuRef = $state<HTMLUListElement | undefined>(undefined);
 
   $effect(() => {
     if (!onInputStart) {
@@ -187,7 +187,6 @@
   let customPlaceholderMenuItemContentTyped = customPlaceholderMenuItemContentInternal as any;
 
   function onfocusMod(e: AdvancedInputFocusEvent) {
-    focused = true;
     open = true;
 
     if (onfocus) {
@@ -196,8 +195,6 @@
   }
 
   function onblurMod(e: AdvancedInputFocusEvent) {
-    focused = false;
-
     if (onblur) {
       onblur(e);
     }
@@ -231,12 +228,35 @@
 
   function onclearMod(e: ButtonClickEvent) {
     searchTerm = '';
+    open = false;
     onInputStart = false;
 
     if (onclear) {
       onclear(e);
     }
   }
+
+  function onKeyBoardEnter(selectedItemIndex: number) {
+    const targetOption = options[selectedItemIndex];
+
+    if (!targetOption) {
+      return;
+    }
+
+    if (targetOption.disabled) {
+      return;
+    }
+
+    onselectMod(targetOption);
+  }
+
+  $effect(() => {
+    if (!menuRef) {
+      return;
+    }
+
+    menuRef.focus();
+  });
 </script>
 
 <div class={['dodo-ui-Select', className].join(' ')}>
@@ -245,10 +265,24 @@
       class:outline
       class:disabled
       class:error
-      class:focused
-      class={['Select', `size--${size}`, `roundness--${roundness}`, className].join(' ')}
+      class={[
+        'Select',
+        `size--${size}`,
+        `${open ? 'focused' : ''}`,
+        `roundness--${roundness}`,
+        className,
+      ].join(' ')}
     >
-      <InputEnclosure {outline} {disabled} {error} {focused} {size} {roundness} {before} {after}>
+      <InputEnclosure
+        {outline}
+        {disabled}
+        {error}
+        focused={open}
+        {size}
+        {roundness}
+        {before}
+        {after}
+      >
         <AdvancedInput
           type="text"
           {name}
@@ -290,7 +324,7 @@
       {#if customPopupContentTyped}
         {@render customPopupContentTyped(options, selectedOption)}
       {:else}
-        <Menu {...menuProps}>
+        <Menu bind:ref={menuRef} enableKeyboardNavigation onEnter={onKeyBoardEnter} {...menuProps}>
           {#if options.length}
             {#each options as option (option.value)}
               <MenuItem
