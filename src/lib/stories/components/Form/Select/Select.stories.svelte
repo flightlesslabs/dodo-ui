@@ -24,7 +24,7 @@
     parameters: {
       docs: {
         story: {
-          height: '200px',
+          height: '400px',
           inline: false,
         },
       },
@@ -44,6 +44,30 @@
       value: 3,
       label: 'Three',
     },
+    {
+      value: 4,
+      label: 'Four',
+    },
+    {
+      value: 5,
+      label: 'Five',
+    },
+    {
+      value: 6,
+      label: 'Six',
+    },
+    {
+      value: 7,
+      label: 'Seven',
+    },
+    {
+      value: 8,
+      label: 'Eight',
+    },
+    {
+      value: 9,
+      label: 'Nine',
+    },
   ];
 
   let value = $state<SelectOption>(options[0]);
@@ -60,6 +84,15 @@
 
 <Story name="Clearable" asChild>
   <Select {options} {value} clearable onselect={(val: SelectOption) => (value = val)} />
+</Story>
+
+<Story name="PopupMaxHeight" asChild>
+  <Select
+    {options}
+    {value}
+    onselect={(val: SelectOption) => (value = val)}
+    popupMaxHeight="200px"
+  />
 </Story>
 
 <!-- Format look and feel of input content.  -->

@@ -71,6 +71,8 @@
     oncut?: ClipboardEventHandler<HTMLInputElement>;
     /** custom Content Formatting for variant button */
     customInputContent?: (val: SelectOption) => Snippet;
+    /** PopperPopup Max height. Use css compatible value */
+    popupMaxHeight?: string;
   }
 </script>
 
@@ -114,6 +116,7 @@
     onclear,
     options,
     customInputContent: customInputContentInternal,
+    popupMaxHeight = '300px',
   }: SelectProps = $props();
 
   let focused: boolean = $state(false);
@@ -154,7 +157,7 @@
 </script>
 
 <div class={['dodo-ui-Select', className].join(' ')}>
-  <Popper fullWidth {open} {onClickOutside}>
+  <Popper fullWidth {open} {onClickOutside} {popupMaxHeight}>
     <div
       class:outline
       class:disabled
@@ -181,7 +184,7 @@
           {readonly}
           variant={searchable ? 'input' : 'button'}
         >
-          {#snippet customContentFormat()}
+          {#snippet customInputContent()}
             {#if customInputContentTyped}
               {@render customInputContentTyped(selectedOption)}
             {:else}

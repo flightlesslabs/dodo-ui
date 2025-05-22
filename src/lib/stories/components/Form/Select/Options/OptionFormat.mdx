@@ -1,0 +1,40 @@
+import { Source } from '@storybook/blocks';
+
+# Option Format
+
+## SelectOption
+
+<Source
+  dark
+  language="ts"
+  code={`
+ type SelectOption = {
+    value: string | number | boolean | null | undefined;
+    label: string;
+    disabled?: boolean;
+  };
+`}
+/>
+
+## Example values
+
+<Source
+  dark
+  language="ts"
+  code={`
+const options: SelectOption[] = [
+  {
+    value: 1,
+    label: 'One',
+  },
+  {
+    value: 2,
+    label: 'Two',
+  },
+  {
+    value: 3,
+    label: 'Three',
+  },
+];
+`}
+/>

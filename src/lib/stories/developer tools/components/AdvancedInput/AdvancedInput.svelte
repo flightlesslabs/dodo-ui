@@ -65,7 +65,7 @@
     /** oncut event handler */
     oncut?: ClipboardEventHandler<HTMLInputElement>;
     /** custom Content Formatting for variant button */
-    customContentFormat?: (value: string | number) => Snippet;
+    customInputContent?: (value: string | number) => Snippet;
   }
 </script>
 
@@ -90,11 +90,11 @@
     variant = 'input',
     size = 'normal',
     onclick,
-    customContentFormat,
+    customInputContent,
   }: AdvancedInputProps = $props();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let customContentFormatTyped = customContentFormat as any;
+  let customInputContentTyped = customInputContent as any;
 
   function onclickMod(e: AdvancedInputClickEvent) {
     if (onfocus) {
@@ -122,8 +122,8 @@
     {onblur}
     {disabled}
   >
-    {#if customContentFormatTyped}
-      {@render customContentFormatTyped(value)}
+    {#if customInputContentTyped}
+      {@render customInputContentTyped(value)}
     {:else}
       {`${value}` || placeholder}
     {/if}
