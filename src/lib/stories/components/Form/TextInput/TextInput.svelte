@@ -83,6 +83,9 @@
 
 <script lang="ts">
   import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
+  import DynamicInput, {
+    type DynamicInputFocusEvent,
+  } from '$lib/stories/developer tools/components/DynamicInput/DynamicInput.svelte';
 
   let {
     type = 'text',
@@ -111,19 +114,21 @@
 
   let focused: boolean = $state(false);
 
-  function onfocusMod(e: TextInputFocusEvent) {
+  function onfocusMod(e: DynamicInputFocusEvent) {
+    const eTyped = e as TextInputFocusEvent;
     focused = true;
 
     if (onfocus) {
-      onfocus(e);
+      onfocus(eTyped);
     }
   }
 
-  function onblurMod(e: TextInputFocusEvent) {
+  function onblurMod(e: DynamicInputFocusEvent) {
+    const eTyped = e as TextInputFocusEvent;
     focused = false;
 
     if (onblur) {
-      onblur(e);
+      onblur(eTyped);
     }
   }
 </script>
@@ -136,11 +141,12 @@
   class={['dodo-ui-TextInput', `size--${size}`, `roundness--${roundness}`, className].join(' ')}
 >
   <InputEnclosure {outline} {disabled} {error} {focused} {size} {roundness} {before} {after}>
-    <input
+    <DynamicInput
       {type}
       {name}
       {id}
       {disabled}
+      bind:ref
       {oninput}
       {onchange}
       onfocus={onfocusMod}
@@ -149,47 +155,9 @@
       {oncopy}
       {oncut}
       {placeholder}
-      {readonly}
       bind:value
-      bind:this={ref}
+      {readonly}
+      variant="input"
     />
   </InputEnclosure>
 </div>
-
-<style lang="scss">
-  .dodo-ui-TextInput {
-    input {
-      flex: 1;
-      border: 0;
-      outline: 0;
-      height: 100%;
-      background-color: transparent;
-      font-family: inherit;
-      color: inherit;
-      letter-spacing: 0.3px;
-    }
-
-    &.size {
-      &--normal {
-        input {
-          font-size: 1rem;
-          padding: 0 calc(var(--dodo-ui-space-small) * 2);
-        }
-      }
-
-      &--small {
-        input {
-          padding: 0 var(--dodo-ui-space);
-          font-size: 0.9rem;
-        }
-      }
-
-      &--large {
-        input {
-          font-size: 1.1rem;
-          padding: 0 calc(var(--dodo-ui-space) * 2);
-        }
-      }
-    }
-  }
-</style>
