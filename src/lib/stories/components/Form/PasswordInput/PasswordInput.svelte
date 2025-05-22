@@ -73,6 +73,7 @@
   import UtilityButton from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
   import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
   import type { TextInputFocusEvent } from '../TextInput/TextInput.svelte';
+  import { DynamicInput, type DynamicInputFocusEvent } from '$lib/index.js';
 
   let {
     size = 'normal',
@@ -108,19 +109,21 @@
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customPasswordToggleIconTyped = customPasswordToggleIcon as any;
 
-  function onfocusMod(e: TextInputFocusEvent) {
+  function onfocusMod(e: DynamicInputFocusEvent) {
+    const eTyped = e as TextInputFocusEvent;
     focused = true;
 
     if (onfocus) {
-      onfocus(e);
+      onfocus(eTyped);
     }
   }
 
-  function onblurMod(e: TextInputFocusEvent) {
+  function onblurMod(e: DynamicInputFocusEvent) {
+    const eTyped = e as TextInputFocusEvent;
     focused = false;
 
     if (onblur) {
-      onblur(e);
+      onblur(eTyped);
     }
   }
 
@@ -147,11 +150,12 @@
   class={['dodo-ui-PasswordInput', `size--${size}`, `roundness--${roundness}`, className].join(' ')}
 >
   <InputEnclosure {outline} {disabled} {error} {focused} {size} {roundness} {before} {after}>
-    <input
+    <DynamicInput
       type={passwordToggle && toggle ? 'text' : 'password'}
       {name}
       {id}
       {disabled}
+      bind:ref
       {oninput}
       {onchange}
       onfocus={onfocusMod}
@@ -161,8 +165,8 @@
       {oncut}
       {placeholder}
       bind:value
-      bind:this={ref}
       {readonly}
+      variant="input"
     />
 
     {#if passwordToggle && !disabled}
@@ -183,24 +187,8 @@
 
 <style lang="scss">
   .dodo-ui-PasswordInput {
-    input {
-      flex: 1;
-      border: 0;
-      outline: 0;
-      height: 100%;
-      background-color: transparent;
-      font-family: inherit;
-      color: inherit;
-      letter-spacing: 0.3px;
-    }
-
     &.size {
       &--normal {
-        input {
-          font-size: 1rem;
-          padding: 0 calc(var(--dodo-ui-space-small) * 2);
-        }
-
         .passwordToggle {
           &.after {
             margin-right: calc(var(--dodo-ui-space-small) * 2);
@@ -209,11 +197,6 @@
       }
 
       &--small {
-        input {
-          padding: 0 var(--dodo-ui-space);
-          font-size: 0.9rem;
-        }
-
         .passwordToggle {
           &.after {
             margin-right: var(--dodo-ui-space);
@@ -222,11 +205,6 @@
       }
 
       &--large {
-        input {
-          font-size: 1.1rem;
-          padding: 0 calc(var(--dodo-ui-space) * 2);
-        }
-
         .passwordToggle {
           &.after {
             margin-right: calc(var(--dodo-ui-space) * 2);
