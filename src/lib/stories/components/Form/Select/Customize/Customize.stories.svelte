@@ -2,8 +2,7 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Select, { type SelectOption } from '../Select.svelte';
   import { selectOptions, storySelectArgTypes } from '../Select.stories.svelte';
-  import Icon from '@iconify/svelte';
-  import { Menu, Separator } from '$lib/index.js';
+  import { Menu } from '$lib/index.js';
   import MenuItem from '$lib/stories/components/Layout/Menu/MenuItem/MenuItem.svelte';
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories

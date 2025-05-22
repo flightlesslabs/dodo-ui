@@ -33,6 +33,7 @@
     disabled?: boolean;
     /** link href */
     href?: string;
+    /** Link button: download  */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     download?: any;
     /** Link button: hreflang  */
@@ -80,14 +81,16 @@
 
   const hover = false;
 
-  const sizeMenu = (
-    getContext<any>('MenuItemSize') ? getContext<any>('MenuItemSize')() : undefined
-  ) as ComponentSize | undefined;
+  const sizeMenu = // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (getContext<any>('MenuItemSize') ? getContext<any>('MenuItemSize')() : undefined) as
+      | ComponentSize
+      | undefined;
   const size = sizeMenu || sizeInternal || 'normal';
 
-  const separatorMenu = (
-    getContext<any>('MenuItemSeparator') ? getContext<any>('MenuItemSeparator')() : undefined
-  ) as boolean | undefined;
+  const separatorMenu = // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (getContext<any>('MenuItemSeparator') ? getContext<any>('MenuItemSeparator')() : undefined) as
+      | boolean
+      | undefined;
   const separator = separatorMenu !== undefined ? separatorMenu : separatorInternal || false;
 </script>
 

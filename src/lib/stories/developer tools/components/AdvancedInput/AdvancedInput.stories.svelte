@@ -41,9 +41,9 @@
   args={{ variant: 'button', placeholder: 'Type Something...', value: '' }}
 />
 
-<Story name="CustomFormat" asChild>
+<Story name="CustomInputContent" asChild>
   <AdvancedInput variant="button" value="Hello world!">
-    {#snippet customContentFormat(value)}
+    {#snippet customInputContent(value)}
       <div>
         {`${value}`}
         <Icon icon="material-symbols:ads-click" width="24" height="24" style="color: #d21313" />

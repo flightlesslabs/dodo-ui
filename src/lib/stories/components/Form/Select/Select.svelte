@@ -155,6 +155,7 @@
   let searchTerm = $state(value?.label.trim() || '');
   let options = $state(optionsRaw);
   let menuRef = $state<HTMLUListElement | undefined>(undefined);
+  let menuItemIndex = $state(0);
 
   $effect(() => {
     if (!onInputStart) {
@@ -186,8 +187,27 @@
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customPlaceholderMenuItemContentTyped = customPlaceholderMenuItemContentInternal as any;
 
-  function onfocusMod(e: AdvancedInputFocusEvent) {
+  function closeMenu() {
+    open = false;
+    menuItemIndex = 0;
+
+    ref?.blur();
+  }
+
+  function openMenu() {
     open = true;
+
+    const menuItemIndexNew = options.findIndex((item) => item.value === selectedOption?.value);
+
+    if (menuItemIndexNew < 0) {
+      menuItemIndex = 0;
+    } else {
+      menuItemIndex = menuItemIndexNew;
+    }
+  }
+
+  function onfocusMod(e: AdvancedInputFocusEvent) {
+    openMenu();
 
     if (onfocus) {
       onfocus(e);
@@ -202,14 +222,16 @@
 
   function onClickOutside() {
     searchTerm = selectedOption?.label || '';
-    open = false;
     onInputStart = false;
+
+    closeMenu();
   }
 
   function onselectMod(val: SelectOption) {
     searchTerm = val.label;
-    open = false;
     onInputStart = false;
+
+    closeMenu();
 
     if (onselect) {
       onselect(val);
@@ -228,8 +250,9 @@
 
   function onclearMod(e: ButtonClickEvent) {
     searchTerm = '';
-    open = false;
     onInputStart = false;
+
+    closeMenu();
 
     if (onclear) {
       onclear(e);
@@ -250,12 +273,98 @@
     onselectMod(targetOption);
   }
 
+  function onKeyboardNavigation(e: KeyboardEvent) {
+    let keyHit: string | undefined = undefined;
+
+    if (!menuRef) {
+      return;
+    }
+
+    if (!open) {
+      return;
+    }
+
+    switch (e.key) {
+      case 'ArrowDown':
+      case 'ArrowUp':
+      case 'Enter':
+        keyHit = e.key;
+        e.preventDefault();
+        break;
+      default:
+        break;
+    }
+
+    if (!keyHit) {
+      return;
+    }
+
+    const listItems = menuRef.querySelectorAll(':scope > li.dodo-ui-MenuItem');
+
+    if (!listItems.length) {
+      return;
+    }
+
+    for (let index = 0; index < listItems.length; index++) {
+      const element = listItems[index];
+
+      element.classList.remove('hover');
+    }
+
+    let newMenuItemIndex = menuItemIndex;
+
+    if (keyHit === 'ArrowDown') {
+      if (listItems[newMenuItemIndex + 1]) {
+        newMenuItemIndex = newMenuItemIndex + 1;
+      } else {
+        newMenuItemIndex = 0;
+      }
+    } else if (keyHit === 'ArrowUp') {
+      if (listItems[newMenuItemIndex - 1]) {
+        newMenuItemIndex = newMenuItemIndex - 1;
+      } else {
+        newMenuItemIndex = listItems.length - 1;
+      }
+    } else if (keyHit === 'Enter') {
+      onKeyBoardEnter(newMenuItemIndex);
+      return;
+    }
+
+    const targetItem = listItems[newMenuItemIndex] as HTMLLIElement;
+
+    targetItem.classList.add('hover');
+
+    targetItem.focus();
+    targetItem.scrollIntoView({ block: 'nearest' });
+
+    menuItemIndex = newMenuItemIndex;
+  }
+
   $effect(() => {
     if (!menuRef) {
       return;
     }
 
-    menuRef.focus();
+    if (!open) {
+      return;
+    }
+
+    const targetItem = menuRef.querySelector(':scope > li.dodo-ui-MenuItem.selected') as
+      | HTMLLIElement
+      | undefined;
+
+    if (targetItem) {
+      targetItem.classList.add('hover');
+
+      targetItem.focus();
+      targetItem.scrollIntoView({ block: 'nearest' });
+    }
+
+    window.addEventListener('keydown', onKeyboardNavigation);
+
+    return () => {
+      window.removeEventListener('keydown', onKeyboardNavigation);
+    };
   });
 </script>
 
@@ -288,7 +397,7 @@
           {name}
           {id}
           {disabled}
-          {ref}
+          bind:ref
           oninput={oninputMod}
           {onchange}
           onfocus={onfocusMod}
@@ -324,7 +433,7 @@
       {#if customPopupContentTyped}
         {@render customPopupContentTyped(options, selectedOption)}
       {:else}
-        <Menu bind:ref={menuRef} enableKeyboardNavigation onEnter={onKeyBoardEnter} {...menuProps}>
+        <Menu bind:ref={menuRef} {...menuProps}>
           {#if options.length}
             {#each options as option (option.value)}
               <MenuItem
