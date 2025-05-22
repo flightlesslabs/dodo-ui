@@ -1,4 +1,7 @@
 <script lang="ts" module>
+  import type { ComponentRoundness } from '$lib/types/roundness.js';
+  import type { ComponentShadow } from '$lib/types/shadow.js';
+  import type { ComponentWeight } from '$lib/types/weight.js';
   import {
     componentColorPriorityArray,
     componentColorSeverityArray,
@@ -12,16 +15,8 @@
     ...componentColorPriorityArray,
     ...componentColorSeverityArray,
   ];
-</script>
 
-<script lang="ts">
-  import type { ComponentRoundness } from '$lib/types/roundness.js';
-  import type { ComponentShadow } from '$lib/types/shadow.js';
-  import type { ComponentWeight } from '$lib/types/weight.js';
-
-  import type { Snippet } from 'svelte';
-
-  interface PaperProps {
+  export interface PaperProps {
     /** Paper contents goes here */
     children?: Snippet;
     /** Paper ref */
@@ -49,6 +44,10 @@
     /** Custom border color. Use CSS compatible value */
     customBorderColor?: string;
   }
+</script>
+
+<script lang="ts">
+  import type { Snippet } from 'svelte';
 
   let {
     children,

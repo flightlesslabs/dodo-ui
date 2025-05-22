@@ -3,7 +3,6 @@
   import UtilityButton from './UtilityButton.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
   import Icon from '@iconify/svelte';
-  import { fn } from '@storybook/test';
   import { componentSizeArray } from '$lib/types/size.js';
 
   export const storyUtilityButtonArgTypes: StoryBookArgTypes = {
@@ -18,9 +17,6 @@
     component: UtilityButton,
     tags: ['autodocs'],
     argTypes: storyUtilityButtonArgTypes,
-    args: {
-      onclick: fn(),
-    },
   });
 </script>
 

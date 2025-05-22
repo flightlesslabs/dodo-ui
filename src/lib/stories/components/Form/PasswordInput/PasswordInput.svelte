@@ -1,11 +1,6 @@
 <script lang="ts" module>
-  export type PasswordInputToggleEvent = {
-    event: Event;
-    toggle: boolean;
-  };
-</script>
-
-<script lang="ts">
+  import type { ComponentSize } from '$lib/types/size.js';
+  import type { ComponentRoundness } from '$lib/types/roundness.js';
   import type { Snippet } from 'svelte';
   import type {
     ChangeEventHandler,
@@ -13,14 +8,13 @@
     FocusEventHandler,
     FormEventHandler,
   } from 'svelte/elements';
-  import type { TextInputFocusEvent } from '../TextInput/TextInput.svelte';
-  import Icon from '@iconify/svelte';
-  import UtilityButton from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
-  import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
-  import type { ComponentSize } from '$lib/types/size.js';
-  import type { ComponentRoundness } from '$lib/types/roundness.js';
 
-  interface PasswordInputProps {
+  export type PasswordInputToggleEvent = {
+    event: Event;
+    toggle: boolean;
+  };
+
+  export interface PasswordInputProps {
     /** How large should the button be? */
     size?: ComponentSize;
     /** Input ref */
@@ -72,6 +66,14 @@
     /** ontoggle event handler */
     ontoggle?: (e: PasswordInputToggleEvent) => void;
   }
+</script>
+
+<script lang="ts">
+  import Icon from '@iconify/svelte';
+  import UtilityButton from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
+  import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
+  import type { TextInputFocusEvent } from '../TextInput/TextInput.svelte';
+  import { DynamicInput, type DynamicInputFocusEvent } from '$lib/index.js';
 
   let {
     size = 'normal',
@@ -107,19 +109,21 @@
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customPasswordToggleIconTyped = customPasswordToggleIcon as any;
 
-  function onfocusMod(e: TextInputFocusEvent) {
+  function onfocusMod(e: DynamicInputFocusEvent) {
+    const eTyped = e as TextInputFocusEvent;
     focused = true;
 
     if (onfocus) {
-      onfocus(e);
+      onfocus(eTyped);
     }
   }
 
-  function onblurMod(e: TextInputFocusEvent) {
+  function onblurMod(e: DynamicInputFocusEvent) {
+    const eTyped = e as TextInputFocusEvent;
     focused = false;
 
     if (onblur) {
-      onblur(e);
+      onblur(eTyped);
     }
   }
 
@@ -146,11 +150,12 @@
   class={['dodo-ui-PasswordInput', `size--${size}`, `roundness--${roundness}`, className].join(' ')}
 >
   <InputEnclosure {outline} {disabled} {error} {focused} {size} {roundness} {before} {after}>
-    <input
+    <DynamicInput
       type={passwordToggle && toggle ? 'text' : 'password'}
       {name}
       {id}
       {disabled}
+      bind:ref
       {oninput}
       {onchange}
       onfocus={onfocusMod}
@@ -160,56 +165,50 @@
       {oncut}
       {placeholder}
       bind:value
-      bind:this={ref}
       {readonly}
+      variant="input"
     />
 
     {#if passwordToggle && !disabled}
-      <UtilityButton {size} title="Toggle password" class="passwordToggle" onclick={ontoggleMod}>
-        {#if customPasswordToggleIcon}
-          {@render customPasswordToggleIconTyped(toggle)}
-        {:else if toggle}
-          <Icon icon="mdi:eye-off" width="24" height="24" />
-        {:else}
-          <Icon icon="mdi:eye" width="24" height="24" />
-        {/if}
-      </UtilityButton>
+      <div class:after class="passwordToggle">
+        <UtilityButton {size} title="Toggle password" onclick={ontoggleMod}>
+          {#if customPasswordToggleIcon}
+            {@render customPasswordToggleIconTyped(toggle)}
+          {:else if toggle}
+            <Icon icon="mdi:eye-off" width="24" height="24" />
+          {:else}
+            <Icon icon="mdi:eye" width="24" height="24" />
+          {/if}
+        </UtilityButton>
+      </div>
     {/if}
   </InputEnclosure>
 </div>
 
 <style lang="scss">
   .dodo-ui-PasswordInput {
-    input {
-      flex: 1;
-      border: 0;
-      outline: 0;
-      height: 100%;
-      background-color: transparent;
-      font-family: inherit;
-      color: inherit;
-      letter-spacing: 0.3px;
-    }
-
     &.size {
       &--normal {
-        input {
-          font-size: 1rem;
-          padding: 0 calc(var(--dodo-ui-space-small) * 2);
+        .passwordToggle {
+          &.after {
+            margin-right: calc(var(--dodo-ui-space-small) * 2);
+          }
         }
       }
 
       &--small {
-        input {
-          padding: 0 var(--dodo-ui-space);
-          font-size: 0.9rem;
+        .passwordToggle {
+          &.after {
+            margin-right: var(--dodo-ui-space);
+          }
         }
       }
 
       &--large {
-        input {
-          font-size: 1.1rem;
-          padding: 0 calc(var(--dodo-ui-space) * 2);
+        .passwordToggle {
+          &.after {
+            margin-right: calc(var(--dodo-ui-space) * 2);
+          }
         }
       }
     }

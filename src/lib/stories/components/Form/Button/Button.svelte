@@ -1,4 +1,12 @@
 <script lang="ts" module>
+  import type { ComponentColor } from '$lib/types/colors.js';
+  import type { ComponentRoundness } from '$lib/types/roundness.js';
+  import type { ComponentSize } from '$lib/types/size.js';
+  import type { ComponentWeight } from '$lib/types/weight.js';
+
+  import type { Snippet } from 'svelte';
+  import type { MouseEventHandler } from 'svelte/elements';
+
   export type ButtonLinkTarget =
     | '_self'
     | '_blank'
@@ -10,18 +18,12 @@
   export type ButtonLinkReferrerpolicy = ReferrerPolicy | undefined | null;
   export type ButtonType = 'button' | 'submit';
   export const buttonTypeArray: ButtonType[] = ['button', 'submit'];
-</script>
 
-<script lang="ts">
-  import type { ComponentColor } from '$lib/types/colors.js';
-  import type { ComponentRoundness } from '$lib/types/roundness.js';
-  import type { ComponentSize } from '$lib/types/size.js';
-  import type { ComponentWeight } from '$lib/types/weight.js';
+  export type ButtonClickEvent = MouseEvent & {
+    currentTarget: EventTarget & HTMLButtonElement;
+  };
 
-  import type { Snippet } from 'svelte';
-  import type { MouseEventHandler } from 'svelte/elements';
-
-  interface ButtonProps {
+  export interface ButtonProps {
     /** Button contents goes here */
     children?: Snippet;
     /** Button ref */
@@ -78,7 +80,9 @@
     /** Link button: referrerpolicy  */
     referrerpolicy?: ButtonLinkReferrerpolicy;
   }
+</script>
 
+<script lang="ts">
   let {
     children,
     type = 'button',

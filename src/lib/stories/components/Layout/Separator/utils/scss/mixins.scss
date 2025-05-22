@@ -1,0 +1,24 @@
+/// Mixin: generate-dodo-ui-button-colors
+/// Generates CSS custom properties for Dodo UI button styles (text & solid)
+/// across different interaction states (default, hover, active).
+/// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
+@mixin generate-dodo-ui-separator-colors($color-name) {
+  --dodo-ui-Separator-color-#{$color-name}: var(--dodo-color-#{$color-name}-300);
+}
+
+/// Mixin: generate-dodo-ui-button-colors
+/// Generates CSS custom properties for Dodo UI button styles (text & solid)
+/// across different interaction states (default, hover, active).
+/// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
+@mixin generate-dodo-ui-separator-colors-dark($color-name) {
+  --dodo-ui-Separator-color-#{$color-name}: var(--dodo-color-#{$color-name}-300);
+}
+
+/// Mixin: generate-dodo-ui-button-color
+/// Auto-generates .color--[theme] > .variant--text & .variant--solid styles
+/// @param {String} $theme - e.g., default, safe, danger, etc.
+@mixin generate-dodo-ui-separator-color($theme) {
+  &--#{$theme} {
+    background-color: var(--dodo-ui-Separator-color-#{$theme});
+  }
+}

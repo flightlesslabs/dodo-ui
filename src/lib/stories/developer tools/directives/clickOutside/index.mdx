@@ -1,0 +1,25 @@
+import { Source } from '@storybook/blocks';
+
+# Click Outside
+
+Event that fires after clicking outside the target component
+
+<Source
+  dark
+  language="js"
+  code={`
+import { clickOutside } '@flightlesslabs/dodo-ui';
+`}
+/>
+
+Attach it to a component
+
+<Source
+  dark
+  language="js"
+  code={`
+<div
+  use:clickOutside={onClickOutside}
+  ...
+`}
+/>

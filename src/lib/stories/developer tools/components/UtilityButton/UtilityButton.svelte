@@ -1,9 +1,9 @@
-<script lang="ts">
+<script lang="ts" module>
   import type { ComponentSize } from '$lib/types/size.js';
   import type { Snippet } from 'svelte';
   import type { MouseEventHandler } from 'svelte/elements';
 
-  interface UtilityButtonProps {
+  export interface UtilityButtonProps {
     /** Button contents goes here*/
     children?: Snippet;
     /** Button ref */
@@ -23,7 +23,9 @@
     /** The onclick event handler */
     onclick?: MouseEventHandler<HTMLButtonElement>;
   }
+</script>
 
+<script lang="ts">
   let {
     children,
     size = 'normal',

@@ -1,7 +1,7 @@
-<script lang="ts">
+<script lang="ts" module>
   import type { Snippet } from 'svelte';
 
-  interface LabelProps {
+  export interface LabelProps {
     /** Label contents goes here */
     children?: Snippet;
     /** Label ref */
@@ -13,7 +13,9 @@
     /** Custom css class*/
     class?: string;
   }
+</script>
 
+<script lang="ts">
   let {
     children,
     class: className = '',
