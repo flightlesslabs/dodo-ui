@@ -1,19 +1,19 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import AdvancedInput, { advancedInputVariantArray } from './AdvancedInput.svelte';
+  import DynamicInput, { dynamicInputVariantArray } from './DynamicInput.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
   import { componentSizeArray } from '$lib/types/size.js';
   import { textInputTypeArray } from '$lib/stories/components/Form/TextInput/TextInput.svelte';
   import Icon from '@iconify/svelte';
 
-  export const storyAdvancedInputArgTypes: StoryBookArgTypes = {
+  export const storyDynamicInputArgTypes: StoryBookArgTypes = {
     type: {
       control: { type: 'select' },
       options: textInputTypeArray,
     },
     variant: {
       control: { type: 'select' },
-      options: advancedInputVariantArray,
+      options: dynamicInputVariantArray,
     },
     size: {
       control: { type: 'select' },
@@ -23,9 +23,9 @@
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
   const { Story } = defineMeta({
-    component: AdvancedInput,
+    component: DynamicInput,
     tags: ['autodocs'],
-    argTypes: storyAdvancedInputArgTypes,
+    argTypes: storyDynamicInputArgTypes,
     args: { value: 'Hello world!' },
   });
 </script>
@@ -42,12 +42,12 @@
 />
 
 <Story name="CustomInputContent" asChild>
-  <AdvancedInput variant="button" value="Hello world!">
+  <DynamicInput variant="button" value="Hello world!">
     {#snippet customInputContent(value)}
       <div>
         {`${value}`}
         <Icon icon="material-symbols:ads-click" width="24" height="24" style="color: #d21313" />
       </div>
     {/snippet}
-  </AdvancedInput>
+  </DynamicInput>
 </Story>

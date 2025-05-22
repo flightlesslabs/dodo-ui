@@ -1,13 +1,13 @@
 <script module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import AdvancedInput from '../AdvancedInput.svelte';
-  import { storyAdvancedInputArgTypes } from '../AdvancedInput.stories.svelte';
+  import DynamicInput from '../DynamicInput.svelte';
+  import { storyDynamicInputArgTypes } from '../DynamicInput.stories.svelte';
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
   const { Story } = defineMeta({
-    component: AdvancedInput,
+    component: DynamicInput,
     tags: ['autodocs'],
-    argTypes: storyAdvancedInputArgTypes,
+    argTypes: storyDynamicInputArgTypes,
     args: { value: 'Hello world!' },
   });
 </script>

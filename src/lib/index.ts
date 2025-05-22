@@ -25,14 +25,14 @@ export type { UtilityButtonProps } from '$lib/stories/developer tools/components
 export { default as InputEnclosure } from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
 export type { InputEnclosureProps } from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
 
-/** developer tools: components: AdvancedInput */
-export { default as AdvancedInput } from '$lib/stories/developer tools/components/AdvancedInput/AdvancedInput.svelte';
+/** developer tools: components: DynamicInput */
+export { default as DynamicInput } from '$lib/stories/developer tools/components/DynamicInput/DynamicInput.svelte';
 export type {
-  AdvancedInputVariant,
-  AdvancedInputProps,
-  AdvancedInputClickEvent,
-  AdvancedInputFocusEvent,
-} from '$lib/stories/developer tools/components/AdvancedInput/AdvancedInput.svelte';
+  DynamicInputVariant,
+  DynamicInputProps,
+  DynamicInputClickEvent,
+  DynamicInputFocusEvent,
+} from '$lib/stories/developer tools/components/DynamicInput/DynamicInput.svelte';
 
 /** developer tools: components: Popper */
 export { default as Popper } from '$lib/stories/developer tools/components/Popper/Popper.svelte';

@@ -9,19 +9,19 @@
     MouseEventHandler,
   } from 'svelte/elements';
 
-  export type AdvancedInputVariant = 'input' | 'button';
+  export type DynamicInputVariant = 'input' | 'button';
 
-  export const advancedInputVariantArray: AdvancedInputVariant[] = ['input', 'button'];
+  export const dynamicInputVariantArray: DynamicInputVariant[] = ['input', 'button'];
 
-  export type AdvancedInputClickEvent = MouseEvent & {
+  export type DynamicInputClickEvent = MouseEvent & {
     currentTarget: EventTarget & HTMLButtonElement;
   };
 
-  export type AdvancedInputFocusEvent = FocusEvent & {
+  export type DynamicInputFocusEvent = FocusEvent & {
     currentTarget: EventTarget & (HTMLInputElement | HTMLButtonElement);
   };
 
-  export interface AdvancedInputProps {
+  export interface DynamicInputProps {
     /** How large should the button be? */
     size?: ComponentSize;
     /** Input type? */
@@ -31,7 +31,7 @@
     /** Input value */
     value?: string | number;
     /** variant */
-    variant?: AdvancedInputVariant;
+    variant?: DynamicInputVariant;
     /** How round should the border radius be? */
     placeholder?: string;
     /** disabled state */
@@ -91,12 +91,12 @@
     size = 'normal',
     onclick,
     customInputContent,
-  }: AdvancedInputProps = $props();
+  }: DynamicInputProps = $props();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customInputContentTyped = customInputContent as any;
 
-  function onclickMod(e: AdvancedInputClickEvent) {
+  function onclickMod(e: DynamicInputClickEvent) {
     if (onfocus) {
       onfocus(e);
     }
@@ -111,7 +111,7 @@
   <button
     {id}
     class={[
-      'dodo-ui-AdvancedInput',
+      'dodo-ui-DynamicInput',
       `size--${size}`,
       `variant--${variant}`,
       `${!value ? 'placeholder' : ''}`,
@@ -130,7 +130,7 @@
   </button>
 {:else}
   <input
-    class={['dodo-ui-AdvancedInput', `size--${size}`, `variant--${variant}`, className].join(' ')}
+    class={['dodo-ui-DynamicInput', `size--${size}`, `variant--${variant}`, className].join(' ')}
     {type}
     {name}
     {id}
@@ -150,7 +150,7 @@
 {/if}
 
 <style lang="scss">
-  .dodo-ui-AdvancedInput {
+  .dodo-ui-DynamicInput {
     flex: 1;
     border: 0;
     outline: 0;

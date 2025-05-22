@@ -3,7 +3,7 @@
   import { selectOptions, storySelectArgTypes } from '../Select.stories.svelte';
   import Select, { type SelectOption } from '../Select.svelte';
   import type { TextInputClipboardEvent } from '../../TextInput/TextInput.svelte';
-  import type { AdvancedInputFocusEvent } from '$lib/stories/developer tools/components/AdvancedInput/AdvancedInput.svelte';
+  import type { DynamicInputFocusEvent } from '$lib/stories/developer tools/components/DynamicInput/DynamicInput.svelte';
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
   const { Story } = defineMeta({
@@ -80,7 +80,7 @@
   args={{
     options,
     value,
-    onfocus: (e: AdvancedInputFocusEvent) => {
+    onfocus: (e: DynamicInputFocusEvent) => {
       const target = e.target as HTMLInputElement | HTMLButtonElement;
 
       console.log('onfocus Event', target);
@@ -93,7 +93,7 @@
   args={{
     options,
     value,
-    onblur: (e: AdvancedInputFocusEvent) => {
+    onblur: (e: DynamicInputFocusEvent) => {
       const target = e.target as HTMLInputElement | HTMLButtonElement;
 
       console.log('onblur Event', target);

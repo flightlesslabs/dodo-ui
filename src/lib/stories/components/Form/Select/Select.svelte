@@ -97,11 +97,11 @@
   import UtilityButton from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
   import Icon from '@iconify/svelte';
   import {
-    AdvancedInput,
+    DynamicInput,
     Menu,
     MenuItem,
     Popper,
-    type AdvancedInputFocusEvent,
+    type DynamicInputFocusEvent,
     type MenuItemProps,
     type MenuProps,
     type PaperProps,
@@ -206,7 +206,7 @@
     }
   }
 
-  function onfocusMod(e: AdvancedInputFocusEvent) {
+  function onfocusMod(e: DynamicInputFocusEvent) {
     openMenu();
 
     if (onfocus) {
@@ -214,7 +214,7 @@
     }
   }
 
-  function onblurMod(e: AdvancedInputFocusEvent) {
+  function onblurMod(e: DynamicInputFocusEvent) {
     if (onblur) {
       onblur(e);
     }
@@ -392,7 +392,7 @@
         {before}
         {after}
       >
-        <AdvancedInput
+        <DynamicInput
           type="text"
           {name}
           {id}
@@ -417,7 +417,7 @@
               {selectedOption?.label || placeholder}
             {/if}
           {/snippet}
-        </AdvancedInput>
+        </DynamicInput>
 
         {#if selectedOption?.label && clearable && !disabled}
           <div class:after class="SelectClear">
