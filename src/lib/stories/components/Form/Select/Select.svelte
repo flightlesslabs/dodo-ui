@@ -71,8 +71,20 @@
     oncut?: ClipboardEventHandler<HTMLInputElement>;
     /** custom Content Formatting for variant button */
     customInputContent?: (val: SelectOption) => Snippet;
+    /** custom Content Formatting for variant button */
+    customMenuItemContent?: (val: SelectOption, selected: boolean) => Snippet;
+    /** Custom Popup Content */
+    customPopupContent?: (options: SelectOption[], selectedOption: SelectOption) => Snippet;
     /** PopperPopup Max height. Use css compatible value */
     popupMaxHeight?: string;
+    /** PaperProps: Paper component props for Popup */
+    paperProps?: Partial<PaperProps>;
+    /** PopperProps: Popper component props */
+    popperProps?: Partial<PopperProps>;
+    /** MenuProps: Menu component props */
+    menuProps?: Partial<MenuProps>;
+    /** MenuItem: Menu component props */
+    menuItemProps?: Partial<MenuItemProps>;
   }
 </script>
 
@@ -86,6 +98,10 @@
     MenuItem,
     Popper,
     type AdvancedInputFocusEvent,
+    type MenuItemProps,
+    type MenuProps,
+    type PaperProps,
+    type PopperProps,
   } from '$lib/index.js';
 
   let {
@@ -116,7 +132,13 @@
     onclear,
     options,
     customInputContent: customInputContentInternal,
+    customMenuItemContent: customMenuItemContentInternal,
+    customPopupContent: customPopupContentInternal,
     popupMaxHeight = '300px',
+    paperProps,
+    popperProps,
+    menuProps,
+    menuItemProps,
   }: SelectProps = $props();
 
   let focused: boolean = $state(false);
@@ -125,6 +147,12 @@
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customInputContentTyped = customInputContentInternal as any;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let customMenuItemContentTyped = customMenuItemContentInternal as any;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let customPopupContentTyped = customPopupContentInternal as any;
 
   function onfocusMod(e: AdvancedInputFocusEvent) {
     focused = true;
@@ -157,7 +185,7 @@
 </script>
 
 <div class={['dodo-ui-Select', className].join(' ')}>
-  <Popper fullWidth {open} {onClickOutside} {popupMaxHeight}>
+  <Popper fullWidth {open} {onClickOutside} {...popperProps} {popupMaxHeight} {paperProps}>
     <div
       class:outline
       class:disabled
@@ -204,18 +232,27 @@
     </div>
 
     {#snippet popupChildren()}
-      <Menu>
-        {#each options as option (option.value)}
-          <MenuItem
-            onclick={() => onselectMod(option)}
-            type="button"
-            disabled={option.disabled}
-            selected={selectedOption.value === option.value}
-          >
-            {option.label}
-          </MenuItem>
-        {/each}
-      </Menu>
+      {#if customPopupContentTyped}
+        {@render customPopupContentTyped(options, selectedOption)}
+      {:else}
+        <Menu {...menuProps}>
+          {#each options as option (option.value)}
+            <MenuItem
+              onclick={() => onselectMod(option)}
+              type="button"
+              disabled={option.disabled}
+              selected={selectedOption.value === option.value}
+              {...menuItemProps}
+            >
+              {#if customMenuItemContentTyped}
+                {@render customMenuItemContentTyped(option, selectedOption.value === option.value)}
+              {:else}
+                {option.label}
+              {/if}
+            </MenuItem>
+          {/each}
+        </Menu>
+      {/if}
     {/snippet}
   </Popper>
 </div>

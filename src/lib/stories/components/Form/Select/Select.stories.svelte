@@ -31,7 +31,7 @@
     },
   });
 
-  const options: SelectOption[] = [
+  export const selectOptions: SelectOption[] = [
     {
       value: 1,
       label: 'One',
@@ -55,6 +55,7 @@
     {
       value: 6,
       label: 'Six',
+      disabled: true,
     },
     {
       value: 7,
@@ -69,6 +70,8 @@
       label: 'Nine',
     },
   ];
+
+  const options = selectOptions;
 
   let value = $state<SelectOption>(options[0]);
 </script>
@@ -95,7 +98,7 @@
   />
 </Story>
 
-<!-- Format look and feel of input content.  -->
+<!-- Format look and feel of input content. [More Customizations](?path=/docs/components-form-select-customize--docs)  -->
 <Story name="CustomInputContent" asChild>
   <Select {options} {value} onselect={(val: SelectOption) => (value = val)}>
     {#snippet customInputContent(selectedOption)}
