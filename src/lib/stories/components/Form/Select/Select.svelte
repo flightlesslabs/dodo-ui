@@ -36,9 +36,11 @@
     /** Add a border around the button. Default True */
     outline?: boolean;
     /** Select value */
-    value: SelectOption;
+    value: SelectOption | undefined;
     /** How round should the border radius be? */
     placeholder?: string;
+    /** Placeholder if there are no options found*/
+    optionsPlaceholder?: string;
     /** disabled state */
     disabled?: boolean;
     /** Read only ? */
@@ -75,6 +77,8 @@
     customMenuItemContent?: (val: SelectOption, selected: boolean) => Snippet;
     /** Custom Popup Content */
     customPopupContent?: (options: SelectOption[], selectedOption: SelectOption) => Snippet;
+    /** custom Content Formatting for variant button */
+    customPlaceholderMenuItemContent?: () => Snippet;
     /** PopperPopup Max height. Use css compatible value */
     popupMaxHeight?: string;
     /** PaperProps: Paper component props for Popup */
@@ -103,6 +107,8 @@
     type PaperProps,
     type PopperProps,
   } from '$lib/index.js';
+  import type { TextInputInputEvent } from '../TextInput/TextInput.svelte';
+  import type { ButtonClickEvent } from '../Button/Button.svelte';
 
   let {
     size = 'normal',
@@ -130,20 +136,43 @@
     searchable = false,
     clearable = false,
     onclear,
-    options,
+    options: optionsRaw,
     customInputContent: customInputContentInternal,
     customMenuItemContent: customMenuItemContentInternal,
     customPopupContent: customPopupContentInternal,
+    customPlaceholderMenuItemContent: customPlaceholderMenuItemContentInternal,
     popupMaxHeight = '300px',
     paperProps,
     popperProps,
     menuProps,
     menuItemProps,
+    optionsPlaceholder = 'No Options',
   }: SelectProps = $props();
 
   let focused: boolean = $state(false);
   let open: boolean = $state(false);
+  let onInputStart: boolean = $state(false);
   const selectedOption = $derived(value);
+  let searchTerm = $state(value?.label.trim() || '');
+  let options = $state(optionsRaw);
+
+  $effect(() => {
+    if (!onInputStart) {
+      options = optionsRaw;
+      return;
+    }
+
+    const searchTermSimplified = searchTerm.trim().toLowerCase();
+
+    if (!searchTermSimplified) {
+      options = optionsRaw;
+      return;
+    }
+
+    options = optionsRaw.filter((item) =>
+      item.label.trim().toLowerCase().includes(searchTermSimplified),
+    );
+  });
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customInputContentTyped = customInputContentInternal as any;
@@ -153,6 +182,9 @@
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customPopupContentTyped = customPopupContentInternal as any;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let customPlaceholderMenuItemContentTyped = customPlaceholderMenuItemContentInternal as any;
 
   function onfocusMod(e: AdvancedInputFocusEvent) {
     focused = true;
@@ -172,15 +204,38 @@
   }
 
   function onClickOutside() {
+    searchTerm = selectedOption?.label || '';
     open = false;
+    onInputStart = false;
   }
 
   function onselectMod(val: SelectOption) {
+    searchTerm = val.label;
+    open = false;
+    onInputStart = false;
+
     if (onselect) {
       onselect(val);
     }
+  }
 
-    open = false;
+  function oninputMod(e: TextInputInputEvent) {
+    const target = e.target as HTMLInputElement;
+    searchTerm = target.value;
+    onInputStart = true;
+
+    if (oninput) {
+      oninput(e);
+    }
+  }
+
+  function onclearMod(e: ButtonClickEvent) {
+    searchTerm = '';
+    onInputStart = false;
+
+    if (onclear) {
+      onclear(e);
+    }
   }
 </script>
 
@@ -200,7 +255,7 @@
           {id}
           {disabled}
           {ref}
-          {oninput}
+          oninput={oninputMod}
           {onchange}
           onfocus={onfocusMod}
           onblur={onblurMod}
@@ -208,7 +263,7 @@
           {oncopy}
           {oncut}
           {placeholder}
-          value={selectedOption?.label}
+          value={searchable ? searchTerm : selectedOption?.label}
           {readonly}
           variant={searchable ? 'input' : 'button'}
         >
@@ -221,9 +276,9 @@
           {/snippet}
         </AdvancedInput>
 
-        {#if selectedOption.label && clearable && !disabled}
+        {#if selectedOption?.label && clearable && !disabled}
           <div class:after class="SelectClear">
-            <UtilityButton {size} title="Clear" onclick={onclear}>
+            <UtilityButton {size} title="Clear" onclick={onclearMod}>
               <Icon icon="material-symbols:close-small" width="24" height="24" />
             </UtilityButton>
           </div>
@@ -236,21 +291,34 @@
         {@render customPopupContentTyped(options, selectedOption)}
       {:else}
         <Menu {...menuProps}>
-          {#each options as option (option.value)}
-            <MenuItem
-              onclick={() => onselectMod(option)}
-              type="button"
-              disabled={option.disabled}
-              selected={selectedOption.value === option.value}
-              {...menuItemProps}
-            >
-              {#if customMenuItemContentTyped}
-                {@render customMenuItemContentTyped(option, selectedOption.value === option.value)}
+          {#if options.length}
+            {#each options as option (option.value)}
+              <MenuItem
+                onclick={() => onselectMod(option)}
+                type="button"
+                disabled={option.disabled}
+                selected={selectedOption?.value === option.value}
+                {...menuItemProps}
+              >
+                {#if customMenuItemContentTyped}
+                  {@render customMenuItemContentTyped(
+                    option,
+                    selectedOption?.value === option.value,
+                  )}
+                {:else}
+                  {option.label}
+                {/if}
+              </MenuItem>
+            {/each}
+          {:else}
+            <MenuItem type="text" disabled={true} {...menuItemProps}>
+              {#if customPlaceholderMenuItemContentTyped}
+                {@render customPlaceholderMenuItemContentTyped()}
               {:else}
-                {option.label}
+                {optionsPlaceholder}
               {/if}
             </MenuItem>
-          {/each}
+          {/if}
         </Menu>
       {/if}
     {/snippet}

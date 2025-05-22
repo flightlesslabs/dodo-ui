@@ -47,6 +47,7 @@ export type {
   ButtonLinkReferrerpolicy,
   ButtonType,
   ButtonProps,
+  ButtonClickEvent,
 } from '$lib/stories/components/Form/Button/Button.svelte';
 
 /** Form: TextInput */
@@ -55,6 +56,7 @@ export type {
   TextInputType,
   TextInputFocusEvent,
   TextInputClipboardEvent,
+  TextInputInputEvent,
   TextInputProps,
 } from '$lib/stories/components/Form/TextInput/TextInput.svelte';
 

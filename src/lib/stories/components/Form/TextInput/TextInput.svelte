@@ -29,6 +29,10 @@
     currentTarget: EventTarget & HTMLInputElement;
   };
 
+  export type TextInputInputEvent = Event & {
+    currentTarget: EventTarget & HTMLInputElement;
+  };
+
   export interface TextInputProps {
     /** Input type? */
     type?: TextInputType;

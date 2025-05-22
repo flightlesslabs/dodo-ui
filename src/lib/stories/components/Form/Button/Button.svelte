@@ -19,6 +19,10 @@
   export type ButtonType = 'button' | 'submit';
   export const buttonTypeArray: ButtonType[] = ['button', 'submit'];
 
+  export type ButtonClickEvent = MouseEvent & {
+    currentTarget: EventTarget & HTMLButtonElement;
+  };
+
   export interface ButtonProps {
     /** Button contents goes here */
     children?: Snippet;

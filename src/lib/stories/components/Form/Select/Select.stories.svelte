@@ -73,7 +73,7 @@
 
   const options = selectOptions;
 
-  let value = $state<SelectOption>(options[0]);
+  let value = $state<SelectOption | undefined>(options[0]);
 </script>
 
 <!-- Select with default style -->
@@ -82,15 +82,27 @@
 </Story>
 
 <Story name="Searchable" asChild>
-  <Select {options} {value} searchable onselect={(val: SelectOption) => (value = val)} />
+  <Select
+    {options}
+    {value}
+    searchable
+    optionsPlaceholder="No results"
+    onselect={(val: SelectOption) => (value = val)}
+  />
 </Story>
 
 <Story name="Clearable" asChild>
-  <Select {options} {value} clearable onselect={(val: SelectOption) => (value = val)} />
+  <Select
+    {options}
+    {value}
+    clearable
+    onselect={(val: SelectOption) => (value = val)}
+    onclear={() => (value = undefined)}
+    placeholder="Select option"
+  />
 </Story>
 
-<Story name="PopupMaxHeight" asChild>
-  <Select
+<Story name="PopupMaxHeight" asChild>2
     {options}
     {value}
     onselect={(val: SelectOption) => (value = val)}

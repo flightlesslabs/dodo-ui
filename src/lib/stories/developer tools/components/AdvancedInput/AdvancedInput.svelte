@@ -114,7 +114,7 @@
       'dodo-ui-AdvancedInput',
       `size--${size}`,
       `variant--${variant}`,
-      `${`${value}`.trim() === '' ? 'placeholder' : ''}`,
+      `${!value ? 'placeholder' : ''}`,
       className,
     ].join(' ')}
     bind:this={ref}

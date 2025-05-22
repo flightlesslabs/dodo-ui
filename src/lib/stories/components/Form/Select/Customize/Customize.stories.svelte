@@ -44,6 +44,15 @@
   </Select>
 </Story>
 
+<!-- Format look and feel of Popper menu item Placeholder.  -->
+<Story name="CustomMenuItemPlaceholder" asChild>
+  <Select {options} {value} searchable onselect={(val: SelectOption) => (value = val)}>
+    {#snippet customPlaceholderMenuItemContent()}
+      🤚🤚🤚🤚 Nothing found....
+    {/snippet}
+  </Select>
+</Story>
+
 <!-- Format look and feel of Popup.  -->
 <Story name="CustomPopup" asChild>
   <Select {options} {value}>

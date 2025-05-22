@@ -37,6 +37,17 @@
 />
 
 <Story
+  name="Clear"
+  args={{
+    options,
+    value,
+    onclear: () => {
+      console.log('Clear Event');
+    },
+  }}
+/>
+
+<Story
   name="Input"
   args={{
     options,
