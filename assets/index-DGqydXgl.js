@@ -1,4 +1,4 @@
-import{j as t}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as r}from"./index-Dx-sRNSU.js";import{S as o}from"./index-Q0U_v32i.js";import"./index-DatCARk7.js";import"./iframe-BvF7yqAQ.js";import"./index-D4waAiak.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";function i(e){const n={h1:"h1",p:"p",...r(),...e.components};return t.jsxs(t.Fragment,{children:[t.jsx(n.h1,{id:"click-outside",children:"Click Outside"}),`
+import{j as t}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as r}from"./index-Dx-sRNSU.js";import{S as o}from"./index-C1lbQux5.js";import"./index-DatCARk7.js";import"./iframe-NVcm9iI5.js";import"./index-D4waAiak.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";function i(e){const n={h1:"h1",p:"p",...r(),...e.components};return t.jsxs(t.Fragment,{children:[t.jsx(n.h1,{id:"click-outside",children:"Click Outside"}),`
 `,t.jsx(n.p,{children:"Event that fires after clicking outside the target component"}),`
 `,t.jsx(o,{dark:!0,language:"js",code:`
 import { clickOutside } '@flightlesslabs/dodo-ui';

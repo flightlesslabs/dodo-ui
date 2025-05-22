@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as l}from"./index-Dx-sRNSU.js";import{S as o}from"./index-Q0U_v32i.js";import"./index-DatCARk7.js";import"./iframe-BvF7yqAQ.js";import"./index-D4waAiak.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";function r(n){const t={h1:"h1",h2:"h2",...l(),...n.components};return e.jsxs(e.Fragment,{children:[e.jsx(t.h1,{id:"option-format",children:"Option Format"}),`
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as l}from"./index-Dx-sRNSU.js";import{S as o}from"./index-C1lbQux5.js";import"./index-DatCARk7.js";import"./iframe-NVcm9iI5.js";import"./index-D4waAiak.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";function r(n){const t={h1:"h1",h2:"h2",...l(),...n.components};return e.jsxs(e.Fragment,{children:[e.jsx(t.h1,{id:"option-format",children:"Option Format"}),`
 `,e.jsx(t.h2,{id:"selectoption",children:"SelectOption"}),`
 `,e.jsx(o,{dark:!0,language:"ts",code:`
  type SelectOption = {
