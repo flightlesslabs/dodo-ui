@@ -1,0 +1,72 @@
+import { Source } from '@storybook/blocks';
+
+# Option Format
+
+## DynamicMenuItemOption
+
+<Source
+  dark
+  language="ts"
+  code={`
+type DynamicMenuItemOption<TMeta = unknown> = {
+    id: string;
+    /** label  */
+    label?: string;
+    /** Custom Metadata  */
+    meta?: TMeta;
+    /** Menu Item type */
+    type?: MenuItemType;
+    /** Menu Separator */
+    separator?: boolean;
+    /** How large should the Menu Items be? */
+    size?: ComponentSize;
+    /** The onclick event handler */
+    onclick?: MouseEventHandler<HTMLButtonElement>;
+    /**  disabled state */
+    disabled?: boolean;
+    /** link href */
+    href?: string;
+    /** Link button: download  */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    download?: any;
+    /** Link button: hreflang  */
+    hreflang?: string | undefined | null;
+    /** Link button: media  */
+    media?: string | undefined | null;
+    /** Link button: ping  */
+    ping?: string | undefined | null;
+    /** Link button: rel  */
+    rel?: string | undefined | null;
+    /** Link button: target  */
+    target?: ButtonLinkTarget;
+    /** Link button: Type  */
+    anchorMediaType?: string | undefined | null;
+    /** Link button: referrerpolicy  */
+    referrerpolicy?: ButtonLinkReferrerpolicy;
+  };
+`}
+/>
+
+## Example values
+
+<Source
+  dark
+  language="ts"
+  code={`
+const options: DynamicMenuItemOption[] = [
+   {
+    id: '1',
+    label: 'One',
+  },
+  {
+    id: '2',
+    label: 'Two',
+  },
+  {
+    id: '3',
+    label: 'Three',
+    disabled: true,
+  },
+];
+`}
+/>

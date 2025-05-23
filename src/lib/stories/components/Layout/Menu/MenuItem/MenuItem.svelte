@@ -21,7 +21,7 @@
     id?: string;
     /** Menu Item type */
     type?: MenuItemType;
-    /** Menu Item type */
+    /** selected */
     selected?: boolean;
     /** Separator */
     separator?: boolean;

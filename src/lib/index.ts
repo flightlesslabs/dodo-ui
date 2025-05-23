@@ -98,3 +98,8 @@ export type {
   MenuItemType,
   MenuItemProps,
 } from '$lib/stories/components/Layout/Menu/MenuItem/MenuItem.svelte';
+export { default as DynamicMenu } from '$lib/stories/components/Layout/Menu/DynamicMenu/DynamicMenu.svelte';
+export type {
+  DynamicMenuItemOption,
+  DynamicMenuProps,
+} from '$lib/stories/components/Layout/Menu/DynamicMenu/DynamicMenu.svelte';
