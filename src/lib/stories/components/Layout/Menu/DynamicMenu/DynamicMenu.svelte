@@ -208,7 +208,11 @@
       | undefined;
 
     if (targetItem) {
-      targetItem.classList.add('hover');
+      const selectedIndex = options?.findIndex((option) => option.id === selectedOption?.id);
+
+      if (selectedIndex !== undefined && selectedIndex >= 0) {
+        menuItemIndex = selectedIndex;
+      }
 
       targetItem.focus();
       targetItem.scrollIntoView({ block: 'nearest' });

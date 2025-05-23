@@ -157,6 +157,7 @@
       disabled: option.disabled,
       label: option.label,
       meta: option,
+      type: 'button',
     }));
 
     return newOptions;

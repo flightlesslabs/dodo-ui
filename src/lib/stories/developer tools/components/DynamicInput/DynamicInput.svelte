@@ -119,6 +119,7 @@
     ].join(' ')}
     bind:this={ref}
     onclick={onclickMod}
+    {onfocus}
     {onblur}
     {disabled}
   >
