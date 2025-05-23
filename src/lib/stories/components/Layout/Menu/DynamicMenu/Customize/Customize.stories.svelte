@@ -15,7 +15,16 @@
 <Story name="CustomMenuItemContent" asChild>
   <DynamicMenu options={dynamicMenuItemOptions}>
     {#snippet customMenuItemContent(option, selectedOption)}
-      {option.label} 💯💯💯
+      {selectedOption?.id === option.id ? '✅' : ''} {option.label} 💯💯💯
+    {/snippet}
+  </DynamicMenu>
+</Story>
+
+<!-- Custom Menu Item Placeholder Content -->
+<Story name="CustomPlaceholderMenuItemContent" asChild>
+  <DynamicMenu options={[]} showOptionsPlaceholder>
+    {#snippet customPlaceholderMenuItemContent()}
+      No dice 💯💯💯
     {/snippet}
   </DynamicMenu>
 </Story>

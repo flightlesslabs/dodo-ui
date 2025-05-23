@@ -98,10 +98,10 @@
   import Icon from '@iconify/svelte';
   import {
     DynamicInput,
-    Menu,
-    MenuItem,
+    DynamicMenu,
     Popper,
     type DynamicInputFocusEvent,
+    type DynamicMenuItemOption,
     type MenuItemProps,
     type MenuProps,
     type PaperProps,
@@ -149,29 +149,41 @@
     optionsPlaceholder = 'No Options',
   }: SelectProps = $props();
 
+  function convertOptionsToDynamicMenuItemOptions(
+    options: SelectOption[],
+  ): DynamicMenuItemOption<SelectOption>[] {
+    const newOptions: DynamicMenuItemOption<SelectOption>[] = options.map((option) => ({
+      id: `opt-${option.value}`,
+      disabled: option.disabled,
+      label: option.label,
+      meta: option,
+    }));
+
+    return newOptions;
+  }
+
   let open: boolean = $state(false);
   let onInputStart: boolean = $state(false);
   const selectedOption = $derived(value);
   let searchTerm = $state(value?.label.trim() || '');
-  let options = $state(optionsRaw);
+  let options = $state(convertOptionsToDynamicMenuItemOptions(optionsRaw));
   let menuRef = $state<HTMLUListElement | undefined>(undefined);
-  let menuItemIndex = $state(0);
 
   $effect(() => {
     if (!onInputStart) {
-      options = optionsRaw;
+      options = convertOptionsToDynamicMenuItemOptions(optionsRaw);
       return;
     }
 
     const searchTermSimplified = searchTerm.trim().toLowerCase();
 
     if (!searchTermSimplified) {
-      options = optionsRaw;
+      options = convertOptionsToDynamicMenuItemOptions(optionsRaw);
       return;
     }
 
-    options = optionsRaw.filter((item) =>
-      item.label.trim().toLowerCase().includes(searchTermSimplified),
+    options = convertOptionsToDynamicMenuItemOptions(optionsRaw).filter((item) =>
+      item?.meta?.label.trim().toLowerCase().includes(searchTermSimplified),
     );
   });
 
@@ -189,21 +201,12 @@
 
   function closeMenu() {
     open = false;
-    menuItemIndex = 0;
 
     ref?.blur();
   }
 
   function openMenu() {
     open = true;
-
-    const menuItemIndexNew = options.findIndex((item) => item.value === selectedOption?.value);
-
-    if (menuItemIndexNew < 0) {
-      menuItemIndex = 0;
-    } else {
-      menuItemIndex = menuItemIndexNew;
-    }
   }
 
   function onfocusMod(e: DynamicInputFocusEvent) {
@@ -259,7 +262,9 @@
     }
   }
 
-  function onKeyBoardEnter(selectedItemIndex: number) {
+  function onKeyBoardEnter(e: KeyboardEvent, selectedItemIndex: number) {
+    e.preventDefault();
+
     const targetOption = options[selectedItemIndex];
 
     if (!targetOption) {
@@ -270,102 +275,8 @@
       return;
     }
 
-    onselectMod(targetOption);
+    onselectMod(targetOption.meta as SelectOption);
   }
-
-  function onKeyboardNavigation(e: KeyboardEvent) {
-    let keyHit: string | undefined = undefined;
-
-    if (!menuRef) {
-      return;
-    }
-
-    if (!open) {
-      return;
-    }
-
-    switch (e.key) {
-      case 'ArrowDown':
-      case 'ArrowUp':
-      case 'Enter':
-        keyHit = e.key;
-        e.preventDefault();
-        break;
-      default:
-        break;
-    }
-
-    if (!keyHit) {
-      return;
-    }
-
-    const listItems = menuRef.querySelectorAll(':scope > li.dodo-ui-MenuItem');
-
-    if (!listItems.length) {
-      return;
-    }
-
-    for (let index = 0; index < listItems.length; index++) {
-      const element = listItems[index];
-
-      element.classList.remove('hover');
-    }
-
-    let newMenuItemIndex = menuItemIndex;
-
-    if (keyHit === 'ArrowDown') {
-      if (listItems[newMenuItemIndex + 1]) {
-        newMenuItemIndex = newMenuItemIndex + 1;
-      } else {
-        newMenuItemIndex = 0;
-      }
-    } else if (keyHit === 'ArrowUp') {
-      if (listItems[newMenuItemIndex - 1]) {
-        newMenuItemIndex = newMenuItemIndex - 1;
-      } else {
-        newMenuItemIndex = listItems.length - 1;
-      }
-    } else if (keyHit === 'Enter') {
-      onKeyBoardEnter(newMenuItemIndex);
-      return;
-    }
-
-    const targetItem = listItems[newMenuItemIndex] as HTMLLIElement;
-
-    targetItem.classList.add('hover');
-
-    targetItem.focus();
-    targetItem.scrollIntoView({ block: 'nearest' });
-
-    menuItemIndex = newMenuItemIndex;
-  }
-
-  $effect(() => {
-    if (!menuRef) {
-      return;
-    }
-
-    if (!open) {
-      return;
-    }
-
-    const targetItem = menuRef.querySelector(':scope > li.dodo-ui-MenuItem.selected') as
-      | HTMLLIElement
-      | undefined;
-
-    if (targetItem) {
-      targetItem.classList.add('hover');
-
-      targetItem.focus();
-      targetItem.scrollIntoView({ block: 'nearest' });
-    }
-
-    window.addEventListener('keydown', onKeyboardNavigation);
-
-    return () => {
-      window.removeEventListener('keydown', onKeyboardNavigation);
-    };
-  });
 </script>
 
 <div class={['dodo-ui-Select', className].join(' ')}>
@@ -433,36 +344,37 @@
       {#if customPopupContentTyped}
         {@render customPopupContentTyped(options, selectedOption)}
       {:else}
-        <Menu bind:ref={menuRef} {...menuProps}>
-          {#if options.length}
-            {#each options as option (option.value)}
-              <MenuItem
-                onclick={() => onselectMod(option)}
-                type="button"
-                disabled={option.disabled}
-                selected={selectedOption?.value === option.value}
-                {...menuItemProps}
-              >
-                {#if customMenuItemContentTyped}
-                  {@render customMenuItemContentTyped(
-                    option,
-                    selectedOption?.value === option.value,
-                  )}
-                {:else}
-                  {option.label}
-                {/if}
-              </MenuItem>
-            {/each}
-          {:else}
-            <MenuItem type="text" disabled={true} {...menuItemProps}>
-              {#if customPlaceholderMenuItemContentTyped}
-                {@render customPlaceholderMenuItemContentTyped()}
-              {:else}
-                {optionsPlaceholder}
-              {/if}
-            </MenuItem>
-          {/if}
-        </Menu>
+        <DynamicMenu
+          bind:ref={menuRef}
+          {menuItemProps}
+          {options}
+          keyboardNavigation
+          onEnter={onKeyBoardEnter}
+          selectedOption={options.find((item) => item.meta?.value === selectedOption?.value)}
+          onclick={(_e, option: DynamicMenuItemOption) => onselectMod(option.meta as SelectOption)}
+          showOptionsPlaceholder
+          {...menuProps}
+        >
+          {#snippet customMenuItemContent(option, selectedOption)}
+            {#if customMenuItemContentTyped}
+              {@render customMenuItemContentTyped(
+                option?.meta as SelectOption,
+                (selectedOption?.meta as SelectOption).value ===
+                  (option?.meta as SelectOption).value,
+              )}
+            {:else}
+              {(option?.meta as SelectOption).label}
+            {/if}
+          {/snippet}
+
+          {#snippet customPlaceholderMenuItemContent()}
+            {#if customPlaceholderMenuItemContentTyped}
+              {@render customPlaceholderMenuItemContentTyped()}
+            {:else}
+              {optionsPlaceholder}
+            {/if}
+          {/snippet}
+        </DynamicMenu>
       {/if}
     {/snippet}
   </Popper>

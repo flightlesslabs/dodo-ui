@@ -49,3 +49,8 @@
   name="SelectedOption"
   args={{ options: dynamicMenuItemOptions, selectedOption: dynamicMenuItemOptions[1] }}
 />
+
+<Story
+  name="ShowPlaceholder"
+  args={{ options: [], showOptionsPlaceholder: true, optionsPlaceholder: 'No content found.' }}
+/>

@@ -13,7 +13,6 @@
     tags: ['autodocs'],
     argTypes: storyMenuArgTypes,
   });
-
 </script>
 
 <!-- Default Menu -->

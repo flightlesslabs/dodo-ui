@@ -63,6 +63,12 @@
       option: DynamicMenuItemOption,
       selectedOption?: DynamicMenuItemOption,
     ) => Snippet;
+    /** Show Placeholder if no options */
+    showOptionsPlaceholder?: boolean;
+    /** placeholder Text if no options */
+    optionsPlaceholder?: string;
+    /** Custom Menu Item Placeholder Content */
+    customPlaceholderMenuItemContent?: () => Snippet;
     /** MenuItem: Menu component props */
     menuItemProps?: Partial<MenuItemProps>;
     /** Enable Keyboard Navigation */
@@ -71,6 +77,8 @@
     onEnter?: (e: KeyboardEvent, menuItemIndex: number) => void;
     /** Keyboard Navigation onEsc */
     onEsc?: (e: KeyboardEvent, menuItemIndex: number) => void;
+    /** On menu item click */
+    onclick?: (e: MouseEvent, option: DynamicMenuItemOption) => void;
   }
 </script>
 
@@ -95,16 +103,23 @@
     options,
     selectedOption,
     customMenuItemContent,
+    customPlaceholderMenuItemContent,
     menuItemProps,
     keyboardNavigation = false,
     onEnter,
     onEsc,
+    onclick,
+    showOptionsPlaceholder = false,
+    optionsPlaceholder = 'No options found',
   }: DynamicMenuProps = $props();
 
   let menuItemIndex = $state(0);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customMenuItemContentTyped = customMenuItemContent as any;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let customPlaceholderMenuItemContentTyped = customPlaceholderMenuItemContent as any;
 
   function onKeyboardNavigation(e: KeyboardEvent) {
     let keyHit: string | undefined = undefined;
@@ -218,7 +233,12 @@
 >
   {#if options?.length}
     {#each options as option (option.id)}
-      <MenuItem {...option} selected={selectedOption?.id === option.id} {...menuItemProps}>
+      <MenuItem
+        {...option}
+        selected={selectedOption?.id === option.id}
+        onclick={(e) => (onclick ? onclick(e, option) : undefined)}
+        {...menuItemProps}
+      >
         {#if customMenuItemContentTyped}
           {@render customMenuItemContentTyped(option, selectedOption)}
         {:else}
@@ -226,5 +246,13 @@
         {/if}
       </MenuItem>
     {/each}
+  {:else if showOptionsPlaceholder}
+    <MenuItem type="text" disabled={true} {...menuItemProps}>
+      {#if customPlaceholderMenuItemContentTyped}
+        {@render customPlaceholderMenuItemContentTyped()}
+      {:else}
+        {optionsPlaceholder}
+      {/if}
+    </MenuItem>
   {/if}
 </Menu>
