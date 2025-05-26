@@ -1,0 +1,63 @@
+import { Source } from '@storybook/blocks';
+
+# Logger Utility
+
+A customizable logger function that supports:
+
+- Log levels (`info`, `warn`, `error`)
+- Optional labels
+- A `show` flag to toggle logging
+- Console output with timestamps
+
+## Import
+
+Import the logger creation function:
+
+<Source dark language="ts" code={`import { createLogger } from '@flightlesslabs/dodo-ui';`} />
+
+## Basic Usage
+
+Create a logger and log different types of messages:
+
+<Source
+  dark
+  language="ts"
+  code={`const logger = createLogger({
+  label: 'AuthService',
+});
+
+logger.info('User logged in');
+logger.warn('Token is about to expire');
+logger.error('Login failed', new Error('Invalid credentials'));
+`}
+/>
+
+## Disable Logging
+
+You can use the \`show\` flag to completely silence the logger (e.g., in production):
+
+<Source
+  dark
+  language="ts"
+  code={`const logger = createLogger({
+  show: false,
+});
+
+logger.info('This will not be logged');
+`}
+/>
+
+## Level Filtering
+
+The logger will only show messages **at or above** the configured `level`:
+
+<Source
+  dark
+  language="ts"
+  code={`const logger = createLogger();
+
+logger.info('This will NOT show');
+logger.warn('This WILL show');
+logger.error('This WILL show');
+`}
+/>
