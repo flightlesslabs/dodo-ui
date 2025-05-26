@@ -79,6 +79,14 @@ export type { FormControlProps } from '$lib/stories/components/Form/FormControl/
 export { default as Message } from '$lib/stories/components/Form/Message/Message.svelte';
 export type { MessageProps } from '$lib/stories/components/Form/Message/Message.svelte';
 
+/** Form: Select */
+export { default as Select } from '$lib/stories/components/Form/Select/Select.svelte';
+export type {
+  SelectOption,
+  SelectDropdownArrowPosition,
+  SelectProps,
+} from '$lib/stories/components/Form/Select/Select.svelte';
+
 /** Layout: Paper */
 export { default as Paper } from '$lib/stories/components/Layout/Paper/Paper.svelte';
 export type { PaperColor, PaperProps } from '$lib/stories/components/Layout/Paper/Paper.svelte';

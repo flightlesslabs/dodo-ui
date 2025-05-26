@@ -81,7 +81,7 @@
     customPopupContent?: (
       options: SelectOption[],
       selectedOption: SelectOption,
-      onselect: (val: SelectOption) => {},
+      onselect: (val: SelectOption) => void,
     ) => Snippet;
     /** custom Content Formatting for variant button */
     customPlaceholderMenuItemContent?: () => Snippet;
@@ -99,6 +99,14 @@
     customDropdownArrowIcon?: (open: boolean) => Snippet;
     /** Select Dropdown Arrow Position */
     dropdownArrowPosition?: SelectDropdownArrowPosition;
+    /** Popup stick horizontally  */
+    popupPositionX?: PositionX;
+    /** Popup stick vertically  */
+    popupPositionY?: PositionY;
+    /** Lock positions, disable auto top, bottom position based  */
+    lockPoistions?: boolean;
+    /** Popper Height For Vertical Position, default 300 */
+    popperHeightForVerticalPosition?: number;
   }
 </script>
 
@@ -116,6 +124,8 @@
     type MenuProps,
     type PaperProps,
     type PopperProps,
+    type PositionX,
+    type PositionY,
   } from '$lib/index.js';
   import type { TextInputInputEvent } from '../TextInput/TextInput.svelte';
   import type { ButtonClickEvent } from '../Button/Button.svelte';
@@ -159,6 +169,10 @@
     menuItemProps,
     optionsPlaceholder = 'No Options',
     dropdownArrowPosition = 'after',
+    popupPositionX,
+    popupPositionY,
+    lockPoistions,
+    popperHeightForVerticalPosition,
   }: SelectProps = $props();
 
   function convertOptionsToDynamicMenuItemOptions(
@@ -308,7 +322,18 @@
 {/snippet}
 
 <div class={['dodo-ui-Select', className].join(' ')}>
-  <Popper fullWidth {open} {onClickOutside} {...popperProps} {popupMaxHeight} {paperProps}>
+  <Popper
+    fullWidth
+    {open}
+    {onClickOutside}
+    {...popperProps}
+    {popupMaxHeight}
+    {popupPositionX}
+    {popupPositionY}
+    {paperProps}
+    {lockPoistions}
+    {popperHeightForVerticalPosition}
+  >
     <div
       class:outline
       class:disabled
