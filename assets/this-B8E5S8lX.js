@@ -1,0 +1,1 @@
+import{w as k,x as S,k as h,S as q}from"./runtime-DIrpp2y3.js";import{q as x}from"./props-uFC-caVa.js";function t(r,i){return r===i||(r==null?void 0:r[q])===i}function A(r={},i,a,T){return k(()=>{var f,s;return S(()=>{f=s,s=[],h(()=>{r!==a(...s)&&(i(r,...s),f&&t(a(...f),r)&&i(null,...f))})}),()=>{x(()=>{s&&t(a(...s),r)&&i(null,...s)})}}),r}export{A as b};
