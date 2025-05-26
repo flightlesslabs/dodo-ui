@@ -55,13 +55,14 @@
 <!-- Format look and feel of Popup.  -->
 <Story name="CustomPopup" asChild>
   <Select {options} {value}>
-    {#snippet customPopupContent(options, selectedOption)}
+    {#snippet customPopupContent(options, selectedOption, onselect)}
       <Menu size="small" separator>
         {#each options as option (option.value)}
           <MenuItem
             type="button"
             disabled={option.disabled}
             selected={selectedOption.value === option.value}
+            onclick={() => onselect(option)}
           >
             <b>{option.label}</b>
           </MenuItem>

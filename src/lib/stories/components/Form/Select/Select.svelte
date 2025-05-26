@@ -76,7 +76,11 @@
     /** custom Content Formatting for variant button */
     customMenuItemContent?: (val: SelectOption, selected: boolean) => Snippet;
     /** Custom Popup Content */
-    customPopupContent?: (options: SelectOption[], selectedOption: SelectOption) => Snippet;
+    customPopupContent?: (
+      options: SelectOption[],
+      selectedOption: SelectOption,
+      onselect: (val: SelectOption) => {},
+    ) => Snippet;
     /** custom Content Formatting for variant button */
     customPlaceholderMenuItemContent?: () => Snippet;
     /** PopperPopup Max height. Use css compatible value */
@@ -343,7 +347,7 @@
 
     {#snippet popupChildren()}
       {#if customPopupContentTyped}
-        {@render customPopupContentTyped(options, selectedOption)}
+        {@render customPopupContentTyped(optionsRaw, selectedOption, onselectMod)}
       {:else}
         <DynamicMenu
           bind:ref={menuRef}
