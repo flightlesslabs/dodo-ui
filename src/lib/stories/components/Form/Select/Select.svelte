@@ -16,6 +16,8 @@
     disabled?: boolean;
   };
 
+  export type SelectDropdownArrowPosition = false | 'before' | 'after';
+
   export interface SelectProps {
     /** How large should the button be? */
     size?: ComponentSize;
@@ -93,6 +95,10 @@
     menuProps?: Partial<MenuProps>;
     /** MenuItem: Menu component props */
     menuItemProps?: Partial<MenuItemProps>;
+    /** Dropdown Arrow Icon */
+    customDropdownArrowIcon?: (open: boolean) => Snippet;
+    /** Select Dropdown Arrow Position */
+    dropdownArrowPosition?: SelectDropdownArrowPosition;
   }
 </script>
 
@@ -145,12 +151,14 @@
     customMenuItemContent: customMenuItemContentInternal,
     customPopupContent: customPopupContentInternal,
     customPlaceholderMenuItemContent: customPlaceholderMenuItemContentInternal,
+    customDropdownArrowIcon: customDropdownArrowIconInternal,
     popupMaxHeight = '300px',
     paperProps,
     popperProps,
     menuProps,
     menuItemProps,
     optionsPlaceholder = 'No Options',
+    dropdownArrowPosition = 'after',
   }: SelectProps = $props();
 
   function convertOptionsToDynamicMenuItemOptions(
@@ -203,6 +211,9 @@
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customPlaceholderMenuItemContentTyped = customPlaceholderMenuItemContentInternal as any;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let customDropdownArrowIconTyped = customDropdownArrowIconInternal as any;
 
   function closeMenu() {
     open = false;
@@ -284,6 +295,18 @@
   }
 </script>
 
+{#snippet selectDropdownArrowIcon()}
+  <UtilityButton {size} title="Dropdown" onclick={onfocusMod}>
+    {#if customDropdownArrowIconTyped}
+      {@render customDropdownArrowIconTyped(open)}
+    {:else if open}
+      <Icon icon="material-symbols:arrow-drop-up-rounded" width="28" height="28" />
+    {:else}
+      <Icon icon="material-symbols:arrow-drop-down-rounded" width="28" height="28" />
+    {/if}
+  </UtilityButton>
+{/snippet}
+
 <div class={['dodo-ui-Select', className].join(' ')}>
   <Popper fullWidth {open} {onClickOutside} {...popperProps} {popupMaxHeight} {paperProps}>
     <div
@@ -308,6 +331,12 @@
         {before}
         {after}
       >
+        {#if dropdownArrowPosition === 'before'}
+          <div class:before class:open class="DropdownArrow">
+            {@render selectDropdownArrowIcon()}
+          </div>
+        {/if}
+
         <DynamicInput
           type="text"
           {name}
@@ -340,6 +369,12 @@
             <UtilityButton {size} title="Clear" onclick={onclearMod}>
               <Icon icon="material-symbols:close-small" width="24" height="24" />
             </UtilityButton>
+          </div>
+        {/if}
+
+        {#if dropdownArrowPosition === 'after'}
+          <div class:after class:open class="DropdownArrow">
+            {@render selectDropdownArrowIcon()}
           </div>
         {/if}
       </InputEnclosure>
@@ -395,6 +430,16 @@
               margin-right: calc(var(--dodo-ui-space-small) * 2);
             }
           }
+
+          .DropdownArrow {
+            &.after {
+              margin-right: calc(var(--dodo-ui-space-small) * 2);
+            }
+
+            &.before {
+              margin-right: calc(var(--dodo-ui-space-small) * 2);
+            }
+          }
         }
 
         &--small {
@@ -403,11 +448,31 @@
               margin-right: var(--dodo-ui-space);
             }
           }
+
+          .DropdownArrow {
+            &.after {
+              margin-right: var(--dodo-ui-space);
+            }
+
+            &.before {
+              margin-right: var(--dodo-ui-space);
+            }
+          }
         }
 
         &--large {
           .SelectClear {
             &.after {
+              margin-right: calc(var(--dodo-ui-space) * 2);
+            }
+          }
+
+          .DropdownArrow {
+            &.after {
+              margin-right: calc(var(--dodo-ui-space) * 2);
+            }
+
+            &.before {
               margin-right: calc(var(--dodo-ui-space) * 2);
             }
           }
