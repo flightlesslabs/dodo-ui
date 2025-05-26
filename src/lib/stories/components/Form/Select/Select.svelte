@@ -16,6 +16,8 @@
     disabled?: boolean;
   };
 
+  export type SelectDropdownArrowPosition = false | 'before' | 'after';
+
   export interface SelectProps {
     /** How large should the button be? */
     size?: ComponentSize;
@@ -76,7 +78,11 @@
     /** custom Content Formatting for variant button */
     customMenuItemContent?: (val: SelectOption, selected: boolean) => Snippet;
     /** Custom Popup Content */
-    customPopupContent?: (options: SelectOption[], selectedOption: SelectOption) => Snippet;
+    customPopupContent?: (
+      options: SelectOption[],
+      selectedOption: SelectOption,
+      onselect: (val: SelectOption) => void,
+    ) => Snippet;
     /** custom Content Formatting for variant button */
     customPlaceholderMenuItemContent?: () => Snippet;
     /** PopperPopup Max height. Use css compatible value */
@@ -89,6 +95,18 @@
     menuProps?: Partial<MenuProps>;
     /** MenuItem: Menu component props */
     menuItemProps?: Partial<MenuItemProps>;
+    /** Dropdown Arrow Icon */
+    customDropdownArrowIcon?: (open: boolean) => Snippet;
+    /** Select Dropdown Arrow Position */
+    dropdownArrowPosition?: SelectDropdownArrowPosition;
+    /** Popup stick horizontally  */
+    popupPositionX?: PositionX;
+    /** Popup stick vertically  */
+    popupPositionY?: PositionY;
+    /** Lock positions, disable auto top, bottom position based  */
+    lockPoistions?: boolean;
+    /** Popper Height For Vertical Position, default 300 */
+    popperHeightForVerticalPosition?: number;
   }
 </script>
 
@@ -98,14 +116,16 @@
   import Icon from '@iconify/svelte';
   import {
     DynamicInput,
-    Menu,
-    MenuItem,
+    DynamicMenu,
     Popper,
     type DynamicInputFocusEvent,
+    type DynamicMenuItemOption,
     type MenuItemProps,
     type MenuProps,
     type PaperProps,
     type PopperProps,
+    type PositionX,
+    type PositionY,
   } from '$lib/index.js';
   import type { TextInputInputEvent } from '../TextInput/TextInput.svelte';
   import type { ButtonClickEvent } from '../Button/Button.svelte';
@@ -141,37 +161,56 @@
     customMenuItemContent: customMenuItemContentInternal,
     customPopupContent: customPopupContentInternal,
     customPlaceholderMenuItemContent: customPlaceholderMenuItemContentInternal,
+    customDropdownArrowIcon: customDropdownArrowIconInternal,
     popupMaxHeight = '300px',
     paperProps,
     popperProps,
     menuProps,
     menuItemProps,
     optionsPlaceholder = 'No Options',
+    dropdownArrowPosition = 'after',
+    popupPositionX,
+    popupPositionY,
+    lockPoistions,
+    popperHeightForVerticalPosition,
   }: SelectProps = $props();
+
+  function convertOptionsToDynamicMenuItemOptions(
+    options: SelectOption[],
+  ): DynamicMenuItemOption<SelectOption>[] {
+    const newOptions: DynamicMenuItemOption<SelectOption>[] = options.map((option) => ({
+      id: `opt-${option.value}`,
+      disabled: option.disabled,
+      label: option.label,
+      meta: option,
+      type: 'button',
+    }));
+
+    return newOptions;
+  }
 
   let open: boolean = $state(false);
   let onInputStart: boolean = $state(false);
   const selectedOption = $derived(value);
   let searchTerm = $state(value?.label.trim() || '');
-  let options = $state(optionsRaw);
+  let options = $state(convertOptionsToDynamicMenuItemOptions(optionsRaw));
   let menuRef = $state<HTMLUListElement | undefined>(undefined);
-  let menuItemIndex = $state(0);
 
   $effect(() => {
     if (!onInputStart) {
-      options = optionsRaw;
+      options = convertOptionsToDynamicMenuItemOptions(optionsRaw);
       return;
     }
 
     const searchTermSimplified = searchTerm.trim().toLowerCase();
 
     if (!searchTermSimplified) {
-      options = optionsRaw;
+      options = convertOptionsToDynamicMenuItemOptions(optionsRaw);
       return;
     }
 
-    options = optionsRaw.filter((item) =>
-      item.label.trim().toLowerCase().includes(searchTermSimplified),
+    options = convertOptionsToDynamicMenuItemOptions(optionsRaw).filter((item) =>
+      item?.meta?.label.trim().toLowerCase().includes(searchTermSimplified),
     );
   });
 
@@ -187,23 +226,17 @@
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customPlaceholderMenuItemContentTyped = customPlaceholderMenuItemContentInternal as any;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let customDropdownArrowIconTyped = customDropdownArrowIconInternal as any;
+
   function closeMenu() {
     open = false;
-    menuItemIndex = 0;
 
     ref?.blur();
   }
 
   function openMenu() {
     open = true;
-
-    const menuItemIndexNew = options.findIndex((item) => item.value === selectedOption?.value);
-
-    if (menuItemIndexNew < 0) {
-      menuItemIndex = 0;
-    } else {
-      menuItemIndex = menuItemIndexNew;
-    }
   }
 
   function onfocusMod(e: DynamicInputFocusEvent) {
@@ -259,7 +292,9 @@
     }
   }
 
-  function onKeyBoardEnter(selectedItemIndex: number) {
+  function onKeyBoardEnter(e: KeyboardEvent, selectedItemIndex: number) {
+    e.preventDefault();
+
     const targetOption = options[selectedItemIndex];
 
     if (!targetOption) {
@@ -270,106 +305,35 @@
       return;
     }
 
-    onselectMod(targetOption);
+    onselectMod(targetOption.meta as SelectOption);
   }
-
-  function onKeyboardNavigation(e: KeyboardEvent) {
-    let keyHit: string | undefined = undefined;
-
-    if (!menuRef) {
-      return;
-    }
-
-    if (!open) {
-      return;
-    }
-
-    switch (e.key) {
-      case 'ArrowDown':
-      case 'ArrowUp':
-      case 'Enter':
-        keyHit = e.key;
-        e.preventDefault();
-        break;
-      default:
-        break;
-    }
-
-    if (!keyHit) {
-      return;
-    }
-
-    const listItems = menuRef.querySelectorAll(':scope > li.dodo-ui-MenuItem');
-
-    if (!listItems.length) {
-      return;
-    }
-
-    for (let index = 0; index < listItems.length; index++) {
-      const element = listItems[index];
-
-      element.classList.remove('hover');
-    }
-
-    let newMenuItemIndex = menuItemIndex;
-
-    if (keyHit === 'ArrowDown') {
-      if (listItems[newMenuItemIndex + 1]) {
-        newMenuItemIndex = newMenuItemIndex + 1;
-      } else {
-        newMenuItemIndex = 0;
-      }
-    } else if (keyHit === 'ArrowUp') {
-      if (listItems[newMenuItemIndex - 1]) {
-        newMenuItemIndex = newMenuItemIndex - 1;
-      } else {
-        newMenuItemIndex = listItems.length - 1;
-      }
-    } else if (keyHit === 'Enter') {
-      onKeyBoardEnter(newMenuItemIndex);
-      return;
-    }
-
-    const targetItem = listItems[newMenuItemIndex] as HTMLLIElement;
-
-    targetItem.classList.add('hover');
-
-    targetItem.focus();
-    targetItem.scrollIntoView({ block: 'nearest' });
-
-    menuItemIndex = newMenuItemIndex;
-  }
-
-  $effect(() => {
-    if (!menuRef) {
-      return;
-    }
-
-    if (!open) {
-      return;
-    }
-
-    const targetItem = menuRef.querySelector(':scope > li.dodo-ui-MenuItem.selected') as
-      | HTMLLIElement
-      | undefined;
-
-    if (targetItem) {
-      targetItem.classList.add('hover');
-
-      targetItem.focus();
-      targetItem.scrollIntoView({ block: 'nearest' });
-    }
-
-    window.addEventListener('keydown', onKeyboardNavigation);
-
-    return () => {
-      window.removeEventListener('keydown', onKeyboardNavigation);
-    };
-  });
 </script>
 
+{#snippet selectDropdownArrowIcon()}
+  <UtilityButton {size} title="Dropdown" onclick={onfocusMod}>
+    {#if customDropdownArrowIconTyped}
+      {@render customDropdownArrowIconTyped(open)}
+    {:else if open}
+      <Icon icon="material-symbols:arrow-drop-up-rounded" width="28" height="28" />
+    {:else}
+      <Icon icon="material-symbols:arrow-drop-down-rounded" width="28" height="28" />
+    {/if}
+  </UtilityButton>
+{/snippet}
+
 <div class={['dodo-ui-Select', className].join(' ')}>
-  <Popper fullWidth {open} {onClickOutside} {...popperProps} {popupMaxHeight} {paperProps}>
+  <Popper
+    fullWidth
+    {open}
+    {onClickOutside}
+    {...popperProps}
+    {popupMaxHeight}
+    {popupPositionX}
+    {popupPositionY}
+    {paperProps}
+    {lockPoistions}
+    {popperHeightForVerticalPosition}
+  >
     <div
       class:outline
       class:disabled
@@ -392,6 +356,12 @@
         {before}
         {after}
       >
+        {#if dropdownArrowPosition === 'before'}
+          <div class:before class:open class="DropdownArrow">
+            {@render selectDropdownArrowIcon()}
+          </div>
+        {/if}
+
         <DynamicInput
           type="text"
           {name}
@@ -426,43 +396,50 @@
             </UtilityButton>
           </div>
         {/if}
+
+        {#if dropdownArrowPosition === 'after'}
+          <div class:after class:open class="DropdownArrow">
+            {@render selectDropdownArrowIcon()}
+          </div>
+        {/if}
       </InputEnclosure>
     </div>
 
     {#snippet popupChildren()}
       {#if customPopupContentTyped}
-        {@render customPopupContentTyped(options, selectedOption)}
+        {@render customPopupContentTyped(optionsRaw, selectedOption, onselectMod)}
       {:else}
-        <Menu bind:ref={menuRef} {...menuProps}>
-          {#if options.length}
-            {#each options as option (option.value)}
-              <MenuItem
-                onclick={() => onselectMod(option)}
-                type="button"
-                disabled={option.disabled}
-                selected={selectedOption?.value === option.value}
-                {...menuItemProps}
-              >
-                {#if customMenuItemContentTyped}
-                  {@render customMenuItemContentTyped(
-                    option,
-                    selectedOption?.value === option.value,
-                  )}
-                {:else}
-                  {option.label}
-                {/if}
-              </MenuItem>
-            {/each}
-          {:else}
-            <MenuItem type="text" disabled={true} {...menuItemProps}>
-              {#if customPlaceholderMenuItemContentTyped}
-                {@render customPlaceholderMenuItemContentTyped()}
-              {:else}
-                {optionsPlaceholder}
-              {/if}
-            </MenuItem>
-          {/if}
-        </Menu>
+        <DynamicMenu
+          bind:ref={menuRef}
+          {menuItemProps}
+          {options}
+          keyboardNavigation
+          onEnter={onKeyBoardEnter}
+          selectedOption={options.find((item) => item.meta?.value === selectedOption?.value)}
+          onclick={(_e, option: DynamicMenuItemOption) => onselectMod(option.meta as SelectOption)}
+          showOptionsPlaceholder
+          {...menuProps}
+        >
+          {#snippet customMenuItemContent(option, selectedOption)}
+            {#if customMenuItemContentTyped}
+              {@render customMenuItemContentTyped(
+                option?.meta as SelectOption,
+                (selectedOption?.meta as SelectOption).value ===
+                  (option?.meta as SelectOption).value,
+              )}
+            {:else}
+              {(option?.meta as SelectOption).label}
+            {/if}
+          {/snippet}
+
+          {#snippet customPlaceholderMenuItemContent()}
+            {#if customPlaceholderMenuItemContentTyped}
+              {@render customPlaceholderMenuItemContentTyped()}
+            {:else}
+              {optionsPlaceholder}
+            {/if}
+          {/snippet}
+        </DynamicMenu>
       {/if}
     {/snippet}
   </Popper>
@@ -478,6 +455,16 @@
               margin-right: calc(var(--dodo-ui-space-small) * 2);
             }
           }
+
+          .DropdownArrow {
+            &.after {
+              margin-right: calc(var(--dodo-ui-space-small) * 2);
+            }
+
+            &.before {
+              margin-right: calc(var(--dodo-ui-space-small) * 2);
+            }
+          }
         }
 
         &--small {
@@ -486,11 +473,31 @@
               margin-right: var(--dodo-ui-space);
             }
           }
+
+          .DropdownArrow {
+            &.after {
+              margin-right: var(--dodo-ui-space);
+            }
+
+            &.before {
+              margin-right: var(--dodo-ui-space);
+            }
+          }
         }
 
         &--large {
           .SelectClear {
             &.after {
+              margin-right: calc(var(--dodo-ui-space) * 2);
+            }
+          }
+
+          .DropdownArrow {
+            &.after {
+              margin-right: calc(var(--dodo-ui-space) * 2);
+            }
+
+            &.before {
               margin-right: calc(var(--dodo-ui-space) * 2);
             }
           }

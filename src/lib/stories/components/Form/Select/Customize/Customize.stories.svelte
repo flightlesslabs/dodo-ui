@@ -4,6 +4,7 @@
   import { selectOptions, storySelectArgTypes } from '../Select.stories.svelte';
   import { Menu } from '$lib/index.js';
   import MenuItem from '$lib/stories/components/Layout/Menu/MenuItem/MenuItem.svelte';
+  import Icon from '@iconify/svelte';
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
   const { Story } = defineMeta({
@@ -34,6 +35,19 @@
   </Select>
 </Story>
 
+<!-- Format look and feel Dropdown Arrow icon  -->
+<Story name="CustomDropdownArrowIcon" asChild>
+  <Select {options} {value} onselect={(val: SelectOption) => (value = val)}>
+    {#snippet customDropdownArrowIcon(open)}
+      {#if open}
+        <Icon icon="mingcute:up-fill" width="24" height="24" />
+      {:else}
+        <Icon icon="mingcute:down-fill" width="24" height="24" />
+      {/if}
+    {/snippet}
+  </Select>
+</Story>
+
 <!-- Format look and feel of Popper menu item.  -->
 <Story name="CustomMenuItem" asChild>
   <Select {options} {value} onselect={(val: SelectOption) => (value = val)}>
@@ -55,13 +69,14 @@
 <!-- Format look and feel of Popup.  -->
 <Story name="CustomPopup" asChild>
   <Select {options} {value}>
-    {#snippet customPopupContent(options, selectedOption)}
+    {#snippet customPopupContent(options, selectedOption, onselect)}
       <Menu size="small" separator>
         {#each options as option (option.value)}
           <MenuItem
             type="button"
             disabled={option.disabled}
             selected={selectedOption.value === option.value}
+            onclick={() => onselect(option)}
           >
             <b>{option.label}</b>
           </MenuItem>
