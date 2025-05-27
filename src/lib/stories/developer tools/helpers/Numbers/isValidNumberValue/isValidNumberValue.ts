@@ -28,6 +28,12 @@ export type IsValidNumberValueSettings = {
    * Defaults to false.
    */
   log?: boolean;
+
+  /**
+   * Strict checking, Full text - keep it enabled, Partial text - keep it disabled
+   * Defaults to true.
+   */
+  strict?: boolean;
 };
 
 /**
@@ -37,7 +43,7 @@ export type IsValidNumberValueSettings = {
  * @param str - Input string to validate.
  * @returns True if string is numeric, false otherwise.
  */
-export function isNumericString(str: string): boolean {
+function isNumericString(str: string): boolean {
   if (typeof str !== 'string') return false;
   const trimmed = str.trim();
   if (trimmed === '') return false;
@@ -55,6 +61,7 @@ export function isNumericString(str: string): boolean {
  * @param settings.allowNegativeValues - Whether negative numbers are allowed.
  * @param settings.decimalPlaces - Maximum allowed decimal places.
  * @param settings.log - Whether to enable detailed logging.
+ * @param settings.strict - Whether to enable Strict checking, Full text - keep it enabled, Partial text - keep it disabled
  *
  * @returns True if the value is a valid number according to the settings; otherwise false.
  *
@@ -78,17 +85,18 @@ export default function isValidNumberValue(
   });
   const min = settings?.min;
   const max = settings?.max;
+  const strict = settings?.strict === false ? false : true;
 
   logger.info(`Validating value: "${valueFormatted}"`);
+
+  if (strict && !isNumericString(valueFormatted)) {
+    logger.warn('Invalid input: strict checking is enaabled and the text failed the checks');
+    return false;
+  }
 
   if (valueFormatted === '') {
     logger.info('Valid input: Blank value');
     return true;
-  }
-
-  if (valueFormatted === '0') {
-    logger.warn(`Invalid input: Value cannot start with 0`);
-    return false;
   }
 
   if (allowNegativeValues && valueFormatted === '-') {

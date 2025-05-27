@@ -8,6 +8,7 @@
     ClipboardEventHandler,
     FocusEventHandler,
     FormEventHandler,
+    KeyboardEventHandler,
   } from 'svelte/elements';
 
   export type TextInputType = 'text' | 'tel' | 'email' | 'password' | 'url' | 'number';
@@ -30,6 +31,10 @@
   };
 
   export type TextInputInputEvent = Event & {
+    currentTarget: EventTarget & HTMLInputElement;
+  };
+
+  export type TextInputKeyboardEvent = KeyboardEvent & {
     currentTarget: EventTarget & HTMLInputElement;
   };
 
@@ -78,6 +83,12 @@
     oncopy?: ClipboardEventHandler<HTMLInputElement>;
     /** oncut event handler */
     oncut?: ClipboardEventHandler<HTMLInputElement>;
+    /** onkeydown event handler */
+    onkeydown?: KeyboardEventHandler<HTMLInputElement>;
+    /** onkeypress event handler */
+    onkeypress?: KeyboardEventHandler<HTMLInputElement>;
+    /** onkeyup event handler */
+    onkeyup?: KeyboardEventHandler<HTMLInputElement>;
   }
 </script>
 
@@ -103,6 +114,9 @@
     onpaste,
     oncopy,
     oncut,
+    onkeydown,
+    onkeypress,
+    onkeyup,
     before,
     after,
     error = false,
@@ -154,6 +168,9 @@
       {onpaste}
       {oncopy}
       {oncut}
+      onkeydown={onkeydown ? (e) => onkeydown(e as TextInputKeyboardEvent) : undefined}
+      onkeypress={onkeypress ? (e) => onkeypress(e as TextInputKeyboardEvent) : undefined}
+      onkeyup={onkeyup ? (e) => onkeyup(e as TextInputKeyboardEvent) : undefined}
       {placeholder}
       bind:value
       {readonly}

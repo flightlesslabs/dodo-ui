@@ -8,7 +8,7 @@ Utility function to validate whether a string is a valid number based on customi
 
 ## Basic Usage
 
-Validates a string as a number with default settings (no decimals allowed, no negatives allowed):
+Validates a string as a number with default settings (no decimals allowed, no negatives allowed, strict checking):
 
 <Source
   dark
@@ -32,6 +32,7 @@ Customize validation rules:
 - `allowNegativeValues` — whether negatives are allowed
 - `decimalPlaces` — max decimal places allowed
 - `log` — enable detailed logging
+- `strict` — Strict checking, Full text - keep it enabled, Partial text - keep it disabled
 
 <Source
   dark
@@ -43,9 +44,14 @@ const result1 = isValidNumberValue("123.456", { decimalPlaces: 3, log: true });
 const result2 = isValidNumberValue("-50", { allowNegativeValues: true, min: -100 });
 const result3 = isValidNumberValue("200", { max: 150 });
 
+const result4 = isValidNumberValue("-", { allowNegativeValues: true });
+const result5 = isValidNumberValue("-", { allowNegativeValues: true, strict: false });
+
 console.log(result1); // true
 console.log(result2); // true
 console.log(result3); // false (exceeds max)
+console.log(result4); // false (fails in strict check)
+console.log(result5); // true (pass in strict check)
 `}
 />
 
@@ -60,22 +66,6 @@ export type IsValidNumberValueSettings = {
   allowNegativeValues?: boolean;
   decimalPlaces?: number;
   log?: boolean;
+  strict?: boolean;
 };
 ```
-
----
-
-## Using the Helper: isNumericString
-
-You can also directly use the helper function to check if a string is numeric without any extra validation settings:
-
-<Source
-  dark
-  language="ts"
-  code={`
-import { isNumericString } from '@flightlesslabs/dodo-ui';
-
-console.log(isNumericString("123.45")); // true
-console.log(isNumericString("abc")); // false
-`}
-/>

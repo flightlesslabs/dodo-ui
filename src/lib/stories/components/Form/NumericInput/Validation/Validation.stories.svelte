@@ -8,10 +8,9 @@
     component: NumericInput,
     tags: ['autodocs'],
     argTypes: storyNumericInputArgTypes,
-    args: { value: 0 },
   });
 
-  let value = $state<undefined | number>(undefined);
+  let value = $state<undefined | number>(0);
 </script>
 
 <!-- NumericInput with default style -->
@@ -19,7 +18,7 @@
   name="Default"
   args={{
     value,
-    onNumericValueChange: (val) => {
+    onValueChange: (val) => {
       value = val;
     },
   }}
@@ -30,7 +29,7 @@
   name="Min"
   args={{
     value,
-    onNumericValueChange: (val) => {
+    onValueChange: (val) => {
       console.log(val);
 
       value = val;
@@ -44,7 +43,7 @@
   name="Max"
   args={{
     value,
-    onNumericValueChange: (val) => {
+    onValueChange: (val) => {
       value = val;
     },
     max: 25,
@@ -56,20 +55,19 @@
   name="AllowNegativeValues"
   args={{
     value,
-    onNumericValueChange: (val) => {
+    onValueChange: (val) => {
       value = val;
     },
     allowNegativeValues: true,
-    log: true,
   }}
 />
 
 <!-- Decimal Places -->
 <Story
-  name="decimalPlaces"
+  name="DecimalPlaces"
   args={{
     value,
-    onNumericValueChange: (val) => {
+    onValueChange: (val) => {
       value = val;
     },
     decimalPlaces: 2,
@@ -81,7 +79,7 @@
   name="LogValidations"
   args={{
     value,
-    onNumericValueChange: (val) => {
+    onValueChange: (val) => {
       value = val;
     },
     log: true,

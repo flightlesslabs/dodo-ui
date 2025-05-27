@@ -6,6 +6,7 @@
     ClipboardEventHandler,
     FocusEventHandler,
     FormEventHandler,
+    KeyboardEventHandler,
     MouseEventHandler,
   } from 'svelte/elements';
 
@@ -18,6 +19,10 @@
   };
 
   export type DynamicInputFocusEvent = FocusEvent & {
+    currentTarget: EventTarget & (HTMLInputElement | HTMLButtonElement);
+  };
+
+  export type DynamicInputKeyboardEvent = KeyboardEvent & {
     currentTarget: EventTarget & (HTMLInputElement | HTMLButtonElement);
   };
 
@@ -64,6 +69,12 @@
     oncopy?: ClipboardEventHandler<HTMLInputElement>;
     /** oncut event handler */
     oncut?: ClipboardEventHandler<HTMLInputElement>;
+    /** onkeydown event handler */
+    onkeydown?: KeyboardEventHandler<HTMLInputElement | HTMLButtonElement>;
+    /** onkeypress event handler */
+    onkeypress?: KeyboardEventHandler<HTMLInputElement | HTMLButtonElement>;
+    /** onkeyup event handler */
+    onkeyup?: KeyboardEventHandler<HTMLInputElement | HTMLButtonElement>;
     /** custom Content Formatting for variant button */
     customInputContent?: (value: string | number) => Snippet;
   }
@@ -83,6 +94,9 @@
     onpaste,
     oncopy,
     oncut,
+    onkeydown,
+    onkeypress,
+    onkeyup,
     value = $bindable<string | number>(),
     placeholder,
     ref = $bindable<HTMLInputElement | HTMLButtonElement>(),
@@ -119,6 +133,9 @@
     ].join(' ')}
     bind:this={ref}
     onclick={onclickMod}
+    {onkeydown}
+    {onkeypress}
+    {onkeyup}
     {onfocus}
     {onblur}
     {disabled}
@@ -143,6 +160,9 @@
     {onpaste}
     {oncopy}
     {oncut}
+    {onkeydown}
+    {onkeypress}
+    {onkeyup}
     {placeholder}
     bind:value
     bind:this={ref}

@@ -21,10 +21,9 @@
     component: NumericInput,
     tags: ['autodocs'],
     argTypes: storyNumericInputArgTypes,
-    args: { value: 0 },
   });
 
-  let value = $state<undefined | number>(undefined);
+  let value = $state<undefined | number>(0);
 </script>
 
 <!-- NumericInput with default style -->
@@ -32,7 +31,7 @@
   name="Default"
   args={{
     value,
-    onNumericValueChange: (val) => {
+    onValueChange: (val) => {
       value = val;
     },
   }}
@@ -45,7 +44,7 @@
   args={{
     outline: false,
     value,
-    onNumericValueChange: (val) => {
+    onValueChange: (val) => {
       value = val;
     },
   }}
@@ -56,7 +55,7 @@
   args={{
     error: true,
     value,
-    onNumericValueChange: (val) => {
+    onValueChange: (val) => {
       value = val;
     },
   }}
@@ -67,7 +66,7 @@
   args={{
     disabled: true,
     value,
-    onNumericValueChange: (val) => {
+    onValueChange: (val) => {
       value = val;
     },
   }}
@@ -78,7 +77,7 @@
   args={{
     readonly: true,
     value,
-    onNumericValueChange: (val) => {
+    onValueChange: (val) => {
       value = val;
     },
   }}

@@ -22,10 +22,7 @@ export type {
 } from '$lib/stories/developer tools/helpers/logger/logger.js';
 
 /** developer tools: helpers: Numbers: isValidNumberValue */
-export {
-  default as isValidNumberValue,
-  isNumericString,
-} from '$lib/stories/developer tools/helpers/Numbers/isValidNumberValue/isValidNumberValue.js';
+export { default as isValidNumberValue } from '$lib/stories/developer tools/helpers/Numbers/isValidNumberValue/isValidNumberValue.js';
 export type { IsValidNumberValueSettings } from '$lib/stories/developer tools/helpers/Numbers/isValidNumberValue/isValidNumberValue.js';
 
 /** developer tools: helpers: Numbers: cleanNumericString */
@@ -49,6 +46,7 @@ export type {
   DynamicInputProps,
   DynamicInputClickEvent,
   DynamicInputFocusEvent,
+  DynamicInputKeyboardEvent,
 } from '$lib/stories/developer tools/components/DynamicInput/DynamicInput.svelte';
 
 /** developer tools: components: Popper */
@@ -74,6 +72,7 @@ export type {
   TextInputFocusEvent,
   TextInputClipboardEvent,
   TextInputInputEvent,
+  TextInputKeyboardEvent,
   TextInputProps,
 } from '$lib/stories/components/Form/TextInput/TextInput.svelte';
 

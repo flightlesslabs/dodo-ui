@@ -2,12 +2,13 @@
   import type { ComponentRoundness } from '$lib/types/roundness.js';
   import type { ComponentSize } from '$lib/types/size.js';
 
-  import type { Snippet } from 'svelte';
+  import { type Snippet } from 'svelte';
   import type {
     ChangeEventHandler,
     ClipboardEventHandler,
     FocusEventHandler,
     FormEventHandler,
+    KeyboardEventHandler,
   } from 'svelte/elements';
 
   export interface NumericInputProps {
@@ -50,7 +51,7 @@
     /** Custom css class*/
     class?: string;
     /** on Numeric Value Change */
-    onNumericValueChange?: (value: number | undefined) => void;
+    onValueChange?: (value: number | undefined) => void;
     /** oninput event handler */
     oninput?: FormEventHandler<HTMLInputElement>;
     /** onchange event handler */
@@ -65,6 +66,12 @@
     oncopy?: ClipboardEventHandler<HTMLInputElement>;
     /** oncut event handler */
     oncut?: ClipboardEventHandler<HTMLInputElement>;
+    /** onkeydown event handler */
+    onkeydown?: KeyboardEventHandler<HTMLInputElement>;
+    /** onkeypress event handler */
+    onkeypress?: KeyboardEventHandler<HTMLInputElement>;
+    /** onkeyup event handler */
+    onkeyup?: KeyboardEventHandler<HTMLInputElement>;
   }
 </script>
 
@@ -72,12 +79,10 @@
   import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
   import DynamicInput, {
     type DynamicInputFocusEvent,
+    type DynamicInputKeyboardEvent,
   } from '$lib/stories/developer tools/components/DynamicInput/DynamicInput.svelte';
-  import type { TextInputFocusEvent, TextInputInputEvent } from '../TextInput/TextInput.svelte';
-  import isValidNumberValue, {
-    isNumericString,
-  } from '$lib/stories/developer tools/helpers/Numbers/isValidNumberValue/isValidNumberValue.js';
-  import cleanNumericString from '$lib/stories/developer tools/helpers/Numbers/cleanNumericString/cleanNumericString.js';
+  import type { TextInputFocusEvent, TextInputKeyboardEvent } from '../TextInput/TextInput.svelte';
+  import isValidNumberValue from '$lib/stories/developer tools/helpers/Numbers/isValidNumberValue/isValidNumberValue.js';
 
   let {
     size = 'normal',
@@ -94,6 +99,9 @@
     onpaste,
     oncopy,
     oncut,
+    onkeydown,
+    onkeypress,
+    onkeyup,
     before,
     after,
     error = false,
@@ -106,60 +114,13 @@
     min,
     max,
     log = false,
-    onNumericValueChange,
+    onValueChange,
   }: NumericInputProps = $props();
 
-  function getValidatedValue(value: string | number | undefined) {
-    if (value === undefined) {
-      return '';
-    }
-
-    const isValidNumber = isValidNumberValue(`${value}`, {
-      decimalPlaces,
-      allowNegativeValues,
-      min,
-      max,
-      log,
-    });
-
-    if (isValidNumber) {
-      return `${value}`;
-    } else {
-      return '';
-    }
-  }
-
-  let stackValue = $state<string>(getValidatedValue(valueRaw));
-  let cachedValue = $state<string>(getValidatedValue(valueRaw));
+  let value = $state<string>('');
+  let cachedValue = $state<string>('');
 
   let focused: boolean = $state(false);
-
-  function oninputMod(e: TextInputInputEvent) {
-    if (!ref) {
-      return;
-    }
-
-    const target = e.target as HTMLInputElement;
-    const cleanValue = cleanNumericString(target.value);
-
-    const isValidNumber = isValidNumberValue(`${cleanValue}`, {
-      decimalPlaces,
-      allowNegativeValues,
-      log,
-    });
-
-    if (isValidNumber) {
-      cachedValue = cleanValue;
-      ref.value = cleanValue;
-    } else {
-      stackValue = cachedValue;
-      ref.value = cachedValue;
-    }
-
-    if (oninput) {
-      oninput(e);
-    }
-  }
 
   function onfocusMod(e: DynamicInputFocusEvent) {
     const eTyped = e as TextInputFocusEvent;
@@ -171,14 +132,16 @@
   }
 
   function onblurMod(e: DynamicInputFocusEvent) {
-    if (!ref) {
-      return;
-    }
-
     const eTyped = e as TextInputFocusEvent;
     focused = false;
 
-    const isValidNumberPartial = isValidNumberValue(`${stackValue}`, {
+    const isValidWithoutMinMax = isValidNumberValue(`${value}`, {
+      decimalPlaces,
+      allowNegativeValues,
+      log,
+    });
+
+    const isValid = isValidNumberValue(`${value}`, {
       decimalPlaces,
       allowNegativeValues,
       log,
@@ -186,34 +149,109 @@
       max,
     });
 
-    const isValidNumberString = isNumericString(stackValue);
-
-    const isValid = isValidNumberPartial && isValidNumberString;
-
     if (isValid) {
-      if (onNumericValueChange) {
-        onNumericValueChange(Number(stackValue));
-      }
-    } else {
-      if (onNumericValueChange) {
-        onNumericValueChange(valueRaw);
+      if (onValueChange) {
+        onValueChange(Number(value));
       }
 
-      if (valueRaw || valueRaw === 0) {
-        stackValue === `${valueRaw}`;
-        cachedValue === `${valueRaw}`;
-        ref.value = `${valueRaw}`;
-      } else {
-        stackValue === '';
-        cachedValue === '';
-        ref.value = '';
+      value = `${Number(value)}`;
+      cachedValue = `${Number(value)}`;
+    } else if (isValidWithoutMinMax) {
+      if (min && Number(value) < min) {
+        if (onValueChange) {
+          onValueChange(min);
+        }
+
+        value = `${min}`;
+        cachedValue = `${min}`;
+      } else if (max && Number(value) > max) {
+        if (onValueChange) {
+          onValueChange(max);
+        }
+
+        value = `${max}`;
+        cachedValue = `${max}`;
       }
+    } else if (value.trim() === '') {
+      if (onValueChange) {
+        onValueChange(undefined);
+      }
+
+      value = '';
+      cachedValue = '';
+    } else if (valueRaw || valueRaw === 0) {
+      if (onValueChange) {
+        onValueChange(valueRaw);
+      }
+
+      value = `${valueRaw}`;
+      cachedValue = `${valueRaw}`;
+    } else {
+      if (onValueChange) {
+        onValueChange(undefined);
+      }
+
+      value = '';
+      cachedValue = '';
     }
 
     if (onblur) {
       onblur(eTyped);
     }
   }
+
+  function onkeydownMod(e: DynamicInputKeyboardEvent) {
+    if (onkeydown) {
+      onkeydown(e as TextInputKeyboardEvent);
+    }
+
+    if (e.ctrlKey && e.key.toLocaleLowerCase() === 'c') {
+      return;
+    } else if (e.ctrlKey && e.key.toLocaleLowerCase() === 'v') {
+      return;
+    } else if (e.ctrlKey && e.key.toLocaleLowerCase() === 'x') {
+      return;
+    }
+
+    const valueToCheck = `${value}${e.key.length === 1 ? e.key : ''}`;
+
+    const isValid = isValidNumberValue(valueToCheck, {
+      decimalPlaces,
+      allowNegativeValues,
+      log,
+      strict: false,
+    });
+
+    if (!isValid) {
+      e.preventDefault();
+      value = cachedValue;
+    } else {
+      cachedValue = valueToCheck;
+    }
+  }
+
+  $effect(() => {
+    let updatedValue = '';
+
+    const isValid = isValidNumberValue(`${valueRaw}`, {
+      decimalPlaces,
+      allowNegativeValues,
+      min,
+      max,
+      log,
+    });
+
+    if (valueRaw === undefined) {
+      updatedValue = '';
+    } else if (!isValid) {
+      updatedValue = '';
+    } else {
+      updatedValue = `${valueRaw}`;
+    }
+
+    value = updatedValue;
+    cachedValue = updatedValue;
+  });
 </script>
 
 <div
@@ -230,17 +268,20 @@
       {id}
       {disabled}
       bind:ref
-      oninput={oninputMod}
+      {oninput}
       {onchange}
       onfocus={onfocusMod}
       onblur={onblurMod}
       {onpaste}
       {oncopy}
       {oncut}
+      onkeydown={onkeydownMod}
+      onkeypress={onkeypress ? (e) => onkeypress(e as TextInputKeyboardEvent) : undefined}
+      onkeyup={onkeyup ? (e) => onkeyup(e as TextInputKeyboardEvent) : undefined}
       {placeholder}
       {readonly}
       variant="input"
-      bind:value={stackValue}
+      bind:value
     />
   </InputEnclosure>
 </div>

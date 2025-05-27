@@ -7,6 +7,7 @@
     ClipboardEventHandler,
     FocusEventHandler,
     FormEventHandler,
+    KeyboardEventHandler,
   } from 'svelte/elements';
 
   export type PasswordInputToggleEvent = {
@@ -65,6 +66,12 @@
     oncut?: ClipboardEventHandler<HTMLInputElement>;
     /** ontoggle event handler */
     ontoggle?: (e: PasswordInputToggleEvent) => void;
+    /** onkeydown event handler */
+    onkeydown?: KeyboardEventHandler<HTMLInputElement>;
+    /** onkeypress event handler */
+    onkeypress?: KeyboardEventHandler<HTMLInputElement>;
+    /** onkeyup event handler */
+    onkeyup?: KeyboardEventHandler<HTMLInputElement>;
   }
 </script>
 
@@ -72,7 +79,7 @@
   import Icon from '@iconify/svelte';
   import UtilityButton from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
   import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
-  import type { TextInputFocusEvent } from '../TextInput/TextInput.svelte';
+  import type { TextInputFocusEvent, TextInputKeyboardEvent } from '../TextInput/TextInput.svelte';
   import { DynamicInput, type DynamicInputFocusEvent } from '$lib/index.js';
 
   let {
@@ -90,6 +97,9 @@
     onpaste,
     oncopy,
     oncut,
+    onkeydown,
+    onkeypress,
+    onkeyup,
     before,
     after,
     customPasswordToggleIcon,
@@ -163,6 +173,9 @@
       {onpaste}
       {oncopy}
       {oncut}
+      onkeydown={onkeydown ? (e) => onkeydown(e as TextInputKeyboardEvent) : undefined}
+      onkeypress={onkeypress ? (e) => onkeypress(e as TextInputKeyboardEvent) : undefined}
+      onkeyup={onkeyup ? (e) => onkeyup(e as TextInputKeyboardEvent) : undefined}
       {placeholder}
       bind:value
       {readonly}

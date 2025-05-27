@@ -3,6 +3,7 @@
   import TextInput, {
     type TextInputClipboardEvent,
     type TextInputFocusEvent,
+    type TextInputKeyboardEvent,
   } from '../TextInput.svelte';
   import { storyTextInputArgTypes } from '../TextInput.stories.svelte';
 
@@ -92,6 +93,33 @@
       const target = e.target as HTMLInputElement;
 
       console.log('onpaste Event', target);
+    },
+  }}
+/>
+
+<Story
+  name="KeyDown"
+  args={{
+    onkeydown: (e: TextInputKeyboardEvent) => {
+      console.log('onkeydown Event', e.key);
+    },
+  }}
+/>
+
+<Story
+  name="KeyPress"
+  args={{
+    onkeypress: (e: TextInputKeyboardEvent) => {
+      console.log('onkeypress Event', e.key);
+    },
+  }}
+/>
+
+<Story
+  name="KeyUp"
+  args={{
+    onkeyup: (e: TextInputKeyboardEvent) => {
+      console.log('onkeyup Event', e.key);
     },
   }}
 />

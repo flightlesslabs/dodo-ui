@@ -5,6 +5,7 @@
   import type {
     TextInputFocusEvent,
     TextInputClipboardEvent,
+    TextInputKeyboardEvent,
   } from '../../TextInput/TextInput.svelte';
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
@@ -37,7 +38,6 @@
   }}
 />
 
-<!-- `e: PasswordInputToggleEvent` -->
 <Story
   name="Toggle"
   args={{
@@ -49,7 +49,6 @@
   }}
 />
 
-<!-- `e: TextInputFocusEvent` -->
 <Story
   name="Focus"
   args={{
@@ -61,7 +60,6 @@
   }}
 />
 
-<!-- `e: TextInputFocusEvent` -->
 <Story
   name="Blur"
   args={{
@@ -73,7 +71,6 @@
   }}
 />
 
-<!-- `e: TextInputClipboardEvent` -->
 <Story
   name="Copy"
   args={{
@@ -85,7 +82,6 @@
   }}
 />
 
-<!-- `e: TextInputClipboardEvent` -->
 <Story
   name="Cut"
   args={{
@@ -97,7 +93,6 @@
   }}
 />
 
-<!-- `e: TextInputClipboardEvent` -->
 <Story
   name="Paste"
   args={{
@@ -105,6 +100,33 @@
       const target = e.target as HTMLInputElement;
 
       console.log('onpaste Event', target);
+    },
+  }}
+/>
+
+<Story
+  name="KeyDown"
+  args={{
+    onkeydown: (e: TextInputKeyboardEvent) => {
+      console.log('onkeydown Event', e.key);
+    },
+  }}
+/>
+
+<Story
+  name="KeyPress"
+  args={{
+    onkeypress: (e: TextInputKeyboardEvent) => {
+      console.log('onkeypress Event', e.key);
+    },
+  }}
+/>
+
+<Story
+  name="KeyUp"
+  args={{
+    onkeyup: (e: TextInputKeyboardEvent) => {
+      console.log('onkeyup Event', e.key);
     },
   }}
 />
