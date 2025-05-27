@@ -14,6 +14,20 @@ export type { ComponentWeight } from './types/weight.js';
 
 export type { PositionY, PositionX } from './types/position.js';
 
+/** developer tools: helpers: logger */
+export { default as createLogger } from '$lib/stories/developer tools/helpers/logger/logger.js';
+export type {
+  LogLevel,
+  LoggerOptions,
+} from '$lib/stories/developer tools/helpers/logger/logger.js';
+
+/** developer tools: helpers: Numbers: isValidNumberValue */
+export { default as isValidNumberValue } from '$lib/stories/developer tools/helpers/Numbers/isValidNumberValue/isValidNumberValue.js';
+export type { IsValidNumberValueSettings } from '$lib/stories/developer tools/helpers/Numbers/isValidNumberValue/isValidNumberValue.js';
+
+/** developer tools: helpers: Numbers: cleanNumericString */
+export { default as cleanNumericString } from '$lib/stories/developer tools/helpers/Numbers/cleanNumericString/cleanNumericString.js';
+
 /** developer tools: directives: clickOutside */
 export { clickOutside } from '$lib/stories/developer tools/directives/clickOutside/clickOutside.js';
 
@@ -32,6 +46,7 @@ export type {
   DynamicInputProps,
   DynamicInputClickEvent,
   DynamicInputFocusEvent,
+  DynamicInputKeyboardEvent,
 } from '$lib/stories/developer tools/components/DynamicInput/DynamicInput.svelte';
 
 /** developer tools: components: Popper */
@@ -57,6 +72,7 @@ export type {
   TextInputFocusEvent,
   TextInputClipboardEvent,
   TextInputInputEvent,
+  TextInputKeyboardEvent,
   TextInputProps,
 } from '$lib/stories/components/Form/TextInput/TextInput.svelte';
 
@@ -86,6 +102,10 @@ export type {
   SelectDropdownArrowPosition,
   SelectProps,
 } from '$lib/stories/components/Form/Select/Select.svelte';
+
+/** Form: NumericInput */
+export { default as NumericInput } from '$lib/stories/components/Form/NumericInput/NumericInput.svelte';
+export type { NumericInputProps } from '$lib/stories/components/Form/NumericInput/NumericInput.svelte';
 
 /** Layout: Paper */
 export { default as Paper } from '$lib/stories/components/Layout/Paper/Paper.svelte';

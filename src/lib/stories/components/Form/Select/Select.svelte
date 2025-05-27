@@ -7,6 +7,7 @@
     ClipboardEventHandler,
     FocusEventHandler,
     FormEventHandler,
+    KeyboardEventHandler,
     MouseEventHandler,
   } from 'svelte/elements';
 
@@ -73,6 +74,12 @@
     oncopy?: ClipboardEventHandler<HTMLInputElement>;
     /** oncut event handler */
     oncut?: ClipboardEventHandler<HTMLInputElement>;
+    /** onkeydown event handler */
+    onkeydown?: KeyboardEventHandler<HTMLInputElement | HTMLButtonElement>;
+    /** onkeypress event handler */
+    onkeypress?: KeyboardEventHandler<HTMLInputElement | HTMLButtonElement>;
+    /** onkeyup event handler */
+    onkeyup?: KeyboardEventHandler<HTMLInputElement | HTMLButtonElement>;
     /** custom Content Formatting for variant button */
     customInputContent?: (val: SelectOption) => Snippet;
     /** custom Content Formatting for variant button */
@@ -146,6 +153,9 @@
     onpaste,
     oncopy,
     oncut,
+    onkeydown,
+    onkeypress,
+    onkeyup,
     before,
     after,
     error = false,
@@ -375,6 +385,9 @@
           {onpaste}
           {oncopy}
           {oncut}
+          {onkeydown}
+          {onkeypress}
+          {onkeyup}
           {placeholder}
           value={searchable ? searchTerm : selectedOption?.label}
           {readonly}

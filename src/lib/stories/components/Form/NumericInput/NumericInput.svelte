@@ -2,7 +2,7 @@
   import type { ComponentRoundness } from '$lib/types/roundness.js';
   import type { ComponentSize } from '$lib/types/size.js';
 
-  import type { Snippet } from 'svelte';
+  import { type Snippet } from 'svelte';
   import type {
     ChangeEventHandler,
     ClipboardEventHandler,
@@ -11,36 +11,17 @@
     KeyboardEventHandler,
   } from 'svelte/elements';
 
-  export type TextInputType = 'text' | 'tel' | 'email' | 'password' | 'url' | 'number';
-
-  export const textInputTypeArray: TextInputType[] = [
-    'text',
-    'tel',
-    'email',
-    'password',
-    'url',
-    'number',
-  ];
-
-  export type TextInputFocusEvent = FocusEvent & {
-    currentTarget: EventTarget & HTMLInputElement;
-  };
-
-  export type TextInputClipboardEvent = ClipboardEvent & {
-    currentTarget: EventTarget & HTMLInputElement;
-  };
-
-  export type TextInputInputEvent = Event & {
-    currentTarget: EventTarget & HTMLInputElement;
-  };
-
-  export type TextInputKeyboardEvent = KeyboardEvent & {
-    currentTarget: EventTarget & HTMLInputElement;
-  };
-
-  export interface TextInputProps {
-    /** Input type? */
-    type?: TextInputType;
+  export interface NumericInputProps {
+    /** min */
+    min?: number;
+    /** max */
+    max?: number;
+    /** Allow Negative Values */
+    allowNegativeValues?: boolean;
+    /** Decimal Places */
+    decimalPlaces?: number;
+    /** Log number validations */
+    log?: boolean;
     /** Input ref */
     ref?: HTMLInputElement;
     /** How large should the button be? */
@@ -50,7 +31,7 @@
     /** Add a border around the button. Default True */
     outline?: boolean;
     /** Input value */
-    value?: string;
+    value?: number;
     /** How round should the border radius be? */
     placeholder?: string;
     /** disabled state */
@@ -69,6 +50,8 @@
     after?: Snippet;
     /** Custom css class*/
     class?: string;
+    /** on Numeric Value Change */
+    onValueChange?: (value: number | undefined) => void;
     /** oninput event handler */
     oninput?: FormEventHandler<HTMLInputElement>;
     /** onchange event handler */
@@ -96,10 +79,12 @@
   import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
   import DynamicInput, {
     type DynamicInputFocusEvent,
+    type DynamicInputKeyboardEvent,
   } from '$lib/stories/developer tools/components/DynamicInput/DynamicInput.svelte';
+  import type { TextInputFocusEvent, TextInputKeyboardEvent } from '../TextInput/TextInput.svelte';
+  import isValidNumberValue from '$lib/stories/developer tools/helpers/Numbers/isValidNumberValue/isValidNumberValue.js';
 
   let {
-    type = 'text',
     size = 'normal',
     roundness = 1,
     outline = true,
@@ -120,16 +105,26 @@
     before,
     after,
     error = false,
-    value = $bindable<string>(),
+    value: valueRaw,
     placeholder,
     ref = $bindable<HTMLInputElement>(),
     readonly = false,
-  }: TextInputProps = $props();
+    decimalPlaces = 0,
+    allowNegativeValues = false,
+    min,
+    max,
+    log = false,
+    onValueChange,
+  }: NumericInputProps = $props();
+
+  let value = $state<string>('');
+  let cachedValue = $state<string>('');
 
   let focused: boolean = $state(false);
 
   function onfocusMod(e: DynamicInputFocusEvent) {
     const eTyped = e as TextInputFocusEvent;
+
     if (onfocus) {
       onfocus(eTyped);
     }
@@ -138,10 +133,123 @@
   function onblurMod(e: DynamicInputFocusEvent) {
     const eTyped = e as TextInputFocusEvent;
 
+    const isValidWithoutMinMax = isValidNumberValue(`${value}`, {
+      decimalPlaces,
+      allowNegativeValues,
+      log,
+    });
+
+    const isValid = isValidNumberValue(`${value}`, {
+      decimalPlaces,
+      allowNegativeValues,
+      log,
+      min,
+      max,
+    });
+
+    if (isValid) {
+      if (onValueChange) {
+        onValueChange(Number(value));
+      }
+
+      value = `${Number(value)}`;
+      cachedValue = `${Number(value)}`;
+    } else if (isValidWithoutMinMax) {
+      if (min && Number(value) < min) {
+        if (onValueChange) {
+          onValueChange(min);
+        }
+
+        value = `${min}`;
+        cachedValue = `${min}`;
+      } else if (max && Number(value) > max) {
+        if (onValueChange) {
+          onValueChange(max);
+        }
+
+        value = `${max}`;
+        cachedValue = `${max}`;
+      }
+    } else if (value.trim() === '') {
+      if (onValueChange) {
+        onValueChange(undefined);
+      }
+
+      value = '';
+      cachedValue = '';
+    } else if (valueRaw || valueRaw === 0) {
+      if (onValueChange) {
+        onValueChange(valueRaw);
+      }
+
+      value = `${valueRaw}`;
+      cachedValue = `${valueRaw}`;
+    } else {
+      if (onValueChange) {
+        onValueChange(undefined);
+      }
+
+      value = '';
+      cachedValue = '';
+    }
+
     if (onblur) {
       onblur(eTyped);
     }
   }
+
+  function onkeydownMod(e: DynamicInputKeyboardEvent) {
+    if (onkeydown) {
+      onkeydown(e as TextInputKeyboardEvent);
+    }
+
+    if (e.ctrlKey && e.key.toLocaleLowerCase() === 'c') {
+      return;
+    } else if (e.ctrlKey && e.key.toLocaleLowerCase() === 'v') {
+      return;
+    } else if (e.ctrlKey && e.key.toLocaleLowerCase() === 'x') {
+      return;
+    }
+
+    const valueToCheck = `${value}${e.key.length === 1 ? e.key : ''}`;
+
+    const isValid = isValidNumberValue(valueToCheck, {
+      decimalPlaces,
+      allowNegativeValues,
+      log,
+      strict: false,
+    });
+
+    if (!isValid) {
+      e.preventDefault();
+      value = cachedValue;
+    } else {
+      cachedValue = valueToCheck;
+    }
+  }
+
+  $effect(() => {
+    let updatedValue = '';
+
+    const isValid = isValidNumberValue(`${valueRaw}`, {
+      decimalPlaces,
+      allowNegativeValues,
+      min,
+      max,
+      log,
+    });
+
+    if (valueRaw === undefined) {
+      updatedValue = '';
+    } else if (!isValid) {
+      updatedValue = '';
+    } else {
+      updatedValue = `${valueRaw}`;
+    }
+
+    value = updatedValue;
+    cachedValue = updatedValue;
+  });
 </script>
 
 <div
@@ -149,11 +257,11 @@
   class:disabled
   class:error
   class:focused
-  class={['dodo-ui-TextInput', `size--${size}`, `roundness--${roundness}`, className].join(' ')}
+  class={['dodo-ui-NumericInput', `size--${size}`, `roundness--${roundness}`, className].join(' ')}
 >
   <InputEnclosure {outline} {disabled} {error} {focused} {size} {roundness} {before} {after}>
     <DynamicInput
-      {type}
+      type="text"
       {name}
       {id}
       {disabled}
@@ -166,13 +274,13 @@
       {onpaste}
       {oncopy}
       {oncut}
-      onkeydown={onkeydown ? (e) => onkeydown(e as TextInputKeyboardEvent) : undefined}
+      onkeydown={onkeydownMod}
       onkeypress={onkeypress ? (e) => onkeypress(e as TextInputKeyboardEvent) : undefined}
       onkeyup={onkeyup ? (e) => onkeyup(e as TextInputKeyboardEvent) : undefined}
       {placeholder}
-      bind:value
       {readonly}
       variant="input"
+      bind:value
     />
   </InputEnclosure>
 </div>

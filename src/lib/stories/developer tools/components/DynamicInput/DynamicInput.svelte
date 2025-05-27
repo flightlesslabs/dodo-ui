@@ -6,6 +6,7 @@
     ClipboardEventHandler,
     FocusEventHandler,
     FormEventHandler,
+    KeyboardEventHandler,
     MouseEventHandler,
   } from 'svelte/elements';
 
@@ -21,6 +22,10 @@
     currentTarget: EventTarget & (HTMLInputElement | HTMLButtonElement);
   };
 
+  export type DynamicInputKeyboardEvent = KeyboardEvent & {
+    currentTarget: EventTarget & (HTMLInputElement | HTMLButtonElement);
+  };
+
   export interface DynamicInputProps {
     /** How large should the button be? */
     size?: ComponentSize;
@@ -30,6 +35,8 @@
     ref?: HTMLInputElement | HTMLButtonElement;
     /** Input value */
     value?: string | number;
+    /** is focused, set focused */
+    focused?: boolean;
     /** variant */
     variant?: DynamicInputVariant;
     /** How round should the border radius be? */
@@ -64,6 +71,12 @@
     oncopy?: ClipboardEventHandler<HTMLInputElement>;
     /** oncut event handler */
     oncut?: ClipboardEventHandler<HTMLInputElement>;
+    /** onkeydown event handler */
+    onkeydown?: KeyboardEventHandler<HTMLInputElement | HTMLButtonElement>;
+    /** onkeypress event handler */
+    onkeypress?: KeyboardEventHandler<HTMLInputElement | HTMLButtonElement>;
+    /** onkeyup event handler */
+    onkeyup?: KeyboardEventHandler<HTMLInputElement | HTMLButtonElement>;
     /** custom Content Formatting for variant button */
     customInputContent?: (value: string | number) => Snippet;
   }
@@ -83,7 +96,11 @@
     onpaste,
     oncopy,
     oncut,
+    onkeydown,
+    onkeypress,
+    onkeyup,
     value = $bindable<string | number>(),
+    focused = $bindable<boolean>(),
     placeholder,
     ref = $bindable<HTMLInputElement | HTMLButtonElement>(),
     readonly = false,
@@ -105,6 +122,22 @@
       onclick(e);
     }
   }
+
+  function onfocusMod(e: DynamicInputFocusEvent) {
+    focused = true;
+
+    if (onfocus) {
+      onfocus(e);
+    }
+  }
+
+  function onblurMod(e: DynamicInputFocusEvent) {
+    focused = false;
+
+    if (onblur) {
+      onblur(e);
+    }
+  }
 </script>
 
 {#if variant === 'button'}
@@ -119,8 +152,11 @@
     ].join(' ')}
     bind:this={ref}
     onclick={onclickMod}
-    {onfocus}
-    {onblur}
+    {onkeydown}
+    {onkeypress}
+    {onkeyup}
+    onfocus={onfocusMod}
+    onblur={onblurMod}
     {disabled}
   >
     {#if customInputContentTyped}
@@ -138,11 +174,14 @@
     {disabled}
     {oninput}
     {onchange}
-    {onfocus}
-    {onblur}
+    onfocus={onfocusMod}
+    onblur={onblurMod}
     {onpaste}
     {oncopy}
     {oncut}
+    {onkeydown}
+    {onkeypress}
+    {onkeyup}
     {placeholder}
     bind:value
     bind:this={ref}

@@ -152,7 +152,7 @@
       }
 
       return;
-    } else if (keyHit === 'Esc') {
+    } else if (keyHit === 'Escape') {
       if (onEsc) {
         onEsc(e, menuItemIndex);
       }

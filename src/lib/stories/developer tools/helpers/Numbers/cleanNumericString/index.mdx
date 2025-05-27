@@ -1,0 +1,20 @@
+import { Source } from '@storybook/blocks';
+
+# cleanNumericString
+
+Cleans the input string by removing all characters except numeric digits (0-9) and a single decimal point.
+Only the first decimal point is retained; all subsequent dots are removed.
+
+---
+
+## Basic Usage
+
+<Source
+  dark
+  language="ts"
+  code={`
+import { cleanNumericString } from '@flightlesslabs/dodo-ui';
+
+const result = cleanNumericString("abc123.45.67def"); // result === "123.4567"
+`}
+/>
