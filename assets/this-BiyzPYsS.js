@@ -1,0 +1,1 @@
+import{o as q,q as S,i as h,S as k}from"./runtime-CfJ2O1nk.js";import{q as T}from"./props-785jmTig.js";function t(r,s){return r===s||(r==null?void 0:r[k])===s}function B(r={},s,a,c){return q(()=>{var f,i;return S(()=>{f=i,i=[],h(()=>{r!==a(...i)&&(s(r,...i),f&&t(a(...f),r)&&s(null,...f))})}),()=>{T(()=>{i&&t(a(...i),r)&&s(null,...i)})}}),r}export{B as b};

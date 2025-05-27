@@ -1,0 +1,15 @@
+import{f as y,t as f,a as i}from"./props-785jmTig.js";import{p as _,f as b,s as c,a as C}from"./runtime-CfJ2O1nk.js";import{i as w}from"./lifecycle-BJKci2tQ.js";import{c as x,d as P}from"./create-runtime-stories-BxeoUkSH.js";import{B as p}from"./Button-lGpFYQ3s.js";import{storyButtonArgTypes as A}from"./Button.stories-eEVFLttA.js";import{I as e}from"./Icon-Bnl7shP_.js";import"./index-CfOrKyLd.js";import"./attributes-XQBg23q6.js";import"./class-Rk00bAhQ.js";import"./style-BR5QSoj8.js";import"./this-BiyzPYsS.js";import"./roundness-fyqvrcF6.js";import"./colors-C3b1rS-d.js";import"./weight-CLgIXx1C.js";import"./size-C-8mwSpB.js";import"./index-client-rjbzzGwC.js";const D={component:p,tags:["autodocs"],argTypes:A,parameters:{docs:{description:{component:""}}}},{Story:n}=P();var S=y("<!> <!> <!> <!>",1);function g(h,B){_(B,!1),w();var l=S(),d=b(l);n(d,{name:"Icon Button",args:{compact:!0},children:(t,r)=>{e(t,{icon:"material-symbols:app-badging",width:"18",height:"18"})},$$slots:{default:!0},parameters:{docs:{description:{story:"Compact button with paddings stripped out and fixed size. We are using this icon library https://iconify.design/docs/icon-components/svelte/"}},__svelteCsf:{rawCode:`<Button {...args}>
+  <Icon icon="material-symbols:app-badging" width="18" height="18" />
+</Button>`}}});var m=c(d,2);n(m,{name:"Icon Button Circular",args:{compact:!0,roundness:"full"},children:(t,r)=>{e(t,{icon:"material-symbols:app-badging",width:"18",height:"18"})},$$slots:{default:!0},parameters:{docs:{description:{story:"Circualr Icon button."}},__svelteCsf:{rawCode:`<Button {...args}>
+  <Icon icon="material-symbols:app-badging" width="18" height="18" />
+</Button>`}}});var u=c(m,2);n(u,{name:"Icon Before",asChild:!0,children:(t,r)=>{p(t,{before:o=>{e(o,{icon:"material-symbols:content-copy"})},children:(o,v)=>{var a=f("Copy");i(o,a)},$$slots:{before:!0,default:!0}})},$$slots:{default:!0},parameters:{docs:{description:{story:"Button with an icon in front."}},__svelteCsf:{rawCode:`<Button>
+  {#snippet before()}
+    <Icon icon="material-symbols:content-copy" />
+  {/snippet}
+  Copy
+</Button>`}}});var $=c(u,2);n($,{name:"Icon After",asChild:!0,children:(t,r)=>{p(t,{after:o=>{e(o,{icon:"material-symbols:download-2"})},children:(o,v)=>{var a=f("Download");i(o,a)},$$slots:{after:!0,default:!0}})},$$slots:{default:!0},parameters:{docs:{description:{story:"Button with an icon in front."}},__svelteCsf:{rawCode:`<Button>
+  {#snippet after()}
+    <Icon icon="material-symbols:download-2" />
+  {/snippet}
+  Download
+</Button>`}}}),i(h,l),C()}g.__docgen={version:3,name:"IconButton.stories.svelte",data:[],computed:[],methods:[],components:[],description:null,keywords:[],events:[],slots:[],refs:[]};const s=x(g,D),Q=["IconButton","IconButtonCircular","IconBefore","IconAfter"],U={...s.IconButton,tags:["svelte-csf-v5"]},V={...s.IconButtonCircular,tags:["svelte-csf-v5"]},X={...s.IconBefore,tags:["svelte-csf-v5"]},Y={...s.IconAfter,tags:["svelte-csf-v5"]};export{Y as IconAfter,X as IconBefore,U as IconButton,V as IconButtonCircular,Q as __namedExportsOrder,D as default};
