@@ -130,8 +130,6 @@
 
   function onfocusMod(e: DynamicInputFocusEvent) {
     const eTyped = e as TextInputFocusEvent;
-    focused = true;
-
     if (onfocus) {
       onfocus(eTyped);
     }
@@ -139,7 +137,6 @@
 
   function onblurMod(e: DynamicInputFocusEvent) {
     const eTyped = e as TextInputFocusEvent;
-    focused = false;
 
     if (onblur) {
       onblur(eTyped);
@@ -161,6 +158,7 @@
       {id}
       {disabled}
       bind:ref
+      bind:focused
       {oninput}
       {onchange}
       onfocus={onfocusMod}

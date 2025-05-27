@@ -35,6 +35,8 @@
     ref?: HTMLInputElement | HTMLButtonElement;
     /** Input value */
     value?: string | number;
+    /** is focused, set focused */
+    focused?: boolean;
     /** variant */
     variant?: DynamicInputVariant;
     /** How round should the border radius be? */
@@ -98,6 +100,7 @@
     onkeypress,
     onkeyup,
     value = $bindable<string | number>(),
+    focused = $bindable<boolean>(),
     placeholder,
     ref = $bindable<HTMLInputElement | HTMLButtonElement>(),
     readonly = false,
@@ -119,6 +122,22 @@
       onclick(e);
     }
   }
+
+  function onfocusMod(e: DynamicInputFocusEvent) {
+    focused = true;
+
+    if (onfocus) {
+      onfocus(e);
+    }
+  }
+
+  function onblurMod(e: DynamicInputFocusEvent) {
+    focused = false;
+
+    if (onblur) {
+      onblur(e);
+    }
+  }
 </script>
 
 {#if variant === 'button'}
@@ -136,8 +155,8 @@
     {onkeydown}
     {onkeypress}
     {onkeyup}
-    {onfocus}
-    {onblur}
+    onfocus={onfocusMod}
+    onblur={onblurMod}
     {disabled}
   >
     {#if customInputContentTyped}
@@ -155,8 +174,8 @@
     {disabled}
     {oninput}
     {onchange}
-    {onfocus}
-    {onblur}
+    onfocus={onfocusMod}
+    onblur={onblurMod}
     {onpaste}
     {oncopy}
     {oncut}

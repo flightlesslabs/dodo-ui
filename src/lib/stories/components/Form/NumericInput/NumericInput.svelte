@@ -124,7 +124,6 @@
 
   function onfocusMod(e: DynamicInputFocusEvent) {
     const eTyped = e as TextInputFocusEvent;
-    focused = true;
 
     if (onfocus) {
       onfocus(eTyped);
@@ -133,7 +132,6 @@
 
   function onblurMod(e: DynamicInputFocusEvent) {
     const eTyped = e as TextInputFocusEvent;
-    focused = false;
 
     const isValidWithoutMinMax = isValidNumberValue(`${value}`, {
       decimalPlaces,
@@ -268,6 +266,7 @@
       {id}
       {disabled}
       bind:ref
+      bind:focused
       {oninput}
       {onchange}
       onfocus={onfocusMod}
