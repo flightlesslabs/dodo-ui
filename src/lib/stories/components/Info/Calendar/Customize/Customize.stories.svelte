@@ -15,7 +15,6 @@
   });
 </script>
 
-<!-- calendarDateChipProps  -->
 <Story
   name="calendarDateChipProps"
   args={{
@@ -25,7 +24,6 @@
   }}
 />
 
-<!-- Custom Content  -->
 <Story name="customCalendarDateChipContent" asChild>
   <Calendar value={getMoment().toDate()}>
     {#snippet customCalendarDateChipContent(dayOfMonth)}
@@ -34,13 +32,30 @@
   </Calendar>
 </Story>
 
-<!-- Custom Chip  -->
 <Story name="customCalendarDateChip" asChild>
   <Calendar value={getMoment().toDate()}>
     {#snippet customCalendarDateChip(dayOfMonth)}
       <Button size="small" variant="text" outline>
         {Number(getMoment(dayOfMonth.date).format('D'))}
       </Button>
+    {/snippet}
+  </Calendar>
+</Story>
+
+<Story name="customCalendarWeekContent" asChild>
+  <Calendar value={getMoment().toDate()}>
+    {#snippet customCalendarWeekContent(option)}
+      ☀️{option.abr1}
+    {/snippet}
+  </Calendar>
+</Story>
+
+<Story name="customCalendarWeek" asChild>
+  <Calendar value={getMoment().toDate()}>
+    {#snippet customCalendarWeek(option)}
+      <li style="color: blue; display: block;">
+        {option.abr3}
+      </li>
     {/snippet}
   </Calendar>
 </Story>

@@ -40,7 +40,7 @@
   name="StartOfWeek"
   args={{
     value,
-    startOfWeek: 'fri',
+    startOfWeek: 'mon',
   }}
 />
 

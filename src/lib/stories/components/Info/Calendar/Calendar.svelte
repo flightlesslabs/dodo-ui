@@ -42,8 +42,12 @@
     onselect?: (value: Date, dayOfMonth: DateOfMonth, e: ButtonClickEvent) => void;
     /** Custom Calendar Chip Content */
     customCalendarDateChipContent?: (dayOfMonth: DateOfMonth) => Snippet;
-    /** Custom Calendar Chip Content */
+    /** Custom Calendar Chip */
     customCalendarDateChip?: (dayOfMonth: DateOfMonth) => Snippet;
+    /** Custom Calendar Week Content */
+    customCalendarWeekContent?: (week: CalendarWeekOption) => Snippet;
+    /** Custom Calendar Week */
+    customCalendarWeek?: (week: CalendarWeekOption) => Snippet;
   }
 </script>
 
@@ -57,7 +61,10 @@
   import type { CalendarDateChipProps } from './CalendarDatesChart/CalendarDateChip/CalendarDateChip.svelte';
   import CalendarDatesChart from './CalendarDatesChart/CalendarDatesChart.svelte';
   import type { DateOfMonth } from './utils/types.js';
-  import type { CalendarWeekNames } from './CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
+  import type {
+    CalendarWeekNames,
+    CalendarWeekOption,
+  } from './CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
 
   let {
     class: className = '',
@@ -82,6 +89,8 @@
     customCalendarDateChipContent,
     customCalendarDateChip,
     color,
+    customCalendarWeekContent,
+    customCalendarWeek,
   }: CalendarProps = $props();
 
   const dateMoment = getMoment(activeMonth || value, format, { timezone, utc });
@@ -111,6 +120,8 @@
     {customCalendarDateChipContent}
     {customCalendarDateChip}
     {color}
+    {customCalendarWeekContent}
+    {customCalendarWeek}
   />
 </div>
 

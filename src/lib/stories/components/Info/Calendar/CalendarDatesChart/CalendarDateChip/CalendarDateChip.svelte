@@ -139,6 +139,8 @@
     align-items: center;
     color: var(--dodo-color-neutral-800);
     user-select: none;
+    width: 30px;
+    height: 30px;
 
     &.roundness {
       &--1 {
@@ -200,8 +202,8 @@
       font-family: inherit;
       background-color: transparent;
       transition: all 50ms;
-      width: 30px;
-      height: 30px;
+      width: 100%;
+      height: 100%;
       font-size: 0.8rem;
       display: flex;
       justify-content: center;
