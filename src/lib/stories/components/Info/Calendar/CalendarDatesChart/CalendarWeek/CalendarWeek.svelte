@@ -1,6 +1,16 @@
 <script lang="ts" module>
   export type CalendarWeekNames = 'sun' | 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat';
 
+  export const calendarWeekNamesArray: CalendarWeekNames[] = [
+    'sun',
+    'mon',
+    'tue',
+    'wed',
+    'thu',
+    'fri',
+    'sat',
+  ];
+
   export type CalendarWeekOption = {
     value: DAYS_OF_WEEK;
     abr3: CalendarWeekNames;

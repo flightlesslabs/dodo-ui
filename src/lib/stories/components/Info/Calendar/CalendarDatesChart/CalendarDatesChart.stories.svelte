@@ -3,13 +3,13 @@
   import CalendarDatesChart from './CalendarDatesChart.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
   import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
-  import { daysOfWeekArray } from '../utils/types.js';
   import { componentColorArray } from '$lib/types/colors.js';
+  import { calendarWeekNamesArray } from './CalendarWeek/CalendarWeek.svelte';
 
   export const storyCalendarDatesChartArgTypes: StoryBookArgTypes = {
     startOfWeek: {
       control: { type: 'select' },
-      options: daysOfWeekArray,
+      options: calendarWeekNamesArray,
     },
     color: {
       control: { type: 'select' },

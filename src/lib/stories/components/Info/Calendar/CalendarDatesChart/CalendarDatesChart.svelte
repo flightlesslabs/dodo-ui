@@ -13,7 +13,7 @@
     /** date */
     format?: GetMomentFormat;
     /** Start Of Week */
-    startOfWeek?: DAYS_OF_WEEK;
+    startOfWeek?: CalendarWeekNames;
     /** Timezone string (e.g., "America/New_York"). */
     timezone?: string;
     /** Whether to return the time in UTC. If true, overrides timezone. */
@@ -62,7 +62,7 @@
   import type { ComponentColor } from '$lib/types/colors.js';
   import type { Snippet } from 'svelte';
   import getDatesOfMonth from '../utils/getDatesOfMonth.js';
-  import type { DateOfMonth, DAYS_OF_WEEK } from '../utils/types.js';
+  import type { DateOfMonth } from '../utils/types.js';
   import CalendarDateChip, {
     type CalendarDateChipProps,
   } from './CalendarDateChip/CalendarDateChip.svelte';
@@ -70,6 +70,7 @@
   import type {
     CalendarWeekOption,
     CalendarWeekDayNameType,
+    CalendarWeekNames,
   } from './CalendarWeek/CalendarWeek.svelte';
 
   let {

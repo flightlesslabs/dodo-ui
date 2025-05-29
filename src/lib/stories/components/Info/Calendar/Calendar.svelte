@@ -9,7 +9,7 @@
     /** date */
     format?: GetMomentFormat;
     /** Start Of Week */
-    startOfWeek?: DAYS_OF_WEEK;
+    startOfWeek?: CalendarWeekNames;
     /** Define active month to override month selected with value */
     activeMonth?: Date;
     /** Include leading days from the previous month */
@@ -56,14 +56,15 @@
   import type { ButtonClickEvent } from '../../Form/Button/Button.svelte';
   import type { CalendarDateChipProps } from './CalendarDatesChart/CalendarDateChip/CalendarDateChip.svelte';
   import CalendarDatesChart from './CalendarDatesChart/CalendarDatesChart.svelte';
-  import type { DateOfMonth, DAYS_OF_WEEK } from './utils/types.js';
+  import type { DateOfMonth } from './utils/types.js';
+  import type { CalendarWeekNames } from './CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
 
   let {
     class: className = '',
     ref = $bindable<HTMLDivElement>(),
     value,
     format,
-    startOfWeek,
+    startOfWeek = 'sun',
     timezone,
     utc,
     calendarDateChipProps,
@@ -80,6 +81,7 @@
     onselect,
     customCalendarDateChipContent,
     customCalendarDateChip,
+    color,
   }: CalendarProps = $props();
 
   const dateMoment = getMoment(activeMonth || value, format, { timezone, utc });
@@ -108,6 +110,7 @@
     {onselect}
     {customCalendarDateChipContent}
     {customCalendarDateChip}
+    {color}
   />
 </div>
 

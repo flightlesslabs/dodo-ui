@@ -1,14 +1,19 @@
 import getMoment, {
   type GetMomentFormat,
 } from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
-import type { DateOfMonth, DAYS_OF_WEEK } from './types.js';
+import type dayjs from 'dayjs';
+import {
+  calendarWeekOptions,
+  type CalendarWeekNames,
+} from '../CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
+import type { DateOfMonth } from './types.js';
 
 export interface GetDatesOfMonthSettings {
   /** Optional moment.js format string */
   format?: GetMomentFormat;
 
-  /** Day considered as start of the week (0 = Sunday, 1 = Monday, etc.) */
-  startOfWeek?: DAYS_OF_WEEK;
+  /** Day considered as start of the week */
+  startOfWeek?: CalendarWeekNames;
 
   /** Include leading days from the previous month */
   showLastMonth?: boolean;
@@ -54,6 +59,55 @@ function chunkArray<T>(arr: T[], size: number): T[][] {
   return result;
 }
 
+function dateMoment(date?: Date, settings?: GetDatesOfMonthSettings) {
+  return getMoment(date, undefined, {
+    timezone: settings?.timezone,
+    utc: settings?.utc,
+  });
+}
+
+function getIsToday(dayMoment: dayjs.Dayjs, todayDate: string, todayManual: string | undefined) {
+  const dayDateFormat = dayMoment.format('DD-MM-YYYY');
+  let today = false;
+
+  if (todayManual && todayManual === dayDateFormat) {
+    today = true;
+  } else if (todayDate === dayDateFormat) {
+    today = true;
+  }
+
+  return today;
+}
+
+function getIsDateDisabled(
+  dayMoment: dayjs.Dayjs,
+  minDate: dayjs.Dayjs | undefined,
+  maxDate: dayjs.Dayjs | undefined,
+  excludeDates: string[] | undefined,
+  includeDates: string[] | undefined,
+) {
+  const dayDateFormat = dayMoment.format('DD-MM-YYYY');
+  let disabled = false;
+
+  if (minDate?.isValid() && dayMoment.isBefore(minDate)) {
+    disabled = true;
+  }
+
+  if (maxDate?.isValid() && dayMoment.isAfter(maxDate)) {
+    disabled = true;
+  }
+
+  if (excludeDates?.length && excludeDates.includes(dayDateFormat)) {
+    disabled = true;
+  }
+
+  if (includeDates?.length && !includeDates.includes(dayDateFormat)) {
+    disabled = true;
+  }
+
+  return disabled;
+}
+
 /**
  * Generates a calendar grid of dates for a given month.
  *
@@ -69,55 +123,27 @@ export default function getDatesOfMonth(
     return null;
   }
 
-  const todayDate = getMoment(undefined, undefined, {
-    timezone: settings?.timezone,
-    utc: settings?.utc,
-  }).format('DD-MM-YYYY');
-  const todayManual = settings?.today
-    ? getMoment(settings?.today, undefined, {
-        timezone: settings?.timezone,
-        utc: settings?.utc,
-      }).format('DD-MM-YYYY')
-    : undefined;
-  const showNextMonth = settings?.showNextMonth !== false;
-  const showLastMonth = settings?.showLastMonth !== false;
-  const minDate = settings?.minDate
-    ? getMoment(settings.minDate, undefined, {
-        timezone: settings?.timezone,
-        utc: settings?.utc,
-      })
-    : undefined;
-  const maxDate = settings?.maxDate
-    ? getMoment(settings.maxDate, undefined, {
-        timezone: settings?.timezone,
-        utc: settings?.utc,
-      })
-    : undefined;
-  const excludeDates = settings?.excludeDates?.length
-    ? settings?.excludeDates.map((item) =>
-        getMoment(item, undefined, {
-          timezone: settings?.timezone,
-          utc: settings?.utc,
-        }).format('DD-MM-YYYY'),
-      )
-    : undefined;
-  const includeDates = settings?.includeDates?.length
-    ? settings?.includeDates.map((item) =>
-        getMoment(item, undefined, {
-          timezone: settings?.timezone,
-          utc: settings?.utc,
-        }).format('DD-MM-YYYY'),
-      )
-    : undefined;
-
-  const monthMoment = getMoment(date, settings?.format, {
-    timezone: settings?.timezone,
-    utc: settings?.utc,
-  }).startOf('month');
+  const monthMoment = dateMoment(date, settings).startOf('month');
 
   if (!monthMoment.isValid()) {
     return null;
   }
+
+  const todayDate = dateMoment(undefined, settings).format('DD-MM-YYYY');
+
+  const todayManual = settings?.today
+    ? dateMoment(settings?.today, settings).format('DD-MM-YYYY')
+    : undefined;
+  const showNextMonth = settings?.showNextMonth !== false;
+  const showLastMonth = settings?.showLastMonth !== false;
+  const minDate = settings?.minDate ? dateMoment(settings.minDate, settings) : undefined;
+  const maxDate = settings?.maxDate ? dateMoment(settings.maxDate, settings) : undefined;
+  const excludeDates = settings?.excludeDates?.length
+    ? settings?.excludeDates.map((item) => dateMoment(item, settings).format('DD-MM-YYYY'))
+    : undefined;
+  const includeDates = settings?.includeDates?.length
+    ? settings?.includeDates.map((item) => dateMoment(item, settings).format('DD-MM-YYYY'))
+    : undefined;
 
   const startOfMonthDay = monthMoment.day();
   const daysInMonth = monthMoment.daysInMonth();
@@ -126,80 +152,36 @@ export default function getDatesOfMonth(
   const lastMonth = monthMoment.clone().subtract(startOfMonthDay, 'days');
   const nextMonth = monthMoment.clone().add(1, 'month');
 
+  const startOfWeek =
+    calendarWeekOptions.find((item) => item.abr3 === settings?.startOfWeek) ||
+    calendarWeekOptions[0];
+
+  console.log(startOfWeek);
+
   if (showLastMonth) {
     for (let gap = 0; gap < startOfMonthDay; gap++) {
       const dayMoment = lastMonth.clone().add(gap, 'days');
-      const dayDateFormat = dayMoment.format('DD-MM-YYYY');
-      let disabled = false;
-      let today = false;
-
-      if (todayManual && todayManual === dayDateFormat) {
-        today = true;
-      } else if (todayDate === dayDateFormat) {
-        today = true;
-      }
-
-      if (minDate?.isValid() && dayMoment.isBefore(minDate)) {
-        disabled = true;
-      }
-
-      if (maxDate?.isValid() && dayMoment.isAfter(maxDate)) {
-        disabled = true;
-      }
-
-      if (excludeDates?.length && excludeDates.includes(dayDateFormat)) {
-        disabled = true;
-      }
-
-      if (includeDates?.length && !includeDates.includes(dayDateFormat)) {
-        disabled = true;
-      }
 
       dates.push({
         id: `${dayMoment.valueOf()}`,
         date: dayMoment.toDate(),
         isLastMonth: true,
         isCurrentMonth: false,
-        disabled,
-        today,
+        disabled: getIsDateDisabled(dayMoment, minDate, maxDate, excludeDates, includeDates),
+        today: getIsToday(dayMoment, todayDate, todayManual),
       });
     }
   }
 
   for (let day = 1; day <= daysInMonth; day++) {
     const dayMoment = monthMoment.clone().set('date', day);
-    const dayDateFormat = dayMoment.format('DD-MM-YYYY');
-    let disabled = false;
-    let today = false;
-
-    if (todayManual && todayManual === dayDateFormat) {
-      today = true;
-    } else if (todayDate === dayDateFormat) {
-      today = true;
-    }
-
-    if (minDate?.isValid() && dayMoment.isBefore(minDate)) {
-      disabled = true;
-    }
-
-    if (maxDate?.isValid() && dayMoment.isAfter(maxDate)) {
-      disabled = true;
-    }
-
-    if (excludeDates?.length && excludeDates.includes(dayDateFormat)) {
-      disabled = true;
-    }
-
-    if (includeDates?.length && !includeDates.includes(dayDateFormat)) {
-      disabled = true;
-    }
 
     dates.push({
       id: `${dayMoment.valueOf()}`,
       date: dayMoment.toDate(),
       isCurrentMonth: true,
-      disabled,
-      today,
+      disabled: getIsDateDisabled(dayMoment, minDate, maxDate, excludeDates, includeDates),
+      today: getIsToday(dayMoment, todayDate, todayManual),
     });
   }
 
@@ -215,39 +197,13 @@ export default function getDatesOfMonth(
       for (let gap = 0; gap < nextMonthDaysRequired; gap++) {
         const dayMoment = nextMonth.clone().add(gap, 'days');
 
-        const dayDateFormat = dayMoment.format('DD-MM-YYYY');
-        let disabled = false;
-        let today = false;
-
-        if (todayManual && todayManual === dayDateFormat) {
-          today = true;
-        } else if (todayDate === dayDateFormat) {
-          today = true;
-        }
-
-        if (minDate?.isValid() && dayMoment.isBefore(minDate)) {
-          disabled = true;
-        }
-
-        if (maxDate?.isValid() && dayMoment.isAfter(maxDate)) {
-          disabled = true;
-        }
-
-        if (excludeDates?.length && excludeDates.includes(dayDateFormat)) {
-          disabled = true;
-        }
-
-        if (includeDates?.length && !includeDates.includes(dayDateFormat)) {
-          disabled = true;
-        }
-
         nextMonthDates.push({
           id: `${dayMoment.valueOf()}`,
           date: dayMoment.toDate(),
           isNextMonth: true,
           isCurrentMonth: false,
-          today,
-          disabled,
+          disabled: getIsDateDisabled(dayMoment, minDate, maxDate, excludeDates, includeDates),
+          today: getIsToday(dayMoment, todayDate, todayManual),
         });
       }
 
