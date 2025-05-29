@@ -127,7 +127,12 @@
 </script>
 
 <ul class={['dodo-ui-CalendarDatesChart', className].join(' ')} bind:this={ref}>
-  <CalendarWeek nameType={weekDayNameType} {customCalendarWeekContent} {customCalendarWeek} />
+  <CalendarWeek
+    nameType={weekDayNameType}
+    {startOfWeek}
+    {customCalendarWeekContent}
+    {customCalendarWeek}
+  />
 
   {#each daysGroup as group, index (index)}
     <li class="daysRow">

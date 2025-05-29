@@ -37,6 +37,14 @@
 />
 
 <Story
+  name="StartOfWeek"
+  args={{
+    value,
+    startOfWeek: 'fri',
+  }}
+/>
+
+<Story
   name="ActiveMonth"
   args={{
     activeMonth: getMoment('01-02-2025', 'DD-MM-YYYY').toDate(),

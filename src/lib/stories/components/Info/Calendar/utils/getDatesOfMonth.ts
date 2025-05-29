@@ -145,18 +145,19 @@ export default function getDatesOfMonth(
     ? settings?.includeDates.map((item) => dateMoment(item, settings).format('DD-MM-YYYY'))
     : undefined;
 
-  const startOfMonthDay = monthMoment.day();
+  const startOfWeek =
+    calendarWeekOptions.find((item) => item.abr3 === settings?.startOfWeek) ||
+    calendarWeekOptions[0];
+  const rawStartOfMonthDay = monthMoment.day();
+  const startOfMonthDay = (rawStartOfMonthDay - startOfWeek.value + 7) % 7;
+
   const daysInMonth = monthMoment.daysInMonth();
   const dates: DateOfMonth[] = [];
 
   const lastMonth = monthMoment.clone().subtract(startOfMonthDay, 'days');
   const nextMonth = monthMoment.clone().add(1, 'month');
 
-  const startOfWeek =
-    calendarWeekOptions.find((item) => item.abr3 === settings?.startOfWeek) ||
-    calendarWeekOptions[0];
-
-  console.log(startOfWeek);
+  console.log(startOfMonthDay);
 
   if (showLastMonth) {
     for (let gap = 0; gap < startOfMonthDay; gap++) {

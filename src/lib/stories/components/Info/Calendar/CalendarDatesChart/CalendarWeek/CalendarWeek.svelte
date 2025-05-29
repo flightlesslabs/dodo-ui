@@ -79,11 +79,13 @@
     /** Custom css class */
     class?: string;
     /** Custom Calendar Week Content */
-    customCalendarWeekContent?: (week: CalendarWeekOption) => Snippet;
+    customCalendarWeekContent?: (option: CalendarWeekOption) => Snippet;
     /** Custom Calendar Week */
-    customCalendarWeek?: (week: CalendarWeekOption) => Snippet;
+    customCalendarWeek?: (option: CalendarWeekOption) => Snippet;
     /**  Day Name type */
     nameType?: CalendarWeekDayNameType;
+    /** Start Of Week */
+    startOfWeek?: CalendarWeekNames;
   }
 </script>
 
@@ -97,7 +99,20 @@
     customCalendarWeekContent: customCalendarWeekContentInternal,
     customCalendarWeek: customCalendarWeekInternal,
     nameType = 'abr2',
+    startOfWeek = 'sun',
   }: CalendarWeekProps = $props();
+
+  function getOrderedWeekOptions(startOfWeek: CalendarWeekNames) {
+    const selectedOption =
+      calendarWeekOptions.find((item) => item.abr3 === startOfWeek) || calendarWeekOptions[0];
+
+    return [
+      ...calendarWeekOptions.slice(selectedOption.value),
+      ...calendarWeekOptions.slice(0, selectedOption.value),
+    ];
+  }
+
+  const orderedCalendarWeekOptions = $derived(getOrderedWeekOptions(startOfWeek));
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customCalendarWeekContentTyped = customCalendarWeekContentInternal as any;
@@ -106,27 +121,27 @@
   let customCalendarWeekTyped = customCalendarWeekInternal as any;
 </script>
 
-{#snippet weekName(week: CalendarWeekOption)}
+{#snippet weekName(option: CalendarWeekOption)}
   {#if nameType === 'abr3'}
-    {week.abr3}
+    {option.abr3}
   {:else if nameType === 'abr1'}
-    {week.abr1}
+    {option.abr1}
   {:else if nameType === 'abr2'}
-    {week.abr2}
+    {option.abr2}
   {:else}
-    {week.abr2}
+    {option.abr2}
   {/if}
 {/snippet}
 
-{#snippet weekContent(week: CalendarWeekOption)}
+{#snippet weekContent(option: CalendarWeekOption)}
   {#if customCalendarWeekTyped}
-    {@render customCalendarWeekTyped(week)}
+    {@render customCalendarWeekTyped(option)}
   {:else}
     <li>
       {#if customCalendarWeekContentTyped}
-        {@render customCalendarWeekContentTyped(week)}
+        {@render customCalendarWeekContentTyped(option)}
       {:else}
-        {@render weekName(week)}
+        {@render weekName(option)}
       {/if}
     </li>
   {/if}
@@ -134,8 +149,8 @@
 
 <li class={['dodo-ui-CalendarWeek', className].join(' ')} bind:this={ref}>
   <ul>
-    {#each calendarWeekOptions as week (week.value)}
-      {@render weekContent(week)}
+    {#each orderedCalendarWeekOptions as option (option.value)}
+      {@render weekContent(option)}
     {/each}
   </ul>
 </li>
