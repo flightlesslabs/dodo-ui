@@ -54,6 +54,10 @@
     weekDayNameType?: CalendarWeekDayNameType;
     /** How large should the Component be? */
     size?: ComponentSize;
+    /** Weekend days */
+    weekendDays?: CalendarWeekNames[];
+    /** Color Weekend days */
+    weekendDaysColorDays?: boolean;
   }
 </script>
 
@@ -103,6 +107,8 @@
     customCalendarWeekContent,
     customCalendarWeek,
     size = 'normal',
+    weekendDays,
+    weekendDaysColorDays = true,
   }: CalendarDatesChartProps = $props();
 
   let monthToPick = value;
@@ -137,6 +143,7 @@
     {customCalendarWeekContent}
     {customCalendarWeek}
     {size}
+    {weekendDays}
   />
 
   {#each daysGroup as group, index (index)}
@@ -150,13 +157,24 @@
             {showLastMonth}
             {showNextMonth}
             selected={showSelected &&
-            getMoment(value).format('DD-MM-YYY') === getMoment(day.date).format('DD-MM-YYY')
+            getMoment(value, undefined, { timezone, utc }).format('DD-MM-YYY') ===
+              getMoment(day.date, undefined, { timezone, utc }).format('DD-MM-YYY')
               ? true
               : false}
             {onselect}
             {customCalendarDateChip}
             {customCalendarDateChipContent}
             {size}
+            {timezone}
+            {utc}
+            weekend={weekendDaysColorDays &&
+            weekendDays?.includes(
+              getMoment(day.date, undefined, { timezone, utc })
+                .format('ddd')
+                .toLowerCase() as CalendarWeekNames,
+            )
+              ? true
+              : false}
             {...calendarDateChipProps}
           />
         {/each}

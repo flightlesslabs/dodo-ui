@@ -50,6 +50,10 @@
     customCalendarWeek?: (week: CalendarWeekOption) => Snippet;
     /** How large should the Component be? */
     size?: ComponentSize;
+    /** Weekend days */
+    weekendDays?: CalendarWeekNames[];
+    /** Color Weekend days */
+    weekendDaysColorDays?: boolean;
   }
 </script>
 
@@ -95,6 +99,8 @@
     customCalendarWeekContent,
     customCalendarWeek,
     size = 'normal',
+    weekendDays,
+    weekendDaysColorDays = true,
   }: CalendarProps = $props();
 
   const dateMoment = getMoment(activeMonth || value, format, { timezone, utc });
@@ -127,6 +133,8 @@
     {customCalendarWeekContent}
     {customCalendarWeek}
     {size}
+    {weekendDays}
+    {weekendDaysColorDays}
   />
 </div>
 

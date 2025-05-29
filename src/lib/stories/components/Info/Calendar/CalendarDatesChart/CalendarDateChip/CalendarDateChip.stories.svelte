@@ -66,3 +66,10 @@
     },
   }}
 />
+
+<Story
+  name="Weekend"
+  args={{
+    weekend: true,
+  }}
+/>

@@ -88,6 +88,8 @@
     startOfWeek?: CalendarWeekNames;
     /** How large should the component be? */
     size?: ComponentSize;
+    /** Weekend days */
+    weekendDays?: CalendarWeekNames[];
   }
 </script>
 
@@ -95,15 +97,17 @@
   import type { Snippet } from 'svelte';
   import { DAYS_OF_WEEK } from '../../utils/types.js';
   import type { ComponentSize } from '$lib/types/size.js';
+  import WeekDay from './WeekDay.svelte';
 
   let {
     class: className = '',
     ref = $bindable<HTMLLIElement>(),
-    customCalendarWeekContent: customCalendarWeekContentInternal,
+    customCalendarWeekContent,
     customCalendarWeek: customCalendarWeekInternal,
     nameType = 'abr2',
     startOfWeek = 'sun',
     size = 'normal',
+    weekendDays,
   }: CalendarWeekProps = $props();
 
   function getOrderedWeekOptions(startOfWeek: CalendarWeekNames) {
@@ -119,42 +123,17 @@
   const orderedCalendarWeekOptions = $derived(getOrderedWeekOptions(startOfWeek));
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let customCalendarWeekContentTyped = customCalendarWeekContentInternal as any;
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customCalendarWeekTyped = customCalendarWeekInternal as any;
 </script>
-
-{#snippet weekName(option: CalendarWeekOption)}
-  {#if nameType === 'abr3'}
-    {option.abr3}
-  {:else if nameType === 'abr1'}
-    {option.abr1}
-  {:else if nameType === 'abr2'}
-    {option.abr2}
-  {:else}
-    {option.abr2}
-  {/if}
-{/snippet}
-
-{#snippet weekContent(option: CalendarWeekOption)}
-  {#if customCalendarWeekTyped}
-    {@render customCalendarWeekTyped(option)}
-  {:else}
-    <li>
-      {#if customCalendarWeekContentTyped}
-        {@render customCalendarWeekContentTyped(option)}
-      {:else}
-        {@render weekName(option)}
-      {/if}
-    </li>
-  {/if}
-{/snippet}
 
 <li class={['dodo-ui-CalendarWeek', `size--${size}`, className].join(' ')} bind:this={ref}>
   <ul>
     {#each orderedCalendarWeekOptions as option (option.value)}
-      {@render weekContent(option)}
+      {#if customCalendarWeekTyped}
+        {@render customCalendarWeekTyped(option)}
+      {:else}
+        <WeekDay weekOption={option} {nameType} {weekendDays} {customCalendarWeekContent} {size} />
+      {/if}
     {/each}
   </ul>
 </li>
@@ -165,42 +144,6 @@
     padding: 0;
     margin: 0;
     margin-bottom: 8px;
-    color: var(--dodo-color-neutral-700);
-
-    &.size {
-      &--normal {
-        font-size: 0.8rem;
-
-        li {
-          width: calc(var(--dodo-ui-element-height-normal) - 10px);
-        }
-      }
-
-      &--small {
-        font-size: 0.74rem;
-
-        li {
-          width: calc(var(--dodo-ui-element-height-small) - 8px);
-        }
-      }
-
-      &--large {
-        font-size: 1rem;
-
-        li {
-          width: calc(var(--dodo-ui-element-height-large) - 12px);
-        }
-      }
-    }
-
-    li {
-      display: inline-flex;
-      justify-content: center;
-      font-size: inherit;
-      font-family: inherit;
-      color: inherit;
-      text-transform: capitalize;
-    }
 
     ul {
       padding: 0;

@@ -26,6 +26,12 @@
     customCalendarDateChip?: (dayOfMonth: DateOfMonth) => Snippet;
     /** How large should the Calendar Chip be? */
     size?: ComponentSize;
+    /** Weekend days */
+    weekend?: boolean;
+    /** Timezone string (e.g., "America/New_York"). */
+    timezone?: string;
+    /** Whether to return the time in UTC. If true, overrides timezone. */
+    utc?: boolean;
   }
 </script>
 
@@ -53,9 +59,12 @@
     customCalendarDateChip: customCalendarDateChipInternal,
     onselect,
     size = 'normal',
+    weekend,
+    timezone,
+    utc,
   }: CalendarDateChipProps = $props();
 
-  const dayNumber = Number(getMoment(dayOfMonth.date).format('D'));
+  const dayNumber = Number(getMoment(dayOfMonth.date, undefined, { timezone, utc }).format('D'));
   const disabled = dayOfMonth.disabled || false;
   const today = showToday && dayOfMonth.today ? true : false;
 
@@ -90,6 +99,7 @@
   class:showNextMonth
   class:today
   class:selected
+  class:weekend
   class={[
     'dodo-ui-CalendarDateChip',
     `roundness--${roundness}`,
@@ -210,6 +220,12 @@
       @include generate-dodo-ui-calendarDateChip-color(safe);
       @include generate-dodo-ui-calendarDateChip-color(warning);
       @include generate-dodo-ui-calendarDateChip-color(danger);
+    }
+
+    &.weekend {
+      .chip {
+        color: var(--dodo-color-danger-600);
+      }
     }
 
     .chip {

@@ -51,6 +51,21 @@
 />
 
 <Story
+  name="WeekendDays"
+  args={{
+    weekendDays: ['sun'],
+  }}
+/>
+
+<Story
+  name="WeekHeadingColorOnly"
+  args={{
+    weekendDays: ['sun'],
+    weekendDaysColorDays: false,
+  }}
+/>
+
+<Story
   name="HideSelected"
   args={{
     showSelected: false,

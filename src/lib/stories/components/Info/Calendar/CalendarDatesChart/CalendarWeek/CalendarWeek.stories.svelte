@@ -21,3 +21,18 @@
 
 <!-- Default CalendarWeek -->
 <Story name="Default" />
+
+<Story
+  name="StartOfWeek"
+  args={{
+    startOfWeek: 'fri',
+  }}
+/>
+
+<!-- Shows weekend days in red color -->
+<Story
+  name="WeekendDays"
+  args={{
+    weekendDays: ['sun'],
+  }}
+/>
