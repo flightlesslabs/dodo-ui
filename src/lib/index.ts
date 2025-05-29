@@ -147,5 +147,17 @@ export { default as CalendarDatesChart } from '$lib/stories/components/Info/Cale
 export type { CalendarDatesChartProps } from '$lib/stories/components/Info/Calendar/CalendarDatesChart/CalendarDatesChart.svelte';
 export { default as CalendarDateChip } from '$lib/stories/components/Info/Calendar/CalendarDatesChart/CalendarDateChip/CalendarDateChip.svelte';
 export type { CalendarDateChipProps } from '$lib/stories/components/Info/Calendar/CalendarDatesChart/CalendarDateChip/CalendarDateChip.svelte';
+
+export {
+  default as CalendarWeek,
+  calendarWeekOptions,
+} from '$lib/stories/components/Info/Calendar/CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
+export type {
+  CalendarWeekProps,
+  CalendarWeekOption,
+  CalendarWeekNames,
+  CalendarWeekDayNameType,
+} from '$lib/stories/components/Info/Calendar/CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
+
 export { DAYS_OF_WEEK } from '$lib/stories/components/Info/Calendar/utils/types.js';
 export { default as getDatesOfMonth } from '$lib/stories/components/Info/Calendar/utils/getDatesOfMonth.js';

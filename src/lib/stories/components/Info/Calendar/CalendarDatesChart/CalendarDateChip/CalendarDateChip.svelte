@@ -8,18 +8,33 @@
     dayOfMonth: DateOfMonth;
     /** How round should the border radius be? */
     roundness?: ComponentRoundness;
+    /** What color to use? */
+    color?: ComponentColor;
     /** Show last month dates */
     showLastMonth?: boolean;
     /** Show next month dates */
     showNextMonth?: boolean;
-    /** disabled */
-    disabled?: boolean;
+    /** Show Today */
+    showToday?: boolean;
+    /** Is Date Selected */
+    selected?: boolean;
+    /** onselect event handler */
+    onselect?: (value: Date, dayOfMonth: DateOfMonth, e: ButtonClickEvent) => void;
+    /** Custom Calendar Chip Content */
+    customCalendarDateChipContent?: (dayOfMonth: DateOfMonth) => Snippet;
+    /** Custom Calendar Chip Content */
+    customCalendarDateChip?: (dayOfMonth: DateOfMonth) => Snippet;
   }
 </script>
 
 <script lang="ts">
+  import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
+  import type { ComponentColor } from '$lib/types/colors.js';
+
   import type { ComponentRoundness } from '$lib/types/roundness.js';
+  import type { Snippet } from 'svelte';
   import type { DateOfMonth } from '../../utils/types.js';
+  import type { ButtonClickEvent } from '$lib/stories/components/Form/Button/Button.svelte';
 
   let {
     class: className = '',
@@ -27,18 +42,54 @@
     roundness = 1,
     showLastMonth = true,
     showNextMonth = true,
-    disabled = false,
+    selected = false,
+    showToday = true,
+    color = 'primary',
     ref = $bindable<HTMLLIElement>(),
+    customCalendarDateChipContent: customCalendarDateChipContentInternal,
+    customCalendarDateChip: customCalendarDateChipInternal,
+    onselect,
   }: CalendarDateChipProps = $props();
+
+  const dayNumber = Number(getMoment(dayOfMonth.date).format('D'));
+  const disabled = dayOfMonth.disabled || false;
+  const today = showToday && dayOfMonth.today ? true : false;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let customCalendarDateChipContentTyped = customCalendarDateChipContentInternal as any;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let customCalendarDateChipTyped = customCalendarDateChipInternal as any;
 </script>
+
+{#snippet chipContent()}
+  {#if customCalendarDateChipTyped}
+    {@render customCalendarDateChipTyped(dayOfMonth)}
+  {:else}
+    <button
+      class="chip"
+      {disabled}
+      onclick={onselect ? (e) => onselect(dayOfMonth.date, dayOfMonth, e) : undefined}
+    >
+      {#if customCalendarDateChipContentTyped}
+        {@render customCalendarDateChipContentTyped(dayOfMonth)}
+      {:else}
+        {dayNumber}
+      {/if}
+    </button>
+  {/if}
+{/snippet}
 
 <li
   class:disabled
   class:showLastMonth
   class:showNextMonth
+  class:today
+  class:selected
   class={[
-    'dodo-ui-CalenderDateChip',
+    'dodo-ui-CalendarDateChip',
     `roundness--${roundness}`,
+    `color--${color}`,
     `${dayOfMonth.isCurrentMonth ? 'isCurrentMonth' : 'isNotCurrentMonth'}`,
     `${dayOfMonth.isLastMonth ? 'isLastMonth' : ''}`,
     `${dayOfMonth.isNextMonth ? 'isNextMonth' : ''}`,
@@ -47,42 +98,47 @@
   bind:this={ref}
 >
   {#if dayOfMonth.isCurrentMonth}
-    <button class="chip" {disabled}>
-      {dayOfMonth.dayNumber}
-    </button>
+    {@render chipContent()}
   {:else if dayOfMonth.isLastMonth && showLastMonth}
-    <button class="chip" {disabled}>
-      {dayOfMonth.dayNumber}
-    </button>
-  {:else if dayOfMonth.isLastMonth && showNextMonth}
-    <button class="chip" {disabled}>
-      {dayOfMonth.dayNumber}
-    </button>
+    {@render chipContent()}
+  {:else if dayOfMonth.isNextMonth && showNextMonth}
+    {@render chipContent()}
   {/if}
 </li>
 
 <style lang="scss">
+  @use 'utils/scss/mixins.scss' as *;
+
   :global(:root) {
-    --dodo-ui-CalenderDateChip-disabled-bg: transparent;
-    --dodo-ui-CalenderDateChip-disabled-color: var(--dodo-color-neutral-400);
-    --dodo-ui-CalenderDateChip-hover-bg: var(--dodo-color-primary-50);
-    --dodo-ui-CalenderDateChip--active-bg: var(--dodo-color-primary-100);
+    --dodo-ui-CalendarDateChip-disabled-bg: var(--dodo-color-neutral-50);
+    --dodo-ui-CalendarDateChip-disabled-color: var(--dodo-color-neutral-400);
+
+    @include generate-dodo-ui-calendarDateChip-colors(neutral);
+    @include generate-dodo-ui-calendarDateChip-colors(primary);
+    @include generate-dodo-ui-calendarDateChip-colors(secondary);
+    @include generate-dodo-ui-calendarDateChip-colors(safe);
+    @include generate-dodo-ui-calendarDateChip-colors(warning);
+    @include generate-dodo-ui-calendarDateChip-colors(danger);
   }
 
   :global(.dodo-theme--dark) {
-    --dodo-ui-CalenderDateChip-disabled-bg: transparent;
-    --dodo-ui-CalenderDateChip-disabled-color: var(--dodo-color-neutral-500);
-    --dodo-ui-CalenderDateChip-hover-bg: var(--dodo-color-primary-50);
-    --dodo-ui-CalenderDateChip--active-bg: var(--dodo-color-primary-100);
+    --dodo-ui-CalendarDateChip-disabled-bg: var(--dodo-color-neutral-200);
+    --dodo-ui-CalendarDateChip-disabled-color: var(--dodo-color-neutral-400);
+
+    @include generate-dodo-ui-calendarDateChip-colors-dark(neutral);
+    @include generate-dodo-ui-calendarDateChip-colors-dark(primary);
+    @include generate-dodo-ui-calendarDateChip-colors-dark(secondary);
+    @include generate-dodo-ui-calendarDateChip-colors-dark(safe);
+    @include generate-dodo-ui-calendarDateChip-colors-dark(warning);
+    @include generate-dodo-ui-calendarDateChip-colors-dark(danger);
   }
 
-  .DateChip {
+  .dodo-ui-CalendarDateChip {
     display: inline-flex;
-    width: 30px;
-    height: 30px;
-    font-size: 0.8rem;
     justify-content: center;
     align-items: center;
+    color: var(--dodo-color-neutral-800);
+    user-select: none;
 
     &.roundness {
       &--1 {
@@ -112,13 +168,29 @@
 
     &.isNotCurrentMonth {
       .chip {
-        opacity: 0.9;
+        opacity: 0.45;
       }
+    }
+
+    &.today {
+      .chip {
+        font-weight: 600;
+      }
+    }
+
+    &.color {
+      @include generate-dodo-ui-calendarDateChip-color(neutral);
+      @include generate-dodo-ui-calendarDateChip-color(primary);
+      @include generate-dodo-ui-calendarDateChip-color(secondary);
+      @include generate-dodo-ui-calendarDateChip-color(safe);
+      @include generate-dodo-ui-calendarDateChip-color(warning);
+      @include generate-dodo-ui-calendarDateChip-color(danger);
     }
 
     .chip {
       cursor: pointer;
       outline: none;
+      letter-spacing: 0.3px;
       transition: all 150ms;
       text-decoration: none;
       margin: 0;
@@ -126,39 +198,31 @@
       justify-content: center;
       align-items: center;
       font-family: inherit;
-      color: inherit;
       background-color: transparent;
       transition: all 50ms;
-      width: 100%;
-      height: 100%;
+      width: 30px;
+      height: 30px;
       font-size: 0.8rem;
       display: flex;
       justify-content: center;
       align-items: center;
       outline: 0;
       border: 0;
-
-      &:hover {
-        background-color: var(--dodo-ui-CalenderDateChip-hover-bg);
-      }
-
-      &:active {
-        background-color: var(--dodo-ui-CalenderDateChip-active-bg);
-      }
+      color: inherit;
 
       &[disabled] {
         cursor: initial;
-        background-color: var(--dodo-ui-CalenderDateChip-disabled-bg);
-        color: var(--dodo-ui-CalenderDateChip-disabled-color);
+        background-color: var(--dodo-ui-CalendarDateChip-disabled-bg);
+        color: var(--dodo-ui-CalendarDateChip-disabled-color);
 
         &:hover {
-          background-color: var(--dodo-ui-CalenderDateChip-disabled-bg);
-          color: var(--dodo-ui-CalenderDateChip-disabled-color);
+          background-color: var(--dodo-ui-CalendarDateChip-disabled-bg);
+          color: var(--dodo-ui-CalendarDateChip-disabled-color);
         }
 
         &:active {
-          background-color: var(--dodo-ui-CalenderDateChip-disabled-bg);
-          color: var(--dodo-ui-CalenderDateChip-disabled-color);
+          background-color: var(--dodo-ui-CalendarDateChip-disabled-bg);
+          color: var(--dodo-ui-CalendarDateChip-disabled-color);
         }
       }
     }

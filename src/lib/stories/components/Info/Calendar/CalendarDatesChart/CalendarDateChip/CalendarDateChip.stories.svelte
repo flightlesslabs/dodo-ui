@@ -4,8 +4,13 @@
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
   import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
   import { componentRoundnessArray } from '$lib/types/roundness.js';
+  import { componentColorArray } from '$lib/types/colors.js';
 
-  export const storyCalendarDatesChartArgTypes: StoryBookArgTypes = {
+  export const storyCalendarDateChipArgTypes: StoryBookArgTypes = {
+    color: {
+      control: { type: 'select' },
+      options: componentColorArray,
+    },
     roundness: {
       control: { type: 'select' },
       options: componentRoundnessArray,
@@ -16,11 +21,10 @@
   const { Story } = defineMeta({
     component: CalendarDateChip,
     tags: ['autodocs'],
-    argTypes: storyCalendarDatesChartArgTypes,
+    argTypes: storyCalendarDateChipArgTypes,
     args: {
       dayOfMonth: {
         id: '1',
-        dayNumber: getMoment().daysInMonth(),
         date: getMoment().toDate(),
         isCurrentMonth: true,
       },
@@ -30,3 +34,30 @@
 
 <!-- Default CalendarDateChip -->
 <Story name="Default" />
+
+<Story name="Selected" args={{ selected: true }} />
+
+<Story
+  name="Disabled"
+  args={{
+    dayOfMonth: {
+      id: '1',
+      date: getMoment().toDate(),
+      isCurrentMonth: true,
+      disabled: true,
+    },
+  }}
+/>
+
+<!-- Today marker. Checkout more [Special Chips](?path=/docs/components-info-calendar-calendardateschart-calendardatechip-specialchips--docs) -->
+<Story
+  name="Today"
+  args={{
+    dayOfMonth: {
+      id: '1',
+      date: getMoment().toDate(),
+      isCurrentMonth: true,
+      today: true,
+    },
+  }}
+/>

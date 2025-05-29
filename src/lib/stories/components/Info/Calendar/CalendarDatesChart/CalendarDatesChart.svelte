@@ -1,11 +1,15 @@
 <script lang="ts" module>
+  import type { ButtonClickEvent } from '$lib/stories/components/Form/Button/Button.svelte';
+
   export interface CalendarDatesChartProps {
     /** CalendarDatesChart ref */
     ref?: HTMLUListElement;
     /** Custom css class */
     class?: string;
-    /** date */
-    date: Date;
+    /** Selcted date Value */
+    value?: Date;
+    /** Define active month to override month selected with value */
+    activeMonth?: Date;
     /** date */
     format?: GetMomentFormat;
     /** Start Of Week */
@@ -14,54 +18,135 @@
     timezone?: string;
     /** Whether to return the time in UTC. If true, overrides timezone. */
     utc?: boolean;
+    /** calendarDateChipProps: CalendarDateChip component props */
+    calendarDateChipProps?: Partial<CalendarDateChipProps>;
+    /** What color to use? */
+    color?: ComponentColor;
+    /** Show Today */
+    showToday?: boolean;
+    /** Show last month dates */
+    showLastMonth?: boolean;
+    /** Show next month dates */
+    showNextMonth?: boolean;
+    /** Show slected */
+    showSelected?: boolean;
+    /** Set today manually  */
+    today?: Date;
+    /** Minimum allowed date, rest of the dates will be disabled  */
+    minDate?: Date;
+    /** Maxium allowed date, rest of the dates will be disabled  */
+    maxDate?: Date;
+    /** Exclude Dates, these dates will be disabled */
+    excludeDates?: Date[];
+    /** Include Dates, rest of the dates will be disabled  */
+    includeDates?: Date[];
+    /** onselect event handler */
+    onselect?: (value: Date, dayOfMonth: DateOfMonth, e: ButtonClickEvent) => void;
+    /** Custom Calendar Chip Content */
+    customCalendarDateChipContent?: (dayOfMonth: DateOfMonth) => Snippet;
+    /** Custom Calendar Chip */
+    customCalendarDateChip?: (dayOfMonth: DateOfMonth) => Snippet;
+    /** Custom Calendar Week Content */
+    customCalendarWeekContent?: (week: CalendarWeekOption) => Snippet;
+    /** Custom Calendar Week */
+    customCalendarWeek?: (week: CalendarWeekOption) => Snippet;
+    /** week day Name type */
+    weekDayNameType?: CalendarWeekDayNameType;
   }
 </script>
 
 <script lang="ts">
-  import { type GetMomentFormat } from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
+  import getMoment, {
+    type GetMomentFormat,
+  } from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
+  import type { ComponentColor } from '$lib/types/colors.js';
+  import type { Snippet } from 'svelte';
   import getDatesOfMonth from '../utils/getDatesOfMonth.js';
-  import type { DAYS_OF_WEEK } from '../utils/types.js';
+  import type { DateOfMonth, DAYS_OF_WEEK } from '../utils/types.js';
+  import CalendarDateChip, {
+    type CalendarDateChipProps,
+  } from './CalendarDateChip/CalendarDateChip.svelte';
+  import CalendarWeek from './CalendarWeek/CalendarWeek.svelte';
+  import type {
+    CalendarWeekOption,
+    CalendarWeekDayNameType,
+  } from './CalendarWeek/CalendarWeek.svelte';
 
   let {
     class: className = '',
     ref = $bindable<HTMLUListElement>(),
-    date,
+    value,
     format,
     startOfWeek,
     timezone,
     utc,
+    calendarDateChipProps,
+    color,
+    showToday,
+    showLastMonth,
+    showNextMonth,
+    showSelected = true,
+    activeMonth,
+    onselect,
+    customCalendarDateChipContent,
+    customCalendarDateChip,
+    today,
+    minDate,
+    maxDate,
+    excludeDates,
+    includeDates,
+    weekDayNameType,
+    customCalendarWeekContent,
+    customCalendarWeek,
   }: CalendarDatesChartProps = $props();
 
+  let monthToPick = value;
+
+  // Override active month if it's not same as value
+  if (
+    activeMonth &&
+    getMoment(activeMonth, undefined, { timezone, utc }).format('MMM YYYY') !==
+      getMoment(value, undefined, { timezone, utc }).format('MMM YYYY')
+  ) {
+    monthToPick = activeMonth;
+  }
+
   const daysGroup =
-    getDatesOfMonth(date, {
+    getDatesOfMonth(monthToPick, {
       format,
       startOfWeek,
       timezone,
       utc,
+      today,
+      minDate,
+      maxDate,
+      excludeDates,
+      includeDates,
     }) || [];
 </script>
 
 <ul class={['dodo-ui-CalendarDatesChart', className].join(' ')} bind:this={ref}>
-  <li class="heading">
-    <ul>
-      <li>Su</li>
-      <li>Mo</li>
-      <li>Tu</li>
-      <li>We</li>
-      <li>Th</li>
-      <li>Fr</li>
-      <li>Sa</li>
-    </ul>
-  </li>
+  <CalendarWeek nameType={weekDayNameType} {customCalendarWeekContent} {customCalendarWeek} />
+
   {#each daysGroup as group, index (index)}
-    <li class="week">
+    <li class="daysRow">
       <ul>
         {#each group as day (day.id)}
-          <li class="day">
-            <button class="chip">
-              {day.dayNumber}
-            </button>
-          </li>
+          <CalendarDateChip
+            dayOfMonth={day}
+            {color}
+            {showToday}
+            {showLastMonth}
+            {showNextMonth}
+            selected={showSelected &&
+            getMoment(value).format('DD-MM-YYY') === getMoment(day.date).format('DD-MM-YYY')
+              ? true
+              : false}
+            {onselect}
+            {customCalendarDateChip}
+            {customCalendarDateChipContent}
+            {...calendarDateChipProps}
+          />
         {/each}
       </ul>
     </li>
@@ -74,6 +159,7 @@
     flex-direction: column;
     margin: 0;
     padding: 0;
+    user-select: none;
 
     ul {
       padding: 0;
@@ -81,63 +167,10 @@
       margin: 0;
     }
 
-    .heading {
+    .daysRow {
       display: block;
       padding: 0;
       margin: 0;
-      margin-bottom: 8px;
-
-      li {
-        display: inline-flex;
-        width: 30px;
-        justify-content: center;
-        font-size: 0.8rem;
-        font-family: inherit;
-        color: inherit;
-      }
-    }
-
-    .week {
-      display: block;
-      padding: 0;
-      margin: 0;
-    }
-
-    .day {
-      display: inline-flex;
-      width: 30px;
-      height: 30px;
-      font-size: 0.8rem;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .chip {
-      cursor: pointer;
-      outline: none;
-      transition: all 150ms;
-      text-decoration: none;
-      margin: 0;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      font-family: inherit;
-      color: inherit;
-      background-color: transparent;
-      transition: all 50ms;
-      width: 100%;
-      height: 100%;
-      font-size: 0.8rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: var(--dodo-ui-element-roundness-1);
-      outline: 0;
-      border: 0;
-
-      &:hover {
-        background-color: var(--dodo-color-primary-200);
-      }
     }
   }
 </style>

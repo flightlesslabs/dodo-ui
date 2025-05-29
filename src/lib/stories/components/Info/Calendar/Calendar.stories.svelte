@@ -4,11 +4,16 @@
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
   import { daysOfWeekArray } from './utils/types.js';
   import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
+  import { componentColorArray } from '$lib/types/colors.js';
 
   export const storyCalendarArgTypes: StoryBookArgTypes = {
     startOfWeek: {
       control: { type: 'select' },
       options: daysOfWeekArray,
+    },
+    color: {
+      control: { type: 'select' },
+      options: componentColorArray,
     },
   };
 
@@ -17,11 +22,47 @@
     component: Calendar,
     tags: ['autodocs'],
     argTypes: storyCalendarArgTypes,
-    args: {
-      date: getMoment('01-02-2025', 'DD-MM-YYYY').toDate(),
-    },
   });
+
+  let value = $state(getMoment().toDate());
 </script>
 
 <!-- Default Calendar -->
-<Story name="Default" />
+<Story
+  name="Default"
+  args={{
+    value,
+  }}
+/>
+
+<Story
+  name="ActiveMonth"
+  args={{
+    activeMonth: getMoment('01-02-2025', 'DD-MM-YYYY').toDate(),
+    value,
+  }}
+/>
+
+<Story
+  name="HideSelected"
+  args={{
+    showSelected: false,
+    value,
+  }}
+/>
+
+<Story
+  name="HideLastMonth"
+  args={{
+    value: getMoment('01-03-2025', 'DD-MM-YYYY').toDate(),
+    showLastMonth: false,
+  }}
+/>
+
+<Story
+  name="HideNextMonth"
+  args={{
+    value: getMoment('01-03-2025', 'DD-MM-YYYY').toDate(),
+    showNextMonth: false,
+  }}
+/>

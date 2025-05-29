@@ -20,9 +20,10 @@ export const daysOfWeekArray = [
 
 export type DateOfMonth = {
   id: string;
-  dayNumber: number;
   date: Date;
   isCurrentMonth: boolean;
   isLastMonth?: boolean;
   isNextMonth?: boolean;
+  disabled?: boolean;
+  today?: boolean;
 };
