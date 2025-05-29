@@ -24,6 +24,8 @@
     customCalendarDateChipContent?: (dayOfMonth: DateOfMonth) => Snippet;
     /** Custom Calendar Chip Content */
     customCalendarDateChip?: (dayOfMonth: DateOfMonth) => Snippet;
+    /** How large should the Calendar Chip be? */
+    size?: ComponentSize;
   }
 </script>
 
@@ -35,6 +37,7 @@
   import type { Snippet } from 'svelte';
   import type { DateOfMonth } from '../../utils/types.js';
   import type { ButtonClickEvent } from '$lib/stories/components/Form/Button/Button.svelte';
+  import type { ComponentSize } from '$lib/types/size.js';
 
   let {
     class: className = '',
@@ -49,6 +52,7 @@
     customCalendarDateChipContent: customCalendarDateChipContentInternal,
     customCalendarDateChip: customCalendarDateChipInternal,
     onselect,
+    size = 'normal',
   }: CalendarDateChipProps = $props();
 
   const dayNumber = Number(getMoment(dayOfMonth.date).format('D'));
@@ -90,6 +94,7 @@
     'dodo-ui-CalendarDateChip',
     `roundness--${roundness}`,
     `color--${color}`,
+    `size--${size}`,
     `${dayOfMonth.isCurrentMonth ? 'isCurrentMonth' : 'isNotCurrentMonth'}`,
     `${dayOfMonth.isLastMonth ? 'isLastMonth' : ''}`,
     `${dayOfMonth.isNextMonth ? 'isNextMonth' : ''}`,
@@ -139,8 +144,6 @@
     align-items: center;
     color: var(--dodo-color-neutral-800);
     user-select: none;
-    width: 30px;
-    height: 30px;
 
     &.roundness {
       &--1 {
@@ -165,6 +168,26 @@
         .chip {
           border-radius: 50%;
         }
+      }
+    }
+
+    &.size {
+      &--normal {
+        width: calc(var(--dodo-ui-element-height-normal) - 10px);
+        height: calc(var(--dodo-ui-element-height-normal) - 10px);
+        font-size: 0.8rem;
+      }
+
+      &--small {
+        width: calc(var(--dodo-ui-element-height-small) - 8px);
+        height: calc(var(--dodo-ui-element-height-small) - 8px);
+        font-size: 0.74rem;
+      }
+
+      &--large {
+        width: calc(var(--dodo-ui-element-height-large) - 12px);
+        height: calc(var(--dodo-ui-element-height-large) - 12px);
+        font-size: 1rem;
       }
     }
 
@@ -204,13 +227,13 @@
       transition: all 50ms;
       width: 100%;
       height: 100%;
-      font-size: 0.8rem;
       display: flex;
       justify-content: center;
       align-items: center;
       outline: 0;
       border: 0;
       color: inherit;
+      font-size: inherit;
 
       &[disabled] {
         cursor: initial;

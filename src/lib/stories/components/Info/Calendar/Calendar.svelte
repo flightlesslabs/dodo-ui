@@ -48,6 +48,8 @@
     customCalendarWeekContent?: (week: CalendarWeekOption) => Snippet;
     /** Custom Calendar Week */
     customCalendarWeek?: (week: CalendarWeekOption) => Snippet;
+    /** How large should the Component be? */
+    size?: ComponentSize;
   }
 </script>
 
@@ -65,6 +67,7 @@
     CalendarWeekNames,
     CalendarWeekOption,
   } from './CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
+  import type { ComponentSize } from '$lib/types/size.js';
 
   let {
     class: className = '',
@@ -91,6 +94,7 @@
     color,
     customCalendarWeekContent,
     customCalendarWeek,
+    size = 'normal',
   }: CalendarProps = $props();
 
   const dateMoment = getMoment(activeMonth || value, format, { timezone, utc });
@@ -122,6 +126,7 @@
     {color}
     {customCalendarWeekContent}
     {customCalendarWeek}
+    {size}
   />
 </div>
 

@@ -86,12 +86,15 @@
     nameType?: CalendarWeekDayNameType;
     /** Start Of Week */
     startOfWeek?: CalendarWeekNames;
+    /** How large should the component be? */
+    size?: ComponentSize;
   }
 </script>
 
 <script lang="ts">
   import type { Snippet } from 'svelte';
   import { DAYS_OF_WEEK } from '../../utils/types.js';
+  import type { ComponentSize } from '$lib/types/size.js';
 
   let {
     class: className = '',
@@ -100,6 +103,7 @@
     customCalendarWeek: customCalendarWeekInternal,
     nameType = 'abr2',
     startOfWeek = 'sun',
+    size = 'normal',
   }: CalendarWeekProps = $props();
 
   function getOrderedWeekOptions(startOfWeek: CalendarWeekNames) {
@@ -147,7 +151,7 @@
   {/if}
 {/snippet}
 
-<li class={['dodo-ui-CalendarWeek', className].join(' ')} bind:this={ref}>
+<li class={['dodo-ui-CalendarWeek', `size--${size}`, className].join(' ')} bind:this={ref}>
   <ul>
     {#each orderedCalendarWeekOptions as option (option.value)}
       {@render weekContent(option)}
@@ -163,11 +167,36 @@
     margin-bottom: 8px;
     color: var(--dodo-color-neutral-700);
 
+    &.size {
+      &--normal {
+        font-size: 0.8rem;
+
+        li {
+          width: calc(var(--dodo-ui-element-height-normal) - 10px);
+        }
+      }
+
+      &--small {
+        font-size: 0.74rem;
+
+        li {
+          width: calc(var(--dodo-ui-element-height-small) - 8px);
+        }
+      }
+
+      &--large {
+        font-size: 1rem;
+
+        li {
+          width: calc(var(--dodo-ui-element-height-large) - 12px);
+        }
+      }
+    }
+
     li {
       display: inline-flex;
-      width: 30px;
       justify-content: center;
-      font-size: 0.8rem;
+      font-size: inherit;
       font-family: inherit;
       color: inherit;
       text-transform: capitalize;

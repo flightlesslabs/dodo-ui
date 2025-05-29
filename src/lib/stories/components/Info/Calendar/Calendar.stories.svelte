@@ -2,10 +2,10 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Calendar from './Calendar.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
-  import { daysOfWeekArray } from './utils/types.js';
   import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
   import { componentColorArray } from '$lib/types/colors.js';
   import { calendarWeekNamesArray } from './CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
+  import { componentSizeArray } from '$lib/types/size.js';
 
   export const storyCalendarArgTypes: StoryBookArgTypes = {
     startOfWeek: {
@@ -15,6 +15,10 @@
     color: {
       control: { type: 'select' },
       options: componentColorArray,
+    },
+    size: {
+      control: { type: 'select' },
+      options: componentSizeArray,
     },
   };
 

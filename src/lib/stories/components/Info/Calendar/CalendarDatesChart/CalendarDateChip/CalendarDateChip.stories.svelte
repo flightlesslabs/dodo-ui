@@ -5,6 +5,7 @@
   import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
   import { componentRoundnessArray } from '$lib/types/roundness.js';
   import { componentColorArray } from '$lib/types/colors.js';
+  import { componentSizeArray } from '$lib/types/size.js';
 
   export const storyCalendarDateChipArgTypes: StoryBookArgTypes = {
     color: {
@@ -14,6 +15,10 @@
     roundness: {
       control: { type: 'select' },
       options: componentRoundnessArray,
+    },
+    size: {
+      control: { type: 'select' },
+      options: componentSizeArray,
     },
   };
 

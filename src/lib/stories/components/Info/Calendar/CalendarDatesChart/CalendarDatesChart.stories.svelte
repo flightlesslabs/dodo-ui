@@ -5,6 +5,7 @@
   import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
   import { componentColorArray } from '$lib/types/colors.js';
   import { calendarWeekNamesArray } from './CalendarWeek/CalendarWeek.svelte';
+  import { componentSizeArray } from '$lib/types/size.js';
 
   export const storyCalendarDatesChartArgTypes: StoryBookArgTypes = {
     startOfWeek: {
@@ -14,6 +15,10 @@
     color: {
       control: { type: 'select' },
       options: componentColorArray,
+    },
+    size: {
+      control: { type: 'select' },
+      options: componentSizeArray,
     },
   };
 

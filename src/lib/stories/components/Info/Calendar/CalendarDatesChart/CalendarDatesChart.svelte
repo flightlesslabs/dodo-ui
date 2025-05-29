@@ -52,6 +52,8 @@
     customCalendarWeek?: (week: CalendarWeekOption) => Snippet;
     /** week day Name type */
     weekDayNameType?: CalendarWeekDayNameType;
+    /** How large should the Component be? */
+    size?: ComponentSize;
   }
 </script>
 
@@ -72,6 +74,7 @@
     CalendarWeekDayNameType,
     CalendarWeekNames,
   } from './CalendarWeek/CalendarWeek.svelte';
+  import type { ComponentSize } from '$lib/types/size.js';
 
   let {
     class: className = '',
@@ -99,6 +102,7 @@
     weekDayNameType,
     customCalendarWeekContent,
     customCalendarWeek,
+    size = 'normal',
   }: CalendarDatesChartProps = $props();
 
   let monthToPick = value;
@@ -132,6 +136,7 @@
     {startOfWeek}
     {customCalendarWeekContent}
     {customCalendarWeek}
+    {size}
   />
 
   {#each daysGroup as group, index (index)}
@@ -151,6 +156,7 @@
             {onselect}
             {customCalendarDateChip}
             {customCalendarDateChipContent}
+            {size}
             {...calendarDateChipProps}
           />
         {/each}
