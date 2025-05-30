@@ -1,6 +1,4 @@
-import getMoment, {
-  type GetMomentFormat,
-} from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
+import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
 import type dayjs from 'dayjs';
 import {
   calendarWeekOptions,
@@ -9,9 +7,6 @@ import {
 import type { DateOfMonth } from './types.js';
 
 export interface GetDatesOfMonthSettings {
-  /** Optional moment.js format string */
-  format?: GetMomentFormat;
-
   /** Day considered as start of the week */
   startOfWeek?: CalendarWeekNames;
 

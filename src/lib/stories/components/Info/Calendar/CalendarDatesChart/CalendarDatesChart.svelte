@@ -10,8 +10,6 @@
     value?: Date;
     /** Define active month to override month selected with value */
     activeMonth?: Date;
-    /** date */
-    format?: GetMomentFormat;
     /** Start Of Week */
     startOfWeek?: CalendarWeekNames;
     /** Timezone string (e.g., "America/New_York"). */
@@ -62,9 +60,7 @@
 </script>
 
 <script lang="ts">
-  import getMoment, {
-    type GetMomentFormat,
-  } from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
+  import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
   import type { ComponentColor } from '$lib/types/colors.js';
   import type { Snippet } from 'svelte';
   import getDatesOfMonth from '../utils/getDatesOfMonth.js';
@@ -84,7 +80,6 @@
     class: className = '',
     ref = $bindable<HTMLUListElement>(),
     value,
-    format,
     startOfWeek,
     timezone,
     utc,
@@ -124,7 +119,6 @@
 
   const daysGroup =
     getDatesOfMonth(monthToPick, {
-      format,
       startOfWeek,
       timezone,
       utc,
@@ -185,7 +179,7 @@
 
 <style lang="scss">
   .dodo-ui-CalendarDatesChart {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     margin: 0;
     padding: 0;

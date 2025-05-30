@@ -6,8 +6,6 @@
     class?: string;
     /** Selcted date Value */
     value?: Date;
-    /** date */
-    format?: GetMomentFormat;
     /** Start Of Week */
     startOfWeek?: CalendarWeekNames;
     /** Define active month to override month selected with value */
@@ -54,13 +52,53 @@
     weekendDays?: CalendarWeekNames[];
     /** Color Weekend days */
     weekendDaysColorDays?: boolean;
+    /** Show Calendar Controls */
+    showCalendarControls?: boolean;
+    /** Custom Calendar Controls */
+    customCalendarControls?: () => Snippet;
+
+    /** Month Selector Props */
+    calendarMonthSelectorProps?: Partial<CalendarMonthSelectorProps>;
+    /** Custom MonthSelector */
+    customCalendarMonthSelector?: (option: CalendarMonthOption) => Snippet;
+    /** Custom MonthSelector Content */
+    customCalendarMonthSelectorContent?: (option: CalendarMonthOption) => Snippet;
+
+    /** Month Selector Click */
+    onMonthSelectorClick?: (option: CalendarMonthOption, e: ButtonClickEvent) => void;
+    /** Year Selector Props */
+    calendarYearSelectorProps?: Partial<CalendarYearSelectorProps>;
+    /** Custom YearSelector */
+    customCalendarYearSelector?: (selectedYear: string) => Snippet;
+    /** Custom YearSelector Content */
+    customCalendarYearSelectorContent?: (selectedYear: string) => Snippet;
+    /** Year Selector Click */
+    onYearSelectorClick?: (selectedYear: string, e: ButtonClickEvent) => void;
+
+    /** Calendar Navigation Props */
+    calendarNavigationProps?: Partial<CalendarYearSelectorProps>;
+    /** Navigation Next */
+    onCalendarNavigationNextClick?: MouseEventHandler<HTMLButtonElement>;
+    /** Navigation Previous */
+    onCalendarNavigationPrevClick?: MouseEventHandler<HTMLButtonElement>;
+    /** Custom YearSelector */
+    customCalendarNavigation?: () => Snippet;
+    /** Custom NavigationNext */
+    customCalendarNavigationNext?: () => Snippet;
+    /** Custom NavigationPrev */
+    customCalendarNavigationPrev?: () => Snippet;
+    /** Custom NavigationNext Content */
+    customCalendarNavigationNextContent?: () => Snippet;
+    /** Custom NavigationPrev Content */
+    customCalendarNavigationPrevContent?: () => Snippet;
+    /** Next disabled state */
+    disabledCalendarNavigationNext?: boolean;
+    /** Prev disabled state */
+    disabledCalendarNavigationPrev?: boolean;
   }
 </script>
 
 <script lang="ts">
-  import getMoment, {
-    type GetMomentFormat,
-  } from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
   import type { ComponentColor } from '$lib/types/colors.js';
   import type { Snippet } from 'svelte';
   import type { ButtonClickEvent } from '../../Form/Button/Button.svelte';
@@ -72,12 +110,18 @@
     CalendarWeekOption,
   } from './CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
   import type { ComponentSize } from '$lib/types/size.js';
+  import CalendarControls from './CalendarControls/CalendarControls.svelte';
+  import type {
+    CalendarMonthSelectorProps,
+    CalendarMonthOption,
+  } from './CalendarControls/CalendarMonthSelector/CalendarMonthSelector.svelte';
+  import type { CalendarYearSelectorProps } from './CalendarControls/CalendarYearSelector/CalendarYearSelector.svelte';
+  import type { MouseEventHandler } from 'svelte/elements';
 
   let {
     class: className = '',
     ref = $bindable<HTMLDivElement>(),
     value,
-    format,
     startOfWeek = 'sun',
     timezone,
     utc,
@@ -101,14 +145,58 @@
     size = 'normal',
     weekendDays,
     weekendDaysColorDays = true,
+    customCalendarControls,
+    showCalendarControls = true,
+    calendarMonthSelectorProps,
+    customCalendarMonthSelector,
+    customCalendarMonthSelectorContent,
+    onMonthSelectorClick,
+    calendarYearSelectorProps,
+    customCalendarYearSelector,
+    customCalendarYearSelectorContent,
+    onYearSelectorClick,
+    calendarNavigationProps,
+    customCalendarNavigationNext,
+    customCalendarNavigationPrev,
+    customCalendarNavigationNextContent,
+    customCalendarNavigationPrevContent,
+    onCalendarNavigationNextClick,
+    onCalendarNavigationPrevClick,
+    disabledCalendarNavigationNext,
+    disabledCalendarNavigationPrev,
   }: CalendarProps = $props();
-
-  const dateMoment = getMoment(activeMonth || value, format, { timezone, utc });
-  const heading = dateMoment.format('MMM YYYY');
 </script>
 
 <div class={['dodo-ui-Calendar', className].join(' ')} bind:this={ref}>
-  <h3>{heading}</h3>
+  {#if showCalendarControls}
+    <CalendarControls
+      {activeMonth}
+      {value}
+      {timezone}
+      {utc}
+      {color}
+      {size}
+      {customCalendarMonthSelector}
+      {customCalendarMonthSelectorContent}
+      {onMonthSelectorClick}
+      {calendarMonthSelectorProps}
+      {customCalendarControls}
+      {calendarYearSelectorProps}
+      {customCalendarYearSelector}
+      {customCalendarYearSelectorContent}
+      {onYearSelectorClick}
+      {calendarNavigationProps}
+      {customCalendarNavigationNext}
+      {customCalendarNavigationPrev}
+      {customCalendarNavigationNextContent}
+      {customCalendarNavigationPrevContent}
+      {onCalendarNavigationNextClick}
+      {onCalendarNavigationPrevClick}
+      {disabledCalendarNavigationNext}
+      {disabledCalendarNavigationPrev}
+    />
+  {/if}
+
   <CalendarDatesChart
     {today}
     {minDate}
@@ -121,7 +209,6 @@
     {showNextMonth}
     {activeMonth}
     {value}
-    {format}
     {startOfWeek}
     {timezone}
     {utc}
@@ -140,9 +227,7 @@
 
 <style lang="scss">
   .dodo-ui-Calendar {
-    h3 {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
+    display: inline-flex;
+    flex-direction: column;
   }
 </style>

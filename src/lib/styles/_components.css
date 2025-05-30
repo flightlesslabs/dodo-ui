@@ -5,9 +5,9 @@
   --dodo-ui-element-height-large: 50px;
 
   /* Roundness */
-  --dodo-ui-element-roundness-1: 7px;
-  --dodo-ui-element-roundness-2: 13px;
-  --dodo-ui-element-roundness-3: 31px;
+  --dodo-ui-element-roundness-1: 0.4375em;
+  --dodo-ui-element-roundness-2: 0.8125em;
+  --dodo-ui-element-roundness-3: 1.9375em;
 
   /* Border */
   --dodo-ui-element-border-width: 1px;

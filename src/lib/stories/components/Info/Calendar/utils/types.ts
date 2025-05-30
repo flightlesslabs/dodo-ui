@@ -8,15 +8,20 @@ export const enum DAYS_OF_WEEK {
   SAT,
 }
 
-export const daysOfWeekArray = [
-  DAYS_OF_WEEK.SUN,
-  DAYS_OF_WEEK.MON,
-  DAYS_OF_WEEK.TUE,
-  DAYS_OF_WEEK.WED,
-  DAYS_OF_WEEK.THU,
-  DAYS_OF_WEEK.FRI,
-  DAYS_OF_WEEK.SAT,
-];
+export const enum MONTHS {
+  JAN,
+  FEB,
+  MAR,
+  APR,
+  MAY,
+  JUN,
+  JUL,
+  AUG,
+  SEP,
+  OCT,
+  NOV,
+  DEC,
+}
 
 export type DateOfMonth = {
   id: string;

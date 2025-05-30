@@ -183,20 +183,20 @@
 
     &.size {
       &--normal {
-        width: calc(var(--dodo-ui-element-height-normal) - 10px);
-        height: calc(var(--dodo-ui-element-height-normal) - 10px);
+        width: var(--dodo-ui-element-height-normal);
+        height: var(--dodo-ui-element-height-normal);
         font-size: 0.8rem;
       }
 
       &--small {
-        width: calc(var(--dodo-ui-element-height-small) - 8px);
-        height: calc(var(--dodo-ui-element-height-small) - 8px);
+        width: var(--dodo-ui-element-height-small);
+        height: var(--dodo-ui-element-height-small);
         font-size: 0.74rem;
       }
 
       &--large {
-        width: calc(var(--dodo-ui-element-height-large) - 12px);
-        height: calc(var(--dodo-ui-element-height-large) - 12px);
+        width: var(--dodo-ui-element-height-large);
+        height: var(--dodo-ui-element-height-large);
         font-size: 1rem;
       }
     }

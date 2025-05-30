@@ -69,17 +69,17 @@
     &.size {
       &--normal {
         font-size: 0.8rem;
-        width: calc(var(--dodo-ui-element-height-normal) - 10px);
+        width: var(--dodo-ui-element-height-normal);
       }
 
       &--small {
         font-size: 0.74rem;
-        width: calc(var(--dodo-ui-element-height-small) - 8px);
+        width: var(--dodo-ui-element-height-small);
       }
 
       &--large {
         font-size: 1rem;
-        width: calc(var(--dodo-ui-element-height-large) - 12px);
+        width: var(--dodo-ui-element-height-large);
       }
     }
 
