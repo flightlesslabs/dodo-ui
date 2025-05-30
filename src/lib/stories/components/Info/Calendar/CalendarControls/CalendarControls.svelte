@@ -78,7 +78,7 @@
     type CalendarYearSelectorProps,
   } from './CalendarYearSelector/CalendarYearSelector.svelte';
   import type { MouseEventHandler } from 'svelte/elements';
-  import { CalendarNavigation } from '$lib/index.js';
+  import { CalendarNavigation, getMoment } from '$lib/index.js';
 
   let {
     class: className = '',
@@ -115,6 +115,8 @@
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customCalendarControlsTyped = customCalendarControlsInternal as any;
+
+  const timeMoment = $derived(getMoment(activeMonth || value, undefined, { timezone, utc }));
 </script>
 
 <div class={['dodo-ui-CalendarControls', `size--${size}`, className].join(' ')} bind:this={ref}>
@@ -135,6 +137,8 @@
           onclick={onMonthSelectorClick}
           {...calendarMonthSelectorProps}
         />
+      {:else}
+        <h3>{timeMoment.format('MMM')}</h3>
       {/if}
 
       {#if showCalendarYearSelector}
@@ -150,6 +154,8 @@
           onclick={onYearSelectorClick}
           {...calendarYearSelectorProps}
         />
+      {:else}
+        <h3>{timeMoment.format('YYYY')}</h3>
       {/if}
     </div>
 
@@ -184,6 +190,15 @@
       display: none;
     }
 
+    h3 {
+      font-weight: 400;
+      margin: 0;
+      letter-spacing: 0.3px;
+      font-family: inherit;
+      color: var(--dodo-color-neutral-800);
+      text-align: center;
+    }
+
     &.size {
       &--normal {
         margin-bottom: calc(var(--dodo-ui-space-large) * 2);
@@ -193,6 +208,11 @@
           :global(.dodo-ui-Button) {
             margin: 0 calc(var(--dodo-ui-space) / 2);
           }
+        }
+
+        h3 {
+          font-size: 1rem;
+          margin: 0 calc(var(--dodo-ui-space) / 2);
         }
       }
 
@@ -205,6 +225,11 @@
             margin: 0 calc(var(--dodo-ui-space-small) / 2);
           }
         }
+
+        h3 {
+          font-size: 0.9rem;
+          margin: 0 calc(var(--dodo-ui-space-small) / 2);
+        }
       }
 
       &--large {
@@ -215,6 +240,11 @@
           :global(.dodo-ui-Button) {
             margin: 0 calc(var(--dodo-ui-space-large) / 2);
           }
+        }
+
+        h3 {
+          font-size: 1.1rem;
+          margin: 0 calc(var(--dodo-ui-space-large) / 2);
         }
       }
     }

@@ -230,7 +230,6 @@
     outline: 0;
     color: inherit;
     letter-spacing: 0.3px;
-    font-family: inherit;
 
     &.size {
       &--normal {

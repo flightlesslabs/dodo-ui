@@ -56,6 +56,12 @@
     showCalendarControls?: boolean;
     /** Custom Calendar Controls */
     customCalendarControls?: () => Snippet;
+    /** Show Month Selector */
+    showCalendarMonthSelector?: boolean;
+    /** Show Year Selector */
+    showCalendarYearSelector?: boolean;
+    /** Show Navigator */
+    showCalendarNavigator?: boolean;
 
     /** Month Selector Props */
     calendarMonthSelectorProps?: Partial<CalendarMonthSelectorProps>;
@@ -117,6 +123,7 @@
   } from './CalendarControls/CalendarMonthSelector/CalendarMonthSelector.svelte';
   import type { CalendarYearSelectorProps } from './CalendarControls/CalendarYearSelector/CalendarYearSelector.svelte';
   import type { MouseEventHandler } from 'svelte/elements';
+  import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
 
   let {
     class: className = '',
@@ -126,7 +133,7 @@
     timezone,
     utc,
     calendarDateChipProps,
-    activeMonth,
+    activeMonth: activeMonthRaw,
     showSelected = true,
     showLastMonth = true,
     showNextMonth = true,
@@ -163,9 +170,45 @@
     customCalendarNavigationPrevContent,
     onCalendarNavigationNextClick,
     onCalendarNavigationPrevClick,
-    disabledCalendarNavigationNext,
-    disabledCalendarNavigationPrev,
+    disabledCalendarNavigationNext: disabledCalendarNavigationNextRaw,
+    disabledCalendarNavigationPrev: disabledCalendarNavigationPrevRaw,
+    showCalendarMonthSelector,
+    showCalendarYearSelector,
+    showCalendarNavigator,
   }: CalendarProps = $props();
+
+  let activeMonth = $derived<Date | undefined>(
+    activeMonthRaw ||
+      value ||
+      getMoment(undefined, undefined, { timezone, utc }).startOf('month').startOf('day').toDate(),
+  );
+
+  const disabledCalendarNavigationNext = $derived(disabledCalendarNavigationNextRaw);
+  const disabledCalendarNavigationPrev = $derived(disabledCalendarNavigationPrevRaw);
+
+  function onCalendarNavigationNextClickMod(e: ButtonClickEvent) {
+    activeMonth = getMoment(activeMonth, undefined, { timezone, utc })
+      .add(1, 'month')
+      .startOf('month')
+      .startOf('day')
+      .toDate();
+
+    if (onCalendarNavigationNextClick) {
+      onCalendarNavigationNextClick(e);
+    }
+  }
+
+  function onCalendarNavigationPrevClickMod(e: ButtonClickEvent) {
+    activeMonth = getMoment(activeMonth, undefined, { timezone, utc })
+      .subtract(1, 'month')
+      .startOf('month')
+      .startOf('day')
+      .toDate();
+
+    if (onCalendarNavigationPrevClick) {
+      onCalendarNavigationPrevClick(e);
+    }
+  }
 </script>
 
 <div class={['dodo-ui-Calendar', className].join(' ')} bind:this={ref}>
@@ -191,11 +234,14 @@
       {customCalendarNavigationPrev}
       {customCalendarNavigationNextContent}
       {customCalendarNavigationPrevContent}
-      {onCalendarNavigationNextClick}
-      {onCalendarNavigationPrevClick}
+      onCalendarNavigationNextClick={onCalendarNavigationNextClickMod}
+      onCalendarNavigationPrevClick={onCalendarNavigationPrevClickMod}
       {disabledCalendarNavigationNext}
       {disabledCalendarNavigationPrev}
       {customCalendarNavigation}
+      {showCalendarMonthSelector}
+      {showCalendarYearSelector}
+      {showCalendarNavigator}
     />
   {/if}
 

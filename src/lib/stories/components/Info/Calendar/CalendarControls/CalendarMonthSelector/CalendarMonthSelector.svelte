@@ -108,7 +108,7 @@
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customCalendarMonthSelectorContentTyped = customCalendarMonthSelectorContentInternal as any;
 
-  const selectedMonth = $derived(
+  let selectedMonth = $derived<string | undefined>(
     getMoment(activeMonth || value, undefined, {
       timezone,
       utc,
@@ -117,8 +117,9 @@
       .toLocaleLowerCase(),
   );
 
-  const monthDetails =
-    calendarMonthOptions.find((item) => item.abr3 === selectedMonth) || calendarMonthOptions[0];
+  const monthDetails = $derived(
+    calendarMonthOptions.find((item) => item.abr3 === selectedMonth) || calendarMonthOptions[0],
+  );
 
   function onClickMod(e: ButtonClickEvent) {
     if (onclick) {
@@ -178,19 +179,19 @@
     &.size {
       &--normal {
         :global(.dodo-ui-Button) {
-          min-width: 80px;
+          width: 80px;
         }
       }
 
       &--small {
         :global(.dodo-ui-Button) {
-          min-width: 70px;
+          width: 70px;
         }
       }
 
       &--large {
         :global(.dodo-ui-Button) {
-          min-width: 100px;
+          width: 100px;
         }
       }
     }

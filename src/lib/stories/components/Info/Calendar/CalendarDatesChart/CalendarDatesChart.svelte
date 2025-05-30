@@ -106,18 +106,9 @@
     weekendDaysColorDays = true,
   }: CalendarDatesChartProps = $props();
 
-  let monthToPick = value;
+  let monthToPick = $state<Date | undefined>(undefined);
 
-  // Override active month if it's not same as value
-  if (
-    activeMonth &&
-    getMoment(activeMonth, undefined, { timezone, utc }).format('MMM YYYY') !==
-      getMoment(value, undefined, { timezone, utc }).format('MMM YYYY')
-  ) {
-    monthToPick = activeMonth;
-  }
-
-  const daysGroup =
+  const daysGroup = $derived(
     getDatesOfMonth(monthToPick, {
       startOfWeek,
       timezone,
@@ -127,7 +118,21 @@
       maxDate,
       excludeDates,
       includeDates,
-    }) || [];
+    }) || [],
+  );
+
+  $effect(() => {
+    // Override active month if it's not same as value
+    if (
+      activeMonth &&
+      getMoment(activeMonth, undefined, { timezone, utc }).format('MMM YYYY') !==
+        getMoment(value, undefined, { timezone, utc }).format('MMM YYYY')
+    ) {
+      monthToPick = activeMonth;
+    } else {
+      monthToPick = value;
+    }
+  });
 </script>
 
 <ul class={['dodo-ui-CalendarDatesChart', className].join(' ')} bind:this={ref}>

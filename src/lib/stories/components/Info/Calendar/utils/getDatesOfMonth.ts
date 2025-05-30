@@ -118,7 +118,7 @@ export default function getDatesOfMonth(
     return null;
   }
 
-  const monthMoment = dateMoment(date, settings).startOf('month');
+  const monthMoment = dateMoment(date, settings).startOf('month').startOf('day');
 
   if (!monthMoment.isValid()) {
     return null;
@@ -151,8 +151,6 @@ export default function getDatesOfMonth(
 
   const lastMonth = monthMoment.clone().subtract(startOfMonthDay, 'days');
   const nextMonth = monthMoment.clone().add(1, 'month');
-
-  console.log(startOfMonthDay);
 
   if (showLastMonth) {
     for (let gap = 0; gap < startOfMonthDay; gap++) {

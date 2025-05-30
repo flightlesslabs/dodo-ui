@@ -128,19 +128,19 @@
     &.size {
       &--normal {
         :global(.dodo-ui-Button) {
-          min-width: 85px;
+          width: 85px;
         }
       }
 
       &--small {
         :global(.dodo-ui-Button) {
-          min-width: 75px;
+          width: 75px;
         }
       }
 
       &--large {
         :global(.dodo-ui-Button) {
-          min-width: 105px;
+          width: 105px;
         }
       }
     }
