@@ -102,6 +102,7 @@
     customCalendarYearSelectorContent,
     onYearSelectorClick,
     calendarNavigationProps,
+    customCalendarNavigation,
     customCalendarNavigationNext,
     customCalendarNavigationPrev,
     customCalendarNavigationNextContent,
@@ -165,6 +166,7 @@
           {onCalendarNavigationPrevClick}
           {disabledCalendarNavigationNext}
           {disabledCalendarNavigationPrev}
+          {customCalendarNavigation}
           {...calendarNavigationProps}
         />
       </div>

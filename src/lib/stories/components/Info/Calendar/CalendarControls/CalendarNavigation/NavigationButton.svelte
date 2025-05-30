@@ -55,8 +55,8 @@
   class={['NavigationButton', `size--${size}`, `color--${color}`, className].join(' ')}
   bind:this={ref}
 >
-  {#if customNavigationButtonContentTyped}
-    {@render customNavigationButtonContentTyped()}
+  {#if customNavigationButtonTyped}
+    {@render customNavigationButtonTyped()}
   {:else}
     <Button
       {name}
@@ -69,8 +69,8 @@
       compact
       {...buttonProps}
     >
-      {#if customNavigationButtonTyped}
-        {@render customNavigationButtonTyped()}
+      {#if customNavigationButtonContentTyped}
+        {@render customNavigationButtonContentTyped()}
       {:else if children}
         {@render children()}
       {/if}

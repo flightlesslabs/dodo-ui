@@ -62,7 +62,7 @@
 </Story>
 
 <Story name="customCalendarMonthSelectorContent" asChild>
-  <Calendar>
+  <Calendar value={getMoment().toDate()}>
     {#snippet customCalendarMonthSelectorContent(option)}
       🗓️{option.abr3}
     {/snippet}
@@ -70,7 +70,7 @@
 </Story>
 
 <Story name="customCalendarMonthSelector" asChild>
-  <Calendar>
+  <Calendar value={getMoment().toDate()}>
     {#snippet customCalendarMonthSelector(option)}
       <span style="color: blue; display: block;">
         {option.abr3}
@@ -80,7 +80,7 @@
 </Story>
 
 <Story name="customCalendarYearSelectorContent" asChild>
-  <Calendar>
+  <Calendar value={getMoment().toDate()}>
     {#snippet customCalendarYearSelectorContent(selectedYear)}
       🗓️{selectedYear}
     {/snippet}
@@ -88,7 +88,7 @@
 </Story>
 
 <Story name="customCalendarYearSelector" asChild>
-  <Calendar>
+  <Calendar value={getMoment().toDate()}>
     {#snippet customCalendarYearSelector(selectedYear)}
       <span style="color: blue; display: block;">
         {selectedYear}
@@ -98,7 +98,7 @@
 </Story>
 
 <Story name="customCalendarNavigationContent" asChild>
-  <Calendar>
+  <Calendar value={getMoment().toDate()}>
     {#snippet customCalendarNavigationPrevContent()}
       <Icon icon="carbon:previous-filled" width="32" height="32" />
     {/snippet}
@@ -109,7 +109,7 @@
 </Story>
 
 <Story name="customCalendarNavigation" asChild>
-  <Calendar>
+  <Calendar value={getMoment().toDate()}>
     {#snippet customCalendarNavigation()}
       <Button>Control</Button>
     {/snippet}
