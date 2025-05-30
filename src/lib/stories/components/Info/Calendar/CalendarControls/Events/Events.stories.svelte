@@ -1,34 +1,20 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Calendar from '../Calendar.svelte';
-  import { storyCalendarArgTypes } from '../Calendar.stories.svelte';
-  import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
-  import type { ButtonClickEvent } from '$lib/stories/components/Form/Button/Button.svelte';
-  import type { CalendarMonthOption } from '../CalendarControls/CalendarMonthSelector/CalendarMonthSelector.svelte';
+  import CalendarControls from '../CalendarControls.svelte';
+  import { storyCalendarControlsArgTypes } from '../CalendarControls.stories.svelte';
+  import type { ButtonClickEvent, CalendarMonthOption } from '$lib/index.js';
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
   const { Story } = defineMeta({
-    component: Calendar,
+    component: CalendarControls,
     tags: ['autodocs'],
-    argTypes: storyCalendarArgTypes,
+    argTypes: storyCalendarControlsArgTypes,
   });
-
-  let value = $state(getMoment().toDate());
 </script>
-
-<Story name="Select" asChild>
-  <Calendar
-    {value}
-    onselect={(val) => {
-      value = val;
-    }}
-  />
-</Story>
 
 <Story
   name="MonthSelectorClick"
   args={{
-    value,
     onMonthSelectorClick: (option: CalendarMonthOption, e: ButtonClickEvent) => {
       const target = e.target as HTMLButtonElement;
 
@@ -41,7 +27,6 @@
 <Story
   name="YearSelectorClick"
   args={{
-    value,
     onYearSelectorClick: (selectedYear: string, e: ButtonClickEvent) => {
       const target = e.target as HTMLButtonElement;
 
@@ -54,7 +39,6 @@
 <Story
   name="CalendarNavigationNextClick"
   args={{
-    value,
     onCalendarNavigationNextClick: (e: ButtonClickEvent) => {
       const target = e.target as HTMLButtonElement;
 
@@ -67,7 +51,6 @@
 <Story
   name="CalendarNavigationPrevClick"
   args={{
-    value,
     onCalendarNavigationPrevClick: (e: ButtonClickEvent) => {
       const target = e.target as HTMLButtonElement;
 

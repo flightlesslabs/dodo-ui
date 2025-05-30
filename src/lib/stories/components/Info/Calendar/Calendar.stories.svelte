@@ -96,3 +96,11 @@
     showNextMonth: false,
   }}
 />
+
+<Story
+  name="HideCalendarControls"
+  args={{
+    value: getMoment('01-03-2025', 'DD-MM-YYYY').toDate(),
+    showCalendarControls: false,
+  }}
+/>
