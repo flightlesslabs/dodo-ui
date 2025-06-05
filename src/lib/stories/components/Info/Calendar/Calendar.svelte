@@ -112,6 +112,15 @@
     disabledMonths?: CalendarMonthNames[];
     /** calendarMonthChipProps: calendarMonthChip component props */
     calendarMonthChipProps?: Partial<CalendarMonthChipProps>;
+
+    /** calendarYearChipProps: calendarYearChip component props */
+    calendarYearChipProps?: Partial<CalendarYearChipProps>;
+    /** Calendar Year select */
+    onselectYear?: (value: string, e: ButtonClickEvent) => void;
+    /** Custom Calendar Chip Content */
+    customCalendarYearChipContent?: (value: string) => Snippet;
+    /** Custom Calendar Chip */
+    customCalendarYearChip?: (value: string) => Snippet;
   }
 </script>
 
@@ -136,8 +145,10 @@
     calendarMonthOptions,
     MONTHS,
     type CalendarMonthChipProps,
+    type CalendarYearChipProps,
   } from '$lib/index.js';
   import CalendarMonthList from './SubComponents/CalendarMonthList/CalendarMonthList.svelte';
+  import CalendarYearList from './SubComponents/CalendarYearList/CalendarYearList.svelte';
 
   let {
     class: className = '',
@@ -194,6 +205,10 @@
     customCalendarMonthChip,
     disabledMonths,
     calendarMonthChipProps,
+    calendarYearChipProps,
+    onselectYear,
+    customCalendarYearChipContent,
+    customCalendarYearChip,
   }: CalendarProps = $props();
 
   let activeMonth = $derived<Date | undefined>(
@@ -233,11 +248,19 @@
     }
   }
 
-  function onMonthSelectorClickkMod(option: CalendarMonthOption, e: ButtonClickEvent) {
+  function onMonthSelectorClickMod(option: CalendarMonthOption, e: ButtonClickEvent) {
     activeSection = 'month';
 
     if (onMonthSelectorClick) {
       onMonthSelectorClick(option, e);
+    }
+  }
+
+  function onYearhSelectorClickMod(selectedYear: string, e: ButtonClickEvent) {
+    activeSection = 'year';
+
+    if (onYearSelectorClick) {
+      onYearSelectorClick(selectedYear, e);
     }
   }
 
@@ -257,6 +280,20 @@
       onselectMonth(value, e);
     }
   }
+
+  function onselectYearMod(value: string, e: ButtonClickEvent) {
+    activeMonth = getMoment(activeMonth, undefined, { timezone, utc })
+      .set('year', Number(value))
+      .startOf('month')
+      .startOf('day')
+      .toDate();
+
+    activeSection = 'date';
+
+    if (onselectYear) {
+      onselectYear(value, e);
+    }
+  }
 </script>
 
 {#snippet daysSection()}
@@ -270,13 +307,13 @@
       {size}
       {customCalendarMonthSelector}
       {customCalendarMonthSelectorContent}
-      onMonthSelectorClick={onMonthSelectorClickkMod}
+      onMonthSelectorClick={onMonthSelectorClickMod}
       {calendarMonthSelectorProps}
       {customCalendarControls}
       {calendarYearSelectorProps}
       {customCalendarYearSelector}
       {customCalendarYearSelectorContent}
-      {onYearSelectorClick}
+      onYearSelectorClick={onYearhSelectorClickMod}
       {calendarNavigationProps}
       {customCalendarNavigationNext}
       {customCalendarNavigationPrev}
@@ -337,7 +374,16 @@
 {/snippet}
 
 {#snippet yearSection()}
-  year
+  <CalendarYearList
+    value={getMoment(activeMonth, undefined, { timezone, utc }).format('YYYY')}
+    {size}
+    {color}
+    {minDate}
+    {maxDate}
+    {customCalendarYearChip}
+    {calendarYearChipProps}
+    onselect={onselectYearMod}
+  />
 {/snippet}
 
 <div class={['dodo-ui-Calendar', className].join(' ')} bind:this={ref}>

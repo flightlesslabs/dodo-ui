@@ -182,6 +182,11 @@ export { default as CalendarMonthList } from '$lib/stories/components/Info/Calen
 export type { CalendarMonthChipProps } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarMonthList/CalendarMonthChip/CalendarMonthChip.svelte';
 export { default as CalendarMonthChip } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarMonthList/CalendarMonthChip/CalendarMonthChip.svelte';
 
+export type { CalendarYearListProps } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarYearList/CalendarYearList.svelte';
+export { default as CalendarYearList } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarYearList/CalendarYearList.svelte';
+export type { CalendarYearChipProps } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarYearList/CalendarYearChip/CalendarYearChip.svelte';
+export { default as CalendarYearChip } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarYearList/CalendarYearChip/CalendarYearChip.svelte';
+
 export type { DateOfMonth } from '$lib/stories/components/Info/Calendar/utils/types.js';
 export { DAYS_OF_WEEK, MONTHS } from '$lib/stories/components/Info/Calendar/utils/types.js';
 export { default as getDatesOfMonth } from '$lib/stories/components/Info/Calendar/utils/getDatesOfMonth.js';
