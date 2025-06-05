@@ -41,9 +41,9 @@
 
   import type { ComponentRoundness } from '$lib/types/roundness.js';
   import type { Snippet } from 'svelte';
-  import type { DateOfMonth } from '../../utils/types.js';
   import type { ButtonClickEvent } from '$lib/stories/components/Form/Button/Button.svelte';
   import type { ComponentSize } from '$lib/types/size.js';
+  import type { DateOfMonth } from '../../../utils/types.js';
 
   let {
     class: className = '',

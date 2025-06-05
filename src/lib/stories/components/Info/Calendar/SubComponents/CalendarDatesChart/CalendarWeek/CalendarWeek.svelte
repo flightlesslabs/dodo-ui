@@ -95,7 +95,7 @@
 
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import { DAYS_OF_WEEK } from '../../utils/types.js';
+  import { DAYS_OF_WEEK } from '../../../utils/types.js';
   import type { ComponentSize } from '$lib/types/size.js';
   import WeekDay from './WeekDay.svelte';
 

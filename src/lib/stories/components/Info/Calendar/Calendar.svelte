@@ -108,22 +108,20 @@
   import type { ComponentColor } from '$lib/types/colors.js';
   import type { Snippet } from 'svelte';
   import type { ButtonClickEvent } from '../../Form/Button/Button.svelte';
-  import type { CalendarDateChipProps } from './CalendarDatesChart/CalendarDateChip/CalendarDateChip.svelte';
-  import CalendarDatesChart from './CalendarDatesChart/CalendarDatesChart.svelte';
   import type { DateOfMonth } from './utils/types.js';
-  import type {
-    CalendarWeekNames,
-    CalendarWeekOption,
-  } from './CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
   import type { ComponentSize } from '$lib/types/size.js';
-  import CalendarControls from './CalendarControls/CalendarControls.svelte';
-  import type {
-    CalendarMonthSelectorProps,
-    CalendarMonthOption,
-  } from './CalendarControls/CalendarMonthSelector/CalendarMonthSelector.svelte';
-  import type { CalendarYearSelectorProps } from './CalendarControls/CalendarYearSelector/CalendarYearSelector.svelte';
   import type { MouseEventHandler } from 'svelte/elements';
   import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
+  import {
+    type CalendarWeekNames,
+    type CalendarDateChipProps,
+    type CalendarWeekOption,
+    CalendarDatesChart,
+    CalendarControls,
+    type CalendarMonthOption,
+    type CalendarMonthSelectorProps,
+    type CalendarYearSelectorProps,
+  } from '$lib/index.js';
 
   let {
     class: className = '',
@@ -186,6 +184,10 @@
   const disabledCalendarNavigationNext = $derived(disabledCalendarNavigationNextRaw);
   const disabledCalendarNavigationPrev = $derived(disabledCalendarNavigationPrevRaw);
 
+  type ActiveSections = 'date' | 'month' | 'year';
+
+  let activeSection = $state<ActiveSections>('date');
+
   function onCalendarNavigationNextClickMod(e: ButtonClickEvent) {
     activeMonth = getMoment(activeMonth, undefined, { timezone, utc })
       .add(1, 'month')
@@ -211,7 +213,7 @@
   }
 </script>
 
-<div class={['dodo-ui-Calendar', className].join(' ')} bind:this={ref}>
+{#snippet daysSection()}
   {#if showCalendarControls}
     <CalendarControls
       {activeMonth}
@@ -271,6 +273,24 @@
     {weekendDays}
     {weekendDaysColorDays}
   />
+{/snippet}
+
+{#snippet monthSection()}
+  month
+{/snippet}
+
+{#snippet yearSection()}
+  year
+{/snippet}
+
+<div class={['dodo-ui-Calendar', className].join(' ')} bind:this={ref}>
+  {#if activeSection === 'month'}
+    {@render monthSection()}
+  {:else if activeSection === 'year'}
+    {@render yearSection()}
+  {:else}
+    {@render daysSection()}
+  {/if}
 </div>
 
 <style lang="scss">

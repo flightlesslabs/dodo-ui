@@ -1,10 +1,8 @@
 import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
 import type dayjs from 'dayjs';
-import {
-  calendarWeekOptions,
-  type CalendarWeekNames,
-} from '../CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
+
 import type { DateOfMonth } from './types.js';
+import { calendarWeekOptions, type CalendarWeekNames } from '$lib/index.js';
 
 export interface GetDatesOfMonthSettings {
   /** Day considered as start of the week */

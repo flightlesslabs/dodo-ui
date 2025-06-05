@@ -4,7 +4,7 @@
   import { storyCalendarArgTypes } from '../Calendar.stories.svelte';
   import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
   import type { ButtonClickEvent } from '$lib/stories/components/Form/Button/Button.svelte';
-  import type { CalendarMonthOption } from '../CalendarControls/CalendarMonthSelector/CalendarMonthSelector.svelte';
+  import type { CalendarMonthOption } from '$lib/index.js';
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
   const { Story } = defineMeta({

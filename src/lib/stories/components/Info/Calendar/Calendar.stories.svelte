@@ -4,8 +4,8 @@
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
   import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
   import { componentColorArray } from '$lib/types/colors.js';
-  import { calendarWeekNamesArray } from './CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
   import { componentSizeArray } from '$lib/types/size.js';
+  import { calendarWeekNamesArray } from './SubComponents/CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
 
   export const storyCalendarArgTypes: StoryBookArgTypes = {
     startOfWeek: {

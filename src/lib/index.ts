@@ -144,35 +144,35 @@ export type {
 export { default as Calendar } from '$lib/stories/components/Info/Calendar/Calendar.svelte';
 export type { CalendarProps } from '$lib/stories/components/Info/Calendar/Calendar.svelte';
 
-export { default as CalendarDatesChart } from '$lib/stories/components/Info/Calendar/CalendarDatesChart/CalendarDatesChart.svelte';
-export type { CalendarDatesChartProps } from '$lib/stories/components/Info/Calendar/CalendarDatesChart/CalendarDatesChart.svelte';
-export { default as CalendarDateChip } from '$lib/stories/components/Info/Calendar/CalendarDatesChart/CalendarDateChip/CalendarDateChip.svelte';
-export type { CalendarDateChipProps } from '$lib/stories/components/Info/Calendar/CalendarDatesChart/CalendarDateChip/CalendarDateChip.svelte';
+export { default as CalendarDatesChart } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarDatesChart/CalendarDatesChart.svelte';
+export type { CalendarDatesChartProps } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarDatesChart/CalendarDatesChart.svelte';
+export { default as CalendarDateChip } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarDatesChart/CalendarDateChip/CalendarDateChip.svelte';
+export type { CalendarDateChipProps } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarDatesChart/CalendarDateChip/CalendarDateChip.svelte';
 export {
   default as CalendarWeek,
   calendarWeekOptions,
-} from '$lib/stories/components/Info/Calendar/CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
+} from '$lib/stories/components/Info/Calendar/SubComponents/CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
 export type {
   CalendarWeekProps,
   CalendarWeekOption,
   CalendarWeekNames,
   CalendarWeekDayNameType,
-} from '$lib/stories/components/Info/Calendar/CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
+} from '$lib/stories/components/Info/Calendar/SubComponents/CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
 
-export type { CalendarControlsProps } from '$lib/stories/components/Info/Calendar/CalendarControls/CalendarControls.svelte';
-export { default as CalendarControls } from '$lib/stories/components/Info/Calendar/CalendarControls/CalendarControls.svelte';
+export type { CalendarControlsProps } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarControls/CalendarControls.svelte';
+export { default as CalendarControls } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarControls/CalendarControls.svelte';
 export type {
   CalendarMonthNames,
   CalendarMonthOption,
   calendarMonthNameType,
   CalendarMonthSelectorProps,
-} from '$lib/stories/components/Info/Calendar/CalendarControls/CalendarMonthSelector/CalendarMonthSelector.svelte';
-export { default as CalendarMonthSelector } from '$lib/stories/components/Info/Calendar/CalendarControls/CalendarMonthSelector/CalendarMonthSelector.svelte';
-export type { CalendarYearSelectorProps } from '$lib/stories/components/Info/Calendar/CalendarControls/CalendarYearSelector/CalendarYearSelector.svelte';
-export { default as CalendarYearSelector } from '$lib/stories/components/Info/Calendar/CalendarControls/CalendarYearSelector/CalendarYearSelector.svelte';
+} from '$lib/stories/components/Info/Calendar/SubComponents/CalendarControls/CalendarMonthSelector/CalendarMonthSelector.svelte';
+export { default as CalendarMonthSelector } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarControls/CalendarMonthSelector/CalendarMonthSelector.svelte';
+export type { CalendarYearSelectorProps } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarControls/CalendarYearSelector/CalendarYearSelector.svelte';
+export { default as CalendarYearSelector } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarControls/CalendarYearSelector/CalendarYearSelector.svelte';
 
-export type { CalendarNavigationProps } from '$lib/stories/components/Info/Calendar/CalendarControls/CalendarNavigation/CalendarNavigation.svelte';
-export { default as CalendarNavigation } from '$lib/stories/components/Info/Calendar/CalendarControls/CalendarNavigation/CalendarNavigation.svelte';
+export type { CalendarNavigationProps } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarControls/CalendarNavigation/CalendarNavigation.svelte';
+export { default as CalendarNavigation } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarControls/CalendarNavigation/CalendarNavigation.svelte';
 
 export type { DateOfMonth } from '$lib/stories/components/Info/Calendar/utils/types.js';
 export { DAYS_OF_WEEK, MONTHS } from '$lib/stories/components/Info/Calendar/utils/types.js';
