@@ -167,12 +167,20 @@ export type {
   calendarMonthNameType,
   CalendarMonthSelectorProps,
 } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarControls/CalendarMonthSelector/CalendarMonthSelector.svelte';
-export { default as CalendarMonthSelector } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarControls/CalendarMonthSelector/CalendarMonthSelector.svelte';
+export {
+  default as CalendarMonthSelector,
+  calendarMonthOptions,
+} from '$lib/stories/components/Info/Calendar/SubComponents/CalendarControls/CalendarMonthSelector/CalendarMonthSelector.svelte';
 export type { CalendarYearSelectorProps } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarControls/CalendarYearSelector/CalendarYearSelector.svelte';
 export { default as CalendarYearSelector } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarControls/CalendarYearSelector/CalendarYearSelector.svelte';
 
 export type { CalendarNavigationProps } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarControls/CalendarNavigation/CalendarNavigation.svelte';
 export { default as CalendarNavigation } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarControls/CalendarNavigation/CalendarNavigation.svelte';
+
+export type { CalendarMonthListProps } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarMonthList/CalendarMonthList.svelte';
+export { default as CalendarMonthList } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarMonthList/CalendarMonthList.svelte';
+export type { CalendarMonthChipProps } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarMonthList/CalendarMonthChip/CalendarMonthChip.svelte';
+export { default as CalendarMonthChip } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarMonthList/CalendarMonthChip/CalendarMonthChip.svelte';
 
 export type { DateOfMonth } from '$lib/stories/components/Info/Calendar/utils/types.js';
 export { DAYS_OF_WEEK, MONTHS } from '$lib/stories/components/Info/Calendar/utils/types.js';

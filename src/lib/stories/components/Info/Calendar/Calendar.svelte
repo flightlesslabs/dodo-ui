@@ -101,6 +101,17 @@
     disabledCalendarNavigationNext?: boolean;
     /** Prev disabled state */
     disabledCalendarNavigationPrev?: boolean;
+
+    /** Calendar Month select */
+    onselectMonth?: (value: CalendarMonthNames, e: ButtonClickEvent) => void;
+    /** Custom Calendar Chip Content */
+    customCalendarMonthChipContent?: (value: CalendarMonthNames) => Snippet;
+    /** Custom Calendar Chip */
+    customCalendarMonthChip?: (value: CalendarMonthNames) => Snippet;
+    /** disabled Months */
+    disabledMonths?: CalendarMonthNames[];
+    /** calendarMonthChipProps: calendarMonthChip component props */
+    calendarMonthChipProps?: Partial<CalendarMonthChipProps>;
   }
 </script>
 
@@ -121,7 +132,12 @@
     type CalendarMonthOption,
     type CalendarMonthSelectorProps,
     type CalendarYearSelectorProps,
+    type CalendarMonthNames,
+    calendarMonthOptions,
+    MONTHS,
+    type CalendarMonthChipProps,
   } from '$lib/index.js';
+  import CalendarMonthList from './SubComponents/CalendarMonthList/CalendarMonthList.svelte';
 
   let {
     class: className = '',
@@ -173,6 +189,11 @@
     showCalendarMonthSelector,
     showCalendarYearSelector,
     showCalendarNavigator,
+    onselectMonth,
+    customCalendarMonthChipContent,
+    customCalendarMonthChip,
+    disabledMonths,
+    calendarMonthChipProps,
   }: CalendarProps = $props();
 
   let activeMonth = $derived<Date | undefined>(
@@ -211,6 +232,31 @@
       onCalendarNavigationPrevClick(e);
     }
   }
+
+  function onMonthSelectorClickkMod(option: CalendarMonthOption, e: ButtonClickEvent) {
+    activeSection = 'month';
+
+    if (onMonthSelectorClick) {
+      onMonthSelectorClick(option, e);
+    }
+  }
+
+  function onselectMonthMod(value: CalendarMonthNames, e: ButtonClickEvent) {
+    const monthValue =
+      calendarMonthOptions.find((item) => item.abr3 === value)?.value || MONTHS.JAN;
+
+    activeMonth = getMoment(activeMonth, undefined, { timezone, utc })
+      .set('month', monthValue)
+      .startOf('month')
+      .startOf('day')
+      .toDate();
+
+    activeSection = 'date';
+
+    if (onselectMonth) {
+      onselectMonth(value, e);
+    }
+  }
 </script>
 
 {#snippet daysSection()}
@@ -224,7 +270,7 @@
       {size}
       {customCalendarMonthSelector}
       {customCalendarMonthSelectorContent}
-      {onMonthSelectorClick}
+      onMonthSelectorClick={onMonthSelectorClickkMod}
       {calendarMonthSelectorProps}
       {customCalendarControls}
       {calendarYearSelectorProps}
@@ -276,7 +322,18 @@
 {/snippet}
 
 {#snippet monthSection()}
-  month
+  <CalendarMonthList
+    value={getMoment(activeMonth, undefined, { timezone, utc })
+      .format('MMM')
+      .toLowerCase() as CalendarMonthNames}
+    onselect={onselectMonthMod}
+    {size}
+    {color}
+    {customCalendarMonthChipContent}
+    {customCalendarMonthChip}
+    {disabledMonths}
+    {calendarMonthChipProps}
+  />
 {/snippet}
 
 {#snippet yearSection()}

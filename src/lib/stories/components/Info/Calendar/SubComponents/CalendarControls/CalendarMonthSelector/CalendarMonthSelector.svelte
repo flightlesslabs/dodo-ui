@@ -32,7 +32,7 @@
     fullName: string;
   };
 
-  const calendarMonthOptions: CalendarMonthOption[] = [
+  export const calendarMonthOptions: CalendarMonthOption[] = [
     { value: MONTHS.JAN, abr3: 'jan', fullName: 'January' },
     { value: MONTHS.FEB, abr3: 'feb', fullName: 'February' },
     { value: MONTHS.MAR, abr3: 'mar', fullName: 'March' },

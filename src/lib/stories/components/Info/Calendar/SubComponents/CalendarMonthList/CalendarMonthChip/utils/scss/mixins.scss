@@ -1,0 +1,91 @@
+/// Mixin: generate-dodo-ui-calendarMonthChip-colors
+/// Generates CSS custom properties for Dodo UI calendarMonthChip styles (text & solid)
+/// across different interaction states (default, hover, active).
+/// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
+@mixin generate-dodo-ui-calendarMonthChip-colors($color-name) {
+  --dodo-ui-CalendarMonthChip-#{$color-name}-bg: transparent;
+  --dodo-ui-CalendarMonthChip-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-100);
+  --dodo-ui-CalendarMonthChip-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-200);
+
+  --dodo-ui-CalendarMonthChip-today-#{$color-name}-bg: var(--dodo-color-#{$color-name}-50);
+  --dodo-ui-CalendarMonthChip-today-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-100);
+  --dodo-ui-CalendarMonthChip-today-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-200);
+
+  --dodo-ui-CalendarMonthChip-selected-#{$color-name}-bg: var(--dodo-color-#{$color-name}-500);
+  --dodo-ui-CalendarMonthChip-selected-#{$color-name}-hover-bg: var(
+    --dodo-color-#{$color-name}-600
+  );
+  --dodo-ui-CalendarMonthChip-selected-#{$color-name}-active-bg: var(
+    --dodo-color-#{$color-name}-700
+  );
+}
+
+/// Mixin: generate-dodo-ui-calendarMonthChip-colors
+/// Generates CSS custom properties for Dodo UI calendarMonthChip styles (text & solid)
+/// across different interaction states (default, hover, active).
+/// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
+@mixin generate-dodo-ui-calendarMonthChip-colors-dark($color-name) {
+  --dodo-ui-CalendarMonthChip-#{$color-name}-bg: transparent;
+  --dodo-ui-CalendarMonthChip-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-100);
+  --dodo-ui-CalendarMonthChip-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-200);
+
+  --dodo-ui-CalendarMonthChip-today-#{$color-name}-bg: var(--dodo-color-#{$color-name}-50);
+  --dodo-ui-CalendarMonthChip-today-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-100);
+  --dodo-ui-CalendarMonthChip-today-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-200);
+
+  --dodo-ui-CalendarMonthChip-selected-#{$color-name}-bg: var(--dodo-color-#{$color-name}-300);
+  --dodo-ui-CalendarMonthChip-selected-#{$color-name}-hover-bg: var(
+    --dodo-color-#{$color-name}-200
+  );
+  --dodo-ui-CalendarMonthChip-selected-#{$color-name}-active-bg: var(
+    --dodo-color-#{$color-name}-100
+  );
+}
+
+/// Mixin: generate-dodo-ui-calendarMonthChip-color
+/// Auto-generates .color--[theme] > variant--solid styles
+/// @param {String} $theme - e.g., default, safe, danger, etc.
+@mixin generate-dodo-ui-calendarMonthChip-color($theme) {
+  &--#{$theme} {
+    .chip:not([disabled]) {
+      background-color: var(--dodo-ui-CalendarMonthChip-#{$theme}-bg);
+
+      &:hover {
+        background-color: var(--dodo-ui-CalendarMonthChip-#{$theme}-hover-bg);
+      }
+
+      &:active {
+        background-color: var(--dodo-ui-CalendarMonthChip-#{$theme}-active-bg);
+      }
+    }
+
+    &.today {
+      .chip:not([disabled]) {
+        background-color: var(--dodo-ui-CalendarMonthChip-today-#{$theme}-bg);
+
+        &:hover {
+          background-color: var(--dodo-ui-CalendarMonthChip-today-#{$theme}-hover-bg);
+        }
+
+        &:active {
+          background-color: var(--dodo-ui-CalendarMonthChip-today-#{$theme}-active-bg);
+        }
+      }
+    }
+
+    &.selected {
+      .chip:not([disabled]) {
+        color: var(--dodo-color-constant-white);
+        background-color: var(--dodo-ui-CalendarMonthChip-selected-#{$theme}-bg);
+
+        &:hover {
+          background-color: var(--dodo-ui-CalendarMonthChip-selected-#{$theme}-hover-bg);
+        }
+
+        &:active {
+          background-color: var(--dodo-ui-CalendarMonthChip-selected-#{$theme}-active-bg);
+        }
+      }
+    }
+  }
+}

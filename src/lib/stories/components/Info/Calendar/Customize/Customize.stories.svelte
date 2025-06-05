@@ -25,6 +25,15 @@
   }}
 />
 
+<Story
+  name="calendarMonthChipProps"
+  args={{
+    calendarMonthChipProps: {
+      roundness: 2,
+    },
+  }}
+/>
+
 <Story name="customCalendarDateChipContent" asChild>
   <Calendar value={getMoment().toDate()}>
     {#snippet customCalendarDateChipContent(dayOfMonth)}
@@ -112,6 +121,24 @@
   <Calendar value={getMoment().toDate()}>
     {#snippet customCalendarNavigation()}
       <Button>Control</Button>
+    {/snippet}
+  </Calendar>
+</Story>
+
+<Story name="customCalendarMonthChipContent" asChild>
+  <Calendar value={getMoment().toDate()}>
+    {#snippet customCalendarMonthChipContent(val)}
+      🗓️{val}
+    {/snippet}
+  </Calendar>
+</Story>
+
+<Story name="customCalendarMonthChip" asChild>
+  <Calendar value={getMoment().toDate()}>
+    {#snippet customCalendarMonthChip(val)}
+      <Button size="small" variant="text" outline>
+        {val}
+      </Button>
     {/snippet}
   </Calendar>
 </Story>
