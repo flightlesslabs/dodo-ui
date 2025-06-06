@@ -115,6 +115,13 @@ export type {
 export { default as NumericInput } from '$lib/stories/components/Form/NumericInput/NumericInput.svelte';
 export type { NumericInputProps } from '$lib/stories/components/Form/NumericInput/NumericInput.svelte';
 
+/** Form: DatePicker */
+export { default as DatePicker } from '$lib/stories/components/Form/DatePicker/DatePicker.svelte';
+export type {
+  DatePickerProps,
+  DatePickerDropdownArrowPosition,
+} from '$lib/stories/components/Form/DatePicker/DatePicker.svelte';
+
 /** Layout: Paper */
 export { default as Paper } from '$lib/stories/components/Layout/Paper/Paper.svelte';
 export type { PaperColor, PaperProps } from '$lib/stories/components/Layout/Paper/Paper.svelte';

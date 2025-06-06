@@ -509,68 +509,70 @@
       {#if customPopupContentTyped}
         {@render customPopupContentTyped()}
       {:else}
-        <Calendar
-          {value}
-          {size}
-          {color}
-          {startOfWeek}
-          {timezone}
-          {utc}
-          {calendarDateChipProps}
-          {activeMonth}
-          {showSelected}
-          {showLastMonth}
-          {showNextMonth}
-          {showToday}
-          {today}
-          {minDate}
-          {maxDate}
-          {excludeDates}
-          {includeDates}
-          {customCalendarDateChipContent}
-          {customCalendarDateChip}
-          {customCalendarWeekContent}
-          {customCalendarWeek}
-          {weekendDays}
-          {weekendDaysColorDays}
-          {customCalendarControls}
-          {showCalendarControls}
-          {calendarMonthSelectorProps}
-          {customCalendarMonthSelector}
-          {customCalendarMonthSelectorContent}
-          {onMonthSelectorClick}
-          {calendarYearSelectorProps}
-          {customCalendarYearSelector}
-          {customCalendarYearSelectorContent}
-          {onYearSelectorClick}
-          {calendarNavigationProps}
-          {customCalendarNavigation}
-          {customCalendarNavigationNext}
-          {customCalendarNavigationPrev}
-          {customCalendarNavigationNextContent}
-          {customCalendarNavigationPrevContent}
-          {onCalendarNavigationNextClick}
-          {onCalendarNavigationPrevClick}
-          {disabledCalendarNavigationNext}
-          {disabledCalendarNavigationPrev}
-          {showCalendarMonthSelector}
-          {showCalendarYearSelector}
-          {showCalendarNavigator}
-          {onselectMonth}
-          {customCalendarMonthChipContent}
-          {customCalendarMonthChip}
-          {disabledMonths}
-          {calendarMonthChipProps}
-          {calendarYearChipProps}
-          {onselectYear}
-          {customCalendarYearChipContent}
-          {customCalendarYearChip}
-          {oncancelMonth}
-          {oncancelYear}
-          {showControlsMonthList}
-          {showControlsYearList}
-          onselect={onselectMod}
-        />
+        <div class="CalendarContainer">
+          <Calendar
+            {value}
+            {size}
+            {color}
+            {startOfWeek}
+            {timezone}
+            {utc}
+            {calendarDateChipProps}
+            {activeMonth}
+            {showSelected}
+            {showLastMonth}
+            {showNextMonth}
+            {showToday}
+            {today}
+            {minDate}
+            {maxDate}
+            {excludeDates}
+            {includeDates}
+            {customCalendarDateChipContent}
+            {customCalendarDateChip}
+            {customCalendarWeekContent}
+            {customCalendarWeek}
+            {weekendDays}
+            {weekendDaysColorDays}
+            {customCalendarControls}
+            {showCalendarControls}
+            {calendarMonthSelectorProps}
+            {customCalendarMonthSelector}
+            {customCalendarMonthSelectorContent}
+            {onMonthSelectorClick}
+            {calendarYearSelectorProps}
+            {customCalendarYearSelector}
+            {customCalendarYearSelectorContent}
+            {onYearSelectorClick}
+            {calendarNavigationProps}
+            {customCalendarNavigation}
+            {customCalendarNavigationNext}
+            {customCalendarNavigationPrev}
+            {customCalendarNavigationNextContent}
+            {customCalendarNavigationPrevContent}
+            {onCalendarNavigationNextClick}
+            {onCalendarNavigationPrevClick}
+            {disabledCalendarNavigationNext}
+            {disabledCalendarNavigationPrev}
+            {showCalendarMonthSelector}
+            {showCalendarYearSelector}
+            {showCalendarNavigator}
+            {onselectMonth}
+            {customCalendarMonthChipContent}
+            {customCalendarMonthChip}
+            {disabledMonths}
+            {calendarMonthChipProps}
+            {calendarYearChipProps}
+            {onselectYear}
+            {customCalendarYearChipContent}
+            {customCalendarYearChip}
+            {oncancelMonth}
+            {oncancelYear}
+            {showControlsMonthList}
+            {showControlsYearList}
+            onselect={onselectMod}
+          />
+        </div>
       {/if}
     {/snippet}
   </Popper>
@@ -579,8 +581,6 @@
 <style lang="scss">
   .dodo-ui-DatePicker {
     .DatePicker {
-      padding: var(--dodo-ui-space);
-
       &.size {
         &--normal {
           .DatePickerClear {
@@ -636,6 +636,10 @@
           }
         }
       }
+    }
+
+    .CalendarContainer {
+      padding: var(--dodo-ui-space);
     }
   }
 </style>
