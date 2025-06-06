@@ -19,3 +19,5 @@
 <Story name="HideCalendarMonthSelector" args={{ showCalendarMonthSelector: false }} />
 <Story name="HideCalendarYearSelector" args={{ showCalendarYearSelector: false }} />
 <Story name="HideCalendarNavigator" args={{ showCalendarNavigator: false }} />
+<Story name="HideControlsMonthList" args={{ showControlsMonthList: false }} />
+<Story name="HideControlsYearList" args={{ showControlsYearList: false }} />
