@@ -1,12 +1,12 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Datepicker from './Datepicker.svelte';
+  import DatePicker from './DatePicker.svelte';
   import type { StoryBookArgTypes } from '$lib/storybook-types.js';
   import { componentRoundnessArray } from '$lib/types/roundness.js';
   import { componentSizeArray } from '$lib/types/size.js';
   import { componentColorArray } from '$lib/types/colors.js';
 
-  export const storyDatepickerArgTypes: StoryBookArgTypes = {
+  export const storyDatePickerArgTypes: StoryBookArgTypes = {
     roundness: {
       control: { type: 'select' },
       options: componentRoundnessArray,
@@ -23,9 +23,9 @@
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
   const { Story } = defineMeta({
-    component: Datepicker,
+    component: DatePicker,
     tags: ['autodocs'],
-    argTypes: storyDatepickerArgTypes,
+    argTypes: storyDatePickerArgTypes,
     parameters: {
       docs: {
         story: {
@@ -39,13 +39,13 @@
   let value = $state<Date | undefined>(new Date());
 </script>
 
-<!-- Datepicker with default style -->
+<!-- DatePicker with default style -->
 <Story name="Default" asChild>
-  <Datepicker {value} onselect={(val: Date) => (value = val)} />
+  <DatePicker {value} onselect={(val: Date) => (value = val)} />
 </Story>
 
 <Story name="Clearable" asChild>
-  <Datepicker
+  <DatePicker
     {value}
     clearable
     onselect={(val: Date) => (value = val)}

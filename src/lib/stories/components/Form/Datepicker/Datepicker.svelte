@@ -11,26 +11,26 @@
     MouseEventHandler,
   } from 'svelte/elements';
 
-  export type DatepickerDropdownArrowPosition = false | 'before' | 'after';
+  export type DatePickerDropdownArrowPosition = false | 'before' | 'after';
 
-  export interface DatepickerProps {
+  export interface DatePickerProps {
     /** How large should the button be? */
     size?: ComponentSize;
-    /** editable Datepicker? */
+    /** editable DatePicker? */
     editable?: boolean;
-    /** want a clearable Datepicker? */
+    /** want a clearable DatePicker? */
     clearable?: boolean;
     /** onselect event handler */
     onselect?: (value: Date, dayOfMonth: DateOfMonth, e: ButtonClickEvent) => void;
     /** onclear event handler */
     onclear?: MouseEventHandler<HTMLButtonElement>;
-    /** Datepicker ref */
+    /** DatePicker ref */
     ref?: HTMLInputElement | HTMLButtonElement;
     /** How round should the border radius be? */
     roundness?: ComponentRoundness;
     /** Add a border around the button. Default True */
     outline?: boolean;
-    /** Datepicker value */
+    /** DatePicker value */
     value: Date | undefined;
     /** How round should the border radius be? */
     placeholder?: string;
@@ -80,8 +80,8 @@
     popperProps?: Partial<PopperProps>;
     /** Dropdown Arrow Icon */
     customDropdownArrowIcon?: (open: boolean) => Snippet;
-    /** Datepicker Dropdown Arrow Position */
-    dropdownArrowPosition?: DatepickerDropdownArrowPosition;
+    /** DatePicker Dropdown Arrow Position */
+    dropdownArrowPosition?: DatePickerDropdownArrowPosition;
     /** Popup stick horizontally  */
     popupPositionX?: PositionX;
     /** Popup stick vertically  */
@@ -340,7 +340,7 @@
     oncancelYear,
     showControlsMonthList,
     showControlsYearList,
-  }: DatepickerProps = $props();
+  }: DatePickerProps = $props();
 
   let open: boolean = $state(false);
 
@@ -418,7 +418,7 @@
   </UtilityButton>
 {/snippet}
 
-<div class={['dodo-ui-Datepicker', className].join(' ')}>
+<div class={['dodo-ui-DatePicker', className].join(' ')}>
   <Popper
     {open}
     fullWidth
@@ -436,7 +436,7 @@
       class:disabled
       class:error
       class={[
-        'Datepicker',
+        'DatePicker',
         `size--${size}`,
         `${open ? 'focused' : ''}`,
         `roundness--${roundness}`,
@@ -490,7 +490,7 @@
         </DynamicInput>
 
         {#if value && clearable && !disabled}
-          <div class:after class="DatepickerClear">
+          <div class:after class="DatePickerClear">
             <UtilityButton {size} title="Clear" onclick={onclearMod}>
               <Icon icon="material-symbols:close-small" width="24" height="24" />
             </UtilityButton>
@@ -577,13 +577,13 @@
 </div>
 
 <style lang="scss">
-  .dodo-ui-Datepicker {
-    .Datepicker {
+  .dodo-ui-DatePicker {
+    .DatePicker {
       padding: var(--dodo-ui-space);
 
       &.size {
         &--normal {
-          .DatepickerClear {
+          .DatePickerClear {
             &.after {
               margin-right: calc(var(--dodo-ui-space-small) * 2);
             }
@@ -601,7 +601,7 @@
         }
 
         &--small {
-          .DatepickerClear {
+          .DatePickerClear {
             &.after {
               margin-right: var(--dodo-ui-space);
             }
@@ -619,7 +619,7 @@
         }
 
         &--large {
-          .DatepickerClear {
+          .DatePickerClear {
             &.after {
               margin-right: calc(var(--dodo-ui-space) * 2);
             }
