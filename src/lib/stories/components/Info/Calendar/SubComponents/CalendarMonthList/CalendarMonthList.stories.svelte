@@ -36,3 +36,10 @@
     disabledMonths: ['feb', 'jul'],
   }}
 />
+
+<Story
+  name="HideControls"
+  args={{
+    showControls: false,
+  }}
+/>

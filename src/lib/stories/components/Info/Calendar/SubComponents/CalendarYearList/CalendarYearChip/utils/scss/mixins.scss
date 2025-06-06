@@ -7,10 +7,6 @@
   --dodo-ui-CalendarYearChip-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-100);
   --dodo-ui-CalendarYearChip-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-200);
 
-  --dodo-ui-CalendarYearChip-today-#{$color-name}-bg: var(--dodo-color-#{$color-name}-50);
-  --dodo-ui-CalendarYearChip-today-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-100);
-  --dodo-ui-CalendarYearChip-today-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-200);
-
   --dodo-ui-CalendarYearChip-selected-#{$color-name}-bg: var(--dodo-color-#{$color-name}-500);
   --dodo-ui-CalendarYearChip-selected-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-600);
   --dodo-ui-CalendarYearChip-selected-#{$color-name}-active-bg: var(
@@ -24,12 +20,16 @@
 /// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
 @mixin generate-dodo-ui-calendarYearChip-colors-dark($color-name) {
   --dodo-ui-CalendarYearChip-#{$color-name}-bg: transparent;
-  --dodo-ui-CalendarYearChip-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-100);
-  --dodo-ui-CalendarYearChip-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-200);
-
-  --dodo-ui-CalendarYearChip-today-#{$color-name}-bg: var(--dodo-color-#{$color-name}-50);
-  --dodo-ui-CalendarYearChip-today-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-100);
-  --dodo-ui-CalendarYearChip-today-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-200);
+  --dodo-ui-CalendarYearChip-#{$color-name}-hover-bg: color-mix(
+    in oklab,
+    var(--dodo-color-#{$color-name}-50) 85%,
+    #fff
+  );
+  --dodo-ui-CalendarYearChip-#{$color-name}-active-bg: color-mix(
+    in oklab,
+    var(--dodo-color-#{$color-name}-100) 85%,
+    #fff
+  );
 
   --dodo-ui-CalendarYearChip-selected-#{$color-name}-bg: var(--dodo-color-#{$color-name}-300);
   --dodo-ui-CalendarYearChip-selected-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-200);

@@ -104,6 +104,8 @@
 
     /** Calendar Month select */
     onselectMonth?: (value: CalendarMonthNames, e: ButtonClickEvent) => void;
+    /** Calendar Month cancel */
+    oncancelMonth?: (e: ButtonClickEvent) => void;
     /** Custom Calendar Chip Content */
     customCalendarMonthChipContent?: (value: CalendarMonthNames) => Snippet;
     /** Custom Calendar Chip */
@@ -112,15 +114,21 @@
     disabledMonths?: CalendarMonthNames[];
     /** calendarMonthChipProps: calendarMonthChip component props */
     calendarMonthChipProps?: Partial<CalendarMonthChipProps>;
+    /** show month list controls */
+    showControlsMonthList?: boolean;
 
     /** calendarYearChipProps: calendarYearChip component props */
     calendarYearChipProps?: Partial<CalendarYearChipProps>;
     /** Calendar Year select */
     onselectYear?: (value: string, e: ButtonClickEvent) => void;
+    /** Calendar Year cancel */
+    oncancelYear?: (e: ButtonClickEvent) => void;
     /** Custom Calendar Chip Content */
     customCalendarYearChipContent?: (value: string) => Snippet;
     /** Custom Calendar Chip */
     customCalendarYearChip?: (value: string) => Snippet;
+    /** show Year list controls */
+    showControlsYearList?: boolean;
   }
 </script>
 
@@ -209,6 +217,10 @@
     onselectYear,
     customCalendarYearChipContent,
     customCalendarYearChip,
+    oncancelMonth,
+    oncancelYear,
+    showControlsMonthList = true,
+    showControlsYearList = true,
   }: CalendarProps = $props();
 
   let activeMonth = $derived<Date | undefined>(
@@ -294,6 +306,22 @@
       onselectYear(value, e);
     }
   }
+
+  function oncancelMonthMod(e: ButtonClickEvent) {
+    activeSection = 'date';
+
+    if (oncancelMonth) {
+      oncancelMonth(e);
+    }
+  }
+
+  function oncancelYearMod(e: ButtonClickEvent) {
+    activeSection = 'date';
+
+    if (oncancelYear) {
+      oncancelYear(e);
+    }
+  }
 </script>
 
 {#snippet daysSection()}
@@ -370,6 +398,8 @@
     {customCalendarMonthChip}
     {disabledMonths}
     {calendarMonthChipProps}
+    oncancel={oncancelMonthMod}
+    showControls={showControlsMonthList}
   />
 {/snippet}
 
@@ -381,8 +411,11 @@
     {minDate}
     {maxDate}
     {customCalendarYearChip}
+    {customCalendarYearChipContent}
     {calendarYearChipProps}
     onselect={onselectYearMod}
+    oncancel={oncancelYearMod}
+    showControls={showControlsYearList}
   />
 {/snippet}
 

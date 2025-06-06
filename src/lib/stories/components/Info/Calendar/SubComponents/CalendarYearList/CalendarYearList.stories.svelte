@@ -30,3 +30,10 @@
 
 <!-- Default CalendarYearList -->
 <Story name="Default" />
+
+<Story
+  name="HideControls"
+  args={{
+    showControls: false,
+  }}
+/>

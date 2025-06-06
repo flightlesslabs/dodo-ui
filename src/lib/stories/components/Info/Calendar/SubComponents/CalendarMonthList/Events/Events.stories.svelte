@@ -22,3 +22,12 @@
     }}
   />
 </Story>
+
+<Story name="Cancel" asChild>
+  <CalendarMonthList
+    {value}
+    oncancel={() => {
+      console.log('oncancel');
+    }}
+  />
+</Story>

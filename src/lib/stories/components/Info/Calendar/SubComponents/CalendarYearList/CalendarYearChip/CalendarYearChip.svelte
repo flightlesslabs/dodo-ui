@@ -35,7 +35,7 @@
 
   let {
     class: className = '',
-    roundness = 1,
+    roundness = 2,
     selected = false,
     color = 'primary',
     ref = $bindable<HTMLLIElement>(),
