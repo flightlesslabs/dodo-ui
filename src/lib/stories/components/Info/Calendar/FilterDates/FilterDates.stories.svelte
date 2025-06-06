@@ -60,3 +60,11 @@
     ],
   }}
 />
+
+<Story
+  name="DisabledMonths"
+  args={{
+    value,
+    disabledMonths: ['jan', 'feb', 'mar'],
+  }}
+/>

@@ -21,3 +21,6 @@
 <Story name="HideCalendarNavigator" args={{ showCalendarNavigator: false }} />
 <Story name="HideControlsMonthList" args={{ showControlsMonthList: false }} />
 <Story name="HideControlsYearList" args={{ showControlsYearList: false }} />
+
+<Story name="DisabledNavigationPrev" args={{ disabledCalendarNavigationPrev: true }} />
+<Story name="DisabledNavigationNext" args={{ disabledCalendarNavigationNext: true }} />

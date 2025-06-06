@@ -4,7 +4,7 @@
   import { storyCalendarArgTypes } from '../Calendar.stories.svelte';
   import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
   import type { ButtonClickEvent } from '$lib/stories/components/Form/Button/Button.svelte';
-  import type { CalendarMonthOption } from '$lib/index.js';
+  import type { CalendarMonthNames, CalendarMonthOption } from '$lib/index.js';
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
   const { Story } = defineMeta({
@@ -73,6 +73,61 @@
 
       alert('Button Clicked');
       console.log('Button Clicked', target);
+    },
+  }}
+/>
+
+<Story
+  name="MonthSelectorClick"
+  args={{
+    value,
+    onMonthSelectorClick: (option: CalendarMonthOption, e: ButtonClickEvent) => {
+      const target = e.target as HTMLButtonElement;
+      console.log(option, target);
+    },
+  }}
+/>
+
+<Story
+  name="SelectMonth"
+  args={{
+    value,
+    onselectMonth: (val: CalendarMonthNames, e: ButtonClickEvent) => {
+      const target = e.target as HTMLButtonElement;
+      console.log(val, target);
+    },
+  }}
+/>
+
+<Story
+  name="CancelMonthSelection"
+  args={{
+    value,
+    oncancelMonth: (e: ButtonClickEvent) => {
+      const target = e.target as HTMLButtonElement;
+      console.log(target);
+    },
+  }}
+/>
+
+<Story
+  name="SelectYear"
+  args={{
+    value,
+    onselectYear: (val: string, e: ButtonClickEvent) => {
+      const target = e.target as HTMLButtonElement;
+      console.log(val, target);
+    },
+  }}
+/>
+
+<Story
+  name="CancelYearSelection"
+  args={{
+    value,
+    oncancelYear: (e: ButtonClickEvent) => {
+      const target = e.target as HTMLButtonElement;
+      console.log(target);
     },
   }}
 />
