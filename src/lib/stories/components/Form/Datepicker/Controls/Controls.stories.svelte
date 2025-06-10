@@ -1,4 +1,4 @@
-<script module>
+<script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import DatePicker from '../DatePicker.svelte';
   import { storyDatePickerArgTypes } from '../DatePicker.stories.svelte';
@@ -21,14 +21,38 @@
       },
     },
   });
+
+  let value = $state(getMoment().toDate());
 </script>
 
-<Story name="Normal" />
-<Story name="HideCalendarMonthSelector" args={{ showCalendarMonthSelector: false }} />
-<Story name="HideCalendarYearSelector" args={{ showCalendarYearSelector: false }} />
-<Story name="HideCalendarNavigator" args={{ showCalendarNavigator: false }} />
-<Story name="HideControlsMonthList" args={{ showControlsMonthList: false }} />
-<Story name="HideControlsYearList" args={{ showControlsYearList: false }} />
+<Story name="Normal" asChild>
+  <DatePicker {value} />
+</Story>
 
-<Story name="DisabledNavigationPrev" args={{ disabledCalendarNavigationPrev: true }} />
-<Story name="DisabledNavigationNext" args={{ disabledCalendarNavigationNext: true }} />
+<Story name="HideCalendarMonthSelector" asChild>
+  <DatePicker {value} showCalendarMonthSelector={false} />
+</Story>
+
+<Story name="HideCalendarYearSelector" asChild>
+  <DatePicker {value} showCalendarYearSelector={false} />
+</Story>
+
+<Story name="HideCalendarNavigator" asChild>
+  <DatePicker {value} showCalendarNavigator={false} />
+</Story>
+
+<Story name="HideControlsMonthList" asChild>
+  <DatePicker {value} showControlsMonthList={false} />
+</Story>
+
+<Story name="HideControlsYearList" asChild>
+  <DatePicker {value} showControlsYearList={false} />
+</Story>
+
+<Story name="DisabledNavigationPrev" asChild>
+  <DatePicker {value} disabledCalendarNavigationPrev />
+</Story>
+
+<Story name="DisabledNavigationNext" asChild>
+  <DatePicker {value} disabledCalendarNavigationNext />
+</Story>

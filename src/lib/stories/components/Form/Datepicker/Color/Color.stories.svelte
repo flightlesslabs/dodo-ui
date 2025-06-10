@@ -1,4 +1,4 @@
-<script module>
+<script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import DatePicker from '../DatePicker.svelte';
   import { storyDatePickerArgTypes } from '../DatePicker.stories.svelte';
@@ -9,9 +9,6 @@
     component: DatePicker,
     tags: ['autodocs'],
     argTypes: storyDatePickerArgTypes,
-    args: {
-      value: getMoment().toDate(),
-    },
     parameters: {
       docs: {
         story: {
@@ -21,11 +18,30 @@
       },
     },
   });
+
+  let value = $state(getMoment().toDate());
 </script>
 
-<Story name="Primary" />
-<Story name="Secondary" args={{ color: 'secondary' }} />
-<Story name="Neutral" args={{ color: 'neutral' }} />
-<Story name="Safe" args={{ color: 'safe' }} />
-<Story name="Warning" args={{ color: 'warning' }} />
-<Story name="Danger" args={{ color: 'danger' }} />
+<Story name="Primary" asChild>
+  <DatePicker {value} />
+</Story>
+
+<Story name="Secondary" asChild>
+  <DatePicker {value} color="secondary" />
+</Story>
+
+<Story name="Neutral" asChild>
+  <DatePicker {value} color="neutral" />
+</Story>
+
+<Story name="Safe" asChild>
+  <DatePicker {value} color="safe" />
+</Story>
+
+<Story name="Warning" asChild>
+  <DatePicker {value} color="warning" />
+</Story>
+
+<Story name="Danger" asChild>
+  <DatePicker {value} color="danger" />
+</Story>

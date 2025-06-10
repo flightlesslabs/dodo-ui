@@ -36,98 +36,90 @@
   />
 </Story>
 
-<Story
-  name="MonthSelectorClick"
-  args={{
-    value,
-    onMonthSelectorClick: (option: CalendarMonthOption, e: ButtonClickEvent) => {
+<Story name="MonthSelectorClick" asChild>
+  <DatePicker
+    {value}
+    onMonthSelectorClick={(option: CalendarMonthOption, e: ButtonClickEvent) => {
       const target = e.target as HTMLButtonElement;
 
       alert('Button Clicked');
       console.log('Button Clicked', option, target);
-    },
-  }}
-/>
+    }}
+  />
+</Story>
 
-<Story
-  name="YearSelectorClick"
-  args={{
-    value,
-    onYearSelectorClick: (selectedYear: string, e: ButtonClickEvent) => {
+<Story name="YearSelectorClick" asChild>
+  <DatePicker
+    {value}
+    onYearSelectorClick={(selectedYear: string, e: ButtonClickEvent) => {
       const target = e.target as HTMLButtonElement;
 
       alert('Button Clicked');
       console.log('Button Clicked', selectedYear, target);
-    },
-  }}
-/>
+    }}
+  />
+</Story>
 
-<Story
-  name="CalendarNavigationNextClick"
-  args={{
-    value,
-    onCalendarNavigationNextClick: (e: ButtonClickEvent) => {
+<Story name="CalendarNavigationNextClick" asChild>
+  <DatePicker
+    {value}
+    onCalendarNavigationNextClick={(e: ButtonClickEvent) => {
       const target = e.target as HTMLButtonElement;
 
       alert('Button Clicked');
       console.log('Button Clicked', target);
-    },
-  }}
-/>
+    }}
+  />
+</Story>
 
-<Story
-  name="CalendarNavigationPrevClick"
-  args={{
-    value,
-    onCalendarNavigationPrevClick: (e: ButtonClickEvent) => {
+<Story name="CalendarNavigationPrevClick" asChild>
+  <DatePicker
+    {value}
+    onCalendarNavigationPrevClick={(e: ButtonClickEvent) => {
       const target = e.target as HTMLButtonElement;
 
       alert('Button Clicked');
       console.log('Button Clicked', target);
-    },
-  }}
-/>
+    }}
+  />
+</Story>
 
-<Story
-  name="SelectMonth"
-  args={{
-    value,
-    onselectMonth: (val: CalendarMonthNames, e: ButtonClickEvent) => {
+<Story name="SelectMonth" asChild>
+  <DatePicker
+    {value}
+    onselectMonth={(val: CalendarMonthNames, e: ButtonClickEvent) => {
       const target = e.target as HTMLButtonElement;
       console.log(val, target);
-    },
-  }}
-/>
+    }}
+  />
+</Story>
 
-<Story
-  name="CancelMonthSelection"
-  args={{
-    value,
-    oncancelMonth: (e: ButtonClickEvent) => {
+<Story name="CancelMonthSelection" asChild>
+  <DatePicker
+    {value}
+    oncancelMonth={(e: ButtonClickEvent) => {
       const target = e.target as HTMLButtonElement;
       console.log(target);
-    },
-  }}
-/>
+    }}
+  />
+</Story>
 
-<Story
-  name="SelectYear"
-  args={{
-    value,
-    onselectYear: (val: string, e: ButtonClickEvent) => {
+<Story name="SelectYear" asChild>
+  <DatePicker
+    {value}
+    onselectYear={(val: string, e: ButtonClickEvent) => {
       const target = e.target as HTMLButtonElement;
       console.log(val, target);
-    },
-  }}
-/>
+    }}
+  />
+</Story>
 
-<Story
-  name="CancelYearSelection"
-  args={{
-    value,
-    oncancelYear: (e: ButtonClickEvent) => {
+<Story name="CancelYearSelection" asChild>
+  <DatePicker
+    {value}
+    oncancelYear={(e: ButtonClickEvent) => {
       const target = e.target as HTMLButtonElement;
       console.log(target);
-    },
-  }}
-/>
+    }}
+  />
+</Story>

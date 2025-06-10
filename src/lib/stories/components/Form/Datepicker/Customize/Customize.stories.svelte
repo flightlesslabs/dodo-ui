@@ -10,9 +10,6 @@
     component: DatePicker,
     tags: ['autodocs'],
     argTypes: storyDatePickerArgTypes,
-    args: {
-      value: getMoment().toDate(),
-    },
     parameters: {
       docs: {
         story: {
@@ -22,25 +19,27 @@
       },
     },
   });
+
+  let value = $state(getMoment().toDate());
 </script>
 
-<Story
-  name="calendarDateChipProps"
-  args={{
-    calendarDateChipProps: {
+<Story name="calendarDateChipProps" asChild>
+  <DatePicker
+    {value}
+    calendarDateChipProps={{
       roundness: 'full',
-    },
-  }}
-/>
+    }}
+  />
+</Story>
 
-<Story
-  name="calendarMonthChipProps"
-  args={{
-    calendarMonthChipProps: {
+<Story name="calendarMonthChipProps" asChild>
+  <DatePicker
+    {value}
+    calendarMonthChipProps={{
       roundness: 2,
-    },
-  }}
-/>
+    }}
+  />
+</Story>
 
 <Story name="customCalendarDateChipContent" asChild>
   <DatePicker value={getMoment().toDate()}>

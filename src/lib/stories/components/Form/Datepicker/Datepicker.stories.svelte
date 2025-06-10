@@ -54,4 +54,6 @@
   />
 </Story>
 
-<Story name="Disabled" args={{ disabled: true, value }} />
+<Story name="Disabled" asChild>
+  <DatePicker {value} disabled />
+</Story>

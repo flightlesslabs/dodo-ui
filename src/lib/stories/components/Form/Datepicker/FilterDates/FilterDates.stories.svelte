@@ -22,57 +22,40 @@
   let value = $state(getMoment('01-02-2025', 'DD-MM-YYYY').toDate());
 </script>
 
-<Story
-  name="Default"
-  args={{
-    value,
-  }}
-/>
+<Story name="Default" asChild>
+  <DatePicker {value} />
+</Story>
 
-<Story
-  name="MinDate"
-  args={{
-    value,
-    minDate: getMoment('06-02-2025', 'DD-MM-YYYY').toDate(),
-  }}
-/>
+<Story name="MinDate" asChild>
+  <DatePicker {value} minDate={getMoment('06-02-2025', 'DD-MM-YYYY').toDate()} />
+</Story>
 
-<Story
-  name="MaxDate"
-  args={{
-    value,
-    maxDate: getMoment('10-02-2025', 'DD-MM-YYYY').toDate(),
-  }}
-/>
+<Story name="MaxDate" asChild>
+  <DatePicker {value} maxDate={getMoment('10-02-2025', 'DD-MM-YYYY').toDate()} />
+</Story>
 
-<Story
-  name="ExcludeDates"
-  args={{
-    value,
-    excludeDates: [
+<Story name="ExcludeDates" asChild>
+  <DatePicker
+    {value}
+    excludeDates={[
       getMoment('10-02-2025', 'DD-MM-YYYY').toDate(),
       getMoment('15-02-2025', 'DD-MM-YYYY').toDate(),
       getMoment('20-02-2025', 'DD-MM-YYYY').toDate(),
-    ],
-  }}
-/>
+    ]}
+  />
+</Story>
 
-<Story
-  name="IncludeDates"
-  args={{
-    value,
-    includeDates: [
+<Story name="IncludeDates" asChild>
+  <DatePicker
+    {value}
+    includeDates={[
       getMoment('10-02-2025', 'DD-MM-YYYY').toDate(),
       getMoment('15-02-2025', 'DD-MM-YYYY').toDate(),
       getMoment('20-02-2025', 'DD-MM-YYYY').toDate(),
-    ],
-  }}
-/>
+    ]}
+  />
+</Story>
 
-<Story
-  name="DisabledMonths"
-  args={{
-    value,
-    disabledMonths: ['jan', 'feb', 'mar'],
-  }}
-/>
+<Story name="DisabledMonths" asChild>
+  <DatePicker {value} disabledMonths={['jan', 'feb', 'mar']} />
+</Story>
