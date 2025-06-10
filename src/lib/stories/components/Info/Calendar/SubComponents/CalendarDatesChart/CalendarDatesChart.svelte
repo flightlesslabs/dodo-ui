@@ -135,7 +135,7 @@
   });
 </script>
 
-<ul class={['dodo-ui-CalendarDatesChart', className].join(' ')} bind:this={ref}>
+<ul class={['dodo-ui-CalendarDatesChart', `size--${size}`, className].join(' ')} bind:this={ref}>
   <CalendarWeek
     nameType={weekDayNameType}
     {startOfWeek}
@@ -200,6 +200,20 @@
       display: block;
       padding: 0;
       margin: 0;
+    }
+
+    &.size {
+      &--normal {
+        min-width: calc(var(--dodo-ui-element-height-normal) * 7);
+      }
+
+      &--small {
+        min-width: calc(var(--dodo-ui-element-height-small) * 7);
+      }
+
+      &--large {
+        min-width: calc(var(--dodo-ui-element-height-large) * 7);
+      }
     }
   }
 </style>

@@ -211,6 +211,9 @@
     customCalendarYearChip?: (value: string) => Snippet;
     /** show Year list controls */
     showControlsYearList?: boolean;
+
+    /** calendarProps: calendar component props */
+    calendarProps?: Partial<CalendarProps>;
   }
 </script>
 
@@ -241,7 +244,7 @@
   } from '$lib/index.js';
   import type { TextInputInputEvent } from '../TextInput/TextInput.svelte';
   import type { ButtonClickEvent } from '../Button/Button.svelte';
-  import Calendar from '../../Info/Calendar/Calendar.svelte';
+  import Calendar, { type CalendarProps } from '../../Info/Calendar/Calendar.svelte';
 
   let {
     size = 'normal',
@@ -340,6 +343,8 @@
     oncancelYear,
     showControlsMonthList,
     showControlsYearList,
+
+    calendarProps,
   }: DatePickerProps = $props();
 
   let open: boolean = $state(false);
@@ -352,6 +357,20 @@
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customDropdownArrowIconTyped = customDropdownArrowIconInternal as any;
+
+  const calenderSize = calendarProps?.size || size;
+
+  let popupWidth = $state(
+    `calc(var(--dodo-ui-element-height-normal) * 7 + var(--dodo-ui-space) * 2)`,
+  );
+
+  if (calenderSize === 'normal') {
+    popupWidth = `calc(var(--dodo-ui-element-height-normal) * 7 + var(--dodo-ui-space) * 2)`;
+  } else if (calenderSize === 'small') {
+    popupWidth = `calc(var(--dodo-ui-element-height-small) * 7 + var(--dodo-ui-space) * 2)`;
+  } else if (calenderSize === 'large') {
+    popupWidth = `calc(var(--dodo-ui-element-height-large) * 7 + var(--dodo-ui-space) * 2)`;
+  }
 
   function closePopup() {
     open = false;
@@ -422,6 +441,7 @@
   <Popper
     {open}
     fullWidth
+    {popupWidth}
     {onClickOutside}
     {...popperProps}
     {popupPositionX}
@@ -512,7 +532,7 @@
         <div class="CalendarContainer">
           <Calendar
             {value}
-            {size}
+            size={calenderSize}
             {color}
             {startOfWeek}
             {timezone}
@@ -571,6 +591,7 @@
             {showControlsMonthList}
             {showControlsYearList}
             onselect={onselectMod}
+            {...calendarProps}
           />
         </div>
       {/if}
