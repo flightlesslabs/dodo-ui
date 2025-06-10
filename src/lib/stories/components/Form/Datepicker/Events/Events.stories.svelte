@@ -1,23 +1,34 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Calendar from '../Calendar.svelte';
-  import { storyCalendarArgTypes } from '../Calendar.stories.svelte';
+  import DatePicker from '../DatePicker.svelte';
+  import { storyDatePickerArgTypes } from '../DatePicker.stories.svelte';
   import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
   import type { ButtonClickEvent } from '$lib/stories/components/Form/Button/Button.svelte';
-  import type { CalendarMonthNames, CalendarMonthOption } from '$lib/index.js';
+  import type {
+    CalendarMonthOption,
+    CalendarMonthNames,
+  } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarControls/CalendarMonthSelector/CalendarMonthSelector.svelte';
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
   const { Story } = defineMeta({
-    component: Calendar,
+    component: DatePicker,
     tags: ['autodocs'],
-    argTypes: storyCalendarArgTypes,
+    argTypes: storyDatePickerArgTypes,
+    parameters: {
+      docs: {
+        story: {
+          height: '400px',
+          inline: false,
+        },
+      },
+    },
   });
 
   let value = $state(getMoment().toDate());
 </script>
 
 <Story name="Select" asChild>
-  <Calendar
+  <DatePicker
     {value}
     onselect={(val) => {
       value = val;

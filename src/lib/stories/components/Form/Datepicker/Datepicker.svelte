@@ -503,8 +503,10 @@
           {#snippet customInputContent()}
             {#if customInputContentTyped}
               {@render customInputContentTyped(value)}
+            {:else if value}
+              {getMoment(value).format('DD/MM/YYYY')}
             {:else}
-              {getMoment(value).format('DD/MM/YYYY') || placeholder}
+              {placeholder}
             {/if}
           {/snippet}
         </DynamicInput>

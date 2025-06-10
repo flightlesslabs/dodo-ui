@@ -53,3 +53,5 @@
     placeholder="DD/MM/YYYY"
   />
 </Story>
+
+<Story name="Disabled" args={{ disabled: true, value }} />

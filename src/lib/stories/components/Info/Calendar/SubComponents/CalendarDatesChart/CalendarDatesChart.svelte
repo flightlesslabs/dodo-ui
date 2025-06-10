@@ -122,6 +122,11 @@
   );
 
   $effect(() => {
+    if (!value) {
+      monthToPick = activeMonth;
+      return;
+    }
+
     // Override active month if it's not same as value
     if (
       activeMonth &&
@@ -132,6 +137,8 @@
     } else {
       monthToPick = value;
     }
+
+    console.log(monthToPick);
   });
 </script>
 
