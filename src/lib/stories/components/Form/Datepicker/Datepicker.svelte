@@ -11,7 +11,7 @@
     MouseEventHandler,
   } from 'svelte/elements';
 
-  export type DatePickerDropdownArrowPosition = false | 'before' | 'after';
+  export type DatePickerCalendarIconPosition = false | 'before' | 'after';
 
   export interface DatePickerProps {
     /** How large should the button be? */
@@ -78,10 +78,10 @@
     paperProps?: Partial<PaperProps>;
     /** PopperProps: Popper component props */
     popperProps?: Partial<PopperProps>;
-    /** Dropdown Arrow Icon */
-    customDropdownArrowIcon?: (open: boolean) => Snippet;
-    /** DatePicker Dropdown Arrow Position */
-    dropdownArrowPosition?: DatePickerDropdownArrowPosition;
+    /** custom CalendarI Icon */
+    customCalendarIcon?: (open: boolean) => Snippet;
+    /** DatePicker CalendarI con Position */
+    calendarIconPosition?: DatePickerCalendarIconPosition;
     /** Popup stick horizontally  */
     popupPositionX?: PositionX;
     /** Popup stick vertically  */
@@ -90,6 +90,10 @@
     lockPoistions?: boolean;
     /** Popper Height For Vertical Position, default 300 */
     popperHeightForVerticalPosition?: number;
+    /** Date display format, Default: DD/MM/YYYY , [Supported formats](https://day.js.org/docs/en/display/format) */
+    format?: string;
+    /** Override format for editable input */
+    formatEditable?: string;
 
     /** Start Of Week */
     startOfWeek?: CalendarWeekNames;
@@ -222,6 +226,7 @@
   import UtilityButton from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
   import Icon from '@iconify/svelte';
   import {
+    createDateOfMonth,
     DynamicInput,
     getMoment,
     Popper,
@@ -277,15 +282,17 @@
     onclear,
     customInputContent: customInputContentInternal,
     customPopupContent: customPopupContentInternal,
-    customDropdownArrowIcon: customDropdownArrowIconInternal,
+    customCalendarIcon: customCalendarIconInternal,
     paperProps,
     popperProps,
-    dropdownArrowPosition = 'after',
+    calendarIconPosition = 'after',
     popupPositionX,
     popupPositionY,
     lockPoistions,
     popperHeightForVerticalPosition,
     color,
+    format = 'DD/MM/YYYY',
+    formatEditable: formatEditableRaw,
 
     startOfWeek = 'sun',
     timezone,
@@ -347,7 +354,12 @@
     calendarProps,
   }: DatePickerProps = $props();
 
+  const formatEditable = $derived(formatEditableRaw || format);
+
   let open: boolean = $state(false);
+  let searchText: string = $derived(
+    value ? getMoment(value, undefined, { timezone, utc }).format(format) : '',
+  );
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customInputContentTyped = customInputContentInternal as any;
@@ -356,7 +368,7 @@
   let customPopupContentTyped = customPopupContentInternal as any;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let customDropdownArrowIconTyped = customDropdownArrowIconInternal as any;
+  let customCalendarIconTyped = customCalendarIconInternal as any;
 
   const calenderSize = calendarProps?.size || size;
 
@@ -385,12 +397,46 @@
   function onfocusMod(e: DynamicInputFocusEvent) {
     openPopup();
 
+    if (editable) {
+      searchText = getMoment(searchText, format, { timezone, utc }).format(formatEditable);
+    }
+
     if (onfocus) {
       onfocus(e);
     }
   }
 
   function onblurMod(e: DynamicInputFocusEvent) {
+    if (editable) {
+      const searchTextrToMoment = getMoment(searchText, formatEditable, { timezone, utc });
+
+      if (searchTextrToMoment.isValid()) {
+        const searchTextrToDate = searchTextrToMoment.toDate();
+        const dayOfMonth = createDateOfMonth(
+          searchTextrToDate,
+          {
+            startOfWeek,
+            showLastMonth,
+            showNextMonth,
+            today,
+            minDate,
+            maxDate,
+            excludeDates,
+            includeDates,
+            timezone,
+            utc,
+          },
+          'currentMonth',
+        );
+
+        searchText = searchTextrToMoment.format(format);
+
+        onselectMod(searchTextrToDate, dayOfMonth, e as ButtonClickEvent);
+      } else {
+        searchText = value ? getMoment(value, undefined, { timezone, utc }).format(format) : '';
+      }
+    }
+
     if (onblur) {
       onblur(e);
     }
@@ -411,7 +457,7 @@
   function oninputMod(e: TextInputInputEvent) {
     const target = e.target as HTMLInputElement;
 
-    console.log(target);
+    searchText = target.value;
 
     if (oninput) {
       oninput(e);
@@ -427,12 +473,12 @@
   }
 </script>
 
-{#snippet selectDropdownArrowIcon()}
+{#snippet datePickerCalendarIcon()}
   <UtilityButton {size} title="Dropdown" onclick={onfocusMod}>
-    {#if customDropdownArrowIconTyped}
-      {@render customDropdownArrowIconTyped(open)}
+    {#if customCalendarIconTyped}
+      {@render customCalendarIconTyped(open)}
     {:else}
-      <Icon icon="material-symbols:arrow-drop-down-rounded" width="28" height="28" />
+      <Icon icon="material-symbols:calendar-month-rounded" width="24" height="24" />
     {/if}
   </UtilityButton>
 {/snippet}
@@ -473,9 +519,9 @@
         {before}
         {after}
       >
-        {#if dropdownArrowPosition === 'before'}
-          <div class:before class:open class="DropdownArrow">
-            {@render selectDropdownArrowIcon()}
+        {#if calendarIconPosition === 'before'}
+          <div class:before class:open class="Calendar">
+            {@render datePickerCalendarIcon()}
           </div>
         {/if}
 
@@ -496,7 +542,9 @@
           {onkeypress}
           {onkeyup}
           {placeholder}
-          value={editable ? '' : getMoment(value).format('DD/MM/YYYY')}
+          value={editable
+            ? searchText
+            : getMoment(value, undefined, { timezone, utc }).format(format)}
           {readonly}
           variant={editable ? 'input' : 'button'}
         >
@@ -504,7 +552,7 @@
             {#if customInputContentTyped}
               {@render customInputContentTyped(value)}
             {:else if value}
-              {getMoment(value).format('DD/MM/YYYY')}
+              {getMoment(value, undefined, { timezone, utc }).format(format)}
             {:else}
               {placeholder}
             {/if}
@@ -519,9 +567,9 @@
           </div>
         {/if}
 
-        {#if dropdownArrowPosition === 'after'}
-          <div class:after class:open class="DropdownArrow">
-            {@render selectDropdownArrowIcon()}
+        {#if calendarIconPosition === 'after'}
+          <div class:after class:open class="Calendar">
+            {@render datePickerCalendarIcon()}
           </div>
         {/if}
       </InputEnclosure>
@@ -612,7 +660,7 @@
             }
           }
 
-          .DropdownArrow {
+          .Calendar {
             &.after {
               margin-right: calc(var(--dodo-ui-space-small) * 2);
             }
@@ -630,7 +678,7 @@
             }
           }
 
-          .DropdownArrow {
+          .Calendar {
             &.after {
               margin-right: var(--dodo-ui-space);
             }
@@ -648,7 +696,7 @@
             }
           }
 
-          .DropdownArrow {
+          .Calendar {
             &.after {
               margin-right: calc(var(--dodo-ui-space) * 2);
             }

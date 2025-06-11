@@ -44,6 +44,25 @@
   <DatePicker {value} onselect={(val: Date) => (value = val)} />
 </Story>
 
+<!-- [Supported formats](https://day.js.org/docs/en/display/format) -->
+<Story name="FormatDate" asChild>
+  <DatePicker {value} onselect={(val: Date) => (value = val)} format="MMM, DD YYYY" />
+</Story>
+
+<Story name="Editable" asChild>
+  <DatePicker {value} editable onselect={(val: Date) => (value = val)} placeholder="DD/MM/YYYY" />
+</Story>
+
+<Story name="EditableInDiffrentFormat" asChild>
+  <DatePicker
+    {value}
+    editable
+    onselect={(val: Date) => (value = val)}
+    placeholder="DD/MM/YYYY"
+    formatEditable="YYYY-MM-DD"
+  />
+</Story>
+
 <Story name="Clearable" asChild>
   <DatePicker
     {value}

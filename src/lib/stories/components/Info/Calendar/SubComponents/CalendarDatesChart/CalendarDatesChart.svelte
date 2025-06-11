@@ -137,8 +137,6 @@
     } else {
       monthToPick = value;
     }
-
-    console.log(monthToPick);
   });
 </script>
 
