@@ -1,6 +1,6 @@
-import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as r}from"./index-BsKd7sJ7.js";import{S as t}from"./index-ChXkTLhV.js";import"./index-C4XKfyRp.js";import"./_commonjsHelpers-CqkleIqs.js";import"./iframe-LZIq84s_.js";import"./index-CPsILM3-.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";const l=`{
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as r}from"./index-BsKd7sJ7.js";import{S as t}from"./index-BDcPF_xr.js";import"./index-C4XKfyRp.js";import"./_commonjsHelpers-CqkleIqs.js";import"./iframe-COAyVktX.js";import"./index-CPsILM3-.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";const l=`{
   "name": "@flightlesslabs/dodo-ui",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "scripts": {
     "build": "vite build && pnpm run prepack",
     "preview": "vite preview",
