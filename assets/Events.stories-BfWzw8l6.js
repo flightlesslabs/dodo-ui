@@ -1,8 +1,0 @@
-import"./props-DJ7OM77H.js";import{p,g as m,y as c,a as d}from"./runtime-hUo-UAYR.js";import{i as u}from"./lifecycle-hDYW8BV7.js";import{c as f,d as g}from"./create-runtime-stories-DR9We0Hg.js";import{C as t}from"./CalendarYearChip-BZ9KXNvp.js";import{storyCalendarYearChipArgTypes as C}from"./CalendarYearChip.stories-LVqY8gjH.js";import{g as Y}from"./getMoment-BCpL1FFt.js";import"./index-CfOrKyLd.js";import"./class-0ksSn-pd.js";import"./this-sl_nENle.js";import"./colors-C3b1rS-d.js";import"./size-C-8mwSpB.js";import"./roundness-fyqvrcF6.js";import"./_commonjsHelpers-CqkleIqs.js";const v={component:t,tags:["autodocs"],argTypes:C,parameters:{docs:{description:{component:""}}}},{Story:_}=g();function r(o,a){p(a,!1),u(),_(o,{name:"Select",asChild:!0,children:(s,S)=>{const n=c(()=>Y(void 0,void 0,{utc:!0}).format("YYYY"));t(s,{get value(){return m(n)},onselect:(e,i)=>{const l=i.target;alert(`CalendarYearChip Select, ${e}`),console.log("CalendarYearChip Select",e,l)}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<CalendarYearChip
-  value={getMoment(undefined, undefined, { utc: true }).format('YYYY')}
-  onselect={(value, e) => {
-    const target = e.target as HTMLButtonElement;
-    alert(\`CalendarYearChip Select, \${value}\`);
-    console.log('CalendarYearChip Select', value, target);
-  }}
-/>`}}}),d()}r.__docgen={version:3,name:"Events.stories.svelte",data:[],computed:[],methods:[],components:[],description:null,keywords:[],events:[],slots:[],refs:[]};const h=f(r,v),P=["Select"],R={...h.Select,tags:["svelte-csf-v5"]};export{R as Select,P as __namedExportsOrder,v as default};
