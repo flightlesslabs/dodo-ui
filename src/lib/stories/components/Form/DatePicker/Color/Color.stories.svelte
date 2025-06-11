@@ -1,7 +1,7 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
-  import DatePicker from '..//DatePicker.svelte';
+  import DatePicker from '../DatePicker.svelte';
   import { storyDatePickerArgTypes } from '../DatePicker.stories.svelte';
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories

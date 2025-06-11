@@ -116,11 +116,11 @@ export { default as NumericInput } from '$lib/stories/components/Form/NumericInp
 export type { NumericInputProps } from '$lib/stories/components/Form/NumericInput/NumericInput.svelte';
 
 /** Form: DatePicker */
-export { default as DatePicker } from '$lib/stories/components/Form/DatePickerI/DatePicker.svelte';
+export { default as DatePicker } from '$lib/stories/components/Form/DatePicker/DatePicker.svelte';
 export type {
   DatePickerProps,
   DatePickerCalendarIconPosition,
-} from '$lib/stories/components/Form/DatePickerI/DatePicker.svelte';
+} from '$lib/stories/components/Form/DatePicker/DatePicker.svelte';
 
 /** Layout: Paper */
 export { default as Paper } from '$lib/stories/components/Layout/Paper/Paper.svelte';
