@@ -78,6 +78,10 @@
   <DatePicker {value} disabled />
 </Story>
 
+<Story name="OpenByDefault" asChild>
+  <DatePicker {value} open={true} />
+</Story>
+
 <Story name="Custom calender icon" asChild>
   <DatePicker {value}>
     {#snippet customCalendarIcon()}

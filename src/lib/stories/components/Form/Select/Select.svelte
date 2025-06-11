@@ -114,6 +114,8 @@
     lockPoistions?: boolean;
     /** Popper Height For Vertical Position, default 300 */
     popperHeightForVerticalPosition?: number;
+    /** Control Popup Open state */
+    open?: boolean;
   }
 </script>
 
@@ -183,6 +185,7 @@
     popupPositionY,
     lockPoistions,
     popperHeightForVerticalPosition,
+    open = $bindable<boolean>(false),
   }: SelectProps = $props();
 
   function convertOptionsToDynamicMenuItemOptions(
@@ -199,7 +202,6 @@
     return newOptions;
   }
 
-  let open: boolean = $state(false);
   let onInputStart: boolean = $state(false);
   const selectedOption = $derived(value);
   let searchTerm = $state(value?.label.trim() || '');

@@ -94,6 +94,8 @@
     format?: string;
     /** Override format for editable input */
     formatEditable?: string;
+    /** Control Popup Open state */
+    open?: boolean;
 
     /** Start Of Week */
     startOfWeek?: CalendarWeekNames;
@@ -300,6 +302,7 @@
     color,
     format = 'DD/MM/YYYY',
     formatEditable: formatEditableRaw,
+    open = $bindable<boolean>(false),
 
     startOfWeek = 'sun',
     timezone,
@@ -365,7 +368,6 @@
 
   const formatEditable = $derived(formatEditableRaw || format);
 
-  let open: boolean = $state(false);
   let searchText: string = $derived(
     value ? getMoment(value, undefined, { timezone, utc }).format(format) : '',
   );
@@ -486,8 +488,10 @@
   <UtilityButton {size} title="Dropdown" onclick={onfocusMod}>
     {#if customCalendarIconTyped}
       {@render customCalendarIconTyped(open)}
+    {:else if size === 'small'}
+      <Icon icon="ic:baseline-calendar-month" width="19" height="19" />
     {:else}
-      <Icon icon="material-symbols:calendar-month-rounded" width="24" height="24" />
+      <Icon icon="ic:baseline-calendar-month" width="24" height="24" />
     {/if}
   </UtilityButton>
 {/snippet}
