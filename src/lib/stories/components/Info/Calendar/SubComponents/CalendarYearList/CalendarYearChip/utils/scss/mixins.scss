@@ -1,0 +1,87 @@
+/// Mixin: generate-dodo-ui-calendarYearChip-colors
+/// Generates CSS custom properties for Dodo UI calendarYearChip styles (text & solid)
+/// across different interaction states (default, hover, active).
+/// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
+@mixin generate-dodo-ui-calendarYearChip-colors($color-name) {
+  --dodo-ui-CalendarYearChip-#{$color-name}-bg: transparent;
+  --dodo-ui-CalendarYearChip-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-100);
+  --dodo-ui-CalendarYearChip-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-200);
+
+  --dodo-ui-CalendarYearChip-selected-#{$color-name}-bg: var(--dodo-color-#{$color-name}-500);
+  --dodo-ui-CalendarYearChip-selected-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-600);
+  --dodo-ui-CalendarYearChip-selected-#{$color-name}-active-bg: var(
+    --dodo-color-#{$color-name}-700
+  );
+}
+
+/// Mixin: generate-dodo-ui-calendarYearChip-colors
+/// Generates CSS custom properties for Dodo UI calendarYearChip styles (text & solid)
+/// across different interaction states (default, hover, active).
+/// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
+@mixin generate-dodo-ui-calendarYearChip-colors-dark($color-name) {
+  --dodo-ui-CalendarYearChip-#{$color-name}-bg: transparent;
+  --dodo-ui-CalendarYearChip-#{$color-name}-hover-bg: color-mix(
+    in oklab,
+    var(--dodo-color-#{$color-name}-50) 85%,
+    #fff
+  );
+  --dodo-ui-CalendarYearChip-#{$color-name}-active-bg: color-mix(
+    in oklab,
+    var(--dodo-color-#{$color-name}-100) 85%,
+    #fff
+  );
+
+  --dodo-ui-CalendarYearChip-selected-#{$color-name}-bg: var(--dodo-color-#{$color-name}-300);
+  --dodo-ui-CalendarYearChip-selected-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-200);
+  --dodo-ui-CalendarYearChip-selected-#{$color-name}-active-bg: var(
+    --dodo-color-#{$color-name}-100
+  );
+}
+
+/// Mixin: generate-dodo-ui-calendarYearChip-color
+/// Auto-generates .color--[theme] > variant--solid styles
+/// @param {String} $theme - e.g., default, safe, danger, etc.
+@mixin generate-dodo-ui-calendarYearChip-color($theme) {
+  &--#{$theme} {
+    .chip:not([disabled]) {
+      background-color: var(--dodo-ui-CalendarYearChip-#{$theme}-bg);
+
+      &:hover {
+        background-color: var(--dodo-ui-CalendarYearChip-#{$theme}-hover-bg);
+      }
+
+      &:active {
+        background-color: var(--dodo-ui-CalendarYearChip-#{$theme}-active-bg);
+      }
+    }
+
+    &.today {
+      .chip:not([disabled]) {
+        background-color: var(--dodo-ui-CalendarYearChip-today-#{$theme}-bg);
+
+        &:hover {
+          background-color: var(--dodo-ui-CalendarYearChip-today-#{$theme}-hover-bg);
+        }
+
+        &:active {
+          background-color: var(--dodo-ui-CalendarYearChip-today-#{$theme}-active-bg);
+        }
+      }
+    }
+
+    &.selected {
+      .chip:not([disabled]) {
+        color: var(--dodo-color-constant-white);
+        background-color: var(--dodo-ui-CalendarYearChip-selected-#{$theme}-bg);
+
+        &:hover {
+          background-color: var(--dodo-ui-CalendarYearChip-selected-#{$theme}-hover-bg);
+        }
+
+        &:active {
+          background-color: var(--dodo-ui-CalendarYearChip-selected-#{$theme}-active-bg);
+        }
+      }
+    }
+  }
+}

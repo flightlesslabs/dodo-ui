@@ -111,6 +111,10 @@
   />
 </Story>
 
+<Story name="OpenByDefault" asChild>
+  <Select {options} {value} onselect={(val: SelectOption) => (value = val)} open={true} />
+</Story>
+
 <!-- Format look and feel of input content. [More Customizations](?path=/docs/components-form-select-customize--docs)  -->
 <Story name="CustomInputContent" asChild>
   <Select {options} {value} onselect={(val: SelectOption) => (value = val)}>

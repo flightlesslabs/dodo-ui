@@ -1,0 +1,18 @@
+import { Source } from '@storybook/blocks';
+
+# `getMoment`
+
+a Day.js wrapper
+
+## Usage
+
+<Source
+  dark
+  language="ts"
+  code={`
+import { getMoment } from '@flightlesslabs/dodo-ui';
+
+getMoment('2025-01-01T00:00:00Z', { utc: true }).format(); // "2025-01-01T00:00:00Z"
+getMoment('01-01-2025', { format: 'DD-MM-YYYY', timezone: 'Asia/Kolkata' }).format();
+`}
+/>

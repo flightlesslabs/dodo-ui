@@ -45,7 +45,6 @@
 
 <Story name="Read only" args={{ readonly: true }} />
 
-<!-- Show Password by default -->
 <Story name="Custom toggle icon" asChild>
   <PasswordInput value="Hello world!">
     {#snippet customPasswordToggleIcon(toggle)}

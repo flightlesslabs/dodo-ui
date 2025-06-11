@@ -19,11 +19,27 @@
 /// across different interaction states (default, hover, active).
 /// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
 @mixin generate-dodo-ui-button-colors-dark($color-name) {
-  --dodo-ui-Button-outline-#{$color-name}: var(--dodo-color-#{$color-name}-300);
+  --dodo-ui-Button-outline-#{$color-name}: color-mix(
+    in oklab,
+    var(--dodo-color-#{$color-name}-300) 90%,
+    #fff
+  );
 
-  --dodo-ui-Button-text-#{$color-name}-bg: var(--dodo-color-#{$color-name}-50);
-  --dodo-ui-Button-text-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-100);
-  --dodo-ui-Button-text-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-200);
+  --dodo-ui-Button-text-#{$color-name}-bg: color-mix(
+    in oklab,
+    var(--dodo-color-#{$color-name}-50) 90%,
+    #fff
+  );
+  --dodo-ui-Button-text-#{$color-name}-hover-bg: color-mix(
+    in oklab,
+    var(--dodo-color-#{$color-name}-100) 90%,
+    #fff
+  );
+  --dodo-ui-Button-text-#{$color-name}-active-bg: color-mix(
+    in oklab,
+    var(--dodo-color-#{$color-name}-200) 90%,
+    #fff
+  );
 
   --dodo-ui-Button-solid-#{$color-name}-bg: var(--dodo-color-#{$color-name}-300);
   --dodo-ui-Button-solid-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-200);

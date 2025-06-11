@@ -187,7 +187,13 @@
           {#if customPasswordToggleIcon}
             {@render customPasswordToggleIconTyped(toggle)}
           {:else if toggle}
-            <Icon icon="mdi:eye-off" width="24" height="24" />
+            {#if size === 'small'}
+              <Icon icon="mdi:eye-off" width="19" height="19" />
+            {:else}
+              <Icon icon="mdi:eye-off" width="24" height="24" />
+            {/if}
+          {:else if size === 'small'}
+            <Icon icon="mdi:eye" width="19" height="19" />
           {:else}
             <Icon icon="mdi:eye" width="24" height="24" />
           {/if}
