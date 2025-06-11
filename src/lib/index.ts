@@ -149,7 +149,10 @@ export type {
 
 /** Info: Calendar */
 export { default as Calendar } from '$lib/stories/components/Info/Calendar/Calendar.svelte';
-export type { CalendarProps } from '$lib/stories/components/Info/Calendar/Calendar.svelte';
+export type {
+  CalendarProps,
+  CalendarActiveSection,
+} from '$lib/stories/components/Info/Calendar/Calendar.svelte';
 
 export { default as CalendarDatesChart } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarDatesChart/CalendarDatesChart.svelte';
 export type { CalendarDatesChartProps } from '$lib/stories/components/Info/Calendar/SubComponents/CalendarDatesChart/CalendarDatesChart.svelte';

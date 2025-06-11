@@ -123,3 +123,25 @@
     }}
   />
 </Story>
+
+<Story name="Input" asChild>
+  <DatePicker
+    {value}
+    oninput={(e: Event) => {
+      const target = e.target as HTMLInputElement;
+
+      console.log('Input Event', target.value);
+    }}
+  />
+</Story>
+
+<Story name="Change" asChild>
+  <DatePicker
+    {value}
+    onchange={(e: Event) => {
+      const target = e.target as HTMLInputElement;
+
+      console.log('onChange Event', target.value);
+    }}
+  />
+</Story>

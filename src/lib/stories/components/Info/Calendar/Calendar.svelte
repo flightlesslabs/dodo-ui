@@ -1,4 +1,6 @@
 <script lang="ts" module>
+  export type CalendarActiveSection = 'date' | 'month' | 'year';
+
   export interface CalendarProps {
     /** Calendar ref */
     ref?: HTMLDivElement;
@@ -129,6 +131,11 @@
     customCalendarYearChip?: (value: string) => Snippet;
     /** show Year list controls */
     showControlsYearList?: boolean;
+
+    /** calendar Top Content*/
+    calendarTopContent?: (activeSection: CalendarActiveSection) => Snippet;
+    /** calendar Bottom Content*/
+    calendarBottomContent?: (activeSection: CalendarActiveSection) => Snippet;
   }
 </script>
 
@@ -221,7 +228,15 @@
     oncancelYear,
     showControlsMonthList = true,
     showControlsYearList = true,
+    calendarTopContent: calendarTopContentInternal,
+    calendarBottomContent: calendarBottomContentInternal,
   }: CalendarProps = $props();
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let calendarTopContentTyped = calendarTopContentInternal as any;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let calendarBottomContentTyped = calendarBottomContentInternal as any;
 
   let activeMonth = $derived<Date | undefined>(
     activeMonthRaw ||
@@ -232,9 +247,7 @@
   const disabledCalendarNavigationNext = $derived(disabledCalendarNavigationNextRaw);
   const disabledCalendarNavigationPrev = $derived(disabledCalendarNavigationPrevRaw);
 
-  type ActiveSections = 'date' | 'month' | 'year';
-
-  let activeSection = $state<ActiveSections>('date');
+  let activeSection = $state<CalendarActiveSection>('date');
 
   function onCalendarNavigationNextClickMod(e: ButtonClickEvent) {
     activeMonth = getMoment(activeMonth, undefined, { timezone, utc })
@@ -420,12 +433,20 @@
 {/snippet}
 
 <div class={['dodo-ui-Calendar', className].join(' ')} bind:this={ref}>
+  {#if calendarTopContentTyped}
+    {@render calendarTopContentTyped(activeSection)}
+  {/if}
+
   {#if activeSection === 'month'}
     {@render monthSection()}
   {:else if activeSection === 'year'}
     {@render yearSection()}
   {:else}
     {@render daysSection()}
+  {/if}
+
+  {#if calendarBottomContentTyped}
+    {@render calendarBottomContentTyped(activeSection)}
   {/if}
 </div>
 

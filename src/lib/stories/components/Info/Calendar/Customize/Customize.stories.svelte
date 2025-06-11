@@ -142,3 +142,19 @@
     {/snippet}
   </Calendar>
 </Story>
+
+<Story name="calendarTopContent" asChild>
+  <Calendar value={getMoment().toDate()}>
+    {#snippet calendarTopContent(activeSection)}
+      Top Content: {activeSection}
+    {/snippet}
+  </Calendar>
+</Story>
+
+<Story name="calendarBottomContent" asChild>
+  <Calendar value={getMoment().toDate()}>
+    {#snippet calendarBottomContent(activeSection)}
+      Bottom Content: {activeSection}
+    {/snippet}
+  </Calendar>
+</Story>

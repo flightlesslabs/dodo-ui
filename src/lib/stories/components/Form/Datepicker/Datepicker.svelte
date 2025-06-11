@@ -218,6 +218,10 @@
 
     /** calendarProps: calendar component props */
     calendarProps?: Partial<CalendarProps>;
+    /** calendar Top Content*/
+    calendarTopContent?: (activeSection: CalendarActiveSection) => Snippet;
+    /** calendar Bottom Content*/
+    calendarBottomContent?: (activeSection: CalendarActiveSection) => Snippet;
   }
 </script>
 
@@ -249,7 +253,10 @@
   } from '$lib/index.js';
   import type { TextInputInputEvent } from '../TextInput/TextInput.svelte';
   import type { ButtonClickEvent } from '../Button/Button.svelte';
-  import Calendar, { type CalendarProps } from '../../Info/Calendar/Calendar.svelte';
+  import Calendar, {
+    type CalendarActiveSection,
+    type CalendarProps,
+  } from '../../Info/Calendar/Calendar.svelte';
 
   let {
     size = 'normal',
@@ -352,6 +359,8 @@
     showControlsYearList,
 
     calendarProps,
+    calendarTopContent,
+    calendarBottomContent,
   }: DatePickerProps = $props();
 
   const formatEditable = $derived(formatEditableRaw || format);
@@ -641,6 +650,8 @@
             {showControlsMonthList}
             {showControlsYearList}
             onselect={onselectMod}
+            {calendarTopContent}
+            {calendarBottomContent}
             {...calendarProps}
           />
         </div>

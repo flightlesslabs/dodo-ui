@@ -5,6 +5,7 @@
   import { componentRoundnessArray } from '$lib/types/roundness.js';
   import { componentSizeArray } from '$lib/types/size.js';
   import { componentColorArray } from '$lib/types/colors.js';
+  import Icon from '@iconify/svelte';
 
   export const storyDatePickerArgTypes: StoryBookArgTypes = {
     roundness: {
@@ -75,4 +76,12 @@
 
 <Story name="Disabled" asChild>
   <DatePicker {value} disabled />
+</Story>
+
+<Story name="Custom calender icon" asChild>
+  <DatePicker {value}>
+    {#snippet customCalendarIcon()}
+      <Icon icon="mingcute:calendar-3-line" width="24" height="24" />
+    {/snippet}
+  </DatePicker>
 </Story>
