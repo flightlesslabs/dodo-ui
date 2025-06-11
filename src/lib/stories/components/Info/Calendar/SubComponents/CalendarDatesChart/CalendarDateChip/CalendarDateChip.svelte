@@ -20,6 +20,13 @@
     selected?: boolean;
     /** onselect event handler */
     onselect?: (value: Date, dayOfMonth: DateOfMonth, e: ButtonClickEvent) => void;
+    /** onselectRange event handler */
+    onselectRange?: (
+      value: Date,
+      type: DateRangeType,
+      dayOfMonth: DateOfMonth,
+      e: ButtonClickEvent,
+    ) => void;
     /** Custom Calendar Chip Content */
     customCalendarDateChipContent?: (dayOfMonth: DateOfMonth) => Snippet;
     /** Custom Calendar Chip Content */
@@ -32,6 +39,11 @@
     timezone?: string;
     /** Whether to return the time in UTC. If true, overrides timezone. */
     utc?: boolean;
+
+    /** Show Value Range */
+    showValueRange?: boolean;
+    /** Date Range Type */
+    rangeType?: DateRangeType;
   }
 </script>
 
@@ -43,7 +55,7 @@
   import type { Snippet } from 'svelte';
   import type { ButtonClickEvent } from '$lib/stories/components/Form/Button/Button.svelte';
   import type { ComponentSize } from '$lib/types/size.js';
-  import type { DateOfMonth } from '../../../utils/types.js';
+  import type { DateOfMonth, DateRangeType } from '../../../utils/types.js';
 
   let {
     class: className = '',
@@ -58,32 +70,42 @@
     customCalendarDateChipContent: customCalendarDateChipContentInternal,
     customCalendarDateChip: customCalendarDateChipInternal,
     onselect,
+    onselectRange,
     size = 'normal',
     weekend,
     timezone,
     utc,
+    showValueRange = false,
+    rangeType,
   }: CalendarDateChipProps = $props();
 
   const dayNumber = Number(getMoment(dayOfMonth.date, undefined, { timezone, utc }).format('D'));
   const disabled = dayOfMonth.disabled || false;
   const today = showToday && dayOfMonth.today ? true : false;
+  const isRangeStart = rangeType === 'start' || false;
+  const isRangeEnd = rangeType === 'end' || false;
+  const inRange = dayOfMonth.inRange || false;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customCalendarDateChipContentTyped = customCalendarDateChipContentInternal as any;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customCalendarDateChipTyped = customCalendarDateChipInternal as any;
+
+  function onselectMod(e: ButtonClickEvent) {
+    if (showValueRange && onselectRange) {
+      onselectRange(dayOfMonth.date, rangeType || 'start', dayOfMonth, e);
+    } else if (onselect) {
+      onselect(dayOfMonth.date, dayOfMonth, e);
+    }
+  }
 </script>
 
 {#snippet chipContent()}
   {#if customCalendarDateChipTyped}
     {@render customCalendarDateChipTyped(dayOfMonth)}
   {:else}
-    <button
-      class="chip"
-      {disabled}
-      onclick={onselect ? (e) => onselect(dayOfMonth.date, dayOfMonth, e) : undefined}
-    >
+    <button class="chip" {disabled} onclick={onselectMod}>
       {#if customCalendarDateChipContentTyped}
         {@render customCalendarDateChipContentTyped(dayOfMonth)}
       {:else}
@@ -99,6 +121,9 @@
   class:showNextMonth
   class:today
   class:selected
+  class:isRangeStart
+  class:isRangeEnd
+  class:inRange
   class:weekend
   class={[
     'dodo-ui-CalendarDateChip',

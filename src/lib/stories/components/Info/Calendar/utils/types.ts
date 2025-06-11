@@ -31,4 +31,9 @@ export type DateOfMonth = {
   isNextMonth?: boolean;
   disabled?: boolean;
   today?: boolean;
+  isRangeStart?: boolean;
+  isRangeEnd?: boolean;
+  inRange?: boolean;
 };
+
+export type DateRangeType = 'start' | 'end';

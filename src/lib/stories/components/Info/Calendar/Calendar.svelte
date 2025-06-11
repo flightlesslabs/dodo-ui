@@ -136,6 +136,9 @@
     calendarTopContent?: (activeSection: CalendarActiveSection) => Snippet;
     /** calendar Bottom Content*/
     calendarBottomContent?: (activeSection: CalendarActiveSection) => Snippet;
+
+    /** Range value */
+    rangeValue?: [Date, Date];
   }
 </script>
 

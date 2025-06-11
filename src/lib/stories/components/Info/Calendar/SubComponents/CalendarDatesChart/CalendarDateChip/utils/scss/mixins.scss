@@ -56,6 +56,22 @@
   --dodo-ui-CalendarDateChip-selected-#{$color-name}-active-bg: var(
     --dodo-color-#{$color-name}-100
   );
+
+  --dodo-ui-CalendarDateChip-isRangeStart-#{$color-name}-bg: var(--dodo-color-#{$color-name}-300);
+  --dodo-ui-CalendarDateChip-isRangeStart-#{$color-name}-hover-bg: var(
+    --dodo-color-#{$color-name}-200
+  );
+  --dodo-ui-CalendarDateChip-isRangeStart-#{$color-name}-active-bg: var(
+    --dodo-color-#{$color-name}-100
+  );
+
+  --dodo-ui-CalendarDateChip-isRangeEnd-#{$color-name}-bg: var(--dodo-color-#{$color-name}-300);
+  --dodo-ui-CalendarDateChip-isRangeEnd-#{$color-name}-hover-bg: var(
+    --dodo-color-#{$color-name}-200
+  );
+  --dodo-ui-CalendarDateChip-isRangeEnd-#{$color-name}-active-bg: var(
+    --dodo-color-#{$color-name}-100
+  );
 }
 
 /// Mixin: generate-dodo-ui-calendarDateChip-color
@@ -100,6 +116,36 @@
 
         &:active {
           background-color: var(--dodo-ui-CalendarDateChip-selected-#{$theme}-active-bg);
+        }
+      }
+    }
+
+    &.isRangeStart {
+      .chip:not([disabled]) {
+        color: var(--dodo-color-constant-white);
+        background-color: var(--dodo-ui-CalendarDateChip-isRangeStart-#{$theme}-bg);
+
+        &:hover {
+          background-color: var(--dodo-ui-CalendarDateChip-isRangeStart-#{$theme}-hover-bg);
+        }
+
+        &:active {
+          background-color: var(--dodo-ui-CalendarDateChip-isRangeStart-#{$theme}-active-bg);
+        }
+      }
+    }
+
+    &.isRangeEnd {
+      .chip:not([disabled]) {
+        color: var(--dodo-color-constant-white);
+        background-color: var(--dodo-ui-CalendarDateChip-isRangeEnd-#{$theme}-bg);
+
+        &:hover {
+          background-color: var(--dodo-ui-CalendarDateChip-isRangeEnd-#{$theme}-hover-bg);
+        }
+
+        &:active {
+          background-color: var(--dodo-ui-CalendarDateChip-isRangeEnd-#{$theme}-active-bg);
         }
       }
     }

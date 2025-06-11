@@ -33,6 +33,9 @@ export interface CreateDatesOfMonthSettings {
 
   /** Use UTC time */
   utc?: boolean;
+
+  /** Range value */
+  rangeValue?: [Date, Date];
 }
 
 export type CreateDateOfMonthType = 'currentMonth' | 'nextMonth' | 'lastMonth';
@@ -100,6 +103,11 @@ export default function createDateOfMonth(
     ? settings?.includeDates.map((item) => dateMoment(item, settings).format('DD-MM-YYYY'))
     : undefined;
 
+  const [range1, range2] = settings?.rangeValue || [];
+
+  const rangeStart = range1 ? dateMoment(range1, settings) : undefined;
+  const rangeEnd = range2 ? dateMoment(range2, settings) : undefined;
+
   const todayDate = dateMoment(undefined, settings).format('DD-MM-YYYY');
 
   const todayManual = settings?.today
@@ -107,6 +115,27 @@ export default function createDateOfMonth(
     : undefined;
 
   const dayMoment = dateMoment(date, settings);
+  const dayMomentDayFormatted = dayMoment.format('DD-MM-YYYY');
+
+  let isRangeStart = false;
+
+  let isRangeEnd = false;
+
+  let inRange = false;
+
+  if (rangeStart && rangeEnd) {
+    if (dayMomentDayFormatted === rangeStart.format('DD-MM-YYYY')) {
+      isRangeStart = true;
+    }
+
+    if (dayMomentDayFormatted === rangeEnd.format('DD-MM-YYYY')) {
+      isRangeEnd = true;
+    }
+
+    if (dayMoment.isAfter(rangeStart) && dayMoment.isBefore(rangeEnd)) {
+      inRange = true;
+    }
+  }
 
   const dataToExport: DateOfMonth = {
     id: `${dayMoment.valueOf()}`,
@@ -114,6 +143,9 @@ export default function createDateOfMonth(
     isCurrentMonth: true,
     disabled: getIsDateDisabled(dayMoment, minDate, maxDate, excludeDates, includeDates),
     today: getIsToday(dayMoment, todayDate, todayManual),
+    isRangeStart,
+    isRangeEnd,
+    inRange,
   };
 
   if (monthType === 'lastMonth') {
