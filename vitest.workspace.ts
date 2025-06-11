@@ -1,32 +1,37 @@
+import { defineWorkspace } from 'vitest/config';
+import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-
-import { defineWorkspace } from 'vitest/config';
-
-import { storybookTest } from '@storybook/experimental-addon-test/vitest-plugin';
 
 const dirname =
   typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
-// More info at: https://storybook.js.org/docs/writing-tests/test-addon
 export default defineWorkspace([
-  'vite.config.ts',
+  // This is the path to your existing Vitest config file
+  './vitest.config.ts',
   {
-    extends: 'vite.config.ts',
+    // This is the path to your existing Vite config file
+    extends: './vite.config.ts',
     plugins: [
-      // The plugin will run tests for the stories defined in your Storybook config
-      // See options at: https://storybook.js.org/docs/writing-tests/test-addon#storybooktest
-      storybookTest({ configDir: path.join(dirname, '.storybook') }),
+      storybookTest({
+        // The location of your Storybook config, main.js|ts
+        configDir: path.join(dirname, '.storybook'),
+        // This should match your package.json script to run Storybook
+        // The --ci flag will skip prompts and not open a browser
+        storybookScript: 'pnpm storybook --ci',
+      }),
     ],
     test: {
       name: 'storybook',
+      // Enable browser mode
       browser: {
         enabled: true,
-        headless: true,
-        name: 'chromium',
+        // Make sure to install Playwright
         provider: 'playwright',
+        headless: true,
+        instances: [{ browser: 'chromium' }],
       },
-      setupFiles: ['.storybook/vitest.setup.ts'],
+      setupFiles: ['./.storybook/vitest.setup.ts'],
     },
   },
 ]);

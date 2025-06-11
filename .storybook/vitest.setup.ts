@@ -1,9 +1,9 @@
 import { beforeAll } from 'vitest';
+// Replace your-framework with the framework you are using, e.g. react-vite, nextjs, nextjs-vite, etc.
 import { setProjectAnnotations } from '@storybook/sveltekit';
-import * as projectAnnotations from './preview';
+import * as previewAnnotations from './preview';
 
-// This is an important step to apply the right configuration when testing your stories.
-// More info at: https://storybook.js.org/docs/api/portable-stories/portable-stories-vitest#setprojectannotations
-const project = setProjectAnnotations([projectAnnotations]);
+const annotations = setProjectAnnotations([previewAnnotations]);
 
-beforeAll(project.beforeAll);
+// Run Storybook's beforeAll hook
+beforeAll(annotations.beforeAll);
