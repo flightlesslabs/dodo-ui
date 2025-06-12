@@ -4,7 +4,7 @@ import { Source } from '@storybook/addon-docs/blocks';
 
 ## `getDatesOfMonth`
 
-`getDatesOfMonth(date, settings)` generates a calendar view of a given month with options to include dates from the previous and next month.
+`getDatesOfMonth(date, settings, manipulateDate)` generates a 2D array of weeks, each containing `DateOfMonth` objects. It supports options via `CreateDatesOfMonthSettings` and allows injecting custom logic per date.
 
 ### Usage
 
@@ -12,19 +12,54 @@ import { Source } from '@storybook/addon-docs/blocks';
   dark
   language="ts"
   code={`
-import { getDatesOfMonth, getMoment} from '@flightlesslabs/dodo-ui';
+// Basic usage
+import { getDatesOfMonth, getMoment } from '@flightlesslabs/dodo-ui';
 
 const dates = getDatesOfMonth(new Date(), {
 showLastMonth: false,
 showNextMonth: false,
 });
 
-// Or
+// Using a formatted date
+const dates2 = getDatesOfMonth(
+getMoment('01-02-2025', 'DD-MM-YYYY').toDate()
+);
 
-const dates2 = getDatesOfMonth(getMoment('01-02-2025', 'DD-MM-YYYY').toDate());
-
+// With custom manipulation
+const dates3 = getDatesOfMonth(new Date(), {
+timezone: 'America/New_York',
+startOfWeek: 'MON',
+}, (date, settings) => {
+return {
+...date,
+disabled: true,
+};
+});
 `}
 />
+
+## `createDateOfMonth`
+
+`createDateOfMonth(date, settings, monthType?, manipulateDate?)` creates a single `DateOfMonth` object representing one calendar cell. This is typically used internally by `getDatesOfMonth` but can be useful for custom logic.
+
+### Usage
+
+<Source
+  dark
+  language="ts"
+  code={`
+// Manual usage for one day
+import { createDateOfMonth } from '@flightlesslabs/dodo-ui';
+
+const date = new Date();
+const dateObj = createDateOfMonth(date, {
+minDate: new Date('2025-01-01'),
+timezone: 'UTC',
+}, 'currentMonth');
+`}
+/>
+
+---
 
 ## Types
 
@@ -34,24 +69,60 @@ const dates2 = getDatesOfMonth(getMoment('01-02-2025', 'DD-MM-YYYY').toDate());
   dark
   language="ts"
   code={`
- type DateOfMonth = {
+// Represents a single calendar cell
+type DateOfMonth = {
   id: string;
-  dayNumber: number;
   date: Date;
-  isCurrentMonth?: boolean;
+  isCurrentMonth: boolean;
   isLastMonth?: boolean;
   isNextMonth?: boolean;
+  disabled?: boolean;
+  today?: boolean;
 };
 `}
 />
 
-### Enum: `DAYS_OF_WEEK`
+### `CreateDatesOfMonthSettings`
 
 <Source
   dark
   language="ts"
   code={`
- const enum DAYS_OF_WEEK {
+// Configuration for calendar generation
+interface CreateDatesOfMonthSettings {
+  startOfWeek?: 'SUN' | 'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT';
+  showLastMonth?: boolean;
+  showNextMonth?: boolean;
+  today?: Date;
+  minDate?: Date;
+  maxDate?: Date;
+  excludeDates?: Date[];
+  includeDates?: Date[];
+  timezone?: string;
+  utc?: boolean;
+}
+`}
+/>
+
+### `CreateDateOfMonthType`
+
+<Source
+  dark
+  language="ts"
+  code={`
+// Indicates the month context of the date
+type CreateDateOfMonthType = 'currentMonth' | 'nextMonth' | 'lastMonth';
+`}
+/>
+
+### `DAYS_OF_WEEK` Enum
+
+<Source
+  dark
+  language="ts"
+  code={`
+// Weekday constants (Sunday = 0)
+export const enum DAYS_OF_WEEK {
   SUN,
   MON,
   TUE,
@@ -59,6 +130,30 @@ const dates2 = getDatesOfMonth(getMoment('01-02-2025', 'DD-MM-YYYY').toDate());
   THU,
   FRI,
   SAT,
+}
+`}
+/>
+
+### `MONTHS` Enum
+
+<Source
+  dark
+  language="ts"
+  code={`
+// Month constants (January = 0)
+export const enum MONTHS {
+  JAN,
+  FEB,
+  MAR,
+  APR,
+  MAY,
+  JUN,
+  JUL,
+  AUG,
+  SEP,
+  OCT,
+  NOV,
+  DEC,
 }
 `}
 />
