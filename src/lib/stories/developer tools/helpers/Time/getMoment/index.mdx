@@ -2,7 +2,9 @@ import { Source } from '@storybook/addon-docs/blocks';
 
 # `getMoment`
 
-a Day.js wrapper
+A [Day.js](https://day.js.org/) wrapper that supports custom formats, UTC mode, and timezone conversion using `dayjs`, `utc`, `timezone`, and `customParseFormat` plugins.
+
+---
 
 ## Usage
 
@@ -10,9 +12,34 @@ a Day.js wrapper
   dark
   language="ts"
   code={`
-import { getMoment } from '@flightlesslabs/dodo-ui';
+// Basic local time
+getMoment('2025-01-01T00:00:00Z').format();
 
-getMoment('2025-01-01T00:00:00Z', { utc: true }).format(); // "2025-01-01T00:00:00Z"
-getMoment('01-01-2025', { format: 'DD-MM-YYYY', timezone: 'Asia/Kolkata' }).format();
+// UTC output
+getMoment('2025-01-01T00:00:00Z', undefined, { utc: true }).format();
+// → "2025-01-01T00:00:00Z"
+
+// With custom format + timezone
+getMoment('01-01-2025', 'DD-MM-YYYY', { timezone: 'Asia/Kolkata' }).format();
+// → "2025-01-01T00:00:00+05:30"
+`}
+/>
+
+---
+
+## API
+
+<Source
+  dark
+  language="ts"
+  code={`
+getMoment(
+  date?: ConfigType,
+  format?: string,
+  settings?: {
+    utc?: boolean;
+    timezone?: string;
+  }
+): dayjs.Dayjs
 `}
 />

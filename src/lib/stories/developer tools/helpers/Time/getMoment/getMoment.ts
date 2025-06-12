@@ -1,5 +1,5 @@
 import type { ConfigType, OptionType } from 'dayjs';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import utc from 'dayjs/plugin/utc.js';
 import timezone from 'dayjs/plugin/timezone.js';
 import customParseFormat from 'dayjs/plugin/customParseFormat.js';
@@ -15,14 +15,13 @@ export type GetMomentDate = ConfigType;
 
 /**
  * Optional formatting string used to parse the date.
- * Refer to dayjs customParseFormat plugin for supported formats.
  */
 export type GetMomentFormat = OptionType;
 
 /**
  * Settings to control how the moment is returned (UTC, timezone, or local).
  */
-export type GetMomentSettings = {
+export interface GetMomentSettings {
   /**
    * Timezone string (e.g., "America/New_York").
    */
@@ -32,28 +31,28 @@ export type GetMomentSettings = {
    * Whether to return the time in UTC. If true, overrides timezone.
    */
   utc?: boolean;
-};
+}
 
 /**
  * A wrapper around dayjs to return a moment-like object with optional formatting,
  * timezone, or UTC handling.
  *
- * @param {GetMomentDate} [date] - The input date, time, or string to be parsed.
- * @param {format} [format] - A custom format string for parsing the input date.
- * @param {GetMomentSettings} [settings] - Optional settings for format, timezone, and UTC.
- * @returns {dayjs.Dayjs} - A dayjs object in local, UTC, or specified timezone.
+ * @param date - The input date, time, or string to be parsed.
+ * @param format - A custom format string for parsing the input date.
+ * @param settings - Optional settings for timezone or UTC output.
+ * @returns A dayjs object in local, UTC, or specified timezone.
  *
  * @example
- * getMoment('2025-01-01T12:00:00Z', { utc: true }).format()
- * getMoment('01-01-2025', { format: 'DD-MM-YYYY', timezone: 'Asia/Kolkata' }).format()
+ * getMoment('2025-01-01T12:00:00Z', undefined, { utc: true }).format()
+ * getMoment('01-01-2025', 'DD-MM-YYYY', { timezone: 'Asia/Kolkata' }).format()
  */
 export default function getMoment(
   date?: GetMomentDate,
   format?: GetMomentFormat,
   settings?: GetMomentSettings,
-): dayjs.Dayjs {
+): Dayjs {
   const timezone = settings?.timezone;
-  const utc = settings?.utc ? true : false;
+  const utc = settings?.utc ?? false;
 
   if (utc) {
     return dayjs.utc(dayjs(date, format));

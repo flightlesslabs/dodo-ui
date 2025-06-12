@@ -1,16 +1,18 @@
 import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
-
-import type { DateOfMonth } from './types.js';
-import { calendarWeekOptions } from '$lib/index.js';
-import createDateOfMonth, { type CreateDatesOfMonthSettings } from './createDateOfMonth.js';
+import {
+  calendarWeekOptions,
+  createDateOfMonth,
+  type CreateDatesOfMonthSettings,
+  type DateOfMonth,
+} from '$lib/index.js';
 
 /**
  * Divides an array into chunks of a given size.
  *
  * @template T - The type of elements in the array.
- * @param {T[]} arr - The array to be chunked.
- * @param {number} size - The chunk size.
- * @returns {T[][]} - An array of chunks.
+ * @param arr - The array to be chunked.
+ * @param size - The chunk size.
+ * @returns An array of chunks.
  */
 function chunkArray<T>(arr: T[], size: number): T[][] {
   const result: T[][] = [];
@@ -20,6 +22,13 @@ function chunkArray<T>(arr: T[], size: number): T[][] {
   return result;
 }
 
+/**
+ * Creates a moment object from a Date with optional timezone and UTC settings.
+ *
+ * @param date - The date to convert.
+ * @param settings - Optional settings for timezone and UTC.
+ * @returns A moment object with the applied settings.
+ */
 function dateMoment(date?: Date, settings?: CreateDatesOfMonthSettings) {
   return getMoment(date, undefined, {
     timezone: settings?.timezone,
@@ -30,13 +39,18 @@ function dateMoment(date?: Date, settings?: CreateDatesOfMonthSettings) {
 /**
  * Generates a calendar grid of dates for a given month.
  *
- * @param {Date} date - The base date for the month to generate.
- * @param {GetDatesOfMonthSettings} [settings] - Optional settings for formatting and display.
- * @returns {(DateOfMonth[][] | null)} - A 2D array of DateOfMonth objects representing the calendar, or null if invalid.
+ * @param date - The base date for the month to generate.
+ * @param settings - Optional settings for formatting and display.
+ * @param manipulateDate - Optional function to modify each generated DateOfMonth.
+ * @returns A 2D array of DateOfMonth objects representing the calendar, or null if invalid.
  */
 export default function getDatesOfMonth(
   date?: Date,
   settings?: CreateDatesOfMonthSettings,
+  manipulateDate?: (
+    dateToModify: DateOfMonth,
+    settings?: CreateDatesOfMonthSettings,
+  ) => DateOfMonth,
 ): DateOfMonth[][] | null {
   if (!date) {
     return null;
@@ -54,6 +68,7 @@ export default function getDatesOfMonth(
   const startOfWeek =
     calendarWeekOptions.find((item) => item.abr3 === settings?.startOfWeek) ||
     calendarWeekOptions[0];
+
   const rawStartOfMonthDay = monthMoment.day();
   const startOfMonthDay = (rawStartOfMonthDay - startOfWeek.value + 7) % 7;
 
@@ -66,15 +81,13 @@ export default function getDatesOfMonth(
   if (showLastMonth) {
     for (let gap = 0; gap < startOfMonthDay; gap++) {
       const dayMoment = lastMonth.clone().add(gap, 'days');
-
-      dates.push(createDateOfMonth(dayMoment.toDate(), settings, 'lastMonth'));
+      dates.push(createDateOfMonth(dayMoment.toDate(), settings, 'lastMonth', manipulateDate));
     }
   }
 
   for (let day = 1; day <= daysInMonth; day++) {
     const dayMoment = monthMoment.clone().set('date', day);
-
-    dates.push(createDateOfMonth(dayMoment.toDate(), settings, 'currentMonth'));
+    dates.push(createDateOfMonth(dayMoment.toDate(), settings, 'currentMonth', manipulateDate));
   }
 
   const datesDivided = chunkArray<DateOfMonth>(dates, 7);
@@ -88,8 +101,9 @@ export default function getDatesOfMonth(
 
       for (let gap = 0; gap < nextMonthDaysRequired; gap++) {
         const dayMoment = nextMonth.clone().add(gap, 'days');
-
-        nextMonthDates.push(createDateOfMonth(dayMoment.toDate(), settings, 'nextMonth'));
+        nextMonthDates.push(
+          createDateOfMonth(dayMoment.toDate(), settings, 'nextMonth', manipulateDate),
+        );
       }
 
       datesDivided[datesDivided.length - 1] = [...lastRow, ...nextMonthDates];

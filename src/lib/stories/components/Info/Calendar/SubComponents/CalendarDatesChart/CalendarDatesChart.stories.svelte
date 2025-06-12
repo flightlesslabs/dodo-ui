@@ -6,6 +6,7 @@
   import { componentColorArray } from '$lib/types/colors.js';
   import { calendarWeekNamesArray } from './CalendarWeek/CalendarWeek.svelte';
   import { componentSizeArray } from '$lib/types/size.js';
+  import type { DateOfMonth } from '../../utils/types.js';
 
   export const storyCalendarDatesChartArgTypes: StoryBookArgTypes = {
     startOfWeek: {
@@ -85,5 +86,19 @@
   args={{
     value: getMoment('01-03-2025', 'DD-MM-YYYY').toDate(),
     showNextMonth: false,
+  }}
+/>
+
+<Story
+  name="ManipulateDate"
+  args={{
+    manipulateDate: (dateToModify: DateOfMonth) => {
+      // Disable all Fridays
+      if (getMoment(dateToModify.date, undefined).day() === 5) {
+        dateToModify.disabled = true;
+      }
+
+      return dateToModify;
+    },
   }}
 />

@@ -40,13 +40,6 @@
     includeDates?: Date[];
     /** onselect event handler */
     onselect?: (value: Date, dayOfMonth: DateOfMonth, e: ButtonClickEvent) => void;
-    /** onselectRange event handler */
-    onselectRange?: (
-      value: Date,
-      type: DateRangeType,
-      dayOfMonth: DateOfMonth,
-      e: ButtonClickEvent,
-    ) => void;
     /** Custom Calendar Chip Content */
     customCalendarDateChipContent?: (dayOfMonth: DateOfMonth) => Snippet;
     /** Custom Calendar Chip */
@@ -64,8 +57,11 @@
     /** Color Weekend days */
     weekendDaysColorDays?: boolean;
 
-    /** Range value */
-    rangeValue?: [Date, Date];
+    /** manipulate date callback */
+    manipulateDate?: (
+      dateToModify: DateOfMonth,
+      settings?: CreateDatesOfMonthSettings,
+    ) => DateOfMonth;
   }
 </script>
 
@@ -73,8 +69,7 @@
   import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
   import type { ComponentColor } from '$lib/types/colors.js';
   import type { Snippet } from 'svelte';
-  import getDatesOfMonth from '../../utils/getDatesOfMonth.js';
-  import type { DateOfMonth, DateRangeType } from '../../utils/types.js';
+  import type { DateOfMonth } from '../../utils/types.js';
   import CalendarDateChip, {
     type CalendarDateChipProps,
   } from './CalendarDateChip/CalendarDateChip.svelte';
@@ -85,6 +80,8 @@
     CalendarWeekNames,
   } from './CalendarWeek/CalendarWeek.svelte';
   import type { ComponentSize } from '$lib/types/size.js';
+  import { getDatesOfMonth } from '$lib/index.js';
+  import type { CreateDatesOfMonthSettings } from '../../utils/createDateOfMonth/createDateOfMonth.js';
 
   let {
     class: className = '',
@@ -114,51 +111,27 @@
     size = 'normal',
     weekendDays,
     weekendDaysColorDays = true,
-    rangeValue,
-    onselectRange,
+    manipulateDate,
   }: CalendarDatesChartProps = $props();
 
   let monthToPick = $state<Date | undefined>(undefined);
 
   const daysGroup = $derived(
-    getDatesOfMonth(monthToPick, {
-      startOfWeek,
-      timezone,
-      utc,
-      today,
-      minDate,
-      maxDate,
-      excludeDates,
-      includeDates,
-      rangeValue,
-    }) || [],
+    getDatesOfMonth(
+      monthToPick,
+      {
+        startOfWeek,
+        timezone,
+        utc,
+        today,
+        minDate,
+        maxDate,
+        excludeDates,
+        includeDates,
+      },
+      manipulateDate,
+    ) || [],
   );
-
-  function getRangeType(day: DateOfMonth, rangeValue?: [Date, Date]): DateRangeType | undefined {
-    if (!rangeValue) {
-      return undefined;
-    }
-
-    const [range1, range2] = rangeValue;
-
-    if (!range1 || !range2) {
-      return undefined;
-    }
-
-    if (
-      getMoment(range1, undefined, { timezone, utc }).format('MMM YYYY') ===
-      getMoment(day.date, undefined, { timezone, utc }).format('DD-MM-YYY')
-    ) {
-      return 'start';
-    } else if (
-      getMoment(range2, undefined, { timezone, utc }).format('MMM YYYY') ===
-      getMoment(day.date, undefined, { timezone, utc }).format('DD-MM-YYY')
-    ) {
-      return 'end';
-    }
-
-    return undefined;
-  }
 
   $effect(() => {
     if (!value) {
@@ -218,9 +191,6 @@
             )
               ? true
               : false}
-            showValueRange={rangeValue ? true : false}
-            rangeType={getRangeType(day, rangeValue)}
-            {onselectRange}
             {...calendarDateChipProps}
           />
         {/each}

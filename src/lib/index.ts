@@ -199,9 +199,9 @@ export { default as CalendarYearChip } from '$lib/stories/components/Info/Calend
 
 export type { DateOfMonth } from '$lib/stories/components/Info/Calendar/utils/types.js';
 export { DAYS_OF_WEEK, MONTHS } from '$lib/stories/components/Info/Calendar/utils/types.js';
-export { default as getDatesOfMonth } from '$lib/stories/components/Info/Calendar/utils/getDatesOfMonth.js';
-export { default as createDateOfMonth } from '$lib/stories/components/Info/Calendar/utils/createDateOfMonth.js';
+export { default as getDatesOfMonth } from '$lib/stories/components/Info/Calendar/utils/getDatesOfMonth/getDatesOfMonth.js';
+export { default as createDateOfMonth } from '$lib/stories/components/Info/Calendar/utils/createDateOfMonth/createDateOfMonth.js';
 export type {
   CreateDatesOfMonthSettings,
   CreateDateOfMonthType,
-} from '$lib/stories/components/Info/Calendar/utils/createDateOfMonth.js';
+} from '$lib/stories/components/Info/Calendar/utils/createDateOfMonth/createDateOfMonth.js';

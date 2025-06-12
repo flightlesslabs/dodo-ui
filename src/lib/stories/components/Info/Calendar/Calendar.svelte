@@ -137,8 +137,11 @@
     /** calendar Bottom Content*/
     calendarBottomContent?: (activeSection: CalendarActiveSection) => Snippet;
 
-    /** Range value */
-    rangeValue?: [Date, Date];
+    /** manipulate date callback */
+    manipulateDate?: (
+      dateToModify: DateOfMonth,
+      settings?: CreateDatesOfMonthSettings,
+    ) => DateOfMonth;
   }
 </script>
 
@@ -164,6 +167,7 @@
     MONTHS,
     type CalendarMonthChipProps,
     type CalendarYearChipProps,
+    type CreateDatesOfMonthSettings,
   } from '$lib/index.js';
   import CalendarMonthList from './SubComponents/CalendarMonthList/CalendarMonthList.svelte';
   import CalendarYearList from './SubComponents/CalendarYearList/CalendarYearList.svelte';
@@ -233,6 +237,7 @@
     showControlsYearList = true,
     calendarTopContent: calendarTopContentInternal,
     calendarBottomContent: calendarBottomContentInternal,
+    manipulateDate,
   }: CalendarProps = $props();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -399,6 +404,7 @@
     {size}
     {weekendDays}
     {weekendDaysColorDays}
+    {manipulateDate}
   />
 {/snippet}
 

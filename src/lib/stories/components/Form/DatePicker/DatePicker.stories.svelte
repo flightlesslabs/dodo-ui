@@ -6,6 +6,7 @@
   import { componentSizeArray } from '$lib/types/size.js';
   import { componentColorArray } from '$lib/types/colors.js';
   import Icon from '@iconify/svelte';
+  import { getMoment, type DateOfMonth } from '$lib/index.js';
 
   export const storyDatePickerArgTypes: StoryBookArgTypes = {
     roundness: {
@@ -80,6 +81,21 @@
 
 <Story name="OpenByDefault" asChild>
   <DatePicker {value} open={true} />
+</Story>
+
+<Story name="ManipulateDate" asChild>
+  <DatePicker
+    {value}
+    onselect={(val: Date) => (value = val)}
+    manipulateDate={(dateToModify: DateOfMonth) => {
+      // Disable all Fridays
+      if (getMoment(dateToModify.date, undefined).day() === 5) {
+        dateToModify.disabled = true;
+      }
+
+      return dateToModify;
+    }}
+  />
 </Story>
 
 <Story name="Custom calender icon" asChild>

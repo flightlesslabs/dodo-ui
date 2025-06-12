@@ -1,0 +1,121 @@
+import { Source } from '@storybook/addon-docs/blocks';
+
+# `createDateOfMonth`
+
+`createDateOfMonth(date, settings, monthType?, manipulateDate?)` creates a single `DateOfMonth` object representing one calendar cell. This is typically used internally by `getDatesOfMonth` but can be useful for custom logic.
+
+## Usage
+
+<Source
+  dark
+  language="ts"
+  code={`
+// Manual usage for one day
+import { createDateOfMonth } from '@flightlesslabs/dodo-ui';
+
+const date = new Date();
+const dateObj = createDateOfMonth(date, {
+minDate: new Date('2025-01-01'),
+timezone: 'UTC',
+}, 'currentMonth');
+`}
+/>
+
+---
+
+# Types
+
+## `DateOfMonth`
+
+<Source
+  dark
+  language="ts"
+  code={`
+// Represents a single calendar cell
+type DateOfMonth = {
+  id: string;
+  date: Date;
+  isCurrentMonth: boolean;
+  isLastMonth?: boolean;
+  isNextMonth?: boolean;
+  disabled?: boolean;
+  today?: boolean;
+};
+`}
+/>
+
+## `CreateDatesOfMonthSettings`
+
+<Source
+  dark
+  language="ts"
+  code={`
+// Configuration for calendar generation
+interface CreateDatesOfMonthSettings {
+  startOfWeek?: 'SUN' | 'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT';
+  showLastMonth?: boolean;
+  showNextMonth?: boolean;
+  today?: Date;
+  minDate?: Date;
+  maxDate?: Date;
+  excludeDates?: Date[];
+  includeDates?: Date[];
+  timezone?: string;
+  utc?: boolean;
+}
+`}
+/>
+
+## `CreateDateOfMonthType`
+
+<Source
+  dark
+  language="ts"
+  code={`
+// Indicates the month context of the date
+type CreateDateOfMonthType = 'currentMonth' | 'nextMonth' | 'lastMonth';
+`}
+/>
+
+## `DAYS_OF_WEEK` Enum
+
+<Source
+  dark
+  language="ts"
+  code={`
+// Weekday constants (Sunday = 0)
+export const enum DAYS_OF_WEEK {
+  SUN,
+  MON,
+  TUE,
+  WED,
+  THU,
+  FRI,
+  SAT,
+}
+`}
+/>
+
+## `MONTHS` Enum
+
+<Source
+  dark
+  language="ts"
+  code={`
+// Month constants (January = 0)
+export const enum MONTHS {
+  JAN,
+  FEB,
+  MAR,
+  APR,
+  MAY,
+  JUN,
+  JUL,
+  AUG,
+  SEP,
+  OCT,
+  NOV,
+  DEC,
+}
+`}
+/>
