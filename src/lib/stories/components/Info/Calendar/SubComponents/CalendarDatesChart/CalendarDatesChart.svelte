@@ -40,13 +40,6 @@
     includeDates?: Date[];
     /** onselect event handler */
     onselect?: (value: Date, dayOfMonth: DateOfMonth, e: ButtonClickEvent) => void;
-    /** onselectRange event handler */
-    onselectRange?: (
-      value: Date,
-      type: DateRangeType,
-      dayOfMonth: DateOfMonth,
-      e: ButtonClickEvent,
-    ) => void;
     /** Custom Calendar Chip Content */
     customCalendarDateChipContent?: (dayOfMonth: DateOfMonth) => Snippet;
     /** Custom Calendar Chip */
@@ -63,9 +56,6 @@
     weekendDays?: CalendarWeekNames[];
     /** Color Weekend days */
     weekendDaysColorDays?: boolean;
-
-    /** Range value */
-    rangeValue?: [Date, Date];
   }
 </script>
 
@@ -74,7 +64,7 @@
   import type { ComponentColor } from '$lib/types/colors.js';
   import type { Snippet } from 'svelte';
   import getDatesOfMonth from '../../utils/getDatesOfMonth.js';
-  import type { DateOfMonth, DateRangeType } from '../../utils/types.js';
+  import type { DateOfMonth } from '../../utils/types.js';
   import CalendarDateChip, {
     type CalendarDateChipProps,
   } from './CalendarDateChip/CalendarDateChip.svelte';
@@ -114,8 +104,6 @@
     size = 'normal',
     weekendDays,
     weekendDaysColorDays = true,
-    rangeValue,
-    onselectRange,
   }: CalendarDatesChartProps = $props();
 
   let monthToPick = $state<Date | undefined>(undefined);
@@ -130,35 +118,8 @@
       maxDate,
       excludeDates,
       includeDates,
-      rangeValue,
     }) || [],
   );
-
-  function getRangeType(day: DateOfMonth, rangeValue?: [Date, Date]): DateRangeType | undefined {
-    if (!rangeValue) {
-      return undefined;
-    }
-
-    const [range1, range2] = rangeValue;
-
-    if (!range1 || !range2) {
-      return undefined;
-    }
-
-    if (
-      getMoment(range1, undefined, { timezone, utc }).format('MMM YYYY') ===
-      getMoment(day.date, undefined, { timezone, utc }).format('DD-MM-YYY')
-    ) {
-      return 'start';
-    } else if (
-      getMoment(range2, undefined, { timezone, utc }).format('MMM YYYY') ===
-      getMoment(day.date, undefined, { timezone, utc }).format('DD-MM-YYY')
-    ) {
-      return 'end';
-    }
-
-    return undefined;
-  }
 
   $effect(() => {
     if (!value) {
@@ -218,9 +179,6 @@
             )
               ? true
               : false}
-            showValueRange={rangeValue ? true : false}
-            rangeType={getRangeType(day, rangeValue)}
-            {onselectRange}
             {...calendarDateChipProps}
           />
         {/each}
