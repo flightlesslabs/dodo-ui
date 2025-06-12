@@ -69,7 +69,6 @@
   import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
   import type { ComponentColor } from '$lib/types/colors.js';
   import type { Snippet } from 'svelte';
-  import getDatesOfMonth from '../../utils/getDatesOfMonth.js';
   import type { DateOfMonth } from '../../utils/types.js';
   import CalendarDateChip, {
     type CalendarDateChipProps,
@@ -81,7 +80,8 @@
     CalendarWeekNames,
   } from './CalendarWeek/CalendarWeek.svelte';
   import type { ComponentSize } from '$lib/types/size.js';
-  import type { CreateDatesOfMonthSettings } from '../../utils/createDateOfMonth.js';
+  import { getDatesOfMonth } from '$lib/index.js';
+  import type { CreateDatesOfMonthSettings } from '../../utils/createDateOfMonth/createDateOfMonth.js';
 
   let {
     class: className = '',

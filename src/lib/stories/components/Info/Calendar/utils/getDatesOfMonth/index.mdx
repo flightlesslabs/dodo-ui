@@ -1,0 +1,37 @@
+import { Source } from '@storybook/addon-docs/blocks';
+
+# `getDatesOfMonth`
+
+`getDatesOfMonth(date, settings, manipulateDate)` generates a 2D array of weeks, each containing `DateOfMonth` objects. It supports options via `CreateDatesOfMonthSettings` and allows injecting custom logic per date.
+
+## Usage
+
+<Source
+  dark
+  language="ts"
+  code={`
+// Basic usage
+import { getDatesOfMonth, getMoment } from '@flightlesslabs/dodo-ui';
+
+const dates = getDatesOfMonth(new Date(), {
+showLastMonth: false,
+showNextMonth: false,
+});
+
+// Using a formatted date
+const dates2 = getDatesOfMonth(
+getMoment('01-02-2025', 'DD-MM-YYYY').toDate()
+);
+
+// With custom manipulation
+const dates3 = getDatesOfMonth(new Date(), {
+timezone: 'America/New_York',
+startOfWeek: 'MON',
+}, (date, settings) => {
+return {
+...date,
+disabled: true,
+};
+});
+`}
+/>

@@ -1,8 +1,10 @@
 import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
-import { calendarWeekOptions } from '$lib/index.js';
-
-import createDateOfMonth, { type CreateDatesOfMonthSettings } from './createDateOfMonth.js';
-import type { DateOfMonth } from './types.js';
+import {
+  calendarWeekOptions,
+  createDateOfMonth,
+  type CreateDatesOfMonthSettings,
+  type DateOfMonth,
+} from '$lib/index.js';
 
 /**
  * Divides an array into chunks of a given size.

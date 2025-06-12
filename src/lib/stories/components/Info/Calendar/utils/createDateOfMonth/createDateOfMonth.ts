@@ -1,7 +1,7 @@
 import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
 import type dayjs from 'dayjs';
-import type { DateOfMonth } from './types.js';
-import type { CalendarWeekNames } from '../SubComponents/CalendarDatesChart/CalendarWeek/CalendarWeek.svelte';
+import type { DateOfMonth } from '../types.js';
+import type { CalendarWeekNames } from '$lib/index.js';
 
 /** Settings for generating calendar dates */
 export interface CreateDatesOfMonthSettings {
