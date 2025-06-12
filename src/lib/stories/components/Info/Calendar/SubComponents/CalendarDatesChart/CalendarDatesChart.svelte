@@ -56,6 +56,12 @@
     weekendDays?: CalendarWeekNames[];
     /** Color Weekend days */
     weekendDaysColorDays?: boolean;
+
+    /** manipulate date callback */
+    manipulateDate?: (
+      dateToModify: DateOfMonth,
+      settings?: CreateDatesOfMonthSettings,
+    ) => DateOfMonth;
   }
 </script>
 
@@ -75,6 +81,7 @@
     CalendarWeekNames,
   } from './CalendarWeek/CalendarWeek.svelte';
   import type { ComponentSize } from '$lib/types/size.js';
+  import type { CreateDatesOfMonthSettings } from '../../utils/createDateOfMonth.js';
 
   let {
     class: className = '',
@@ -104,21 +111,26 @@
     size = 'normal',
     weekendDays,
     weekendDaysColorDays = true,
+    manipulateDate,
   }: CalendarDatesChartProps = $props();
 
   let monthToPick = $state<Date | undefined>(undefined);
 
   const daysGroup = $derived(
-    getDatesOfMonth(monthToPick, {
-      startOfWeek,
-      timezone,
-      utc,
-      today,
-      minDate,
-      maxDate,
-      excludeDates,
-      includeDates,
-    }) || [],
+    getDatesOfMonth(
+      monthToPick,
+      {
+        startOfWeek,
+        timezone,
+        utc,
+        today,
+        minDate,
+        maxDate,
+        excludeDates,
+        includeDates,
+      },
+      manipulateDate,
+    ) || [],
   );
 
   $effect(() => {

@@ -224,6 +224,12 @@
     calendarTopContent?: (activeSection: CalendarActiveSection) => Snippet;
     /** calendar Bottom Content*/
     calendarBottomContent?: (activeSection: CalendarActiveSection) => Snippet;
+
+    /** manipulate date callback */
+    manipulateDate?: (
+      dateToModify: DateOfMonth,
+      settings?: CreateDatesOfMonthSettings,
+    ) => DateOfMonth;
   }
 </script>
 
@@ -246,6 +252,7 @@
     type CalendarYearChipProps,
     type CalendarYearSelectorProps,
     type ComponentColor,
+    type CreateDatesOfMonthSettings,
     type DateOfMonth,
     type DynamicInputFocusEvent,
     type PaperProps,
@@ -364,6 +371,8 @@
     calendarProps,
     calendarTopContent,
     calendarBottomContent,
+
+    manipulateDate,
   }: DatePickerProps = $props();
 
   const formatEditable = $derived(formatEditableRaw || format);
@@ -656,6 +665,7 @@
             onselect={onselectMod}
             {calendarTopContent}
             {calendarBottomContent}
+            {manipulateDate}
             {...calendarProps}
           />
         </div>

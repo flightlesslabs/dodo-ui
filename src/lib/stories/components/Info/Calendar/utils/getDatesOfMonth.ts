@@ -37,6 +37,10 @@ function dateMoment(date?: Date, settings?: CreateDatesOfMonthSettings) {
 export default function getDatesOfMonth(
   date?: Date,
   settings?: CreateDatesOfMonthSettings,
+  manipulateDate?: (
+    dateToModify: DateOfMonth,
+    settings?: CreateDatesOfMonthSettings,
+  ) => DateOfMonth,
 ): DateOfMonth[][] | null {
   if (!date) {
     return null;
@@ -67,14 +71,14 @@ export default function getDatesOfMonth(
     for (let gap = 0; gap < startOfMonthDay; gap++) {
       const dayMoment = lastMonth.clone().add(gap, 'days');
 
-      dates.push(createDateOfMonth(dayMoment.toDate(), settings, 'lastMonth'));
+      dates.push(createDateOfMonth(dayMoment.toDate(), settings, 'lastMonth', manipulateDate));
     }
   }
 
   for (let day = 1; day <= daysInMonth; day++) {
     const dayMoment = monthMoment.clone().set('date', day);
 
-    dates.push(createDateOfMonth(dayMoment.toDate(), settings, 'currentMonth'));
+    dates.push(createDateOfMonth(dayMoment.toDate(), settings, 'currentMonth', manipulateDate));
   }
 
   const datesDivided = chunkArray<DateOfMonth>(dates, 7);
@@ -89,7 +93,9 @@ export default function getDatesOfMonth(
       for (let gap = 0; gap < nextMonthDaysRequired; gap++) {
         const dayMoment = nextMonth.clone().add(gap, 'days');
 
-        nextMonthDates.push(createDateOfMonth(dayMoment.toDate(), settings, 'nextMonth'));
+        nextMonthDates.push(
+          createDateOfMonth(dayMoment.toDate(), settings, 'nextMonth', manipulateDate),
+        );
       }
 
       datesDivided[datesDivided.length - 1] = [...lastRow, ...nextMonthDates];

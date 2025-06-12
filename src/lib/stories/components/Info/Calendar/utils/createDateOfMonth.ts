@@ -90,6 +90,10 @@ export default function createDateOfMonth(
   date?: Date,
   settings?: CreateDatesOfMonthSettings,
   monthType: CreateDateOfMonthType = 'currentMonth',
+  manipulateDate?: (
+    dateToModify: DateOfMonth,
+    settings?: CreateDatesOfMonthSettings,
+  ) => DateOfMonth,
 ): DateOfMonth {
   const minDate = settings?.minDate ? dateMoment(settings.minDate, settings) : undefined;
   const maxDate = settings?.maxDate ? dateMoment(settings.maxDate, settings) : undefined;
@@ -108,7 +112,7 @@ export default function createDateOfMonth(
 
   const dayMoment = dateMoment(date, settings);
 
-  const dataToExport: DateOfMonth = {
+  let dataToExport: DateOfMonth = {
     id: `${dayMoment.valueOf()}`,
     date: dayMoment.toDate(),
     isCurrentMonth: true,
@@ -122,6 +126,10 @@ export default function createDateOfMonth(
   } else if (monthType === 'nextMonth') {
     dataToExport.isNextMonth = true;
     dataToExport.isCurrentMonth = false;
+  }
+
+  if (manipulateDate) {
+    dataToExport = manipulateDate(dataToExport, settings);
   }
 
   return dataToExport;
