@@ -392,18 +392,6 @@
 
   const calenderSize = calendarProps?.size || size;
 
-  let popupWidth = $state(
-    `calc(var(--dodo-ui-element-height-normal) * 7 + var(--dodo-ui-space) * 2)`,
-  );
-
-  if (calenderSize === 'normal') {
-    popupWidth = `calc(var(--dodo-ui-element-height-normal) * 7 + var(--dodo-ui-space) * 2)`;
-  } else if (calenderSize === 'small') {
-    popupWidth = `calc(var(--dodo-ui-element-height-small) * 7 + var(--dodo-ui-space) * 2)`;
-  } else if (calenderSize === 'large') {
-    popupWidth = `calc(var(--dodo-ui-element-height-large) * 7 + var(--dodo-ui-space) * 2)`;
-  }
-
   function closePopup() {
     open = false;
 
@@ -509,7 +497,7 @@
   <Popper
     {open}
     fullWidth
-    {popupWidth}
+    popupFullWidth={false}
     {onClickOutside}
     {...popperProps}
     {popupPositionX}

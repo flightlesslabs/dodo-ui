@@ -20,6 +20,8 @@
     open?: boolean;
     /** Full width Popper? */
     fullWidth?: boolean;
+    /** override Full width for Popup? */
+    popupFullWidth?: boolean;
     /** PopperPopup ref */
     popupRef?: HTMLDivElement;
     /** PopperPopup contents goes here */
@@ -73,24 +75,26 @@
     popperHeightForVerticalPosition,
     lockPoistions,
     fullWidth = false,
+    popupFullWidth: popupFullWidthRaw,
   }: PopperProps = $props();
+
+  const popupFullWidth = $derived(popupFullWidthRaw !== undefined ? popupFullWidthRaw : fullWidth);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let customPopupTyped = customPopup as any;
 
-  let popperContainerRef = $state<HTMLDivElement>();
   let popperLocation = $state<DOMRect>();
 
   function capturePopperLocation() {
-    if (!popperContainerRef) {
+    if (!ref) {
       return;
     }
 
-    popperLocation = popperContainerRef.getBoundingClientRect();
+    popperLocation = ref.getBoundingClientRect();
   }
 
   $effect(() => {
-    if (!popperContainerRef) {
+    if (!ref) {
       return;
     }
 
@@ -111,11 +115,9 @@
   {id}
   use:clickOutside={onClickOutside}
 >
-  <div class="PopperContainer" bind:this={popperContainerRef}>
-    {#if children}
-      {@render children()}
-    {/if}
-  </div>
+  {#if children}
+    {@render children()}
+  {/if}
 
   {#if customPopupTyped}
     {@render customPopupTyped(popperLocation)}
@@ -131,7 +133,7 @@
       {popupOffsetY}
       {popperHeightForVerticalPosition}
       {lockPoistions}
-      {fullWidth}
+      fullWidth={popupFullWidth}
       class={popupClass}
     >
       {#if popupChildren}
@@ -150,11 +152,7 @@
     &.fullWidth {
       display: flex;
       width: 100%;
-
-      .PopperContainer {
-        display: block;
-        width: 100%;
-      }
+      flex-direction: column;
     }
   }
 </style>
