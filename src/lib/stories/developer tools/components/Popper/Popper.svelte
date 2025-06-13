@@ -131,6 +131,7 @@
       {popupOffsetY}
       {popperHeightForVerticalPosition}
       {lockPoistions}
+      {fullWidth}
       class={popupClass}
     >
       {#if popupChildren}

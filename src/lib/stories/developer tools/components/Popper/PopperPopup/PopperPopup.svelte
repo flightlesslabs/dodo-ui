@@ -32,6 +32,8 @@
     lockPoistions?: boolean;
     /** Popper Height For Vertical Position, default 300 */
     popperHeightForVerticalPosition?: number;
+    /** Full width Popper? */
+    fullWidth?: boolean;
   }
 </script>
 
@@ -50,9 +52,15 @@
     popupOffsetY: offsetY = 12,
     popperHeightForVerticalPosition = 100,
     lockPoistions = false,
+    fullWidth = false,
   }: PopperPopupProps = $props();
 
-  const popperWidth = $derived(width || '100%');
+  let popupLocation = $state<DOMRect>();
+
+  const fullWidthInPixels = $derived(
+    fullWidth && popperLocation?.width ? `${popperLocation?.width}px` : '',
+  );
+  const popperWidth = $derived(width || fullWidthInPixels);
   const popupMaxHeight = $derived(maxHeight || '400px');
 
   let left = $state<number | null>(null);
@@ -60,20 +68,39 @@
   let top = $state<number | null>(null);
   let bottom = $state<number | null>(null);
 
+  function capturePopupLocation() {
+    if (!ref) {
+      return;
+    }
+
+    popupLocation = ref.getBoundingClientRect();
+  }
+
+  $effect(() => {
+    if (!ref) {
+      return;
+    }
+
+    capturePopupLocation();
+
+    window.addEventListener('resize', capturePopupLocation);
+
+    return () => {
+      window.removeEventListener('resize', capturePopupLocation);
+    };
+  });
+
   $effect(() => {
     const values = getPopupPosition({
       positionX,
       positionY,
-      height: popperLocation?.height || 0,
-      width: popperLocation?.width || 0,
-      top: popperLocation?.top || 0,
-      bottom: popperLocation?.bottom || 0,
-      left: popperLocation?.left || 0,
-      right: popperLocation?.right || 0,
       offsetX: offsetX,
       offsetY: offsetY,
       popperHeight: popperHeightForVerticalPosition,
       lockPoistions,
+      popperLocation,
+      popupLocation,
+      fullWidth,
     });
 
     left = values.left;
@@ -91,12 +118,11 @@
     className,
   ].join(' ')}
   bind:this={ref}
-  style={`width: ${popperWidth};
+  style={`${popperWidth ? `width: ${popperWidth};` : ''}
   ${left !== null ? `left: ${left}px;` : ''}
   ${right !== null ? `right: ${right}px;` : ''}
   ${top !== null ? `top: ${top}px;` : ''}
   ${bottom !== null ? `bottom: ${bottom}px;` : ''}
-  ${positionX === 'center' ? `margin: auto;` : ''}
   `}
 >
   <Paper shadow={3} {...paperProps}>
@@ -110,7 +136,7 @@
 
 <style lang="scss">
   .dodo-ui-PopperPopup {
-    position: absolute;
+    position: fixed;
     z-index: var(--dodo-ui-z-index-4);
 
     section {
