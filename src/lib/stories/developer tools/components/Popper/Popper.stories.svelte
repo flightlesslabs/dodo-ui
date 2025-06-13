@@ -87,8 +87,24 @@
   </Popper>
 </Story>
 
+<!-- Expand the Popper to full width -->
 <Story name="FullWidth" asChild>
   <Popper {open} fullWidth onClickOutside={() => (open = false)}>
+    <Button onclick={() => (open = true)}>Click to see Popup</Button>
+
+    {#snippet popupChildren()}
+      <Menu>
+        <MenuItem>One</MenuItem>
+        <MenuItem>Two</MenuItem>
+        <MenuItem>Three</MenuItem>
+      </Menu>
+    {/snippet}
+  </Popper>
+</Story>
+
+<!-- Expand the Popper to full width but not the popup -->
+<Story name="PopupFullWidthFalse" asChild>
+  <Popper {open} fullWidth popupFullWidth={false} onClickOutside={() => (open = false)}>
     <Button onclick={() => (open = true)}>Click to see Popup</Button>
 
     {#snippet popupChildren()}
