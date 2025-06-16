@@ -2,11 +2,7 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import { storyRangeSliderArgTypes } from '../RangeSlider.stories.svelte';
   import RangeSlider from '../RangeSlider.svelte';
-  import type {
-    TextInputFocusEvent,
-    TextInputClipboardEvent,
-    TextInputKeyboardEvent,
-  } from '../../TextInput/TextInput.svelte';
+  import type { TextInputFocusEvent } from '../../TextInput/TextInput.svelte';
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
   const { Story } = defineMeta({

@@ -4,7 +4,6 @@
   import type { ChangeEventHandler, FocusEventHandler, FormEventHandler } from 'svelte/elements';
   import type { ComponentColor } from '$lib/types/colors.js';
   import type { Snippet } from 'svelte';
-  import type { TextInputInputEvent } from '../TextInput/TextInput.svelte';
 
   export interface RangeSliderProps {
     /** How large should the button be? */
