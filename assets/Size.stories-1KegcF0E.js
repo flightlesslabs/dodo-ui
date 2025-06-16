@@ -1,0 +1,7 @@
+import{p as f,f as g,a as v,t as a,b as s,s as p,c as $}from"./iframe-CfBVIw1X.js";import{c as M,d as I}from"./create-runtime-stories-Dw7ELUXC.js";import{i as S}from"./lifecycle-DjHDWpYg.js";import{M as h}from"./MenuItem-CZWVrw_-.js";import{storyMenuItemArgTypes as x}from"./MenuItem.stories-DL4-T7q9.js";import"./attributes-Bsk4O1Lh.js";import"./this-ZRJxfvwF.js";import"./style-BGhvvo8Y.js";import"./size-C-8mwSpB.js";const C={component:h,tags:["autodocs"],argTypes:x,parameters:{docs:{description:{component:""}}}},{Story:r}=I();var L=g("<!> <!> <!>",1);function _(u,c){f(c,!1),S();var m=L(),n=v(m);r(n,{name:"Normal",children:(e,i)=>{var t=a("Menu Item");s(e,t)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<MenuItem {...args}>
+  Menu Item
+</MenuItem>`}}});var l=p(n,2);r(l,{name:"Small",args:{size:"small"},children:(e,i)=>{var t=a("Menu Item");s(e,t)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<MenuItem {...args}>
+  Menu Item
+</MenuItem>`}}});var d=p(l,2);r(d,{name:"Large",args:{size:"large"},children:(e,i)=>{var t=a("Menu Item");s(e,t)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<MenuItem {...args}>
+  Menu Item
+</MenuItem>`}}}),s(u,m),$()}_.__docgen={data:[],name:"Size.stories.svelte"};const o=M(_,C),O=["Normal","Small","Large"],R={...o.Normal,tags:["svelte-csf-v5"]},j={...o.Small,tags:["svelte-csf-v5"]},k={...o.Large,tags:["svelte-csf-v5"]};export{k as Large,R as Normal,j as Small,O as __namedExportsOrder,C as default};

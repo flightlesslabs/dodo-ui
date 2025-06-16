@@ -1,7 +1,0 @@
-import{p as f,f as v,a as $,t as a,b as s,s as u,c as g}from"./iframe-Dp941mr0.js";import{c as M,d as I}from"./create-runtime-stories-BXezm3Za.js";import{i as x}from"./lifecycle-JuoPZCDb.js";import{M as h}from"./MenuItem-BgL_tvet.js";import{storyMenuItemArgTypes as T}from"./MenuItem.stories-CFp6Cc2E.js";import"./attributes-DJZjS-wL.js";import"./this-DYHwRBO6.js";import"./style-tIhPzccR.js";import"./size-C-8mwSpB.js";const k={component:h,tags:["autodocs"],argTypes:T,parameters:{docs:{description:{component:""}}}},{Story:o}=I();var y=v("<!> <!> <!>",1);function _(c,l){f(l,!1),x();var n=y(),m=$(n);o(m,{name:"Text",children:(t,p)=>{var e=a("Menu Item");s(t,e)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<MenuItem {...args}>
-  Menu Item
-</MenuItem>`}}});var i=u(m,2);o(i,{name:"Link",args:{type:"link",href:"https://www.w3schools.com/tags/tag_a.asp",target:"_blank"},children:(t,p)=>{var e=a("Menu Item");s(t,e)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<MenuItem {...args}>
-  Menu Item
-</MenuItem>`}}});var d=u(i,2);o(d,{name:"Button",args:{type:"button",onclick:()=>{}},children:(t,p)=>{var e=a("Menu Item");s(t,e)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<MenuItem {...args}>
-  Menu Item
-</MenuItem>`}}}),s(c,n),g()}_.__docgen={data:[],name:"Type.stories.svelte"};const r=M(_,k),O=["Text","Link","Button"],R={...r.Text,tags:["svelte-csf-v5"]},j={...r.Link,tags:["svelte-csf-v5"]},q={...r.Button,tags:["svelte-csf-v5"]};export{q as Button,j as Link,R as Text,O as __namedExportsOrder,k as default};
