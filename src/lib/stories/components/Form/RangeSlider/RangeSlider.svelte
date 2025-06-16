@@ -147,7 +147,6 @@
 
   .dodo-ui-RangeSlider {
     display: flex;
-    flex-direction: column;
 
     .NativeRangeSlider {
       height: 100%;
@@ -161,7 +160,7 @@
       overflow: hidden;
       display: flex;
       align-items: center;
-      transition: all 150ms;
+      flex: 1;
 
       &:focus {
         outline: none;
@@ -177,6 +176,20 @@
       &::-moz-range-thumb {
         border: 0;
         transition: all 150ms;
+      }
+    }
+
+    .content {
+      &--before {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &--after {
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
 
@@ -211,13 +224,11 @@
 
         .content {
           &--before {
-            margin-left: 12px;
-            margin-right: -4px;
+            margin-right: 12px;
           }
 
           &--after {
-            margin-right: 12px;
-            margin-left: -4px;
+            margin-left: 12px;
           }
         }
       }
@@ -253,13 +264,11 @@
 
         .content {
           &--before {
-            margin-left: 8px;
-            margin-right: -2px;
+            margin-right: 8px;
           }
 
           &--after {
-            margin-right: 8px;
-            margin-left: -2px;
+            margin-left: 8px;
           }
         }
       }
@@ -295,13 +304,11 @@
 
         .content {
           &--before {
-            margin-left: 14px;
-            margin-right: -4px;
+            margin-right: 14px;
           }
 
           &--after {
-            margin-right: 14px;
-            margin-left: -4px;
+            margin-left: 14px;
           }
         }
       }
