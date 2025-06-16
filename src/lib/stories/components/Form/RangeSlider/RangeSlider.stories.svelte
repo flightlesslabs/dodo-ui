@@ -15,6 +15,10 @@
       control: { type: 'select' },
       options: componentRoundnessArray,
     },
+    thumbRoundness: {
+      control: { type: 'select' },
+      options: componentRoundnessArray,
+    },
     size: {
       control: { type: 'select' },
       options: componentSizeArray,
@@ -28,8 +32,38 @@
     argTypes: storyRangeSliderArgTypes,
   });
 
-  let value = $state<number>(0);
+  let value = $state<number>(30);
 </script>
 
 <!-- RangeSlider with default style -->
-<Story name="Default" args={{ value }} />
+<Story
+  name="Default"
+  args={{
+    value,
+  }}
+/>
+
+<Story
+  name="Step"
+  args={{
+    value,
+    step: 10,
+  }}
+/>
+
+<Story
+  name="MinMax"
+  args={{
+    value,
+    min: 0,
+    max: 1500,
+  }}
+/>
+
+<Story
+  name="Disabled"
+  args={{
+    value: 30,
+    disabled: true,
+  }}
+/>

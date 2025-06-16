@@ -4,6 +4,11 @@
   --dodo-ui-element-height-normal: 40px;
   --dodo-ui-element-height-large: 50px;
 
+  /* Size Thin elements */
+  --dodo-ui-track-element-height-small: 6px;
+  --dodo-ui-track-element-height-normal: 8px;
+  --dodo-ui-track-element-height-large: 10px;
+
   /* Roundness */
   --dodo-ui-element-roundness-1: 0.4375em;
   --dodo-ui-element-roundness-2: 0.8125em;

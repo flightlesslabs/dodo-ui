@@ -1,38 +1,50 @@
 <script lang="ts" module>
   import type { ComponentSize } from '$lib/types/size.js';
   import type { ComponentRoundness } from '$lib/types/roundness.js';
-  import type { FocusEventHandler, MouseEventHandler } from 'svelte/elements';
+  import type { ChangeEventHandler, FocusEventHandler, FormEventHandler } from 'svelte/elements';
   import type { ComponentColor } from '$lib/types/colors.js';
-  import { drag } from '$lib/stories/developer tools/directives/drag/drag.js';
+  import type { Snippet } from 'svelte';
+  import type { TextInputInputEvent } from '../TextInput/TextInput.svelte';
 
   export interface RangeSliderProps {
     /** How large should the button be? */
     size?: ComponentSize;
     /** What color to use? */
     color?: ComponentColor;
-    /** onrangeSlider event handler */
-    onchange?: (val: number) => void;
-    /** onclear event handler */
-    onclear?: MouseEventHandler<HTMLButtonElement>;
     /** RangeSlider ref */
-    ref?: HTMLDivElement;
+    ref?: HTMLInputElement;
     /** How round should the border radius be? */
     roundness?: ComponentRoundness;
-    /** Add a border around the button. Default True */
-    outline?: boolean;
+    /** How round should the thumb border radius be? */
+    thumbRoundness?: ComponentRoundness;
     /** RangeSlider value */
     value: number;
     /** disabled state */
     disabled?: boolean;
     /** Id */
     id?: string;
+    /** name */
+    name?: string;
+    /** Icon before button content */
+    before?: Snippet;
+    /** Icon after button content */
+    after?: Snippet;
     /** Custom css class*/
     class?: string;
+    /** oninput event handler */
+    oninput?: FormEventHandler<HTMLInputElement>;
+    /** onchange event handler */
+    onchange?: ChangeEventHandler<HTMLInputElement>;
     /** onblur event handler */
-    onblur?: FocusEventHandler<HTMLDivElement>;
+    onblur?: FocusEventHandler<HTMLInputElement>;
     /** onfocus event handler */
-    onfocus?: FocusEventHandler<HTMLDivElement>;
-    /** onpaste event handler */
+    onfocus?: FocusEventHandler<HTMLInputElement>;
+    /** Min Value */
+    min?: number;
+    /** Max Value */
+    max?: number;
+    /** Value Increment step */
+    step?: number;
   }
 </script>
 
@@ -40,152 +52,416 @@
   let {
     color = 'primary',
     size = 'normal',
-    roundness = 'full',
+    roundness = 1,
+    thumbRoundness = 'full',
     class: className = '',
-    ref = $bindable<HTMLDivElement>(),
+    ref = $bindable<HTMLInputElement>(),
     value = $bindable<number>(),
+    disabled = false,
+    id,
+    min = 0,
+    max = 100,
+    step = 0,
+    name,
+    oninput,
+    onchange,
+    onblur,
+    onfocus,
+    before,
+    after,
   }: RangeSliderProps = $props();
 
-  const min = 0;
-  const max = 100;
-  const step = 1;
-  let isDragging = $state(false);
-
-  const percent = $derived<number>(((value - min) / (max - min)) * 100);
-
-  const label = 'awfawf';
-
-  function clamp(val: number) {
-    return Math.min(max, Math.max(min, val));
-  }
-
-  function updateFromClientX(clientX: number) {
-    const rect = ref?.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const raw = min + (x / rect.width) * (max - min);
-    const stepped = Math.round(raw / step) * step;
-    const clamped = clamp(stepped);
-    value = clamped;
-  }
-
-  function handleMouseDown(event: MouseEvent | TouchEvent) {
-    isDragging = true;
-    const clientX = 'touches' in event ? event.touches[0].clientX : event.clientX;
-    updateFromClientX(clientX);
-  }
-
-  function handleMouseMove(event: MouseEvent | TouchEvent) {
-    if (!isDragging) return;
-    const clientX = 'touches' in event ? event.touches[0].clientX : event.clientX;
-    updateFromClientX(clientX);
-  }
-
-  function stopDragging() {
-    isDragging = false;
-  }
-
-  function handleKeydown(e: KeyboardEvent) {
-    let delta = 0;
-    switch (e.key) {
-      case 'ArrowLeft':
-      case 'ArrowDown':
-        delta = -step;
-        break;
-      case 'ArrowRight':
-      case 'ArrowUp':
-        delta = step;
-        break;
-      case 'PageDown':
-        delta = -step * 10;
-        break;
-      case 'PageUp':
-        delta = step * 10;
-        break;
-      case 'Home':
-        value = min;
-        e.preventDefault();
-        return;
-      case 'End':
-        value = max;
-        e.preventDefault();
-        return;
-    }
-    if (delta !== 0) {
-      value = clamp(value + delta);
-      e.preventDefault();
-    }
-  }
-
-  // Reactive effect: track dragging globally
-  $effect(() => {
-    const move = (e: MouseEvent | TouchEvent) => handleMouseMove(e);
-    const up = () => stopDragging();
-
-    if (isDragging) {
-      window.addEventListener('mousemove', move);
-      window.addEventListener('mouseup', up);
-      window.addEventListener('touchmove', move);
-      window.addEventListener('touchend', up);
-    } else {
-      window.removeEventListener('mousemove', move);
-      window.removeEventListener('mouseup', up);
-      window.removeEventListener('touchmove', move);
-      window.removeEventListener('touchend', up);
-    }
-  });
+  const percentageValue = $derived(((value - min) / (max - min)) * 100);
 </script>
 
 <div
+  class:disabled
   class={[
     'dodo-ui-RangeSlider',
     `size--${size}`,
-    `color--${color}`,
     `roundness--${roundness}`,
+    `thumbRoundness--${thumbRoundness}`,
+    `color--${color}`,
     className,
   ].join(' ')}
-  bind:this={ref}
-  role="slider"
-  tabindex="0"
-  aria-valuemin={min}
-  aria-valuemax={max}
-  aria-valuenow={value}
-  aria-label={label}
-  onmousedown={handleMouseDown}
-  ontouchstart={handleMouseDown}
-  onkeydown={handleKeydown}
+  style={`--dodo-ui-RangeSlider-value-percent: ${percentageValue};`}
 >
-  <div class="fill" style="width: {percent}%;"></div>
-  <div class="thumb" style="left: {percent}%;"></div>
+  {#if before}
+    <span class="content--before">
+      {@render before()}
+    </span>
+  {/if}
+
+  <input
+    type="range"
+    class="NativeRangeSlider"
+    {min}
+    {max}
+    {step}
+    {oninput}
+    {onchange}
+    {onblur}
+    {onfocus}
+    {id}
+    {name}
+    {disabled}
+    bind:this={ref}
+    bind:value
+  />
+
+  {#if after}
+    <span class="content--after">
+      {@render after()}
+    </span>
+  {/if}
 </div>
 
 <style lang="scss">
-  .dodo-ui-RangeSlider {
-    position: relative;
-    height: 6px;
-    background: #ddd;
-    border-radius: 3px;
-    cursor: pointer;
-    touch-action: none;
+  @use 'utils/scss/mixins.scss' as *;
 
-    .fill {
-      height: 6px;
-      background: #007bff;
-      border-radius: 3px;
-      position: absolute;
-      top: 0;
-      left: 0;
+  :global(:root) {
+    --dodo-ui-RangeSlider-track-bg: var(--dodo-color-neutral-200);
+    --dodo-ui-RangeSlider-track-filled-disabled-bg: var(--dodo-color-neutral-300);
+    --dodo-ui-RangeSlider-thumb-disabled-bg: var(--dodo-color-neutral-300);
+
+    @include generate-dodo-ui-range-slider-colors(neutral);
+    @include generate-dodo-ui-range-slider-colors(primary);
+    @include generate-dodo-ui-range-slider-colors(secondary);
+    @include generate-dodo-ui-range-slider-colors(safe);
+    @include generate-dodo-ui-range-slider-colors(warning);
+    @include generate-dodo-ui-range-slider-colors(danger);
+  }
+
+  :global(.dodo-theme--dark) {
+    --dodo-ui-RangeSlider-track-bg: var(--dodo-color-neutral-400);
+    --dodo-ui-RangeSlider-track-filled-disabled-bg: var(--dodo-color-neutral-500);
+    --dodo-ui-RangeSlider-thumb-disabled-bg: var(--dodo-color-neutral-500);
+
+    @include generate-dodo-ui-range-slider-colors-dark(neutral);
+    @include generate-dodo-ui-range-slider-colors-dark(primary);
+    @include generate-dodo-ui-range-slider-colors-dark(secondary);
+    @include generate-dodo-ui-range-slider-colors-dark(safe);
+    @include generate-dodo-ui-range-slider-colors-dark(warning);
+    @include generate-dodo-ui-range-slider-colors-dark(danger);
+  }
+
+  .dodo-ui-RangeSlider {
+    display: flex;
+    flex-direction: column;
+
+    .NativeRangeSlider {
+      height: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        border: 0;
+      }
+
+      &::-moz-range-thumb {
+        border: 0;
+      }
     }
 
-    .thumb {
-      position: absolute;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      height: 20px;
-      width: 20px;
-      background: white;
-      border: 2px solid #007bff;
-      border-radius: 50%;
-      box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    &.size {
+      &--normal {
+        height: var(--dodo-ui-element-height-normal);
+        .NativeRangeSlider {
+          &::-webkit-slider-runnable-track {
+            height: var(--dodo-ui-track-element-height-normal);
+          }
+
+          &::-moz-range-track {
+            height: var(--dodo-ui-track-element-height-normal);
+          }
+
+          &::-moz-range-progress {
+            height: var(--dodo-ui-track-element-height-normal);
+          }
+
+          // Thumb
+          &::-webkit-slider-thumb {
+            margin-top: -0.5em;
+            height: calc(var(--dodo-ui-element-height-normal) / 2);
+            width: calc(var(--dodo-ui-element-height-normal) / 2);
+          }
+
+          &::-moz-range-thumb {
+            height: calc(var(--dodo-ui-element-height-normal) / 2);
+            width: calc(var(--dodo-ui-element-height-normal) / 2);
+          }
+        }
+
+        .content {
+          &--before {
+            margin-left: 12px;
+            margin-right: -4px;
+          }
+
+          &--after {
+            margin-right: 12px;
+            margin-left: -4px;
+          }
+        }
+      }
+
+      &--small {
+        height: var(--dodo-ui-element-height-small);
+
+        .NativeRangeSlider {
+          &::-webkit-slider-runnable-track {
+            height: var(--dodo-ui-track-element-height-small);
+          }
+
+          &::-moz-range-track {
+            height: var(--dodo-ui-track-element-height-small);
+          }
+
+          &::-moz-range-progress {
+            height: var(--dodo-ui-track-element-height-small);
+          }
+
+          // Thumb
+          &::-webkit-slider-thumb {
+            margin-top: -0.45em;
+            height: calc(var(--dodo-ui-element-height-small) / 2);
+            width: calc(var(--dodo-ui-element-height-small) / 2);
+          }
+
+          &::-moz-range-thumb {
+            height: calc(var(--dodo-ui-element-height-small) / 2);
+            width: calc(var(--dodo-ui-element-height-small) / 2);
+          }
+        }
+
+        .content {
+          &--before {
+            margin-left: 8px;
+            margin-right: -2px;
+          }
+
+          &--after {
+            margin-right: 8px;
+            margin-left: -2px;
+          }
+        }
+      }
+
+      &--large {
+        height: var(--dodo-ui-element-height-large);
+
+        .NativeRangeSlider {
+          &::-webkit-slider-runnable-track {
+            height: var(--dodo-ui-track-element-height-large);
+          }
+
+          &::-moz-range-track {
+            height: var(--dodo-ui-track-element-height-large);
+          }
+
+          &::-moz-range-progress {
+            height: var(--dodo-ui-track-element-height-large);
+          }
+
+          // Thumb
+          &::-webkit-slider-thumb {
+            margin-top: -0.6em;
+            height: calc(var(--dodo-ui-element-height-large) / 2);
+            width: calc(var(--dodo-ui-element-height-large) / 2);
+          }
+
+          &::-moz-range-thumb {
+            height: calc(var(--dodo-ui-element-height-large) / 2);
+            width: calc(var(--dodo-ui-element-height-large) / 2);
+          }
+        }
+
+        .content {
+          &--before {
+            margin-left: 14px;
+            margin-right: -4px;
+          }
+
+          &--after {
+            margin-right: 14px;
+            margin-left: -4px;
+          }
+        }
+      }
+    }
+
+    &.color {
+      @include generate-dodo-ui-range-slider-color(neutral);
+      @include generate-dodo-ui-range-slider-color(primary);
+      @include generate-dodo-ui-range-slider-color(secondary);
+      @include generate-dodo-ui-range-slider-color(safe);
+      @include generate-dodo-ui-range-slider-color(warning);
+      @include generate-dodo-ui-range-slider-color(danger);
+    }
+
+    &.roundness {
+      &--1 {
+        .NativeRangeSlider {
+          &::-webkit-slider-runnable-track {
+            border-radius: var(--dodo-ui-element-roundness-1);
+          }
+
+          &::-moz-range-track {
+            border-radius: var(--dodo-ui-element-roundness-1);
+          }
+
+          &::-moz-range-progress {
+            border-radius: var(--dodo-ui-element-roundness-1);
+          }
+        }
+      }
+
+      &--2 {
+        .NativeRangeSlider {
+          &::-webkit-slider-runnable-track {
+            border-radius: var(--dodo-ui-element-roundness-2);
+          }
+
+          &::-moz-range-track {
+            border-radius: var(--dodo-ui-element-roundness-2);
+          }
+
+          &::-moz-range-progress {
+            border-radius: var(--dodo-ui-element-roundness-2);
+          }
+        }
+      }
+
+      &--3 {
+        .NativeRangeSlider {
+          &::-webkit-slider-runnable-track {
+            border-radius: var(--dodo-ui-element-roundness-3);
+          }
+
+          &::-moz-range-track {
+            border-radius: var(--dodo-ui-element-roundness-3);
+          }
+
+          &::-moz-range-progress {
+            border-radius: var(--dodo-ui-element-roundness-3);
+          }
+        }
+      }
+    }
+
+    &.thumbRoundness {
+      &--1 {
+        .NativeRangeSlider {
+          // Thumb
+          &::-webkit-slider-thumb {
+            border-radius: var(--dodo-ui-element-roundness-1);
+          }
+
+          &::-moz-range-thumb {
+            border-radius: var(--dodo-ui-element-roundness-1);
+          }
+        }
+      }
+
+      &--2 {
+        .NativeRangeSlider {
+          // Thumb
+          &::-webkit-slider-thumb {
+            border-radius: var(--dodo-ui-element-roundness-2);
+          }
+
+          &::-moz-range-thumb {
+            border-radius: var(--dodo-ui-element-roundness-2);
+          }
+        }
+      }
+
+      &--3 {
+        .NativeRangeSlider {
+          // Thumb
+          &::-webkit-slider-thumb {
+            border-radius: var(--dodo-ui-element-roundness-3);
+          }
+
+          &::-moz-range-thumb {
+            border-radius: var(--dodo-ui-element-roundness-3);
+          }
+        }
+      }
+
+      &--full {
+        .NativeRangeSlider {
+          // Thumb
+          &::-webkit-slider-thumb {
+            border-radius: 50%;
+          }
+
+          // Thumb
+          &::-moz-range-thumb {
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+
+    .NativeRangeSlider {
+      &[disabled] {
+        cursor: initial;
+
+        &::-webkit-slider-runnable-track {
+          background: linear-gradient(
+            to right,
+            var(--dodo-ui-RangeSlider-track-filled-disabled-bg) 0%,
+            var(--dodo-ui-RangeSlider-track-filled-disabled-bg)
+              calc(var(--dodo-ui-RangeSlider-value-percent, 50%) * 1%),
+            var(--dodo-ui-RangeSlider-track-bg)
+              calc(var(--dodo-ui-RangeSlider-value-percent, 50%) * 1%),
+            var(--dodo-ui-RangeSlider-track-bg) 100%
+          );
+        }
+
+        &::-moz-range-progress {
+          background: var(--dodo-ui-RangeSlider-track-filled-disabled-bg);
+        }
+
+        &::-webkit-slider-thumb {
+          background: var(--dodo-ui-RangeSlider-thumb-disabled-bg);
+
+          &:hover {
+            background: var(--dodo-ui-RangeSlider-thumb-disabled-bg);
+          }
+
+          &:focus-visible {
+            background: var(--dodo-ui-RangeSlider-thumb-disabled-bg);
+          }
+
+          &:active {
+            background: var(--dodo-ui-RangeSlider-thumb-disabled-bg);
+          }
+        }
+
+        &::-moz-range-thumb {
+          background: var(--dodo-ui-RangeSlider-thumb-disabled-bg);
+
+          &:active {
+            background: var(--dodo-ui-RangeSlider-thumb-disabled-bg);
+          }
+        }
+      }
     }
   }
 </style>
