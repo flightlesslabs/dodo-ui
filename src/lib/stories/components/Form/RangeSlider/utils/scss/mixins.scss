@@ -1,0 +1,91 @@
+/// Mixin: generate-dodo-ui-range-slider-colors
+/// Generates CSS custom properties for Dodo UI range-slider styles (text & solid)
+/// across different interaction states (default, hover, active).
+/// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
+@mixin generate-dodo-ui-range-slider-colors($color-name) {
+  --dodo-ui-RangeSlider-thumb-#{$color-name}-bg: var(--dodo-color-#{$color-name}-500);
+  --dodo-ui-RangeSlider-thumb-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-600);
+  --dodo-ui-RangeSlider-thumb-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-700);
+
+  --dodo-ui-RangeSlider-track-filled-#{$color-name}-bg: var(--dodo-color-#{$color-name}-500);
+}
+
+/// Mixin: generate-dodo-ui-range-slider-colors
+/// Generates CSS custom properties for Dodo UI range-slider styles (text & solid)
+/// across different interaction states (default, hover, active).
+/// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
+@mixin generate-dodo-ui-range-slider-colors-dark($color-name) {
+  --dodo-ui-RangeSlider-thumb-#{$color-name}-bg: var(--dodo-color-#{$color-name}-500);
+  --dodo-ui-RangeSlider-thumb-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-400);
+  --dodo-ui-RangeSlider-thumb-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-300);
+
+  --dodo-ui-RangeSlider-track-filled-#{$color-name}-bg: var(--dodo-color-#{$color-name}-500);
+}
+
+/// Mixin: generate-dodo-ui-range-slider-color
+/// Auto-generates .color--[theme] > .variant--text & .variant--solid styles
+/// @param {String} $theme - e.g., default, safe, danger, etc.
+@mixin generate-dodo-ui-range-slider-color($theme) {
+  &--#{$theme} {
+    .NativeRangeSlider {
+      &::-webkit-slider-runnable-track {
+        background-color: var(--dodo-ui-RangeSlider-track-#{$theme}-bg);
+      }
+
+      &::-moz-range-track {
+        background-color: var(--dodo-ui-RangeSlider-track-#{$theme}-bg);
+      }
+
+      &:focus-visible {
+        &::-webkit-slider-thumb {
+          background: var(--dodo-ui-RangeSlider-thumb-#{$theme}-active-bg);
+        }
+
+        &::-moz-range-thumb {
+          background: var(--dodo-ui-RangeSlider-thumb-#{$theme}-active-bg);
+        }
+      }
+
+      &::-webkit-slider-runnable-track {
+        background: linear-gradient(
+          to right,
+          var(--dodo-ui-RangeSlider-track-filled-#{$theme}-bg) 0%,
+          var(--dodo-ui-RangeSlider-track-filled-#{$theme}-bg)
+            calc(var(--dodo-ui-RangeSlider-value-percent, 50%) * 1%),
+          var(--dodo-ui-RangeSlider-track-bg)
+            calc(var(--dodo-ui-RangeSlider-value-percent, 50%) * 1%),
+          var(--dodo-ui-RangeSlider-track-bg) 100%
+        );
+      }
+
+      &::-moz-range-progress {
+        background: var(--dodo-ui-RangeSlider-track-filled-#{$theme}-bg);
+      }
+
+      // Thumb
+      &::-webkit-slider-thumb {
+        background: var(--dodo-ui-RangeSlider-thumb-#{$theme}-bg);
+
+        &:hover {
+          background: var(--dodo-ui-RangeSlider-thumb-#{$theme}-hover-bg);
+        }
+
+        &:active {
+          background: var(--dodo-ui-RangeSlider-thumb-#{$theme}-active-bg);
+        }
+      }
+
+      &::-moz-range-thumb {
+        background: var(--dodo-ui-RangeSlider-thumb-#{$theme}-bg);
+
+        &:hover {
+          background: var(--dodo-ui-RangeSlider-thumb-#{$theme}-hover-bg);
+        }
+
+        &:active {
+          background: var(--dodo-ui-RangeSlider-thumb-#{$theme}-active-bg);
+        }
+      }
+    }
+  }
+}

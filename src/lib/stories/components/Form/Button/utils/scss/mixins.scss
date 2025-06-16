@@ -41,9 +41,9 @@
     #fff
   );
 
-  --dodo-ui-Button-solid-#{$color-name}-bg: var(--dodo-color-#{$color-name}-300);
-  --dodo-ui-Button-solid-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-200);
-  --dodo-ui-Button-solid-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-100);
+  --dodo-ui-Button-solid-#{$color-name}-bg: var(--dodo-color-#{$color-name}-400);
+  --dodo-ui-Button-solid-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-300);
+  --dodo-ui-Button-solid-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-200);
 }
 
 /// Mixin: generate-dodo-ui-button-color

@@ -122,6 +122,10 @@ export type {
   DatePickerCalendarIconPosition,
 } from '$lib/stories/components/Form/DatePicker/DatePicker.svelte';
 
+/** Form: RangeSlider */
+export { default as RangeSlider } from '$lib/stories/components/Form/RangeSlider/RangeSlider.svelte';
+export type { RangeSliderProps } from '$lib/stories/components/Form/RangeSlider/RangeSlider.svelte';
+
 /** Layout: Paper */
 export { default as Paper } from '$lib/stories/components/Layout/Paper/Paper.svelte';
 export type { PaperColor, PaperProps } from '$lib/stories/components/Layout/Paper/Paper.svelte';
