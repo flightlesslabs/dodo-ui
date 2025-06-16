@@ -161,6 +161,7 @@
       overflow: hidden;
       display: flex;
       align-items: center;
+      transition: all 150ms;
 
       &:focus {
         outline: none;
@@ -170,10 +171,12 @@
         -webkit-appearance: none; /* Override default look */
         appearance: none;
         border: 0;
+        transition: all 150ms;
       }
 
       &::-moz-range-thumb {
         border: 0;
+        transition: all 150ms;
       }
     }
 
