@@ -11,12 +11,6 @@ importers:
       '@iconify/svelte':
         specifier: ^5.0.0
         version: 5.0.0(svelte@5.34.3)
-      '@storybook/addon-docs':
-        specifier: ^9.0.10
-        version: 9.0.10(@types/react@19.1.7)(storybook@9.0.10(@testing-library/dom@10.4.0)(prettier@3.5.3))
-      '@storybook/addon-vitest':
-        specifier: ^9.0.10
-        version: 9.0.10(@vitest/browser@3.2.3)(@vitest/runner@3.2.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@9.0.10(@testing-library/dom@10.4.0)(prettier@3.5.3))(vitest@3.2.3)
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
@@ -30,9 +24,15 @@ importers:
       '@eslint/js':
         specifier: ^9.29.0
         version: 9.29.0
+      '@storybook/addon-docs':
+        specifier: ^9.0.10
+        version: 9.0.10(@types/react@19.1.7)(storybook@9.0.10(@testing-library/dom@10.4.0)(prettier@3.5.3))
       '@storybook/addon-svelte-csf':
         specifier: 5.0.3
         version: 5.0.3(@storybook/svelte@9.0.10(storybook@9.0.10(@testing-library/dom@10.4.0)(prettier@3.5.3))(svelte@5.34.3))(@sveltejs/vite-plugin-svelte@5.1.0(svelte@5.34.3)(vite@6.3.5(sass@1.89.2)))(storybook@9.0.10(@testing-library/dom@10.4.0)(prettier@3.5.3))(svelte@5.34.3)(vite@6.3.5(sass@1.89.2))
+      '@storybook/addon-vitest':
+        specifier: ^9.0.10
+        version: 9.0.10(@vitest/browser@3.2.3)(@vitest/runner@3.2.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@9.0.10(@testing-library/dom@10.4.0)(prettier@3.5.3))(vitest@3.2.3)
       '@storybook/svelte':
         specifier: ^9.0.10
         version: 9.0.10(storybook@9.0.10(@testing-library/dom@10.4.0)(prettier@3.5.3))(svelte@5.34.3)
