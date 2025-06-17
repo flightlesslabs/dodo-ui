@@ -63,6 +63,16 @@ export type { PopperProps } from '$lib/stories/developer tools/components/Popper
 export { default as PopperPopup } from '$lib/stories/developer tools/components/Popper/PopperPopup/PopperPopup.svelte';
 export type { PopperPopupProps } from '$lib/stories/developer tools/components/Popper/PopperPopup/PopperPopup.svelte';
 
+/** developer tools: components: TickIndicator */
+export { default as TickIndicator } from '$lib/stories/developer tools/components/TickIndicator/TickIndicator.svelte';
+export type { TickIndicatorProps } from '$lib/stories/developer tools/components/TickIndicator/TickIndicator.svelte';
+export { default as TickItem } from '$lib/stories/developer tools/components/TickIndicator/TickItem/TickItem.svelte';
+export type {
+  TickItemProps,
+  TickMarkerType,
+  TickColor,
+} from '$lib/stories/developer tools/components/TickIndicator/TickItem/TickItem.svelte';
+
 /** Form: Button */
 export { default as Button } from '$lib/stories/components/Form/Button/Button.svelte';
 export type {

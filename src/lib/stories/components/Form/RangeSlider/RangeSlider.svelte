@@ -4,6 +4,9 @@
   import type { ChangeEventHandler, FocusEventHandler, FormEventHandler } from 'svelte/elements';
   import type { ComponentColor } from '$lib/types/colors.js';
   import type { Snippet } from 'svelte';
+  import type { Tick } from '$lib/stories/developer tools/components/TickIndicator/TickItem/TickItem.svelte';
+  import type { TickIndicatorProps } from '$lib/stories/developer tools/components/TickIndicator/TickIndicator.svelte';
+  import TickIndicator from '$lib/stories/developer tools/components/TickIndicator/TickIndicator.svelte';
 
   export interface RangeSliderProps {
     /** How large should the button be? */
@@ -44,6 +47,16 @@
     max?: number;
     /** Value Increment step */
     step?: number;
+    /** ticks */
+    ticks?: Tick[];
+    /** Custom TickItem label */
+    customTickIndicator?: (ticks: Tick[]) => Snippet;
+    /** Custom TickItem */
+    customTickItem?: (tick: Tick) => Snippet;
+    /** Custom TickItem Label */
+    customTickItemLabel?: (tick: Tick) => Snippet;
+    /** tickIndicatorProps */
+    tickIndicatorProps?: Partial<TickIndicatorProps>;
   }
 </script>
 
@@ -68,6 +81,11 @@
     onfocus,
     before,
     after,
+    ticks,
+    customTickIndicator,
+    customTickItem,
+    customTickItemLabel,
+    tickIndicatorProps,
   }: RangeSliderProps = $props();
 
   const percentageValue = $derived(((value - min) / (max - min)) * 100);
@@ -91,22 +109,38 @@
     </span>
   {/if}
 
-  <input
-    type="range"
-    class="NativeRangeSlider"
-    {min}
-    {max}
-    {step}
-    {oninput}
-    {onchange}
-    {onblur}
-    {onfocus}
-    {id}
-    {name}
-    {disabled}
-    bind:this={ref}
-    bind:value
-  />
+  <div class="RangeSliderContainer">
+    <input
+      type="range"
+      class="NativeRangeSlider"
+      {min}
+      {max}
+      {step}
+      {oninput}
+      {onchange}
+      {onblur}
+      {onfocus}
+      {id}
+      {name}
+      {disabled}
+      bind:this={ref}
+      bind:value
+    />
+
+    {#if ticks?.length}
+      <TickIndicator
+        {ticks}
+        {customTickIndicator}
+        {customTickItem}
+        {customTickItemLabel}
+        {min}
+        {max}
+        {color}
+        {size}
+        {...tickIndicatorProps}
+      />
+    {/if}
+  </div>
 
   {#if after}
     <span class="content--after">
@@ -147,19 +181,22 @@
   .dodo-ui-RangeSlider {
     display: flex;
 
+    .RangeSliderContainer {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
     .NativeRangeSlider {
-      height: 100%;
       -webkit-appearance: none;
       appearance: none;
       background: transparent;
       cursor: pointer;
-      width: 100%;
       margin: 0;
       padding: 0;
       overflow: hidden;
       display: flex;
       align-items: center;
-      flex: 1;
 
       &:focus {
         outline: none;
@@ -194,8 +231,10 @@
 
     &.size {
       &--normal {
-        height: var(--dodo-ui-element-height-normal);
+        min-height: var(--dodo-ui-element-height-normal);
         .NativeRangeSlider {
+          height: var(--dodo-ui-element-height-normal);
+
           &::-webkit-slider-runnable-track {
             height: var(--dodo-ui-track-element-height-normal);
           }
@@ -233,9 +272,11 @@
       }
 
       &--small {
-        height: var(--dodo-ui-element-height-small);
+        min-height: var(--dodo-ui-element-height-small);
 
         .NativeRangeSlider {
+          height: var(--dodo-ui-element-height-small);
+
           &::-webkit-slider-runnable-track {
             height: var(--dodo-ui-track-element-height-small);
           }
@@ -273,9 +314,11 @@
       }
 
       &--large {
-        height: var(--dodo-ui-element-height-large);
+        min-height: var(--dodo-ui-element-height-large);
 
         .NativeRangeSlider {
+          height: var(--dodo-ui-element-height-large);
+
           &::-webkit-slider-runnable-track {
             height: var(--dodo-ui-track-element-height-large);
           }

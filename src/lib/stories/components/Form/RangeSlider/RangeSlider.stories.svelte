@@ -5,6 +5,7 @@
   import { componentRoundnessArray } from '$lib/types/roundness.js';
   import { componentSizeArray } from '$lib/types/size.js';
   import { componentColorArray } from '$lib/types/colors.js';
+  import { ticksExample } from '$lib/stories/developer tools/components/TickIndicator/TickIndicator.stories.svelte';
 
   export const storyRangeSliderArgTypes: StoryBookArgTypes = {
     color: {
@@ -57,6 +58,15 @@
     value,
     min: 0,
     max: 1500,
+  }}
+/>
+
+<Story
+  name="Ticks"
+  args={{
+    value,
+    ticks: ticksExample,
+    step: 5,
   }}
 />
 
