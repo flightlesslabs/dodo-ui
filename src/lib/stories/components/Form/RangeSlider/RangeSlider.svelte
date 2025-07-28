@@ -91,22 +91,24 @@
     </span>
   {/if}
 
-  <input
-    type="range"
-    class="NativeRangeSlider"
-    {min}
-    {max}
-    {step}
-    {oninput}
-    {onchange}
-    {onblur}
-    {onfocus}
-    {id}
-    {name}
-    {disabled}
-    bind:this={ref}
-    bind:value
-  />
+  <div class="RangeSliderContainer">
+    <input
+      type="range"
+      class="NativeRangeSlider"
+      {min}
+      {max}
+      {step}
+      {oninput}
+      {onchange}
+      {onblur}
+      {onfocus}
+      {id}
+      {name}
+      {disabled}
+      bind:this={ref}
+      bind:value
+    />
+  </div>
 
   {#if after}
     <span class="content--after">
@@ -147,19 +149,22 @@
   .dodo-ui-RangeSlider {
     display: flex;
 
+    .RangeSliderContainer {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
     .NativeRangeSlider {
-      height: 100%;
       -webkit-appearance: none;
       appearance: none;
       background: transparent;
       cursor: pointer;
-      width: 100%;
       margin: 0;
       padding: 0;
       overflow: hidden;
       display: flex;
       align-items: center;
-      flex: 1;
 
       &:focus {
         outline: none;
@@ -194,8 +199,10 @@
 
     &.size {
       &--normal {
-        height: var(--dodo-ui-element-height-normal);
+        min-height: var(--dodo-ui-element-height-normal);
         .NativeRangeSlider {
+          height: var(--dodo-ui-element-height-normal);
+
           &::-webkit-slider-runnable-track {
             height: var(--dodo-ui-track-element-height-normal);
           }
@@ -233,9 +240,11 @@
       }
 
       &--small {
-        height: var(--dodo-ui-element-height-small);
+        min-height: var(--dodo-ui-element-height-small);
 
         .NativeRangeSlider {
+          height: var(--dodo-ui-element-height-small);
+
           &::-webkit-slider-runnable-track {
             height: var(--dodo-ui-track-element-height-small);
           }
@@ -273,9 +282,11 @@
       }
 
       &--large {
-        height: var(--dodo-ui-element-height-large);
+        min-height: var(--dodo-ui-element-height-large);
 
         .NativeRangeSlider {
+          height: var(--dodo-ui-element-height-large);
+
           &::-webkit-slider-runnable-track {
             height: var(--dodo-ui-track-element-height-large);
           }

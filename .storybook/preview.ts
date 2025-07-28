@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/svelte';
+import type { Preview } from '@storybook/sveltekit';
 import { themes } from 'storybook/theming';
 import './global.scss';
 
