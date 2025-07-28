@@ -4,9 +4,6 @@
   import type { ChangeEventHandler, FocusEventHandler, FormEventHandler } from 'svelte/elements';
   import type { ComponentColor } from '$lib/types/colors.js';
   import type { Snippet } from 'svelte';
-  import type { Tick } from '$lib/stories/developer tools/components/TickIndicator/TickItem/TickItem.svelte';
-  import type { TickIndicatorProps } from '$lib/stories/developer tools/components/TickIndicator/TickIndicator.svelte';
-  import TickIndicator from '$lib/stories/developer tools/components/TickIndicator/TickIndicator.svelte';
 
   export interface RangeSliderProps {
     /** How large should the button be? */
@@ -47,16 +44,6 @@
     max?: number;
     /** Value Increment step */
     step?: number;
-    /** ticks */
-    ticks?: Tick[];
-    /** Custom TickItem label */
-    customTickIndicator?: (ticks: Tick[]) => Snippet;
-    /** Custom TickItem */
-    customTickItem?: (tick: Tick) => Snippet;
-    /** Custom TickItem Label */
-    customTickItemLabel?: (tick: Tick) => Snippet;
-    /** tickIndicatorProps */
-    tickIndicatorProps?: Partial<TickIndicatorProps>;
   }
 </script>
 
@@ -81,11 +68,6 @@
     onfocus,
     before,
     after,
-    ticks,
-    customTickIndicator,
-    customTickItem,
-    customTickItemLabel,
-    tickIndicatorProps,
   }: RangeSliderProps = $props();
 
   const percentageValue = $derived(((value - min) / (max - min)) * 100);
@@ -126,20 +108,6 @@
       bind:this={ref}
       bind:value
     />
-
-    {#if ticks?.length}
-      <TickIndicator
-        {ticks}
-        {customTickIndicator}
-        {customTickItem}
-        {customTickItemLabel}
-        {min}
-        {max}
-        {color}
-        {size}
-        {...tickIndicatorProps}
-      />
-    {/if}
   </div>
 
   {#if after}
