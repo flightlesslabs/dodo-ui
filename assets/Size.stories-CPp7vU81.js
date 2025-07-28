@@ -1,0 +1,13 @@
+import{p as z,f as v,a as p,t as s,b as r,s as m,c as L}from"./iframe-Dm2oeldt.js";import{c as N,d as w}from"./create-runtime-stories-DwmOa5kD.js";import{i as b}from"./lifecycle-CgTGwIUP.js";import{M as _}from"./Menu-q_TH3IYq.js";import{storyMenuArgTypes as T}from"./Menu.stories-_ciPOZU1.js";import{M as o}from"./MenuItem-DlUHDrj0.js";import"./attributes-CLo3BtRJ.js";import"./this-5OZYxuTc.js";import"./style-C9bfH9eW.js";import"./Popper-BTA-ov8j.js";import"./getMoment-DtA9pdSi.js";import"./Paper-DZtFFZ_D.js";import"./colors-C3b1rS-d.js";import"./Separator-BNDKzXE7.js";const A={component:_,tags:["autodocs"],argTypes:T,parameters:{docs:{description:{component:""}}}},{Story:f}=w();var E=v("<!> <!> <!>",1),O=v("<!> <!> <!>",1),R=v("<!> <!> <!>",1),j=v("<!> <!> <!>",1);function I(x,y){z(y,!1),b();var M=j(),h=p(M);f(h,{name:"Normal",asChild:!0,children:($,P)=>{_($,{children:(d,g)=>{var a=E(),l=p(a);o(l,{children:(e,u)=>{var t=s("Cut");r(e,t)},$$slots:{default:!0}});var n=m(l,2);o(n,{children:(e,u)=>{var t=s("Copy");r(e,t)},$$slots:{default:!0}});var i=m(n,2);o(i,{children:(e,u)=>{var t=s("Paste");r(e,t)},$$slots:{default:!0}}),r(d,a)},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Menu>
+  <MenuItem>Cut</MenuItem>
+  <MenuItem>Copy</MenuItem>
+  <MenuItem>Paste</MenuItem>
+</Menu>`}}});var C=m(h,2);f(C,{name:"Small",asChild:!0,children:($,P)=>{_($,{size:"small",children:(d,g)=>{var a=O(),l=p(a);o(l,{children:(e,u)=>{var t=s("Cut");r(e,t)},$$slots:{default:!0}});var n=m(l,2);o(n,{children:(e,u)=>{var t=s("Copy");r(e,t)},$$slots:{default:!0}});var i=m(n,2);o(i,{children:(e,u)=>{var t=s("Paste");r(e,t)},$$slots:{default:!0}}),r(d,a)},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Menu size="small">
+  <MenuItem>Cut</MenuItem>
+  <MenuItem>Copy</MenuItem>
+  <MenuItem>Paste</MenuItem>
+</Menu>`}}});var S=m(C,2);f(S,{name:"Large",asChild:!0,children:($,P)=>{_($,{size:"large",children:(d,g)=>{var a=R(),l=p(a);o(l,{children:(e,u)=>{var t=s("Cut");r(e,t)},$$slots:{default:!0}});var n=m(l,2);o(n,{children:(e,u)=>{var t=s("Copy");r(e,t)},$$slots:{default:!0}});var i=m(n,2);o(i,{children:(e,u)=>{var t=s("Paste");r(e,t)},$$slots:{default:!0}}),r(d,a)},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Menu size="large">
+  <MenuItem>Cut</MenuItem>
+  <MenuItem>Copy</MenuItem>
+  <MenuItem>Paste</MenuItem>
+</Menu>`}}}),r(x,M),L()}I.__docgen={data:[],name:"Size.stories.svelte"};const c=N(I,A),Y=["Normal","Small","Large"],Z={...c.Normal,tags:["svelte-csf-v5"]},ee={...c.Small,tags:["svelte-csf-v5"]},te={...c.Large,tags:["svelte-csf-v5"]};export{te as Large,Z as Normal,ee as Small,Y as __namedExportsOrder,A as default};

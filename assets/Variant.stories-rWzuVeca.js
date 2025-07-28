@@ -1,0 +1,7 @@
+import{p as f,f as v,a as x,t as o,b as s,s as p,c as $}from"./iframe-Dm2oeldt.js";import{c as g,d as C}from"./create-runtime-stories-DwmOa5kD.js";import{i as T}from"./lifecycle-CgTGwIUP.js";import{B}from"./Button-Dnq_sH0K.js";import{storyButtonArgTypes as S}from"./Button.stories-C5rXQ-rU.js";import"./attributes-CLo3BtRJ.js";import"./this-5OZYxuTc.js";import"./style-C9bfH9eW.js";import"./roundness-fyqvrcF6.js";import"./colors-C3b1rS-d.js";import"./weight-CLgIXx1C.js";import"./size-C-8mwSpB.js";const h={component:B,tags:["autodocs"],argTypes:S,parameters:{docs:{description:{component:""}}}},{Story:r}=C();var k=v("<!> <!> <!>",1);function c(d,_){f(_,!1),T();var n=k(),i=x(n);r(i,{name:"Solid",children:(t,m)=>{var e=o("Click me!");s(t,e)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  Click me!
+</Button>`}}});var l=p(i,2);r(l,{name:"Text",args:{variant:"text"},children:(t,m)=>{var e=o("Click me!");s(t,e)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  Click me!
+</Button>`}}});var u=p(l,2);r(u,{name:"Text Outline",args:{variant:"text",outline:!0},children:(t,m)=>{var e=o("Click me!");s(t,e)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  Click me!
+</Button>`}}}),s(d,n),$()}c.__docgen={data:[],name:"Variant.stories.svelte"};const a=g(c,h),z=["Solid","Text","TextOutline"],D={...a.Solid,tags:["svelte-csf-v5"]},F={...a.Text,tags:["svelte-csf-v5"]},G={...a.TextOutline,tags:["svelte-csf-v5"]};export{D as Solid,F as Text,G as TextOutline,z as __namedExportsOrder,h as default};
