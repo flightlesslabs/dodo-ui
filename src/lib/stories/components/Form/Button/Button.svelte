@@ -16,8 +16,8 @@
     | undefined
     | null;
   export type ButtonLinkReferrerpolicy = ReferrerPolicy | undefined | null;
-  export type ButtonType = 'button' | 'submit';
-  export const buttonTypeArray: ButtonType[] = ['button', 'submit'];
+  export type ButtonType = 'button' | 'submit' | 'reset';
+  export const buttonTypeArray: ButtonType[] = ['button', 'submit', 'reset'];
 
   export type ButtonClickEvent = MouseEvent & {
     currentTarget: EventTarget & HTMLButtonElement;

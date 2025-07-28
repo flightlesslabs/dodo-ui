@@ -1,0 +1,81 @@
+/// Mixin: generate-dodo-ui-toggle-colors
+/// Generates CSS custom properties for Dodo UI toggle styles (text & solid)
+/// across different interaction states (default, hover, active).
+/// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
+@mixin generate-dodo-ui-toggle-colors($color-name) {
+  --dodo-ui-Toggle-#{$color-name}-bg: var(--dodo-color-#{$color-name}-200);
+  --dodo-ui-Toggle-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-300);
+  --dodo-ui-Toggle-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-400);
+
+  --dodo-ui-Toggle-#{$color-name}-checked-bg: var(--dodo-color-#{$color-name}-500);
+  --dodo-ui-Toggle-#{$color-name}-checked-hover-bg: var(--dodo-color-#{$color-name}-600);
+  --dodo-ui-Toggle-#{$color-name}-checked-active-bg: var(--dodo-color-#{$color-name}-700);
+}
+
+/// Mixin: generate-dodo-ui-toggle-colors
+/// Generates CSS custom properties for Dodo UI toggle styles (text & solid)
+/// across different interaction states (default, hover, active).
+/// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
+@mixin generate-dodo-ui-toggle-colors-dark($color-name) {
+  --dodo-ui-Toggle-#{$color-name}-bg: var(--dodo-color-#{$color-name}-800);
+  --dodo-ui-Toggle-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-700);
+  --dodo-ui-Toggle-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-600);
+
+  --dodo-ui-Toggle-#{$color-name}-checked-bg: var(--dodo-color-#{$color-name}-400);
+  --dodo-ui-Toggle-#{$color-name}-checked-hover-bg: var(--dodo-color-#{$color-name}-300);
+  --dodo-ui-Toggle-#{$color-name}-checked-active-bg: var(--dodo-color-#{$color-name}-200);
+}
+
+/// Mixin: generate-dodo-ui-toggle-color
+/// @param {String} $theme - e.g., default, safe, danger, etc.
+@mixin generate-dodo-ui-toggle-color($theme) {
+  &--#{$theme} {
+    .Toggle {
+      background-color: var(--dodo-ui-Toggle-#{$theme}-bg);
+    }
+
+    input:checked:not([disabled]) {
+      & + .Toggle {
+        background-color: var(--dodo-ui-Toggle-#{$theme}-checked-bg);
+      }
+    }
+
+    &:hover {
+      .Toggle {
+        background-color: var(--dodo-ui-Toggle-#{$theme}-hover-bg);
+      }
+
+      input:checked:not([disabled]) {
+        & + .Toggle {
+          background-color: var(--dodo-ui-Toggle-#{$theme}-checked-hover-bg);
+        }
+      }
+    }
+
+    &:active {
+      .Toggle {
+        background-color: var(--dodo-ui-Toggle-#{$theme}-active-bg);
+      }
+
+      input:checked:not([disabled]) {
+        & + .Toggle {
+          background-color: var(--dodo-ui-Toggle-#{$theme}-checked-active-bg);
+        }
+      }
+    }
+
+    input:not([disabled]) {
+      &:focus-visible {
+        & + .Toggle {
+          background-color: var(--dodo-ui-Toggle-#{$theme}-active-bg);
+        }
+
+        &:checked {
+          & + .Toggle {
+            background-color: var(--dodo-ui-Toggle-#{$theme}-checked-active-bg);
+          }
+        }
+      }
+    }
+  }
+}

@@ -126,6 +126,10 @@ export type {
 export { default as RangeSlider } from '$lib/stories/components/Form/RangeSlider/RangeSlider.svelte';
 export type { RangeSliderProps } from '$lib/stories/components/Form/RangeSlider/RangeSlider.svelte';
 
+/** Form: Toggle */
+export { default as Toggle } from '$lib/stories/components/Form/Toggle/Toggle.svelte';
+export type { ToggleProps } from '$lib/stories/components/Form/Toggle/Toggle.svelte';
+
 /** Layout: Paper */
 export { default as Paper } from '$lib/stories/components/Layout/Paper/Paper.svelte';
 export type { PaperColor, PaperProps } from '$lib/stories/components/Layout/Paper/Paper.svelte';
