@@ -1,0 +1,6 @@
+import{p as i,j as m,g as p,k as l,c,d}from"./iframe-DpdNrh4j.js";import{c as u,d as f}from"./create-runtime-stories-D0NGXSfE.js";import{C as e}from"./CalendarYearList-CTxPgPl1.js";import{storyCalendarYearListArgTypes as _}from"./CalendarYearList.stories-VCkwfPjq.js";import{g as v}from"./getMoment-DQPCA-4b.js";import"./each-DZ0I2mFg.js";import"./this-B3JHmcvJ.js";import"./CalendarYearChip-Ct6Nz1uF.js";import"./Popper-ujftblw2.js";import"./attributes-C8pZS94E.js";import"./style--qz3mRur.js";import"./Paper-CSJs_APj.js";import"./colors-C3b1rS-d.js";import"./MenuItem-CQr4AVzp.js";import"./Button-B4lfIbJY.js";import"./Icon-CyKYScj-.js";import"./lifecycle-C7N4YKsQ.js";import"./size-C-8mwSpB.js";const g={component:e,tags:["autodocs"],argTypes:_,parameters:{docs:{description:{component:""}}}},{Story:C}=f();let t=l(d(v(void 0,void 0,{utc:!0}).format("YYYY")));function r(o,s){i(s,!0),C(o,{name:"Select",asChild:!0,children:(a,Y)=>{e(a,{get value(){return p(t)},onselect:n=>{m(t,n,!0)}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<CalendarYearList
+  {value}
+  onselect={(val) => {
+    value = val;
+  }}
+/>`}}}),c()}r.__docgen={data:[],name:"Events.stories.svelte"};const S=u(r,g),B=["Select"],D={...S.Select,tags:["svelte-csf-v5"]};export{D as Select,B as __namedExportsOrder,g as default};
