@@ -68,7 +68,9 @@
   </div>
 
   {#if children}
-    {@render children()}
+    <div class="ToggleMessage">
+      {@render children()}
+    </div>
   {/if}
 </label>
 
@@ -150,6 +152,13 @@
       padding: 0 var(--dodo-ui-space-small);
       border-radius: inherit;
       position: relative;
+    }
+
+    .ToggleMessage {
+      display: flex;
+      align-items: center;
+      margin-left: var(--dodo-ui-space);
+      user-select: none;
     }
 
     .ToggleHandle {

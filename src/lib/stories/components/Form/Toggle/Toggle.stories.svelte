@@ -32,6 +32,8 @@
 <!-- Toggle with default style -->
 <Story name="Primary" />
 
+<Story name="WithText">This is Toggle</Story>
+
 <Story name="Checked" args={{ checked: true }} />
 
 <Story name="Disabled" args={{ disabled: true }} />
