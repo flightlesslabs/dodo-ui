@@ -14,7 +14,7 @@
 
 <Story name="Custom Check Icon" asChild>
   <Checkbox checked>
-    {#snippet customCheckIcon(checked)}
+    {#snippet customCheckIcon()}
       <Icon icon="line-md:check-all" width="24" height="24" />
     {/snippet}
   </Checkbox>
@@ -22,7 +22,7 @@
 
 <Story name="Custom Indeterminate Icon" asChild>
   <Checkbox checked indeterminate>
-    {#snippet customIndeterminateIcon(checked)}
+    {#snippet customIndeterminateIcon()}
       <Icon icon="lsicon:minus-filled" width="24" height="24" />
     {/snippet}
   </Checkbox>

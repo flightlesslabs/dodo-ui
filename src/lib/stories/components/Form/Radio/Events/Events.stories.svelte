@@ -9,8 +9,6 @@
     tags: ['autodocs'],
     argTypes: storyRadioArgTypes,
   });
-
-  let checked = $state(false);
 </script>
 
 <Story
@@ -22,7 +20,6 @@
       alert('onchange Clicked');
       console.log('Radio Clicked', target);
     },
-    checked,
   }}
   asChild
 >
@@ -33,6 +30,5 @@
       alert('onchange Clicked');
       console.log('onchange Clicked', target);
     }}
-    {checked}
   />
 </Story>
