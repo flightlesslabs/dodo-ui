@@ -21,6 +21,8 @@
     disabled?: boolean;
     /** Name */
     name?: string;
+    /** value */
+    value?: string;
     /** Id */
     id?: string;
     /** Title (for tooltip) */
@@ -48,6 +50,7 @@
     checked = $bindable<boolean>(),
     ref = $bindable<HTMLInputElement>(),
     onchange,
+    value,
   }: ToggleProps = $props();
 </script>
 
@@ -62,7 +65,17 @@
   ].join(' ')}
   for={id}
 >
-  <input type="checkbox" {name} {id} {title} {disabled} {onchange} bind:this={ref} bind:checked />
+  <input
+    type="checkbox"
+    {name}
+    {id}
+    {title}
+    {disabled}
+    {onchange}
+    bind:this={ref}
+    bind:checked
+    {value}
+  />
   <div class="Toggle">
     <span class="ToggleHandle"></span>
   </div>
@@ -80,6 +93,9 @@
   :global(:root) {
     --dodo-ui-Toggle-disabled-color: var(--dodo-color-neutral-400);
     --dodo-ui-Toggle-disabled-bg: var(--dodo-color-neutral-200);
+    --dodo-ui-Toggle-border-disabled-color: var(--dodo-color-neutral-300);
+
+    --dodo-ui-Toggle-border-color: var(--dodo-color-neutral-400);
 
     --dodo-ui-ToggleHandle-bg: var(--dodo-color-neutral-500);
     --dodo-ui-ToggleHandle-disabled-bg: var(--dodo-color-neutral-400);
@@ -95,6 +111,9 @@
   :global(.dodo-theme--dark) {
     --dodo-ui-Toggle-disabled-bg: var(--dodo-color-neutral-100);
     --dodo-ui-Toggle-disabled-color: var(--dodo-color-neutral-500);
+    --dodo-ui-Toggle-border-disabled-color: var(--dodo-color-neutral-400);
+
+    --dodo-ui-Toggle-border-color: var(--dodo-color-neutral-500);
 
     --dodo-ui-ToggleHandle-bg: var(--dodo-color-neutral-300);
     --dodo-ui-ToggleHandle-disabled-bg: var(--dodo-color-neutral-200);
@@ -113,11 +132,19 @@
     display: inline-flex;
     padding: 0;
     margin: 0;
+    position: relative;
 
     input {
       opacity: 0;
       width: 0;
       height: 0;
+      position: absolute;
+
+      &:focus-visible {
+        & + .Toggle {
+          outline: 1px solid;
+        }
+      }
 
       &:checked {
         & + .Toggle {
@@ -145,13 +172,13 @@
       align-items: center;
       font-family: inherit;
       border-style: solid;
-      border-width: var(--dodo-ui-element-border-width);
-      border-color: transparent;
       outline: 0;
       letter-spacing: 0.3px;
       padding: 0 var(--dodo-ui-space-small);
       border-radius: inherit;
       position: relative;
+      border-width: calc(var(--dodo-ui-element-border-width) * 2);
+      border-color: var(--dodo-ui-Toggle-border-color);
     }
 
     .ToggleMessage {
@@ -236,6 +263,7 @@
 
       .Toggle {
         background-color: var(--dodo-ui-Toggle-disabled-bg);
+        border-color: var(--dodo-ui-Toggle-border-disabled-color);
       }
 
       .ToggleHandle {

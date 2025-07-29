@@ -1,0 +1,85 @@
+/// Mixin: generate-dodo-ui-radio-colors
+/// Generates CSS custom properties for Dodo UI radio styles (text & solid)
+/// across different interaction states (default, hover, active).
+/// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
+@mixin generate-dodo-ui-radio-colors($color-name) {
+  --dodo-ui-Radio-#{$color-name}-bg: var(--dodo-color-#{$color-name}-200);
+  --dodo-ui-Radio-#{$color-name}-hover-bg: var(--dodo-color-#{$color-name}-300);
+  --dodo-ui-Radio-#{$color-name}-active-bg: var(--dodo-color-#{$color-name}-400);
+
+  --dodo-ui-Radio-#{$color-name}-checked-bg: var(--dodo-color-#{$color-name}-500);
+  --dodo-ui-Radio-#{$color-name}-checked-hover-bg: var(--dodo-color-#{$color-name}-600);
+  --dodo-ui-Radio-#{$color-name}-checked-active-bg: var(--dodo-color-#{$color-name}-700);
+}
+
+/// Mixin: generate-dodo-ui-radio-colors
+/// Generates CSS custom properties for Dodo UI radio styles (text & solid)
+/// across different interaction states (default, hover, active).
+/// @param {String} $color-name - The theme color name (e.g., "primary", "safe", etc.)
+@mixin generate-dodo-ui-radio-colors-dark($color-name) {
+  --dodo-ui-Radio-#{$color-name}-bg: color-mix(
+    in oklab,
+    var(--dodo-color-#{$color-name}-50) 90%,
+    #fff
+  );
+  --dodo-ui-Radio-#{$color-name}-hover-bg: color-mix(
+    in oklab,
+    var(--dodo-color-#{$color-name}-100) 90%,
+    #fff
+  );
+  --dodo-ui-Radio-#{$color-name}-active-bg: color-mix(
+    in oklab,
+    var(--dodo-color-#{$color-name}-200) 90%,
+    #fff
+  );
+
+  --dodo-ui-Radio-#{$color-name}-checked-bg: var(--dodo-color-#{$color-name}-400);
+  --dodo-ui-Radio-#{$color-name}-checked-hover-bg: var(--dodo-color-#{$color-name}-300);
+  --dodo-ui-Radio-#{$color-name}-checked-active-bg: var(--dodo-color-#{$color-name}-200);
+}
+
+/// Mixin: generate-dodo-ui-radio-color
+/// @param {String} $theme - e.g., default, safe, danger, etc.
+@mixin generate-dodo-ui-radio-color($theme) {
+  &--#{$theme} {
+    .Radio {
+      background-color: var(--dodo-ui-Radio-#{$theme}-bg);
+    }
+
+    input:checked:not([disabled]) {
+      & + .Radio {
+        .RadioHandle {
+          background-color: var(--dodo-ui-Radio-#{$theme}-checked-bg);
+        }
+      }
+    }
+
+    &:hover {
+      .Radio {
+        background-color: var(--dodo-ui-Radio-#{$theme}-hover-bg);
+      }
+
+      input:checked:not([disabled]) {
+        & + .Radio {
+          .RadioHandle {
+            background-color: var(--dodo-ui-Radio-#{$theme}-checked-hover-bg);
+          }
+        }
+      }
+    }
+
+    &:active {
+      .Radio {
+        background-color: var(--dodo-ui-Radio-#{$theme}-active-bg);
+      }
+
+      input:checked:not([disabled]) {
+        & + .Radio {
+          .RadioHandle {
+            background-color: var(--dodo-ui-Radio-#{$theme}-checked-active-bg);
+          }
+        }
+      }
+    }
+  }
+}
