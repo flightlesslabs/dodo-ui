@@ -130,6 +130,10 @@ export type { RangeSliderProps } from '$lib/stories/components/Form/RangeSlider/
 export { default as Toggle } from '$lib/stories/components/Form/Toggle/Toggle.svelte';
 export type { ToggleProps } from '$lib/stories/components/Form/Toggle/Toggle.svelte';
 
+/** Form: Checkbox */
+export { default as Checkbox } from '$lib/stories/components/Form/Checkbox/Checkbox.svelte';
+export type { CheckboxProps } from '$lib/stories/components/Form/Checkbox/Checkbox.svelte';
+
 /** Layout: Paper */
 export { default as Paper } from '$lib/stories/components/Layout/Paper/Paper.svelte';
 export type { PaperColor, PaperProps } from '$lib/stories/components/Layout/Paper/Paper.svelte';

@@ -37,6 +37,7 @@
     input:checked:not([disabled]) {
       & + .Toggle {
         background-color: var(--dodo-ui-Toggle-#{$theme}-checked-bg);
+        border-color: transparent;
       }
     }
 
