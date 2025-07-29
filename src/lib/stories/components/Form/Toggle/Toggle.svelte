@@ -21,6 +21,8 @@
     disabled?: boolean;
     /** Name */
     name?: string;
+    /** value */
+    value?: string;
     /** Id */
     id?: string;
     /** Title (for tooltip) */
@@ -48,6 +50,7 @@
     checked = $bindable<boolean>(),
     ref = $bindable<HTMLInputElement>(),
     onchange,
+    value,
   }: ToggleProps = $props();
 </script>
 
@@ -62,7 +65,17 @@
   ].join(' ')}
   for={id}
 >
-  <input type="checkbox" {name} {id} {title} {disabled} {onchange} bind:this={ref} bind:checked />
+  <input
+    type="checkbox"
+    {name}
+    {id}
+    {title}
+    {disabled}
+    {onchange}
+    bind:this={ref}
+    bind:checked
+    {value}
+  />
   <div class="Toggle">
     <span class="ToggleHandle"></span>
   </div>
@@ -126,6 +139,12 @@
       width: 0;
       height: 0;
       position: absolute;
+
+      &:focus-visible {
+        & + .Toggle {
+          outline: 1px solid;
+        }
+      }
 
       &:checked {
         & + .Toggle {

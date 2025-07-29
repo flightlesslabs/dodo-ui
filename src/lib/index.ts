@@ -134,6 +134,10 @@ export type { ToggleProps } from '$lib/stories/components/Form/Toggle/Toggle.sve
 export { default as Checkbox } from '$lib/stories/components/Form/Checkbox/Checkbox.svelte';
 export type { CheckboxProps } from '$lib/stories/components/Form/Checkbox/Checkbox.svelte';
 
+/** Form: Radio */
+export { default as Radio } from '$lib/stories/components/Form/Radio/Radio.svelte';
+export type { RadioProps } from '$lib/stories/components/Form/Radio/Radio.svelte';
+
 /** Layout: Paper */
 export { default as Paper } from '$lib/stories/components/Layout/Paper/Paper.svelte';
 export type { PaperColor, PaperProps } from '$lib/stories/components/Layout/Paper/Paper.svelte';

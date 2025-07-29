@@ -76,19 +76,5 @@
         }
       }
     }
-
-    input:not([disabled]) {
-      &:focus-visible {
-        & + .Checkbox {
-          background-color: var(--dodo-ui-Checkbox-#{$theme}-active-bg);
-        }
-
-        &:checked {
-          & + .Checkbox {
-            background-color: var(--dodo-ui-Checkbox-#{$theme}-checked-active-bg);
-          }
-        }
-      }
-    }
   }
 }

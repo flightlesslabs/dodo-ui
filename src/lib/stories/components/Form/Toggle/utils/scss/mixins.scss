@@ -64,19 +64,5 @@
         }
       }
     }
-
-    input:not([disabled]) {
-      &:focus-visible {
-        & + .Toggle {
-          background-color: var(--dodo-ui-Toggle-#{$theme}-active-bg);
-        }
-
-        &:checked {
-          & + .Toggle {
-            background-color: var(--dodo-ui-Toggle-#{$theme}-checked-active-bg);
-          }
-        }
-      }
-    }
   }
 }

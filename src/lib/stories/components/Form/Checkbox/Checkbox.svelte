@@ -22,6 +22,8 @@
     disabled?: boolean;
     /** Name */
     name?: string;
+    /** value */
+    value?: string;
     /** Id */
     id?: string;
     /** Title (for tooltip) */
@@ -58,6 +60,7 @@
     onchange,
     customCheckIcon,
     customIndeterminateIcon,
+    value,
   }: CheckboxProps = $props();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -98,7 +101,17 @@
   ].join(' ')}
   for={id}
 >
-  <input type="checkbox" {name} {id} {title} {disabled} {onchange} bind:this={ref} bind:checked />
+  <input
+    type="checkbox"
+    {name}
+    {id}
+    {title}
+    {disabled}
+    {onchange}
+    bind:this={ref}
+    bind:checked
+    {value}
+  />
   <div class="Checkbox">
     <div class="CheckboxIcon">
       {#if indeterminate && customIndeterminateIconTyped}
@@ -167,6 +180,12 @@
       height: 0;
       position: absolute;
 
+      &:focus-visible {
+        & + .Checkbox {
+          outline: 1px solid;
+        }
+      }
+
       &:checked {
         &:not([disabled]) {
           & + .Checkbox {
@@ -178,7 +197,7 @@
 
         &[disabled] {
           & + .Checkbox {
-            :global(.CheckboxIcon) {
+            .CheckboxIcon {
               color: var(--dodo-ui-Checkbox-disabled-color);
             }
           }
