@@ -76,6 +76,48 @@
   </Grid>
 </Story>
 
+<!-- Resize the screen to see the effect -->
+<Story name="Responsive" asChild>
+  <Grid spacing={2}>
+    <Row>
+      <Column md={8}>
+        <Paper color="primary"><p>md:8</p></Paper>
+      </Column>
+      <Column md={4}><Paper color="primary"><p>md:4</p></Paper></Column>
+    </Row>
+    <Row>
+      <Column sm={4}>
+        <Paper color="primary"><p>sm:4</p></Paper>
+      </Column>
+      <Column><Paper color="primary"><p>sm:12</p></Paper></Column>
+    </Row>
+    <Row>
+      <Column lg={2}>
+        <Paper color="primary"><p>lg:2</p></Paper>
+      </Column>
+      <Column lg={10}>
+        <Paper color="primary"><p>lg:10</p></Paper>
+      </Column>
+    </Row>
+    <Row>
+      <Column xl={2}>
+        <Paper color="primary"><p>xl:2</p></Paper>
+      </Column>
+      <Column xl={10}>
+        <Paper color="primary"><p>xl:10</p></Paper>
+      </Column>
+    </Row>
+    <Row>
+      <Column xl2={2}>
+        <Paper color="primary"><p>xl2:2</p></Paper>
+      </Column>
+      <Column xl2={10}>
+        <Paper color="primary"><p>xl2:10</p></Paper>
+      </Column>
+    </Row>
+  </Grid>
+</Story>
+
 <Story name="Spacing" asChild>
   <Grid spacing={2}>
     <Row>
