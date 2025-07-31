@@ -100,25 +100,25 @@
       }
 
       &--md {
-        @media (min-width: map-get($breakpoints, md)) {
+        @media (min-width: $breakpoints-md) {
           grid-column: span var(--GridColumnBreakpoint-md);
         }
       }
 
       &--lg {
-        @media (min-width: map-get($breakpoints, lg)) {
+        @media (min-width: $breakpoints-lg) {
           grid-column: span var(--GridColumnBreakpoint-lg);
         }
       }
 
       &--xl {
-        @media (min-width: map-get($breakpoints, xl)) {
+        @media (min-width: $breakpoints-xl) {
           grid-column: span var(--GridColumnBreakpoint-xl);
         }
       }
 
       &--xl2 {
-        @media (min-width: map-get($breakpoints, xl2)) {
+        @media (min-width: $breakpoints-xl2) {
           grid-column: span var(--GridColumnBreakpoint-xl2);
         }
       }
