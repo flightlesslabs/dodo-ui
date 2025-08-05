@@ -1,0 +1,9 @@
+import{p as v,f as M,a as $,t as a,b as s,s as m,c as I}from"./iframe-Dz8TuBvm.js";import{c as g,d as S}from"./create-runtime-stories-D4PEhd9g.js";import{i as h}from"./lifecycle-mfYXf25-.js";import{m as y,M as D}from"./MenuItem-CZKNEyko.js";import{c as b}from"./size-C-8mwSpB.js";import"./attributes-DmS7zdLA.js";import"./this-BhKk8y0x.js";import"./style-BnPB1de5.js";const C={type:{control:{type:"select"},options:y},size:{control:{type:"select"},options:b}},x={component:D,tags:["autodocs"],argTypes:C,parameters:{docs:{description:{component:""}}}},{Story:r}=S();var W=M("<!> <!> <!> <!>",1);function c(u,_){v(_,!1),h();var l=W(),i=$(l);r(i,{name:"Default",children:(e,n)=>{var t=a("Menu Item");s(e,t)},$$slots:{default:!0},parameters:{docs:{description:{story:"Default MenuItem"}},__svelteCsf:{rawCode:`<MenuItem {...args}>
+  Menu Item
+</MenuItem>`}}});var p=m(i,2);r(p,{name:"WithSeparator",args:{separator:!0},children:(e,n)=>{var t=a("Menu Item");s(e,t)},$$slots:{default:!0},parameters:{docs:{description:{story:"With Separator"}},__svelteCsf:{rawCode:`<MenuItem {...args}>
+  Menu Item
+</MenuItem>`}}});var d=m(p,2);r(d,{name:"Disabled",args:{disabled:!0},children:(e,n)=>{var t=a("Menu Item");s(e,t)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<MenuItem {...args}>
+  Menu Item
+</MenuItem>`}}});var f=m(d,2);r(f,{name:"Selected",args:{selected:!0},children:(e,n)=>{var t=a("Menu Item");s(e,t)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<MenuItem {...args}>
+  Menu Item
+</MenuItem>`}}}),s(u,l),I()}c.__docgen={data:[],name:"MenuItem.stories.svelte"};const o=g(c,x),j=["Default","WithSeparator","Disabled","Selected"],k={...o.Default,tags:["svelte-csf-v5"]},q={...o.WithSeparator,tags:["svelte-csf-v5"]},B={...o.Disabled,tags:["svelte-csf-v5"]},F={...o.Selected,tags:["svelte-csf-v5"]};export{k as Default,B as Disabled,F as Selected,q as WithSeparator,j as __namedExportsOrder,x as default,C as storyMenuItemArgTypes};
