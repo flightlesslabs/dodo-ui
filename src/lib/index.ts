@@ -1,5 +1,3 @@
-import '$lib/styles/global.css';
-
 export type {
   ComponentColorPriority,
   ComponentColorSeverity,

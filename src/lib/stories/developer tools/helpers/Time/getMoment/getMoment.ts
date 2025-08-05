@@ -1,8 +1,10 @@
 import type { ConfigType, OptionType } from 'dayjs';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc.js';
 import timezone from 'dayjs/plugin/timezone.js';
 import customParseFormat from 'dayjs/plugin/customParseFormat.js';
+
+type Dayjs = ReturnType<typeof dayjs>;
 
 dayjs.extend(utc);
 dayjs.extend(timezone);

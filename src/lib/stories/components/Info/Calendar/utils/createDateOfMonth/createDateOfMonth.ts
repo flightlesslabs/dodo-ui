@@ -1,7 +1,9 @@
 import getMoment from '$lib/stories/developer tools/helpers/Time/getMoment/getMoment.js';
-import type dayjs from 'dayjs';
 import type { DateOfMonth } from '../types.js';
 import type { CalendarWeekNames } from '$lib/index.js';
+import dayjsLib from 'dayjs'; // Only needed for types
+
+type Dayjs = ReturnType<typeof dayjsLib>;
 
 /** Settings for generating calendar dates */
 export interface CreateDatesOfMonthSettings {
@@ -35,7 +37,7 @@ function dateMoment(
 /**
  * Determines if the given day matches "today" (manual or actual).
  */
-function getIsToday(dayMoment: dayjs.Dayjs, todayDate: string, todayManual?: string): boolean {
+function getIsToday(dayMoment: Dayjs, todayDate: string, todayManual?: string): boolean {
   const dayDateFormat = dayMoment.format('DD-MM-YYYY');
   return todayManual === dayDateFormat || todayDate === dayDateFormat;
 }
@@ -44,9 +46,9 @@ function getIsToday(dayMoment: dayjs.Dayjs, todayDate: string, todayManual?: str
  * Determines if a date should be disabled based on limits and included/excluded lists.
  */
 function getIsDateDisabled(
-  dayMoment: dayjs.Dayjs,
-  minDate?: dayjs.Dayjs,
-  maxDate?: dayjs.Dayjs,
+  dayMoment: Dayjs,
+  minDate?: Dayjs,
+  maxDate?: Dayjs,
   excludeDates?: string[],
   includeDates?: string[],
 ): boolean {
