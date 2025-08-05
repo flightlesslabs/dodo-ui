@@ -60,6 +60,8 @@
     class?: string;
     /** The onclick event handler */
     onclick?: MouseEventHandler<HTMLButtonElement>;
+    /** Aria label */
+    'aria-label'?: string;
     /** Turn Button into link */
     href?: string;
     /** Link button: download  */
@@ -101,6 +103,7 @@
     onclick,
     before,
     after,
+    'aria-label': ariaLabel,
     href,
     download,
     hreflang,
@@ -145,6 +148,7 @@
     {target}
     type={anchorMediaType}
     {referrerpolicy}
+    aria-label={ariaLabel}
     class:outline
     class:compact
     class:disabled
@@ -166,6 +170,7 @@
     class:outline
     class:compact
     class:fullWidth
+    aria-label={ariaLabel}
     class={[
       'dodo-ui-Button',
       `size--${size}`,
