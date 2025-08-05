@@ -1,6 +1,0 @@
-import{p as n,j as p,g as i,k as l,c,d}from"./iframe-Dz8TuBvm.js";import{c as u,d as _}from"./create-runtime-stories-D4PEhd9g.js";import{C as e}from"./createDateOfMonth-CCp_a7gU.js";import{storyCalendarDatesChartArgTypes as v}from"./CalendarDatesChart.stories-BBL-suB7.js";import{g as f}from"./getMoment-V1I9iBQO.js";import"./each-95PtNgGq.js";import"./this-BhKk8y0x.js";import"./CalendarDateChip-Bfvvtxy9.js";import"./CalendarWeek-DUczN7oz.js";import"./types-zowg9ItS.js";import"./Popper-DGammOpN.js";import"./attributes-DmS7zdLA.js";import"./style-BnPB1de5.js";import"./Paper-v1hXlRc3.js";import"./colors-C3b1rS-d.js";import"./MenuItem-CZKNEyko.js";import"./lifecycle-mfYXf25-.js";import"./size-C-8mwSpB.js";const g={component:e,tags:["autodocs"],argTypes:v,parameters:{docs:{description:{component:""}}}},{Story:C}=_();let t=l(d(f().toDate()));function r(o,s){n(s,!0),C(o,{name:"Select",asChild:!0,children:(a,$)=>{e(a,{get value(){return i(t)},onselect:m=>{p(t,m,!0)}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<CalendarDatesChart
-  {value}
-  onselect={(val) => {
-    value = val;
-  }}
-/>`}}}),c()}r.__docgen={data:[],name:"Events.stories.svelte"};const S=u(r,g),F=["Select"],G={...S.Select,tags:["svelte-csf-v5"]};export{G as Select,F as __namedExportsOrder,g as default};
