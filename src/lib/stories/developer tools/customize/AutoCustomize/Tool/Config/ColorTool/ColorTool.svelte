@@ -23,7 +23,7 @@
   .ColorTool {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: calc(var(--dodo-ui-space) * 2);
+    margin-bottom: calc(var(--dodo-ui-space) * 2.5);
     margin-left: -4px;
     margin-right: -4px;
 

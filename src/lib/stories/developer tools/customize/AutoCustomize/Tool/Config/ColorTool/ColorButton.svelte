@@ -21,15 +21,15 @@
   class:selectedColor={selectedColor === color}
   onclick={onClickMod}
   aria-label={`color button ${color}`}
-  style={`background-color: var(--dodo-color-base-${color}-500);`}
+  style={`background-color: var(--dodo-color-base-${color}-400);`}
 >
   <Icon icon="material-symbols:check-small" width="24" height="24" />
 </button>
 
 <style lang="scss">
   .ColorButton {
-    width: 25px;
-    height: 25px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     margin: 4px;
     cursor: pointer;

@@ -4,10 +4,20 @@ const AUTO_CUSTOMIZE_TOOL_CONFIG = 'AUTO_CUSTOMIZE_TOOL_CONFIG';
 
 export type AutoCustomizeConfigData = {
   primaryColor?: string;
+  secondaryColor?: string;
+  neutralColor?: string;
+  safeColor?: string;
+  warningColor?: string;
+  dangerColor?: string;
 };
 
 const defaultData = {
   primaryColor: 'violet',
+  secondaryColor: 'blue',
+  neutralColor: 'gray',
+  safeColor: 'emerald',
+  warningColor: 'amber',
+  dangerColor: 'red',
 };
 
 function getDefaultData() {
@@ -34,7 +44,10 @@ function createAutoCustomizeConfigStore() {
       return updatedAt;
     },
     updateData(newData: Partial<AutoCustomizeConfigData>) {
-      data = newData;
+      data = {
+        ...data,
+        ...newData,
+      };
       updatedAt = Date.now();
 
       if (browser) {
