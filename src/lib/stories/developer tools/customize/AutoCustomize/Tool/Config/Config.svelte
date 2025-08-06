@@ -1,7 +1,20 @@
 <script lang="ts">
+  import Button from '$lib/stories/components/Form/Button/Button.svelte';
+  import { useAutoCustomizeConfigStore } from '../stores/config.svelte.js';
+  import ColorTool from './ColorTool/ColorTool.svelte';
 </script>
 
-<div class="Config">Config</div>
+<div class="Config">
+  <ColorTool
+    label="Primary Color:"
+    onclick={(color) => useAutoCustomizeConfigStore.updateData({ primaryColor: color })}
+    selectedColor={useAutoCustomizeConfigStore.data.primaryColor}
+  />
+
+  <div class="Reset">
+    <Button onclick={() => useAutoCustomizeConfigStore.reset()}>Reset</Button>
+  </div>
+</div>
 
 <style lang="scss">
   @use '../../../../../../styles/scss' as *;
