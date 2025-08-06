@@ -2,6 +2,7 @@
   import Button from '$lib/stories/components/Form/Button/Button.svelte';
   import { useAutoCustomizeConfigStore } from '../stores/config.svelte.js';
   import ColorTool from './ColorTool/ColorTool.svelte';
+  import Export from './Export.svelte';
 </script>
 
 <div class="Config">
@@ -82,7 +83,13 @@
   />
 
   <div class="Reset">
-    <Button onclick={() => useAutoCustomizeConfigStore.reset()}>Reset</Button>
+    <Button onclick={() => useAutoCustomizeConfigStore.reset()} variant="text" color="danger">
+      Reset
+    </Button>
+  </div>
+
+  <div class="Export">
+    <Export />
   </div>
 </div>
 
@@ -99,6 +106,10 @@
       max-width: 300px;
       height: calc(100vh - 130px);
       overflow: auto;
+    }
+
+    .Export {
+      margin-top: calc(var(--dodo-ui-space) * 4);
     }
   }
 </style>

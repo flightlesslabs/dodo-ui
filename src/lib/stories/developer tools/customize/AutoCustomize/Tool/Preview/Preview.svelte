@@ -1,5 +1,6 @@
 <script lang="ts">
   import Button from '$lib/stories/components/Form/Button/Button.svelte';
+  import Paper from '$lib/stories/components/Layout/Paper/Paper.svelte';
   import { colorPaletteValues } from '$lib/stories/developer tools/philosophy/Colors/utils/color.js';
   import { useAutoCustomizeConfigStore } from '../stores/config.svelte.js';
 
@@ -110,10 +111,6 @@
 
     cssVariables = [...newCssvariables];
   });
-
-  $effect(() => {
-    console.log(cssVariables);
-  });
 </script>
 
 <div class="Preview" style={cssVariables.join(';')}>
@@ -158,14 +155,29 @@
       <Button variant="text" outline color="danger">Danger</Button>
     </div>
   </div>
+
+  <div class="section">
+    <div class="column">
+      <Paper shadow={1} width="150px" height="200px">
+        <div style="padding: 16px">Hola!</div>
+      </Paper>
+    </div>
+  </div>
 </div>
 
 <style lang="scss">
   @use '../../../../../../styles/scss' as *;
 
+  :global(:root) {
+    --AutoCustomize-Preview-bgColor: var(--dodo-color-base-gray-100);
+  }
+
+  :global(.dodo-theme--dark) {
+    --AutoCustomize-Preview-bgColor: var(--dodo-color-base-gray-800);
+  }
+
   .Preview {
-    background-color: var(--dodo-color-base-gray-100);
-    border: 1px solid var(--dodo-color-base-gray-200);
+    background-color: var(--AutoCustomize-Preview-bgColor);
     padding: calc(var(--dodo-ui-space) * 2);
     border-radius: var(--dodo-ui-element-roundness-2);
     width: 100%;

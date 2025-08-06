@@ -11,7 +11,7 @@ export type AutoCustomizeConfigData = {
   dangerColor?: string;
 };
 
-const defaultData = {
+export const autoCustomizeConfigdefaultData: AutoCustomizeConfigData = {
   primaryColor: 'violet',
   secondaryColor: 'blue',
   neutralColor: 'gray',
@@ -22,12 +22,12 @@ const defaultData = {
 
 function getDefaultData() {
   if (!browser) {
-    return defaultData;
+    return autoCustomizeConfigdefaultData;
   }
 
   let values = JSON.parse(localStorage.getItem(AUTO_CUSTOMIZE_TOOL_CONFIG) || `{}`);
 
-  values = { ...defaultData, ...values };
+  values = { ...autoCustomizeConfigdefaultData, ...values };
 
   return values as AutoCustomizeConfigData;
 }
@@ -55,11 +55,14 @@ function createAutoCustomizeConfigStore() {
       }
     },
     reset() {
-      data = defaultData;
+      data = autoCustomizeConfigdefaultData;
       updatedAt = Date.now();
 
       if (browser) {
-        localStorage.setItem(AUTO_CUSTOMIZE_TOOL_CONFIG, JSON.stringify(defaultData));
+        localStorage.setItem(
+          AUTO_CUSTOMIZE_TOOL_CONFIG,
+          JSON.stringify(autoCustomizeConfigdefaultData),
+        );
       }
     },
   };
