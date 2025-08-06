@@ -1,4 +1,5 @@
 <script lang="ts">
+  import FormControl from '$lib/stories/components/Form/FormControl/FormControl.svelte';
   import { colorPaletteBase } from '$lib/stories/developer tools/philosophy/Colors/utils/color.js';
   import ColorButton from './ColorButton.svelte';
 
@@ -13,10 +14,11 @@
 </script>
 
 <div class="ColorTool">
-  <p>{label}</p>
-  {#each colors as color (color)}
-    <ColorButton {color} {onclick} {selectedColor} />
-  {/each}
+  <FormControl {label}>
+    {#each colors as color (color)}
+      <ColorButton {color} {onclick} {selectedColor} />
+    {/each}
+  </FormControl>
 </div>
 
 <style lang="scss">
@@ -26,16 +28,5 @@
     margin-bottom: calc(var(--dodo-ui-space) * 2.5);
     margin-left: -4px;
     margin-right: -4px;
-
-    p {
-      margin-top: 0;
-      width: 100%;
-      font-weight: 400;
-      margin-bottom: 8px;
-
-      &:empty {
-        display: none;
-      }
-    }
   }
 </style>

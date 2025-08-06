@@ -33,12 +33,12 @@
     border-radius: 50%;
     margin: 4px;
     cursor: pointer;
-    border: 0;
     color: var(--dodo-color-constant-white);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    border: 3px solid transparent;
 
     :global(svg) {
       position: absolute;
@@ -46,7 +46,7 @@
     }
 
     &.selectedColor {
-      border: 3px solid var(--dodo-color-primary-600);
+      border-color: var(--dodo-color-primary-600);
 
       :global(svg) {
         display: block;
