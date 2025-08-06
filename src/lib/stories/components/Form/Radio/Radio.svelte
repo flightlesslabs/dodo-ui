@@ -180,7 +180,6 @@
       border-style: solid;
       border-width: calc(var(--dodo-ui-element-border-width) * 2);
       border-color: var(--dodo-ui-Radio-border-color);
-      outline: 0;
       letter-spacing: 0.3px;
       border-radius: inherit;
       position: relative;
