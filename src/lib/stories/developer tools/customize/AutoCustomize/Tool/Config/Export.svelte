@@ -89,6 +89,17 @@
   --dodo-ui-element-border-width: ${2 + borderWidth}px;`;
       }
 
+      if (useAutoCustomizeConfigStore.data.space) {
+        const space = useAutoCustomizeConfigStore.data.space;
+
+        rawText += `
+
+  /* Space */
+  --dodo-ui-space-small: ${6 + space}px;
+  --dodo-ui-space: ${8 + space}px;
+  --dodo-ui-space-large: ${10 + space}px;`;
+      }
+
       // end
       rawText += `
 }`;
