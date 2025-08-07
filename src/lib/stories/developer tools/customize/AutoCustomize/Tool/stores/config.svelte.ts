@@ -13,11 +13,14 @@ export type AutoCustomizeConfigDataColors = {
 
 export type AutoCustomizeConfigDataComponents = {
   roundness?: number;
+  elementHeight?: number;
+  borderWidth?: number;
 };
 
 export type AutoCustomizeConfigData = {
   colors?: AutoCustomizeConfigDataColors;
   components?: AutoCustomizeConfigDataComponents;
+  space?: number;
 };
 
 export const autoCustomizeConfigdefaultData: AutoCustomizeConfigData = {
@@ -31,7 +34,10 @@ export const autoCustomizeConfigdefaultData: AutoCustomizeConfigData = {
   },
   components: {
     roundness: 0,
+    elementHeight: 0,
+    borderWidth: 0,
   },
+  space: 0,
 };
 
 function getDefaultData() {

@@ -1,6 +1,8 @@
 <script lang="ts">
   import Button from '$lib/stories/components/Form/Button/Button.svelte';
   import RangeSlider from '$lib/stories/components/Form/RangeSlider/RangeSlider.svelte';
+  import Column from '$lib/stories/components/Layout/Grid/Column/Column.svelte';
+  import Grid from '$lib/stories/components/Layout/Grid/Grid.svelte';
   import Paper from '$lib/stories/components/Layout/Paper/Paper.svelte';
   import {
     colorPalette,
@@ -61,6 +63,33 @@
       newCssvariables.push(`--dodo-ui-element-roundness-3: ${1.9375 + roundness}em`);
     }
 
+    if (useAutoCustomizeConfigStore.data.components?.elementHeight) {
+      const elementHeight = useAutoCustomizeConfigStore.data.components.elementHeight + 2;
+      const elementHeightTrack = useAutoCustomizeConfigStore.data.components.elementHeight / 2;
+
+      newCssvariables.push(`--dodo-ui-element-height-small: ${34 + elementHeight}px`);
+      newCssvariables.push(`--dodo-ui-element-height-normal: ${40 + elementHeight}px`);
+      newCssvariables.push(`--dodo-ui-element-height-large: ${50 + elementHeight}px`);
+
+      newCssvariables.push(`--dodo-ui-track-element-height-small: ${6 + elementHeightTrack}px`);
+      newCssvariables.push(`--dodo-ui-track-element-height-normal: ${8 + elementHeightTrack}px`);
+      newCssvariables.push(`--dodo-ui-track-element-height-large: ${10 + elementHeightTrack}px`);
+    }
+
+    if (useAutoCustomizeConfigStore.data.components?.borderWidth) {
+      const borderWidth = useAutoCustomizeConfigStore.data.components.borderWidth;
+
+      newCssvariables.push(`--dodo-ui-element-border-width: ${1 + borderWidth}px`);
+    }
+
+    if (useAutoCustomizeConfigStore.data.space) {
+      const space = useAutoCustomizeConfigStore.data.space;
+
+      newCssvariables.push(`--dodo-ui-space-small: ${6 + space}px`);
+      newCssvariables.push(`--dodo-ui-space: ${8 + space}px`);
+      newCssvariables.push(`--dodo-ui-space-large: ${10 + space}px`);
+    }
+
     cssVariables = [...newCssvariables];
   });
 </script>
@@ -111,12 +140,47 @@
   <div class="section">
     <div class="column">
       <Paper shadow={1} width="150px" height="180px">
-        <div style="padding: 16px">Hola!</div>
+        <div style="padding: var(--dodo-ui-space)">Hola!</div>
       </Paper>
     </div>
     <div class="column">
       <RangeSlider value={50} min={20} max={70} />
     </div>
+  </div>
+
+  <div class="section">
+    <Grid class="GridSection">
+      <Column md={6}>
+        <Paper shadow={1}>
+          <div style="padding: var(--dodo-ui-space)">Hola!</div>
+        </Paper>
+      </Column>
+      <Column md={6}>
+        <Paper shadow={1}>
+          <div style="padding: var(--dodo-ui-space)">Hola!</div>
+        </Paper>
+      </Column>
+      <Column md={4}>
+        <Paper shadow={1}>
+          <div style="padding: var(--dodo-ui-space)">Hola!</div>
+        </Paper>
+      </Column>
+      <Column md={3}>
+        <Paper shadow={1}>
+          <div style="padding: var(--dodo-ui-space)">Hola!</div>
+        </Paper>
+      </Column>
+      <Column md={2}>
+        <Paper shadow={1}>
+          <div style="padding: var(--dodo-ui-space)">Hola!</div>
+        </Paper>
+      </Column>
+      <Column md={3}>
+        <Paper shadow={1}>
+          <div style="padding: var(--dodo-ui-space)">Hola!</div>
+        </Paper>
+      </Column>
+    </Grid>
   </div>
 </div>
 
@@ -154,6 +218,10 @@
     .column {
       margin: 4px;
       display: inline-flex;
+    }
+
+    :global(.GridSection) {
+      width: 100%;
     }
   }
 </style>

@@ -59,12 +59,34 @@
 
         rawText += `
 
-  /* Roundness */
+  /* Component: Roundness */
   --dodo-ui-element-roundness-1: ${0.4375 + roundness}em;
   --dodo-ui-element-roundness-2: ${0.8125 + roundness}em;
-  --dodo-ui-element-roundness-3: ${1.9375 + roundness}em;
+  --dodo-ui-element-roundness-3: ${1.9375 + roundness}em;`;
+      }
 
-`;
+      if (useAutoCustomizeConfigStore.data.components?.elementHeight) {
+        const elementHeight = useAutoCustomizeConfigStore.data.components.elementHeight + 2;
+        const elementHeightTrack = useAutoCustomizeConfigStore.data.components.elementHeight / 2;
+
+        rawText += `
+
+  /* Component: Size */
+  --dodo-ui-element-height-small: ${34 + elementHeight}px;
+  --dodo-ui-element-height-normal: ${40 + elementHeight}px;
+  --dodo-ui-element-height-large: ${50 + elementHeight}px;
+  --dodo-ui-track-element-height-small: ${6 + elementHeightTrack}px;
+  --dodo-ui-track-element-height-normal: ${8 + elementHeightTrack}px;
+  --dodo-ui-track-element-height-large: ${10 + elementHeightTrack}px;`;
+      }
+
+      if (useAutoCustomizeConfigStore.data.components?.borderWidth) {
+        const borderWidth = useAutoCustomizeConfigStore.data.components.borderWidth;
+
+        rawText += `
+
+  /* Component: Border */
+  --dodo-ui-element-border-width: ${2 + borderWidth}px;`;
       }
 
       // end

@@ -7,6 +7,7 @@
 </script>
 
 <div class="Config">
+  <h3>Auto Customize</h3>
   <ColorTool
     label="Primary Color:"
     onclick={(color) => useAutoCustomizeConfigStore.updateDataColor({ primary: color })}
@@ -86,19 +87,43 @@
   <ValueSilder
     label="Roundness:"
     value={useAutoCustomizeConfigStore.data.components?.roundness || 0}
-    min={-4}
+    min={-5}
     max={7}
     oninput={(value) => useAutoCustomizeConfigStore.updateDataComponents({ roundness: value })}
   />
+
+  <ValueSilder
+    label="Size:"
+    value={useAutoCustomizeConfigStore.data.components?.elementHeight || 0}
+    min={-5}
+    max={7}
+    oninput={(value) => useAutoCustomizeConfigStore.updateDataComponents({ elementHeight: value })}
+  />
+
+  <ValueSilder
+    label="Border:"
+    value={useAutoCustomizeConfigStore.data.components?.borderWidth || 0}
+    min={0}
+    max={7}
+    oninput={(value) => useAutoCustomizeConfigStore.updateDataComponents({ borderWidth: value })}
+  />
+
+  <ValueSilder
+    label="Space:"
+    value={useAutoCustomizeConfigStore.data.space || 0}
+    min={-5}
+    max={15}
+    oninput={(value) => useAutoCustomizeConfigStore.updateData({ space: value })}
+  />
+
+  <div class="Export">
+    <Export />
+  </div>
 
   <div class="Reset">
     <Button onclick={() => useAutoCustomizeConfigStore.reset()} variant="text" color="danger">
       Reset
     </Button>
-  </div>
-
-  <div class="Export">
-    <Export />
   </div>
 </div>
 
@@ -117,7 +142,7 @@
       overflow: auto;
     }
 
-    .Export {
+    .Reset {
       margin-top: calc(var(--dodo-ui-space) * 4);
     }
   }
