@@ -3,6 +3,7 @@
   import { useAutoCustomizeConfigStore } from '../stores/config.svelte.js';
   import ColorTool from './ColorTool/ColorTool.svelte';
   import Export from './Export.svelte';
+  import ValueSilder from './ValueSilder/ValueSilder.svelte';
 </script>
 
 <div class="Config">
@@ -80,6 +81,14 @@
     onclick={(color) => useAutoCustomizeConfigStore.updateData({ dangerColor: color })}
     selectedColor={useAutoCustomizeConfigStore.data.dangerColor}
     colors={['red', 'orange', 'amber', 'yellow', 'pink', 'rose']}
+  />
+
+  <ValueSilder
+    label="Roundness:"
+    value={useAutoCustomizeConfigStore.data.roundness || 0}
+    min={-4}
+    max={7}
+    oninput={(value) => useAutoCustomizeConfigStore.updateData({ roundness: value })}
   />
 
   <div class="Reset">

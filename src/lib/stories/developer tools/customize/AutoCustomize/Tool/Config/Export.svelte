@@ -37,8 +37,18 @@
         const weight = colorPaletteValues[index];
 
         rawText += `
---dodo-color-${colorName}-${weight}: var(--dodo-color-base-${dataPoint}-${weight});`;
+  --dodo-color-${colorName}-${weight}: var(--dodo-color-base-${dataPoint}-${weight});`;
       }
+    }
+
+    if (useAutoCustomizeConfigStore.data.roundness) {
+      const roundness = useAutoCustomizeConfigStore.data.roundness / 8;
+
+      rawText += `
+  /* Roundness */
+  --dodo-ui-element-roundness-1: ${0.4375 + roundness}em;
+  --dodo-ui-element-roundness-2: ${0.8125 + roundness}em;
+  --dodo-ui-element-roundness-3: ${1.9375 + roundness}em;`;
     }
 
     // end
@@ -74,7 +84,7 @@
         const weightReversed = colorPaletteValuesReversed[index];
 
         rawText += `
---dodo-color-${colorName}-${weight}: var(--dodo-color-base-${dataPoint}-${weightReversed});`;
+  --dodo-color-${colorName}-${weight}: var(--dodo-color-base-${dataPoint}-${weightReversed});`;
       }
     }
 
@@ -84,7 +94,7 @@
 
     const data = new Blob([rawText], { type: 'text/plain' });
 
-    await downloadFile(`dodo-custom.css`, data);
+    await downloadFile(`dodo-ui-custom.css`, data);
   }
 </script>
 

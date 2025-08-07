@@ -9,6 +9,7 @@ export type AutoCustomizeConfigData = {
   safeColor?: string;
   warningColor?: string;
   dangerColor?: string;
+  roundness?: number;
 };
 
 export const autoCustomizeConfigdefaultData: AutoCustomizeConfigData = {
@@ -18,6 +19,7 @@ export const autoCustomizeConfigdefaultData: AutoCustomizeConfigData = {
   safeColor: 'emerald',
   warningColor: 'amber',
   dangerColor: 'red',
+  roundness: 0,
 };
 
 function getDefaultData() {

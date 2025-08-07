@@ -1,113 +1,61 @@
 <script lang="ts">
   import Button from '$lib/stories/components/Form/Button/Button.svelte';
+  import RangeSlider from '$lib/stories/components/Form/RangeSlider/RangeSlider.svelte';
   import Paper from '$lib/stories/components/Layout/Paper/Paper.svelte';
-  import { colorPaletteValues } from '$lib/stories/developer tools/philosophy/Colors/utils/color.js';
-  import { useAutoCustomizeConfigStore } from '../stores/config.svelte.js';
+  import {
+    colorPalette,
+    colorPaletteValues,
+  } from '$lib/stories/developer tools/philosophy/Colors/utils/color.js';
+  import {
+    useAutoCustomizeConfigStore,
+    type AutoCustomizeConfigData,
+  } from '../stores/config.svelte.js';
 
   let cssVariables = $state<string[]>([]);
 
   $effect(() => {
     const newCssvariables: string[] = [];
 
-    for (let index = 0; index < colorPaletteValues.length; index++) {
-      const weight = colorPaletteValues[index];
+    for (let index = 0; index < colorPalette.length; index++) {
+      const colorName = colorPalette[index];
+      const fieldName = `${colorName}Color` as keyof AutoCustomizeConfigData;
 
-      newCssvariables.push(
-        `--dodo-color-primary-${weight}: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.primaryColor}-${weight})`,
-      );
+      const dataPoint = useAutoCustomizeConfigStore.data[fieldName];
 
-      newCssvariables.push(
-        `--dodo-color-secondary-${weight}: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.secondaryColor}-${weight})`,
-      );
+      if (dataPoint) {
+        for (let index = 0; index < colorPaletteValues.length; index++) {
+          const weight = colorPaletteValues[index];
 
-      newCssvariables.push(
-        `--dodo-color-neutral-${weight}: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.neutralColor}-${weight})`,
-      );
+          newCssvariables.push(
+            `--dodo-color-${colorName}-${weight}: var(--dodo-color-base-${dataPoint}-${weight})`,
+          );
+        }
 
-      newCssvariables.push(
-        `--dodo-color-safe-${weight}: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.safeColor}-${weight})`,
-      );
-
-      newCssvariables.push(
-        `--dodo-color-warning-${weight}: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.warningColor}-${weight})`,
-      );
-
-      newCssvariables.push(
-        `--dodo-color-danger-${weight}: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.dangerColor}-${weight})`,
-      );
+        newCssvariables.push(
+          ...[
+            `--dodo-ui-Button-outline-${colorName}: var(--dodo-color-base-${dataPoint}-400)`,
+            `--dodo-ui-Button-text-${colorName}-bg: var(--dodo-color-base-${dataPoint}-100)`,
+            `--dodo-ui-Button-text-${colorName}-hover-bg: var(--dodo-color-base-${dataPoint}-200)`,
+            `--dodo-ui-Button-text-${colorName}-active-bg: var(--dodo-color-base-${dataPoint}-300)`,
+            `--dodo-ui-Button-solid-${colorName}-bg: var(--dodo-color-base-${dataPoint}-500)`,
+            `--dodo-ui-Button-solid-${colorName}-hover-bg: var(--dodo-color-base-${dataPoint}-600)`,
+            `--dodo-ui-Button-solid-${colorName}-active-bg: var(--dodo-color-base-${dataPoint}-700)`,
+            `--dodo-ui-RangeSlider-thumb-${colorName}-bg: var(--dodo-color-base-${dataPoint}-500)`,
+            `--dodo-ui-RangeSlider-thumb-${colorName}-hover-bg: var(--dodo-color-base-${dataPoint}-600)`,
+            `--dodo-ui-RangeSlider-thumb-${colorName}-active-bg: var(--dodo-color-base-${dataPoint}-700)`,
+            `--dodo-ui-RangeSlider-track-filled-${colorName}-bg: var(--dodo-color-base-${dataPoint}-500)`,
+          ],
+        );
+      }
     }
 
-    newCssvariables.push(
-      ...[
-        `--dodo-ui-Button-outline-primary: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.primaryColor}-400)`,
-        `--dodo-ui-Button-text-primary-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.primaryColor}-100)`,
-        `--dodo-ui-Button-text-primary-hover-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.primaryColor}-200)`,
-        `--dodo-ui-Button-text-primary-active-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.primaryColor}-300)`,
-        `--dodo-ui-Button-solid-primary-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.primaryColor}-500)`,
-        `--dodo-ui-Button-solid-primary-hover-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.primaryColor}-600)`,
-        `--dodo-ui-Button-solid-primary-active-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.primaryColor}-700)`,
-      ],
-    );
+    if (useAutoCustomizeConfigStore.data.roundness) {
+      const roundness = useAutoCustomizeConfigStore.data.roundness / 8;
 
-    newCssvariables.push(
-      ...[
-        `--dodo-ui-Button-outline-secondary: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.secondaryColor}-400)`,
-        `--dodo-ui-Button-text-secondary-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.secondaryColor}-100)`,
-        `--dodo-ui-Button-text-secondary-hover-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.secondaryColor}-200)`,
-        `--dodo-ui-Button-text-secondary-active-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.secondaryColor}-300)`,
-        `--dodo-ui-Button-solid-secondary-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.secondaryColor}-500)`,
-        `--dodo-ui-Button-solid-secondary-hover-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.secondaryColor}-600)`,
-        `--dodo-ui-Button-solid-secondary-active-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.secondaryColor}-700)`,
-      ],
-    );
-
-    newCssvariables.push(
-      ...[
-        `--dodo-ui-Button-outline-neutral: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.neutralColor}-400)`,
-        `--dodo-ui-Button-text-neutral-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.neutralColor}-100)`,
-        `--dodo-ui-Button-text-neutral-hover-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.neutralColor}-200)`,
-        `--dodo-ui-Button-text-neutral-active-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.neutralColor}-300)`,
-        `--dodo-ui-Button-solid-neutral-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.neutralColor}-500)`,
-        `--dodo-ui-Button-solid-neutral-hover-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.neutralColor}-600)`,
-        `--dodo-ui-Button-solid-neutral-active-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.neutralColor}-700)`,
-      ],
-    );
-
-    newCssvariables.push(
-      ...[
-        `--dodo-ui-Button-outline-safe: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.safeColor}-400)`,
-        `--dodo-ui-Button-text-safe-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.safeColor}-100)`,
-        `--dodo-ui-Button-text-safe-hover-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.safeColor}-200)`,
-        `--dodo-ui-Button-text-safe-active-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.safeColor}-300)`,
-        `--dodo-ui-Button-solid-safe-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.safeColor}-500)`,
-        `--dodo-ui-Button-solid-safe-hover-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.safeColor}-600)`,
-        `--dodo-ui-Button-solid-safe-active-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.safeColor}-700)`,
-      ],
-    );
-
-    newCssvariables.push(
-      ...[
-        `--dodo-ui-Button-outline-warning: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.warningColor}-400)`,
-        `--dodo-ui-Button-text-warning-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.warningColor}-100)`,
-        `--dodo-ui-Button-text-warning-hover-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.warningColor}-200)`,
-        `--dodo-ui-Button-text-warning-active-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.warningColor}-300)`,
-        `--dodo-ui-Button-solid-warning-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.warningColor}-500)`,
-        `--dodo-ui-Button-solid-warning-hover-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.warningColor}-600)`,
-        `--dodo-ui-Button-solid-warning-active-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.warningColor}-700)`,
-      ],
-    );
-
-    newCssvariables.push(
-      ...[
-        `--dodo-ui-Button-outline-danger: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.dangerColor}-400)`,
-        `--dodo-ui-Button-text-danger-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.dangerColor}-100)`,
-        `--dodo-ui-Button-text-danger-hover-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.dangerColor}-200)`,
-        `--dodo-ui-Button-text-danger-active-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.dangerColor}-300)`,
-        `--dodo-ui-Button-solid-danger-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.dangerColor}-500)`,
-        `--dodo-ui-Button-solid-danger-hover-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.dangerColor}-600)`,
-        `--dodo-ui-Button-solid-danger-active-bg: var(--dodo-color-base-${useAutoCustomizeConfigStore.data.dangerColor}-700)`,
-      ],
-    );
+      newCssvariables.push(`--dodo-ui-element-roundness-1: ${0.4375 + roundness}em`);
+      newCssvariables.push(`--dodo-ui-element-roundness-2: ${0.8125 + roundness}em`);
+      newCssvariables.push(`--dodo-ui-element-roundness-3: ${1.9375 + roundness}em`);
+    }
 
     cssVariables = [...newCssvariables];
   });
@@ -158,9 +106,12 @@
 
   <div class="section">
     <div class="column">
-      <Paper shadow={1} width="150px" height="200px">
+      <Paper shadow={1} width="150px" height="180px">
         <div style="padding: 16px">Hola!</div>
       </Paper>
+    </div>
+    <div class="column">
+      <RangeSlider value={50} min={20} max={70} />
     </div>
   </div>
 </div>
