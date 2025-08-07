@@ -1,7 +1,0 @@
-import{p as f,f as g,a as v,t as a,b as s,s as p,c as $}from"./iframe-CbXHd0bm.js";import{c as M,d as I}from"./create-runtime-stories-DyBmwzhf.js";import{i as S}from"./lifecycle-BctOnage.js";import{M as h}from"./MenuItem-iEiqXtI6.js";import{storyMenuItemArgTypes as x}from"./MenuItem.stories-DnVwne9R.js";import"./preload-helper-D9Z9MdNV.js";import"./attributes-D468Nl-V.js";import"./this-wio92ZO-.js";import"./style-B_gYWly_.js";import"./size-C-8mwSpB.js";const C={component:h,tags:["autodocs"],argTypes:x,parameters:{docs:{description:{component:""}}}},{Story:r}=I();var L=g("<!> <!> <!>",1);function _(u,c){f(c,!1),S();var m=L(),n=v(m);r(n,{name:"Normal",children:(e,i)=>{var t=a("Menu Item");s(e,t)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<MenuItem {...args}>
-  Menu Item
-</MenuItem>`}}});var l=p(n,2);r(l,{name:"Small",args:{size:"small"},children:(e,i)=>{var t=a("Menu Item");s(e,t)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<MenuItem {...args}>
-  Menu Item
-</MenuItem>`}}});var d=p(l,2);r(d,{name:"Large",args:{size:"large"},children:(e,i)=>{var t=a("Menu Item");s(e,t)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<MenuItem {...args}>
-  Menu Item
-</MenuItem>`}}}),s(u,m),$()}_.__docgen={data:[],name:"Size.stories.svelte"};const o=M(_,C),R=["Normal","Small","Large"],j={...o.Normal,tags:["svelte-csf-v5"]},k={...o.Small,tags:["svelte-csf-v5"]},q={...o.Large,tags:["svelte-csf-v5"]};export{q as Large,j as Normal,k as Small,R as __namedExportsOrder,C as default};

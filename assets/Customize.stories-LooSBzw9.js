@@ -1,0 +1,9 @@
+import{p as l,f as C,a as I,s as f,b as k,c as _}from"./iframe-MiCc8z-P.js";import{c as $,d as g}from"./create-runtime-stories-CQWb31r-.js";import{i as v}from"./lifecycle-NKY8tqA_.js";import{s as b,C as o}from"./Checkbox.stories-C0sQASZ7.js";import{I as c}from"./Icon-DZMAOuFh.js";import"./preload-helper-D9Z9MdNV.js";import"./attributes-gbqtndPa.js";import"./this-CYWE1T_W.js";import"./style-DlLX7lcN.js";import"./input-0RC7hd8q.js";import"./roundness-fyqvrcF6.js";import"./colors-C3b1rS-d.js";import"./size-C-8mwSpB.js";const x={component:o,tags:["autodocs"],argTypes:b,parameters:{docs:{description:{component:""}}}},{Story:i}=g();var w=C("<!> <!>",1);function r(a,d){l(d,!1),v();var s=w(),n=I(s);i(n,{name:"Custom Check Icon",asChild:!0,children:(e,p)=>{o(e,{checked:!0,customCheckIcon:t=>{c(t,{icon:"line-md:check-all",width:"24",height:"24"})},$$slots:{customCheckIcon:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Checkbox checked>
+  {#snippet customCheckIcon()}
+    <Icon icon="line-md:check-all" width="24" height="24" />
+  {/snippet}
+</Checkbox>`}}});var h=f(n,2);i(h,{name:"Custom Indeterminate Icon",asChild:!0,children:(e,p)=>{o(e,{checked:!0,indeterminate:!0,customIndeterminateIcon:t=>{c(t,{icon:"lsicon:minus-filled",width:"24",height:"24"})},$$slots:{customIndeterminateIcon:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Checkbox checked indeterminate>
+  {#snippet customIndeterminateIcon()}
+    <Icon icon="lsicon:minus-filled" width="24" height="24" />
+  {/snippet}
+</Checkbox>`}}}),k(a,s),_()}r.__docgen={data:[],name:"Customize.stories.svelte"};const m=$(r,x),D=["CustomCheckIcon","CustomIndeterminateIcon"],F={...m.CustomCheckIcon,tags:["svelte-csf-v5"]},G={...m.CustomIndeterminateIcon,tags:["svelte-csf-v5"]};export{F as CustomCheckIcon,G as CustomIndeterminateIcon,D as __namedExportsOrder,x as default};

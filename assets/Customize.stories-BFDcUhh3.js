@@ -1,0 +1,12 @@
+import{p as N,f,a as $,s as h,b as r,c as _,t as x}from"./iframe-MiCc8z-P.js";import{c as P,d as b}from"./create-runtime-stories-CQWb31r-.js";import{i as w}from"./lifecycle-NKY8tqA_.js";import{C as o}from"./CalendarNavigation-BHQWfHNY.js";import{storyCalendarNavigationArgTypes as y}from"./CalendarNavigation.stories-DTkXFkqp.js";import"./getMoment-5ogaytXT.js";import"./Popper-DIXO860H.js";import{B}from"./Button-C0JBg2GA.js";import"./MenuItem-DGmUlNbJ.js";import{I as s}from"./Icon-DZMAOuFh.js";import"./preload-helper-D9Z9MdNV.js";import"./this-CYWE1T_W.js";import"./colors-C3b1rS-d.js";import"./size-C-8mwSpB.js";import"./attributes-gbqtndPa.js";import"./style-DlLX7lcN.js";import"./Paper-D2bnVoH0.js";const I={component:o,tags:["autodocs"],argTypes:y,parameters:{docs:{description:{component:""}}}},{Story:l}=b();var z=f("<!> <!>",1);function m(d,c){N(c,!1),w();var n=z(),e=$(n);l(e,{name:"customCalendarNavigationContent",asChild:!0,children:(a,u)=>{o(a,{customCalendarNavigationPrevContent:t=>{s(t,{icon:"carbon:previous-filled",width:"32",height:"32"})},customCalendarNavigationNextContent:t=>{s(t,{icon:"carbon:next-outline",width:"32",height:"32"})},$$slots:{customCalendarNavigationPrevContent:!0,customCalendarNavigationNextContent:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<CalendarNavigation>
+  {#snippet customCalendarNavigationPrevContent()}
+    <Icon icon="carbon:previous-filled" width="32" height="32" />
+  {/snippet}
+  {#snippet customCalendarNavigationNextContent()}
+    <Icon icon="carbon:next-outline" width="32" height="32" />
+  {/snippet}
+</CalendarNavigation>`}}});var p=h(e,2);l(p,{name:"customCalendarNavigation",asChild:!0,children:(a,u)=>{o(a,{customCalendarNavigation:i=>{B(i,{children:(t,S)=>{var g=x("Control");r(t,g)},$$slots:{default:!0}})},$$slots:{customCalendarNavigation:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<CalendarNavigation>
+  {#snippet customCalendarNavigation()}
+    <Button>Control</Button>
+  {/snippet}
+</CalendarNavigation>`}}}),r(d,n),_()}m.__docgen={data:[],name:"Customize.stories.svelte"};const C=P(m,I),U=["CustomCalendarNavigationContent","CustomCalendarNavigation"],V={...C.CustomCalendarNavigationContent,tags:["svelte-csf-v5"]},W={...C.CustomCalendarNavigation,tags:["svelte-csf-v5"]};export{W as CustomCalendarNavigation,V as CustomCalendarNavigationContent,U as __namedExportsOrder,I as default};

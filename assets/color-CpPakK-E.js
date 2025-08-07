@@ -1,0 +1,1 @@
+const e=["red","orange","amber","yellow","lime","green","emerald","teal","cyan","blue","indigo","violet","purple","fuchsia","pink","rose","slate","gray","zinc","neutral","stone"],a=["black","white"],l=["primary","secondary","neutral","safe","warning","danger"],r=["50","100","200","300","400","500","600","700","800","900","950"];export{e as a,a as b,r as c,l as d};
