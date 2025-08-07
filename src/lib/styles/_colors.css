@@ -7,7 +7,7 @@
   --dodo-color-constant-black: var(--dodo-color-base-black);
   --dodo-color-constant-white: var(--dodo-color-base-white);
 
-  /* Default color */
+  /* Neutral color */
   --dodo-color-neutral-50: var(--dodo-color-base-gray-50);
   --dodo-color-neutral-100: var(--dodo-color-base-gray-100);
   --dodo-color-neutral-200: var(--dodo-color-base-gray-200);

@@ -220,7 +220,6 @@
 
   .dodo-ui-Button {
     cursor: pointer;
-    outline: none;
     transition: all 150ms;
     text-decoration: none;
     margin: 0;
@@ -232,7 +231,6 @@
     border-style: solid;
     border-width: var(--dodo-ui-element-border-width);
     border-color: transparent;
-    outline: 0;
     color: inherit;
     letter-spacing: 0.3px;
 
