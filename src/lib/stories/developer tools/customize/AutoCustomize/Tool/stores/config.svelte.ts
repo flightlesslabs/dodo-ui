@@ -2,24 +2,36 @@ import { browser } from '$app/environment';
 
 const AUTO_CUSTOMIZE_TOOL_CONFIG = 'AUTO_CUSTOMIZE_TOOL_CONFIG';
 
-export type AutoCustomizeConfigData = {
-  primaryColor?: string;
-  secondaryColor?: string;
-  neutralColor?: string;
-  safeColor?: string;
-  warningColor?: string;
-  dangerColor?: string;
+export type AutoCustomizeConfigDataColors = {
+  primary?: string;
+  secondary?: string;
+  neutral?: string;
+  safe?: string;
+  warning?: string;
+  danger?: string;
+};
+
+export type AutoCustomizeConfigDataComponents = {
   roundness?: number;
 };
 
+export type AutoCustomizeConfigData = {
+  colors?: AutoCustomizeConfigDataColors;
+  components?: AutoCustomizeConfigDataComponents;
+};
+
 export const autoCustomizeConfigdefaultData: AutoCustomizeConfigData = {
-  primaryColor: 'violet',
-  secondaryColor: 'blue',
-  neutralColor: 'gray',
-  safeColor: 'emerald',
-  warningColor: 'amber',
-  dangerColor: 'red',
-  roundness: 0,
+  colors: {
+    primary: 'violet',
+    secondary: 'blue',
+    neutral: 'gray',
+    safe: 'emerald',
+    warning: 'amber',
+    danger: 'red',
+  },
+  components: {
+    roundness: 0,
+  },
 };
 
 function getDefaultData() {
@@ -55,6 +67,22 @@ function createAutoCustomizeConfigStore() {
       if (browser) {
         localStorage.setItem(AUTO_CUSTOMIZE_TOOL_CONFIG, JSON.stringify(newData));
       }
+    },
+    updateDataColor(newData: Partial<AutoCustomizeConfigDataColors>) {
+      const colors = {
+        ...data.colors,
+        ...newData,
+      };
+
+      this.updateData({ colors });
+    },
+    updateDataComponents(newData: Partial<AutoCustomizeConfigDataComponents>) {
+      const components = {
+        ...data.components,
+        ...newData,
+      };
+
+      this.updateData({ components });
     },
     reset() {
       data = autoCustomizeConfigdefaultData;

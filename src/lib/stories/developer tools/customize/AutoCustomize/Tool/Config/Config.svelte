@@ -9,8 +9,8 @@
 <div class="Config">
   <ColorTool
     label="Primary Color:"
-    onclick={(color) => useAutoCustomizeConfigStore.updateData({ primaryColor: color })}
-    selectedColor={useAutoCustomizeConfigStore.data.primaryColor}
+    onclick={(color) => useAutoCustomizeConfigStore.updateDataColor({ primary: color })}
+    selectedColor={useAutoCustomizeConfigStore.data.colors?.primary}
     colors={[
       'violet',
       'red',
@@ -33,8 +33,8 @@
 
   <ColorTool
     label="Secondary Color:"
-    onclick={(color) => useAutoCustomizeConfigStore.updateData({ secondaryColor: color })}
-    selectedColor={useAutoCustomizeConfigStore.data.secondaryColor}
+    onclick={(color) => useAutoCustomizeConfigStore.updateDataColor({ secondary: color })}
+    selectedColor={useAutoCustomizeConfigStore.data.colors?.secondary}
     colors={[
       'blue',
       'red',
@@ -57,38 +57,38 @@
 
   <ColorTool
     label="Neutral Color:"
-    onclick={(color) => useAutoCustomizeConfigStore.updateData({ neutralColor: color })}
-    selectedColor={useAutoCustomizeConfigStore.data.neutralColor}
+    onclick={(color) => useAutoCustomizeConfigStore.updateDataColor({ neutral: color })}
+    selectedColor={useAutoCustomizeConfigStore.data.colors?.neutral}
     colors={['gray', 'slate', 'zinc', 'neutral', 'stone']}
   />
 
   <ColorTool
     label="Safe Color:"
-    onclick={(color) => useAutoCustomizeConfigStore.updateData({ safeColor: color })}
-    selectedColor={useAutoCustomizeConfigStore.data.safeColor}
+    onclick={(color) => useAutoCustomizeConfigStore.updateDataColor({ safe: color })}
+    selectedColor={useAutoCustomizeConfigStore.data.colors?.safe}
     colors={['emerald', 'lime', 'green', 'teal']}
   />
 
   <ColorTool
     label="Warning Color:"
-    onclick={(color) => useAutoCustomizeConfigStore.updateData({ warningColor: color })}
-    selectedColor={useAutoCustomizeConfigStore.data.warningColor}
+    onclick={(color) => useAutoCustomizeConfigStore.updateDataColor({ warning: color })}
+    selectedColor={useAutoCustomizeConfigStore.data.colors?.warning}
     colors={['amber', 'red', 'rose', 'orange', 'yellow']}
   />
 
   <ColorTool
     label="Danger Color:"
-    onclick={(color) => useAutoCustomizeConfigStore.updateData({ dangerColor: color })}
-    selectedColor={useAutoCustomizeConfigStore.data.dangerColor}
+    onclick={(color) => useAutoCustomizeConfigStore.updateDataColor({ danger: color })}
+    selectedColor={useAutoCustomizeConfigStore.data.colors?.danger}
     colors={['red', 'orange', 'amber', 'yellow', 'pink', 'rose']}
   />
 
   <ValueSilder
     label="Roundness:"
-    value={useAutoCustomizeConfigStore.data.roundness || 0}
+    value={useAutoCustomizeConfigStore.data.components?.roundness || 0}
     min={-4}
     max={7}
-    oninput={(value) => useAutoCustomizeConfigStore.updateData({ roundness: value })}
+    oninput={(value) => useAutoCustomizeConfigStore.updateDataComponents({ roundness: value })}
   />
 
   <div class="Reset">

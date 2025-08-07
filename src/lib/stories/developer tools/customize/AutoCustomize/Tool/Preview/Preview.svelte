@@ -8,7 +8,7 @@
   } from '$lib/stories/developer tools/philosophy/Colors/utils/color.js';
   import {
     useAutoCustomizeConfigStore,
-    type AutoCustomizeConfigData,
+    type AutoCustomizeConfigDataColors,
   } from '../stores/config.svelte.js';
 
   let cssVariables = $state<string[]>([]);
@@ -18,9 +18,13 @@
 
     for (let index = 0; index < colorPalette.length; index++) {
       const colorName = colorPalette[index];
-      const fieldName = `${colorName}Color` as keyof AutoCustomizeConfigData;
+      const fieldName = `${colorName}` as keyof AutoCustomizeConfigDataColors;
 
-      const dataPoint = useAutoCustomizeConfigStore.data[fieldName];
+      const dataPoint =
+        useAutoCustomizeConfigStore.data.colors &&
+        useAutoCustomizeConfigStore.data.colors[fieldName]
+          ? useAutoCustomizeConfigStore.data.colors[fieldName]
+          : undefined;
 
       if (dataPoint) {
         for (let index = 0; index < colorPaletteValues.length; index++) {
@@ -49,8 +53,8 @@
       }
     }
 
-    if (useAutoCustomizeConfigStore.data.roundness) {
-      const roundness = useAutoCustomizeConfigStore.data.roundness / 8;
+    if (useAutoCustomizeConfigStore.data.components?.roundness) {
+      const roundness = useAutoCustomizeConfigStore.data.components.roundness / 8;
 
       newCssvariables.push(`--dodo-ui-element-roundness-1: ${0.4375 + roundness}em`);
       newCssvariables.push(`--dodo-ui-element-roundness-2: ${0.8125 + roundness}em`);

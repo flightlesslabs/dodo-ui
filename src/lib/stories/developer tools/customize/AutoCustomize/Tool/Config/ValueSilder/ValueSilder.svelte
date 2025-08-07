@@ -1,7 +1,6 @@
 <script lang="ts">
   import FormControl from '$lib/stories/components/Form/FormControl/FormControl.svelte';
   import RangeSlider from '$lib/stories/components/Form/RangeSlider/RangeSlider.svelte';
-  import type { FormEventHandler } from 'svelte/elements';
 
   interface ValueSilderProps {
     label?: string;
