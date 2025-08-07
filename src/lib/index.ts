@@ -12,6 +12,8 @@ export type { ComponentWeight } from './types/weight.js';
 
 export type { PositionY, PositionX } from './types/position.js';
 
+export type { DropdownArrowPosition } from './types/special.js';
+
 /** developer tools: helpers: logger */
 export { default as createLogger } from '$lib/stories/developer tools/helpers/logger/logger.js';
 export type {
@@ -103,11 +105,7 @@ export type { MessageProps } from '$lib/stories/components/Form/Message/Message.
 
 /** Form: Select */
 export { default as Select } from '$lib/stories/components/Form/Select/Select.svelte';
-export type {
-  SelectOption,
-  SelectDropdownArrowPosition,
-  SelectProps,
-} from '$lib/stories/components/Form/Select/Select.svelte';
+export type { SelectOption, SelectProps } from '$lib/stories/components/Form/Select/Select.svelte';
 
 /** Form: NumericInput */
 export { default as NumericInput } from '$lib/stories/components/Form/NumericInput/NumericInput.svelte';
@@ -171,6 +169,13 @@ export type {
   GridColumnSize,
   GridColumnProps,
 } from '$lib/stories/components/Layout/Grid/Column/Column.svelte';
+
+/** Layout: Accordian */
+export { default as Accordian } from '$lib/stories/components/Layout/Accordian/Accordian.svelte';
+export type {
+  AccordianProps,
+  AccordianToggleEvent,
+} from '$lib/stories/components/Layout/Accordian/Accordian.svelte';
 
 /** Info: Calendar */
 export { default as Calendar } from '$lib/stories/components/Info/Calendar/Calendar.svelte';

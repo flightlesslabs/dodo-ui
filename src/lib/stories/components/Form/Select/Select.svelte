@@ -17,8 +17,6 @@
     disabled?: boolean;
   };
 
-  export type SelectDropdownArrowPosition = false | 'before' | 'after';
-
   export interface SelectProps {
     /** How large should the button be? */
     size?: ComponentSize;
@@ -105,7 +103,7 @@
     /** Dropdown Arrow Icon */
     customDropdownArrowIcon?: (open: boolean) => Snippet;
     /** Select Dropdown Arrow Position */
-    dropdownArrowPosition?: SelectDropdownArrowPosition;
+    dropdownArrowPosition?: DropdownArrowPosition;
     /** Popup stick horizontally  */
     popupPositionX?: PositionX;
     /** Popup stick vertically  */
@@ -138,6 +136,7 @@
   } from '$lib/index.js';
   import type { TextInputInputEvent } from '../TextInput/TextInput.svelte';
   import type { ButtonClickEvent } from '../Button/Button.svelte';
+  import type { DropdownArrowPosition } from '$lib/types/special.js';
 
   let {
     size = 'normal',
