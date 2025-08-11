@@ -1,0 +1,9 @@
+import{p as u,f as I,a as _,s as $,b as y,c as v}from"./iframe-B_h0ZugA.js";import{c as b,d as h}from"./create-runtime-stories-CuUPjFLX.js";import{i as N}from"./lifecycle-Dv2MLzXX.js";import{s as g,N as e}from"./NumericInput.stories-CHU38nb0.js";import{I as n}from"./Icon-ELkYyRiM.js";import"./preload-helper-D9Z9MdNV.js";import"./this-bRGdYwyX.js";import"./InputEnclosure-Bv2S_aAV.js";import"./DynamicInput-Cn_gXsRk.js";import"./attributes-B-gMNrtk.js";import"./style-C9v_w32A.js";import"./input-IWW5ZSH7.js";import"./getMoment-lRxgIpNk.js";import"./Popper-Ct7Pfu-W.js";import"./Paper-CXhVzTzr.js";import"./colors-C3b1rS-d.js";import"./MenuItem-CVm9-pHS.js";import"./roundness-fyqvrcF6.js";import"./size-C-8mwSpB.js";const A={component:e,tags:["autodocs"],argTypes:g,parameters:{docs:{description:{component:""}}}},{Story:i}=h();var C=I("<!> <!>",1);function a(p,m){u(m,!1),N();var r=C(),s=_(r);i(s,{name:"Icon Before",asChild:!0,children:(o,l)=>{e(o,{before:t=>{n(t,{icon:"material-symbols:content-copy"})},$$slots:{before:!0}})},$$slots:{default:!0},parameters:{docs:{description:{story:"NumericInput icon in front."}},__svelteCsf:{rawCode:`<NumericInput>
+  {#snippet before()}
+    <Icon icon="material-symbols:content-copy" />
+  {/snippet}
+</NumericInput>`}}});var f=$(s,2);i(f,{name:"Icon After",asChild:!0,children:(o,l)=>{e(o,{after:t=>{n(t,{icon:"material-symbols:download-2"})},$$slots:{after:!0}})},$$slots:{default:!0},parameters:{docs:{description:{story:"NumericInput icon in front."}},__svelteCsf:{rawCode:`<NumericInput>
+  {#snippet after()}
+    <Icon icon="material-symbols:download-2" />
+  {/snippet}
+</NumericInput>`}}}),y(p,r),v()}a.__docgen={data:[],name:"WithIcon.stories.svelte"};const c=b(a,A),J=["IconBefore","IconAfter"],K={...c.IconBefore,tags:["svelte-csf-v5"]},L={...c.IconAfter,tags:["svelte-csf-v5"]};export{L as IconAfter,K as IconBefore,J as __namedExportsOrder,A as default};

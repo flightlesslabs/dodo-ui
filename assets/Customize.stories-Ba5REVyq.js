@@ -1,0 +1,11 @@
+import{p as g,f as x,a as y,n as p,s as j,b as e,c as z,t as l,e as m,h}from"./iframe-B_h0ZugA.js";import{c as B,d as P}from"./create-runtime-stories-CuUPjFLX.js";import{i as b}from"./lifecycle-Dv2MLzXX.js";import{C as s}from"./CalendarMonthChip-DiNfIEST.js";import{storyCalendarMonthChipArgTypes as w}from"./CalendarMonthChip.stories-DfzTV9k6.js";import"./getMoment-lRxgIpNk.js";import"./Popper-Ct7Pfu-W.js";import{B as S}from"./Button-ZMCCX1-1.js";import"./MenuItem-CVm9-pHS.js";import"./preload-helper-D9Z9MdNV.js";import"./this-bRGdYwyX.js";import"./colors-C3b1rS-d.js";import"./size-C-8mwSpB.js";import"./roundness-fyqvrcF6.js";import"./attributes-B-gMNrtk.js";import"./style-C9v_w32A.js";import"./Paper-CXhVzTzr.js";const T={component:s,tags:["autodocs"],argTypes:w,parameters:{docs:{description:{component:""}}}},{Story:d}=P();var A=x("<!> <!>",1);function u(M,f){g(f,!1),b();var r=A(),i=y(r);d(i,{name:"customCalendarMonthChipContent",asChild:!0,children:(o,_)=>{s(o,{value:"jan",customCalendarMonthChipContent:(n,a=p)=>{var t=l();m(()=>h(t,`🗓️${a()??""}`)),e(n,t)},$$slots:{customCalendarMonthChipContent:!0}})},$$slots:{default:!0},parameters:{docs:{description:{story:"Custom Content"}},__svelteCsf:{rawCode:`<CalendarMonthChip value="jan">
+  {#snippet customCalendarMonthChipContent(val)}
+    🗓️{val}
+  {/snippet}
+</CalendarMonthChip>`}}});var v=j(i,2);d(v,{name:"customCalendarMonthChip",asChild:!0,children:(o,_)=>{s(o,{value:"jan",customCalendarMonthChip:(n,a=p)=>{S(n,{size:"small",variant:"text",outline:!0,children:(t,E)=>{var C=l();m(()=>h(C,a())),e(t,C)},$$slots:{default:!0}})},$$slots:{customCalendarMonthChip:!0}})},$$slots:{default:!0},parameters:{docs:{description:{story:"Custom Chip"}},__svelteCsf:{rawCode:`<CalendarMonthChip value="jan">
+  {#snippet customCalendarMonthChip(val)}
+    <Button size="small" variant="text" outline>
+      {val}
+    </Button>
+  {/snippet}
+</CalendarMonthChip>`}}}),e(M,r),z()}u.__docgen={data:[],name:"Customize.stories.svelte"};const c=B(u,T),X=["CustomCalendarMonthChipContent","CustomCalendarMonthChip"],Y={...c.CustomCalendarMonthChipContent,tags:["svelte-csf-v5"]},Z={...c.CustomCalendarMonthChip,tags:["svelte-csf-v5"]};export{Z as CustomCalendarMonthChip,Y as CustomCalendarMonthChipContent,X as __namedExportsOrder,T as default};
