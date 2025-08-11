@@ -179,6 +179,7 @@
       bind:value
       {readonly}
       variant="input"
+      {size}
     />
 
     {#if passwordToggle && !disabled}

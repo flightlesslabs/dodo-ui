@@ -12,7 +12,7 @@ export type { ComponentWeight } from './types/weight.js';
 
 export type { PositionY, PositionX } from './types/position.js';
 
-export type { DropdownArrowPosition } from './types/special.js';
+export type { IconPosition } from './types/special.js';
 
 /** developer tools: helpers: logger */
 export { default as createLogger } from '$lib/stories/developer tools/helpers/logger/logger.js';
@@ -133,6 +133,10 @@ export type { CheckboxProps } from '$lib/stories/components/Form/Checkbox/Checkb
 /** Form: Radio */
 export { default as Radio } from '$lib/stories/components/Form/Radio/Radio.svelte';
 export type { RadioProps } from '$lib/stories/components/Form/Radio/Radio.svelte';
+
+/** Form: Search */
+export { default as Search } from '$lib/stories/components/Form/Search/Search.svelte';
+export type { SearchProps } from '$lib/stories/components/Form/Search/Search.svelte';
 
 /** Layout: Paper */
 export { default as Paper } from '$lib/stories/components/Layout/Paper/Paper.svelte';

@@ -2,7 +2,7 @@
   import type { ComponentRoundness } from '$lib/types/roundness.js';
   import type { ComponentSize } from '$lib/types/size.js';
 
-  import { type Snippet } from 'svelte';
+  import type { Snippet } from 'svelte';
   import type {
     ChangeEventHandler,
     ClipboardEventHandler,
@@ -11,17 +11,7 @@
     KeyboardEventHandler,
   } from 'svelte/elements';
 
-  export interface NumericInputProps {
-    /** min */
-    min?: number;
-    /** max */
-    max?: number;
-    /** Allow Negative Values */
-    allowNegativeValues?: boolean;
-    /** Decimal Places */
-    decimalPlaces?: number;
-    /** Log number validations */
-    log?: boolean;
+  export interface SearchProps {
     /** Input ref */
     ref?: HTMLInputElement;
     /** How large should the button be? */
@@ -31,7 +21,7 @@
     /** Add a border around the button. Default True */
     outline?: boolean;
     /** Input value */
-    value?: number;
+    value?: string;
     /** How round should the border radius be? */
     placeholder?: string;
     /** disabled state */
@@ -50,8 +40,10 @@
     after?: Snippet;
     /** Custom css class*/
     class?: string;
-    /** on Numeric Value Change */
-    onValueChange?: (value: number | undefined) => void;
+    /** onsearch event handler */
+    onsearch?: () => void;
+    /** onclear event handler */
+    onclear?: () => void;
     /** oninput event handler */
     oninput?: FormEventHandler<HTMLInputElement>;
     /** onchange event handler */
@@ -72,17 +64,21 @@
     onkeypress?: KeyboardEventHandler<HTMLInputElement>;
     /** onkeyup event handler */
     onkeyup?: KeyboardEventHandler<HTMLInputElement>;
+    /** custom Search Icon */
+    customSearchIcon?: () => Snippet;
+    /** search Icon Position */
+    searchIconPosition?: IconPosition;
   }
 </script>
 
 <script lang="ts">
   import InputEnclosure from '$lib/stories/developer tools/components/InputEnclosure/InputEnclosure.svelte';
-  import DynamicInput, {
-    type DynamicInputFocusEvent,
-    type DynamicInputKeyboardEvent,
-  } from '$lib/stories/developer tools/components/DynamicInput/DynamicInput.svelte';
+  import { type DynamicInputFocusEvent } from '$lib/stories/developer tools/components/DynamicInput/DynamicInput.svelte';
   import type { TextInputFocusEvent, TextInputKeyboardEvent } from '../TextInput/TextInput.svelte';
-  import isValidNumberValue from '$lib/stories/developer tools/helpers/Numbers/isValidNumberValue/isValidNumberValue.js';
+  import UtilityButton from '$lib/stories/developer tools/components/UtilityButton/UtilityButton.svelte';
+  import Icon from '@iconify/svelte';
+  import UtilityIcon from '$lib/stories/developer tools/components/UtilityIcon/UtilityIcon.svelte';
+  import type { IconPosition } from '$lib/types/special.js';
 
   let {
     size = 'normal',
@@ -92,6 +88,8 @@
     id,
     class: className = '',
     disabled = false,
+    onsearch,
+    onclear,
     oninput,
     onchange,
     onblur,
@@ -105,26 +103,21 @@
     before,
     after,
     error = false,
-    value: valueRaw,
+    value = $bindable<string>(),
     placeholder,
     ref = $bindable<HTMLInputElement>(),
     readonly = false,
-    decimalPlaces = 0,
-    allowNegativeValues = false,
-    min,
-    max,
-    log = false,
-    onValueChange,
-  }: NumericInputProps = $props();
-
-  let value = $state<string>('');
-  let cachedValue = $state<string>('');
+    customSearchIcon,
+    searchIconPosition = 'before',
+  }: SearchProps = $props();
 
   let focused: boolean = $state(false);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let customSearchIconTyped = customSearchIcon as any;
+
   function onfocusMod(e: DynamicInputFocusEvent) {
     const eTyped = e as TextInputFocusEvent;
-
     if (onfocus) {
       onfocus(eTyped);
     }
@@ -133,139 +126,64 @@
   function onblurMod(e: DynamicInputFocusEvent) {
     const eTyped = e as TextInputFocusEvent;
 
-    const isValidWithoutMinMax = isValidNumberValue(`${value}`, {
-      decimalPlaces,
-      allowNegativeValues,
-      log,
-    });
-
-    const isValid = isValidNumberValue(`${value}`, {
-      decimalPlaces,
-      allowNegativeValues,
-      log,
-      min,
-      max,
-    });
-
-    if (isValid) {
-      if (onValueChange) {
-        onValueChange(Number(value));
-      }
-
-      value = `${Number(value)}`;
-      cachedValue = `${Number(value)}`;
-    } else if (isValidWithoutMinMax) {
-      if (min && Number(value) < min) {
-        if (onValueChange) {
-          onValueChange(min);
-        }
-
-        value = `${min}`;
-        cachedValue = `${min}`;
-      } else if (max && Number(value) > max) {
-        if (onValueChange) {
-          onValueChange(max);
-        }
-
-        value = `${max}`;
-        cachedValue = `${max}`;
-      }
-    } else if (value.trim() === '') {
-      if (onValueChange) {
-        onValueChange(undefined);
-      }
-
-      value = '';
-      cachedValue = '';
-    } else if (valueRaw || valueRaw === 0) {
-      if (onValueChange) {
-        onValueChange(valueRaw);
-      }
-
-      value = `${valueRaw}`;
-      cachedValue = `${valueRaw}`;
-    } else {
-      if (onValueChange) {
-        onValueChange(undefined);
-      }
-
-      value = '';
-      cachedValue = '';
-    }
-
     if (onblur) {
       onblur(eTyped);
     }
   }
 
-  function onkeydownMod(e: DynamicInputKeyboardEvent) {
+  function onkeydownMod(e: TextInputKeyboardEvent) {
+    const eTyped = e as TextInputKeyboardEvent;
+
     if (onkeydown) {
-      onkeydown(e as TextInputKeyboardEvent);
+      onkeydown(eTyped);
     }
 
-    if (e.ctrlKey && e.key.toLocaleLowerCase() === 'c') {
-      return;
-    } else if (e.ctrlKey && e.key.toLocaleLowerCase() === 'v') {
-      return;
-    } else if (e.ctrlKey && e.key.toLocaleLowerCase() === 'x') {
-      return;
-    }
-
-    const valueToCheck = `${value}${e.key.length === 1 ? e.key : ''}`;
-
-    const isValid = isValidNumberValue(valueToCheck, {
-      decimalPlaces,
-      allowNegativeValues,
-      log,
-      strict: false,
-    });
-
-    if (!isValid) {
+    if (e.key === 'Enter' && onsearch) {
       e.preventDefault();
-      value = cachedValue;
-    } else {
-      cachedValue = valueToCheck;
+
+      onsearch();
+      return;
+    }
+
+    if (e.key === 'Escape' && onclear) {
+      e.preventDefault();
+
+      onclear();
+      return;
     }
   }
-
-  $effect(() => {
-    let updatedValue = '';
-
-    const isValid = isValidNumberValue(`${valueRaw}`, {
-      decimalPlaces,
-      allowNegativeValues,
-      min,
-      max,
-      log,
-    });
-
-    if (valueRaw === undefined) {
-      updatedValue = '';
-    } else if (!isValid) {
-      updatedValue = '';
-    } else {
-      updatedValue = `${valueRaw}`;
-    }
-
-    value = updatedValue;
-    cachedValue = updatedValue;
-  });
 </script>
+
+{#snippet searchIcon()}
+  <UtilityIcon {size} {disabled}>
+    {#if customSearchIconTyped}
+      {@render customSearchIconTyped()}
+    {:else}
+      <Icon icon="material-symbols:search-rounded" width="24" height="24" />
+    {/if}
+  </UtilityIcon>
+{/snippet}
 
 <div
   class:outline
   class:disabled
   class:error
   class:focused
-  class={['dodo-ui-NumericInput', `size--${size}`, `roundness--${roundness}`, className].join(' ')}
+  class={['dodo-ui-Search', `size--${size}`, `roundness--${roundness}`, className].join(' ')}
 >
   <InputEnclosure {outline} {disabled} {error} {focused} {size} {roundness} {before} {after}>
-    <DynamicInput
-      type="text"
+    {#if searchIconPosition === 'before'}
+      <div class="SearchIcon before">
+        {@render searchIcon()}
+      </div>
+    {/if}
+
+    <input
+      type="search"
       {name}
       {id}
       {disabled}
-      bind:ref
+      bind:this={ref}
       bind:focused
       {oninput}
       {onchange}
@@ -278,10 +196,90 @@
       onkeypress={onkeypress ? (e) => onkeypress(e as TextInputKeyboardEvent) : undefined}
       onkeyup={onkeyup ? (e) => onkeyup(e as TextInputKeyboardEvent) : undefined}
       {placeholder}
-      {readonly}
-      variant="input"
       bind:value
-      {size}
+      {readonly}
     />
+
+    {#if value && onclear && !disabled}
+      <div class="SearchClear">
+        <UtilityButton {size} title="Clear" onclick={onclear}>
+          <Icon icon="material-symbols:close-small" width="24" height="24" />
+        </UtilityButton>
+      </div>
+    {/if}
+
+    {#if searchIconPosition === 'after'}
+      <div class="SearchIcon after">
+        {@render searchIcon()}
+      </div>
+    {/if}
   </InputEnclosure>
 </div>
+
+<style lang="scss">
+  .dodo-ui-Search {
+    input {
+      flex: 1;
+      border: 0;
+      outline: 0;
+      height: 100%;
+      background-color: transparent;
+      font-family: inherit;
+      color: inherit;
+      letter-spacing: 0.3px;
+      margin: 0;
+
+      &::-webkit-search-decoration,
+      &::-webkit-search-cancel-button,
+      &::-webkit-search-results-button,
+      &::-webkit-search-results-decoration {
+        display: none;
+      }
+    }
+
+    .SearchIcon {
+      display: flex;
+    }
+
+    &.size {
+      &--normal {
+        .SearchIcon {
+          &.before {
+            margin-right: calc(calc(var(--dodo-ui-space-small) * 2) * -1);
+          }
+        }
+
+        input {
+          font-size: 1rem;
+          padding: 0 calc(var(--dodo-ui-space-small) * 2);
+        }
+      }
+
+      &--small {
+        .SearchIcon {
+          &.before {
+            margin-right: calc(var(--dodo-ui-space) * -1);
+          }
+        }
+
+        input {
+          padding: 0 var(--dodo-ui-space);
+          font-size: 0.9rem;
+        }
+      }
+
+      &--large {
+        .SearchIcon {
+          &.before {
+            margin-right: calc(calc(var(--dodo-ui-space) * 2) * -1);
+          }
+        }
+
+        input {
+          font-size: 1.1rem;
+          padding: 0 calc(var(--dodo-ui-space) * 2);
+        }
+      }
+    }
+  }
+</style>

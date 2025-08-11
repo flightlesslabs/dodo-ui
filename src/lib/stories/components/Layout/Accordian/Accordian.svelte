@@ -1,6 +1,6 @@
 <script lang="ts" module>
   import type { ComponentSize } from '$lib/types/size.js';
-  import type { DropdownArrowPosition } from '$lib/types/special.js';
+  import type { IconPosition } from '$lib/types/special.js';
   import Icon from '@iconify/svelte';
   import { onMount, type Snippet } from 'svelte';
   import type { EventHandler } from 'svelte/elements';
@@ -29,7 +29,7 @@
     /** How large should the button be? */
     size?: ComponentSize;
     /** Select Dropdown Arrow Position */
-    dropdownArrowPosition?: DropdownArrowPosition;
+    dropdownArrowPosition?: IconPosition;
     /** Dropdown Arrow Icon */
     customDropdownArrowIcon?: (open: boolean) => Snippet;
   }

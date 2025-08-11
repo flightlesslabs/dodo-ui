@@ -557,6 +557,7 @@
             : getMoment(value, undefined, { timezone, utc }).format(format)}
           {readonly}
           variant={editable ? 'input' : 'button'}
+          {size}
         >
           {#snippet customInputContent()}
             {#if customInputContentTyped}

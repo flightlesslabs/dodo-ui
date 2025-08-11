@@ -157,6 +157,7 @@
       {name}
       {id}
       {disabled}
+      {size}
       bind:ref
       bind:focused
       {oninput}

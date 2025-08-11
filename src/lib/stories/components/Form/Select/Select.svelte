@@ -80,7 +80,7 @@
     onkeyup?: KeyboardEventHandler<HTMLInputElement | HTMLButtonElement>;
     /** custom Content Formatting for variant button */
     customInputContent?: (val: SelectOption) => Snippet;
-    /** custom Content Formatting for variant button */
+    /** custom Menu Item Content */
     customMenuItemContent?: (val: SelectOption, selected: boolean) => Snippet;
     /** Custom Popup Content */
     customPopupContent?: (
@@ -88,7 +88,7 @@
       selectedOption: SelectOption,
       onselect: (val: SelectOption) => void,
     ) => Snippet;
-    /** custom Content Formatting for variant button */
+    /** custom Placeholder MenuItem Content */
     customPlaceholderMenuItemContent?: () => Snippet;
     /** PopperPopup Max height. Use css compatible value */
     popupMaxHeight?: string;
@@ -103,7 +103,7 @@
     /** Dropdown Arrow Icon */
     customDropdownArrowIcon?: (open: boolean) => Snippet;
     /** Select Dropdown Arrow Position */
-    dropdownArrowPosition?: DropdownArrowPosition;
+    dropdownArrowPosition?: IconPosition;
     /** Popup stick horizontally  */
     popupPositionX?: PositionX;
     /** Popup stick vertically  */
@@ -136,7 +136,7 @@
   } from '$lib/index.js';
   import type { TextInputInputEvent } from '../TextInput/TextInput.svelte';
   import type { ButtonClickEvent } from '../Button/Button.svelte';
-  import type { DropdownArrowPosition } from '$lib/types/special.js';
+  import type { IconPosition } from '$lib/types/special.js';
 
   let {
     size = 'normal',
@@ -393,6 +393,7 @@
           value={searchable ? searchTerm : selectedOption?.label}
           {readonly}
           variant={searchable ? 'input' : 'button'}
+          {size}
         >
           {#snippet customInputContent()}
             {#if customInputContentTyped}

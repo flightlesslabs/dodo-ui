@@ -1,1 +1,1 @@
-export type DropdownArrowPosition = false | 'before' | 'after';
+export type IconPosition = false | 'before' | 'after';
