@@ -1,0 +1,11 @@
+import{p as R,f as $,a as C,t as n,b as t,s as u,c as g}from"./iframe-CCEZUMhS.js";import{c as B,d as h}from"./create-runtime-stories-CSTpu6Dk.js";import{i as k}from"./lifecycle-DkDP_kOY.js";import{B as x}from"./Button-BrSl1wX_.js";import{storyButtonArgTypes as w}from"./Button.stories-z7E4O6p4.js";import"./preload-helper-D9Z9MdNV.js";import"./attributes-CzzGBcbs.js";import"./this-C9Nk6BSb.js";import"./style-D3ywwbI_.js";import"./roundness-fyqvrcF6.js";import"./colors-C3b1rS-d.js";import"./weight-CLgIXx1C.js";import"./size-C-8mwSpB.js";const y={component:x,tags:["autodocs"],argTypes:w,parameters:{docs:{description:{component:""}}}},{Story:o}=h();var F=$("<!> <!> <!> <!> <!>",1);function p(_,f){R(f,!1),k();var d=F(),l=C(d);o(l,{name:"Roundness 1",children:(s,a)=>{var e=n("Click me!");t(s,e)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  Click me!
+</Button>`}}});var m=u(l,2);o(m,{name:"Roundness 2",args:{roundness:2},children:(s,a)=>{var e=n("Click me!");t(s,e)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  Click me!
+</Button>`}}});var i=u(m,2);o(i,{name:"Roundness 3",args:{roundness:3},children:(s,a)=>{var e=n("Click me!");t(s,e)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  Click me!
+</Button>`}}});var c=u(i,2);o(c,{name:"Roundness 0",args:{roundness:0},children:(s,a)=>{var e=n("Click me!");t(s,e)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  Click me!
+</Button>`}}});var v=u(c,2);o(v,{name:"Roundness Full",args:{roundness:"full",compact:!0},children:(s,a)=>{var e=n("C");t(s,e)},$$slots:{default:!0},parameters:{docs:{description:{story:"Button with 50% roundness usefull for icon (Compact) buttons"}},__svelteCsf:{rawCode:`<Button {...args}>
+  C
+</Button>`}}}),t(_,d),g()}p.__docgen={data:[],name:"Roundness.stories.svelte"};const r=B(p,y),H=["Roundness1","Roundness2","Roundness3","Roundness0","RoundnessFull"],I={...r.Roundness1,tags:["svelte-csf-v5"]},J={...r.Roundness2,tags:["svelte-csf-v5"]},K={...r.Roundness3,tags:["svelte-csf-v5"]},L={...r.Roundness0,tags:["svelte-csf-v5"]},N={...r.RoundnessFull,tags:["svelte-csf-v5"]};export{L as Roundness0,I as Roundness1,J as Roundness2,K as Roundness3,N as RoundnessFull,H as __namedExportsOrder,y as default};

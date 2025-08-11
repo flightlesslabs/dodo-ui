@@ -1,0 +1,13 @@
+import{p as z,f as v,a as p,t as s,b as r,s as u,c as L}from"./iframe-CCEZUMhS.js";import{c as N,d as w}from"./create-runtime-stories-CSTpu6Dk.js";import{i as b}from"./lifecycle-DkDP_kOY.js";import{M as _}from"./Menu-BPSqvBIF.js";import{storyMenuArgTypes as T}from"./Menu.stories-BeIMO42i.js";import{M as o}from"./MenuItem-OYyXgQrM.js";import"./preload-helper-D9Z9MdNV.js";import"./attributes-CzzGBcbs.js";import"./this-C9Nk6BSb.js";import"./style-D3ywwbI_.js";import"./getMoment-nKS0EjjE.js";import"./Popper-2b_ezvj8.js";import"./Paper-BA8EWlFP.js";import"./colors-C3b1rS-d.js";import"./Separator-DuUfO8Kh.js";const A={component:_,tags:["autodocs"],argTypes:T,parameters:{docs:{description:{component:""}}}},{Story:f}=w();var E=v("<!> <!> <!>",1),O=v("<!> <!> <!>",1),R=v("<!> <!> <!>",1),j=v("<!> <!> <!>",1);function I(x,y){z(y,!1),b();var M=j(),h=p(M);f(h,{name:"Normal",asChild:!0,children:($,P)=>{_($,{children:(d,g)=>{var a=E(),l=p(a);o(l,{children:(e,m)=>{var t=s("Cut");r(e,t)},$$slots:{default:!0}});var n=u(l,2);o(n,{children:(e,m)=>{var t=s("Copy");r(e,t)},$$slots:{default:!0}});var i=u(n,2);o(i,{children:(e,m)=>{var t=s("Paste");r(e,t)},$$slots:{default:!0}}),r(d,a)},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Menu>
+  <MenuItem>Cut</MenuItem>
+  <MenuItem>Copy</MenuItem>
+  <MenuItem>Paste</MenuItem>
+</Menu>`}}});var C=u(h,2);f(C,{name:"Small",asChild:!0,children:($,P)=>{_($,{size:"small",children:(d,g)=>{var a=O(),l=p(a);o(l,{children:(e,m)=>{var t=s("Cut");r(e,t)},$$slots:{default:!0}});var n=u(l,2);o(n,{children:(e,m)=>{var t=s("Copy");r(e,t)},$$slots:{default:!0}});var i=u(n,2);o(i,{children:(e,m)=>{var t=s("Paste");r(e,t)},$$slots:{default:!0}}),r(d,a)},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Menu size="small">
+  <MenuItem>Cut</MenuItem>
+  <MenuItem>Copy</MenuItem>
+  <MenuItem>Paste</MenuItem>
+</Menu>`}}});var S=u(C,2);f(S,{name:"Large",asChild:!0,children:($,P)=>{_($,{size:"large",children:(d,g)=>{var a=R(),l=p(a);o(l,{children:(e,m)=>{var t=s("Cut");r(e,t)},$$slots:{default:!0}});var n=u(l,2);o(n,{children:(e,m)=>{var t=s("Copy");r(e,t)},$$slots:{default:!0}});var i=u(n,2);o(i,{children:(e,m)=>{var t=s("Paste");r(e,t)},$$slots:{default:!0}}),r(d,a)},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Menu size="large">
+  <MenuItem>Cut</MenuItem>
+  <MenuItem>Copy</MenuItem>
+  <MenuItem>Paste</MenuItem>
+</Menu>`}}}),r(x,M),L()}I.__docgen={data:[],name:"Size.stories.svelte"};const c=N(I,A),Z=["Normal","Small","Large"],ee={...c.Normal,tags:["svelte-csf-v5"]},te={...c.Small,tags:["svelte-csf-v5"]},re={...c.Large,tags:["svelte-csf-v5"]};export{re as Large,ee as Normal,te as Small,Z as __namedExportsOrder,A as default};

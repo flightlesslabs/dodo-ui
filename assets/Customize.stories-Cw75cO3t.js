@@ -1,0 +1,11 @@
+import{p as h,f as C,a as g,n as c,s as y,b as o,c as b,t as x,e as m,h as d,i as k}from"./iframe-CCEZUMhS.js";import{c as w,d as z}from"./create-runtime-stories-CSTpu6Dk.js";import{i as P}from"./lifecycle-DkDP_kOY.js";import{C as s}from"./CalendarYearSelector-BcP6reHR.js";import{storyCalendarYearSelectorArgTypes as T}from"./CalendarYearSelector.stories-CBt3G5wX.js";import"./preload-helper-D9Z9MdNV.js";import"./this-C9Nk6BSb.js";import"./getMoment-nKS0EjjE.js";import"./Popper-2b_ezvj8.js";import"./attributes-CzzGBcbs.js";import"./style-D3ywwbI_.js";import"./Paper-BA8EWlFP.js";import"./colors-C3b1rS-d.js";import"./MenuItem-OYyXgQrM.js";import"./Button-BrSl1wX_.js";import"./Icon-BSB3kW-P.js";import"./size-C-8mwSpB.js";import"./roundness-fyqvrcF6.js";const A={component:s,tags:["autodocs"],argTypes:T,parameters:{docs:{description:{component:""}}}},{Story:p}=z();var E=C('<span style="color: blue; display: block;"> </span>'),M=C("<!> <!>",1);function i(Y,S){h(S,!1),P();var n=M(),l=g(n);p(l,{name:"customCalendarYearSelectorContent",asChild:!0,children:(t,f)=>{s(t,{customCalendarYearSelectorContent:(r,a=c)=>{var e=x();m(()=>d(e,`🗓️${a()??""}`)),o(r,e)},$$slots:{customCalendarYearSelectorContent:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<CalendarYearSelector>
+  {#snippet customCalendarYearSelectorContent(selectedYear)}
+    🗓️{selectedYear}
+  {/snippet}
+</CalendarYearSelector>`}}});var _=y(l,2);p(_,{name:"customCalendarYearSelector",asChild:!0,children:(t,f)=>{s(t,{customCalendarYearSelector:(r,a=c)=>{var e=E(),v=k(e);m(()=>d(v,a())),o(r,e)},$$slots:{customCalendarYearSelector:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<CalendarYearSelector>
+  {#snippet customCalendarYearSelector(selectedYear)}
+    <span style="color: blue; display: block;">
+      {selectedYear}
+    </span>
+  {/snippet}
+</CalendarYearSelector>`}}}),o(Y,n),b()}i.__docgen={data:[],name:"Customize.stories.svelte"};const u=w(i,A),X=["CustomCalendarYearSelectorContent","CustomCalendarYearSelector"],Z={...u.CustomCalendarYearSelectorContent,tags:["svelte-csf-v5"]},ee={...u.CustomCalendarYearSelector,tags:["svelte-csf-v5"]};export{ee as CustomCalendarYearSelector,Z as CustomCalendarYearSelectorContent,X as __namedExportsOrder,A as default};
