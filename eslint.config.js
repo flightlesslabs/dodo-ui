@@ -1,23 +1,32 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from 'eslint-plugin-storybook';
-
-import prettier from 'eslint-config-prettier';
+// eslint.config.js
 import js from '@eslint/js';
-import { includeIgnoreFile } from '@eslint/compat';
+import tseslint from 'typescript-eslint';
 import svelte from 'eslint-plugin-svelte';
+import storybook from 'eslint-plugin-storybook';
+import prettier from 'eslint-config-prettier';
+import { includeIgnoreFile } from '@eslint/compat';
 import globals from 'globals';
 import { fileURLToPath } from 'node:url';
-import ts from 'typescript-eslint';
 import svelteConfig from './svelte.config.js';
+
 const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
 
-export default ts.config(
+export default [
+  // Respect .gitignore
   includeIgnoreFile(gitignorePath),
+
+  // Base JS + TS + Svelte
   js.configs.recommended,
-  ...ts.configs.recommended,
-  ...svelte.configs.recommended,
+  ...tseslint.configs.recommended,
+
+  // 👇 flatten Svelte plugin configs
+  ...svelte.configs.recommended.flat(),
+
+  // Prettier should come after rule presets
   prettier,
-  ...svelte.configs.prettier,
+  ...svelte.configs.prettier.flat(),
+
+  // Global environments
   {
     languageOptions: {
       globals: {
@@ -26,18 +35,21 @@ export default ts.config(
       },
     },
   },
+
+  // Svelte + TS integration
   {
     files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
     ignores: ['eslint.config.js', 'svelte.config.js'],
-
     languageOptions: {
       parserOptions: {
         projectService: true,
         extraFileExtensions: ['.svelte'],
-        parser: ts.parser,
+        parser: tseslint.parser,
         svelteConfig,
       },
     },
   },
-  storybook.configs['flat/recommended'],
-);
+
+  // 👇 flatten Storybook flat config
+  ...storybook.configs['flat/recommended'].flat(),
+];
