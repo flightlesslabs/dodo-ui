@@ -49,8 +49,8 @@
     "./styles/global.css": "./dist/styles/global.css"
   },
   "peerDependencies": {
-    "svelte": "^5.0.0",
-    "bits-ui": "^2.15.5"
+    "bits-ui": "^2.0.0",
+    "svelte": "^5.0.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "5.0.0",

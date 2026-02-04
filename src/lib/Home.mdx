@@ -9,7 +9,7 @@ import item from '../../package.json?raw';
 
 <h3 style={{ fontWeight: 500 }}>v{JSON.parse(item)?.version}</h3>
 
-<h3 style={{ fontWeight: 400 }}>An open-source, opinionated UI framework for Svelte.</h3>
+<h3 style={{ fontWeight: 400 }}>An open-source, opinionated UI framework for Svelte. based on [Bits UI](https://bits-ui.com/)</h3>
 
 ### [Github](https://github.com/flightlesslabs/dodo-ui) - [npm](https://www.npmjs.com/package/@flightlesslabs/dodo-ui) - [Customize](?path=/docs/developer-tools-customize-autocustomize--docs)
 
@@ -20,25 +20,15 @@ import item from '../../package.json?raw';
 
 ## Install
 
-pnpm
-
 <Source
   dark
   language="bash"
   code={`
-pnpm add @flightlesslabs/dodo-ui
+pnpm add bits-ui @flightlesslabs/dodo-ui
 `}
 />
 
-npm
-
-<Source
-  dark
-  language="bash"
-  code={`
-npm i @flightlesslabs/dodo-ui
-`}
-/>
+We are using bits-ui@{JSON.parse(item).devDependencies['bits-ui']} internally
 
 ## Add css
 
