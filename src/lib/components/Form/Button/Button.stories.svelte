@@ -3,13 +3,17 @@
   import Button from './Button.svelte';
   import type { ButtonProps } from './Button.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
+  import { componentColorOptions } from '$lib/attributes/color.js';
+  import { componentVariantOptions } from '$lib/attributes/variant.js';
+  import { componentSizeOptions } from '$lib/attributes/size.js';
+  import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
 
   // ------------------------------
   // Storybook ArgTypes
   // ------------------------------
   export const storyButtonArgTypes: Partial<ArgTypes<ButtonProps>> = {
     // ------------------------------
-    // Component / Core Props
+    // Component Props
     // ------------------------------
     children: { table: { category: 'Component Props' } },
     ref: { table: { category: 'Component Props' } },
@@ -25,25 +29,25 @@
     // ------------------------------
     color: {
       control: { type: 'select' },
-      options: ['primary', 'secondary', 'neutral', 'safe', 'warning', 'danger'],
+      options: componentColorOptions,
       description: 'Color theme token',
       table: { category: 'Appearance' },
     },
     variant: {
       control: { type: 'select' },
-      options: ['solid', 'text', 'outline'],
+      options: componentVariantOptions,
       description: 'Visual variant of the button',
       table: { category: 'Appearance' },
     },
     size: {
       control: { type: 'select' },
-      options: ['small', 'normal', 'large'],
+      options: componentSizeOptions,
       description: 'Visual size token',
       table: { category: 'Appearance' },
     },
     roundness: {
       control: { type: 'select' },
-      options: [0, 1, 2, 3, 'full'],
+      options: componentRoundnessOptions,
       description: 'Border radius token',
       table: { category: 'Appearance' },
     },
@@ -77,6 +81,20 @@
     },
 
     // ------------------------------
+    // Accessibility
+    // ------------------------------
+    'aria-label': {
+      control: { type: 'text' },
+      description: 'Accessible label (required for icon-only buttons)',
+      table: { category: 'Accessibility' },
+    },
+
+    // ------------------------------
+    // Events (Svelte-style)
+    // ------------------------------
+    onclick: { table: { category: 'Events' }, action: 'click' },
+
+    // ------------------------------
     // Link
     // ------------------------------
     href: {
@@ -90,20 +108,6 @@
       description: 'Anchor target',
       table: { category: 'Link' },
     },
-
-    // ------------------------------
-    // Accessibility
-    // ------------------------------
-    'aria-label': {
-      control: { type: 'text' },
-      description: 'Accessible label (required for icon-only buttons)',
-      table: { category: 'Accessibility' },
-    },
-
-    // ------------------------------
-    // Events
-    // ------------------------------
-    onclick: { table: { category: 'Events' } },
   };
 
   // ------------------------------
