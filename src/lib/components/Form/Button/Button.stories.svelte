@@ -1,42 +1,56 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Button, { buttonTypeArray } from './Button.svelte';
-  import type { StoryBookArgTypes } from '$lib/storybook-types.js';
-  import { fn } from 'storybook/test';
+  import Button from './Button.svelte';
+  import type { ButtonProps } from './Button.svelte';
+  import type { ArgTypes } from 'storybook/internal/csf';
 
-  import { componentSizeOptions } from '$lib/attributes/size.js';
-  import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
-  import { componentColorOptions } from '$lib/attributes/color.js';
-  import { componentVariantOptions } from '$lib/attributes/variant.js';
+  // ------------------------------
+  // Storybook ArgTypes
+  // ------------------------------
+  export const storyButtonArgTypes: Partial<ArgTypes<ButtonProps>> = {
+    // ------------------------------
+    // Component / Core Props
+    // ------------------------------
+    children: { table: { category: 'Component Props' } },
+    ref: { table: { category: 'Component Props' } },
+    type: { table: { category: 'Component Props' } },
+    title: { table: { category: 'Component Props' } },
+    id: { table: { category: 'Component Props' } },
+    name: { table: { category: 'Component Props' } },
+    tabindex: { table: { category: 'Component Props' } },
+    class: { table: { category: 'Component Props' } },
 
-  export const storyButtonArgTypes: StoryBookArgTypes = {
-    // Core visual API
+    // ------------------------------
+    // Appearance
+    // ------------------------------
     color: {
       control: { type: 'select' },
-      options: componentColorOptions,
+      options: ['primary', 'secondary', 'neutral', 'safe', 'warning', 'danger'],
       description: 'Color theme token',
       table: { category: 'Appearance' },
     },
     variant: {
       control: { type: 'select' },
-      options: componentVariantOptions,
+      options: ['solid', 'text', 'outline'],
       description: 'Visual variant of the button',
       table: { category: 'Appearance' },
     },
     size: {
       control: { type: 'select' },
-      options: componentSizeOptions,
+      options: ['small', 'normal', 'large'],
       description: 'Visual size token',
       table: { category: 'Appearance' },
     },
     roundness: {
       control: { type: 'select' },
-      options: componentRoundnessOptions,
+      options: [0, 1, 2, 3, 'full'],
       description: 'Border radius token',
       table: { category: 'Appearance' },
     },
 
+    // ------------------------------
     // Layout
+    // ------------------------------
     fullWidth: {
       control: { type: 'boolean' },
       description: 'Stretch button to full container width',
@@ -48,7 +62,9 @@
       table: { category: 'Layout' },
     },
 
+    // ------------------------------
     // Behavior
+    // ------------------------------
     outline: {
       control: { type: 'boolean' },
       description: 'Render outlined style',
@@ -59,14 +75,10 @@
       description: 'Disable interactions',
       table: { category: 'Behavior' },
     },
-    type: {
-      control: { type: 'select' },
-      options: buttonTypeArray,
-      description: 'Native button type (ignored when href is set)',
-      table: { category: 'Behavior' },
-    },
 
-    // Link mode
+    // ------------------------------
+    // Link
+    // ------------------------------
     href: {
       control: { type: 'text' },
       description: 'Render as <a> when provided',
@@ -79,14 +91,24 @@
       table: { category: 'Link' },
     },
 
-    // A11y
+    // ------------------------------
+    // Accessibility
+    // ------------------------------
     'aria-label': {
       control: { type: 'text' },
       description: 'Accessible label (required for icon-only buttons)',
       table: { category: 'Accessibility' },
     },
+
+    // ------------------------------
+    // Events
+    // ------------------------------
+    onclick: { table: { category: 'Events' } },
   };
 
+  // ------------------------------
+  // Storybook Meta
+  // ------------------------------
   const { Story } = defineMeta({
     component: Button,
     tags: ['autodocs'],
@@ -103,7 +125,11 @@
 <Story
   name="OnClick (Actions)"
   args={{
-    onclick: fn(),
+    onclick: (e: Event) => {
+      const target = e.target as HTMLButtonElement;
+      alert('Button Clicked');
+      console.log('Button Clicked', target);
+    },
   }}
 >
   Click me

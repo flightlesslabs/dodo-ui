@@ -1,40 +1,18 @@
 <script lang="ts" module>
   import type { Snippet } from 'svelte';
-  import type { MouseEventHandler } from 'svelte/elements';
-
-  export type ButtonLinkTarget =
-    | '_self'
-    | '_blank'
-    | '_parent'
-    | '_top'
-    | (string & {})
-    | undefined
-    | null;
-
-  export type ButtonLinkReferrerpolicy = ReferrerPolicy | undefined | null;
-
-  export type ButtonClickEvent = MouseEvent & {
-    currentTarget: EventTarget & HTMLButtonElement;
-  };
-
-  export const buttonTypeArray = ['button', 'submit', 'reset'] as const;
-  export type ButtonType = (typeof buttonTypeArray)[number] | null | undefined;
+  import type { HTMLButtonAttributes, HTMLAnchorAttributes } from 'svelte/elements';
 
   /**
-   * Button component props
+   * Shared base props for the Button component.
    *
-   * Renders a semantic <button> by default, or an <a> element when `href` is provided.
-   * Supports design-system tokens for size, color, variant, and roundness.
+   * These props apply to both the <button> and <a> render modes.
    */
-  export interface ButtonProps {
+  interface ButtonBaseProps {
     /** Button contents */
     children?: Snippet;
 
     /** Reference to the underlying button or anchor element */
     ref?: HTMLButtonElement | HTMLAnchorElement;
-
-    /** Native button type (ignored when `href` is set) */
-    type?: ButtonType;
 
     /** Visual size token */
     size?: ComponentSize;
@@ -57,51 +35,57 @@
     /** Compact spacing, typically for icon-only buttons */
     compact?: boolean;
 
-    /** Disabled state */
-    disabled?: boolean;
-
-    /** Native name attribute (button only) */
-    name?: string;
-
-    /** Native id attribute */
-    id?: string;
-
-    /** Tooltip text */
-    title?: string;
-
     /** Custom CSS class names */
     class?: string;
 
-    /** Click handler (button only) */
-    onclick?: MouseEventHandler<HTMLButtonElement>;
-
     /** Accessible label (required for icon-only buttons) */
     'aria-label'?: string;
-
-    /** Render as link when provided */
-    href?: string;
-
-    /** Anchor: download attribute */
-    download?: unknown;
-
-    /** Anchor: hreflang attribute */
-    hreflang?: string | null;
-
-    /** Anchor: media attribute */
-    media?: string | null;
-
-    /** Anchor: ping attribute */
-    ping?: string | null;
-
-    /** Anchor: rel attribute */
-    rel?: string | null;
-
-    /** Anchor: target attribute */
-    target?: ButtonLinkTarget;
-
-    /** Anchor: referrer policy */
-    referrerpolicy?: ButtonLinkReferrerpolicy;
   }
+
+  /**
+   * Button component props (button variant).
+   *
+   * Renders a semantic <button> element when `href` is not provided.
+   * Inherits all native HTML button attributes.
+   */
+  export type ButtonAsButtonProps = ButtonBaseProps &
+    Omit<HTMLButtonAttributes, 'href'> & {
+      /** Render as link when provided (not allowed for button variant) */
+      href?: never;
+
+      /** Disabled state of the button */
+      disabled?: HTMLButtonAttributes['disabled'];
+    };
+
+  /**
+   * Button component props (anchor variant).
+   *
+   * Renders an <a> element when `href` is provided.
+   * Inherits all native HTML anchor attributes, except `type`.
+   */
+  export type ButtonAsAnchorProps = ButtonBaseProps &
+    Omit<HTMLAnchorAttributes, 'type'> & {
+      /** Render as link when provided */
+      href: HTMLAnchorAttributes['href'];
+
+      /** Button `type` is not supported when rendering as an anchor */
+      type?: never;
+
+      /** Disabled visual state (forwarded to button root for styling/ARIA) */
+      disabled?: HTMLButtonAttributes['disabled'];
+    };
+
+  /**
+   * Button component props.
+   *
+   * Renders a semantic <button> by default, or an <a> element when `href` is provided.
+   * Supports design-system tokens for size, color, variant, and roundness.
+   *
+   * This type is a discriminated union:
+   * - When `href` is present, anchor props are enabled and button-only props are disabled.
+   * - When `href` is absent, button props are enabled and anchor-only props are disabled.
+   */
+  export type ButtonProps = ButtonAsButtonProps | ButtonAsAnchorProps;
 </script>
 
 <script lang="ts">
@@ -112,6 +96,12 @@
   import type { ComponentRoundness } from '$lib/attributes/roundness.js';
   import type { ComponentVariant } from '$lib/attributes/variant.js';
 
+  /**
+   * Button component runtime props.
+   *
+   * These props are destructured from `$props()` and mapped to the underlying
+   * Bits UI Button root component, with semantic rendering based on `href`.
+   */
   let {
     children,
     size = 'normal',
@@ -121,25 +111,18 @@
     outline = false,
     compact = false,
     fullWidth = false,
-    type = 'button',
-    name,
-    id,
-    title,
     class: className = '',
     disabled = false,
-    onclick,
     'aria-label': ariaLabel,
-    href = undefined,
-    download,
-    hreflang,
-    media,
-    ping,
-    rel,
-    target,
-    referrerpolicy,
+    href,
     ref,
+    type,
+    ...restProps
   }: ButtonProps = $props();
 
+  /**
+   * Computed class list for the Button component.
+   */
   const classes = $derived(
     [
       'dodo-ui-Button',
@@ -156,39 +139,27 @@
 </script>
 
 {#if href}
+  <!-- Anchor variant -->
   <BitsUiButton.Root
+    {...restProps as Omit<HTMLAnchorAttributes, 'type'>}
     {disabled}
     aria-label={ariaLabel}
     class={classes.join(' ')}
     {ref}
-    {id}
     {href}
-    {download}
-    {hreflang}
-    {media}
-    {ping}
-    {rel}
-    {target}
-    {referrerpolicy}
   >
-    {#if children}
-      {@render children()}
-    {/if}
+    {@render children?.()}
   </BitsUiButton.Root>
 {:else}
+  <!-- Button variant -->
   <BitsUiButton.Root
+    {...restProps as HTMLButtonAttributes}
     {disabled}
     aria-label={ariaLabel}
     class={classes.join(' ')}
     {ref}
     {type}
-    {name}
-    {id}
-    {title}
-    {onclick}
   >
-    {#if children}
-      {@render children()}
-    {/if}
+    {@render children?.()}
   </BitsUiButton.Root>
 {/if}
