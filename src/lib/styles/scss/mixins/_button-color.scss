@@ -1,23 +1,9 @@
-// ======================================================
-// Helpers
-// ======================================================
-
-// Resolves either a token shade (e.g. 400)
-// or a color-mix tuple for dark mode (e.g. (300, 90%, #fff))
-@function _dodo-ui-resolve-color($color-name, $value) {
-  @if type-of($value) == list {
-    $shade: nth($value, 1);
-    $mix: nth($value, 2);
-    $mix-color: nth($value, 3);
-
-    @return color-mix(in oklab, var(--dodo-color-#{$color-name}-#{$shade}) #{$mix}, #{$mix-color});
-  }
-
-  @return var(--dodo-color-#{$color-name}-#{$value});
-}
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:list';
 
 // ======================================================
-// Token maps
+// 1. Token Maps (Defined first to avoid Undefined Variable errors)
 // ======================================================
 
 $dodo-ui-button-scale-light: (
@@ -57,46 +43,66 @@ $dodo-ui-button-scale-dark: (
 );
 
 // ======================================================
-// Mixins
+// 2. Helpers
 // ======================================================
 
-// Replaces generate-dodo-ui-button-colors + -dark
+@function _dodo-ui-resolve-color($color-name, $value) {
+  @if meta.type-of($value) == list {
+    $shade: list.nth($value, 1);
+    $mix: list.nth($value, 2);
+    $mix-color: list.nth($value, 3);
+
+    @return color-mix(in oklab, var(--dodo-color-#{$color-name}-#{$shade}) #{$mix}, #{$mix-color});
+  }
+
+  @return var(--dodo-color-#{$color-name}-#{$value});
+}
+
+// ======================================================
+// 3. Mixins
+// ======================================================
+
 @mixin generate-dodo-ui-button-colors($color-name, $mode: light) {
-  $scale: if($mode == dark, $dodo-ui-button-scale-dark, $dodo-ui-button-scale-light);
+  // Fix for Deprecation Warning [if-function] and Undefined Variable
+  $scale: null;
+  @if $mode == dark {
+    $scale: $dodo-ui-button-scale-dark;
+  } @else {
+    $scale: $dodo-ui-button-scale-light;
+  }
 
   --dodo-ui-Button-outline-#{$color-name}: #{_dodo-ui-resolve-color(
       $color-name,
-      map-get($scale, outline)
+      map.get($scale, outline)
     )};
 
   --dodo-ui-Button-text-#{$color-name}-bg: #{_dodo-ui-resolve-color(
       $color-name,
-      map-get($scale, text-bg)
+      map.get($scale, text-bg)
     )};
   --dodo-ui-Button-text-#{$color-name}-hover-bg: #{_dodo-ui-resolve-color(
       $color-name,
-      map-get($scale, text-hover)
+      map.get($scale, text-hover)
     )};
   --dodo-ui-Button-text-#{$color-name}-active-bg: #{_dodo-ui-resolve-color(
       $color-name,
-      map-get($scale, text-active)
+      map.get($scale, text-active)
     )};
 
   --dodo-ui-Button-solid-#{$color-name}-bg: #{_dodo-ui-resolve-color(
       $color-name,
-      map-get($scale, solid-bg)
+      map.get($scale, solid-bg)
     )};
   --dodo-ui-Button-solid-#{$color-name}-hover-bg: #{_dodo-ui-resolve-color(
       $color-name,
-      map-get($scale, solid-hover)
+      map.get($scale, solid-hover)
     )};
   --dodo-ui-Button-solid-#{$color-name}-active-bg: #{_dodo-ui-resolve-color(
       $color-name,
-      map-get($scale, solid-active)
+      map.get($scale, solid-active)
     )};
 }
 
-// Variant generator (same API as your original)
 @mixin generate-dodo-ui-button-color($theme) {
   &--#{$theme} {
     &.variant {

@@ -1,4 +1,4 @@
-@use '../../../styles/scss/index.scss' as *;
+@use '../../../styles/scss/mixins/button-color' as buttons;
 
 // ----------------------------------------
 // Config
@@ -13,7 +13,8 @@ $dodo-button-themes: neutral, primary, secondary, safe, warning, danger;
   --dodo-ui-Button-disabled-bg: var(--dodo-color-neutral-200);
 
   @each $theme in $dodo-button-themes {
-    @include generate-dodo-ui-button-colors($theme, light);
+    // Fixed: Added buttons. prefix
+    @include buttons.generate-dodo-ui-button-colors($theme, light);
   }
 }
 
@@ -22,7 +23,8 @@ $dodo-button-themes: neutral, primary, secondary, safe, warning, danger;
   --dodo-ui-Button-disabled-color: var(--dodo-color-neutral-500);
 
   @each $theme in $dodo-button-themes {
-    @include generate-dodo-ui-button-colors($theme, dark);
+    // Fixed: Added buttons. prefix
+    @include buttons.generate-dodo-ui-button-colors($theme, dark);
   }
 }
 
@@ -100,7 +102,8 @@ $dodo-button-themes: neutral, primary, secondary, safe, warning, danger;
   // ----------------------------------------
   &.color {
     @each $theme in $dodo-button-themes {
-      @include generate-dodo-ui-button-color($theme);
+      // Fixed: Added buttons. prefix
+      @include buttons.generate-dodo-ui-button-color($theme);
     }
   }
 
