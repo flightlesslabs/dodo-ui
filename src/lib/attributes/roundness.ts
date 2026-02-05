@@ -1,7 +1,7 @@
 /** Component Roundness */
 export const COMPONENT_ROUNDNESS = {
   numerical: [0, 1, 2, 3],
-  all: [0, 1, 2, 3, 'full'],
+  all: [0, 1, 2, 3, 'pill', 'full'],
 } as const;
 
 export type ComponentRoundnessNumerical = (typeof COMPONENT_ROUNDNESS.numerical)[number];

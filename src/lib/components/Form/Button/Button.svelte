@@ -23,7 +23,7 @@
     /** Color theme token */
     color?: ComponentColor;
 
-    /** Border radius token (0–3 or "full") */
+    /** Border radius token (0–3, "pill", "full") */
     roundness?: ComponentRoundness;
 
     /** Visual variant (e.g. solid, text) */

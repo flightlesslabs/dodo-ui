@@ -92,6 +92,10 @@ $dodo-button-themes: neutral, primary, secondary, safe, warning, danger;
       border-radius: var(--dodo-ui-element-roundness-3);
     }
 
+    &--pill {
+      border-radius: 999px;
+    }
+
     &--full {
       border-radius: 50%;
     }
