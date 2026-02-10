@@ -13,16 +13,22 @@
   // ------------------------------
   export const storyButtonArgTypes: Partial<ArgTypes<ButtonProps>> = {
     // ------------------------------
-    // Component Props
+    // Core
     // ------------------------------
-    children: { table: { category: 'Component Props' } },
-    ref: { table: { category: 'Component Props' } },
-    type: { table: { category: 'Component Props' } },
-    title: { table: { category: 'Component Props' } },
-    id: { table: { category: 'Component Props' } },
-    name: { table: { category: 'Component Props' } },
-    tabindex: { table: { category: 'Component Props' } },
-    class: { table: { category: 'Component Props' } },
+    children: { table: { category: 'API', subcategory: 'Base' } },
+    ref: { table: { category: 'API', subcategory: 'Base' } },
+    href: {
+      control: { type: 'text' },
+      description: 'Render as Anchor when provided',
+      table: { category: 'API', subcategory: 'Base' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+      description: 'Disable interactions',
+      table: { category: 'API', subcategory: 'Base' },
+    },
+    class: { table: { category: 'API', subcategory: 'Base' } },
+    type: { table: { category: 'API', subcategory: 'Base' } },
 
     // ------------------------------
     // Appearance
@@ -31,53 +37,40 @@
       control: { type: 'select' },
       options: componentColorOptions,
       description: 'Color theme token',
-      table: { category: 'Appearance' },
+      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'primary' } },
     },
     variant: {
       control: { type: 'select' },
       options: componentVariantOptions,
       description: 'Visual variant of the button',
-      table: { category: 'Appearance' },
+      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'solid' } },
     },
     size: {
       control: { type: 'select' },
       options: componentSizeOptions,
       description: 'Visual size token',
-      table: { category: 'Appearance' },
+      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'normal' } },
     },
     roundness: {
       control: { type: 'select' },
       options: componentRoundnessOptions,
       description: 'Border radius token',
-      table: { category: 'Appearance' },
+      table: { category: 'API', subcategory: 'Appearance' },
     },
-
-    // ------------------------------
-    // Layout
-    // ------------------------------
     fullWidth: {
       control: { type: 'boolean' },
       description: 'Stretch button to full container width',
-      table: { category: 'Layout' },
+      table: { category: 'API', subcategory: 'Appearance' },
     },
     compact: {
       control: { type: 'boolean' },
       description: 'Compact spacing (icon buttons)',
-      table: { category: 'Layout' },
+      table: { category: 'API', subcategory: 'Appearance' },
     },
-
-    // ------------------------------
-    // Behavior
-    // ------------------------------
     outline: {
       control: { type: 'boolean' },
       description: 'Render outlined style',
-      table: { category: 'Behavior' },
-    },
-    disabled: {
-      control: { type: 'boolean' },
-      description: 'Disable interactions',
-      table: { category: 'Behavior' },
+      table: { category: 'API', subcategory: 'Appearance' },
     },
 
     // ------------------------------
@@ -86,28 +79,13 @@
     'aria-label': {
       control: { type: 'text' },
       description: 'Accessible label (required for icon-only buttons)',
-      table: { category: 'Accessibility' },
+      table: { category: 'API', subcategory: 'Accessibility' },
     },
 
     // ------------------------------
     // Events (Svelte-style)
     // ------------------------------
-    onclick: { table: { category: 'Events' }, action: 'click' },
-
-    // ------------------------------
-    // Link
-    // ------------------------------
-    href: {
-      control: { type: 'text' },
-      description: 'Render as <a> when provided',
-      table: { category: 'Link' },
-    },
-    target: {
-      control: { type: 'select' },
-      options: ['_self', '_blank', '_parent', '_top'],
-      description: 'Anchor target',
-      table: { category: 'Link' },
-    },
+    onclick: { table: { category: 'API', subcategory: 'Events' }, action: 'click' },
   };
 
   // ------------------------------
@@ -126,6 +104,8 @@
 
 <Story name="Primary">Click me!</Story>
 
+<Story name="Neutral" args={{ color: 'neutral', variant: 'text', outline: true }}>Click me!</Story>
+
 <Story
   name="OnClick (Actions)"
   args={{
@@ -140,6 +120,8 @@
 </Story>
 
 <Story name="Outline" args={{ outline: true, variant: 'text' }}>Click me!</Story>
+
+<Story name="Large Button" args={{ size: 'large' }}>Large</Story>
 
 <Story name="Disabled" args={{ disabled: true }}>Click me!</Story>
 
