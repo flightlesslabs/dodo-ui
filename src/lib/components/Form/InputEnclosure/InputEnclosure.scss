@@ -1,0 +1,105 @@
+// ----------------------------------------
+// Theme tokens (global CSS variables)
+// ----------------------------------------
+:root {
+  --dodo-ui-InputEnclosure-border-color: var(--dodo-color-neutral-500);
+  --dodo-ui-InputEnclosure-focus-border-color: var(--dodo-color-primary-500);
+  --dodo-ui-InputEnclosure-error-border-color: var(--dodo-color-danger-500);
+  --dodo-ui-InputEnclosure-safe-border-color: var(--dodo-color-safe-500);
+
+  --dodo-ui-InputEnclosure-disabled-color: var(--dodo-color-neutral-400);
+  --dodo-ui-InputEnclosure-disabled-bg: var(--dodo-color-neutral-200);
+}
+
+.dodo-theme--dark {
+  --dodo-ui-InputEnclosure-border-color: var(--dodo-color-neutral-600);
+  --dodo-ui-InputEnclosure-focus-border-color: var(--dodo-color-primary-600);
+  --dodo-ui-InputEnclosure-error-border-color: var(--dodo-color-danger-600);
+  --dodo-ui-InputEnclosure-safe-border-color: var(--dodo-color-safe-600);
+
+  --dodo-ui-InputEnclosure-disabled-bg: var(--dodo-color-neutral-100);
+  --dodo-ui-InputEnclosure-disabled-color: var(--dodo-color-neutral-500);
+}
+
+// ----------------------------------------
+// SCSS maps
+// ----------------------------------------
+$sizes: (
+  small: var(--dodo-ui-element-height-small),
+  normal: var(--dodo-ui-element-height-normal),
+  large: var(--dodo-ui-element-height-large),
+);
+
+$roundness: (
+  1: var(--dodo-ui-element-roundness-1),
+  2: var(--dodo-ui-element-roundness-2),
+  3: var(--dodo-ui-element-roundness-3),
+  pill: 999px,
+);
+
+// Visual states → border colors
+$states: (
+  focused: var(--dodo-ui-InputEnclosure-focus-border-color),
+  error: var(--dodo-ui-InputEnclosure-error-border-color),
+);
+
+// ----------------------------------------
+// Component CSS
+// ----------------------------------------
+.dodo-ui-InputEnclosure {
+  display: flex;
+  overflow: hidden;
+  color: var(--dodo-color-neutral-800);
+  transition:
+    border-color 150ms,
+    background-color 150ms,
+    color 150ms;
+  border: 0;
+
+  &.outline {
+    border-style: solid;
+    border-width: var(--dodo-ui-element-border-width);
+    border-color: var(--dodo-ui-InputEnclosure-border-color);
+  }
+
+  // ----------------------------------------
+  // Visual states (focused, error)
+  // ----------------------------------------
+  @each $state, $color in $states {
+    &.#{$state} {
+      border-color: $color;
+    }
+  }
+
+  // ----------------------------------------
+  // Disabled
+  // ----------------------------------------
+  &.disabled {
+    cursor: not-allowed;
+    background-color: var(--dodo-ui-InputEnclosure-disabled-bg);
+    color: var(--dodo-ui-InputEnclosure-disabled-color);
+    border-color: var(--dodo-ui-InputEnclosure-disabled-bg);
+  }
+
+  // ----------------------------------------
+  // Sizes
+  // ----------------------------------------
+  &.size {
+    @each $name, $height in $sizes {
+      &--#{$name} {
+        height: $height;
+      }
+    }
+  }
+
+  // ----------------------------------------
+  // Roundness
+  // ----------------------------------------
+  &.roundness {
+    @each $name, $radius in $roundness {
+      &--#{$name} {
+        border-radius: $radius;
+      }
+    }
+  }
+}

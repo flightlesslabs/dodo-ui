@@ -29,7 +29,19 @@ $dodo-button-themes: neutral, primary, secondary, safe, warning, danger;
 }
 
 // ----------------------------------------
-// Button base
+// SCSS maps
+// ----------------------------------------
+
+$roundness: (
+  1: var(--dodo-ui-element-roundness-1),
+  2: var(--dodo-ui-element-roundness-2),
+  3: var(--dodo-ui-element-roundness-3),
+  pill: 999px,
+  full: 50%,
+);
+
+// ----------------------------------------
+// Component CSS
 // ----------------------------------------
 .dodo-ui-Button {
   cursor: pointer;
@@ -80,24 +92,10 @@ $dodo-button-themes: neutral, primary, secondary, safe, warning, danger;
   // Roundness
   // ----------------------------------------
   &.roundness {
-    &--1 {
-      border-radius: var(--dodo-ui-element-roundness-1);
-    }
-
-    &--2 {
-      border-radius: var(--dodo-ui-element-roundness-2);
-    }
-
-    &--3 {
-      border-radius: var(--dodo-ui-element-roundness-3);
-    }
-
-    &--pill {
-      border-radius: 999px;
-    }
-
-    &--full {
-      border-radius: 50%;
+    @each $name, $radius in $roundness {
+      &--#{$name} {
+        border-radius: $radius;
+      }
     }
   }
 

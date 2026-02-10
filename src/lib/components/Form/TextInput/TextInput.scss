@@ -1,0 +1,34 @@
+// ----------------------------------------
+// Component CSS
+// ----------------------------------------
+.dodo-ui-TextInput {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  height: 100%;
+  background-color: transparent;
+  font-family: inherit;
+  color: inherit;
+  letter-spacing: 0.3px;
+  margin: 0;
+
+  // ----------------------------------------
+  // Sizes
+  // ----------------------------------------
+  &.size {
+    &--normal {
+      font-size: 1rem;
+      padding: 0 calc(var(--dodo-ui-space-small) * 2);
+    }
+
+    &--small {
+      padding: 0 var(--dodo-ui-space);
+      font-size: 0.9rem;
+    }
+
+    &--large {
+      font-size: 1.1rem;
+      padding: 0 calc(var(--dodo-ui-space) * 2);
+    }
+  }
+}
