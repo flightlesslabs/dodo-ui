@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui",
-  "version": "1.0.0--beta-1",
+  "version": "1.0.0--beta-2",
   "scripts": {
     "copy-css": "cpy src/lib/styles/global.css dist/styles --parents",
     "build": "vite build && pnpm copy-css && pnpm run prepack",
