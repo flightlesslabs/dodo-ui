@@ -77,7 +77,6 @@
 </script>
 
 <script lang="ts">
-  import './TextInput.scss';
   import type { ComponentSize } from '$lib/attributes/size.js';
   import type { ComponentRoundnessShape } from '$lib/attributes/roundness.js';
   import InputEnclosure from '../InputEnclosure/InputEnclosure.svelte';

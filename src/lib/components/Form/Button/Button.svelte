@@ -89,7 +89,6 @@
 </script>
 
 <script lang="ts">
-  import './Button.scss';
   import { Button as BitsUiButton } from 'bits-ui';
   import type { ComponentSize } from '$lib/attributes/size.js';
   import type { ComponentColor } from '$lib/attributes/color.js';

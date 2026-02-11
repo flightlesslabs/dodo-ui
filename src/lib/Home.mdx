@@ -10,7 +10,7 @@ import item from '../../package.json?raw';
 <h3 style={{ fontWeight: 500 }}>v{JSON.parse(item)?.version}</h3>
 
 <h3 style={{ fontWeight: 400 }}>
-  An open-source, opinionated UI framework for Svelte. based on [Bits UI](https://bits-ui.com/)
+  Opinionated UI framework for Svelte, based on [Bits UI](https://bits-ui.com/)
 </h3>
 
 ### [Github](https://github.com/flightlesslabs/dodo-ui) - [npm](https://www.npmjs.com/package/@flightlesslabs/dodo-ui)
@@ -30,7 +30,7 @@ pnpm add bits-ui @flightlesslabs/dodo-ui
 `}
 />
 
-We are using bits-ui@{JSON.parse(item).devDependencies['bits-ui']} internally
+We are using **bits-ui@{JSON.parse(item).devDependencies['bits-ui']}** internally
 
 ## Add css
 
@@ -41,6 +41,7 @@ Add global css in your `+layout.svelte` file
   language="js"
   code={`
 import '@flightlesslabs/dodo-ui/styles/global.css';
+import '@flightlesslabs/dodo-ui/styles/components.css';
 `}
 />
 

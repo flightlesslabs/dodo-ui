@@ -72,7 +72,6 @@
 </script>
 
 <script lang="ts">
-  import './InputEnclosure.scss';
   import type { ComponentSize } from '$lib/attributes/size.js';
   import type { ComponentRoundnessShape } from '$lib/attributes/roundness.js';
   import InputAffix from './InputAffix.svelte';
