@@ -15,7 +15,8 @@
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build && touch ./storybook-static/.nojekyll",
     "check": "pnpm run svelte-check && eslint . && pnpm run lint",
-    "check:fix": "pnpm run svelte-check && eslint . && pnpm run format"
+    "check:fix": "pnpm run svelte-check && eslint . && pnpm run format",
+    "create:component": "node scripts/create-component.mjs"
   },
   "homepage": "https://flightlesslabs.github.io/dodo-ui",
   "repository": {
