@@ -30,6 +30,14 @@ export {
   type InputEnclosureProps,
 } from './components/Form/InputEnclosure/InputEnclosure.svelte';
 
+/**
+ * FormField component and related prop types.
+ */
+export {
+  default as FormField,
+  type FormFieldProps,
+} from './components/Form/FormField/FormField.svelte';
+
 // =====================================================
 // Layout Components – Public API
 // =====================================================
