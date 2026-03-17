@@ -7,6 +7,7 @@
   import { componentVariantOptions } from '$lib/attributes/variant.js';
   import { componentSizeOptions } from '$lib/attributes/size.js';
   import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
+  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
 
   // ------------------------------
   // Storybook ArgTypes
@@ -129,6 +130,18 @@
 
 <Story name="Danger / Outline" args={{ color: 'danger', variant: 'text', outline: true }}>
   Danger
+</Story>
+
+<Story name="Light Theme" asChild>
+  <Theme type="light">
+    <Button>Hello</Button>
+  </Theme>
+</Story>
+
+<Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
+  <Theme type="dark">
+    <Button>Hello</Button>
+  </Theme>
 </Story>
 
 <Story name="Submit Button" args={{ type: 'submit' }}>Submit Form</Story>

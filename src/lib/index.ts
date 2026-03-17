@@ -31,6 +31,20 @@ export {
 } from './components/Form/InputEnclosure/InputEnclosure.svelte';
 
 // =====================================================
+// Layout Components – Public API
+// =====================================================
+
+/**
+ * Theme component and related prop types.
+ */
+export {
+  default as Theme,
+  themeTypeOptions,
+  type ThemeType,
+  type ThemeProps,
+} from './components/Layout/Theme/Theme.svelte';
+
+// =====================================================
 // attributes – Public API
 // =====================================================
 

@@ -6,6 +6,7 @@
 
   import { componentSizeOptions } from '$lib/attributes/size.js';
   import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
+  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
 
   // ------------------------------
   // Storybook ArgTypes
@@ -133,4 +134,20 @@
 
     <input placeholder="Website" />
   </InputEnclosure>
+</Story>
+
+<Story name="Light Theme" asChild>
+  <Theme type="light">
+    <InputEnclosure>
+      <input placeholder="Type something…" />
+    </InputEnclosure>
+  </Theme>
+</Story>
+
+<Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
+  <Theme type="dark">
+    <InputEnclosure>
+      <input placeholder="Type something…" />
+    </InputEnclosure>
+  </Theme>
 </Story>

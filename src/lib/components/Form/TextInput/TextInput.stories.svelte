@@ -6,6 +6,7 @@
 
   import { componentSizeOptions } from '$lib/attributes/size.js';
   import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
+  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
 
   // ------------------------------
   // Storybook ArgTypes
@@ -106,29 +107,17 @@
 <!-- Stories -->
 <!-- ------------------------------ -->
 
-<Story name="Default">
-  <TextInput placeholder="Type something…" />
-</Story>
+<Story name="Default" args={{ placeholder: 'Type something…' }} />
 
-<Story name="Focused" args={{ focused: true }}>
-  <TextInput placeholder="Focused state…" />
-</Story>
+<Story name="Focused" args={{ placeholder: 'Focused state…', focused: true }} />
 
-<Story name="Error" args={{ error: true }}>
-  <TextInput placeholder="Error state…" />
-</Story>
+<Story name="Error" args={{ placeholder: 'Error state…', error: true }} />
 
-<Story name="Disabled" args={{ disabled: true }}>
-  <TextInput placeholder="Disabled state…" />
-</Story>
+<Story name="Disabled" args={{ placeholder: 'Disabled state…', disabled: true }} />
 
-<Story name="Large" args={{ size: 'large' }}>
-  <TextInput placeholder="Large input…" />
-</Story>
+<Story name="Large" args={{ placeholder: 'Type something…', size: 'large' }} />
 
-<Story name="Pill Shape" args={{ roundness: 'pill' }}>
-  <TextInput placeholder="Pill shaped input…" />
-</Story>
+<Story name="Pill Shape" args={{ placeholder: 'Type something…', roundness: 'pill' }} />
 
 <Story name="With Before (Prefix Icon)" asChild>
   <TextInput placeholder="Search…">
@@ -156,4 +145,16 @@
       <span style="opacity: 0.6;">USD</span>
     {/snippet}
   </TextInput>
+</Story>
+
+<Story name="Light Theme" asChild>
+  <Theme type="light">
+    <TextInput placeholder="Type something…" />
+  </Theme>
+</Story>
+
+<Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
+  <Theme type="dark">
+    <TextInput placeholder="Type something…" />
+  </Theme>
 </Story>
