@@ -45,6 +45,30 @@ export {
 } from './components/Layout/Theme/Theme.svelte';
 
 // =====================================================
+// utils – Public API
+// =====================================================
+
+// =====================================================
+// time – Public API
+// =====================================================
+
+/**
+ * createDate and related prop types.
+ */
+export {
+  createDate,
+  type DayjsInstance,
+  type CreateDateInput,
+  type CreateDateFormat,
+  type CreateDateOptions,
+} from './utils/time/createDate/createDate.js';
+
+/**
+ * timeout and related prop types.
+ */
+export { timeout } from './utils/time/timeout/timeout.js';
+
+// =====================================================
 // attributes – Public API
 // =====================================================
 

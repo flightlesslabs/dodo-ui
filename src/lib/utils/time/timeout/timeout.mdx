@@ -1,0 +1,134 @@
+import { Source } from '@storybook/addon-docs/blocks';
+
+# timeout
+
+A simple utility to delay execution using Promises.
+
+Useful for **pausing async workflows**, **simulating delays**, or **controlling execution timing**.
+
+---
+
+## 📦 Import
+
+<Source
+  dark
+  language="ts"
+  code={`
+import { timeout } from '@flightlesslabs/dodo-ui';
+`}
+/>
+
+---
+
+## 🚀 Basic Usage
+
+<Source
+  dark
+  language="ts"
+  code={`
+await timeout(1000); // waits 1 second
+`}
+/>
+
+---
+
+## 🎯 Resolve with Value
+
+You can optionally pass a value that will be returned after the delay.
+
+<Source
+  dark
+  language="ts"
+  code={`
+const result = await timeout(500, "done");
+
+console.log(result); // "done"
+`}
+/>
+
+---
+
+## ⚙️ API
+
+<Source
+  dark
+  language="ts"
+  code={`
+function timeout<T = void>(
+  milliseconds: number,
+  value?: T
+): Promise<T>
+`}
+/>
+
+---
+
+### `milliseconds`
+
+- Time to wait before resolving (in ms)
+- Must be `>= 0`
+
+---
+
+### `value`
+
+- Optional value to resolve with
+- Defaults to `undefined`
+
+---
+
+## ⚠️ Error Handling
+
+If a negative duration is provided, the promise will reject:
+
+<Source
+  dark
+  language="ts"
+  code={`
+await timeout(-1); // ❌ throws Error
+`}
+/>
+
+---
+
+## 🧠 Use Cases
+
+- Delay execution in async functions
+- Simulate API latency in tests
+- Simple throttling or pacing logic
+
+---
+
+## 🔍 Examples
+
+### Async Flow
+
+<Source
+  dark
+  language="ts"
+  code={`
+async function run() {
+  console.log("Start");
+
+  await timeout(1000);
+
+  console.log("End");
+}
+`}
+/>
+
+---
+
+### With Data
+
+<Source
+  dark
+  language="ts"
+  code={`
+const data = await timeout(300, { success: true });
+
+console.log(data.success); // true
+`}
+/>
+
+---

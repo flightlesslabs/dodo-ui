@@ -1,0 +1,120 @@
+import { Source } from '@storybook/addon-docs/blocks';
+
+# createDate
+
+A centralized date factory built on top of `dayjs`.
+
+This utility ensures **consistent parsing, timezone handling, and validation** across your application.
+
+---
+
+## 📦 Import
+
+<Source
+  dark
+  language="ts"
+  code={`
+import { createDate } from '@flightlesslabs/dodo-ui';
+`}
+/>
+
+---
+
+## 🚀 Basic Usage
+
+### Current Date
+
+<Source
+  dark
+  language="ts"
+  code={`
+const now = createDate();
+console.log(now.format());
+`}
+/>
+
+---
+
+### Parse a Date
+
+<Source
+  dark
+  language="ts"
+  code={`
+const date = createDate("01-02-2025", "DD-MM-YYYY");
+console.log(date.format());
+`}
+/>
+
+---
+
+## 🌍 Timezone & UTC
+
+### UTC Mode
+
+<Source
+  dark
+  language="ts"
+  code={`
+const utcDate = createDate("2025-01-01T12:00:00Z", undefined, {
+  utc: true,
+});
+`}
+/>
+
+---
+
+### Timezone Conversion
+
+<Source
+  dark
+  language="ts"
+  code={`
+const indiaTime = createDate("01-01-2025", "DD-MM-YYYY", {
+  timezone: "Asia/Kolkata",
+});
+`}
+/>
+
+---
+
+## ⚙️ Options
+
+<Source
+  dark
+  language="ts"
+  code={`
+interface CreateDateOptions {
+  timezone?: string;
+  utc?: boolean;
+  strict?: boolean;
+  throwOnInvalid?: boolean;
+}
+`}
+/>
+
+---
+
+### `timezone`
+
+- IANA timezone string
+
+---
+
+### `utc`
+
+- Forces UTC mode
+
+---
+
+### `strict`
+
+- Enforces exact format matching
+
+---
+
+### `throwOnInvalid`
+
+- Throws an error if parsing fails
+
+---
