@@ -32,11 +32,13 @@ Components are grouped by **category** (e.g. `Form`, `Layout`, `DataDisplay`, et
 ## Use Scaffolding script
 
 ### ▶️ Usage
+
 ```bash
 pnpm create:component Form Checkbox
 ```
 
 This will generate:
+
 ```txt
 src/lib/components/Form/Checkbox/
 ├── Checkbox.svelte
@@ -45,11 +47,13 @@ src/lib/components/Form/Checkbox/
 ```
 
 And auto-append:
+
 ```scss
 @use '../components/Form/Checkbox/Checkbox.scss';
 ```
 
 to:
+
 ```txt
 src/lib/styles/components.scss
 ```
@@ -78,9 +82,9 @@ components/Layout/Container/
 
 ✅ Rules
 
-* Use PascalCase for component names
-* ategory names should be PascalCase (e.g. Form, Layout)
-* Folder and file names must match the component name exactly
+- Use PascalCase for component names
+- ategory names should be PascalCase (e.g. Form, Layout)
+- Folder and file names must match the component name exactly
 
 ---
 
@@ -135,11 +139,7 @@ ComponentName.svelte
   const classes = $derived(['dodo-ui-ComponentName', className].filter(Boolean));
 </script>
 
-<div
-  class={classes.join(' ')}
-  aria-disabled={disabled}
-  {...restProps}
->
+<div class={classes.join(' ')} aria-disabled={disabled} {...restProps}>
   {@render children?.()}
 </div>
 ```
@@ -203,11 +203,10 @@ ComponentName.stories.svelte
 
 ## ✅ Checklist
 
-- [ ] Folder created under correct category  
-- [ ] ComponentName.svelte created  
-- [ ] ComponentName.scss created  
-- [ ] ComponentName.stories.svelte created  
-- [ ] SCSS imported into styles/components.scss  
-- [ ] Storybook renders correctly  
-- [ ] publint passes  
-
+- [ ] Folder created under correct category
+- [ ] ComponentName.svelte created
+- [ ] ComponentName.scss created
+- [ ] ComponentName.stories.svelte created
+- [ ] SCSS imported into styles/components.scss
+- [ ] Storybook renders correctly
+- [ ] publint passes
