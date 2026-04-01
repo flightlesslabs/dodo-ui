@@ -45,7 +45,7 @@
     color = 'neutral',
     roundness = 1,
     id,
-    outline = false,
+    outline = true,
     disabled = false,
     variant = 'text',
     ...restProps

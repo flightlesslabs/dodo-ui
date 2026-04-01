@@ -8,6 +8,7 @@
 
 $dodo-ui-checkContainer-scale-light: (
   outline: 300,
+  outline-checked: 500,
   text-bg: 100,
   solid-bg: 500,
 );
@@ -15,6 +16,11 @@ $dodo-ui-checkContainer-scale-light: (
 $dodo-ui-checkContainer-scale-dark: (
   outline: (
     300,
+    90%,
+    #fff,
+  ),
+  outline-checked: (
+    500,
     90%,
     #fff,
   ),
@@ -60,6 +66,11 @@ $dodo-ui-checkContainer-scale-dark: (
       map.get($scale, outline)
     )};
 
+  --dodo-ui-CheckContainer-outline-#{$color-name}-checked: #{_dodo-ui-resolve-color(
+      $color-name,
+      map.get($scale, outline-checked)
+    )};
+
   --dodo-ui-CheckContainer-text-#{$color-name}-bg: #{_dodo-ui-resolve-color(
       $color-name,
       map.get($scale, text-bg)
@@ -73,16 +84,20 @@ $dodo-ui-checkContainer-scale-dark: (
 
 @mixin generate-dodo-ui-checkContainer-color($theme) {
   &--#{$theme} {
+    &.outline {
+      .CheckComponentRoot {
+        border-color: var(--dodo-ui-CheckContainer-outline-#{$theme});
+      }
+    }
+
     &.variant {
       &--text {
         .CheckComponentRoot {
           color: var(--dodo-color-#{$theme}-800);
           background-color: var(--dodo-ui-CheckContainer-text-#{$theme}-bg);
-        }
 
-        &.outline {
-          .CheckComponentRoot {
-            border-color: var(--dodo-ui-CheckContainer-outline-#{$theme});
+          &[data-state='checked'] {
+            border-color: var(--dodo-ui-CheckContainer-outline-#{$theme}-checked);
           }
         }
       }
@@ -90,7 +105,12 @@ $dodo-ui-checkContainer-scale-dark: (
       &--solid {
         .CheckComponentRoot {
           color: var(--dodo-color-constant-white);
-          background-color: var(--dodo-ui-CheckContainer-solid-#{$theme}-bg);
+          background-color: var(--dodo-ui-CheckContainer-text-#{$theme}-bg);
+
+          &[data-state='checked'] {
+            background-color: var(--dodo-ui-CheckContainer-solid-#{$theme}-bg);
+            border-color: transparent;
+          }
         }
       }
     }

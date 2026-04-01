@@ -32,13 +32,13 @@
       control: { type: 'select' },
       options: componentColorOptions,
       description: 'Color theme token',
-      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'primary' } },
+      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'neutral' } },
     },
     variant: {
       control: { type: 'select' },
       options: componentVariantOptions,
       description: 'Visual variant of the Checkbox',
-      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'solid' } },
+      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'text' } },
     },
     size: {
       control: { type: 'select' },
@@ -55,7 +55,7 @@
     outline: {
       control: { type: 'boolean' },
       description: 'Render outlined style',
-      table: { category: 'API', subcategory: 'Appearance' },
+      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'true' } },
     },
   };
 
@@ -76,9 +76,9 @@
 
 <Story name="Solid" args={{ id: 'Solid', variant: 'solid', checked: true }}>Check this text</Story>
 
-<Story name="Outline" args={{ id: 'Outline', outline: true }}>Check this text</Story>
+<Story name="NoOutline" args={{ id: 'Outline', outline: false }}>Check this text</Story>
 
-<Story name="Indeterminate" args={{ id: 'indeterminate', indeterminate: true, outline: true }}>
+<Story name="Indeterminate" args={{ id: 'indeterminate', indeterminate: true }}>
   Check this text
 </Story>
 
@@ -95,17 +95,15 @@
   Check this text
 </Story>
 
-<Story name="Primary" args={{ id: 'Primary', color: 'primary', outline: true }}
-  >Check this text</Story
->
+<Story name="Primary" args={{ id: 'Primary', color: 'primary' }}>Check this text</Story>
 
-<Story name="Large" args={{ id: 'Large', size: 'large', outline: true }}>Check this text</Story>
+<Story name="Large" args={{ id: 'Large', size: 'large' }}>Check this text</Story>
 
-<Story name="Disabled" args={{ disabled: true, outline: true }}>Check this text</Story>
+<Story name="Disabled" args={{ disabled: true }}>Check this text</Story>
 
 <Story name="Safe" args={{ id: 'Safe', color: 'safe' }}>Check this text</Story>
 
-<Story name="Danger / Outline" args={{ id: 'Danger-Outline', color: 'danger', outline: true }}>
+<Story name="Danger / Outline" args={{ id: 'Danger-Outline', color: 'danger' }}>
   Check this text
 </Story>
 

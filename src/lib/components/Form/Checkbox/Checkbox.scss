@@ -51,10 +51,7 @@ $roundness: (
 
   .CheckComponentRoot {
     cursor: pointer;
-    transition:
-      background-color 70ms,
-      color 70ms,
-      border-color 70ms;
+    transition: background-color 70ms;
     text-decoration: none;
     margin: 0;
     display: inline-flex;
@@ -95,8 +92,20 @@ $roundness: (
     &--normal {
       font-size: 1rem;
       .CheckComponentRoot {
-        height: calc(var(--dodo-ui-element-height-normal) / 2);
-        width: calc(var(--dodo-ui-element-height-normal) / 2);
+        height: calc(var(--dodo-ui-element-height-normal) / 1.6);
+        width: calc(var(--dodo-ui-element-height-normal) / 1.6);
+      }
+
+      .CheckComponentCheckContainer {
+        font-size: 1.7rem;
+      }
+    }
+
+    &--small {
+      font-size: 0.9rem;
+      .CheckComponentRoot {
+        height: calc(var(--dodo-ui-element-height-small) / 1.6);
+        width: calc(var(--dodo-ui-element-height-small) / 1.6);
       }
 
       .CheckComponentCheckContainer {
@@ -104,27 +113,15 @@ $roundness: (
       }
     }
 
-    &--small {
-      font-size: 0.9rem;
-      .CheckComponentRoot {
-        height: calc(var(--dodo-ui-element-height-small) / 2);
-        width: calc(var(--dodo-ui-element-height-small) / 2);
-      }
-
-      .CheckComponentCheckContainer {
-        font-size: 1.3rem;
-      }
-    }
-
     &--large {
       font-size: 1.1rem;
       .CheckComponentRoot {
-        height: calc(var(--dodo-ui-element-height-large) / 2);
-        width: calc(var(--dodo-ui-element-height-large) / 2);
+        height: calc(var(--dodo-ui-element-height-large) / 1.6);
+        width: calc(var(--dodo-ui-element-height-large) / 1.6);
       }
 
       .CheckComponentCheckContainer {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
     }
   }
@@ -166,13 +163,11 @@ $roundness: (
           background-color: var(--dodo-ui-CheckContainer-disabled-bg);
           color: var(--dodo-ui-CheckContainer-disabled-color);
         }
-
-        &.outline {
-          .CheckComponentRoot {
-            border-color: transparent;
-          }
-        }
       }
+    }
+
+    .CheckComponentLabel {
+      color: var(--dodo-color-neutral-400);
     }
   }
 }
