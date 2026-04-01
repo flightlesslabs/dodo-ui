@@ -1,59 +1,45 @@
 #!/usr/bin/env node
 /**
  * dodo-ui Component Scaffolding Script
- * -----------------------------------
- *
- * Creates a new component with:
- *  - Svelte component file
- *  - SCSS styles file
- *  - Storybook story file
- *  - Auto-registers SCSS in styles/components.scss
- *
- * Usage:
- *   pnpm create:component <Category> <ComponentName>
- *
- * Example:
- *   pnpm create:component Form TextInput
- *
- * Output:
- *   src/lib/components/Form/TextInput/
- *     ├── TextInput.svelte
- *     ├── TextInput.scss
- *     └── TextInput.stories.svelte
  */
 
 import fs from 'fs';
 import path from 'path';
+import { log, isTest } from './logger.mjs';
 
 /**
- * CLI arguments
- * @example
- *  process.argv = ['node', 'script.js', 'Form', 'Button']
+ * CLI args
  */
 const [, , category, componentName] = process.argv;
 
 if (!category || !componentName) {
-  console.error('❌ Usage: pnpm create:component <Category> <ComponentName>');
+  log.error('❌ Usage: pnpm create:component <Category> <ComponentName>');
   process.exit(1);
 }
 
 /**
- * Base components directory
+ * ENV-aware root
  */
-const baseDir = path.resolve('src/lib/components');
+const rootDir = process.env.FORCE_TEST_DIR || process.cwd();
+
+const baseDir = path.resolve(rootDir, 'src/lib/components');
+const stylesDir = path.resolve(rootDir, 'src/lib/styles');
 
 /**
- * Target component directory
+ * Target path
  */
 const componentDir = path.join(baseDir, category, componentName);
 
+/**
+ * EXISTENCE CHECK (silent in test mode)
+ */
 if (fs.existsSync(componentDir)) {
-  console.error(`❌ Component already exists: ${componentDir}`);
+  log.error(`❌ Component already exists: ${componentDir}`);
   process.exit(1);
 }
 
 /**
- * Create directory structure
+ * Create structure
  */
 fs.mkdirSync(componentDir, { recursive: true });
 
@@ -63,24 +49,20 @@ fs.mkdirSync(componentDir, { recursive: true });
 const svelteFile = path.join(componentDir, `${componentName}.svelte`);
 const scssFile = path.join(componentDir, `${componentName}.scss`);
 const storyFile = path.join(componentDir, `${componentName}.stories.svelte`);
+const testFile = path.join(componentDir, `${componentName}.test.ts`);
 
 /**
- * Svelte component template
+ * -----------------------------
+ * Templates
+ * -----------------------------
  */
+
 const svelteTemplate = `<script lang="ts" module>
   import type { Snippet } from 'svelte';
 
-  /**
-   * Public props for ${componentName}
-   */
   export interface ${componentName}Props {
-    /** Custom CSS class names */
     class?: string;
-
-    /** Disabled state */
     disabled?: boolean;
-
-    /** Slot content */
     children?: Snippet;
   }
 </script>
@@ -93,9 +75,6 @@ const svelteTemplate = `<script lang="ts" module>
     ...restProps
   }: ${componentName}Props = $props();
 
-  /**
-   * Computed class list
-   */
   const classes = $derived(['dodo-ui-${componentName}', className].filter(Boolean));
 </script>
 
@@ -108,12 +87,7 @@ const svelteTemplate = `<script lang="ts" module>
 </div>
 `;
 
-/**
- * SCSS template
- */
-const scssTemplate = `// ----------------------------------------
-// ${componentName} styles
-// ----------------------------------------
+const scssTemplate = `// ${componentName}
 
 .dodo-ui-${componentName} {
   display: inline-flex;
@@ -136,57 +110,66 @@ const scssTemplate = `// ----------------------------------------
 }
 `;
 
-/**
- * Storybook template
- */
 const storyTemplate = `<script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import ${componentName} from './${componentName}.svelte';
-  import type { ${componentName}Props } from './${componentName}.svelte';
-  import type { ArgTypes } from 'storybook/internal/csf';
-
-  /**
-   * Storybook controls for ${componentName}
-   */
-  export const ${componentName}ArgTypes: Partial<ArgTypes<${componentName}Props>> = {
-    class: { table: { category: 'API', subcategory: 'Base' } },
-    disabled: {
-      control: { type: 'boolean' },
-      table: { category: 'API', subcategory: 'State', defaultValue: { summary: 'false' } },
-    },
-  };
 
   const { Story } = defineMeta({
     component: ${componentName},
     tags: ['autodocs'],
-    argTypes: ${componentName}ArgTypes,
   });
 </script>
 
-<!-- ------------------------------ -->
-<!-- Stories -->
-<!-- ------------------------------ -->
-
 <Story name="Default">
-  <${componentName}>Default ${componentName}</${componentName}>
+  <${componentName}>Default</${componentName}>
 </Story>
 
 <Story name="Disabled" args={{ disabled: true }}>
-  <${componentName}>Disabled ${componentName}</${componentName}>
+  <${componentName}>Disabled</${componentName}>
 </Story>
 `;
 
+const testTemplate = `/**
+ * @vitest-environment jsdom
+ */
+
+import { render } from '@testing-library/svelte';
+import { describe, test, expect } from 'vitest';
+
+import ${componentName} from './${componentName}.svelte';
+import TestHost from '../../../test/TestHost.svelte';
+
+describe('${componentName}', () => {
+  test('renders component', () => {
+    const { container } = render(TestHost, {
+      props: {
+        Component: ${componentName},
+        props: {},
+        children: 'Test',
+      },
+    });
+
+    expect(container).toBeInTheDocument();
+  });
+});
+`;
+
 /**
- * Write files to disk
+ * Write files
  */
 fs.writeFileSync(svelteFile, svelteTemplate);
 fs.writeFileSync(scssFile, scssTemplate);
 fs.writeFileSync(storyFile, storyTemplate);
+fs.writeFileSync(testFile, testTemplate);
 
 /**
- * Auto-register component SCSS in styles/components.scss
+ * -----------------------------
+ * SCSS registration
+ * -----------------------------
  */
-const componentsScssPath = path.resolve('src/lib/styles/components.scss');
+const componentsScssPath = path.join(stylesDir, 'components.scss');
+
+fs.mkdirSync(path.dirname(componentsScssPath), { recursive: true });
 
 if (fs.existsSync(componentsScssPath)) {
   const importLine = `@use '../components/${category}/${componentName}/${componentName}.scss';\n`;
@@ -194,12 +177,22 @@ if (fs.existsSync(componentsScssPath)) {
 
   if (!existing.includes(importLine)) {
     fs.appendFileSync(componentsScssPath, importLine);
-    console.log('✅ Registered SCSS in styles/components.scss');
-  } else {
-    console.log('ℹ️ SCSS already registered');
+    log.info('✅ Registered SCSS in styles/components.scss');
   }
 } else {
-  console.warn('⚠️ Could not find styles/components.scss – please add SCSS import manually.');
+  fs.writeFileSync(
+    componentsScssPath,
+    `@use '../components/${category}/${componentName}/${componentName}.scss';\n`,
+  );
+
+  log.warn('⚠️ Created styles/components.scss');
 }
 
-console.log(`🎉 Component created: components/${category}/${componentName}`);
+/**
+ * FINAL OUTPUT
+ */
+log.info(
+  isTest
+    ? `🎉 [TEST MODE] Component created: ${componentDir}`
+    : `🎉 Component created: components/${category}/${componentName}`,
+);
