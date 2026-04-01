@@ -1,0 +1,178 @@
+@use '../../../styles/scss/mixins/check-container-colors' as checkbox;
+
+// ----------------------------------------
+// Config
+// ----------------------------------------
+$dodo-checkbox-themes: neutral, primary, secondary, safe, warning, danger;
+
+// ----------------------------------------
+// Theme tokens (global CSS variables)
+// ----------------------------------------
+:root {
+  --dodo-ui-CheckContainer-disabled-color: var(--dodo-color-neutral-400);
+  --dodo-ui-CheckContainer-disabled-bg: var(--dodo-color-neutral-200);
+
+  @each $theme in $dodo-checkbox-themes {
+    // Fixed: Added buttons. prefix
+    @include checkbox.generate-dodo-ui-checkContainer-colors($theme, light);
+  }
+}
+
+.dodo-theme--dark {
+  --dodo-ui-CheckContainer-disabled-bg: var(--dodo-color-neutral-100);
+  --dodo-ui-CheckContainer-disabled-color: var(--dodo-color-neutral-500);
+
+  @each $theme in $dodo-checkbox-themes {
+    // Fixed: Added buttons. prefix
+    @include checkbox.generate-dodo-ui-checkContainer-colors($theme, dark);
+  }
+}
+
+// ----------------------------------------
+// SCSS maps
+// ----------------------------------------
+
+$roundness: (
+  1: calc(var(--dodo-ui-element-roundness-1) / 2),
+  2: calc(var(--dodo-ui-element-roundness-2) / 2),
+  3: calc(var(--dodo-ui-element-roundness-3) / 2),
+  pill: 999px,
+);
+
+// ----------------------------------------
+// Checkbox styles
+// ----------------------------------------
+
+.dodo-ui-Checkbox {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  color: var(--dodo-color-neutral-800);
+
+  .CheckComponentRoot {
+    cursor: pointer;
+    transition:
+      background-color 70ms,
+      color 70ms,
+      border-color 70ms;
+    text-decoration: none;
+    margin: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-family: inherit;
+    background-color: var(--dodo-color-neutral-100);
+    border-style: solid;
+    border-width: var(--dodo-ui-element-border-width);
+    border-color: transparent;
+    color: inherit;
+    letter-spacing: 0.3px;
+    padding: 0;
+  }
+
+  .CheckComponentLabel {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: var(--dodo-ui-space);
+  }
+
+  .CheckComponentCheckContainer {
+    display: flex;
+    align-items: center;
+  }
+
+  /* &.outline {
+    .CheckComponentRoot {
+      border-color: var(--dodo-color-neutral-300);
+    }
+  } */
+
+  // ----------------------------------------
+  // Sizes
+  // ----------------------------------------
+  &.size {
+    &--normal {
+      font-size: 1rem;
+      .CheckComponentRoot {
+        height: calc(var(--dodo-ui-element-height-normal) / 2);
+        width: calc(var(--dodo-ui-element-height-normal) / 2);
+      }
+
+      .CheckComponentCheckContainer {
+        font-size: 1.5rem;
+      }
+    }
+
+    &--small {
+      font-size: 0.9rem;
+      .CheckComponentRoot {
+        height: calc(var(--dodo-ui-element-height-small) / 2);
+        width: calc(var(--dodo-ui-element-height-small) / 2);
+      }
+
+      .CheckComponentCheckContainer {
+        font-size: 1.3rem;
+      }
+    }
+
+    &--large {
+      font-size: 1.1rem;
+      .CheckComponentRoot {
+        height: calc(var(--dodo-ui-element-height-large) / 2);
+        width: calc(var(--dodo-ui-element-height-large) / 2);
+      }
+
+      .CheckComponentCheckContainer {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  // ----------------------------------------
+  // Roundness
+  // ----------------------------------------
+  &.roundness {
+    @each $name, $radius in $roundness {
+      &--#{$name} {
+        .CheckComponentRoot {
+          border-radius: $radius;
+        }
+      }
+    }
+  }
+
+  // ----------------------------------------
+  // Theme colors
+  // ----------------------------------------
+  &.color {
+    @each $theme in $dodo-checkbox-themes {
+      // Fixed: Added buttons. prefix
+      @include checkbox.generate-dodo-ui-checkContainer-color($theme);
+    }
+  }
+
+  // ----------------------------------------
+  // Disabled
+  // ----------------------------------------
+  &.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+
+    &.variant {
+      &--text,
+      &--solid {
+        .CheckComponentRoot {
+          background-color: var(--dodo-ui-CheckContainer-disabled-bg);
+          color: var(--dodo-ui-CheckContainer-disabled-color);
+        }
+
+        &.outline {
+          .CheckComponentRoot {
+            border-color: transparent;
+          }
+        }
+      }
+    }
+  }
+}

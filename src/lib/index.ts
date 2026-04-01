@@ -38,6 +38,14 @@ export {
   type FormFieldProps,
 } from './components/Form/FormField/FormField.svelte';
 
+/**
+ * FormField component and related prop types.
+ */
+export {
+  default as Checkbox,
+  type CheckboxProps,
+} from './components/Form/Checkbox/Checkbox.svelte';
+
 // =====================================================
 // Layout Components – Public API
 // =====================================================
