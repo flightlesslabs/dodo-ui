@@ -1,5 +1,13 @@
 <script lang="ts">
-  let { Component, props = {}, children } = $props();
+  import type { Snippet } from 'svelte';
+
+  type Props = {
+    Component: any;
+    props?: Record<string, any>;
+    children?: Snippet | string; // ✅ make optional
+  };
+
+  let { Component, props = {}, children }: Props = $props();
 </script>
 
 <Component {...props}>
