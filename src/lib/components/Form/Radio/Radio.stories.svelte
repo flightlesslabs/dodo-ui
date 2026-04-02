@@ -159,6 +159,21 @@
   </RadioGroup>
 </Story>
 
+<Story name="onValueChange (Actions)">
+  <RadioGroup
+    id="onValueChange"
+    value="1"
+    onValueChange={(value: string) => {
+      alert('onValueChange');
+      console.log('onValueChange', value);
+    }}
+  >
+    <Radio id="onValueChange-1" value="1">One</Radio>
+    <Radio id="onValueChange-2" value="2">Two</Radio>
+    <Radio id="onValueChange-3" value="3">Three</Radio>
+  </RadioGroup>
+</Story>
+
 <Story name="Light Theme" asChild>
   <Theme type="light">
     <RadioGroup value="1">
