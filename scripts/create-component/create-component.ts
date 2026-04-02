@@ -12,6 +12,8 @@ if (!category || !componentName) {
   try {
     await runCreateComponent(category, componentName);
     process.exitCode = 0;
+
+    /* eslint-disable @typescript-eslint/no-explicit-any */
   } catch (err: any) {
     log.error(err?.message || err);
     process.exitCode = 1;

@@ -12,6 +12,6 @@
     "strict": true,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "types": ["@testing-library/jest-dom"],
-  },
+    "types": ["@testing-library/jest-dom"]
+  }
 }

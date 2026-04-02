@@ -42,6 +42,7 @@ export async function runCreateComponent(category: string, name: string) {
   log.info(`✅ Component created: ${category}/${name}`);
 }
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 function registerScss(paths: any, category: string, name: string) {
   const importLine = `@use '../components/${category}/${name}/${name}.scss';\n`;
 

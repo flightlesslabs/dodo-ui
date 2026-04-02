@@ -2,7 +2,9 @@
   import type { Snippet } from 'svelte';
 
   type Props = {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     Component: any;
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     props?: Record<string, any>;
     children?: Snippet | string; // ✅ make optional
   };
@@ -12,6 +14,7 @@
 
 <Component {...props}>
   {#if typeof children === 'string'}
+    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
     {@html children}
   {:else if children}
     {@render children()}
