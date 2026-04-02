@@ -7,13 +7,14 @@ $roundness: (
   2: calc(var(--dodo-ui-element-roundness-2) / 2),
   3: calc(var(--dodo-ui-element-roundness-3) / 2),
   pill: 999px,
+  full: 50%,
 );
 
 // ----------------------------------------
-// Checkbox styles
+// Radio styles
 // ----------------------------------------
 
-.dodo-ui-Checkbox {
+.dodo-ui-Radio {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -56,36 +57,36 @@ $roundness: (
     &--normal {
       font-size: 1rem;
       .CheckEnclosure {
-        height: calc(var(--dodo-ui-element-height-normal) / 1.6);
-        width: calc(var(--dodo-ui-element-height-normal) / 1.6);
+        height: calc(var(--dodo-ui-element-height-normal) / 1.55);
+        width: calc(var(--dodo-ui-element-height-normal) / 1.55);
       }
 
       .CheckComponentCheckContainer {
-        font-size: 1.7rem;
+        font-size: 0.9rem;
       }
     }
 
     &--small {
       font-size: 0.9rem;
       .CheckEnclosure {
-        height: calc(var(--dodo-ui-element-height-small) / 1.6);
-        width: calc(var(--dodo-ui-element-height-small) / 1.6);
+        height: calc(var(--dodo-ui-element-height-small) / 1.55);
+        width: calc(var(--dodo-ui-element-height-small) / 1.55);
       }
 
       .CheckComponentCheckContainer {
-        font-size: 1.5rem;
+        font-size: 0.7rem;
       }
     }
 
     &--large {
       font-size: 1.1rem;
       .CheckEnclosure {
-        height: calc(var(--dodo-ui-element-height-large) / 1.6);
-        width: calc(var(--dodo-ui-element-height-large) / 1.6);
+        height: calc(var(--dodo-ui-element-height-large) / 1.55);
+        width: calc(var(--dodo-ui-element-height-large) / 1.55);
       }
 
       .CheckComponentCheckContainer {
-        font-size: 2.2rem;
+        font-size: 1.145rem;
       }
     }
   }
