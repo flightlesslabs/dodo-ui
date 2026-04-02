@@ -10,6 +10,7 @@ $dodo-ui-checkEnclosure-scale-light: (
   outline: 300,
   outline-checked: 500,
   text-bg: 100,
+  text-active-bg: 200,
   solid-bg: 500,
 );
 
@@ -26,6 +27,11 @@ $dodo-ui-checkEnclosure-scale-dark: (
   ),
   text-bg: (
     50,
+    90%,
+    #fff,
+  ),
+  text-active-bg: (
+    100,
     90%,
     #fff,
   ),
@@ -76,6 +82,11 @@ $dodo-ui-checkEnclosure-scale-dark: (
       map.get($scale, text-bg)
     )};
 
+  --dodo-ui-CheckEnclosure-text-#{$color-name}-active-bg: #{_dodo-ui-resolve-color(
+      $color-name,
+      map.get($scale, text-active-bg)
+    )};
+
   --dodo-ui-CheckEnclosure-solid-#{$color-name}-bg: #{_dodo-ui-resolve-color(
       $color-name,
       map.get($scale, solid-bg)
@@ -93,8 +104,16 @@ $dodo-ui-checkEnclosure-scale-dark: (
         color: var(--dodo-color-#{$theme}-800);
         background-color: var(--dodo-ui-CheckEnclosure-text-#{$theme}-bg);
 
+        .CheckThumbInternal {
+          background-color: var(--dodo-color-#{$theme}-600);
+        }
+
         &[data-state='checked'] {
           border-color: var(--dodo-ui-CheckEnclosure-outline-#{$theme}-checked);
+
+          .CheckThumbInternal {
+            background-color: var(--dodo-color-#{$theme}-700);
+          }
         }
       }
 
@@ -102,9 +121,27 @@ $dodo-ui-checkEnclosure-scale-dark: (
         color: var(--dodo-color-constant-white);
         background-color: var(--dodo-ui-CheckEnclosure-text-#{$theme}-bg);
 
+        .CheckThumbInternal {
+          background-color: var(--dodo-color-#{$theme}-600);
+        }
+
         &[data-state='checked'] {
           background-color: var(--dodo-ui-CheckEnclosure-solid-#{$theme}-bg);
           border-color: transparent;
+
+          .CheckThumbInternal {
+            background-color: var(--dodo-color-constant-white);
+          }
+        }
+      }
+    }
+
+    &.CheckEnclosureBackdrop {
+      &.variant {
+        &--text {
+          &[data-state='checked'] {
+            background-color: var(--dodo-ui-CheckEnclosure-text-#{$theme}-active-bg);
+          }
         }
       }
     }

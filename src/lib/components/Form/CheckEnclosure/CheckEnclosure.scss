@@ -56,6 +56,10 @@ $dodo-checkEnclosure-themes: neutral, primary, secondary, safe, warning, danger;
         background-color: var(--dodo-ui-CheckEnclosure-disabled-bg);
         color: var(--dodo-ui-CheckEnclosure-disabled-color);
 
+        .CheckThumbInternal {
+          background-color: var(--dodo-ui-CheckEnclosure-disabled-color);
+        }
+
         &[data-state='checked'] {
           border-color: var(--dodo-color-neutral-400);
         }
@@ -65,9 +69,23 @@ $dodo-checkEnclosure-themes: neutral, primary, secondary, safe, warning, danger;
         color: var(--dodo-color-constant-white);
         background-color: var(--dodo-ui-CheckEnclosure-disabled-bg);
 
+        .CheckThumbInternal {
+          background-color: var(--dodo-color-constant-white);
+        }
+
         &[data-state='checked'] {
           background-color: var(--dodo-color-neutral-400);
           border-color: transparent;
+        }
+      }
+    }
+
+    &.CheckEnclosureBackdrop {
+      &.variant {
+        &--text {
+          &[data-state='checked'] {
+            background-color: var(--dodo-ui-CheckEnclosure-disabled-bg);
+          }
         }
       }
     }

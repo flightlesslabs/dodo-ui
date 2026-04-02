@@ -55,6 +55,11 @@ export {
   type RadioGroupProps,
 } from './components/Form/Radio/RadioGroup/RadioGroup.svelte';
 
+/**
+ * Switch component and related prop types.
+ */
+export { default as Switch, type SwitchProps } from './components/Form/Switch/Switch.svelte';
+
 // =====================================================
 // Layout Components – Public API
 // =====================================================
