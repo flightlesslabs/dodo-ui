@@ -2,9 +2,9 @@
   import type { Snippet } from 'svelte';
 
   /**
-   * Public props for Checkbox
+   * Public props for Radio
    */
-  export type CheckboxProps = CheckboxRootProps & {
+  export type RadioProps = RadioGroupItemProps & {
     /** Custom CSS class names */
     class?: string;
 
@@ -17,8 +17,8 @@
     /** Color theme token */
     color?: ComponentColor;
 
-    /** Border radius token (0–3, "pill") */
-    roundness?: ComponentRoundnessShape;
+    /** Border radius token (0–3, "pill", ""full) */
+    roundness?: ComponentRoundness;
 
     /** Visual variant (e.g. solid, text) */
     variant?: ComponentVariant;
@@ -29,13 +29,13 @@
 </script>
 
 <script lang="ts">
-  import { Checkbox as CheckboxBitUi, type CheckboxRootProps } from 'bits-ui';
+  import { RadioGroup, type RadioGroupItemProps } from 'bits-ui';
   import Label from '../Label/Label.svelte';
-  import Icon from '@iconify/svelte';
   import type { ComponentSize } from '$lib/attributes/size.js';
   import type { ComponentColor } from '$lib/attributes/color.js';
-  import type { ComponentRoundnessShape } from '$lib/attributes/roundness.js';
+  import type { ComponentRoundness } from '$lib/attributes/roundness.js';
   import type { ComponentVariant } from '$lib/attributes/variant.js';
+  import Icon from '@iconify/svelte';
 
   let {
     class: className = '',
@@ -43,19 +43,19 @@
     name,
     size = 'normal',
     color = 'neutral',
-    roundness = 1,
+    roundness = 'full',
     id,
     outline = true,
     variant = 'text',
     ...restProps
-  }: CheckboxProps = $props();
+  }: RadioProps = $props();
 
   /**
    * Computed class list
    */
   const classes = $derived(
     [
-      'dodo-ui-Checkbox',
+      'dodo-ui-Radio',
       `size--${size}`,
       `color--${color}`,
       `variant--${variant}`,
@@ -73,17 +73,15 @@
 </script>
 
 <div class={classes.join(' ')}>
-  <CheckboxBitUi.Root {...restProps} {name} {id} class={classesCheckEnclosure.join(' ')}>
-    {#snippet children({ checked, indeterminate })}
+  <RadioGroup.Item {...restProps} {name} {id} class={classesCheckEnclosure.join(' ')}>
+    {#snippet children({ checked })}
       <div class="CheckComponentCheckContainer">
-        {#if indeterminate}
-          <Icon icon="material-symbols:check-indeterminate-small" />
-        {:else if checked}
-          <Icon icon="material-symbols:check-small" />
+        {#if checked}
+          <Icon icon="material-symbols:circle" />
         {/if}
       </div>
     {/snippet}
-  </CheckboxBitUi.Root>
+  </RadioGroup.Item>
 
   {#if children}
     <Label class="CheckComponentLabel" for={id}>{@render children?.()}</Label>
