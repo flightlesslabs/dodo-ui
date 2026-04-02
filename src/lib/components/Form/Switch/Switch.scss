@@ -1,0 +1,130 @@
+// ----------------------------------------
+// SCSS maps
+// ----------------------------------------
+
+$roundness: (
+  1: calc(var(--dodo-ui-element-roundness-1) / 2),
+  2: calc(var(--dodo-ui-element-roundness-2) / 2),
+  3: calc(var(--dodo-ui-element-roundness-3) / 2),
+  pill: 999px,
+);
+
+// ----------------------------------------
+// Switch styles
+// ----------------------------------------
+
+.dodo-ui-Switch {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  color: var(--dodo-color-neutral-800);
+
+  .CheckEnclosure {
+    cursor: pointer;
+    transition: background-color 70ms;
+    text-decoration: none;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    font-family: inherit;
+    background-color: var(--dodo-color-neutral-100);
+    border-style: solid;
+    border-width: var(--dodo-ui-element-border-width);
+    border-color: transparent;
+    color: inherit;
+    letter-spacing: 0.3px;
+    padding: 0;
+    position: relative;
+
+    &[data-state='checked'] {
+      .CheckThumb {
+        margin-left: auto;
+      }
+    }
+  }
+
+  .CheckComponentLabel {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: var(--dodo-ui-space);
+  }
+
+  .CheckComponentCheckContainer {
+    display: flex;
+    align-items: center;
+  }
+
+  .CheckThumb {
+    margin-left: 0;
+    transition: margin 150ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .CheckThumbInternal {
+      border-radius: 50%;
+      width: 60%;
+      height: 60%;
+      display: inline-flex;
+      background-color: #000;
+    }
+  }
+
+  // ----------------------------------------
+  // Sizes
+  // ----------------------------------------
+  &.size {
+    &--normal {
+      font-size: 1rem;
+      .CheckEnclosure {
+        height: calc(var(--dodo-ui-element-height-normal) / 1.2);
+        width: calc(var(--dodo-ui-element-height-normal) * 1.4);
+
+        .CheckThumb {
+          height: calc(var(--dodo-ui-element-height-normal) / 1.3);
+          width: calc(var(--dodo-ui-element-height-normal) / 1.3);
+        }
+      }
+    }
+
+    &--small {
+      font-size: 0.9rem;
+      .CheckEnclosure {
+        height: calc(var(--dodo-ui-element-height-small) / 1.2);
+        width: calc(var(--dodo-ui-element-height-small) * 1.4);
+
+        .CheckThumb {
+          height: calc(var(--dodo-ui-element-height-small) / 1.3);
+          width: calc(var(--dodo-ui-element-height-small) / 1.3);
+        }
+      }
+    }
+
+    &--large {
+      font-size: 1.1rem;
+      .CheckEnclosure {
+        height: calc(var(--dodo-ui-element-height-large) / 1.2);
+        width: calc(var(--dodo-ui-element-height-large) * 1.4);
+
+        .CheckThumb {
+          height: calc(var(--dodo-ui-element-height-large) / 1.3);
+          width: calc(var(--dodo-ui-element-height-large) / 1.3);
+        }
+      }
+    }
+  }
+
+  // ----------------------------------------
+  // Roundness
+  // ----------------------------------------
+  &.roundness {
+    @each $name, $radius in $roundness {
+      &--#{$name} {
+        .CheckEnclosure {
+          border-radius: $radius;
+        }
+      }
+    }
+  }
+}
