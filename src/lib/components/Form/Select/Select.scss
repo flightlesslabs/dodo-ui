@@ -1,10 +1,7 @@
 // Select
 .dodo-ui-Select {
-  .ContentHolder {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    height: 100%;
+  button[data-combobox-trigger] {
+    font-size: 1.5em;
   }
 
   input[data-combobox-input] {
@@ -59,13 +56,41 @@
 }
 
 .SelectPopup {
-  width: var(--SelectPopup-width, var(--bits-combobox-anchor-width));
+  --SelectPopup-width-default: var(--bits-combobox-anchor-width);
+
+  width: var(--SelectPopup-width, var(--SelectPopup-width-default));
   height: var(--SelectPopup-height, initial);
-  min-width: var(--SelectPopup-min-width, var(--bits-combobox-anchor-width));
+  min-width: var(--SelectPopup-min-width, var(--SelectPopup-width-default));
   min-height: var(--SelectPopup-min-height, initial);
   max-width: var(--SelectPopup-max-width, initial);
   max-height: var(--SelectPopup-max-height, 400px);
   background-color: var(--dodo-color-white);
+
+  // ----------------------------------------
+  // Sizes
+  // ----------------------------------------
+  &.size {
+    &--normal {
+      --SelectPopup-width-default: calc(
+        var(--dodo-ui-element-height-normal) / 1.2 + var(--bits-combobox-anchor-width) +
+          var(--dodo-ui-space)
+      );
+    }
+
+    &--small {
+      --SelectPopup-width-default: calc(
+        var(--dodo-ui-element-height-small) / 1.2 + var(--bits-combobox-anchor-width) +
+          var(--dodo-ui-space-small)
+      );
+    }
+
+    &--large {
+      --SelectPopup-width-default: calc(
+        var(--dodo-ui-element-height-large) / 1.2 + var(--bits-combobox-anchor-width) +
+          var(--dodo-ui-space-large)
+      );
+    }
+  }
 
   [data-combobox-item] {
     padding: var(--dodo-ui-space);

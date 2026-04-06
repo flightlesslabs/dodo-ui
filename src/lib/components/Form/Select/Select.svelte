@@ -196,63 +196,64 @@
   );
 </script>
 
-<InputEnclosure
-  {size}
-  {roundness}
-  {outline}
-  {disabled}
-  {error}
-  class={classes.join(' ')}
-  {before}
-  {after}
-  focused={isFocused}
+<Combobox.Root
+  {...restProps}
+  {open}
+  type="single"
+  onOpenChange={(isOpen) => (open = isOpen)}
+  onOpenChangeComplete={(o) => {
+    if (!o) searchValue = '';
+  }}
 >
-  <Combobox.Root
-    {...restProps}
-    {open}
-    type="single"
-    onOpenChange={(isOpen) => (open = isOpen)}
-    onOpenChangeComplete={(o) => {
-      if (!o) searchValue = '';
-    }}
+  <InputEnclosure
+    {size}
+    {roundness}
+    {outline}
+    {disabled}
+    {error}
+    class={classes.join(' ')}
+    {before}
+    focused={isFocused}
   >
-    <div class="ContentHolder">
-      <Combobox.Input
-        oninput={(e) => (searchValue = e.currentTarget.value)}
-        onfocus={handleFocus}
-        onblur={handleBlur}
-        readonly={!searchable}
-        onclick={!searchable ? () => (open = true) : undefined}
-        {placeholder}
-      />
+    <Combobox.Input
+      oninput={(e) => (searchValue = e.currentTarget.value)}
+      onfocus={handleFocus}
+      onblur={handleBlur}
+      readonly={!searchable}
+      onclick={!searchable ? () => (open = true) : undefined}
+      {placeholder}
+    />
+
+    {#snippet after()}
       <Combobox.Trigger class={triggerClasses.join(' ')}>
-        <Icon icon="material-symbols:arrow-drop-down-rounded" width="24" height="24" />
+        <Icon icon="material-symbols:arrow-drop-down-rounded" />
       </Combobox.Trigger>
-    </div>
-    <Combobox.Portal>
-      <Combobox.Content
-        sideOffset={10}
-        align="start"
-        {...restpopupProps}
-        style={popupInlineStyles.join(';')}
-        class={popupClasses.join(' ')}
-      >
-        <Combobox.ScrollUpButton>
-          <Icon icon="icon-park-outline:double-up" />
-        </Combobox.ScrollUpButton>
-        <Combobox.Viewport>
-          {#each filteredOptions as option, i (i + option.value)}
-            <Combobox.Item value={option.value} label={option.label}>
-              {option.label}
-            </Combobox.Item>
-          {:else}
-            <span> No results found, try again. </span>
-          {/each}
-        </Combobox.Viewport>
-        <Combobox.ScrollDownButton>
-          <Icon icon="icon-park-outline:double-down" />
-        </Combobox.ScrollDownButton>
-      </Combobox.Content>
-    </Combobox.Portal>
-  </Combobox.Root>
-</InputEnclosure>
+      {@render after?.()}
+    {/snippet}
+  </InputEnclosure>
+  <Combobox.Portal>
+    <Combobox.Content
+      sideOffset={10}
+      align="start"
+      {...restpopupProps}
+      style={popupInlineStyles.join(';')}
+      class={popupClasses.join(' ')}
+    >
+      <Combobox.ScrollUpButton>
+        <Icon icon="icon-park-outline:double-up" />
+      </Combobox.ScrollUpButton>
+      <Combobox.Viewport>
+        {#each filteredOptions as option, i (i + option.value)}
+          <Combobox.Item value={option.value} label={option.label}>
+            {option.label}
+          </Combobox.Item>
+        {:else}
+          <span> No results found, try again. </span>
+        {/each}
+      </Combobox.Viewport>
+      <Combobox.ScrollDownButton>
+        <Icon icon="icon-park-outline:double-down" />
+      </Combobox.ScrollDownButton>
+    </Combobox.Content>
+  </Combobox.Portal>
+</Combobox.Root>
