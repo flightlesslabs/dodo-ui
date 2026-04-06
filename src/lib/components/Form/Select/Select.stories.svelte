@@ -49,6 +49,11 @@
       table: { category: 'API', subcategory: 'Base' },
     },
     name: { table: { category: 'API', subcategory: 'Base' } },
+    options: { table: { category: 'API', subcategory: 'Base' } },
+    searchable: {
+      control: { type: 'boolean' },
+      table: { category: 'API', subcategory: 'Base' },
+    },
 
     // ------------------------------
     // State
@@ -122,7 +127,30 @@
 
 <Story name="Default" args={{ placeholder: 'Select an option' }} />
 
+<Story name="Searchable" args={{ searchable: true, placeholder: 'Search a number' }} />
+
+<Story name="Selected" args={{ placeholder: 'Select an option', value: options[1].value }} />
+
+<Story name="Disabled" args={{ placeholder: 'Select an option', disabled: true }} />
+
 <Story
-  name="Searchable"
-  args={{ searchable: true, clearable: true, placeholder: 'Search a number' }}
+  name="OnChange (Actions)"
+  args={{
+    onValueChange: (val: string) => {
+      alert('OnChange');
+      console.log('OnChange', val);
+    },
+  }}
 />
+
+<Story name="Light Theme" asChild>
+  <Theme type="light">
+    <Select {options} />
+  </Theme>
+</Story>
+
+<Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
+  <Theme type="dark">
+    <Select {options} />
+  </Theme>
+</Story>

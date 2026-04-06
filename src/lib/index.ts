@@ -70,6 +70,16 @@ export {
   type UtilityButtonProps,
 } from './components/Form/UtilityButton/UtilityButton.svelte';
 
+/**
+ * Select component and related prop types.
+ */
+export {
+  default as Select,
+  type SelectProps,
+  type SelectOption,
+  type SelectPopupProps,
+} from './components/Form/Select/Select.svelte';
+
 // =====================================================
 // Layout Components – Public API
 // =====================================================

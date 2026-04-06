@@ -35,7 +35,10 @@
    * These props control the visual wrapper (InputEnclosure) and
    * common text-input behaviors.
    */
-  export type SelectProps = ComboboxSingleRootPropsWithoutHTML & {
+  type BaseProps = Omit<ComboboxSingleRootPropsWithoutHTML, 'type'> &
+    Omit<SelectSingleRootPropsWithoutHTML, 'type'>;
+
+  export type SelectProps = BaseProps & {
     /** Visual size token (e.g. small, normal, large) */
     size?: ComponentSize;
 
@@ -87,9 +90,6 @@
     /** is select searchable */
     searchable?: boolean;
 
-    /** is select clearable */
-    clearable?: boolean;
-
     /** Select placeholder */
     placeholder?: string;
   };
@@ -100,12 +100,12 @@
     Combobox,
     type ComboboxSingleRootPropsWithoutHTML,
     type SelectContentProps,
+    type SelectSingleRootPropsWithoutHTML,
   } from 'bits-ui';
   import type { ComponentSize } from '$lib/attributes/size.js';
   import type { ComponentRoundnessShape } from '$lib/attributes/roundness.js';
   import InputEnclosure from '../InputEnclosure/InputEnclosure.svelte';
   import Icon from '@iconify/svelte';
-  import UtilityButton from '../UtilityButton/UtilityButton.svelte';
 
   let {
     size = 'normal',
@@ -120,10 +120,9 @@
     after,
     options,
     searchable = false,
-    clearable: clearableRaw = false,
-    open = $bindable<boolean>(),
+    open = $bindable<boolean>(false),
     placeholder,
-    onValueChange,
+    allowDeselect = false,
     ...restProps
   }: SelectProps = $props();
 
@@ -157,12 +156,6 @@
 
   let searchValue = $state('');
 
-  let selectInputValue = $state('');
-
-  let clearable = $derived<boolean>(
-    searchable && clearableRaw && selectInputValue.trim() ? true : false,
-  );
-
   /**
    * Computed class list for the InputEnclosure component.
    */
@@ -177,7 +170,6 @@
       'roundness--full',
       error && 'error',
       disabled && 'disabled',
-      clearable && 'clearable',
     ].filter(Boolean),
   );
 
@@ -189,7 +181,6 @@
       'roundness--1',
       'variant--text',
       `size--${size}`,
-      clearable && 'clearable',
       `dodo-shadow-${popupShadow}`,
       popupClass,
     ].filter(Boolean),
@@ -216,15 +207,9 @@
 <Combobox.Root
   {...restProps}
   {open}
+  {allowDeselect}
   type="single"
   onOpenChange={(isOpen) => (open = isOpen)}
-  onValueChange={(value) => {
-    selectInputValue = value;
-
-    if (onValueChange) {
-      onValueChange(value);
-    }
-  }}
   onOpenChangeComplete={(o) => {
     if (!o) searchValue = '';
   }}
@@ -242,22 +227,15 @@
     <Combobox.Input
       oninput={(e) => {
         searchValue = e.currentTarget.value;
-        selectInputValue = e.currentTarget.value;
       }}
       onfocus={handleFocus}
       onblur={handleBlur}
       readonly={!searchable}
-      onclick={!searchable ? () => (open = true) : undefined}
+      onclick={!searchable && !disabled ? () => (open = true) : undefined}
       {placeholder}
     />
 
     {#snippet after()}
-      {#if clearable && selectInputValue.trim()}
-        <UtilityButton class="Clear" compact roundness="full" aria-label="Clear Select Search">
-          <Icon icon="material-symbols:close-small-rounded" />
-        </UtilityButton>
-      {/if}
-
       <Combobox.Trigger class={triggerClasses.join(' ')}>
         <Icon icon="material-symbols:arrow-drop-down-rounded" />
       </Combobox.Trigger>
