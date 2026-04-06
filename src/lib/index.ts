@@ -60,6 +60,26 @@ export {
  */
 export { default as Switch, type SwitchProps } from './components/Form/Switch/Switch.svelte';
 
+/**
+ * UtilityButton component and related prop types.
+ */
+export {
+  default as UtilityButton,
+  type UtilityButtonAsButtonProps,
+  type UtilityButtonAsAnchorProps,
+  type UtilityButtonProps,
+} from './components/Form/UtilityButton/UtilityButton.svelte';
+
+/**
+ * Select component and related prop types.
+ */
+export {
+  default as Select,
+  type SelectProps,
+  type SelectOption,
+  type SelectPopupProps,
+} from './components/Form/Select/Select.svelte';
+
 // =====================================================
 // Layout Components – Public API
 // =====================================================
@@ -73,6 +93,17 @@ export {
   type ThemeType,
   type ThemeProps,
 } from './components/Layout/Theme/Theme.svelte';
+
+/**
+ * Card component and related prop types.
+ */
+export {
+  CARD_COLOR,
+  default as Card,
+  cardColorOptions,
+  type CardColor,
+  type CardProps,
+} from './components/Layout/Card/Card.svelte';
 
 // =====================================================
 // utils – Public API
@@ -145,3 +176,12 @@ export {
   componentVariantOptions,
   type ComponentVariant,
 } from './attributes/variant.js';
+
+/**
+ * shadow attribute related prop types.
+ */
+export {
+  COMPONENT_SHADOW,
+  ComponentShadowOptions,
+  type ComponentShadow,
+} from './attributes/shadow.js';

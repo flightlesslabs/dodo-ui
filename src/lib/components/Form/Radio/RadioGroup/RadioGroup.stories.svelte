@@ -42,8 +42,8 @@
 <!-- Stories -->
 <!-- ------------------------------ -->
 
-<Story name="Default" args={{ id: 'Default' }} asChild>
-  <RadioGroup>
+<Story name="Default" asChild>
+  <RadioGroup id="Default">
     <Radio id="Default-1" value="1">One</Radio>
     <Radio id="Default-2" value="2">Two</Radio>
     <Radio id="Default-3" value="3">Three</Radio>
@@ -58,8 +58,8 @@
   </RadioGroup>
 </Story>
 
-<Story name="Horizontal" args={{ id: 'Horizontal' }} asChild>
-  <RadioGroup orientation="horizontal" value="1">
+<Story name="Horizontal" asChild>
+  <RadioGroup id="Horizontal" orientation="horizontal" value="1">
     <Radio id="Horizontal-1" value="1">One</Radio>
     <Radio id="Horizontal-2" value="2">Two</Radio>
     <Radio id="Horizontal-3" value="3">Three</Radio>
@@ -74,7 +74,7 @@
   </RadioGroup>
 </Story>
 
-<Story name="onValueChange (Actions)">
+<Story name="onValueChange (Actions)" asChild>
   <RadioGroup
     id="onValueChange"
     value="1"
