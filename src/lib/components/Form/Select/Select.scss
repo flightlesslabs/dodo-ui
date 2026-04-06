@@ -1,0 +1,89 @@
+// Select
+.dodo-ui-Select {
+  .ContentHolder {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    height: 100%;
+  }
+
+  input[data-combobox-input] {
+    flex: 1;
+    border: 0;
+    outline: 0;
+    height: 100%;
+    background-color: transparent;
+    font-family: inherit;
+    color: inherit;
+    letter-spacing: 0.3px;
+    margin: 0;
+  }
+
+  // ----------------------------------------
+  // Sizes
+  // ----------------------------------------
+  &.size {
+    &--normal {
+      input[data-combobox-input] {
+        font-size: 1rem;
+        padding: 0 calc(var(--dodo-ui-space-small) * 2);
+      }
+
+      button[data-combobox-trigger] {
+        margin: 0 calc(var(--dodo-ui-space) / 2);
+      }
+    }
+
+    &--small {
+      input[data-combobox-input] {
+        padding: 0 var(--dodo-ui-space);
+        font-size: 0.9rem;
+      }
+
+      button[data-combobox-trigger] {
+        margin: 0 calc(var(--dodo-ui-space--small) / 2);
+      }
+    }
+
+    &--large {
+      input[data-combobox-input] {
+        font-size: 1.1rem;
+        padding: 0 calc(var(--dodo-ui-space) * 2);
+      }
+
+      button[data-combobox-trigger] {
+        margin: 0 calc(var(--dodo-ui-space--large) / 2);
+      }
+    }
+  }
+}
+
+.SelectPopup {
+  width: var(--SelectPopup-width, var(--bits-combobox-anchor-width));
+  height: var(--SelectPopup-height, initial);
+  min-width: var(--SelectPopup-min-width, var(--bits-combobox-anchor-width));
+  min-height: var(--SelectPopup-min-height, initial);
+  max-width: var(--SelectPopup-max-width, initial);
+  max-height: var(--SelectPopup-max-height, 400px);
+  background-color: var(--dodo-color-white);
+
+  [data-combobox-item] {
+    padding: var(--dodo-ui-space);
+
+    &[data-selected] {
+      background-color: var(--dodo-color-primary-100);
+    }
+
+    &[data-highlighted] {
+      background-color: var(--dodo-color-primary-200);
+    }
+  }
+
+  [data-combobox-scroll-down-button],
+  [data-combobox-scroll-up-button] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+}

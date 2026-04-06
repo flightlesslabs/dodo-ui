@@ -1,0 +1,112 @@
+@use '../../../styles/scss/mixins/card-color' as cards;
+
+// ----------------------------------------
+// Config
+// ----------------------------------------
+$dodo-card-themes: neutral, primary, secondary, safe, warning, danger;
+
+// ----------------------------------------
+// Theme tokens (global CSS variables)
+// ----------------------------------------
+:root {
+  --dodo-ui-Card-disabled-color: var(--dodo-color-neutral-400);
+  --dodo-ui-Card-disabled-bg: var(--dodo-color-neutral-200);
+
+  @each $theme in $dodo-card-themes {
+    // Fixed: Added cards. prefix
+    @include cards.generate-dodo-ui-card-colors($theme, light);
+  }
+}
+
+.dodo-theme--dark {
+  --dodo-ui-Card-disabled-bg: var(--dodo-color-neutral-100);
+  --dodo-ui-Card-disabled-color: var(--dodo-color-neutral-500);
+
+  @each $theme in $dodo-card-themes {
+    // Fixed: Added cards. prefix
+    @include cards.generate-dodo-ui-card-colors($theme, dark);
+  }
+}
+
+// ----------------------------------------
+// SCSS maps
+// ----------------------------------------
+
+$roundness: (
+  1: var(--dodo-ui-element-roundness-1),
+  2: var(--dodo-ui-element-roundness-2),
+  3: var(--dodo-ui-element-roundness-3),
+  pill: 999px,
+  full: 50%,
+);
+
+// ----------------------------------------
+// Component CSS
+// ----------------------------------------
+.dodo-ui-Card {
+  transition:
+    background-color 70ms,
+    color 70ms,
+    border-color 70ms;
+  background-color: transparent;
+  border-style: solid;
+  border-width: var(--dodo-ui-element-border-width);
+  border-color: transparent;
+  color: inherit;
+  background-color: transparent;
+  width: var(--Card-width, initial);
+  height: var(--Card-height, initial);
+  min-width: var(--Card-min-width, initial);
+  min-height: var(--Card-min-height, initial);
+  max-width: var(--Card-max-width, initial);
+  max-height: var(--Card-max-height, initial);
+
+  &.outline {
+    border-color: var(--dodo-color-neutral-400);
+  }
+
+  &.active {
+    cursor: pointer;
+  }
+
+  // ----------------------------------------
+  // Roundness
+  // ----------------------------------------
+  &.roundness {
+    @each $name, $radius in $roundness {
+      &--#{$name} {
+        border-radius: $radius;
+      }
+    }
+  }
+
+  // ----------------------------------------
+  // Theme colors
+  // ----------------------------------------
+  &.color {
+    @each $theme in $dodo-card-themes {
+      // Fixed: Added cards. prefix
+      @include cards.generate-dodo-ui-card-color($theme);
+    }
+  }
+
+  // ----------------------------------------
+  // Disabled
+  // ----------------------------------------
+  &[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+
+    &.variant {
+      &--text,
+      &--solid {
+        background-color: var(--dodo-ui-Card-disabled-bg);
+        color: var(--dodo-ui-Card-disabled-color);
+
+        &.outline {
+          border-color: transparent;
+        }
+      }
+    }
+  }
+}
