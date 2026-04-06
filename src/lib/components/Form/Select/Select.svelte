@@ -87,6 +87,9 @@
     /** is select searchable */
     searchable?: boolean;
 
+    /** is select clearable */
+    clearable?: boolean;
+
     /** Select placeholder */
     placeholder?: string;
   };
@@ -102,6 +105,7 @@
   import type { ComponentRoundnessShape } from '$lib/attributes/roundness.js';
   import InputEnclosure from '../InputEnclosure/InputEnclosure.svelte';
   import Icon from '@iconify/svelte';
+  import UtilityButton from '../UtilityButton/UtilityButton.svelte';
 
   let {
     size = 'normal',
@@ -116,8 +120,10 @@
     after,
     options,
     searchable = false,
+    clearable: clearableRaw = false,
     open = $bindable<boolean>(),
     placeholder,
+    onValueChange,
     ...restProps
   }: SelectProps = $props();
 
@@ -130,6 +136,9 @@
     maxHeight: popupMaxHeight,
     maxWidth: popupMaxWidth,
     shadow: popupShadow = 2,
+    sideOffset = 10,
+    align: popupAlign = 'start',
+
     ...restpopupProps
   } = $derived(popupProps);
 
@@ -146,6 +155,14 @@
     isFocused = false;
   }
 
+  let searchValue = $state('');
+
+  let selectInputValue = $state('');
+
+  let clearable = $derived<boolean>(
+    searchable && clearableRaw && selectInputValue.trim() ? true : false,
+  );
+
   /**
    * Computed class list for the InputEnclosure component.
    */
@@ -160,6 +177,7 @@
       'roundness--full',
       error && 'error',
       disabled && 'disabled',
+      clearable && 'clearable',
     ].filter(Boolean),
   );
 
@@ -171,6 +189,7 @@
       'roundness--1',
       'variant--text',
       `size--${size}`,
+      clearable && 'clearable',
       `dodo-shadow-${popupShadow}`,
       popupClass,
     ].filter(Boolean),
@@ -187,8 +206,6 @@
     ].filter(Boolean),
   );
 
-  let searchValue = $state('');
-
   const filteredOptions = $derived(
     searchValue === ''
       ? options
@@ -201,6 +218,13 @@
   {open}
   type="single"
   onOpenChange={(isOpen) => (open = isOpen)}
+  onValueChange={(value) => {
+    selectInputValue = value;
+
+    if (onValueChange) {
+      onValueChange(value);
+    }
+  }}
   onOpenChangeComplete={(o) => {
     if (!o) searchValue = '';
   }}
@@ -216,7 +240,10 @@
     focused={isFocused}
   >
     <Combobox.Input
-      oninput={(e) => (searchValue = e.currentTarget.value)}
+      oninput={(e) => {
+        searchValue = e.currentTarget.value;
+        selectInputValue = e.currentTarget.value;
+      }}
       onfocus={handleFocus}
       onblur={handleBlur}
       readonly={!searchable}
@@ -225,6 +252,12 @@
     />
 
     {#snippet after()}
+      {#if clearable && selectInputValue.trim()}
+        <UtilityButton class="Clear" compact roundness="full" aria-label="Clear Select Search">
+          <Icon icon="material-symbols:close-small-rounded" />
+        </UtilityButton>
+      {/if}
+
       <Combobox.Trigger class={triggerClasses.join(' ')}>
         <Icon icon="material-symbols:arrow-drop-down-rounded" />
       </Combobox.Trigger>
@@ -233,9 +266,9 @@
   </InputEnclosure>
   <Combobox.Portal>
     <Combobox.Content
-      sideOffset={10}
-      align="start"
       {...restpopupProps}
+      align={popupAlign}
+      {sideOffset}
       style={popupInlineStyles.join(';')}
       class={popupClasses.join(' ')}
     >

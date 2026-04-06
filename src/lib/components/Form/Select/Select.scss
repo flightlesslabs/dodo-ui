@@ -4,6 +4,10 @@
     font-size: 1.5em;
   }
 
+  .Clear {
+    font-size: 1.5em;
+  }
+
   input[data-combobox-input] {
     flex: 1;
     border: 0;
@@ -26,8 +30,9 @@
         padding: 0 calc(var(--dodo-ui-space-small) * 2);
       }
 
-      button[data-combobox-trigger] {
-        margin: 0 calc(var(--dodo-ui-space) / 2);
+      button[data-combobox-trigger],
+      .Clear {
+        margin: 0 calc(var(--dodo-ui-space) / 2.5);
       }
     }
 
@@ -37,8 +42,9 @@
         font-size: 0.9rem;
       }
 
-      button[data-combobox-trigger] {
-        margin: 0 calc(var(--dodo-ui-space--small) / 2);
+      button[data-combobox-trigger],
+      .Clear {
+        margin: 0 calc(var(--dodo-ui-space--small) / 2.5);
       }
     }
 
@@ -48,8 +54,9 @@
         padding: 0 calc(var(--dodo-ui-space) * 2);
       }
 
-      button[data-combobox-trigger] {
-        margin: 0 calc(var(--dodo-ui-space--large) / 2);
+      button[data-combobox-trigger],
+      .Clear {
+        margin: 0 calc(var(--dodo-ui-space--large) / 2.5);
       }
     }
   }
@@ -89,6 +96,31 @@
         var(--dodo-ui-element-height-large) / 1.2 + var(--bits-combobox-anchor-width) +
           var(--dodo-ui-space-large)
       );
+    }
+  }
+
+  &.clearable {
+    &.size {
+      &--normal {
+        --SelectPopup-width-default: calc(
+          calc(var(--dodo-ui-element-height-normal) / 1.2 + var(--dodo-ui-space)) * 2 +
+            var(--bits-combobox-anchor-width)
+        );
+      }
+
+      &--small {
+        --SelectPopup-width-default: calc(
+          calc(var(--dodo-ui-element-height-small) / 1.2 + var(--dodo-ui-space-small)) * 2 +
+            var(--bits-combobox-anchor-width)
+        );
+      }
+
+      &--large {
+        --SelectPopup-width-default: calc(
+          calc(var(--dodo-ui-element-height-large) / 1.2 + var(--dodo-ui-space-large)) * 2 +
+            var(--bits-combobox-anchor-width)
+        );
+      }
     }
   }
 

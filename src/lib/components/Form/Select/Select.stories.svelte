@@ -122,4 +122,7 @@
 
 <Story name="Default" args={{ placeholder: 'Select an option' }} />
 
-<Story name="Searchable" args={{ searchable: true, placeholder: 'Search a number' }} />
+<Story
+  name="Searchable"
+  args={{ searchable: true, clearable: true, placeholder: 'Search a number' }}
+/>
