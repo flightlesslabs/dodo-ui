@@ -9,8 +9,7 @@ $dodo-card-themes: neutral, primary, secondary, safe, warning, danger;
 // Theme tokens (global CSS variables)
 // ----------------------------------------
 :root {
-  --dodo-ui-Card-disabled-color: var(--dodo-color-neutral-400);
-  --dodo-ui-Card-disabled-bg: var(--dodo-color-neutral-200);
+  --dodo-ui-Card-default-bg: var(--dodo-color-white);
 
   @each $theme in $dodo-card-themes {
     // Fixed: Added cards. prefix
@@ -19,8 +18,7 @@ $dodo-card-themes: neutral, primary, secondary, safe, warning, danger;
 }
 
 .dodo-theme--dark {
-  --dodo-ui-Card-disabled-bg: var(--dodo-color-neutral-100);
-  --dodo-ui-Card-disabled-color: var(--dodo-color-neutral-500);
+  --dodo-ui-Card-default-bg: var(--dodo-color-neutral-100);
 
   @each $theme in $dodo-card-themes {
     // Fixed: Added cards. prefix
@@ -53,13 +51,13 @@ $roundness: (
   border-width: var(--dodo-ui-element-border-width);
   border-color: transparent;
   color: inherit;
-  background-color: transparent;
   width: var(--Card-width, initial);
   height: var(--Card-height, initial);
   min-width: var(--Card-min-width, initial);
   min-height: var(--Card-min-height, initial);
   max-width: var(--Card-max-width, initial);
   max-height: var(--Card-max-height, initial);
+  overflow: hidden;
 
   &.outline {
     border-color: var(--dodo-color-neutral-400);
@@ -84,29 +82,18 @@ $roundness: (
   // Theme colors
   // ----------------------------------------
   &.color {
+    &--default {
+      &.variant {
+        &--text,
+        &--solid {
+          background-color: var(--dodo-ui-Card-default-bg);
+        }
+      }
+    }
+
     @each $theme in $dodo-card-themes {
       // Fixed: Added cards. prefix
       @include cards.generate-dodo-ui-card-color($theme);
-    }
-  }
-
-  // ----------------------------------------
-  // Disabled
-  // ----------------------------------------
-  &[disabled] {
-    cursor: not-allowed;
-    pointer-events: none;
-
-    &.variant {
-      &--text,
-      &--solid {
-        background-color: var(--dodo-ui-Card-disabled-bg);
-        color: var(--dodo-ui-Card-disabled-color);
-
-        &.outline {
-          border-color: transparent;
-        }
-      }
     }
   }
 }

@@ -1,0 +1,53 @@
+import { Source } from '@storybook/addon-docs/blocks';
+
+# 🎨 Theme System
+
+A lightweight theme system built using context + local store.
+
+## 🧩 Theme Context
+
+### 📦 Import
+
+<Source
+  dark
+  language="ts"
+  code={`
+import { useThemeContext } from '@flightlesslabs/dodo-ui';
+`}
+/>
+
+Provides access to the active theme.
+
+### Usage
+
+<Source
+  dark
+  language="ts"
+  code={`
+const { theme } = useThemeContext();
+`}
+/>
+
+## 🏪 Theme Store
+
+Global theme state.
+
+### 📦 Import
+
+<Source
+  dark
+  language="ts"
+  code={`
+import { useThemeStore } from '@flightlesslabs/dodo-ui';
+`}
+/>
+
+### Read
+
+<Source
+  dark
+  language="ts"
+  code={`
+const theme = useThemeStore.theme;
+`}
+/>

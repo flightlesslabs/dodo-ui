@@ -2,11 +2,12 @@
   import { componentColorOptions, type ComponentColor } from '$lib/attributes/color.js';
   import type { ComponentRoundness } from '$lib/attributes/roundness.js';
   import type { ComponentShadow } from '$lib/attributes/shadow.js';
+  import type { ComponentThemeColors } from '$lib/attributes/theme.js';
   import type { ComponentVariant } from '$lib/attributes/variant.js';
   import type { Snippet } from 'svelte';
 
   export const CARD_COLOR = {
-    all: ['white'],
+    all: ['default', 'transparent'],
   } as const;
 
   export type CardColor = ComponentColor | (typeof CARD_COLOR.all)[number];
@@ -42,9 +43,6 @@
     /** Custom CSS class names applied to the InputEnclosure */
     class?: string;
 
-    /** Disabled state of the input */
-    disabled?: boolean;
-
     /** Visual variant (e.g. solid, text) */
     variant?: ComponentVariant;
 
@@ -68,18 +66,20 @@
 
     /** width */
     width?: string;
+
+    /** Theme color */
+    theme?: ComponentThemeColors;
   }
 </script>
 
 <script lang="ts">
   let {
     class: className = '',
-    color = 'white',
+    color = 'default',
     roundness = 1,
     variant = 'text',
     outline = false,
     active = false,
-    disabled = false,
     children,
     shadow = 1,
     width,
@@ -88,6 +88,7 @@
     'min-width': minWidth,
     'max-height': maxHeight,
     'max-width': maxWidth,
+    theme,
     ...restProps
   }: CardProps = $props();
 
@@ -100,6 +101,7 @@
       `dodo-shadow-${shadow}`,
       outline && 'outline',
       active && 'active',
+      theme ? `dodo-theme--${theme}` : '',
       className,
     ].filter(Boolean),
   );
@@ -116,11 +118,6 @@
   );
 </script>
 
-<div
-  {...restProps}
-  class={classes.join(' ')}
-  aria-disabled={disabled}
-  style={inlineStyles.join(';')}
->
+<div {...restProps} class={classes.join(' ')} style={inlineStyles.join(';')}>
   {@render children?.()}
 </div>

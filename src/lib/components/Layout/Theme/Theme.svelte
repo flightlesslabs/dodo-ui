@@ -1,9 +1,9 @@
 <script lang="ts" module>
   import { browser } from '$app/environment';
-  import { onMount, type Snippet } from 'svelte';
-
-  export type ThemeType = 'light' | 'dark' | 'auto';
-  export const themeTypeOptions = ['light', 'dark', 'auto'];
+  import type { Snippet } from 'svelte';
+  import type { ComponentTheme, ComponentThemeColors } from '$lib/attributes/theme.js';
+  import { setThemeContext } from './ThemeSystem/context.js';
+  import { useThemeStore } from './ThemeSystem/theme.svelte.js';
 
   /**
    * Public props for Theme
@@ -15,50 +15,94 @@
     /** Slot content */
     children?: Snippet;
 
-    /** Theme color type: auto by defualt */
-    type?: ThemeType;
+    /** Theme mode: 'auto' | 'light' | 'dark' */
+    type?: ComponentTheme;
+
+    /** Syncs the theme with the global theme store */
+    global?: boolean;
   }
 </script>
 
 <script lang="ts">
-  let { class: className = '', children, type = 'auto' }: ThemeProps = $props();
+  let { class: className = '', children, type = 'auto', global = false }: ThemeProps = $props();
 
-  let mediaQuery: MediaQueryList | undefined;
+  // 🔁 Local theme state
+  let theme = $state<ComponentThemeColors>('light');
 
-  // ✅ internal system theme state
-  let systemTheme = $state<'light' | 'dark'>('light');
+  /**
+   * 🌍 Global sync (store → local)
+   */
+  $effect(() => {
+    if (!global) return;
 
-  onMount(() => {
+    const storeTheme = useThemeStore.theme;
+
+    if (theme !== storeTheme) {
+      theme = storeTheme;
+    }
+  });
+
+  /**
+   * 🎛 Theme resolution (local logic)
+   */
+  $effect(() => {
+    if (global) return;
+
     if (type !== 'auto') {
-      systemTheme = type;
+      if (theme !== type) {
+        theme = type;
+      }
       return;
     }
 
     if (!browser) return;
 
-    mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
 
-    // initial value
-    systemTheme = mediaQuery.matches ? 'dark' : 'light';
-
-    const listener = (e: MediaQueryListEvent) => {
-      // only matters when auto, but cheap enough anyway
-      systemTheme = e.matches ? 'dark' : 'light';
+    const apply = (isDark: boolean) => {
+      const next = isDark ? 'dark' : 'light';
+      if (theme !== next) theme = next;
     };
 
-    mediaQuery.addEventListener('change', listener);
+    apply(mq.matches);
+
+    const listener = (e: MediaQueryListEvent) => {
+      apply(e.matches);
+    };
+
+    mq.addEventListener('change', listener);
 
     return () => {
-      mediaQuery?.removeEventListener('change', listener);
+      mq.removeEventListener('change', listener);
     };
   });
 
   /**
-   * Computed class list
+   * 📡 Global sync (local → store)
    */
-  const classes = $derived(
-    ['dodo-ui-Theme', `dodo-theme--${systemTheme}`, className].filter(Boolean),
-  );
+  $effect(() => {
+    if (!global) return;
+
+    const storeTheme = useThemeStore.theme;
+
+    if (storeTheme !== theme) {
+      useThemeStore.updateSystemTheme(theme);
+    }
+  });
+
+  /**
+   * 🧩 Context (reactive via getters)
+   */
+  setThemeContext({
+    get theme() {
+      return theme;
+    },
+  });
+
+  /**
+   * 🎨 Classes
+   */
+  const classes = $derived(['dodo-ui-Theme', `dodo-theme--${theme}`, className]);
 </script>
 
 <div class={classes.join(' ')}>

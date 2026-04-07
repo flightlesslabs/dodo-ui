@@ -6,29 +6,6 @@
     label: string;
   };
 
-  export type SelectPopupProps = SelectContentProps & {
-    /** max height for popup */
-    maxHeight?: string;
-
-    /** max width for popup */
-    maxWidth?: string;
-
-    /** min height for popup */
-    minHeight?: string;
-
-    /** min width for popup */
-    minWidth?: string;
-
-    /** height for popup */
-    height?: string;
-
-    /** width for popup */
-    width?: string;
-
-    /** Popup Shadow */
-    shadow?: number;
-  };
-
   /**
    * Shared base props for the Select component.
    *
@@ -92,27 +69,38 @@
 
     /** Select placeholder */
     placeholder?: string;
+
+    /** Search Result Placeholder */
+    searchResultPlaceholder?: string;
+
+    /** bits ui ComboboxInputProps */
+    comboboxInputProps?: ComboboxInputProps;
+
+    /** bits ui comboboxTriggerProps */
+    comboboxTriggerProps?: ComboboxTriggerProps;
   };
 </script>
 
 <script lang="ts">
   import {
     Combobox,
+    type ComboboxInputProps,
     type ComboboxSingleRootPropsWithoutHTML,
+    type ComboboxTriggerProps,
     type SelectContentProps,
     type SelectSingleRootPropsWithoutHTML,
   } from 'bits-ui';
   import type { ComponentSize } from '$lib/attributes/size.js';
   import type { ComponentRoundnessShape } from '$lib/attributes/roundness.js';
-  import InputEnclosure from '../InputEnclosure/InputEnclosure.svelte';
-  import Icon from '@iconify/svelte';
+  import SelectInput from './SelectInput.svelte';
+  import SelectPopup, { type SelectPopupProps } from './SelectPopup.svelte';
 
   let {
     size = 'normal',
     roundness = 1,
     outline = true,
     class: className = '',
-    popupProps = {},
+    popupProps,
     disabled = false,
     error = false,
     focused: forcedFocused = false,
@@ -123,79 +111,17 @@
     open = $bindable<boolean>(false),
     placeholder,
     allowDeselect = false,
+    comboboxInputProps,
+    comboboxTriggerProps,
+    searchResultPlaceholder,
     ...restProps
   }: SelectProps = $props();
 
-  let {
-    class: popupClass = '',
-    width: popupWidth,
-    height: popupHeight,
-    minHeight: popupMinHeight,
-    minWidth: popupMinWidth,
-    maxHeight: popupMaxHeight,
-    maxWidth: popupMaxWidth,
-    shadow: popupShadow = 2,
-    sideOffset = 10,
-    align: popupAlign = 'start',
-
-    ...restpopupProps
-  } = $derived(popupProps);
-
-  /**
-   * Local focus state used to drive InputEnclosure focus styling.
-   */
-  let isFocused = $state(false);
-
-  function handleFocus() {
-    isFocused = true;
-  }
-
-  function handleBlur() {
-    isFocused = false;
+  function updateOpenState(isOpen: boolean) {
+    open = isOpen;
   }
 
   let searchValue = $state('');
-
-  /**
-   * Computed class list for the InputEnclosure component.
-   */
-  const classes = $derived(['dodo-ui-Select', `size--${size}`, className].filter(Boolean));
-
-  const triggerClasses = $derived(
-    [
-      'dodo-ui-UtilityButton',
-      `size--${size}`,
-      'compact',
-      'color--primary',
-      'roundness--full',
-      error && 'error',
-      disabled && 'disabled',
-    ].filter(Boolean),
-  );
-
-  const popupClasses = $derived(
-    [
-      'dodo-ui-Card',
-      'SelectPopup',
-      'color--white',
-      'roundness--1',
-      'variant--text',
-      `size--${size}`,
-      `dodo-shadow-${popupShadow}`,
-      popupClass,
-    ].filter(Boolean),
-  );
-
-  const popupInlineStyles = $derived(
-    [
-      popupWidth ? `--SelectPopup-width: ${popupWidth}` : '',
-      popupHeight ? `--SelectPopup-height: ${popupHeight}` : '',
-      popupMinHeight ? `--SelectPopup-min-height: ${popupMinHeight}` : '',
-      popupMinWidth ? `--SelectPopup-min-width: ${popupMinWidth}` : '',
-      popupMaxHeight ? `--SelectPopup-max-height: ${popupMaxHeight}` : '',
-      popupMaxWidth ? `--SelectPopup-max-width: ${popupMaxWidth}` : '',
-    ].filter(Boolean),
-  );
 
   const filteredOptions = $derived(
     searchValue === ''
@@ -209,62 +135,27 @@
   {open}
   {allowDeselect}
   type="single"
-  onOpenChange={(isOpen) => (open = isOpen)}
+  onOpenChange={updateOpenState}
   onOpenChangeComplete={(o) => {
     if (!o) searchValue = '';
   }}
 >
-  <InputEnclosure
+  <SelectInput
     {size}
     {roundness}
     {outline}
     {disabled}
     {error}
-    class={classes.join(' ')}
+    class={className}
     {before}
-    focused={isFocused}
-  >
-    <Combobox.Input
-      oninput={(e) => {
-        searchValue = e.currentTarget.value;
-      }}
-      onfocus={handleFocus}
-      onblur={handleBlur}
-      readonly={!searchable}
-      onclick={!searchable && !disabled ? () => (open = true) : undefined}
-      {placeholder}
-    />
-
-    {#snippet after()}
-      <Combobox.Trigger class={triggerClasses.join(' ')}>
-        <Icon icon="material-symbols:arrow-drop-down-rounded" />
-      </Combobox.Trigger>
-      {@render after?.()}
-    {/snippet}
-  </InputEnclosure>
-  <Combobox.Portal>
-    <Combobox.Content
-      {...restpopupProps}
-      align={popupAlign}
-      {sideOffset}
-      style={popupInlineStyles.join(';')}
-      class={popupClasses.join(' ')}
-    >
-      <Combobox.ScrollUpButton>
-        <Icon icon="icon-park-outline:double-up" />
-      </Combobox.ScrollUpButton>
-      <Combobox.Viewport>
-        {#each filteredOptions as option, i (i + option.value)}
-          <Combobox.Item value={option.value} label={option.label}>
-            {option.label}
-          </Combobox.Item>
-        {:else}
-          <span> No results found, try again. </span>
-        {/each}
-      </Combobox.Viewport>
-      <Combobox.ScrollDownButton>
-        <Icon icon="icon-park-outline:double-down" />
-      </Combobox.ScrollDownButton>
-    </Combobox.Content>
-  </Combobox.Portal>
+    {after}
+    focused={forcedFocused}
+    {comboboxInputProps}
+    {comboboxTriggerProps}
+    {placeholder}
+    {searchable}
+    {updateOpenState}
+    bind:searchValue
+  />
+  <SelectPopup options={filteredOptions} {size} {searchResultPlaceholder} {...popupProps} />
 </Combobox.Root>

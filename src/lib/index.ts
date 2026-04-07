@@ -77,8 +77,11 @@ export {
   default as Select,
   type SelectProps,
   type SelectOption,
-  type SelectPopupProps,
 } from './components/Form/Select/Select.svelte';
+
+export { type SelectInputProps } from './components/Form/Select/SelectInput.svelte';
+
+export { type SelectPopupProps } from './components/Form/Select/SelectPopup.svelte';
 
 // =====================================================
 // Layout Components – Public API
@@ -87,12 +90,12 @@ export {
 /**
  * Theme component and related prop types.
  */
+export { default as Theme, type ThemeProps } from './components/Layout/Theme/Theme.svelte';
 export {
-  default as Theme,
-  themeTypeOptions,
-  type ThemeType,
-  type ThemeProps,
-} from './components/Layout/Theme/Theme.svelte';
+  useThemeContext,
+  type ThemeContext,
+} from './components/Layout/Theme/ThemeSystem/context.js';
+export { useThemeStore } from './components/Layout/Theme/ThemeSystem/theme.svelte.js';
 
 /**
  * Card component and related prop types.
@@ -185,3 +188,14 @@ export {
   ComponentShadowOptions,
   type ComponentShadow,
 } from './attributes/shadow.js';
+
+/**
+ * theme attribute related prop types.
+ */
+export {
+  COMPONENT_THEME,
+  componentThemeOptions,
+  componentThemeColorsOptions,
+  type ComponentThemeColors,
+  type ComponentTheme,
+} from './attributes/theme.js';

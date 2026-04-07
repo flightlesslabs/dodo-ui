@@ -1,3 +1,14 @@
+// ----------------------------------------
+// Theme tokens (global CSS variables)
+// ----------------------------------------
+:root {
+  --dodo-ui-SelectPopup-color: var(--dodo-color-black);
+}
+
+.dodo-theme--dark {
+  --dodo-ui-SelectPopup-color: var(--dodo-color-neutral-800);
+}
+
 // Select
 .dodo-ui-Select {
   button[data-combobox-trigger] {
@@ -64,7 +75,7 @@
   min-height: var(--SelectPopup-min-height, initial);
   max-width: var(--SelectPopup-max-width, initial);
   max-height: var(--SelectPopup-max-height, 400px);
-  background-color: var(--dodo-color-white);
+  color: var(--dodo-ui-SelectPopup-color);
 
   // ----------------------------------------
   // Sizes

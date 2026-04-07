@@ -1,8 +1,9 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Theme, { themeTypeOptions } from './Theme.svelte';
+  import Theme from './Theme.svelte';
   import type { ThemeProps } from './Theme.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
+  import { componentThemeOptions } from '$lib/attributes/theme.js';
 
   /**
    * Storybook controls for Theme
@@ -11,9 +12,12 @@
     class: { table: { category: 'API', subcategory: 'Base' } },
     type: {
       control: { type: 'select' },
-      options: themeTypeOptions,
+      options: componentThemeOptions,
       description: 'Theme color type: auto by defualt',
       table: { category: 'API', subcategory: 'Base', defaultValue: { summary: 'auto' } },
+    },
+    global: {
+      table: { category: 'API', subcategory: 'Base' },
     },
   };
 

@@ -7,6 +7,7 @@
   import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
   import { ComponentShadowOptions } from '$lib/attributes/shadow.js';
   import Theme from '../Theme/Theme.svelte';
+  import { componentThemeColorsOptions, componentThemeOptions } from '$lib/attributes/theme.js';
 
   // ------------------------------
   // Storybook ArgTypes
@@ -17,11 +18,6 @@
     // ------------------------------
     children: { table: { category: 'API', subcategory: 'Base' } },
     ref: { table: { category: 'API', subcategory: 'Base' } },
-    disabled: {
-      control: { type: 'boolean' },
-      description: 'Disable interactions',
-      table: { category: 'API', subcategory: 'Base' },
-    },
     class: { table: { category: 'API', subcategory: 'Base' } },
 
     // ------------------------------
@@ -37,7 +33,7 @@
       control: { type: 'select' },
       options: cardColorOptions,
       description: 'Color theme token',
-      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'white' } },
+      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'default' } },
     },
     variant: {
       control: { type: 'select' },
@@ -60,6 +56,12 @@
       control: { type: 'boolean' },
       description: 'Add mouse hover and active effects',
       table: { category: 'API', subcategory: 'Appearance' },
+    },
+    theme: {
+      control: { type: 'select' },
+      options: componentThemeColorsOptions,
+      description: 'Theme color',
+      table: { category: 'API', subcategory: 'Base', defaultValue: { summary: 'undefined' } },
     },
   };
 
@@ -89,14 +91,10 @@
 
 <Story name="FixedSize" args={{ height: '200px', width: '250px' }}><p>Hello there</p></Story>
 
-<Story name="Light Theme" asChild>
-  <Theme type="light">
-    <Card color="safe" variant="solid"><p>Hello there</p></Card>
-  </Theme>
+<Story name="Light Theme" args={{ theme: 'light' }}>
+  <p>Hello there</p>
 </Story>
 
-<Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
-  <Theme type="dark">
-    <Card color="safe" variant="solid"><p>Hello there</p></Card>
-  </Theme>
+<Story name="Dark Theme" args={{ theme: 'dark' }} globals={{ backgrounds: { value: 'dark' } }}>
+  <p>Hello there</p>
 </Story>
