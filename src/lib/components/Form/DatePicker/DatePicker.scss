@@ -1,0 +1,58 @@
+// Select
+.dodo-ui-DatePicker {
+  button[data-popover-trigger] {
+    font-size: 1.5em;
+  }
+
+  [data-date-field-input] {
+    flex: 1;
+    border: 0;
+    outline: 0;
+    height: 100%;
+    background-color: transparent;
+    font-family: inherit;
+    color: inherit;
+    letter-spacing: 0.3px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  // ----------------------------------------
+  // Sizes
+  // ----------------------------------------
+  &.size {
+    &--normal {
+      [data-date-field-input] {
+        font-size: 1rem;
+        padding: 0 calc(var(--dodo-ui-space-small) * 2);
+      }
+
+      button[data-popover-trigger] {
+        margin: 0 calc(var(--dodo-ui-space) / 2.5);
+      }
+    }
+
+    &--small {
+      [data-date-field-input] {
+        padding: 0 var(--dodo-ui-space);
+        font-size: 0.9rem;
+      }
+
+      button[data-popover-trigger] {
+        margin: 0 calc(var(--dodo-ui-space--small) / 2.5);
+      }
+    }
+
+    &--large {
+      [data-date-field-input] {
+        font-size: 1.1rem;
+        padding: 0 calc(var(--dodo-ui-space) * 2);
+      }
+
+      button[data-popover-trigger] {
+        margin: 0 calc(var(--dodo-ui-space--large) / 2.5);
+      }
+    }
+  }
+}
