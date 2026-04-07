@@ -65,6 +65,9 @@
 
     /** bits ui datePickerTriggerProps */
     datePickerTriggerProps?: DatePickerTriggerProps;
+
+    /** Props for Popup */
+    popupProps?: DatePickerPopupProps;
   };
 </script>
 
@@ -78,6 +81,9 @@
   import type { Snippet } from 'svelte';
   import DatepickerInput from './DatePickerInput/DatePickerInput.svelte';
   import type { DatePickerFormat } from './DatePickerInput/utils.js';
+  import DatePickerPopup, {
+    type DatePickerPopupProps,
+  } from './DatePickerPopup/DatePickerPopup.svelte';
   let {
     size = 'normal',
     roundness = 1,
@@ -96,6 +102,7 @@
     datePickerTriggerProps,
     weekStartsOn = 1,
     dateFormat = 'dd/mm/yyyy',
+    popupProps,
     ...restProps
   }: DatePickerProps = $props();
 </script>
@@ -116,46 +123,5 @@
     {placeholder}
     {dateFormat}
   />
-  <DatePickerBitsUi.Portal>
-    <DatePickerBitsUi.Content sideOffset={6}>
-      <DatePickerBitsUi.Calendar>
-        {#snippet children({ months, weekdays })}
-          <DatePickerBitsUi.Header>
-            <DatePickerBitsUi.PrevButton>L</DatePickerBitsUi.PrevButton>
-            <DatePickerBitsUi.Heading />
-            <DatePickerBitsUi.NextButton>R</DatePickerBitsUi.NextButton>
-          </DatePickerBitsUi.Header>
-          <div>
-            {#each months as month (month.value)}
-              <DatePickerBitsUi.Grid>
-                <DatePickerBitsUi.GridHead>
-                  <DatePickerBitsUi.GridRow>
-                    {#each weekdays as day (day)}
-                      <DatePickerBitsUi.HeadCell>
-                        <div>{day.slice(0, 2)}</div>
-                      </DatePickerBitsUi.HeadCell>
-                    {/each}
-                  </DatePickerBitsUi.GridRow>
-                </DatePickerBitsUi.GridHead>
-                <DatePickerBitsUi.GridBody>
-                  {#each month.weeks as weekDates (weekDates)}
-                    <DatePickerBitsUi.GridRow>
-                      {#each weekDates as date (date)}
-                        <DatePickerBitsUi.Cell {date} month={month.value}>
-                          <DatePickerBitsUi.Day>
-                            <div></div>
-                            {date.day}
-                          </DatePickerBitsUi.Day>
-                        </DatePickerBitsUi.Cell>
-                      {/each}
-                    </DatePickerBitsUi.GridRow>
-                  {/each}
-                </DatePickerBitsUi.GridBody>
-              </DatePickerBitsUi.Grid>
-            {/each}
-          </div>
-        {/snippet}
-      </DatePickerBitsUi.Calendar>
-    </DatePickerBitsUi.Content>
-  </DatePickerBitsUi.Portal>
+  <DatePickerPopup {...popupProps} />
 </DatePickerBitsUi.Root>

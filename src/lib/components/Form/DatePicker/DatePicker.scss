@@ -18,6 +18,16 @@
     align-items: center;
   }
 
+  [data-date-field-segment] {
+    height: 80%;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  [data-segment='literal'] {
+    color: var(--dodo-color-neutral-500);
+  }
+
   // ----------------------------------------
   // Sizes
   // ----------------------------------------
@@ -31,6 +41,10 @@
       button[data-popover-trigger] {
         margin: 0 calc(var(--dodo-ui-space) / 2.5);
       }
+
+      [data-date-field-segment] {
+        padding: 0 calc(var(--dodo-ui-space) / 3);
+      }
     }
 
     &--small {
@@ -41,6 +55,10 @@
 
       button[data-popover-trigger] {
         margin: 0 calc(var(--dodo-ui-space--small) / 2.5);
+      }
+
+      [data-date-field-segment] {
+        padding: 0 calc(var(--dodo-ui-space-small) / 3);
       }
     }
 
@@ -53,6 +71,104 @@
       button[data-popover-trigger] {
         margin: 0 calc(var(--dodo-ui-space--large) / 2.5);
       }
+
+      [data-date-field-segment] {
+        padding: 0 calc(var(--dodo-ui-space-large) / 3);
+      }
+    }
+  }
+}
+
+.DatePickerPopup {
+  font-size: 1rem;
+  padding: var(--dodo-ui-space);
+
+  [data-calendar-header] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 calc(var(--dodo-ui-space) / 2);
+    margin-bottom: calc(var(--dodo-ui-space) * 2);
+    margin-top: var(--dodo-ui-space);
+  }
+
+  [data-calendar-heading] {
+    margin: 0 calc(var(--dodo-ui-space) / 2);
+    font-weight: 500;
+  }
+
+  [data-calendar-next-button],
+  [data-calendar-prev-button] {
+    font-size: 1.45rem;
+  }
+
+  [data-calendar-grid] {
+    width: 100%;
+    user-select: none;
+  }
+
+  [data-calendar-grid-row] {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  [data-calendar-grid-head] {
+    margin-bottom: var(--dodo-ui-space);
+    display: block;
+  }
+
+  [data-calendar-head-cell] {
+    display: inline-flex;
+    width: var(--dodo-ui-element-height-normal);
+    justify-content: center;
+    font-weight: 600;
+    color: var(--dodo-color-neutral-600);
+    font-size: 0.9rem;
+  }
+
+  [data-calendar-cell] {
+    display: inline-flex;
+  }
+
+  [data-calendar-day] {
+    transition:
+      background-color 70ms,
+      color 70ms,
+      border-color 70ms;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--dodo-ui-element-height-normal);
+    height: var(--dodo-ui-element-height-normal);
+    border-radius: var(--dodo-ui-element-roundness-1);
+    border: var(--dodo-ui-element-border-width) solid transparent;
+
+    &:hover {
+      background-color: var(--dodo-color-primary-100);
+      border-color: var(--dodo-color-primary-400);
+    }
+
+    &[data-selected] {
+      background-color: var(--dodo-color-primary-500);
+      color: var(--dodo-color-constant-white);
+
+      &:hover {
+        background-color: var(--dodo-color-primary-600);
+      }
+    }
+
+    &[data-today] {
+      background-color: var(--dodo-color-primary-200);
+    }
+  }
+
+  [data-outside-month] {
+    color: var(--dodo-color-neutral-400);
+
+    &:hover {
+      background-color: initial;
+      border-color: transparent;
     }
   }
 }

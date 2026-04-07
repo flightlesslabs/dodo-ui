@@ -157,5 +157,5 @@
     {updateOpenState}
     bind:searchValue
   />
-  <SelectPopup options={filteredOptions} {size} {searchResultPlaceholder} {...popupProps} />
+  <SelectPopup options={filteredOptions} {searchResultPlaceholder} {...popupProps} />
 </Combobox.Root>

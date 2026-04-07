@@ -1,8 +1,6 @@
 <script lang="ts" module>
   export type SelectPopupProps = SelectContentProps &
     Omit<CardProps, 'children' | 'ref'> & {
-      /** Visual size token (e.g. small, normal, large) */
-      size?: ComponentSize;
       options?: SelectOption[];
       searchResultPlaceholder?: string;
     };
@@ -18,7 +16,6 @@
 
   let {
     options = [],
-    size,
     shadow = 2,
     roundness = 1,
     class: className,
