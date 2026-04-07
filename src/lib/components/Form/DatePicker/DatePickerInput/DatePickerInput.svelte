@@ -87,7 +87,7 @@
 
   {#snippet after()}
     <DatePicker.Trigger class={triggerClasses.join(' ')} {...datePickerTriggerProps}>
-      <Icon icon="material-symbols:arrow-drop-down-rounded" />
+      <Icon icon="material-symbols:calendar-month-sharp" />
     </DatePicker.Trigger>
     {@render after?.()}
   {/snippet}
