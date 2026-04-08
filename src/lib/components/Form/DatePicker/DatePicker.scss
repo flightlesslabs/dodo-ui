@@ -1,4 +1,16 @@
-// Select
+// ----------------------------------------
+// Theme tokens (global CSS variables)
+// ----------------------------------------
+:root {
+  --dodo-ui-DatePickerPopup-selected-bg: var(--dodo-color-primary-500);
+  --dodo-ui-DatePickerPopup-selected-hover-bg: var(--dodo-color-primary-600);
+}
+
+.dodo-theme--dark {
+  --dodo-ui-DatePickerPopup-selected-bg: var(--dodo-color-primary-300);
+  --dodo-ui-DatePickerPopup-selected-hover-bg: var(--dodo-color-primary-400);
+}
+
 .dodo-ui-DatePicker {
   button[data-popover-trigger] {
     font-size: 1.4em;
@@ -82,6 +94,7 @@
 .DatePickerPopup {
   font-size: 1rem;
   padding: var(--dodo-ui-space);
+  color: var(--dodo-color-neutral-900);
 
   [data-calendar-header] {
     display: flex;
@@ -151,19 +164,19 @@
     }
 
     &[data-selected] {
-      background-color: var(--dodo-color-primary-500);
+      background-color: var(--dodo-ui-DatePickerPopup-selected-bg);
       color: var(--dodo-color-constant-white);
 
       &:hover {
-        background-color: var(--dodo-color-primary-600);
+        background-color: var(--dodo-ui-DatePickerPopup-selected-hover-bg);
       }
 
       &[data-today] {
-        background-color: var(--dodo-color-primary-500);
+        background-color: var(--dodo-ui-DatePickerPopup-selected-bg);
         color: var(--dodo-color-constant-white);
 
         &:hover {
-          background-color: var(--dodo-color-primary-600);
+          background-color: var(--dodo-ui-DatePickerPopup-selected-hover-bg);
         }
 
         &::after {

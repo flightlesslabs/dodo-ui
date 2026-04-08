@@ -8,9 +8,10 @@
 <script lang="ts">
   import { DatePicker, type DatePickerContentProps } from 'bits-ui';
   import Header from './Header.svelte';
+  import CalendarGrid from './CalendarGrid.svelte';
   let {
     roundness = 1,
-    outline = true,
+    outline = false,
     class: className = '',
     theme: cardTheme,
     color = 'default',
@@ -43,37 +44,9 @@
 
 <DatePicker.Content class={popupClasses.join(' ')} {...restProps} {sideOffset} {align}>
   <DatePicker.Calendar>
-    {#snippet children({ months, weekdays })}
+    {#snippet children(calendarRootSnippetProps)}
       <Header />
-      <div>
-        {#each months as month (month.value)}
-          <DatePicker.Grid>
-            <DatePicker.GridHead>
-              <DatePicker.GridRow>
-                {#each weekdays as day (day)}
-                  <DatePicker.HeadCell>
-                    <div>{day.slice(0, 2)}</div>
-                  </DatePicker.HeadCell>
-                {/each}
-              </DatePicker.GridRow>
-            </DatePicker.GridHead>
-            <DatePicker.GridBody>
-              {#each month.weeks as weekDates (weekDates)}
-                <DatePicker.GridRow>
-                  {#each weekDates as date (date)}
-                    <DatePicker.Cell {date} month={month.value}>
-                      <DatePicker.Day>
-                        <div></div>
-                        {date.day}
-                      </DatePicker.Day>
-                    </DatePicker.Cell>
-                  {/each}
-                </DatePicker.GridRow>
-              {/each}
-            </DatePicker.GridBody>
-          </DatePicker.Grid>
-        {/each}
-      </div>
+      <CalendarGrid {...calendarRootSnippetProps} />
     {/snippet}
   </DatePicker.Calendar>
 </DatePicker.Content>

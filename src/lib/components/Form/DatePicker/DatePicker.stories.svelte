@@ -7,6 +7,7 @@
   import { componentSizeOptions } from '$lib/attributes/size.js';
   import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
   import { CalendarDate, type DateValue } from '@internationalized/date';
+  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
 
   // ------------------------------
   // Storybook ArgTypes
@@ -99,4 +100,16 @@
 <!-- let myValue = $state<DateValue>(new CalendarDate(2026, 4, 7)); [docs](https://bits-ui.com/docs/components/date-picker) -->
 <Story name="Selected" asChild>
   <DatePicker bind:value={myValue} />
+</Story>
+
+<Story name="Light Theme" asChild>
+  <Theme type="light">
+    <DatePicker />
+  </Theme>
+</Story>
+
+<Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
+  <Theme type="dark">
+    <DatePicker />
+  </Theme>
 </Story>
