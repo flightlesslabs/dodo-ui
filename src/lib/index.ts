@@ -95,14 +95,6 @@ export { type DatePickerInputProps } from './components/Form/DatePicker/DatePick
 
 export { type DatePickerPopupProps } from './components/Form/DatePicker/DatePickerPopup/DatePickerPopup.svelte';
 
-/**
- * DatePicker component and related prop types.
- */
-export {
-  default as Calendar,
-  type CalendarProps,
-} from './components/Form/Calendar/Calendar.svelte';
-
 // =====================================================
 // Layout Components – Public API
 // =====================================================
@@ -127,6 +119,18 @@ export {
   type CardColor,
   type CardProps,
 } from './components/Layout/Card/Card.svelte';
+
+// =====================================================
+// Info Components – Public API
+// =====================================================
+
+/**
+ * Calendar component and related prop types.
+ */
+export {
+  default as Calendar,
+  type CalendarProps,
+} from './components/Info/Calendar/Calendar.svelte';
 
 // =====================================================
 // utils – Public API
