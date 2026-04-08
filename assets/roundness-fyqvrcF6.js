@@ -1,1 +1,0 @@
-const n=[0,1,2,3,"full"];export{n as c};
