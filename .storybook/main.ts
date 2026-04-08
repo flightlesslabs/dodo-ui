@@ -8,5 +8,8 @@ const config: StorybookConfig = {
     name: '@storybook/sveltekit',
     options: {},
   },
+  core: {
+    disableTelemetry: true, // 👈 Disables telemetry
+  },
 };
 export default config;
