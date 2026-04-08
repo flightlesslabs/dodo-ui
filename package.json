@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui",
-  "version": "1.0.0--beta-4",
+  "version": "0.19.1",
   "scripts": {
     "scss:global": "sh -c \"mkdir -p dist/styles && sass src/lib/styles/global/index.scss dist/styles/global.css\"",
     "scss:components": "sh -c \"mkdir -p dist/styles && sass src/lib/styles/components.scss dist/styles/components.css\"",
