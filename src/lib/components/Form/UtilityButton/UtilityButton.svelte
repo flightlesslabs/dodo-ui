@@ -1,6 +1,5 @@
 <script lang="ts" module>
   import type { Snippet } from 'svelte';
-  import type { HTMLButtonAttributes, HTMLAnchorAttributes } from 'svelte/elements';
 
   /**
    * Shared base props for the UtilityButton component.
@@ -10,9 +9,6 @@
   interface UtilityButtonBaseProps {
     /** UtilityButton contents */
     children?: Snippet;
-
-    /** Reference to the underlying UtilityButton or anchor element */
-    ref?: HTMLButtonElement | HTMLAnchorElement;
 
     /** Visual size token */
     size?: ComponentSize;
@@ -42,14 +38,7 @@
    * Renders a semantic <UtilityButton> element when `href` is not provided.
    * Inherits all native HTML UtilityButton attributes.
    */
-  export type UtilityButtonAsButtonProps = UtilityButtonBaseProps &
-    Omit<HTMLButtonAttributes, 'href'> & {
-      /** Render as link when provided (not allowed for UtilityButton variant) */
-      href?: never;
-
-      /** Disabled state of the UtilityButton */
-      disabled?: HTMLButtonAttributes['disabled'];
-    };
+  export type UtilityButtonAsButtonProps = UtilityButtonBaseProps & ButtonAsButtonPropsBase;
 
   /**
    * UtilityButton component props (anchor variant).
@@ -57,17 +46,7 @@
    * Renders an <a> element when `href` is provided.
    * Inherits all native HTML anchor attributes, except `type`.
    */
-  export type UtilityButtonAsAnchorProps = UtilityButtonBaseProps &
-    Omit<HTMLAnchorAttributes, 'type'> & {
-      /** Render as link when provided */
-      href: HTMLAnchorAttributes['href'];
-
-      /** UtilityButton `type` is not supported when rendering as an anchor */
-      type?: never;
-
-      /** Disabled visual state (forwarded to UtilityButton root for styling/ARIA) */
-      disabled?: HTMLButtonAttributes['disabled'];
-    };
+  export type UtilityButtonAsAnchorProps = UtilityButtonBaseProps & ButtonAsAnchorPropsBase;
 
   /**
    * UtilityButton component props.
@@ -83,10 +62,13 @@
 </script>
 
 <script lang="ts">
-  import { Button as BitsUiUtilityButton } from 'bits-ui';
   import type { ComponentSize } from '$lib/attributes/size.js';
   import type { ComponentColor } from '$lib/attributes/color.js';
   import type { ComponentRoundness } from '$lib/attributes/roundness.js';
+  import ButtonAsAnchor from '../Button/ButtonAsAnchor.svelte';
+  import type { ButtonAsAnchorProps as ButtonAsAnchorPropsBase } from '../Button/ButtonAsAnchor.svelte';
+  import ButtonAsButton from '../Button/ButtonAsButton.svelte';
+  import type { ButtonAsButtonProps as ButtonAsButtonPropsBase } from '../Button/ButtonAsButton.svelte';
 
   /**
    * UtilityButton component runtime props.
@@ -95,7 +77,6 @@
    * Bits UI UtilityButton root component, with semantic rendering based on `href`.
    */
   let {
-    children,
     size = 'normal',
     color = 'primary',
     roundness = 1,
@@ -105,8 +86,8 @@
     disabled = false,
     'aria-label': ariaLabel,
     href,
-    ref,
     type,
+    ref = $bindable(null),
     ...restProps
   }: UtilityButtonProps = $props();
 
@@ -127,27 +108,21 @@
 </script>
 
 {#if href}
-  <!-- Anchor variant -->
-  <BitsUiUtilityButton.Root
-    {...restProps as Omit<HTMLAnchorAttributes, 'type'>}
+  <ButtonAsAnchor
+    {...restProps as ButtonAsAnchorPropsBase}
     {disabled}
     aria-label={ariaLabel}
     class={classes.join(' ')}
-    {ref}
+    bind:ref
     {href}
-  >
-    {@render children?.()}
-  </BitsUiUtilityButton.Root>
+  />
 {:else}
-  <!-- UtilityButton variant -->
-  <BitsUiUtilityButton.Root
-    {...restProps as HTMLButtonAttributes}
+  <ButtonAsButton
+    {...restProps as ButtonAsButtonPropsBase}
     {disabled}
     aria-label={ariaLabel}
     class={classes.join(' ')}
-    {ref}
+    bind:ref
     {type}
-  >
-    {@render children?.()}
-  </BitsUiUtilityButton.Root>
+  />
 {/if}

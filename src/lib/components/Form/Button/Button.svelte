@@ -1,6 +1,5 @@
 <script lang="ts" module>
   import type { Snippet } from 'svelte';
-  import type { HTMLButtonAttributes, HTMLAnchorAttributes } from 'svelte/elements';
 
   /**
    * Shared base props for the Button component.
@@ -10,9 +9,6 @@
   interface ButtonBaseProps {
     /** Button contents */
     children?: Snippet;
-
-    /** Reference to the underlying button or anchor element */
-    ref?: HTMLButtonElement | HTMLAnchorElement;
 
     /** Visual size token */
     size?: ComponentSize;
@@ -48,14 +44,7 @@
    * Renders a semantic <button> element when `href` is not provided.
    * Inherits all native HTML button attributes.
    */
-  export type ButtonAsButtonProps = ButtonBaseProps &
-    Omit<HTMLButtonAttributes, 'href'> & {
-      /** Render as link when provided (not allowed for button variant) */
-      href?: never;
-
-      /** Disabled state of the button */
-      disabled?: HTMLButtonAttributes['disabled'];
-    };
+  export type ButtonAsButtonProps = ButtonBaseProps & ButtonAsButtonPropsBase;
 
   /**
    * Button component props (anchor variant).
@@ -63,17 +52,7 @@
    * Renders an <a> element when `href` is provided.
    * Inherits all native HTML anchor attributes, except `type`.
    */
-  export type ButtonAsAnchorProps = ButtonBaseProps &
-    Omit<HTMLAnchorAttributes, 'type'> & {
-      /** Render as link when provided */
-      href: HTMLAnchorAttributes['href'];
-
-      /** Button `type` is not supported when rendering as an anchor */
-      type?: never;
-
-      /** Disabled visual state (forwarded to button root for styling/ARIA) */
-      disabled?: HTMLButtonAttributes['disabled'];
-    };
+  export type ButtonAsAnchorProps = ButtonBaseProps & ButtonAsAnchorPropsBase;
 
   /**
    * Button component props.
@@ -89,11 +68,14 @@
 </script>
 
 <script lang="ts">
-  import { Button as BitsUiButton } from 'bits-ui';
   import type { ComponentSize } from '$lib/attributes/size.js';
   import type { ComponentColor } from '$lib/attributes/color.js';
   import type { ComponentRoundness } from '$lib/attributes/roundness.js';
   import type { ComponentVariant } from '$lib/attributes/variant.js';
+  import type { ButtonAsAnchorProps as ButtonAsAnchorPropsBase } from './ButtonAsAnchor.svelte';
+  import ButtonAsAnchor from './ButtonAsAnchor.svelte';
+  import type { ButtonAsButtonProps as ButtonAsButtonPropsBase } from './ButtonAsButton.svelte';
+  import ButtonAsButton from './ButtonAsButton.svelte';
 
   /**
    * Button component runtime props.
@@ -102,7 +84,6 @@
    * Bits UI Button root component, with semantic rendering based on `href`.
    */
   let {
-    children,
     size = 'normal',
     color = 'primary',
     roundness = 1,
@@ -114,7 +95,7 @@
     disabled = false,
     'aria-label': ariaLabel,
     href,
-    ref,
+    ref = $bindable(null),
     type,
     ...restProps
   }: ButtonProps = $props();
@@ -138,27 +119,21 @@
 </script>
 
 {#if href}
-  <!-- Anchor variant -->
-  <BitsUiButton.Root
-    {...restProps as Omit<HTMLAnchorAttributes, 'type'>}
+  <ButtonAsAnchor
+    {...restProps as ButtonAsAnchorPropsBase}
     {disabled}
     aria-label={ariaLabel}
     class={classes.join(' ')}
-    {ref}
+    bind:ref
     {href}
-  >
-    {@render children?.()}
-  </BitsUiButton.Root>
+  />
 {:else}
-  <!-- Button variant -->
-  <BitsUiButton.Root
-    {...restProps as HTMLButtonAttributes}
+  <ButtonAsButton
+    {...restProps as ButtonAsButtonPropsBase}
     {disabled}
     aria-label={ariaLabel}
     class={classes.join(' ')}
-    {ref}
+    bind:ref
     {type}
-  >
-    {@render children?.()}
-  </BitsUiButton.Root>
+  />
 {/if}

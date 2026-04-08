@@ -119,6 +119,8 @@
       options,
     },
   });
+
+  let myValue = $state<string | undefined>(options[1].value);
 </script>
 
 <!-- ------------------------------ -->
@@ -129,7 +131,9 @@
 
 <Story name="Searchable" args={{ searchable: true, placeholder: 'Search a number' }} />
 
-<Story name="Selected" args={{ placeholder: 'Select an option', value: options[1].value }} />
+<Story name="Selected" asChild>
+  <Select {options} bind:value={myValue} />
+</Story>
 
 <Story name="Disabled" args={{ placeholder: 'Select an option', disabled: true }} />
 
@@ -151,6 +155,6 @@
 
 <Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
   <Theme type="dark">
-    <Select {options} />
+    <Select {options} popupProps={{ theme: 'dark' }} />
   </Theme>
 </Story>

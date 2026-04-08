@@ -1,8 +1,6 @@
 <script lang="ts" module>
   export type SelectPopupProps = SelectContentProps &
     Omit<CardProps, 'children' | 'ref'> & {
-      /** Visual size token (e.g. small, normal, large) */
-      size?: ComponentSize;
       options?: SelectOption[];
       searchResultPlaceholder?: string;
     };
@@ -12,13 +10,11 @@
   import { Combobox, type SelectContentProps } from 'bits-ui';
   import Icon from '@iconify/svelte';
   import type { SelectOption } from './Select.svelte';
-  import type { ComponentSize } from '$lib/attributes/size.js';
   import type { CardProps } from '$lib/components/Layout/Card/Card.svelte';
-  import { useThemeContext } from '$lib/components/Layout/Theme/ThemeSystem/context.js';
+  import { useThemeStore } from '$lib/components/Layout/Theme/ThemeSystem/theme.svelte.js';
 
   let {
     options = [],
-    size,
     shadow = 2,
     roundness = 1,
     class: className,
@@ -39,8 +35,7 @@
     ...restProps
   }: SelectPopupProps = $props();
 
-  const themeContext = useThemeContext();
-  const theme = $derived(cardTheme ? cardTheme : themeContext.theme);
+  const theme = $derived(cardTheme || useThemeStore.theme);
 
   const popupClasses = $derived(
     [

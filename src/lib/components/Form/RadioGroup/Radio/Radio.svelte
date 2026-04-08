@@ -30,12 +30,12 @@
 
 <script lang="ts">
   import { RadioGroup, type RadioGroupItemProps } from 'bits-ui';
-  import Label from '../Label/Label.svelte';
   import type { ComponentSize } from '$lib/attributes/size.js';
   import type { ComponentColor } from '$lib/attributes/color.js';
   import type { ComponentRoundness } from '$lib/attributes/roundness.js';
   import type { ComponentVariant } from '$lib/attributes/variant.js';
   import Icon from '@iconify/svelte';
+  import Label from '../../Label/Label.svelte';
 
   let {
     class: className = '',

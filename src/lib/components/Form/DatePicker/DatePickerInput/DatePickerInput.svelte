@@ -1,9 +1,7 @@
 <script lang="ts" module>
   import type { Snippet } from 'svelte';
 
-  export type SelectInputProps = {
-    options: SelectOption[];
-    value: string | undefined;
+  export type DatePickerInputProps = {
     size?: ComponentSize;
     roundness?: ComponentRoundnessShape;
     outline?: boolean;
@@ -12,23 +10,22 @@
     focused?: boolean;
     before?: Snippet;
     after?: Snippet;
-    searchable: boolean;
     placeholder?: string;
-    comboboxInputProps?: ComboboxInputProps;
-    comboboxTriggerProps?: ComboboxTriggerProps;
+    dateFieldInputProps?: DateFieldInputProps;
+    datePickerTriggerProps?: DatePickerTriggerProps;
     disabled?: boolean;
-    searchValue?: string;
-    updateOpenState: (isOpen: boolean) => void;
+    dateFormat?: DatePickerFormat;
   };
 </script>
 
 <script lang="ts">
-  import { Combobox, type ComboboxInputProps, type ComboboxTriggerProps } from 'bits-ui';
-  import InputEnclosure from '../InputEnclosure/InputEnclosure.svelte';
+  import { DatePicker, type DateFieldInputProps, type DatePickerTriggerProps } from 'bits-ui';
   import type { ComponentSize } from '$lib/attributes/size.js';
   import type { ComponentRoundnessShape } from '$lib/attributes/roundness.js';
   import Icon from '@iconify/svelte';
-  import type { SelectOption } from './Select.svelte';
+  import Segments from './Segments.svelte';
+  import InputEnclosure from '../../InputEnclosure/InputEnclosure.svelte';
+  import type { DatePickerFormat } from './utils.js';
 
   let {
     size = 'normal',
@@ -36,19 +33,13 @@
     disabled = false,
     error = false,
     focused: forcedFocused = false,
-    searchable = false,
     placeholder,
-    comboboxInputProps,
-    comboboxTriggerProps,
-    searchValue = $bindable<string>(''),
     after,
-    updateOpenState,
-    value,
-    options,
+    dateFieldInputProps,
+    datePickerTriggerProps,
+    dateFormat = 'dd/mm/yyyy',
     ...restProps
-  }: SelectInputProps = $props();
-
-  let defaultValue = $derived(options.find((item) => item.value === value)?.label);
+  }: DatePickerInputProps = $props();
 
   let isFocused = $state(false);
 
@@ -60,7 +51,7 @@
     isFocused = false;
   }
 
-  const classes = $derived(['dodo-ui-Select', `size--${size}`, className].filter(Boolean));
+  const classes = $derived(['dodo-ui-DatePicker', `size--${size}`, className].filter(Boolean));
 
   const triggerClasses = $derived(
     [
@@ -83,23 +74,21 @@
   focused={forcedFocused || isFocused}
   {...restProps}
 >
-  <Combobox.Input
-    oninput={(e) => {
-      searchValue = e.currentTarget.value;
-    }}
+  <DatePicker.Input
     onfocus={handleFocus}
     onblur={handleBlur}
-    readonly={!searchable}
-    onclick={!searchable && !disabled ? () => updateOpenState(true) : undefined}
     {placeholder}
-    {defaultValue}
-    {...comboboxInputProps}
-  />
+    {...dateFieldInputProps}
+  >
+    {#snippet children({ segments })}
+      <Segments {segments} {dateFormat} />
+    {/snippet}
+  </DatePicker.Input>
 
   {#snippet after()}
-    <Combobox.Trigger class={triggerClasses.join(' ')} {...comboboxTriggerProps}>
-      <Icon icon="material-symbols:arrow-drop-down-rounded" />
-    </Combobox.Trigger>
+    <DatePicker.Trigger class={triggerClasses.join(' ')} {...datePickerTriggerProps}>
+      <Icon icon="material-symbols:calendar-month-sharp" />
+    </DatePicker.Trigger>
     {@render after?.()}
   {/snippet}
 </InputEnclosure>

@@ -1,23 +1,37 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Card, { cardColorOptions } from './Card.svelte';
-  import type { CardProps } from './Card.svelte';
+  import Calendar from './Calendar.svelte';
+  import type { CalendarProps } from './Calendar.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import { componentVariantOptions } from '$lib/attributes/variant.js';
   import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
+  import { CalendarDate, type DateValue } from '@internationalized/date';
+  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
+  import { componentVariantOptions } from '$lib/attributes/variant.js';
+  import { cardColorOptions } from '$lib/components/Layout/Card/Card.svelte';
+  import { componentThemeColorsOptions } from '$lib/attributes/theme.js';
   import { ComponentShadowOptions } from '$lib/attributes/shadow.js';
-  import Theme from '../Theme/Theme.svelte';
-  import { componentThemeColorsOptions, componentThemeOptions } from '$lib/attributes/theme.js';
 
   // ------------------------------
   // Storybook ArgTypes
   // ------------------------------
-  export const storyCardArgTypes: Partial<ArgTypes<CardProps>> = {
+  export const storyCalendarArgTypes: Partial<ArgTypes<CalendarProps>> = {
     // ------------------------------
     // Core
     // ------------------------------
-    children: { table: { category: 'API', subcategory: 'Base' } },
     class: { table: { category: 'API', subcategory: 'Base' } },
+    value: {
+      control: { type: 'text' },
+      table: { category: 'API', subcategory: 'Base' },
+    },
+
+    // ------------------------------
+    // State
+    // ------------------------------
+    disabled: {
+      control: { type: 'boolean' },
+      description: 'Disabled state of the input',
+      table: { category: 'API', subcategory: 'State', defaultValue: { summary: 'false' } },
+    },
 
     // ------------------------------
     // Appearance
@@ -68,32 +82,32 @@
   // Storybook Meta
   // ------------------------------
   const { Story } = defineMeta({
-    component: Card,
+    component: Calendar,
     tags: ['autodocs'],
-    argTypes: storyCardArgTypes,
+    argTypes: storyCalendarArgTypes,
   });
+
+  let myValue = $state<DateValue>(new CalendarDate(2026, 4, 7));
 </script>
 
 <!-- ------------------------------ -->
 <!-- Stories -->
 <!-- ------------------------------ -->
 
-<Story name="Default"><p>Hello there</p></Story>
+<Story name="Default" />
 
-<Story name="Primary" args={{ color: 'primary' }}><p>Hello there</p></Story>
-
-<Story name="Active" args={{ color: 'primary', active: true }}><p>Hello there</p></Story>
-
-<Story name="Solid" args={{ color: 'primary', variant: 'solid' }}><p>Hello there</p></Story>
-
-<Story name="Outline" args={{ outline: true, shadow: 0 }}><p>Hello there</p></Story>
-
-<Story name="FixedSize" args={{ height: '200px', width: '250px' }}><p>Hello there</p></Story>
-
-<Story name="Light Theme" args={{ theme: 'light' }}>
-  <p>Hello there</p>
+<Story name="Selected" asChild>
+  <Calendar bind:value={myValue} />
 </Story>
 
-<Story name="Dark Theme" args={{ theme: 'dark' }} globals={{ backgrounds: { value: 'dark' } }}>
-  <p>Hello there</p>
+<Story name="Light Theme" asChild>
+  <Theme type="light">
+    <Calendar />
+  </Theme>
+</Story>
+
+<Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
+  <Theme type="dark">
+    <Calendar />
+  </Theme>
 </Story>

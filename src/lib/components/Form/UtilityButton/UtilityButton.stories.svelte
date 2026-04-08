@@ -16,7 +16,6 @@
     // Core
     // ------------------------------
     children: { table: { category: 'API', subcategory: 'Base' } },
-    ref: { table: { category: 'API', subcategory: 'Base' } },
     href: {
       control: { type: 'text' },
       description: 'Render as Anchor when provided',

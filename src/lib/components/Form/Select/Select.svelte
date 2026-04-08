@@ -87,7 +87,6 @@
     type ComboboxInputProps,
     type ComboboxSingleRootPropsWithoutHTML,
     type ComboboxTriggerProps,
-    type SelectContentProps,
     type SelectSingleRootPropsWithoutHTML,
   } from 'bits-ui';
   import type { ComponentSize } from '$lib/attributes/size.js';
@@ -108,7 +107,8 @@
     after,
     options,
     searchable = false,
-    open = $bindable<boolean>(false),
+    open = $bindable(false),
+    value = $bindable(undefined),
     placeholder,
     allowDeselect = false,
     comboboxInputProps,
@@ -132,7 +132,8 @@
 
 <Combobox.Root
   {...restProps}
-  {open}
+  bind:value
+  bind:open
   {allowDeselect}
   type="single"
   onOpenChange={updateOpenState}
@@ -141,6 +142,8 @@
   }}
 >
   <SelectInput
+    {value}
+    {options}
     {size}
     {roundness}
     {outline}
@@ -157,5 +160,5 @@
     {updateOpenState}
     bind:searchValue
   />
-  <SelectPopup options={filteredOptions} {size} {searchResultPlaceholder} {...popupProps} />
+  <SelectPopup options={filteredOptions} {searchResultPlaceholder} {...popupProps} />
 </Combobox.Root>

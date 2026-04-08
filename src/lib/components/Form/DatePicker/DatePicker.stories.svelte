@@ -1,35 +1,30 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import TextInput from './TextInput.svelte';
-  import type { TextInputProps } from './TextInput.svelte';
+  import DatePicker from './DatePicker.svelte';
+  import type { DatePickerProps } from './DatePicker.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
 
   import { componentSizeOptions } from '$lib/attributes/size.js';
   import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
+  import { CalendarDate, type DateValue } from '@internationalized/date';
   import Theme from '$lib/components/Layout/Theme/Theme.svelte';
 
   // ------------------------------
   // Storybook ArgTypes
   // ------------------------------
-  export const storyTextInputArgTypes: Partial<ArgTypes<TextInputProps>> = {
-    children: {
-      table: { disable: true },
-      control: false,
-    },
-
+  export const storyDatePickerArgTypes: Partial<ArgTypes<DatePickerProps>> = {
     // ------------------------------
     // Core
     // ------------------------------
     class: { table: { category: 'API', subcategory: 'Base' } },
-    placeholder: {
-      control: { type: 'text' },
-      table: { category: 'API', subcategory: 'Base' },
-    },
     value: {
       control: { type: 'text' },
       table: { category: 'API', subcategory: 'Base' },
     },
-    name: { table: { category: 'API', subcategory: 'Base' } },
+    dateFormat: {
+      control: { type: 'text' },
+      table: { category: 'API', subcategory: 'Base', defaultValue: { summary: 'dd/mm/yyyy' } },
+    },
 
     // ------------------------------
     // State
@@ -82,78 +77,39 @@
       table: { category: 'API', subcategory: 'Slots' },
       description: 'Content rendered after the input',
     },
-
-    // ------------------------------
-    // Events
-    // ------------------------------
-    onfocus: { table: { category: 'API', subcategory: 'Events' }, action: 'focus' },
-    onblur: { table: { category: 'API', subcategory: 'Events' }, action: 'blur' },
-    oninput: { table: { category: 'API', subcategory: 'Events' }, action: 'input' },
-    onchange: { table: { category: 'API', subcategory: 'Events' }, action: 'change' },
   };
 
   // ------------------------------
   // Storybook Meta
   // ------------------------------
   const { Story } = defineMeta({
-    component: TextInput,
+    component: DatePicker,
     tags: ['autodocs'],
-    argTypes: storyTextInputArgTypes,
+    argTypes: storyDatePickerArgTypes,
   });
+
+  let myValue = $state<DateValue>(new CalendarDate(2026, 4, 7));
 </script>
 
 <!-- ------------------------------ -->
 <!-- Stories -->
 <!-- ------------------------------ -->
 
-<Story name="Default" args={{ placeholder: 'Type something…' }} />
+<Story name="Default" />
 
-<Story name="Focused" args={{ placeholder: 'Focused state…', focused: true }} />
-
-<Story name="Error" args={{ placeholder: 'Error state…', error: true }} />
-
-<Story name="Disabled" args={{ placeholder: 'Disabled state…', disabled: true }} />
-
-<Story name="Large" args={{ placeholder: 'Type something…', size: 'large' }} />
-
-<Story name="Pill Shape" args={{ placeholder: 'Type something…', roundness: 'pill' }} />
-
-<Story name="With Before (Prefix Icon)" asChild>
-  <TextInput placeholder="Search…">
-    {#snippet before()}
-      <span style="color: #888;">🔍</span>
-    {/snippet}
-  </TextInput>
-</Story>
-
-<Story name="With After (Suffix Text)" asChild>
-  <TextInput placeholder="Website">
-    {#snippet after()}
-      <span style="color: #888;">.com</span>
-    {/snippet}
-  </TextInput>
-</Story>
-
-<Story name="With Before + After" asChild>
-  <TextInput placeholder="Amount">
-    {#snippet before()}
-      <span style="opacity: 0.6;">$</span>
-    {/snippet}
-
-    {#snippet after()}
-      <span style="opacity: 0.6;">USD</span>
-    {/snippet}
-  </TextInput>
+<!-- let myValue = $state<DateValue>(new CalendarDate(2026, 4, 7)); [docs](https://bits-ui.com/docs/components/date-picker) -->
+<Story name="Selected" asChild>
+  <DatePicker bind:value={myValue} />
 </Story>
 
 <Story name="Light Theme" asChild>
   <Theme type="light">
-    <TextInput placeholder="Type something…" />
+    <DatePicker />
   </Theme>
 </Story>
 
 <Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
   <Theme type="dark">
-    <TextInput placeholder="Type something…" />
+    <DatePicker />
   </Theme>
 </Story>

@@ -17,7 +17,6 @@
     // Core
     // ------------------------------
     children: { table: { category: 'API', subcategory: 'Base' } },
-    ref: { table: { category: 'API', subcategory: 'Base' } },
     href: {
       control: { type: 'text' },
       description: 'Render as Anchor when provided',
@@ -132,18 +131,6 @@
   Danger
 </Story>
 
-<Story name="Light Theme" asChild>
-  <Theme type="light">
-    <Button>Hello</Button>
-  </Theme>
-</Story>
-
-<Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
-  <Theme type="dark">
-    <Button>Hello</Button>
-  </Theme>
-</Story>
-
 <Story name="Submit Button" args={{ type: 'submit' }}>Submit Form</Story>
 
 <Story name="Full Width" args={{ fullWidth: true }}>Click me!</Story>
@@ -166,4 +153,16 @@
   }}
 >
   +
+</Story>
+
+<Story name="Light Theme" asChild>
+  <Theme type="light">
+    <Button>Hello</Button>
+  </Theme>
+</Story>
+
+<Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
+  <Theme type="dark">
+    <Button>Hello</Button>
+  </Theme>
 </Story>
