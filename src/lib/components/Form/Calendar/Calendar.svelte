@@ -2,26 +2,29 @@
   import type { CardProps } from '$lib/components/Layout/Card/Card.svelte';
   import { useThemeContext } from '$lib/components/Layout/Theme/ThemeSystem/context.js';
 
-  export type DatePickerPopupProps = DatePickerContentProps & Omit<CardProps, 'children' | 'ref'>;
+  export type CalendarProps = Omit<CalendarSingleRootProps, 'type'> &
+    Omit<CardProps, 'children' | 'ref'>;
 </script>
 
 <script lang="ts">
-  import { DatePicker, type DatePickerContentProps } from 'bits-ui';
+  import { Calendar as CalendarBitsUi, type CalendarSingleRootProps } from 'bits-ui';
   import Header from './Header.svelte';
-  import CalendarGrid from './CalendarGrid.svelte';
+  import CalendarGrid from './CalendarGrid/CalendarGrid.svelte';
   let {
     roundness = 1,
-    outline = false,
+    outline = true,
     class: className = '',
     theme: cardTheme,
     color = 'default',
     variant = 'text',
-    shadow = 2,
+    shadow = 0,
     active = false,
-    sideOffset = 6,
-    align = 'end',
+    weekStartsOn = 1,
+    weekdayFormat = 'short',
+    fixedWeeks = true,
+    value = $bindable(undefined),
     ...restProps
-  }: DatePickerPopupProps = $props();
+  }: CalendarProps = $props();
 
   const themeContext = useThemeContext();
   const theme = $derived(cardTheme ? cardTheme : themeContext.theme);
@@ -42,11 +45,17 @@
   );
 </script>
 
-<DatePicker.Content class={popupClasses.join(' ')} {...restProps} {sideOffset} {align}>
-  <DatePicker.Calendar>
-    {#snippet children(calendarRootSnippetProps)}
-      <Header />
-      <CalendarGrid {...calendarRootSnippetProps} />
-    {/snippet}
-  </DatePicker.Calendar>
-</DatePicker.Content>
+<CalendarBitsUi.Root
+  {...restProps}
+  {weekStartsOn}
+  {weekdayFormat}
+  {fixedWeeks}
+  bind:value
+  type="single"
+  class={popupClasses.join(' ')}
+>
+  {#snippet children(calendarRootSnippetProps)}
+    <Header />
+    <CalendarGrid {...calendarRootSnippetProps} />
+  {/snippet}
+</CalendarBitsUi.Root>
