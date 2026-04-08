@@ -8,7 +8,7 @@
       'compact',
       'size--normal',
       'variant--text',
-      'color--neutral',
+      'color--primary',
       'roundness--1',
     ].filter(Boolean),
   );

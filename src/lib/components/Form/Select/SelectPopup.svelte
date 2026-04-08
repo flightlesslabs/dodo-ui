@@ -10,9 +10,8 @@
   import { Combobox, type SelectContentProps } from 'bits-ui';
   import Icon from '@iconify/svelte';
   import type { SelectOption } from './Select.svelte';
-  import type { ComponentSize } from '$lib/attributes/size.js';
   import type { CardProps } from '$lib/components/Layout/Card/Card.svelte';
-  import { useThemeContext } from '$lib/components/Layout/Theme/ThemeSystem/context.js';
+  import { useThemeStore } from '$lib/components/Layout/Theme/ThemeSystem/theme.svelte.js';
 
   let {
     options = [],
@@ -36,8 +35,7 @@
     ...restProps
   }: SelectPopupProps = $props();
 
-  const themeContext = useThemeContext();
-  const theme = $derived(cardTheme ? cardTheme : themeContext.theme);
+  const theme = $derived(cardTheme || useThemeStore.theme);
 
   const popupClasses = $derived(
     [

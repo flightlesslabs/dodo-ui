@@ -2,6 +2,8 @@
   import type { Snippet } from 'svelte';
 
   export type SelectInputProps = {
+    options: SelectOption[];
+    value: string | undefined;
     size?: ComponentSize;
     roundness?: ComponentRoundnessShape;
     outline?: boolean;
@@ -26,6 +28,7 @@
   import type { ComponentSize } from '$lib/attributes/size.js';
   import type { ComponentRoundnessShape } from '$lib/attributes/roundness.js';
   import Icon from '@iconify/svelte';
+  import type { SelectOption } from './Select.svelte';
 
   let {
     size = 'normal',
@@ -40,8 +43,12 @@
     searchValue = $bindable<string>(''),
     after,
     updateOpenState,
+    value,
+    options,
     ...restProps
   }: SelectInputProps = $props();
+
+  let defaultValue = $derived(options.find((item) => item.value === value)?.label);
 
   let isFocused = $state(false);
 
@@ -85,6 +92,7 @@
     readonly={!searchable}
     onclick={!searchable && !disabled ? () => updateOpenState(true) : undefined}
     {placeholder}
+    {defaultValue}
     {...comboboxInputProps}
   />
 

@@ -7,6 +7,12 @@
   import { componentSizeOptions } from '$lib/attributes/size.js';
   import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
   import Theme from '$lib/components/Layout/Theme/Theme.svelte';
+  import {
+    CalendarDate,
+    CalendarDateTime,
+    fromDate,
+    type DateValue,
+  } from '@internationalized/date';
 
   // ------------------------------
   // Storybook ArgTypes
@@ -86,6 +92,8 @@
     tags: ['autodocs'],
     argTypes: storyDatePickerArgTypes,
   });
+
+  let myValue = $state<DateValue>(new CalendarDate(2026, 4, 7));
 </script>
 
 <!-- ------------------------------ -->
@@ -93,3 +101,8 @@
 <!-- ------------------------------ -->
 
 <Story name="Default" />
+
+<!-- let myValue = $state<DateValue>(new CalendarDate(2026, 4, 7)); [docs](https://bits-ui.com/docs/components/date-picker) -->
+<Story name="Selected" asChild>
+  <DatePicker bind:value={myValue} />
+</Story>

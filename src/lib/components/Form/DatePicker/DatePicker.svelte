@@ -84,6 +84,7 @@
   import DatePickerPopup, {
     type DatePickerPopupProps,
   } from './DatePickerPopup/DatePickerPopup.svelte';
+  import type { DateValue } from '@internationalized/date';
   let {
     size = 'normal',
     roundness = 1,
@@ -95,6 +96,7 @@
     before,
     after,
     open = $bindable<boolean>(false),
+    value = $bindable<DateValue | undefined>(undefined),
     placeholder,
     weekdayFormat = 'short',
     fixedWeeks = true,
@@ -107,7 +109,7 @@
   }: DatePickerProps = $props();
 </script>
 
-<DatePickerBitsUi.Root {...restProps} {weekdayFormat} {weekStartsOn} {fixedWeeks}>
+<DatePickerBitsUi.Root bind:value {...restProps} {weekdayFormat} {weekStartsOn} {fixedWeeks}>
   <DatepickerInput
     {size}
     {roundness}
