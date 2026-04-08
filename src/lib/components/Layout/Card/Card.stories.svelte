@@ -17,7 +17,6 @@
     // Core
     // ------------------------------
     children: { table: { category: 'API', subcategory: 'Base' } },
-    ref: { table: { category: 'API', subcategory: 'Base' } },
     class: { table: { category: 'API', subcategory: 'Base' } },
 
     // ------------------------------

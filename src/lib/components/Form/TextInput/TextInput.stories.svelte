@@ -20,7 +20,6 @@
     // ------------------------------
     // Core
     // ------------------------------
-    ref: { table: { category: 'API', subcategory: 'Base' } },
     class: { table: { category: 'API', subcategory: 'Base' } },
     placeholder: {
       control: { type: 'text' },

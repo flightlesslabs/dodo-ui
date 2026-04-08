@@ -47,6 +47,9 @@
     id,
     outline = true,
     variant = 'text',
+    checked = $bindable(false),
+    indeterminate = $bindable(false),
+    ref = $bindable(null),
     ...restProps
   }: CheckboxProps = $props();
 
@@ -73,7 +76,15 @@
 </script>
 
 <div class={classes.join(' ')}>
-  <CheckboxBitUi.Root {...restProps} {name} {id} class={classesCheckEnclosure.join(' ')}>
+  <CheckboxBitUi.Root
+    {...restProps}
+    {name}
+    {id}
+    bind:checked
+    bind:indeterminate
+    bind:ref
+    class={classesCheckEnclosure.join(' ')}
+  >
     {#snippet children({ checked, indeterminate })}
       <div class="CheckComponentCheckContainer">
         {#if indeterminate}

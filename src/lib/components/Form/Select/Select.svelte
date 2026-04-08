@@ -107,8 +107,8 @@
     after,
     options,
     searchable = false,
-    open = $bindable<boolean>(false),
-    value = $bindable<string | undefined>(undefined),
+    open = $bindable(false),
+    value = $bindable(undefined),
     placeholder,
     allowDeselect = false,
     comboboxInputProps,
@@ -133,7 +133,7 @@
 <Combobox.Root
   {...restProps}
   bind:value
-  {open}
+  bind:open
   {allowDeselect}
   type="single"
   onOpenChange={updateOpenState}

@@ -17,7 +17,6 @@
     // Core
     // ------------------------------
     children: { table: { category: 'API', subcategory: 'Base' } },
-    ref: { table: { category: 'API', subcategory: 'Base' } },
     disabled: {
       control: { type: 'boolean' },
       description: 'Disable interactions',
@@ -64,6 +63,8 @@
     tags: ['autodocs'],
     argTypes: CheckboxArgTypes,
   });
+
+  let myValue = $state<boolean>(true);
 </script>
 
 <!-- ------------------------------ -->
@@ -72,7 +73,9 @@
 
 <Story name="Default" args={{ id: 'Default' }}>Check this text</Story>
 
-<Story name="Checked" args={{ id: 'Checked', checked: true }}>Check this text</Story>
+<Story name="Checked" asChild>
+  <Checkbox id="Checked" bind:checked={myValue}>Check this text</Checkbox>
+</Story>
 
 <Story name="Solid" args={{ id: 'Solid', variant: 'solid', checked: true }}>Check this text</Story>
 

@@ -47,13 +47,13 @@ export {
 } from './components/Form/Checkbox/Checkbox.svelte';
 
 /**
- * Radio component and related prop types.
+ * RadioGroup component and related prop types.
  */
-export { default as Radio, type RadioProps } from './components/Form/Radio/Radio.svelte';
 export {
   default as RadioGroup,
   type RadioGroupProps,
-} from './components/Form/Radio/RadioGroup/RadioGroup.svelte';
+} from './components/Form/RadioGroup/RadioGroup.svelte';
+export { default as Radio, type RadioProps } from './components/Form/RadioGroup/Radio/Radio.svelte';
 
 /**
  * Switch component and related prop types.

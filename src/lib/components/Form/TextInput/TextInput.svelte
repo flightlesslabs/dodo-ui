@@ -19,7 +19,7 @@
     children?: never;
 
     /** Reference to the underlying input element */
-    ref?: HTMLInputElement;
+    ref?: HTMLInputElement | null;
 
     /** Visual size token (e.g. small, normal, large) */
     size?: ComponentSize;
@@ -82,7 +82,7 @@
   import InputEnclosure from '../InputEnclosure/InputEnclosure.svelte';
 
   let {
-    ref = $bindable<HTMLInputElement>(),
+    ref = $bindable(null),
     size = 'normal',
     roundness = 1,
     outline = true,

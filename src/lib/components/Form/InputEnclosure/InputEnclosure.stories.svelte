@@ -30,7 +30,6 @@
         'Content rendered after the input (suffix). Provided via {#snippet after} in Svelte.',
       table: { category: 'API', subcategory: 'Base' },
     },
-    ref: { table: { category: 'API', subcategory: 'Base' } },
     class: { table: { category: 'API', subcategory: 'Base' } },
 
     // ------------------------------

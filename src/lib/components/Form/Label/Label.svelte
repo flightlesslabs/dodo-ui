@@ -16,7 +16,12 @@
 <script lang="ts">
   import { Label as LabelBitUi, type LabelRootProps } from 'bits-ui';
 
-  let { class: className = '', children, ...restProps }: LabelProps = $props();
+  let {
+    class: className = '',
+    children,
+    ref = $bindable(null),
+    ...restProps
+  }: LabelProps = $props();
 
   /**
    * Computed class list
@@ -24,6 +29,6 @@
   const classes = $derived(['dodo-ui-Label', className].filter(Boolean));
 </script>
 
-<LabelBitUi.Root class={classes.join(' ')} {...restProps}>
+<LabelBitUi.Root {...restProps} class="{classes.join(' ')} bind:ref">
   {@render children?.()}
 </LabelBitUi.Root>

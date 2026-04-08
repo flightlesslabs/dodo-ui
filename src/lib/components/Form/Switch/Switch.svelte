@@ -46,6 +46,8 @@
     id,
     outline = true,
     variant = 'text',
+    checked = $bindable(false),
+    ref = $bindable(null),
     ...restProps
   }: SwitchProps = $props();
 
@@ -76,7 +78,14 @@
 </script>
 
 <div class={classes.join(' ')}>
-  <SwitchBitUi.Root {...restProps} {name} {id} class={classesCheckEnclosure.join(' ')}>
+  <SwitchBitUi.Root
+    {...restProps}
+    bind:checked
+    bind:ref
+    {name}
+    {id}
+    class={classesCheckEnclosure.join(' ')}
+  >
     <SwitchBitUi.Thumb class="CheckThumb">
       <span class="CheckThumbInternal"></span>
     </SwitchBitUi.Thumb>

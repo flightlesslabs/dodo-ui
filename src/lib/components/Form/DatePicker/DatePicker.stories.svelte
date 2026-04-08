@@ -6,13 +6,7 @@
 
   import { componentSizeOptions } from '$lib/attributes/size.js';
   import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
-  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
-  import {
-    CalendarDate,
-    CalendarDateTime,
-    fromDate,
-    type DateValue,
-  } from '@internationalized/date';
+  import { CalendarDate, type DateValue } from '@internationalized/date';
 
   // ------------------------------
   // Storybook ArgTypes

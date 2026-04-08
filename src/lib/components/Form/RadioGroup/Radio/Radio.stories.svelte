@@ -1,18 +1,18 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Switch from './Switch.svelte';
-  import type { SwitchProps } from './Switch.svelte';
+  import Radio from './Radio.svelte';
+  import type { RadioProps } from './Radio.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
   import { componentColorOptions } from '$lib/attributes/color.js';
   import { componentSizeOptions } from '$lib/attributes/size.js';
-  import { componenRoundnessShapeOptions } from '$lib/attributes/roundness.js';
-  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
+  import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
   import { componentVariantOptions } from '$lib/attributes/variant.js';
+  import RadioGroup from '../RadioGroup.svelte';
 
   /**
-   * Storybook controls for Switch
+   * Storybook controls for Radio
    */
-  export const SwitchArgTypes: Partial<ArgTypes<SwitchProps>> = {
+  export const RadioArgTypes: Partial<ArgTypes<RadioProps>> = {
     // ------------------------------
     // Core
     // ------------------------------
@@ -36,7 +36,7 @@
     variant: {
       control: { type: 'select' },
       options: componentVariantOptions,
-      description: 'Visual variant of the Switch',
+      description: 'Visual variant of the Radio',
       table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'text' } },
     },
     size: {
@@ -47,9 +47,9 @@
     },
     roundness: {
       control: { type: 'select' },
-      options: componenRoundnessShapeOptions,
+      options: componentRoundnessOptions,
       description: 'Border radius token',
-      table: { category: 'API', subcategory: 'Appearance' },
+      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'full' } },
     },
     outline: {
       control: { type: 'boolean' },
@@ -59,61 +59,20 @@
   };
 
   const { Story } = defineMeta({
-    component: Switch,
+    component: Radio,
     tags: ['autodocs'],
-    argTypes: SwitchArgTypes,
+    argTypes: RadioArgTypes,
   });
-
-  let myValue = $state<boolean>(true);
 </script>
 
 <!-- ------------------------------ -->
 <!-- Stories -->
 <!-- ------------------------------ -->
 
-<Story name="Default" args={{ id: 'Default' }}>Check this text</Story>
-
-<Story name="Checked" asChild>
-  <Switch id="Checked" bind:checked={myValue}>Check this text</Switch>
-</Story>
-
-<Story name="Solid" args={{ id: 'Solid', variant: 'solid', checked: true }}>Check this text</Story>
-
-<Story name="NoOutline" args={{ id: 'Outline', outline: false }}>Check this text</Story>
-
-<Story
-  name="OnChange (Actions)"
-  args={{
-    id: 'OnChange_Action',
-    onCheckedChange: (checked: boolean) => {
-      alert('OnChange');
-      console.log('OnChange', checked);
-    },
-  }}
->
-  Check this text
-</Story>
-
-<Story name="Primary" args={{ id: 'Primary', color: 'primary' }}>Check this text</Story>
-
-<Story name="Large" args={{ id: 'Large', size: 'large' }}>Check this text</Story>
-
-<Story name="Disabled" args={{ disabled: true }}>Check this text</Story>
-
-<Story name="Safe" args={{ id: 'Safe', color: 'safe' }}>Check this text</Story>
-
-<Story name="Danger / Outline" args={{ id: 'Danger-Outline', color: 'danger' }}>
-  Check this text
-</Story>
-
-<Story name="Light Theme" asChild>
-  <Theme type="light">
-    <Switch id="Light_Theme">Check this text</Switch>
-  </Theme>
-</Story>
-
-<Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
-  <Theme type="dark">
-    <Switch id="Dark_Theme">Check this text</Switch>
-  </Theme>
+<Story name="Default" asChild>
+  <RadioGroup id="Default">
+    <Radio id="Default-1" value="1">One</Radio>
+    <Radio id="Default-2" value="2">Two</Radio>
+    <Radio id="Default-3" value="3">Three</Radio>
+  </RadioGroup>
 </Story>
