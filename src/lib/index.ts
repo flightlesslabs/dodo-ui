@@ -83,6 +83,18 @@ export { type SelectInputProps } from './components/Form/Select/SelectInput.svel
 
 export { type SelectPopupProps } from './components/Form/Select/SelectPopup.svelte';
 
+/**
+ * DatePicker component and related prop types.
+ */
+export {
+  default as DatePicker,
+  type DatePickerProps,
+} from './components/Form/DatePicker/DatePicker.svelte';
+
+export { type DatePickerInputProps } from './components/Form/DatePicker/DatePickerInput/DatePickerInput.svelte';
+
+export { type DatePickerPopupProps } from './components/Form/DatePicker/DatePickerPopup/DatePickerPopup.svelte';
+
 // =====================================================
 // Layout Components – Public API
 // =====================================================
