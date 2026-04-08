@@ -3,7 +3,7 @@ name: Deploy Storybook to GitHub Pages
 on:
   push:
     branches:
-      - main # Adjust if using a different default branch
+      - main
 
 permissions:
   contents: write
@@ -16,22 +16,17 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-
       - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'pnpm'
+          cache: 'npm'
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
       - name: Build Storybook
-        run: pnpm build-storybook
+        run: npm run build-storybook
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
