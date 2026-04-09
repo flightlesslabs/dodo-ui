@@ -120,6 +120,23 @@ export {
   type CardProps,
 } from './components/Layout/Card/Card.svelte';
 
+/**
+ * Grid component and related prop types.
+ */
+export { default as Grid, type GridProps } from './components/Layout/Grid/Grid.svelte';
+
+export {
+  GRID_COLUMN_BREAKPOINT,
+  default as Column,
+  gridColumnSizeOptions,
+  gridColumnSizeNumericalOptions,
+  type GridColumnProps,
+  type GridColumnSizeNumerical,
+  type GridColumnSize,
+} from './components/Layout/Grid/Column/Column.svelte';
+
+export { default as Row, type GridRowProps } from './components/Layout/Grid/Row/Row.svelte';
+
 // =====================================================
 // Info Components – Public API
 // =====================================================
