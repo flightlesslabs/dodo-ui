@@ -62,6 +62,19 @@ $states: (
     border-color: var(--dodo-ui-InputEnclosure-border-color);
   }
 
+  // input tag is styled here
+  .InputBox {
+    flex: 1;
+    border: 0;
+    outline: 0;
+    height: 100%;
+    background-color: transparent;
+    font-family: inherit;
+    color: inherit;
+    letter-spacing: 0.3px;
+    margin: 0;
+  }
+
   // ----------------------------------------
   // Visual states (focused, error)
   // ----------------------------------------
@@ -88,6 +101,27 @@ $states: (
     @each $name, $height in $sizes {
       &--#{$name} {
         height: $height;
+      }
+    }
+
+    &--normal {
+      .InputBox {
+        font-size: 1rem;
+        padding: 0 calc(var(--dodo-ui-space-small) * 2);
+      }
+    }
+
+    &--small {
+      .InputBox {
+        padding: 0 var(--dodo-ui-space);
+        font-size: 0.9rem;
+      }
+    }
+
+    &--large {
+      .InputBox {
+        font-size: 1.1rem;
+        padding: 0 calc(var(--dodo-ui-space) * 2);
       }
     }
   }

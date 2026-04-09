@@ -34,6 +34,7 @@
     error = false,
     focused: forcedFocused = false,
     placeholder,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     after,
     dateFieldInputProps,
     datePickerTriggerProps,
@@ -51,7 +52,7 @@
     isFocused = false;
   }
 
-  const classes = $derived(['dodo-ui-DatePicker', `size--${size}`, className].filter(Boolean));
+  const classes = $derived(['dodo-ui-DatePicker', className].filter(Boolean));
 
   const triggerClasses = $derived(
     [
@@ -78,6 +79,7 @@
     onfocus={handleFocus}
     onblur={handleBlur}
     {placeholder}
+    class="InputBox"
     {...dateFieldInputProps}
   >
     {#snippet children({ segments })}

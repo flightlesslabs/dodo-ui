@@ -16,7 +16,7 @@
     type WithoutChildren,
   } from 'bits-ui';
 
-  let { children, ref = $bindable(null), type, ...restProps }: ButtonAsAnchorProps = $props();
+  let { children, ref = $bindable(null), ...restProps }: ButtonAsAnchorProps = $props();
 </script>
 
 <BitsUiButton.Root {...restProps} bind:ref>

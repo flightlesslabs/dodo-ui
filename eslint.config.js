@@ -1,55 +1,44 @@
-// eslint.config.js
-import js from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import svelte from 'eslint-plugin-svelte';
-import storybook from 'eslint-plugin-storybook';
 import prettier from 'eslint-config-prettier';
+import path from 'node:path';
 import { includeIgnoreFile } from '@eslint/compat';
+import js from '@eslint/js';
+import svelte from 'eslint-plugin-svelte';
+import { defineConfig } from 'eslint/config';
 import globals from 'globals';
-import { fileURLToPath } from 'node:url';
+import ts from 'typescript-eslint';
 import svelteConfig from './svelte.config.js';
 
-const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
+const gitignorePath = path.resolve(import.meta.dirname, '.gitignore');
 
-export default [
-  // Respect .gitignore
+export default defineConfig(
   includeIgnoreFile(gitignorePath),
-
-  // Base JS + TS + Svelte
   js.configs.recommended,
-  ...tseslint.configs.recommended,
-
-  // 👇 flatten Svelte plugin configs
-  ...svelte.configs.recommended.flat(),
-
-  // Prettier should come after rule presets
+  ts.configs.recommended,
+  svelte.configs.recommended,
   prettier,
-  ...svelte.configs.prettier.flat(),
-
-  // Global environments
+  svelte.configs.prettier,
   {
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-      },
+    languageOptions: { globals: { ...globals.browser, ...globals.node } },
+    rules: {
+      // typescript-eslint strongly recommend that you do not use the no-undef lint rule on TypeScript projects.
+      // see: https://typescript-eslint.io/troubleshooting/faqs/eslint/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
+      'no-undef': 'off',
     },
   },
-
-  // Svelte + TS integration
   {
     files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
-    ignores: ['eslint.config.js', 'svelte.config.js'],
     languageOptions: {
       parserOptions: {
         projectService: true,
         extraFileExtensions: ['.svelte'],
-        parser: tseslint.parser,
+        parser: ts.parser,
         svelteConfig,
       },
     },
   },
-
-  // 👇 flatten Storybook flat config
-  ...storybook.configs['flat/recommended'].flat(),
-];
+  {
+    // Override or add rule settings here, such as:
+    // 'svelte/button-has-type': 'error'
+    rules: {},
+  },
+);

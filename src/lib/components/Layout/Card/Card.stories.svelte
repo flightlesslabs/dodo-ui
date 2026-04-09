@@ -6,8 +6,7 @@
   import { componentVariantOptions } from '$lib/attributes/variant.js';
   import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
   import { ComponentShadowOptions } from '$lib/attributes/shadow.js';
-  import Theme from '../Theme/Theme.svelte';
-  import { componentThemeColorsOptions, componentThemeOptions } from '$lib/attributes/theme.js';
+  import { componentThemeColorsOptions } from '$lib/attributes/theme.js';
 
   // ------------------------------
   // Storybook ArgTypes
