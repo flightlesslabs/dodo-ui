@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-BneVvdWh.js";var t,n,r=e((()=>{t={priority:[`primary`,`secondary`,`neutral`],severity:[`safe`,`warning`,`danger`]},n=[...t.priority,...t.severity],t.priority,t.severity}));export{r as n,n as t};
