@@ -1,6 +1,6 @@
 import{n as e}from"./chunk-BneVvdWh.js";import{r as t}from"./react-Dg5Q4cgl.js";import{a as n}from"./chunk-RD3KTAHR-BL94KM58.js";import{a as r,o as i}from"./blocks-B9R52yfl.js";import{t as a}from"./mdx-react-shim-CBLMQScp.js";var o,s=e((()=>{o=`{
   "name": "@flightlesslabs/dodo-ui",
-  "version": "0.20.0",
+  "version": "0.21.0",
   "scripts": {
     "scss:global": "sh -c \\"mkdir -p dist/styles && sass src/lib/styles/global/index.scss dist/styles/global.css\\"",
     "scss:components": "sh -c \\"mkdir -p dist/styles && sass src/lib/styles/components.scss dist/styles/components.css\\"",
