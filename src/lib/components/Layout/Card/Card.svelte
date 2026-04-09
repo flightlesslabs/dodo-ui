@@ -40,7 +40,7 @@
     /** Add mouse hover and active effects */
     active?: boolean;
 
-    /** Custom CSS class names applied to the InputEnclosure */
+    /** Custom CSS class names applied to the Card */
     class?: string;
 
     /** Visual variant (e.g. solid, text) */
