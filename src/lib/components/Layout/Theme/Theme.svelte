@@ -1,5 +1,6 @@
 <script lang="ts" module>
-  import { browser } from '$app/environment';
+  import { BROWSER } from 'esm-env';
+
   import type { Snippet } from 'svelte';
   import type { ComponentTheme, ComponentThemeColors } from '$lib/attributes/theme.js';
   import { setThemeContext } from './ThemeSystem/context.js';
@@ -55,7 +56,7 @@
       return;
     }
 
-    if (!browser) return;
+    if (!BROWSER) return;
 
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
 
