@@ -29,6 +29,6 @@
   const classes = $derived(['dodo-ui-Label', className].filter(Boolean));
 </script>
 
-<LabelBitUi.Root {...restProps} class="{classes.join(' ')} bind:ref">
+<LabelBitUi.Root {...restProps} class={classes.join(' ')} bind:ref>
   {@render children?.()}
 </LabelBitUi.Root>

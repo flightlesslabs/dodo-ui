@@ -40,7 +40,9 @@
     placeholder,
     comboboxInputProps,
     comboboxTriggerProps,
+    // eslint-disable-next-line no-useless-assignment
     searchValue = $bindable<string>(''),
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     after,
     updateOpenState,
     value,
@@ -84,6 +86,7 @@
   {...restProps}
 >
   <Combobox.Input
+    {...comboboxInputProps}
     oninput={(e) => {
       searchValue = e.currentTarget.value;
     }}
@@ -93,7 +96,7 @@
     onclick={!searchable && !disabled ? () => updateOpenState(true) : undefined}
     {placeholder}
     {defaultValue}
-    {...comboboxInputProps}
+    class="InputBox"
   />
 
   {#snippet after()}

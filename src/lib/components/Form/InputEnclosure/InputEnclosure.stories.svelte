@@ -88,31 +88,31 @@
 <!-- ------------------------------ -->
 
 <Story name="Default (Outlined)">
-  <input placeholder="Type something…" />
+  <input placeholder="Type something…" class="InputBox" />
 </Story>
 
 <Story name="No Outline" args={{ outline: false }}>
-  <input placeholder="No outline…" />
+  <input placeholder="No outline…" class="InputBox" />
 </Story>
 
 <Story name="Focused" args={{ focused: true }}>
-  <input placeholder="Focused state…" />
+  <input placeholder="Focused state…" class="InputBox" />
 </Story>
 
 <Story name="Error" args={{ error: true }}>
-  <input placeholder="Error state…" />
+  <input placeholder="Error state…" class="InputBox" />
 </Story>
 
 <Story name="Disabled" args={{ disabled: true }}>
-  <input placeholder="Disabled state…" disabled />
+  <input placeholder="Disabled state…" disabled class="InputBox" />
 </Story>
 
 <Story name="Large" args={{ size: 'large' }}>
-  <input placeholder="Large input…" />
+  <input placeholder="Large input…" class="InputBox" />
 </Story>
 
 <Story name="Pill Shape" args={{ roundness: 'pill' }}>
-  <input placeholder="Pill shaped input…" />
+  <input placeholder="Pill shaped input…" class="InputBox" />
 </Story>
 
 <Story name="With Before (Icon Prefix)" asChild>
@@ -121,7 +121,7 @@
       <span style="color: #888;">🔍</span>
     {/snippet}
 
-    <input placeholder="Search…" />
+    <input placeholder="Search…" class="InputBox" />
   </InputEnclosure>
 </Story>
 
@@ -131,14 +131,14 @@
       <span style="color: #888;">.com</span>
     {/snippet}
 
-    <input placeholder="Website" />
+    <input placeholder="Website" class="InputBox" />
   </InputEnclosure>
 </Story>
 
 <Story name="Light Theme" asChild>
   <Theme type="light">
     <InputEnclosure>
-      <input placeholder="Type something…" />
+      <input placeholder="Type something…" class="InputBox" />
     </InputEnclosure>
   </Theme>
 </Story>
@@ -146,7 +146,7 @@
 <Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
   <Theme type="dark">
     <InputEnclosure>
-      <input placeholder="Type something…" />
+      <input placeholder="Type something…" class="InputBox" />
     </InputEnclosure>
   </Theme>
 </Story>

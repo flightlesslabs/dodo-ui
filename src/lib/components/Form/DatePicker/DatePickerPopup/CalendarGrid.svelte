@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { DatePicker, type CalendarRootSnippetProps, type Month } from 'bits-ui';
+  import { DatePicker, type CalendarRootSnippetProps } from 'bits-ui';
 
   let { months, weekdays }: CalendarRootSnippetProps = $props();
 </script>

@@ -109,7 +109,14 @@
   }: DatePickerProps = $props();
 </script>
 
-<DatePickerBitsUi.Root {...restProps} bind:value {weekdayFormat} {weekStartsOn} {fixedWeeks}>
+<DatePickerBitsUi.Root
+  {...restProps}
+  bind:value
+  bind:open
+  {weekdayFormat}
+  {weekStartsOn}
+  {fixedWeeks}
+>
   <DatepickerInput
     {size}
     {roundness}

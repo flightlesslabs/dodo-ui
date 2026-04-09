@@ -115,7 +115,7 @@
   /**
    * Computed class list for the InputEnclosure component.
    */
-  const classes = $derived(['dodo-ui-TextInput', `size--${size}`].filter(Boolean));
+  const classes = $derived(['dodo-ui-TextInput', className].filter(Boolean));
 </script>
 
 <InputEnclosure
@@ -125,16 +125,16 @@
   {disabled}
   {error}
   focused={forcedFocused || isFocused}
-  class={className}
+  class={classes.join(' ')}
   {before}
   {after}
 >
   <input
     {...restProps}
-    class={classes.join(' ')}
     bind:this={ref}
     {disabled}
     onfocus={handleFocus}
     onblur={handleBlur}
+    class="InputBox"
   />
 </InputEnclosure>
