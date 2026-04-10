@@ -1,0 +1,23 @@
+import{n as e}from"./chunk-BneVvdWh.js";import{J as t,dt as n,j as r,k as i,q as a,t as o,ut as s,wt as c}from"./client-HqitRhUI.js";import{i as l,n as u,r as d,t as f}from"./create-runtime-stories-DBs3Ve1l.js";import{n as p,t as m}from"./variant-DR1EnI0v.js";import{n as h,r as g}from"./roundness-Bhv_yVp6.js";import{n as _,r as v,t as y}from"./Card-HTT5JacI.js";import{r as b,t as x}from"./theme-DUfVXz-x.js";import{n as S,t as C}from"./shadow-CxIPsGVA.js";function w(e,r){n(r,!0);var o=L(),c=a(o);O(c,{name:`Default`,children:(e,t)=>{i(e,k())},$$slots:{default:!0},parameters:{docs:{description:{story:`------------------------------`}},__svelteCsf:{rawCode:`<Card {...args}>
+  <p>Hello there</p>
+</Card>`}}});var l=t(c,2);O(l,{name:`Color`,args:{color:`safe`},children:(e,t)=>{i(e,A())},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Card {...args}>
+  <p>Hello there</p>
+</Card>`}}});var u=t(l,2);O(u,{name:`Active`,args:{color:`primary`,active:!0},children:(e,t)=>{i(e,j())},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Card {...args}>
+  <p>Hello there</p>
+</Card>`}}});var d=t(u,2);O(d,{name:`Solid`,args:{color:`primary`,variant:`solid`},children:(e,t)=>{i(e,M())},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Card {...args}>
+  <p>Hello there</p>
+</Card>`}}});var f=t(d,2);O(f,{name:`Outline`,args:{outline:!0,shadow:0},children:(e,t)=>{i(e,N())},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Card {...args}>
+  <p>Hello there</p>
+</Card>`}}});var p=t(f,2);O(p,{name:`Fixed Size`,args:{height:`200px`,width:`250px`},children:(e,t)=>{i(e,P())},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Card {...args}>
+  <p>Hello there</p>
+</Card>`}}});var m=t(p,2);O(m,{name:`Light Theme`,args:{theme:`light`},children:(e,t)=>{i(e,F())},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Card {...args}>
+  <p>Hello there</p>
+</Card>`}}}),O(t(m,2),{name:`Dark Theme`,args:{theme:`dark`},globals:{backgrounds:{value:`dark`}},children:(e,t)=>{i(e,I())},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Card {...args}>
+  <p>Hello there</p>
+</Card>`}}}),i(e,o),s()}var T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U,W,G,K,q;e((()=>{c(),l(),v(),p(),g(),S(),b(),o(),u(),T=`
+a simple, customizable, and re-usable card component
+
+ \`\`\`ts
+ import { Card } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+ `,E={children:{table:{category:`API`,subcategory:`Base`}},class:{table:{category:`API`,subcategory:`Base`}},shadow:{control:{type:`select`},options:C,description:`Component Shadow`,table:{category:`API`,subcategory:`Appearance`,defaultValue:{summary:`1`}}},color:{control:{type:`select`},options:_,description:`Color theme token`,table:{category:`API`,subcategory:`Appearance`,defaultValue:{summary:`default`}}},variant:{control:{type:`select`},options:m,description:`Visual variant of the card`,table:{category:`API`,subcategory:`Appearance`,defaultValue:{summary:`text`}}},roundness:{control:{type:`select`},options:h,description:`Border radius token`,table:{category:`API`,subcategory:`Appearance`}},outline:{control:{type:`boolean`},description:`Render outlined style`,table:{category:`API`,subcategory:`Appearance`}},active:{control:{type:`boolean`},description:`Add mouse hover and active effects`,table:{category:`API`,subcategory:`Appearance`}},theme:{control:{type:`select`},options:x,description:`Theme color`,table:{category:`API`,subcategory:`Base`,defaultValue:{summary:`undefined`}}}},D={component:y,tags:[`autodocs`],argTypes:E,parameters:{docs:{description:{component:T}}}},{Story:O}=d(D),k=r(`<p>Hello there</p>`),A=r(`<p>Hello there</p>`),j=r(`<p>Hello there</p>`),M=r(`<p>Hello there</p>`),N=r(`<p>Hello there</p>`),P=r(`<p>Hello there</p>`),F=r(`<p>Hello there</p>`),I=r(`<p>Hello there</p>`),L=r(`<!> <!> <!> <!> <!> <!> <!> <!>`,1),w.__docgen={data:[],name:`Card.stories.svelte`},R=f(w,D),z=[`Default`,`Color`,`Active`,`Solid`,`Outline`,`FixedSize`,`LightTheme`,`DarkTheme`],B={...R.Default,tags:[`svelte-csf-v5`]},V={...R.Color,tags:[`svelte-csf-v5`]},H={...R.Active,tags:[`svelte-csf-v5`]},U={...R.Solid,tags:[`svelte-csf-v5`]},W={...R.Outline,tags:[`svelte-csf-v5`]},G={...R.FixedSize,tags:[`svelte-csf-v5`]},K={...R.LightTheme,tags:[`svelte-csf-v5`]},q={...R.DarkTheme,tags:[`svelte-csf-v5`]}}))();export{H as Active,V as Color,q as DarkTheme,B as Default,G as FixedSize,K as LightTheme,W as Outline,U as Solid,z as __namedExportsOrder,D as default,E as storyCardArgTypes};

@@ -1,6 +1,6 @@
-import{n as e}from"./chunk-BneVvdWh.js";import{r as t}from"./react-Dg5Q4cgl.js";import{a as n}from"./chunk-RD3KTAHR-BL94KM58.js";import{a as r,o as i}from"./blocks-B9R52yfl.js";import{t as a}from"./mdx-react-shim-CBLMQScp.js";var o,s=e((()=>{o=`{
+import{n as e}from"./chunk-BneVvdWh.js";import{r as t}from"./react-Dg5Q4cgl.js";import{t as n}from"./jsx-runtime-BtolTc4S.js";import{t as r}from"./mdx-react-shim-CBLMQScp.js";var i,a=e((()=>{i=`{
   "name": "@flightlesslabs/dodo-ui",
-  "version": "0.22.0",
+  "version": "0.22.1",
   "scripts": {
     "scss:global": "sh -c \\"mkdir -p dist/styles && sass src/lib/styles/global/index.scss dist/styles/global.css\\"",
     "scss:components": "sh -c \\"mkdir -p dist/styles && sass src/lib/styles/components.scss dist/styles/components.css\\"",
@@ -108,37 +108,36 @@ import{n as e}from"./chunk-BneVvdWh.js";import{r as t}from"./react-Dg5Q4cgl.js";
     "svelte"
   ]
 }
-`}));function c(e){let n={a:`a`,code:`code`,h1:`h1`,h2:`h2`,h3:`h3`,li:`li`,p:`p`,strong:`strong`,ul:`ul`,...t(),...e.components};return(0,u.jsxs)(u.Fragment,{children:[(0,u.jsxs)(`main`,{style:{textAlign:`center`},children:[(0,u.jsx)(`img`,{src:`dodo-circle-6.png`,style:{width:200,height:`auto`}}),(0,u.jsx)(n.h1,{id:`dodo-ui`,children:`Dodo UI`}),(0,u.jsxs)(`h3`,{style:{fontWeight:500},children:[`v`,JSON.parse(o)?.version]}),(0,u.jsx)(`h3`,{style:{fontWeight:400},children:(0,u.jsxs)(n.p,{children:[`Opinionated UI framework for Svelte, based on `,(0,u.jsx)(n.a,{href:`https://bits-ui.com/`,rel:`nofollow`,children:`Bits UI`})]})}),(0,u.jsxs)(n.h3,{id:`github---npm`,children:[(0,u.jsx)(n.a,{href:`https://github.com/flightlesslabs/dodo-ui`,rel:`nofollow`,children:`Github`}),` - `,(0,u.jsx)(n.a,{href:`https://www.npmjs.com/package/@flightlesslabs/dodo-ui`,rel:`nofollow`,children:`npm`})]})]}),`
-`,(0,u.jsx)(`br`,{}),`
-`,(0,u.jsx)(`br`,{}),`
-`,(0,u.jsx)(n.h2,{id:`install`,children:`Install`}),`
-`,(0,u.jsx)(r,{dark:!0,language:`bash`,code:`
-pnpm add bits-ui @internationalized/date @flightlesslabs/dodo-ui
-`}),`
-`,(0,u.jsxs)(n.p,{children:[`We are using `,(0,u.jsxs)(n.strong,{children:[`bits-ui@`,JSON.parse(o).devDependencies[`bits-ui`]]}),` internally`]}),`
-`,(0,u.jsx)(n.h2,{id:`add-css`,children:`Add css`}),`
-`,(0,u.jsxs)(n.p,{children:[`Add global css in your `,(0,u.jsx)(n.code,{children:`+layout.svelte`}),` file`]}),`
-`,(0,u.jsx)(r,{dark:!0,language:`js`,code:`
-import '@flightlesslabs/dodo-ui/styles/global.css';
+`}));function o(e){let n={a:`a`,code:`code`,h1:`h1`,h2:`h2`,h3:`h3`,li:`li`,p:`p`,pre:`pre`,strong:`strong`,ul:`ul`,...t(),...e.components};return(0,c.jsxs)(c.Fragment,{children:[(0,c.jsxs)(`main`,{style:{textAlign:`center`},children:[(0,c.jsx)(`img`,{src:`dodo-circle-6.png`,style:{width:200,height:`auto`}}),(0,c.jsx)(n.h1,{id:`dodo-ui`,children:`Dodo UI`}),(0,c.jsxs)(`h3`,{style:{fontWeight:500},children:[`v`,JSON.parse(i)?.version]}),(0,c.jsx)(`h3`,{style:{fontWeight:400},children:(0,c.jsxs)(n.p,{children:[`Opinionated UI framework for Svelte, based on `,(0,c.jsx)(n.a,{href:`https://bits-ui.com/`,rel:`nofollow`,children:`Bits UI`})]})}),(0,c.jsxs)(n.h3,{id:`github---npm`,children:[(0,c.jsx)(n.a,{href:`https://github.com/flightlesslabs/dodo-ui`,rel:`nofollow`,children:`Github`}),` - `,(0,c.jsx)(n.a,{href:`https://www.npmjs.com/package/@flightlesslabs/dodo-ui`,rel:`nofollow`,children:`npm`})]})]}),`
+`,(0,c.jsx)(`br`,{}),`
+`,(0,c.jsx)(`br`,{}),`
+`,(0,c.jsx)(n.h2,{id:`-installation`,children:`🚀 Installation`}),`
+`,(0,c.jsx)(n.pre,{children:(0,c.jsx)(n.code,{className:`language-bash`,children:`pnpm add bits-ui @internationalized/date @flightlesslabs/dodo-ui
+`})}),`
+`,(0,c.jsxs)(n.p,{children:[`We are using `,(0,c.jsxs)(n.strong,{children:[`bits-ui@`,JSON.parse(i).devDependencies[`bits-ui`]]}),` internally`]}),`
+`,(0,c.jsx)(n.h2,{id:`-add-styles`,children:`🎨 Add Styles`}),`
+`,(0,c.jsxs)(n.p,{children:[`Import global styles in your root component. use the root layout (`,(0,c.jsx)(n.code,{children:`+layout.svelte`}),`) for SvelteKit.`]}),`
+`,(0,c.jsx)(n.pre,{children:(0,c.jsx)(n.code,{className:`language-ts`,children:`import '@flightlesslabs/dodo-ui/styles/global.css';
 import '@flightlesslabs/dodo-ui/styles/components.css';
-`}),`
-`,(0,u.jsx)(n.h2,{id:`theme`,children:`Theme`}),`
-`,(0,u.jsxs)(n.p,{children:[`We recommend that the `,(0,u.jsx)(n.a,{href:`?path=/docs/components-layout-theme--docs`,children:`Theme`}),` component should be imported in the `,(0,u.jsx)(n.code,{children:`_layout.svelte`}),` (SvelteKit) or any other root location.`]}),`
-`,(0,u.jsx)(r,{dark:!0,language:`js`,code:`
-import { Theme } '@flightlesslabs/dodo-ui';
+`})}),`
+`,(0,c.jsx)(n.h2,{id:`-theme-setup`,children:`🌗 Theme Setup`}),`
+`,(0,c.jsxs)(n.p,{children:[`Wrap your application with the `,(0,c.jsx)(n.a,{href:`?path=/docs/components-layout-theme--docs`,children:`Theme`}),` component at the root level.`]}),`
+`,(0,c.jsx)(n.pre,{children:(0,c.jsx)(n.code,{className:`language-ts`,children:`import { Theme } from '@flightlesslabs/dodo-ui';
 
-<Theme>
-// Content will go here
+<Theme global>
+  <!-- Your app -->
 </Theme>
-`}),`
-`,(0,u.jsx)(n.h2,{id:`use-it`,children:`Use it!`}),`
-`,(0,u.jsxs)(n.p,{children:[`Lets import `,(0,u.jsx)(n.a,{href:`?path=/docs/components-form-button--docs`,children:`Button`}),` component. Checkout documentation for `,(0,u.jsx)(n.a,{href:`?path=/docs/components-form-button--docs`,children:`Button`})]}),`
-`,(0,u.jsx)(r,{dark:!0,language:`js`,code:`
-import { Button } '@flightlesslabs/dodo-ui';
-`}),`
-`,(0,u.jsx)(n.h2,{id:`explore-more`,children:`Explore more`}),`
-`,(0,u.jsxs)(n.ul,{children:[`
-`,(0,u.jsx)(n.li,{children:(0,u.jsx)(n.a,{href:`?path=/docs/components-form-button--docs`,children:`Button`})}),`
-`,(0,u.jsx)(n.li,{children:(0,u.jsx)(n.a,{href:`?path=/docs/components-form-textinput--docs`,children:`TextInput`})}),`
-`,(0,u.jsx)(n.li,{children:(0,u.jsx)(n.a,{href:`https://uicolors.app/generate/1cc049`,rel:`nofollow`,children:`Tailwind CSS Color Generator`})}),`
-`]})]})}function l(e={}){let{wrapper:n}={...t(),...e.components};return n?(0,u.jsx)(n,{...e,children:(0,u.jsx)(c,{...e})}):c(e)}var u;e((()=>{u=n(),a(),i(),s()}))();export{l as default};
+`})}),`
+`,(0,c.jsxs)(n.p,{children:[`Recommended: Place this in your root layout (`,(0,c.jsx)(n.code,{children:`+layout.svelte`}),`) for SvelteKit.`]}),`
+`,(0,c.jsx)(n.p,{children:`✨ Usage`}),`
+`,(0,c.jsxs)(n.p,{children:[`Start by importing components like `,(0,c.jsx)(n.a,{href:`?path=/docs/components-form-button--docs`,children:`Button`}),`.`]}),`
+`,(0,c.jsx)(n.pre,{children:(0,c.jsx)(n.code,{className:`language-ts`,children:`import { Button } '@flightlesslabs/dodo-ui';
+
+<Button>Hello</Button>
+`})}),`
+`,(0,c.jsx)(n.h2,{id:`explore-more`,children:`Explore more`}),`
+`,(0,c.jsxs)(n.ul,{children:[`
+`,(0,c.jsx)(n.li,{children:(0,c.jsx)(n.a,{href:`?path=/docs/components-form-button--docs`,children:`Button`})}),`
+`,(0,c.jsx)(n.li,{children:(0,c.jsx)(n.a,{href:`?path=/docs/components-form-textinput--docs`,children:`TextInput`})}),`
+`,(0,c.jsx)(n.li,{children:(0,c.jsx)(n.a,{href:`https://uicolors.app/generate/1cc049`,rel:`nofollow`,children:`Tailwind CSS Color Generator`})}),`
+`]})]})}function s(e={}){let{wrapper:n}={...t(),...e.components};return n?(0,c.jsx)(n,{...e,children:(0,c.jsx)(o,{...e})}):o(e)}var c;e((()=>{c=n(),r(),a()}))();export{s as default};
