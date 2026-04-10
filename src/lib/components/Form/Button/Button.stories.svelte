@@ -129,7 +129,7 @@
   Click me!
 </Story>
 
-<!-- Onclick action -->
+<!-- Button Onclick action -->
 <Story
   name="OnClick (Actions)"
   args={{
@@ -175,14 +175,14 @@
   +
 </Story>
 
-<!-- Button in Light Theme -->
+<!-- Button in light Theme -->
 <Story name="Light Theme" asChild>
   <Theme type="light">
     <Button>Click me!</Button>
   </Theme>
 </Story>
 
-<!-- Button in Dark Theme -->
+<!-- Button in dark Theme -->
 <Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
   <Theme type="dark">
     <Button>Click me!</Button>

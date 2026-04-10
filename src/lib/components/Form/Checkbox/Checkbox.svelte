@@ -53,9 +53,6 @@
     ...restProps
   }: CheckboxProps = $props();
 
-  /**
-   * Computed class list
-   */
   const classes = $derived(
     [
       'dodo-ui-Checkbox',
