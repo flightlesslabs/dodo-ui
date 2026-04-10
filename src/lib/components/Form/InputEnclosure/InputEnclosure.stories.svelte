@@ -8,6 +8,17 @@
   import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
   import Theme from '$lib/components/Layout/Theme/Theme.svelte';
 
+  const description = `
+  An extensive wrappwer for input boxes.
+
+ \`\`\`ts
+ import { InputEnclosure } from '@flightlesslabs/dodo-ui';
+
+ // apply 'InputBox' class to the input
+  <input class="InputBox" />
+ \`\`\`
+ `;
+
   // ------------------------------
   // Storybook ArgTypes
   // ------------------------------
@@ -80,6 +91,13 @@
     component: InputEnclosure,
     tags: ['autodocs'],
     argTypes: storyInputEnclosureArgTypes,
+    parameters: {
+      docs: {
+        description: {
+          component: description,
+        },
+      },
+    },
   });
 </script>
 
@@ -87,7 +105,7 @@
 <!-- Stories -->
 <!-- ------------------------------ -->
 
-<Story name="Default (Outlined)">
+<Story name="Default">
   <input placeholder="Type something…" class="InputBox" />
 </Story>
 
@@ -111,14 +129,10 @@
   <input placeholder="Large input…" class="InputBox" />
 </Story>
 
-<Story name="Pill Shape" args={{ roundness: 'pill' }}>
-  <input placeholder="Pill shaped input…" class="InputBox" />
-</Story>
-
 <Story name="With Before (Icon Prefix)" asChild>
   <InputEnclosure>
     {#snippet before()}
-      <span style="color: #888;">🔍</span>
+      <span style="color: #888; padding-left: 8px">🔍</span>
     {/snippet}
 
     <input placeholder="Search…" class="InputBox" />
@@ -128,7 +142,7 @@
 <Story name="With After (Suffix Text)" asChild>
   <InputEnclosure>
     {#snippet after()}
-      <span style="color: #888;">.com</span>
+      <span style="color: #888; padding-right: 8px">.com</span>
     {/snippet}
 
     <input placeholder="Website" class="InputBox" />

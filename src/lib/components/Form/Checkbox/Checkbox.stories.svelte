@@ -9,6 +9,14 @@
   import Theme from '$lib/components/Layout/Theme/Theme.svelte';
   import { componentVariantOptions } from '$lib/attributes/variant.js';
 
+  const description = `
+ A simple Checkbox component based on bits-ui [checkbox](https://bits-ui.com/docs/components/checkbox).
+
+ \`\`\`ts
+ import { Checkbox } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+`;
+
   /**
    * Storybook controls for Checkbox
    */
@@ -62,6 +70,13 @@
     component: Checkbox,
     tags: ['autodocs'],
     argTypes: CheckboxArgTypes,
+    parameters: {
+      docs: {
+        description: {
+          component: description,
+        },
+      },
+    },
   });
 
   let myValue = $state<boolean>(true);
@@ -73,16 +88,8 @@
 
 <Story name="Default" args={{ id: 'Default' }}>Check this text</Story>
 
-<Story name="Checked" asChild>
+<Story name="Controlled" asChild>
   <Checkbox id="Checked" bind:checked={myValue}>Check this text</Checkbox>
-</Story>
-
-<Story name="Solid" args={{ id: 'Solid', variant: 'solid', checked: true }}>Check this text</Story>
-
-<Story name="NoOutline" args={{ id: 'Outline', outline: false }}>Check this text</Story>
-
-<Story name="Indeterminate" args={{ id: 'indeterminate', indeterminate: true }}>
-  Check this text
 </Story>
 
 <Story
@@ -98,17 +105,19 @@
   Check this text
 </Story>
 
-<Story name="Primary" args={{ id: 'Primary', color: 'primary' }}>Check this text</Story>
-
-<Story name="Large" args={{ id: 'Large', size: 'large' }}>Check this text</Story>
-
-<Story name="Disabled" args={{ disabled: true }}>Check this text</Story>
-
-<Story name="Safe" args={{ id: 'Safe', color: 'safe' }}>Check this text</Story>
-
-<Story name="Danger / Outline" args={{ id: 'Danger-Outline', color: 'danger' }}>
+<Story name="Indeterminate" args={{ id: 'indeterminate', indeterminate: true }}>
   Check this text
 </Story>
+
+<Story name="Color" args={{ id: 'Safe', color: 'safe' }}>Check this text</Story>
+
+<Story name="Solid" args={{ id: 'Solid', variant: 'solid', checked: true }}>Check this text</Story>
+
+<Story name="NoOutline" args={{ id: 'Outline', outline: false }}>Check this text</Story>
+
+<Story name="Size" args={{ id: 'Size', size: 'large' }}>Check this text</Story>
+
+<Story name="Disabled" args={{ disabled: true }}>Check this text</Story>
 
 <Story name="Light Theme" asChild>
   <Theme type="light">

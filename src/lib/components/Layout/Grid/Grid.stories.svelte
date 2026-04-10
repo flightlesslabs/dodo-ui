@@ -7,6 +7,14 @@
   import Card from '../Card/Card.svelte';
   import Row from './Row/Row.svelte';
 
+  const description = `
+  a set of components for your basic "12 column grid" needs
+
+ \`\`\`ts
+ import { Grid, Column, Row } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+ `;
+
   // ------------------------------
   // Storybook ArgTypes
   // ------------------------------
@@ -26,6 +34,13 @@
     component: Grid,
     tags: ['autodocs'],
     argTypes: storyGridArgTypes,
+    parameters: {
+      docs: {
+        description: {
+          component: description,
+        },
+      },
+    },
   });
 </script>
 

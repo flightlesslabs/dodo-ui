@@ -9,6 +9,15 @@
   import { CalendarDate, type DateValue } from '@internationalized/date';
   import Theme from '$lib/components/Layout/Theme/Theme.svelte';
 
+  const description = `
+ A sleek, plug and play Date Picker based on bits-ui [date-picker](https://bits-ui.com/docs/components/date-picker).
+ \`\`\`ts
+ import { DatePicker } from '@flightlesslabs/dodo-ui';
+
+import { CalendarDate, type DateValue } from '@internationalized/date';
+ \`\`\`
+`;
+
   // ------------------------------
   // Storybook ArgTypes
   // ------------------------------
@@ -86,6 +95,14 @@
     component: DatePicker,
     tags: ['autodocs'],
     argTypes: storyDatePickerArgTypes,
+    parameters: {
+      docs: {
+        description: {
+          component: description,
+        },
+        story: { height: '420px' },
+      },
+    },
   });
 
   let myValue = $state<DateValue>(new CalendarDate(2026, 4, 7));
@@ -97,10 +114,17 @@
 
 <Story name="Default" />
 
-<!-- let myValue = $state<DateValue>(new CalendarDate(2026, 4, 7)); [docs](https://bits-ui.com/docs/components/date-picker) -->
-<Story name="Selected" asChild>
+<Story name="Controlled" asChild>
   <DatePicker bind:value={myValue} />
 </Story>
+
+<Story name="Starts On Sunday" args={{ weekStartsOn: 0 }} />
+
+<Story name="Date Format" args={{ dateFormat: 'mm/dd/yyyy' }} />
+
+<Story name="Min Date" args={{ minValue: new CalendarDate(2026, 4, 7) }} />
+
+<Story name="Max Date" args={{ maxValue: new CalendarDate(2026, 4, 7) }} />
 
 <Story name="Light Theme" asChild>
   <Theme type="light">

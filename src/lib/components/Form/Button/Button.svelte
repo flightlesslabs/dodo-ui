@@ -46,24 +46,8 @@
    */
   export type ButtonAsButtonProps = ButtonBaseProps & ButtonAsButtonPropsBase;
 
-  /**
-   * Button component props (anchor variant).
-   *
-   * Renders an <a> element when `href` is provided.
-   * Inherits all native HTML anchor attributes, except `type`.
-   */
   export type ButtonAsAnchorProps = ButtonBaseProps & ButtonAsAnchorPropsBase;
 
-  /**
-   * Button component props.
-   *
-   * Renders a semantic <button> by default, or an <a> element when `href` is provided.
-   * Supports design-system tokens for size, color, variant, and roundness.
-   *
-   * This type is a discriminated union:
-   * - When `href` is present, anchor props are enabled and button-only props are disabled.
-   * - When `href` is absent, button props are enabled and anchor-only props are disabled.
-   */
   export type ButtonProps = ButtonAsButtonProps | ButtonAsAnchorProps;
 </script>
 
@@ -77,12 +61,6 @@
   import type { ButtonAsButtonProps as ButtonAsButtonPropsBase } from './ButtonAsButton.svelte';
   import ButtonAsButton from './ButtonAsButton.svelte';
 
-  /**
-   * Button component runtime props.
-   *
-   * These props are destructured from `$props()` and mapped to the underlying
-   * Bits UI Button root component, with semantic rendering based on `href`.
-   */
   let {
     size = 'normal',
     color = 'primary',
@@ -100,9 +78,6 @@
     ...restProps
   }: ButtonProps = $props();
 
-  /**
-   * Computed class list for the Button component.
-   */
   const classes = $derived(
     [
       'dodo-ui-Button',

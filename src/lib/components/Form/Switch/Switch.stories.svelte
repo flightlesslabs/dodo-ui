@@ -9,6 +9,14 @@
   import Theme from '$lib/components/Layout/Theme/Theme.svelte';
   import { componentVariantOptions } from '$lib/attributes/variant.js';
 
+  const description = `
+ A Switch/toggle component based on bits-ui [switch](https://bits-ui.com/docs/components/switch).
+
+ \`\`\`ts
+ import { Switch } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+`;
+
   /**
    * Storybook controls for Switch
    */
@@ -62,6 +70,13 @@
     component: Switch,
     tags: ['autodocs'],
     argTypes: SwitchArgTypes,
+    parameters: {
+      docs: {
+        description: {
+          component: description,
+        },
+      },
+    },
   });
 
   let myValue = $state<boolean>(true);
@@ -73,7 +88,7 @@
 
 <Story name="Default" args={{ id: 'Default' }}>Check this text</Story>
 
-<Story name="Checked" asChild>
+<Story name="Controlled" asChild>
   <Switch id="Checked" bind:checked={myValue}>Check this text</Switch>
 </Story>
 
@@ -94,17 +109,11 @@
   Check this text
 </Story>
 
-<Story name="Primary" args={{ id: 'Primary', color: 'primary' }}>Check this text</Story>
+<Story name="Color" args={{ id: 'Safe', color: 'safe' }}>Check this text</Story>
 
 <Story name="Large" args={{ id: 'Large', size: 'large' }}>Check this text</Story>
 
 <Story name="Disabled" args={{ disabled: true }}>Check this text</Story>
-
-<Story name="Safe" args={{ id: 'Safe', color: 'safe' }}>Check this text</Story>
-
-<Story name="Danger / Outline" args={{ id: 'Danger-Outline', color: 'danger' }}>
-  Check this text
-</Story>
 
 <Story name="Light Theme" asChild>
   <Theme type="light">

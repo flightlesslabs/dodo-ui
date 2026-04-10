@@ -6,12 +6,6 @@
     label: string;
   };
 
-  /**
-   * Shared base props for the Select component.
-   *
-   * These props control the visual wrapper (InputEnclosure) and
-   * common text-input behaviors.
-   */
   type BaseProps = Omit<ComboboxSingleRootPropsWithoutHTML, 'type'> &
     Omit<SelectSingleRootPropsWithoutHTML, 'type'>;
 

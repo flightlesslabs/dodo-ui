@@ -8,6 +8,14 @@
   import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
   import Theme from '$lib/components/Layout/Theme/Theme.svelte';
 
+  const description = `
+ A flexible small sized button component based on bits-ui [button](https://bits-ui.com/docs/components/button).
+
+ \`\`\`ts
+ import { UtilityButton } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+`;
+
   // ------------------------------
   // Storybook ArgTypes
   // ------------------------------
@@ -83,6 +91,13 @@
     component: UtilityButton,
     tags: ['autodocs'],
     argTypes: storyUtilityButtonArgTypes,
+    parameters: {
+      docs: {
+        description: {
+          component: description,
+        },
+      },
+    },
   });
 </script>
 
@@ -90,65 +105,59 @@
 <!-- Stories -->
 <!-- ------------------------------ -->
 
-<!-- A Button to be used with other components. -->
-<Story name="Primary">Click me!</Story>
+<Story name="Default">Click me!</Story>
 
-<Story name="Neutral" args={{ color: 'neutral', outline: true }}>Click me!</Story>
+<Story
+  name="Link Button"
+  args={{
+    href: 'https://www.w3schools.com/tags/tag_a.asp',
+    target: '_blank',
+  }}
+>
+  Click me!
+</Story>
 
 <Story
   name="OnClick (Actions)"
   args={{
     onclick: (e: Event) => {
       const target = e.target as HTMLButtonElement;
-      alert('UtilityButton Clicked');
-      console.log('UtilityButton Clicked', target);
+      alert('Button Clicked');
+      console.log('Button Clicked', target);
     },
   }}
 >
   Click me
 </Story>
 
+<Story name="Color" args={{ color: 'safe' }}>Click me</Story>
+
 <Story name="Outline" args={{ outline: true }}>Click me!</Story>
 
-<Story name="Large UtilityButton" args={{ size: 'large' }}>Large</Story>
+<Story name="Size" args={{ size: 'large' }}>Click me!</Story>
 
 <Story name="Disabled" args={{ disabled: true }}>Click me!</Story>
 
-<Story name="Safe" args={{ color: 'safe' }}>Safe</Story>
+<Story name="Submit Button" args={{ type: 'submit' }}>Click me!</Story>
 
-<Story name="Danger / Outline" args={{ color: 'danger', outline: true }}>Danger</Story>
+<Story
+  name="Compact"
+  args={{
+    compact: true,
+    'aria-label': 'Add item',
+  }}
+>
+  +
+</Story>
 
 <Story name="Light Theme" asChild>
   <Theme type="light">
-    <UtilityButton>Hello</UtilityButton>
+    <UtilityButton>Click me!</UtilityButton>
   </Theme>
 </Story>
 
 <Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
   <Theme type="dark">
-    <UtilityButton>Hello</UtilityButton>
+    <UtilityButton>Click me!</UtilityButton>
   </Theme>
-</Story>
-
-<Story name="Submit UtilityButton" args={{ type: 'submit' }}>Submit Form</Story>
-
-<Story
-  name="Link UtilityButton"
-  args={{
-    href: 'https://www.w3schools.com/tags/tag_a.asp',
-    target: '_blank',
-  }}
->
-  External Link
-</Story>
-
-<Story
-  name="Icon Only (A11y Example)"
-  args={{
-    compact: true,
-    roundness: 'full',
-    'aria-label': 'Add item',
-  }}
->
-  +
 </Story>

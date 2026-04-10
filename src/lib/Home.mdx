@@ -1,4 +1,3 @@
-import { Source } from '@storybook/addon-docs/blocks';
 import item from '../../package.json?raw';
 
 <main style={{ textAlign: 'center' }}>
@@ -20,58 +19,48 @@ import item from '../../package.json?raw';
 <br />
 <br />
 
-## Install
+## 🚀 Installation
 
-<Source
-  dark
-  language="bash"
-  code={`
+
+```bash
 pnpm add bits-ui @internationalized/date @flightlesslabs/dodo-ui
-`}
-/>
+```
 
 We are using **bits-ui@{JSON.parse(item).devDependencies['bits-ui']}** internally
 
-## Add css
+## 🎨 Add Styles
 
-Add global css in your `+layout.svelte` file
+Import global styles in your root component. use the root layout (`+layout.svelte`) for SvelteKit.
 
-<Source
-  dark
-  language="js"
-  code={`
+```ts
 import '@flightlesslabs/dodo-ui/styles/global.css';
 import '@flightlesslabs/dodo-ui/styles/components.css';
-`}
-/>
+```
 
-## Theme
+## 🌗 Theme Setup
 
-We recommend that the [Theme](?path=/docs/components-layout-theme--docs) component should be imported in the `_layout.svelte` (SvelteKit) or any other root location.
+Wrap your application with the [Theme](?path=/docs/components-layout-theme--docs) component at the root level.
 
-<Source
-  dark
-  language="js"
-  code={`
-import { Theme } '@flightlesslabs/dodo-ui';
 
- <Theme>
-  // Content will go here
- </Theme>
-`}
-/>
+```ts
+import { Theme } from '@flightlesslabs/dodo-ui';
 
-## Use it!
+<Theme global>
+  <!-- Your app -->
+</Theme>
+```
 
-Lets import [Button](?path=/docs/components-form-button--docs) component. Checkout documentation for [Button](?path=/docs/components-form-button--docs)
+Recommended: Place this in your root layout (`+layout.svelte`) for SvelteKit.
 
-<Source
-  dark
-  language="js"
-  code={`
+✨ Usage
+
+Start by importing components like [Button](?path=/docs/components-form-button--docs).
+
+```ts
 import { Button } '@flightlesslabs/dodo-ui';
-`}
-/>
+
+<Button>Hello</Button>
+```
 
 ## Explore more
 

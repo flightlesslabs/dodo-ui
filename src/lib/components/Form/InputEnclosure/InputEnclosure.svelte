@@ -2,12 +2,6 @@
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
-  /**
-   * Shared base props for the InputEnclosure component.
-   *
-   * These props apply to the root <div> wrapper that visually encloses
-   * form controls such as inputs, selects, or custom fields.
-   */
   interface InputEnclosureBaseProps {
     /** InputEnclosure contents (typically an input or control slot) */
     children?: Snippet;
@@ -62,12 +56,6 @@
     after?: Snippet;
   }
 
-  /**
-   * InputEnclosure component props.
-   *
-   * Renders a semantic <div> wrapper around form controls.
-   * Inherits all native HTML div attributes (e.g. id, style, data-*, aria-*).
-   */
   export type InputEnclosureProps = InputEnclosureBaseProps & HTMLAttributes<HTMLDivElement>;
 </script>
 
@@ -76,12 +64,6 @@
   import type { ComponentRoundnessShape } from '$lib/attributes/roundness.js';
   import InputAffix from './InputAffix.svelte';
 
-  /**
-   * InputEnclosure component runtime props.
-   *
-   * These props are destructured from `$props()` and mapped to
-   * CSS utility classes that control visual appearance.
-   */
   let {
     children,
     size = 'normal',
@@ -97,9 +79,6 @@
     ...restProps
   }: InputEnclosureProps = $props();
 
-  /**
-   * Computed class list for the InputEnclosure component.
-   */
   const classes = $derived(
     [
       'dodo-ui-InputEnclosure',
