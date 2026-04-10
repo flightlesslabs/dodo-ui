@@ -112,9 +112,6 @@
     onblur?.(event as TextInputFocusEvent);
   }
 
-  /**
-   * Computed class list for the InputEnclosure component.
-   */
   const classes = $derived(['dodo-ui-TextInput', className].filter(Boolean));
 </script>
 

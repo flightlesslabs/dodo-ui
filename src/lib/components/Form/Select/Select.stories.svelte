@@ -8,6 +8,14 @@
   import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
   import Theme from '$lib/components/Layout/Theme/Theme.svelte';
 
+  const description = `
+ A searchable Select component based on bits-ui [combobox](https://bits-ui.com/docs/components/combobox).
+
+ \`\`\`ts
+ import { Select } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+`;
+
   const options = [
     { value: 'one', label: 'One' },
     { value: 'two', label: 'Two' },
@@ -118,6 +126,13 @@
     args: {
       options,
     },
+    parameters: {
+      docs: {
+        description: {
+          component: description,
+        },
+      },
+    },
   });
 
   let myValue = $state<string | undefined>(options[1].value);
@@ -131,11 +146,9 @@
 
 <Story name="Searchable" args={{ searchable: true, placeholder: 'Search a number' }} />
 
-<Story name="Selected" asChild>
+<Story name="Controlled" asChild>
   <Select {options} bind:value={myValue} />
 </Story>
-
-<Story name="Disabled" args={{ placeholder: 'Select an option', disabled: true }} />
 
 <Story
   name="OnChange (Actions)"
@@ -146,6 +159,8 @@
     },
   }}
 />
+
+<Story name="Disabled" args={{ placeholder: 'Select an option', disabled: true }} />
 
 <Story name="Light Theme" asChild>
   <Theme type="light">

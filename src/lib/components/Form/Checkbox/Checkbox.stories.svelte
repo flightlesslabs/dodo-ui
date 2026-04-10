@@ -88,12 +88,10 @@
 
 <Story name="Default" args={{ id: 'Default' }}>Check this text</Story>
 
-<!-- Controlled checked state -->
 <Story name="Controlled" asChild>
   <Checkbox id="Checked" bind:checked={myValue}>Check this text</Checkbox>
 </Story>
 
-<!-- Checkbox Onclick action -->
 <Story
   name="OnChange (Actions)"
   args={{
@@ -107,34 +105,26 @@
   Check this text
 </Story>
 
-<!-- Checkbox Indeterminate state -->
 <Story name="Indeterminate" args={{ id: 'indeterminate', indeterminate: true }}>
   Check this text
 </Story>
 
-<!-- Checkbox color variation, safe color -->
 <Story name="Color" args={{ id: 'Safe', color: 'safe' }}>Check this text</Story>
 
-<!-- Checkbox variant variation, Solid variant -->
 <Story name="Solid" args={{ id: 'Solid', variant: 'solid', checked: true }}>Check this text</Story>
 
-<!-- Checkbox without Outline -->
 <Story name="NoOutline" args={{ id: 'Outline', outline: false }}>Check this text</Story>
 
-<!-- Checkbox size variation, Large Size -->
 <Story name="Size" args={{ id: 'Size', size: 'large' }}>Check this text</Story>
 
-<!-- Checkbox Disabled state -->
 <Story name="Disabled" args={{ disabled: true }}>Check this text</Story>
 
-<!-- Checkbox in light Theme -->
 <Story name="Light Theme" asChild>
   <Theme type="light">
     <Checkbox id="Light_Theme">Check this text</Checkbox>
   </Theme>
 </Story>
 
-<!-- Checkbox in dark Theme -->
 <Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
   <Theme type="dark">
     <Checkbox id="Dark_Theme">Check this text</Checkbox>

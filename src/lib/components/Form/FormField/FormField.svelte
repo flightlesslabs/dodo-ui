@@ -23,9 +23,6 @@
 <script lang="ts">
   let { class: className = '', for: htmlFor, children, label }: FormFieldProps = $props();
 
-  /**
-   * Computed class list
-   */
   const classes = $derived(['dodo-ui-FormField', className].filter(Boolean));
 </script>
 

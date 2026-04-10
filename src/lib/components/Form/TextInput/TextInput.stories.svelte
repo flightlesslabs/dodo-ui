@@ -8,6 +8,14 @@
   import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
   import Theme from '$lib/components/Layout/Theme/Theme.svelte';
 
+  const description = `
+  Input box with powers ⚡
+
+ \`\`\`ts
+ import { TextInput } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+`;
+
   // ------------------------------
   // Storybook ArgTypes
   // ------------------------------
@@ -99,6 +107,13 @@
     component: TextInput,
     tags: ['autodocs'],
     argTypes: storyTextInputArgTypes,
+    parameters: {
+      docs: {
+        description: {
+          component: description,
+        },
+      },
+    },
   });
 </script>
 
@@ -112,16 +127,16 @@
 
 <Story name="Error" args={{ placeholder: 'Error state…', error: true }} />
 
-<Story name="Disabled" args={{ placeholder: 'Disabled state…', disabled: true }} />
-
 <Story name="Large" args={{ placeholder: 'Type something…', size: 'large' }} />
 
 <Story name="Pill Shape" args={{ placeholder: 'Type something…', roundness: 'pill' }} />
 
+<Story name="Disabled" args={{ placeholder: 'Disabled state…', disabled: true }} />
+
 <Story name="With Before (Prefix Icon)" asChild>
   <TextInput placeholder="Search…">
     {#snippet before()}
-      <span style="color: #888;">🔍</span>
+      <span style="color: #888; padding-left: 8px">🔍</span>
     {/snippet}
   </TextInput>
 </Story>
@@ -129,19 +144,7 @@
 <Story name="With After (Suffix Text)" asChild>
   <TextInput placeholder="Website">
     {#snippet after()}
-      <span style="color: #888;">.com</span>
-    {/snippet}
-  </TextInput>
-</Story>
-
-<Story name="With Before + After" asChild>
-  <TextInput placeholder="Amount">
-    {#snippet before()}
-      <span style="opacity: 0.6;">$</span>
-    {/snippet}
-
-    {#snippet after()}
-      <span style="opacity: 0.6;">USD</span>
+      <span style="color: #888; padding-right: 8px">.com</span>
     {/snippet}
   </TextInput>
 </Story>

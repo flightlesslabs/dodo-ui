@@ -11,6 +11,14 @@
   import { componentThemeColorsOptions } from '$lib/attributes/theme.js';
   import { ComponentShadowOptions } from '$lib/attributes/shadow.js';
 
+  const description = `
+ a plug and play Calendar component based on bits-ui [calendar](https://bits-ui.com/docs/components/calendar).
+
+ \`\`\`ts
+ import { Calendar } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+`;
+
   // ------------------------------
   // Storybook ArgTypes
   // ------------------------------
@@ -85,6 +93,13 @@
     component: Calendar,
     tags: ['autodocs'],
     argTypes: storyCalendarArgTypes,
+    parameters: {
+      docs: {
+        description: {
+          component: description,
+        },
+      },
+    },
   });
 
   let myValue = $state<DateValue>(new CalendarDate(2026, 4, 7));
@@ -96,9 +111,15 @@
 
 <Story name="Default" />
 
-<Story name="Selected" asChild>
+<Story name="Controlled" asChild>
   <Calendar bind:value={myValue} />
 </Story>
+
+<Story name="Starts On Sunday" args={{ weekStartsOn: 0 }} />
+
+<Story name="Min Date" args={{ minValue: new CalendarDate(2026, 4, 7) }} />
+
+<Story name="Max Date" args={{ maxValue: new CalendarDate(2026, 4, 7) }} />
 
 <Story name="Light Theme" asChild>
   <Theme type="light">

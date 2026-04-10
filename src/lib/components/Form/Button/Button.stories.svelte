@@ -118,7 +118,6 @@
 
 <Story name="Default">Click me!</Story>
 
-<!-- Anchor link styled as a button -->
 <Story
   name="Link Button"
   args={{
@@ -129,7 +128,6 @@
   Click me!
 </Story>
 
-<!-- Button Onclick action -->
 <Story
   name="OnClick (Actions)"
   args={{
@@ -143,28 +141,20 @@
   Click me
 </Story>
 
-<!-- Button color variation, safe color -->
 <Story name="Color" args={{ color: 'safe' }}>Click me</Story>
 
-<!-- Button variant variation, text variant -->
 <Story name="Text" args={{ variant: 'text' }}>Click me!</Story>
 
-<!-- Button with outline -->
 <Story name="Outline" args={{ variant: 'text', outline: true }}>Click me!</Story>
 
-<!-- Button size variation, Large Size -->
 <Story name="Size" args={{ size: 'large' }}>Click me!</Story>
 
-<!-- Button Disabled state -->
 <Story name="Disabled" args={{ disabled: true }}>Click me!</Story>
 
-<!-- Button type Submit Button -->
 <Story name="Submit Button" args={{ type: 'submit' }}>Click me!</Story>
 
-<!-- Button variation fullWidth button -->
 <Story name="Full Width" args={{ fullWidth: true }}>Click me!</Story>
 
-<!-- Button variation compact button with A11y support -->
 <Story
   name="Compact"
   args={{
@@ -175,14 +165,12 @@
   +
 </Story>
 
-<!-- Button in light Theme -->
 <Story name="Light Theme" asChild>
   <Theme type="light">
     <Button>Click me!</Button>
   </Theme>
 </Story>
 
-<!-- Button in dark Theme -->
 <Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
   <Theme type="dark">
     <Button>Click me!</Button>

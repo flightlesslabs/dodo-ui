@@ -8,6 +8,14 @@
   import { ComponentShadowOptions } from '$lib/attributes/shadow.js';
   import { componentThemeColorsOptions } from '$lib/attributes/theme.js';
 
+  const description = `
+a simple, customizable, and re-usable card component
+
+ \`\`\`ts
+ import { Card } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+ `;
+
   // ------------------------------
   // Storybook ArgTypes
   // ------------------------------
@@ -70,6 +78,13 @@
     component: Card,
     tags: ['autodocs'],
     argTypes: storyCardArgTypes,
+    parameters: {
+      docs: {
+        description: {
+          component: description,
+        },
+      },
+    },
   });
 </script>
 
@@ -79,7 +94,7 @@
 
 <Story name="Default"><p>Hello there</p></Story>
 
-<Story name="Primary" args={{ color: 'primary' }}><p>Hello there</p></Story>
+<Story name="Color" args={{ color: 'safe' }}><p>Hello there</p></Story>
 
 <Story name="Active" args={{ color: 'primary', active: true }}><p>Hello there</p></Story>
 
@@ -87,7 +102,7 @@
 
 <Story name="Outline" args={{ outline: true, shadow: 0 }}><p>Hello there</p></Story>
 
-<Story name="FixedSize" args={{ height: '200px', width: '250px' }}><p>Hello there</p></Story>
+<Story name="Fixed Size" args={{ height: '200px', width: '250px' }}><p>Hello there</p></Story>
 
 <Story name="Light Theme" args={{ theme: 'light' }}>
   <p>Hello there</p>

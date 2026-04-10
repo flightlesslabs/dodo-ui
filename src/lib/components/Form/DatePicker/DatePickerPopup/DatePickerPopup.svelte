@@ -18,7 +18,7 @@
     variant = 'text',
     shadow = 2,
     active = false,
-    sideOffset = 6,
+    sideOffset = 10,
     align = 'end',
     ...restProps
   }: DatePickerPopupProps = $props();

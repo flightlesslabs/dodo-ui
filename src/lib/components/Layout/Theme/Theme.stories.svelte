@@ -5,6 +5,14 @@
   import type { ArgTypes } from 'storybook/internal/csf';
   import { componentThemeOptions } from '$lib/attributes/theme.js';
 
+  const description = `
+    Wrap your app at the root with Theme to provide a consistent light or dark class (based on system or override) to all child components
+
+ \`\`\`ts
+ import { Theme } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+ `;
+
   /**
    * Storybook controls for Theme
    */
@@ -25,6 +33,13 @@
     component: Theme,
     tags: ['autodocs'],
     argTypes: ThemeArgTypes,
+    parameters: {
+      docs: {
+        description: {
+          component: description,
+        },
+      },
+    },
   });
 </script>
 
@@ -32,8 +47,7 @@
 <!-- Stories -->
 <!-- ------------------------------ -->
 
-<!-- Wrap your app at the root with Theme to provide a consistent light or dark class (based on system or override) to all child components. -->
-<Story name="Auto"></Story>
+<Story name="Default"></Story>
 
 <Story name="Light" args={{ type: 'light' }}></Story>
 

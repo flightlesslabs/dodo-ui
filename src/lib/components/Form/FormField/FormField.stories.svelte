@@ -5,6 +5,13 @@
   import type { ArgTypes } from 'storybook/internal/csf';
   import TextInput from '../TextInput/TextInput.svelte';
 
+  const description = `
+ a form control for input tags and more.
+ \`\`\`ts
+ import { FormField } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+`;
+
   /**
    * Storybook controls for FormField
    */
@@ -22,6 +29,13 @@
     component: FormField,
     tags: ['autodocs'],
     argTypes: FormFieldArgTypes,
+    parameters: {
+      docs: {
+        description: {
+          component: description,
+        },
+      },
+    },
   });
 </script>
 
@@ -29,15 +43,6 @@
 <!-- Stories -->
 <!-- ------------------------------ -->
 
-<Story name="Basic" args={{ label: 'Name:', for: 'name' }}>
+<Story name="Defualt" args={{ label: 'Name:', for: 'name' }}>
   <TextInput placeholder="Type something…" name="name" />
-</Story>
-
-<Story name="CustomLabel" asChild>
-  <FormField for="name2">
-    {#snippet label()}
-      Custom Label
-    {/snippet}
-    <TextInput placeholder="Type something…" name="name2" />
-  </FormField>
 </Story>

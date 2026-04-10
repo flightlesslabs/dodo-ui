@@ -1,11 +1,6 @@
 <script lang="ts" module>
   import type { Snippet } from 'svelte';
 
-  /**
-   * Shared base props for the UtilityButton component.
-   *
-   * These props apply to both the <UtilityButton> and <a> render modes.
-   */
   interface UtilityButtonBaseProps {
     /** UtilityButton contents */
     children?: Snippet;
@@ -32,32 +27,10 @@
     'aria-label'?: string;
   }
 
-  /**
-   * UtilityButton component props (UtilityButton variant).
-   *
-   * Renders a semantic <UtilityButton> element when `href` is not provided.
-   * Inherits all native HTML UtilityButton attributes.
-   */
   export type UtilityButtonAsButtonProps = UtilityButtonBaseProps & ButtonAsButtonPropsBase;
 
-  /**
-   * UtilityButton component props (anchor variant).
-   *
-   * Renders an <a> element when `href` is provided.
-   * Inherits all native HTML anchor attributes, except `type`.
-   */
   export type UtilityButtonAsAnchorProps = UtilityButtonBaseProps & ButtonAsAnchorPropsBase;
 
-  /**
-   * UtilityButton component props.
-   *
-   * Renders a semantic <UtilityButton> by default, or an <a> element when `href` is provided.
-   * Supports design-system tokens for size, color, variant, and roundness.
-   *
-   * This type is a discriminated union:
-   * - When `href` is present, anchor props are enabled and UtilityButton-only props are disabled.
-   * - When `href` is absent, UtilityButton props are enabled and anchor-only props are disabled.
-   */
   export type UtilityButtonProps = UtilityButtonAsButtonProps | UtilityButtonAsAnchorProps;
 </script>
 
@@ -70,12 +43,6 @@
   import ButtonAsButton from '../Button/ButtonAsButton.svelte';
   import type { ButtonAsButtonProps as ButtonAsButtonPropsBase } from '../Button/ButtonAsButton.svelte';
 
-  /**
-   * UtilityButton component runtime props.
-   *
-   * These props are destructured from `$props()` and mapped to the underlying
-   * Bits UI UtilityButton root component, with semantic rendering based on `href`.
-   */
   let {
     size = 'normal',
     color = 'primary',
@@ -91,9 +58,6 @@
     ...restProps
   }: UtilityButtonProps = $props();
 
-  /**
-   * Computed class list for the UtilityButton component.
-   */
   const classes = $derived(
     [
       'dodo-ui-UtilityButton',

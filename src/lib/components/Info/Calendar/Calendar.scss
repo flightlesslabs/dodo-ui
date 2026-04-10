@@ -1,3 +1,5 @@
+@use '../../../styles/global/breakpoints' as breakpoints;
+
 // ----------------------------------------
 // Theme tokens (global CSS variables)
 // ----------------------------------------
@@ -13,10 +15,13 @@
 
 .dodo-ui-Calendar {
   font-size: 1rem;
-  padding: var(--dodo-ui-space);
   color: var(--dodo-color-neutral-900);
   display: inline-flex;
   flex-direction: column;
+
+  @include breakpoints.up('sm') {
+    padding: var(--dodo-ui-space);
+  }
 
   [data-calendar-header] {
     display: flex;
@@ -32,9 +37,9 @@
     font-weight: 500;
   }
 
-  [data-calendar-next-button],
-  [data-calendar-prev-button] {
-    font-size: 1.45rem;
+  button[data-calendar-next-button],
+  button[data-calendar-prev-button] {
+    font-size: 1.4em;
   }
 
   [data-calendar-grid] {
@@ -124,14 +129,19 @@
         bottom: 0.2em;
       }
     }
-  }
 
-  [data-outside-month] {
-    color: var(--dodo-color-neutral-400);
+    &[data-outside-month],
+    &[data-disabled] {
+      color: var(--dodo-color-neutral-400);
 
-    &:hover {
-      background-color: initial;
-      border-color: transparent;
+      &:hover {
+        background-color: initial;
+        border-color: transparent;
+      }
+
+      &[data-today] {
+        background-color: initial;
+      }
     }
   }
 }
