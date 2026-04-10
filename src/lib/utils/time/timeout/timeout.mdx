@@ -1,5 +1,3 @@
-import { Source } from '@storybook/addon-docs/blocks';
-
 # timeout
 
 A simple utility to delay execution using Promises.
@@ -10,25 +8,19 @@ Useful for **pausing async workflows**, **simulating delays**, or **controlling 
 
 ## 📦 Import
 
-<Source
-  dark
-  language="ts"
-  code={`
+```ts
 import { timeout } from '@flightlesslabs/dodo-ui';
-`}
-/>
+```
 
 ---
 
 ## 🚀 Basic Usage
 
-<Source
-  dark
-  language="ts"
-  code={`
+
+
+```ts
 await timeout(1000); // waits 1 second
-`}
-/>
+```
 
 ---
 
@@ -36,30 +28,22 @@ await timeout(1000); // waits 1 second
 
 You can optionally pass a value that will be returned after the delay.
 
-<Source
-  dark
-  language="ts"
-  code={`
+```ts
 const result = await timeout(500, "done");
 
 console.log(result); // "done"
-`}
-/>
+```
 
 ---
 
 ## ⚙️ API
 
-<Source
-  dark
-  language="ts"
-  code={`
+```ts
 function timeout<T = void>(
   milliseconds: number,
   value?: T
 ): Promise<T>
-`}
-/>
+```
 
 ---
 
@@ -81,13 +65,9 @@ function timeout<T = void>(
 
 If a negative duration is provided, the promise will reject:
 
-<Source
-  dark
-  language="ts"
-  code={`
+```ts
 await timeout(-1); // ❌ throws Error
-`}
-/>
+```
 
 ---
 
@@ -103,10 +83,7 @@ await timeout(-1); // ❌ throws Error
 
 ### Async Flow
 
-<Source
-  dark
-  language="ts"
-  code={`
+```ts
 async function run() {
   console.log("Start");
 
@@ -114,8 +91,7 @@ await timeout(1000);
 
 console.log("End");
 }
-`}
-/>
+```
 
 ---
 
@@ -131,4 +107,8 @@ console.log(data.success); // true
 `}
 />
 
----
+```ts
+const data = await timeout(300, { success: true });
+
+console.log(data.success); // true
+```

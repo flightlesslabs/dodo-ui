@@ -1,5 +1,3 @@
-import { Source } from '@storybook/addon-docs/blocks';
-
 # createDate
 
 A centralized date factory built on top of `dayjs`.
@@ -8,78 +6,55 @@ This utility ensures **consistent parsing, timezone handling, and validation** a
 
 ## 📦 Import
 
-<Source
-  dark
-  language="ts"
-  code={`
+```ts
 import { createDate } from '@flightlesslabs/dodo-ui';
-`}
-/>
+```
 
 ## 🚀 Basic Usage
 
 ### Current Date
 
-<Source
-  dark
-  language="ts"
-  code={`
+```ts
 const now = createDate();
 console.log(now.format());
-`}
-/>
+```
+
 
 ### Parse a Date
 
-<Source
-  dark
-  language="ts"
-  code={`
+```ts
 const date = createDate("01-02-2025", "DD-MM-YYYY");
 console.log(date.format());
-`}
-/>
+```
 
 ## 🌍 Timezone & UTC
 
 ### UTC Mode
 
-<Source
-  dark
-  language="ts"
-  code={`
+```ts
 const utcDate = createDate("2025-01-01T12:00:00Z", undefined, {
   utc: true,
 });
-`}
-/>
+```
 
 ### Timezone Conversion
 
-<Source
-  dark
-  language="ts"
-  code={`
+```ts
 const indiaTime = createDate("01-01-2025", "DD-MM-YYYY", {
   timezone: "Asia/Kolkata",
 });
-`}
-/>
+```
 
 ## ⚙️ Options
 
-<Source
-  dark
-  language="ts"
-  code={`
+```ts
 interface CreateDateOptions {
   timezone?: string;
   utc?: boolean;
   strict?: boolean;
   throwOnInvalid?: boolean;
 }
-`}
-/>
+```
 
 ## 🔁 Behavior Priority
 

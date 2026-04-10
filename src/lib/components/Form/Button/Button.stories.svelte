@@ -9,6 +9,13 @@
   import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
   import Theme from '$lib/components/Layout/Theme/Theme.svelte';
 
+  const description = `
+ A flexible Button component based on bits-ui [button](https://bits-ui.com/docs/components/button).
+ \`\`\`ts
+ import { Button } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+`;
+
   // ------------------------------
   // Storybook ArgTypes
   // ------------------------------
@@ -95,6 +102,13 @@
     component: Button,
     tags: ['autodocs'],
     argTypes: storyButtonArgTypes,
+    parameters: {
+      docs: {
+        description: {
+          component: description,
+        },
+      },
+    },
   });
 </script>
 
@@ -102,10 +116,20 @@
 <!-- Stories -->
 <!-- ------------------------------ -->
 
-<Story name="Primary">Click me!</Story>
+<Story name="Default">Click me!</Story>
 
-<Story name="Neutral" args={{ color: 'neutral', variant: 'text', outline: true }}>Click me!</Story>
+<!-- Anchor link styled as a button -->
+<Story
+  name="Link Button"
+  args={{
+    href: 'https://www.w3schools.com/tags/tag_a.asp',
+    target: '_blank',
+  }}
+>
+  Click me!
+</Story>
 
+<!-- Onclick action -->
 <Story
   name="OnClick (Actions)"
   args={{
@@ -119,34 +143,30 @@
   Click me
 </Story>
 
-<Story name="Outline" args={{ outline: true, variant: 'text' }}>Click me!</Story>
+<!-- Button color variation, safe color -->
+<Story name="Color" args={{ color: 'safe' }}>Click me</Story>
 
-<Story name="Large Button" args={{ size: 'large' }}>Large</Story>
+<!-- Button variant variation, text variant -->
+<Story name="Text" args={{ variant: 'text' }}>Click me!</Story>
 
+<!-- Button with outline -->
+<Story name="Outline" args={{ variant: 'text', outline: true }}>Click me!</Story>
+
+<!-- Button size variation, Large Size -->
+<Story name="Size" args={{ size: 'large' }}>Click me!</Story>
+
+<!-- Button Disabled state -->
 <Story name="Disabled" args={{ disabled: true }}>Click me!</Story>
 
-<Story name="Safe" args={{ color: 'safe' }}>Safe</Story>
+<!-- Button type Submit Button -->
+<Story name="Submit Button" args={{ type: 'submit' }}>Click me!</Story>
 
-<Story name="Danger / Outline" args={{ color: 'danger', variant: 'text', outline: true }}>
-  Danger
-</Story>
-
-<Story name="Submit Button" args={{ type: 'submit' }}>Submit Form</Story>
-
+<!-- Button variation fullWidth button -->
 <Story name="Full Width" args={{ fullWidth: true }}>Click me!</Story>
 
+<!-- Button variation compact button with A11y support -->
 <Story
-  name="Link Button"
-  args={{
-    href: 'https://www.w3schools.com/tags/tag_a.asp',
-    target: '_blank',
-  }}
->
-  External Link
-</Story>
-
-<Story
-  name="Icon Only (A11y Example)"
+  name="Compact"
   args={{
     compact: true,
     'aria-label': 'Add item',
@@ -155,14 +175,16 @@
   +
 </Story>
 
+<!-- Button in Light Theme -->
 <Story name="Light Theme" asChild>
   <Theme type="light">
-    <Button>Hello</Button>
+    <Button>Click me!</Button>
   </Theme>
 </Story>
 
+<!-- Button in Dark Theme -->
 <Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
   <Theme type="dark">
-    <Button>Hello</Button>
+    <Button>Click me!</Button>
   </Theme>
 </Story>
