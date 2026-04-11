@@ -50,7 +50,11 @@
       "svelte": "./dist/index.js"
     },
     "./styles/global.css": "./dist/styles/global.css",
-    "./styles/components.css": "./dist/styles/components.css"
+    "./styles/components.css": "./dist/styles/components.css",
+    "./styles/*": {
+      "sass": "./dist/styles/*",
+      "default": "./dist/styles/*"
+    }
   },
   "peerDependencies": {
     "@internationalized/date": "^3.0.0",
