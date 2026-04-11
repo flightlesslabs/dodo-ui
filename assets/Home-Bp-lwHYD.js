@@ -1,6 +1,6 @@
 import{n as e}from"./chunk-BneVvdWh.js";import{r as t}from"./react-Dg5Q4cgl.js";import{t as n}from"./jsx-runtime-BtolTc4S.js";import{t as r}from"./mdx-react-shim-CBLMQScp.js";var i,a=e((()=>{i=`{
   "name": "@flightlesslabs/dodo-ui",
-  "version": "0.22.1",
+  "version": "0.22.2",
   "scripts": {
     "scss:global": "sh -c \\"mkdir -p dist/styles && sass src/lib/styles/global/index.scss dist/styles/global.css\\"",
     "scss:components": "sh -c \\"mkdir -p dist/styles && sass src/lib/styles/components.scss dist/styles/components.css\\"",
@@ -50,7 +50,11 @@ import{n as e}from"./chunk-BneVvdWh.js";import{r as t}from"./react-Dg5Q4cgl.js";
       "svelte": "./dist/index.js"
     },
     "./styles/global.css": "./dist/styles/global.css",
-    "./styles/components.css": "./dist/styles/components.css"
+    "./styles/components.css": "./dist/styles/components.css",
+    "./styles/*": {
+      "sass": "./dist/styles/*",
+      "default": "./dist/styles/*"
+    }
   },
   "peerDependencies": {
     "@internationalized/date": "^3.0.0",
