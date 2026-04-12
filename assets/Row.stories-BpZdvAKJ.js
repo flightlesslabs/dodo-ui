@@ -1,0 +1,7 @@
+import{n as e}from"./chunk-BneVvdWh.js";import{J as t,P as n,dt as r,j as i,k as a,q as o,t as s,ut as c,wt as l,yt as u}from"./client-D_tSG6NS.js";import{d,et as f,f as p,n as m,r as h,t as g,tt as _}from"./create-runtime-stories-BJGIarex.js";function v(e,i){r(i,!0),x(e,{name:`Default`,children:(e,r)=>{var i=S(),s=o(i);p(s,{sm:4,children:(e,t)=>{u(),a(e,n(`Hello there`))},$$slots:{default:!0}});var c=t(s,2);p(c,{sm:4,children:(e,t)=>{u(),a(e,n(`Hello there`))},$$slots:{default:!0}});var l=t(c,2);p(l,{sm:4,children:(e,t)=>{u(),a(e,n(`Hello there`))},$$slots:{default:!0}});var d=t(l,2);p(d,{sm:4,children:(e,t)=>{u(),a(e,n(`Hello there`))},$$slots:{default:!0}}),p(t(d,2),{sm:4,children:(e,t)=>{u(),a(e,n(`Hello there`))},$$slots:{default:!0}}),a(e,i)},$$slots:{default:!0},parameters:{docs:{description:{story:`------------------------------`}},__svelteCsf:{rawCode:`<Row {...args}>
+  <Column sm={4}>Hello there</Column>
+<Column sm={4}>Hello there</Column>
+<Column sm={4}>Hello there</Column>
+<Column sm={4}>Hello there</Column>
+<Column sm={4}>Hello there</Column>
+</Row>`}}}),c()}var y,b,x,S,C,w,T;e((()=>{l(),h(),_(),s(),m(),y={children:{table:{category:`API`,subcategory:`Base`}},class:{table:{category:`API`,subcategory:`Base`}}},b={component:d,tags:[`autodocs`],argTypes:y,parameters:{docs:{description:{component:``}}}},{Story:x}=f(b),S=i(`<!> <!> <!> <!> <!>`,1),v.__docgen={data:[],name:`Row.stories.svelte`},C=g(v,b),w=[`Default`],T={...C.Default,tags:[`svelte-csf-v5`]}}))();export{T as Default,w as __namedExportsOrder,b as default,y as storyRowArgTypes};

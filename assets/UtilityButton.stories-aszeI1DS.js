@@ -1,0 +1,29 @@
+import{n as e}from"./chunk-BneVvdWh.js";import{J as t,P as n,dt as r,j as i,k as a,q as o,t as s,ut as c,wt as l,yt as u}from"./client-D_tSG6NS.js";import{_ as d,c as f,et as p,n as m,r as h,t as g,tt as _,u as v,v as y,x as b}from"./create-runtime-stories-BJGIarex.js";function x(e,i){r(i,!0);var s=E(),l=o(s);T(l,{name:`Default`,children:(e,t)=>{u(),a(e,n(`Click me!`))},$$slots:{default:!0},parameters:{docs:{description:{story:`------------------------------`}},__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  Click me!
+</UtilityButton>`}}});var d=t(l,2);T(d,{name:`Link Button`,args:{href:`https://www.w3schools.com/tags/tag_a.asp`,target:`_blank`},children:(e,t)=>{u(),a(e,n(`Click me!`))},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  Click me!
+</UtilityButton>`}}});var f=t(d,2);T(f,{name:`OnClick (Actions)`,args:{onclick:e=>{let t=e.target;alert(`Button Clicked`),console.log(`Button Clicked`,t)}},children:(e,t)=>{u(),a(e,n(`Click me`))},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  Click me
+</UtilityButton>`}}});var p=t(f,2);T(p,{name:`Color`,args:{color:`safe`},children:(e,t)=>{u(),a(e,n(`Click me`))},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  Click me
+</UtilityButton>`}}});var m=t(p,2);T(m,{name:`Outline`,args:{outline:!0},children:(e,t)=>{u(),a(e,n(`Click me!`))},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  Click me!
+</UtilityButton>`}}});var h=t(m,2);T(h,{name:`Size`,args:{size:`large`},children:(e,t)=>{u(),a(e,n(`Click me!`))},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  Click me!
+</UtilityButton>`}}});var g=t(h,2);T(g,{name:`Disabled`,args:{disabled:!0},children:(e,t)=>{u(),a(e,n(`Click me!`))},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  Click me!
+</UtilityButton>`}}});var _=t(g,2);T(_,{name:`Submit Button`,args:{type:`submit`},children:(e,t)=>{u(),a(e,n(`Click me!`))},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  Click me!
+</UtilityButton>`}}});var v=t(_,2);T(v,{name:`Compact`,args:{compact:!0,"aria-label":`Add item`},children:(e,t)=>{u(),a(e,n(`+`))},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  +
+</UtilityButton>`}}});var x=t(v,2);T(x,{name:`Light Theme`,asChild:!0,children:(e,t)=>{y(e,{type:`light`,children:(e,t)=>{b(e,{children:(e,t)=>{u(),a(e,n(`Click me!`))},$$slots:{default:!0}})},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Theme type="light">
+  <UtilityButton>Click me!</UtilityButton>
+</Theme>`}}}),T(t(x,2),{name:`Dark Theme`,asChild:!0,globals:{backgrounds:{value:`dark`}},children:(e,t)=>{y(e,{type:`dark`,children:(e,t)=>{b(e,{children:(e,t)=>{u(),a(e,n(`Click me!`))},$$slots:{default:!0}})},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Theme type="dark">
+  <UtilityButton>Click me!</UtilityButton>
+</Theme>`}}}),a(e,s),c()}var S,C,w,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z;e((()=>{l(),_(),h(),s(),m(),S=`
+ A flexible small sized button component based on bits-ui [button](https://bits-ui.com/docs/components/button).
+
+ \`\`\`ts
+ import { UtilityButton } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+`,C={children:{table:{category:`API`,subcategory:`Base`}},href:{control:{type:`text`},description:`Render as Anchor when provided`,table:{category:`API`,subcategory:`Base`}},disabled:{control:{type:`boolean`},description:`Disable interactions`,table:{category:`API`,subcategory:`Base`}},class:{table:{category:`API`,subcategory:`Base`}},type:{table:{category:`API`,subcategory:`Base`}},color:{control:{type:`select`},options:d,description:`Color theme token`,table:{category:`API`,subcategory:`Appearance`,defaultValue:{summary:`primary`}}},size:{control:{type:`select`},options:f,description:`Visual size token`,table:{category:`API`,subcategory:`Appearance`,defaultValue:{summary:`normal`}}},roundness:{control:{type:`select`},options:v,description:`Border radius token`,table:{category:`API`,subcategory:`Appearance`}},compact:{control:{type:`boolean`},description:`Compact spacing (icon buttons)`,table:{category:`API`,subcategory:`Appearance`}},outline:{control:{type:`boolean`},description:`Render outlined style`,table:{category:`API`,subcategory:`Appearance`}},"aria-label":{control:{type:`text`},description:`Accessible label (required for icon-only buttons)`,table:{category:`API`,subcategory:`Accessibility`}},onclick:{table:{category:`API`,subcategory:`Events`},action:`click`}},w={component:b,tags:[`autodocs`],argTypes:C,parameters:{docs:{description:{component:S}}}},{Story:T}=p(w),E=i(`<!> <!> <!> <!> <!> <!> <!> <!> <!> <!> <!>`,1),x.__docgen={data:[],name:`UtilityButton.stories.svelte`},D=g(x,w),O=[`Default`,`LinkButton`,`OnClickActions`,`Color`,`Outline`,`Size`,`Disabled`,`SubmitButton`,`Compact`,`LightTheme`,`DarkTheme`],k={...D.Default,tags:[`svelte-csf-v5`]},A={...D.LinkButton,tags:[`svelte-csf-v5`]},j={...D.OnClickActions,tags:[`svelte-csf-v5`]},M={...D.Color,tags:[`svelte-csf-v5`]},N={...D.Outline,tags:[`svelte-csf-v5`]},P={...D.Size,tags:[`svelte-csf-v5`]},F={...D.Disabled,tags:[`svelte-csf-v5`]},I={...D.SubmitButton,tags:[`svelte-csf-v5`]},L={...D.Compact,tags:[`svelte-csf-v5`]},R={...D.LightTheme,tags:[`svelte-csf-v5`]},z={...D.DarkTheme,tags:[`svelte-csf-v5`]}}))();export{M as Color,L as Compact,z as DarkTheme,k as Default,F as Disabled,R as LightTheme,A as LinkButton,j as OnClickActions,N as Outline,P as Size,I as SubmitButton,O as __namedExportsOrder,w as default,C as storyUtilityButtonArgTypes};
