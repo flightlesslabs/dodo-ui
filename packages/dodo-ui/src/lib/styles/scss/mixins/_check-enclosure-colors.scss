@@ -1,0 +1,149 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:list';
+
+// ======================================================
+// 1. Token Maps (Defined first to avoid Undefined Variable errors)
+// ======================================================
+
+$dodo-ui-checkEnclosure-scale-light: (
+  outline: 300,
+  outline-checked: 500,
+  text-bg: 100,
+  text-active-bg: 200,
+  solid-bg: 500,
+);
+
+$dodo-ui-checkEnclosure-scale-dark: (
+  outline: (
+    300,
+    90%,
+    #fff,
+  ),
+  outline-checked: (
+    500,
+    90%,
+    #fff,
+  ),
+  text-bg: (
+    50,
+    90%,
+    #fff,
+  ),
+  text-active-bg: (
+    100,
+    90%,
+    #fff,
+  ),
+  solid-bg: 400,
+);
+
+// ======================================================
+// 2. Helpers
+// ======================================================
+
+@function _dodo-ui-resolve-color($color-name, $value) {
+  @if meta.type-of($value) == list {
+    $shade: list.nth($value, 1);
+    $mix: list.nth($value, 2);
+    $mix-color: list.nth($value, 3);
+
+    @return color-mix(in oklab, var(--dodo-color-#{$color-name}-#{$shade}) #{$mix}, #{$mix-color});
+  }
+
+  @return var(--dodo-color-#{$color-name}-#{$value});
+}
+
+// ======================================================
+// 3. Mixins
+// ======================================================
+
+@mixin generate-dodo-ui-checkEnclosure-colors($color-name, $mode: light) {
+  // Fix for Deprecation Warning [if-function] and Undefined Variable
+  $scale: null;
+  @if $mode == dark {
+    $scale: $dodo-ui-checkEnclosure-scale-dark;
+  } @else {
+    $scale: $dodo-ui-checkEnclosure-scale-light;
+  }
+
+  --dodo-ui-CheckEnclosure-outline-#{$color-name}: #{_dodo-ui-resolve-color(
+      $color-name,
+      map.get($scale, outline)
+    )};
+
+  --dodo-ui-CheckEnclosure-outline-#{$color-name}-checked: #{_dodo-ui-resolve-color(
+      $color-name,
+      map.get($scale, outline-checked)
+    )};
+
+  --dodo-ui-CheckEnclosure-text-#{$color-name}-bg: #{_dodo-ui-resolve-color(
+      $color-name,
+      map.get($scale, text-bg)
+    )};
+
+  --dodo-ui-CheckEnclosure-text-#{$color-name}-active-bg: #{_dodo-ui-resolve-color(
+      $color-name,
+      map.get($scale, text-active-bg)
+    )};
+
+  --dodo-ui-CheckEnclosure-solid-#{$color-name}-bg: #{_dodo-ui-resolve-color(
+      $color-name,
+      map.get($scale, solid-bg)
+    )};
+}
+
+@mixin generate-dodo-ui-checkEnclosure-color($theme) {
+  &--#{$theme} {
+    &.outline {
+      border-color: var(--dodo-ui-CheckEnclosure-outline-#{$theme});
+    }
+
+    &.variant {
+      &--text {
+        color: var(--dodo-color-#{$theme}-800);
+        background-color: var(--dodo-ui-CheckEnclosure-text-#{$theme}-bg);
+
+        .CheckThumbInternal {
+          background-color: var(--dodo-color-#{$theme}-600);
+        }
+
+        &[data-state='checked'] {
+          border-color: var(--dodo-ui-CheckEnclosure-outline-#{$theme}-checked);
+
+          .CheckThumbInternal {
+            background-color: var(--dodo-color-#{$theme}-700);
+          }
+        }
+      }
+
+      &--solid {
+        color: var(--dodo-color-constant-white);
+        background-color: var(--dodo-ui-CheckEnclosure-text-#{$theme}-bg);
+
+        .CheckThumbInternal {
+          background-color: var(--dodo-color-#{$theme}-600);
+        }
+
+        &[data-state='checked'] {
+          background-color: var(--dodo-ui-CheckEnclosure-solid-#{$theme}-bg);
+          border-color: transparent;
+
+          .CheckThumbInternal {
+            background-color: var(--dodo-color-constant-white);
+          }
+        }
+      }
+    }
+
+    &.CheckEnclosureBackdrop {
+      &.variant {
+        &--text {
+          &[data-state='checked'] {
+            background-color: var(--dodo-ui-CheckEnclosure-text-#{$theme}-active-bg);
+          }
+        }
+      }
+    }
+  }
+}

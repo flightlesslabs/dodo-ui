@@ -1,0 +1,93 @@
+@use '../../../styles/scss/mixins/check-enclosure-colors' as checkEnclosure;
+
+// ----------------------------------------
+// Config
+// ----------------------------------------
+$dodo-checkEnclosure-themes: neutral, primary, secondary, safe, warning, danger;
+
+// ----------------------------------------
+// Theme tokens (global CSS variables)
+// ----------------------------------------
+:root {
+  --dodo-ui-CheckEnclosure-disabled-color: var(--dodo-color-neutral-400);
+  --dodo-ui-CheckEnclosure-disabled-bg: var(--dodo-color-neutral-200);
+
+  @each $theme in $dodo-checkEnclosure-themes {
+    // Fixed: Added buttons. prefix
+    @include checkEnclosure.generate-dodo-ui-checkEnclosure-colors($theme, light);
+  }
+}
+
+.dodo-theme--dark {
+  --dodo-ui-CheckEnclosure-disabled-bg: var(--dodo-color-neutral-100);
+  --dodo-ui-CheckEnclosure-disabled-color: var(--dodo-color-neutral-500);
+
+  @each $theme in $dodo-checkEnclosure-themes {
+    // Fixed: Added buttons. prefix
+    @include checkEnclosure.generate-dodo-ui-checkEnclosure-colors($theme, dark);
+  }
+}
+
+// ----------------------------------------
+// CheckEnclosure styles
+// ----------------------------------------
+
+.CheckEnclosure {
+  // ----------------------------------------
+  // Theme colors
+  // ----------------------------------------
+  &.color {
+    @each $theme in $dodo-checkEnclosure-themes {
+      // Fixed: Added buttons. prefix
+      @include checkEnclosure.generate-dodo-ui-checkEnclosure-color($theme);
+    }
+  }
+
+  // ----------------------------------------
+  // Disabled
+  // ----------------------------------------
+  &[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+    border-color: transparent;
+
+    &.variant {
+      &--text {
+        background-color: var(--dodo-ui-CheckEnclosure-disabled-bg);
+        color: var(--dodo-ui-CheckEnclosure-disabled-color);
+
+        .CheckThumbInternal {
+          background-color: var(--dodo-ui-CheckEnclosure-disabled-color);
+        }
+
+        &[data-state='checked'] {
+          border-color: var(--dodo-color-neutral-400);
+        }
+      }
+
+      &--solid {
+        color: var(--dodo-color-constant-white);
+        background-color: var(--dodo-ui-CheckEnclosure-disabled-bg);
+
+        .CheckThumbInternal {
+          background-color: var(--dodo-color-constant-white);
+        }
+
+        &[data-state='checked'] {
+          background-color: var(--dodo-color-neutral-400);
+          border-color: transparent;
+        }
+      }
+    }
+
+    &.CheckEnclosureBackdrop {
+      &.variant {
+        &--text {
+          &[data-state='checked'] {
+            background-color: var(--dodo-ui-CheckEnclosure-disabled-bg);
+          }
+        }
+      }
+    }
+  }
+}

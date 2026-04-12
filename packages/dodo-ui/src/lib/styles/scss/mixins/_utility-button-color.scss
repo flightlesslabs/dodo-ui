@@ -1,0 +1,105 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:list';
+
+// ======================================================
+// 1. Token Maps (Defined first to avoid Undefined Variable errors)
+// ======================================================
+
+$dodo-ui-utility-button-scale-light: (
+  outline: 400,
+  text-bg: 100,
+  text-hover: 200,
+  text-active: 300,
+);
+
+$dodo-ui-utility-button-scale-dark: (
+  outline: (
+    300,
+    90%,
+    #fff,
+  ),
+  text-bg: (
+    50,
+    90%,
+    #fff,
+  ),
+  text-hover: (
+    100,
+    90%,
+    #fff,
+  ),
+  text-active: (
+    200,
+    90%,
+    #fff,
+  ),
+);
+
+// ======================================================
+// 2. Helpers
+// ======================================================
+
+@function _dodo-ui-resolve-color($color-name, $value) {
+  @if meta.type-of($value) == list {
+    $shade: list.nth($value, 1);
+    $mix: list.nth($value, 2);
+    $mix-color: list.nth($value, 3);
+
+    @return color-mix(in oklab, var(--dodo-color-#{$color-name}-#{$shade}) #{$mix}, #{$mix-color});
+  }
+
+  @return var(--dodo-color-#{$color-name}-#{$value});
+}
+
+// ======================================================
+// 3. Mixins
+// ======================================================
+
+@mixin generate-dodo-ui-utility-button-colors($color-name, $mode: light) {
+  // Fix for Deprecation Warning [if-function] and Undefined Variable
+  $scale: null;
+  @if $mode == dark {
+    $scale: $dodo-ui-utility-button-scale-dark;
+  } @else {
+    $scale: $dodo-ui-utility-button-scale-light;
+  }
+
+  --dodo-ui-UtilityButton-outline-#{$color-name}: #{_dodo-ui-resolve-color(
+      $color-name,
+      map.get($scale, outline)
+    )};
+  --dodo-ui-UtilityButton-text-#{$color-name}-bg: #{_dodo-ui-resolve-color(
+      $color-name,
+      map.get($scale, text-bg)
+    )};
+  --dodo-ui-UtilityButton-text-#{$color-name}-hover-bg: #{_dodo-ui-resolve-color(
+      $color-name,
+      map.get($scale, text-hover)
+    )};
+  --dodo-ui-UtilityButton-text-#{$color-name}-active-bg: #{_dodo-ui-resolve-color(
+      $color-name,
+      map.get($scale, text-active)
+    )};
+}
+
+@mixin generate-dodo-ui-utility-button-color($theme) {
+  &--#{$theme} {
+    color: var(--dodo-color-neutral-800);
+    background-color: transparent;
+
+    &:hover {
+      color: var(--dodo-color-#{$theme}-800);
+      background-color: var(--dodo-ui-UtilityButton-text-#{$theme}-hover-bg);
+    }
+
+    &:active {
+      color: var(--dodo-color-#{$theme}-800);
+      background-color: var(--dodo-ui-UtilityButton-text-#{$theme}-active-bg);
+    }
+
+    &.outline {
+      border-color: var(--dodo-ui-UtilityButton-outline-#{$theme});
+    }
+  }
+}

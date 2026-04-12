@@ -1,0 +1,35 @@
+# 🎨 Theme System
+
+A lightweight theme system built using context + local store.
+
+## 🧩 Theme Context
+
+### 📦 Import
+
+```ts
+import { useThemeContext } from '@flightlesslabs/dodo-ui';
+```
+
+Provides access to the active theme.
+
+### Usage
+
+```ts
+const { theme } = useThemeContext();
+```
+
+## 🏪 Theme Store
+
+Global theme state.
+
+### 📦 Import
+
+```ts
+import { useThemeStore } from '@flightlesslabs/dodo-ui';
+```
+
+### Read
+
+```ts
+const theme = useThemeStore.theme;
+```

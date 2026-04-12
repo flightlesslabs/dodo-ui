@@ -1,0 +1,14 @@
+{
+  "name": "dodo-ui",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "pnpm --filter @documentation/docs dev",
+    "build": "pnpm -r build",
+    "build:docs": "pnpm --filter @documentation/* build",
+    "build:packages": "pnpm --filter @flightlesslabs/* build",
+    "test": "pnpm -r test",
+    "check": "pnpm -r check",
+    "check:fix": "pnpm -r check:fix"
+  }
+}
