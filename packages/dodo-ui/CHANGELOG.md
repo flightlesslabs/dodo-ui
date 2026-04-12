@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.24.1
+
+### Patch Changes
+
+- packages shifted
+
 ## 0.24.0
 
 ### Minor Changes
