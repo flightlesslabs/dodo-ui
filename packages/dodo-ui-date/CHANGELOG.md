@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-date
 
+## 0.3.2
+
+### Patch Changes
+
+- Unused pacakges removed
+
 ## 0.3.1
 
 ### Patch Changes
