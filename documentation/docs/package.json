@@ -1,6 +1,6 @@
 {
   "name": "@documentation/docs",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "private": true,
   "scripts": {
     "preview": "vite preview",
@@ -96,9 +96,7 @@
     "@flightlesslabs/dodo-ui": "workspace:*",
     "@flightlesslabs/dodo-ui-date": "workspace:*",
     "bits-ui": "^2.17.2",
-    "dayjs": "^1.11.20",
     "@iconify/svelte": "^5.2.1",
-    "svelte": "^5.55.2",
-    "esm-env": "^1.2.2"
+    "svelte": "^5.55.2"
   }
 }

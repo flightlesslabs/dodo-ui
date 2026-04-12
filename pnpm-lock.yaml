@@ -71,12 +71,6 @@ importers:
       bits-ui:
         specifier: ^2.17.2
         version: 2.17.3(@internationalized/date@3.12.0)(@sveltejs/kit@2.57.1(@sveltejs/vite-plugin-svelte@7.0.0(svelte@5.55.3(@typescript-eslint/types@8.58.1))(vite@8.0.8(@types/node@24.12.2)(esbuild@0.27.7)(sass@1.99.0)))(svelte@5.55.3(@typescript-eslint/types@8.58.1))(typescript@6.0.2)(vite@8.0.8(@types/node@24.12.2)(esbuild@0.27.7)(sass@1.99.0)))(svelte@5.55.3(@typescript-eslint/types@8.58.1))
-      dayjs:
-        specifier: ^1.11.20
-        version: 1.11.20
-      esm-env:
-        specifier: ^1.2.2
-        version: 1.2.2
       svelte:
         specifier: ^5.55.2
         version: 5.55.3(@typescript-eslint/types@8.58.1)
