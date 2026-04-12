@@ -1,9 +1,7 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Label from './Label.svelte';
-  import type { LabelProps } from './Label.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import TextInput from '../TextInput/TextInput.svelte';
+  import { type LabelProps, Label, TextInput } from '@flightlesslabs/dodo-ui';
 
   /**
    * Storybook controls for Label

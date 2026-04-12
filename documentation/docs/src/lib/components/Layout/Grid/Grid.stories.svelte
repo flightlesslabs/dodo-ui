@@ -1,11 +1,7 @@
 <script module lang="ts">
+  import { type GridProps, Grid, Column, Card, Row } from '@flightlesslabs/dodo-ui';
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Grid from './Grid.svelte';
-  import type { GridProps } from './Grid.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import Column from './Column/Column.svelte';
-  import Card from '../Card/Card.svelte';
-  import Row from './Row/Row.svelte';
 
   const description = `
   a set of components for your basic "12 column grid" needs

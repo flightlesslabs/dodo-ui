@@ -1,12 +1,14 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import UtilityButton from './UtilityButton.svelte';
-  import type { UtilityButtonProps } from './UtilityButton.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import { componentColorOptions } from '$lib/attributes/color.js';
-  import { componentSizeOptions } from '$lib/attributes/size.js';
-  import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
-  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
+  import {
+    type UtilityButtonProps,
+    componentColorOptions,
+    componentSizeOptions,
+    componentRoundnessOptions,
+    UtilityButton,
+    Theme,
+  } from '@flightlesslabs/dodo-ui';
 
   const description = `
  A flexible small sized button component based on bits-ui [button](https://bits-ui.com/docs/components/button).

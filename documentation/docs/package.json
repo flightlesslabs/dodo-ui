@@ -12,8 +12,7 @@
     "build": "storybook build && touch ./storybook-static/.nojekyll",
     "check": "pnpm run svelte-check && eslint . && pnpm run lint",
     "check:fix": "pnpm run svelte-check && eslint . && pnpm run format",
-    "create:component": "node --experimental-strip-types scripts/create-component/create-component.ts",
-    "test": "vitest run"
+    "create:component": "node --experimental-strip-types scripts/create-component/create-component.ts"
   },
   "homepage": "https://flightlesslabs.github.io/dodo-ui",
   "repository": {
@@ -81,8 +80,6 @@
     "eslint-plugin-svelte": "^3.17.0",
     "file-saver": "^2.0.5",
     "globals": "^17.4.0",
-    "jsdom": "^29.0.2",
-    "playwright": "^1.59.1",
     "prettier": "^3.8.1",
     "prettier-plugin-svelte": "^3.5.1",
     "publint": "^0.3.18",

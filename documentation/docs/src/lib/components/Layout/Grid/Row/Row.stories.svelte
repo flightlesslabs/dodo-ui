@@ -1,9 +1,7 @@
 <script module lang="ts">
+  import { type GridRowProps, Row, Column } from '@flightlesslabs/dodo-ui';
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Row from './Row.svelte';
-  import type { GridRowProps } from './Row.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import Column from '../Column/Column.svelte';
 
   // ------------------------------
   // Storybook ArgTypes

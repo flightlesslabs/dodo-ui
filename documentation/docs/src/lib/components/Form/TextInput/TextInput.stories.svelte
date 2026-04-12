@@ -1,12 +1,13 @@
 <script module lang="ts">
+  import {
+    type TextInputProps,
+    componentSizeOptions,
+    componentRoundnessOptions,
+    TextInput,
+    Theme,
+  } from '@flightlesslabs/dodo-ui';
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import TextInput from './TextInput.svelte';
-  import type { TextInputProps } from './TextInput.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
-
-  import { componentSizeOptions } from '$lib/attributes/size.js';
-  import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
-  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
 
   const description = `
   Input box with powers ⚡

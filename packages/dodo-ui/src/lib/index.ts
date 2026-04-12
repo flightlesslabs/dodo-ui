@@ -31,6 +31,11 @@ export {
 } from './components/Form/InputEnclosure/InputEnclosure.svelte';
 
 /**
+ * Label component and related prop types.
+ */
+export { default as Label, type LabelProps } from './components/Form/Label/Label.svelte';
+
+/**
  * FormField component and related prop types.
  */
 export {

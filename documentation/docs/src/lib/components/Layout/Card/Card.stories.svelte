@@ -1,12 +1,15 @@
 <script module lang="ts">
+  import {
+    type CardProps,
+    ComponentShadowOptions,
+    cardColorOptions,
+    componentVariantOptions,
+    componentRoundnessOptions,
+    componentThemeColorsOptions,
+    Card,
+  } from '@flightlesslabs/dodo-ui';
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Card, { cardColorOptions } from './Card.svelte';
-  import type { CardProps } from './Card.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import { componentVariantOptions } from '$lib/attributes/variant.js';
-  import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
-  import { ComponentShadowOptions } from '$lib/attributes/shadow.js';
-  import { componentThemeColorsOptions } from '$lib/attributes/theme.js';
 
   const description = `
 a simple, customizable, and re-usable card component

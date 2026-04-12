@@ -1,7 +1,6 @@
 <script module lang="ts">
+  import { type GridColumnProps, gridColumnSizeOptions, Column } from '@flightlesslabs/dodo-ui';
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Column, { gridColumnSizeOptions } from './Column.svelte';
-  import type { GridColumnProps } from './Column.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
 
   // ------------------------------

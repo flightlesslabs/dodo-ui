@@ -1,13 +1,15 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Radio from './Radio.svelte';
-  import type { RadioProps } from './Radio.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import { componentColorOptions } from '$lib/attributes/color.js';
-  import { componentSizeOptions } from '$lib/attributes/size.js';
-  import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
-  import { componentVariantOptions } from '$lib/attributes/variant.js';
-  import RadioGroup from '../RadioGroup.svelte';
+  import {
+    type RadioProps,
+    componentColorOptions,
+    componentVariantOptions,
+    componentSizeOptions,
+    componentRoundnessOptions,
+    Radio,
+    RadioGroup,
+  } from '@flightlesslabs/dodo-ui';
 
   /**
    * Storybook controls for Radio

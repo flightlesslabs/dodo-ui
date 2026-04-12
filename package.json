@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "pnpm --filter @documentation/docs dev",
     "build": "pnpm -r build",
-    "build:docs": "pnpm --filter @documentation/* build",
+    "build:documentation": "pnpm --filter @documentation/* build",
     "build:packages": "pnpm --filter @flightlesslabs/* build",
     "test": "pnpm -r test",
     "check": "pnpm -r check",

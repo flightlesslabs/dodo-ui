@@ -1,12 +1,14 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import InputEnclosure from './InputEnclosure.svelte';
-  import type { InputEnclosureProps } from './InputEnclosure.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
 
-  import { componentSizeOptions } from '$lib/attributes/size.js';
-  import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
-  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
+  import {
+    type InputEnclosureProps,
+    componentSizeOptions,
+    componentRoundnessOptions,
+    InputEnclosure,
+    Theme,
+  } from '@flightlesslabs/dodo-ui';
 
   const description = `
   An extensive wrappwer for input boxes.

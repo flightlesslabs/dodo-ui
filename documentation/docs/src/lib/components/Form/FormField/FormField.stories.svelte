@@ -1,9 +1,7 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import FormField from './FormField.svelte';
-  import type { FormFieldProps } from './FormField.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import TextInput from '../TextInput/TextInput.svelte';
+  import { type FormFieldProps, FormField, TextInput } from '@flightlesslabs/dodo-ui';
 
   const description = `
  a form control for input tags and more.

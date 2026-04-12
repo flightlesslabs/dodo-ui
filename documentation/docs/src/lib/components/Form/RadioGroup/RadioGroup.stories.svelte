@@ -1,10 +1,8 @@
 <script module lang="ts">
+  import type { RadioGroupProps } from '@flightlesslabs/dodo-ui';
+  import { RadioGroup, Radio, Theme } from '@flightlesslabs/dodo-ui';
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import RadioGroup from './RadioGroup.svelte';
-  import type { RadioGroupProps } from './RadioGroup.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import Radio from './Radio/Radio.svelte';
-  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
 
   /**
    * Storybook controls for RadioGroup

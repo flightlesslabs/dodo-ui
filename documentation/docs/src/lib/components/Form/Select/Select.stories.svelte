@@ -1,12 +1,13 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Select from './Select.svelte';
-  import type { SelectProps } from './Select.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
-
-  import { componentSizeOptions } from '$lib/attributes/size.js';
-  import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
-  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
+  import {
+    type SelectProps,
+    Select,
+    componentSizeOptions,
+    componentRoundnessOptions,
+    Theme,
+  } from '@flightlesslabs/dodo-ui';
 
   const description = `
  A searchable Select component based on bits-ui [combobox](https://bits-ui.com/docs/components/combobox).

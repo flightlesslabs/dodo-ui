@@ -1,13 +1,15 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Checkbox from './Checkbox.svelte';
-  import type { CheckboxProps } from './Checkbox.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import { componentColorOptions } from '$lib/attributes/color.js';
-  import { componentSizeOptions } from '$lib/attributes/size.js';
-  import { componenRoundnessShapeOptions } from '$lib/attributes/roundness.js';
-  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
-  import { componentVariantOptions } from '$lib/attributes/variant.js';
+  import {
+    type CheckboxProps,
+    Checkbox,
+    componentColorOptions,
+    componentVariantOptions,
+    componentSizeOptions,
+    componenRoundnessShapeOptions,
+    Theme,
+  } from '@flightlesslabs/dodo-ui';
 
   const description = `
  A simple Checkbox component based on bits-ui [checkbox](https://bits-ui.com/docs/components/checkbox).

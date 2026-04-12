@@ -1,9 +1,7 @@
 <script module lang="ts">
+  import { componentThemeOptions, Theme, type ThemeProps } from '@flightlesslabs/dodo-ui';
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Theme from './Theme.svelte';
-  import type { ThemeProps } from './Theme.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import { componentThemeOptions } from '$lib/attributes/theme.js';
 
   const description = `
     Wrap your app at the root with Theme to provide a consistent light or dark class (based on system or override) to all child components

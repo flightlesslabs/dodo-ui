@@ -1,15 +1,17 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Calendar from './Calendar.svelte';
-  import type { CalendarProps } from './Calendar.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
   import { CalendarDate, type DateValue } from '@internationalized/date';
-  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
-  import { componentVariantOptions } from '$lib/attributes/variant.js';
-  import { cardColorOptions } from '$lib/components/Layout/Card/Card.svelte';
-  import { componentThemeColorsOptions } from '$lib/attributes/theme.js';
-  import { ComponentShadowOptions } from '$lib/attributes/shadow.js';
+  import {
+    type CalendarProps,
+    ComponentShadowOptions,
+    componentVariantOptions,
+    componentRoundnessOptions,
+    componentThemeColorsOptions,
+    Calendar,
+    cardColorOptions,
+    Theme,
+  } from '@flightlesslabs/dodo-ui';
 
   const description = `
  a plug and play Calendar component based on bits-ui [calendar](https://bits-ui.com/docs/components/calendar).

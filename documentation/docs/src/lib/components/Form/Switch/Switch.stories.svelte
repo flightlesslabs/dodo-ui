@@ -1,13 +1,15 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import Switch from './Switch.svelte';
-  import type { SwitchProps } from './Switch.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import { componentColorOptions } from '$lib/attributes/color.js';
-  import { componentSizeOptions } from '$lib/attributes/size.js';
-  import { componenRoundnessShapeOptions } from '$lib/attributes/roundness.js';
-  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
-  import { componentVariantOptions } from '$lib/attributes/variant.js';
+  import {
+    type SwitchProps,
+    componentColorOptions,
+    componentVariantOptions,
+    componentSizeOptions,
+    componenRoundnessShapeOptions,
+    Theme,
+    Switch,
+  } from '@flightlesslabs/dodo-ui';
 
   const description = `
  A Switch/toggle component based on bits-ui [switch](https://bits-ui.com/docs/components/switch).

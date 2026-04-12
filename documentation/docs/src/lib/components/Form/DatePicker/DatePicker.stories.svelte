@@ -1,13 +1,14 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import DatePicker from './DatePicker.svelte';
-  import type { DatePickerProps } from './DatePicker.svelte';
   import type { ArgTypes } from 'storybook/internal/csf';
-
-  import { componentSizeOptions } from '$lib/attributes/size.js';
-  import { componentRoundnessOptions } from '$lib/attributes/roundness.js';
   import { CalendarDate, type DateValue } from '@internationalized/date';
-  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
+  import {
+    type DatePickerProps,
+    DatePicker,
+    componentSizeOptions,
+    componentRoundnessOptions,
+    Theme,
+  } from '@flightlesslabs/dodo-ui';
 
   const description = `
  A sleek, plug and play Date Picker based on bits-ui [date-picker](https://bits-ui.com/docs/components/date-picker).
