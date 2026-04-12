@@ -2,18 +2,36 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
   import { CalendarDate, type DateValue } from '@internationalized/date';
-  import {
-    type DatePickerProps,
-    DatePicker,
-    componentSizeOptions,
-    componentRoundnessOptions,
-    Theme,
-  } from '@flightlesslabs/dodo-ui';
+  import { componentSizeOptions, componentRoundnessOptions, Theme } from '@flightlesslabs/dodo-ui';
+
+  import { type DatePickerProps, DatePicker } from '@flightlesslabs/dodo-ui-date';
 
   const description = `
  A sleek, plug and play Date Picker based on bits-ui [date-picker](https://bits-ui.com/docs/components/date-picker).
+
+## 🚀 Installation
+
+  \`\`\`bash
+ pnpm add @internationalized/date @flightlesslabs/dodo-ui-date
+  \`\`\`
+
+## 🎨 Add Styles
+
+ Import global styles in your root component. use the root layout (+layout.svelte) for SvelteKit.
+
  \`\`\`ts
- import { DatePicker } from '@flightlesslabs/dodo-ui';
+ import '@flightlesslabs/dodo-ui-date/styles/main.css';
+ \`\`\`
+
+ or scss
+ \`\`\`ts
+import '@flightlesslabs/dodo-ui-date/styles/main.scss';
+ \`\`\`
+
+## ✨ Usage
+
+ \`\`\`ts
+ import { DatePicker } from '@flightlesslabs/dodo-ui-date';
 
 import { CalendarDate, type DateValue } from '@internationalized/date';
  \`\`\`

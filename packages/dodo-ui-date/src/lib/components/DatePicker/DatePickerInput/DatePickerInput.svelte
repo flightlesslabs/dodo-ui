@@ -20,12 +20,11 @@
 
 <script lang="ts">
   import { DatePicker, type DateFieldInputProps, type DatePickerTriggerProps } from 'bits-ui';
-  import type { ComponentSize } from '$lib/attributes/size.js';
-  import type { ComponentRoundnessShape } from '$lib/attributes/roundness.js';
   import Icon from '@iconify/svelte';
   import Segments from './Segments.svelte';
-  import InputEnclosure from '../../InputEnclosure/InputEnclosure.svelte';
   import type { DatePickerFormat } from './utils.js';
+  import type { ComponentSize, ComponentRoundnessShape } from '@flightlesslabs/dodo-ui';
+  import { InputEnclosure } from '@flightlesslabs/dodo-ui';
 
   let {
     size = 'normal',

@@ -1,7 +1,4 @@
 <script lang="ts" module>
-  import type { ComponentRoundnessShape } from '$lib/attributes/roundness.js';
-  import type { ComponentSize } from '$lib/attributes/size.js';
-
   export type DatePickerProps = DatePickerRootPropsWithoutHTML & {
     /** Visual size token (e.g. small, normal, large) */
     size?: ComponentSize;
@@ -84,6 +81,7 @@
   import DatePickerPopup, {
     type DatePickerPopupProps,
   } from './DatePickerPopup/DatePickerPopup.svelte';
+  import type { ComponentSize, ComponentRoundnessShape } from '@flightlesslabs/dodo-ui';
 
   let {
     size = 'normal',
