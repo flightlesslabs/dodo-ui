@@ -1,0 +1,88 @@
+# createDate
+
+A centralized date factory built on top of `dayjs`.
+
+This utility ensures **consistent parsing, timezone handling, and validation** across your application.
+
+## 📦 Import
+
+```ts
+import { createDate } from '@flightlesslabs/dodo-ui';
+```
+
+## 🚀 Basic Usage
+
+### Current Date
+
+```ts
+const now = createDate();
+console.log(now.format());
+```
+
+
+### Parse a Date
+
+```ts
+const date = createDate("01-02-2025", "DD-MM-YYYY");
+console.log(date.format());
+```
+
+## 🌍 Timezone & UTC
+
+### UTC Mode
+
+```ts
+const utcDate = createDate("2025-01-01T12:00:00Z", undefined, {
+  utc: true,
+});
+```
+
+### Timezone Conversion
+
+```ts
+const indiaTime = createDate("01-01-2025", "DD-MM-YYYY", {
+  timezone: "Asia/Kolkata",
+});
+```
+
+## ⚙️ Options
+
+```ts
+interface CreateDateOptions {
+  timezone?: string;
+  utc?: boolean;
+  strict?: boolean;
+  throwOnInvalid?: boolean;
+}
+```
+
+## 🔁 Behavior Priority
+
+1. utc (highest priority)
+2. timezone
+3. local
+
+### timezone
+
+- IANA timezone string
+- Interprets input in given timezone
+
+### utc
+
+- Forces UTC mode
+
+### strict
+
+- Only applies when format is provided
+- Has no effect on ISO / timestamps
+
+### throwOnInvalid
+
+- Throws error if date is invalid
+
+## 📥 Supported Inputs
+
+- string
+- number (timestamp)
+- Date object
+- undefined

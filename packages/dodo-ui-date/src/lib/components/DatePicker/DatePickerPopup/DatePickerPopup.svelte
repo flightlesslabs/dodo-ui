@@ -1,7 +1,4 @@
 <script lang="ts" module>
-  import type { CardProps } from '$lib/components/Layout/Card/Card.svelte';
-  import { useThemeContext } from '$lib/components/Layout/Theme/ThemeSystem/context.js';
-
   export type DatePickerPopupProps = DatePickerContentProps & Omit<CardProps, 'children' | 'ref'>;
 </script>
 
@@ -9,6 +6,7 @@
   import { DatePicker, type DatePickerContentProps } from 'bits-ui';
   import Header from './Header.svelte';
   import CalendarGrid from './CalendarGrid.svelte';
+  import { type CardProps, useThemeContext } from '@flightlesslabs/dodo-ui';
   let {
     roundness = 1,
     outline = false,

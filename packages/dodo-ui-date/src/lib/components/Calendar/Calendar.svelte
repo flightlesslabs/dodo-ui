@@ -1,7 +1,4 @@
 <script lang="ts" module>
-  import type { CardProps } from '$lib/components/Layout/Card/Card.svelte';
-  import { useThemeContext } from '$lib/components/Layout/Theme/ThemeSystem/context.js';
-
   export type CalendarProps = Omit<CalendarSingleRootProps, 'type'> &
     Omit<CardProps, 'children' | 'ref'>;
 </script>
@@ -10,6 +7,7 @@
   import { Calendar as CalendarBitsUi, type CalendarSingleRootProps } from 'bits-ui';
   import Header from './Header.svelte';
   import CalendarGrid from './CalendarGrid/CalendarGrid.svelte';
+  import { useThemeContext, type CardProps } from '@flightlesslabs/dodo-ui';
   let {
     roundness = 1,
     outline = true,

@@ -2,19 +2,40 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
   import { CalendarDate, type DateValue } from '@internationalized/date';
+  import { type CalendarProps, Calendar } from '@flightlesslabs/dodo-ui-date';
+
   import {
-    type CalendarProps,
     ComponentShadowOptions,
     componentVariantOptions,
     componentRoundnessOptions,
     componentThemeColorsOptions,
-    Calendar,
     cardColorOptions,
     Theme,
   } from '@flightlesslabs/dodo-ui';
 
   const description = `
  a plug and play Calendar component based on bits-ui [calendar](https://bits-ui.com/docs/components/calendar).
+
+## 🚀 Installation
+
+ \`\`\`bash
+pnpm add @internationalized/date @flightlesslabs/dodo-ui-date
+ \`\`\`
+
+## 🎨 Add Styles
+
+ Import global styles in your root component. use the root layout (+layout.svelte) for SvelteKit.
+
+ \`\`\`ts
+ import '@flightlesslabs/dodo-ui-date/styles/main.css';
+ \`\`\`
+
+ or scss
+ \`\`\`ts
+import '@flightlesslabs/dodo-ui-date/styles/main.scss';
+ \`\`\`
+
+## ✨ Usage
 
  \`\`\`ts
  import { Calendar } from '@flightlesslabs/dodo-ui';

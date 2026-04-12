@@ -1,0 +1,93 @@
+# createDateFactory
+
+A **factory function** that creates a `createDate` utility with an optional custom `dayjs` instance.
+
+This allows advanced users to:
+
+- Inject their own configured `dayjs`
+- Share plugins across multiple libraries
+- Avoid global `dayjs.extend` pollution
+- Create isolated date environments
+
+## 📦 Import
+
+```ts
+import { createDateFactory } from '@flightlesslabs/dodo-ui';
+```
+
+## 🚀 Basic Usage
+
+### Default Factory
+
+```ts
+import { createDateFactory } from '@flightlesslabs/dodo-ui';
+
+const { createDate } = createDateFactory();
+
+const now = createDate();
+console.log(now.format());
+```
+
+## 🧠 Why Use a Factory?
+
+Instead of relying on global `dayjs.extend`, you can:
+
+- isolate plugin setups
+- avoid conflicts in monorepos
+- support multiple configurations
+- improve testability
+
+
+## 🔌 Custom Dayjs Instance
+
+### Inject your own configured instance
+
+```ts
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+const { createDate } = createDateFactory(dayjs);
+
+const date = createDate("2025-01-01", "YYYY-MM-DD");
+```
+
+## ⚙️ Behavior
+
+The factory wraps your `dayjs` instance and preserves:
+
+- UTC handling
+- Timezone support
+- Strict parsing
+- Validation options
+
+
+## 🔁 Priority Order
+
+1. utc (highest priority)
+2. timezone
+3. local parsing
+
+
+## 📥 Returned API
+
+```ts
+{
+  createDate: Function,
+  dayjs: DayjsInstance
+}
+```
+
+## 🧪 Example: Multiple Factories
+
+
+```ts
+const factoryA = createDateFactory(dayjsA);
+const factoryB = createDateFactory(dayjsB);
+
+factoryA.createDate("2025-01-01");
+factoryB.createDate("2025-01-01");
+```

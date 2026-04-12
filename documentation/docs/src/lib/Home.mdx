@@ -20,10 +20,8 @@ import item from '../../package.json?raw';
 ## 🚀 Installation
 
 ```bash
-pnpm add bits-ui @internationalized/date @flightlesslabs/dodo-ui
+pnpm add bits-ui @flightlesslabs/dodo-ui
 ```
-
-We are using **bits-ui@{JSON.parse(item).dependencies['bits-ui']}** internally
 
 ## 🎨 Add Styles
 
@@ -32,6 +30,12 @@ Import global styles in your root component. use the root layout (`+layout.svelt
 ```ts
 import '@flightlesslabs/dodo-ui/styles/global.css';
 import '@flightlesslabs/dodo-ui/styles/components.css';
+```
+
+or scss
+```ts
+import '@flightlesslabs/dodo-ui/styles/global/index.scss';
+import '@flightlesslabs/dodo-ui/styles/components.scss';
 ```
 
 ## 🌗 Theme Setup
@@ -48,7 +52,7 @@ import { Theme } from '@flightlesslabs/dodo-ui';
 
 Recommended: Place this in your root layout (`+layout.svelte`) for SvelteKit.
 
-✨ Usage
+## ✨ Usage
 
 Start by importing components like [Button](?path=/docs/components-form-button--docs).
 
