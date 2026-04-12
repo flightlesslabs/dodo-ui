@@ -6,8 +6,6 @@ import item from '../../package.json?raw';
 
 # Dodo UI
 
-<h3 style={{ fontWeight: 500 }}>v{JSON.parse(item)?.version}</h3>
-
 <h3 style={{ fontWeight: 400 }}>
   Opinionated UI framework for Svelte, based on [Bits UI](https://bits-ui.com/)
 </h3>
@@ -25,7 +23,7 @@ import item from '../../package.json?raw';
 pnpm add bits-ui @internationalized/date @flightlesslabs/dodo-ui
 ```
 
-We are using **bits-ui@{JSON.parse(item).devDependencies['bits-ui']}** internally
+We are using **bits-ui@{JSON.parse(item).dependencies['bits-ui']}** internally
 
 ## 🎨 Add Styles
 

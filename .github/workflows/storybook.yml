@@ -3,7 +3,7 @@ name: Deploy Storybook to GitHub Pages
 on:
   push:
     branches:
-      - main # Adjust if using a different default branch
+      - main
 
 permissions:
   contents: write
@@ -30,8 +30,11 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Build UI Packages
+        run: pnpm --filter @flightlesslabs/* build
+
       - name: Build Storybook
-        run: pnpm --filter @documentation/docs build
+        run: pnpm --filter @documentation/docs... build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4

@@ -1,5 +1,5 @@
-@use '../src/lib/styles/global/index.scss';
-@use '../src/lib/styles/components.scss';
+@forward '@flightlesslabs/dodo-ui/styles/global/index.scss';
+@forward '@flightlesslabs/dodo-ui/styles/components.scss';
 
 html {
   font-family: 'Nunito', sans-serif;
