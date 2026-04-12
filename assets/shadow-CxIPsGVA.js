@@ -1,1 +1,0 @@
-import{n as e}from"./chunk-BneVvdWh.js";var t,n,r=e((()=>{t={all:[0,1,2,3,4,5]},n=t.all}));export{r as n,n as t};
