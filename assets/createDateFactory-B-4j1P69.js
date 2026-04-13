@@ -38,7 +38,7 @@ dayjs.extend(timezone);
 
 const { createDate } = createDateFactory(dayjs);
 
-const date = createDate("2025-01-01", "YYYY-MM-DD");
+const date = createDate('2025-01-01', 'YYYY-MM-DD');
 `})}),`
 `,(0,o.jsx)(t.h2,{id:`️-behavior`,children:`⚙️ Behavior`}),`
 `,(0,o.jsxs)(t.p,{children:[`The factory wraps your `,(0,o.jsx)(t.code,{children:`dayjs`}),` instance and preserves:`]}),`
@@ -64,6 +64,6 @@ const date = createDate("2025-01-01", "YYYY-MM-DD");
 `,(0,o.jsx)(t.pre,{children:(0,o.jsx)(t.code,{className:`language-ts`,children:`const factoryA = createDateFactory(dayjsA);
 const factoryB = createDateFactory(dayjsB);
 
-factoryA.createDate("2025-01-01");
-factoryB.createDate("2025-01-01");
+factoryA.createDate('2025-01-01');
+factoryB.createDate('2025-01-01');
 `})})]})}function a(e={}){let{wrapper:t}={...n(),...e.components};return t?(0,o.jsx)(t,{...e,children:(0,o.jsx)(i,{...e})}):i(e)}var o;e((()=>{o=t(),r()}))();export{a as default};

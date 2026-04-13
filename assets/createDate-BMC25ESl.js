@@ -10,18 +10,18 @@ import{n as e}from"./chunk-BneVvdWh.js";import{t}from"./jsx-runtime-6sF1Ejqi.js"
 console.log(now.format());
 `})}),`
 `,(0,o.jsx)(t.h3,{id:`parse-a-date`,children:`Parse a Date`}),`
-`,(0,o.jsx)(t.pre,{children:(0,o.jsx)(t.code,{className:`language-ts`,children:`const date = createDate("01-02-2025", "DD-MM-YYYY");
+`,(0,o.jsx)(t.pre,{children:(0,o.jsx)(t.code,{className:`language-ts`,children:`const date = createDate('01-02-2025', 'DD-MM-YYYY');
 console.log(date.format());
 `})}),`
 `,(0,o.jsx)(t.h2,{id:`-timezone--utc`,children:`🌍 Timezone & UTC`}),`
 `,(0,o.jsx)(t.h3,{id:`utc-mode`,children:`UTC Mode`}),`
-`,(0,o.jsx)(t.pre,{children:(0,o.jsx)(t.code,{className:`language-ts`,children:`const utcDate = createDate("2025-01-01T12:00:00Z", undefined, {
+`,(0,o.jsx)(t.pre,{children:(0,o.jsx)(t.code,{className:`language-ts`,children:`const utcDate = createDate('2025-01-01T12:00:00Z', undefined, {
   utc: true,
 });
 `})}),`
 `,(0,o.jsx)(t.h3,{id:`timezone-conversion`,children:`Timezone Conversion`}),`
-`,(0,o.jsx)(t.pre,{children:(0,o.jsx)(t.code,{className:`language-ts`,children:`const indiaTime = createDate("01-01-2025", "DD-MM-YYYY", {
-  timezone: "Asia/Kolkata",
+`,(0,o.jsx)(t.pre,{children:(0,o.jsx)(t.code,{className:`language-ts`,children:`const indiaTime = createDate('01-01-2025', 'DD-MM-YYYY', {
+  timezone: 'Asia/Kolkata',
 });
 `})}),`
 `,(0,o.jsx)(t.h2,{id:`️-options`,children:`⚙️ Options`}),`

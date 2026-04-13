@@ -1,1 +1,0 @@
-import{c as e,g as t}from"./theming-DNCYVDb9.js";e();export{t as color};

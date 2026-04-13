@@ -9,15 +9,12 @@ import{n as e}from"./chunk-BneVvdWh.js";import{t}from"./jsx-runtime-6sF1Ejqi.js"
 `})}),`
 `,(0,o.jsx)(t.h2,{id:`-resolve-with-value`,children:`🎯 Resolve with Value`}),`
 `,(0,o.jsx)(t.p,{children:`You can optionally pass a value that will be returned after the delay.`}),`
-`,(0,o.jsx)(t.pre,{children:(0,o.jsx)(t.code,{className:`language-ts`,children:`const result = await timeout(500, "done");
+`,(0,o.jsx)(t.pre,{children:(0,o.jsx)(t.code,{className:`language-ts`,children:`const result = await timeout(500, 'done');
 
 console.log(result); // "done"
 `})}),`
 `,(0,o.jsx)(t.h2,{id:`️-api`,children:`⚙️ API`}),`
-`,(0,o.jsx)(t.pre,{children:(0,o.jsx)(t.code,{className:`language-ts`,children:`function timeout<T = void>(
-  milliseconds: number,
-  value?: T
-): Promise<T>
+`,(0,o.jsx)(t.pre,{children:(0,o.jsx)(t.code,{className:`language-ts`,children:`function timeout<T = void>(milliseconds: number, value?: T): Promise<T>;
 `})}),`
 `,(0,o.jsx)(t.h3,{id:`milliseconds`,children:(0,o.jsx)(t.code,{children:`milliseconds`})}),`
 `,(0,o.jsxs)(t.ul,{children:[`
@@ -42,11 +39,11 @@ console.log(result); // "done"
 `,(0,o.jsx)(t.h2,{id:`-examples`,children:`🔍 Examples`}),`
 `,(0,o.jsx)(t.h3,{id:`async-flow`,children:`Async Flow`}),`
 `,(0,o.jsx)(t.pre,{children:(0,o.jsx)(t.code,{className:`language-ts`,children:`async function run() {
-  console.log("Start");
+  console.log('Start');
 
-await timeout(1000);
+  await timeout(1000);
 
-console.log("End");
+  console.log('End');
 }
 `})}),`
 `,(0,o.jsx)(t.h3,{id:`with-data`,children:`With Data`}),`
