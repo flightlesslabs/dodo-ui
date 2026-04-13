@@ -12,8 +12,6 @@ import { timeout } from '@flightlesslabs/dodo-ui';
 
 ## 🚀 Basic Usage
 
-
-
 ```ts
 await timeout(1000); // waits 1 second
 ```
@@ -23,7 +21,7 @@ await timeout(1000); // waits 1 second
 You can optionally pass a value that will be returned after the delay.
 
 ```ts
-const result = await timeout(500, "done");
+const result = await timeout(500, 'done');
 
 console.log(result); // "done"
 ```
@@ -31,10 +29,7 @@ console.log(result); // "done"
 ## ⚙️ API
 
 ```ts
-function timeout<T = void>(
-  milliseconds: number,
-  value?: T
-): Promise<T>
+function timeout<T = void>(milliseconds: number, value?: T): Promise<T>;
 ```
 
 ### `milliseconds`
@@ -67,11 +62,11 @@ await timeout(-1); // ❌ throws Error
 
 ```ts
 async function run() {
-  console.log("Start");
+  console.log('Start');
 
-await timeout(1000);
+  await timeout(1000);
 
-console.log("End");
+  console.log('End');
 }
 ```
 

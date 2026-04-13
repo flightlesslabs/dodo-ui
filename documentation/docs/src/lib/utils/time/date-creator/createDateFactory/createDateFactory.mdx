@@ -37,7 +37,6 @@ Instead of relying on global `dayjs.extend`, you can:
 - support multiple configurations
 - improve testability
 
-
 ## 🔌 Custom Dayjs Instance
 
 ### Inject your own configured instance
@@ -52,7 +51,7 @@ dayjs.extend(timezone);
 
 const { createDate } = createDateFactory(dayjs);
 
-const date = createDate("2025-01-01", "YYYY-MM-DD");
+const date = createDate('2025-01-01', 'YYYY-MM-DD');
 ```
 
 ## ⚙️ Behavior
@@ -64,13 +63,11 @@ The factory wraps your `dayjs` instance and preserves:
 - Strict parsing
 - Validation options
 
-
 ## 🔁 Priority Order
 
 1. utc (highest priority)
 2. timezone
 3. local parsing
-
 
 ## 📥 Returned API
 
@@ -83,11 +80,10 @@ The factory wraps your `dayjs` instance and preserves:
 
 ## 🧪 Example: Multiple Factories
 
-
 ```ts
 const factoryA = createDateFactory(dayjsA);
 const factoryB = createDateFactory(dayjsB);
 
-factoryA.createDate("2025-01-01");
-factoryB.createDate("2025-01-01");
+factoryA.createDate('2025-01-01');
+factoryB.createDate('2025-01-01');
 ```
