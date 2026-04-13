@@ -1,5 +1,18 @@
 # @documentation/docs
 
+## 0.4.0
+
+### Minor Changes
+
+- FormattedNumber and Text components added
+
+### Patch Changes
+
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.25.0
+  - @flightlesslabs/dodo-ui-date@1.0.0
+  - @flightlesslabs/dodo-ui-numeric@1.0.0
+
 ## 0.3.1
 
 ### Patch Changes

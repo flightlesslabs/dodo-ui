@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.25.0
+
+### Minor Changes
+
+- FormattedNumber and Text components added
+
 ## 0.24.2
 
 ### Patch Changes

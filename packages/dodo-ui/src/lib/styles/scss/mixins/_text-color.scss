@@ -1,0 +1,5 @@
+@mixin generate-dodo-ui-text-color($theme) {
+  &--#{$theme} {
+    color: var(--dodo-color-#{$theme}-600);
+  }
+}

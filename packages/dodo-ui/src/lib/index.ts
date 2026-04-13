@@ -134,7 +134,25 @@ export { default as Row, type GridRowProps } from './components/Layout/Grid/Row/
 // Info Components – Public API
 // =====================================================
 
-// ---
+/**
+ * FormattedNumber component and related prop types.
+ */
+export {
+  default as FormattedNumber,
+  type FormattedNumberProps,
+  type FormattedNumberOptions,
+} from './components/Info/FormattedNumber/FormattedNumber.svelte';
+
+/**
+ * Text component and related prop types.
+ */
+export {
+  default as Text,
+  TEXT_COLOR,
+  textColorOptions,
+  type TextColor,
+  type TextProps,
+} from './components/Info/Text/Text.svelte';
 
 // =====================================================
 // utils – Public API
