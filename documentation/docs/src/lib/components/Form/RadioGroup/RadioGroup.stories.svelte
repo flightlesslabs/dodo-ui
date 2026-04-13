@@ -4,9 +4,18 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
 
-  /**
-   * Storybook controls for RadioGroup
-   */
+  const description = `
+ A styled Radio Group component based on bits-ui [radio-group](https://bits-ui.com/docs/components/radio-group). It acts as a container for Radio components
+
+ \`\`\`ts
+ import { RadioGroup, Radio } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+`;
+
+  // ------------------------------
+  // Storybook ArgTypes
+  // ------------------------------
+
   export const RadioGroupArgTypes: Partial<ArgTypes<RadioGroupProps>> = {
     // ------------------------------
     // Core
@@ -33,14 +42,17 @@
     component: RadioGroup,
     tags: ['autodocs'],
     argTypes: RadioGroupArgTypes,
+    parameters: {
+      docs: {
+        description: {
+          component: description,
+        },
+      },
+    },
   });
 
   let myValue = $state<string>('3');
 </script>
-
-<!-- ------------------------------ -->
-<!-- Stories -->
-<!-- ------------------------------ -->
 
 <!-- ------------------------------ -->
 <!-- Stories -->

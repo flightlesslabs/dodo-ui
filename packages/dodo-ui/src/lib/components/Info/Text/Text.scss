@@ -1,0 +1,25 @@
+@use '../../../styles/scss/mixins/text-color' as textComponent;
+
+// ----------------------------------------
+// Config
+// ----------------------------------------
+$dodo-text-themes: neutral, primary, secondary, safe, warning, danger;
+
+// ----------------------------------------
+// Text styles
+// ----------------------------------------
+
+.dodo-ui-Text {
+  font-size: inherit;
+  color: inherit;
+  font-weight: inherit;
+
+  // ----------------------------------------
+  // Theme colors
+  // ----------------------------------------
+  &.color {
+    @each $theme in $dodo-text-themes {
+      @include textComponent.generate-dodo-ui-text-color($theme);
+    }
+  }
+}
