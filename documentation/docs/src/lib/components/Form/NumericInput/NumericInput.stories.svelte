@@ -41,10 +41,12 @@
       table: { category: 'API', subcategory: 'Base' },
     },
     value: {
-      control: { type: 'text' },
+      control: { type: 'number' },
       table: { category: 'API', subcategory: 'Base' },
     },
     name: { table: { category: 'API', subcategory: 'Base' } },
+    locale: { table: { category: 'API', subcategory: 'Base' } },
+    options: { table: { category: 'API', subcategory: 'Base' } },
 
     // ------------------------------
     // State
@@ -101,10 +103,10 @@
     // ------------------------------
     // Events
     // ------------------------------
+    onInput: { table: { category: 'API', subcategory: 'Events' }, action: 'onInput' },
+    onChange: { table: { category: 'API', subcategory: 'Events' }, action: 'onChange' },
     onfocus: { table: { category: 'API', subcategory: 'Events' }, action: 'focus' },
     onblur: { table: { category: 'API', subcategory: 'Events' }, action: 'blur' },
-    oninput: { table: { category: 'API', subcategory: 'Events' }, action: 'input' },
-    onchange: { table: { category: 'API', subcategory: 'Events' }, action: 'change' },
   };
 
   // ------------------------------
@@ -145,6 +147,17 @@
       valueRange: {
         min: 0,
       },
+    },
+  }}
+/>
+
+<Story
+  name="No Comma Grouping"
+  args={{
+    value: 300000,
+    placeholder: 'Type something…',
+    options: {
+      useGrouping: false,
     },
   }}
 />
@@ -225,6 +238,24 @@
     placeholder: 'Type something…',
     options: {
       precision: 4,
+    },
+  }}
+/>
+
+<Story
+  name="onInput (Actions)"
+  args={{
+    onInput: (raw: number | null, formatted: string | null) => {
+      console.log('NumericInput', raw, formatted);
+    },
+  }}
+/>
+
+<Story
+  name="onChange (Actions)"
+  args={{
+    onChange: (raw: number | null, formatted: string | null) => {
+      console.log('NumericInput', raw, formatted);
     },
   }}
 />

@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-numeric
 
+## 0.1.1
+
+### Patch Changes
+
+- Ref removed
+
 ## 0.1.0
 
 ### Minor Changes

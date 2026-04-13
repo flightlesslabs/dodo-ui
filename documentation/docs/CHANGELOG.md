@@ -1,5 +1,13 @@
 # @documentation/docs
 
+## 0.3.1
+
+### Patch Changes
+
+- Numeric input description improved
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-numeric@0.1.1
+
 ## 0.3.0
 
 ### Minor Changes

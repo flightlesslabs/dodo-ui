@@ -6,9 +6,6 @@
     /** Input contents are not used (NumericInput manages its own <input>) */
     children?: never;
 
-    /** Reference to the underlying input element */
-    ref?: HTMLInputElement | null;
-
     /** Visual size token (e.g. small, normal, large) */
     size?: ComponentSize;
 
