@@ -1,24 +1,25 @@
 {
-  "name": "@documentation/docs",
-  "version": "0.3.0",
-  "private": true,
+  "name": "@flightlesslabs/dodo-ui-numeric",
+  "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
+    "build": "vite build && pnpm run prepack",
     "preview": "vite preview",
     "prepare": "svelte-kit sync || echo ''",
-    "prepack": "svelte-kit sync && svelte-package && pnpm run scss && publint",
+    "prepack": "svelte-kit sync && svelte-package && publint",
     "svelte-check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint .",
     "dev": "storybook dev -p 6006",
-    "build": "storybook build && touch ./storybook-static/.nojekyll",
     "check": "pnpm run svelte-check && eslint . && pnpm run lint",
-    "check:fix": "pnpm run svelte-check && eslint . && pnpm run format",
-    "create:component": "node --experimental-strip-types scripts/create-component/create-component.ts"
+    "check:fix": "pnpm run svelte-check && eslint . && pnpm run format"
   },
   "homepage": "https://flightlesslabs.github.io/dodo-ui",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flightlesslabs/dodo-ui.git"
+    "url": "git+https://github.com/flightlesslabs/dodo-ui-numeric.git"
   },
   "license": "MIT",
   "files": [
@@ -34,9 +35,6 @@
     "!src/lib/stories/assets/**/*.jpg",
     "!src/lib/stories/philosophy"
   ],
-  "sideEffects": [
-    "**/*.css"
-  ],
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "type": "module",
@@ -44,22 +42,21 @@
     ".": {
       "types": "./dist/index.d.ts",
       "svelte": "./dist/index.js"
-    },
-    "./styles/global.css": "./dist/styles/global.css",
-    "./styles/components.css": "./dist/styles/components.css",
-    "./styles/*": {
-      "sass": "./dist/styles/*",
-      "default": "./dist/styles/*"
     }
+  },
+  "peerDependencies": {
+    "@flightlesslabs/dodo-ui": "^0.24.2",
+    "bits-ui": "^2.0.0",
+    "svelte": "^5.0.0",
+    "svelte-number-format": "^1.1.1"
   },
   "dependencies": {
     "@flightlesslabs/dodo-ui": "workspace:*",
-    "@flightlesslabs/dodo-ui-date": "workspace:*",
-    "@flightlesslabs/dodo-ui-numeric": "workspace:*",
     "bits-ui": "^2.17.2",
-    "@iconify/svelte": "^5.2.1",
     "svelte": "^5.55.2",
-    "@internationalized/date": "^3.12.0",
     "svelte-number-format": "^1.1.1"
-  }
+  },
+  "keywords": [
+    "svelte"
+  ]
 }

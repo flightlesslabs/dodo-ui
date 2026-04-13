@@ -39,6 +39,8 @@ import '@flightlesslabs/dodo-ui-date/styles/main.scss';
 
  \`\`\`ts
  import { Calendar } from '@flightlesslabs/dodo-ui';
+
+ <Calendar />
  \`\`\`
 `;
 
