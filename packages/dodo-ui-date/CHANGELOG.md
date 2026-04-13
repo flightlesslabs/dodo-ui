@@ -1,6 +1,6 @@
 # @flightlesslabs/dodo-ui-date
 
-## 1.0.0
+## 0.3.5
 
 ### Patch Changes
 
