@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui",
-  "version": "0.24.1",
+  "version": "0.24.2",
   "publishConfig": {
     "access": "public"
   },
@@ -17,7 +17,6 @@
     "lint": "prettier --check . && eslint .",
     "check": "pnpm run svelte-check && eslint . && pnpm run lint",
     "check:fix": "pnpm run svelte-check && eslint . && pnpm run format",
-    "create:component": "node --experimental-strip-types scripts/create-component/create-component.ts",
     "test": "vitest run"
   },
   "homepage": "https://flightlesslabs.github.io/dodo-ui",

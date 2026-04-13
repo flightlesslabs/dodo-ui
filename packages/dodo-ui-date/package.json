@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui-date",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "publishConfig": {
     "access": "public"
   },
@@ -16,8 +16,7 @@
     "lint": "prettier --check . && eslint .",
     "dev": "storybook dev -p 6006",
     "check": "pnpm run svelte-check && eslint . && pnpm run lint",
-    "check:fix": "pnpm run svelte-check && eslint . && pnpm run format",
-    "create:component": "node --experimental-strip-types scripts/create-component/create-component.ts"
+    "check:fix": "pnpm run svelte-check && eslint . && pnpm run format"
   },
   "homepage": "https://flightlesslabs.github.io/dodo-ui",
   "repository": {
@@ -56,7 +55,7 @@
     }
   },
   "peerDependencies": {
-    "@flightlesslabs/dodo-ui": "^0.24.1",
+    "@flightlesslabs/dodo-ui": "^0.24.2",
     "@internationalized/date": "^3.0.0",
     "bits-ui": "^2.0.0",
     "svelte": "^5.0.0"
@@ -66,8 +65,7 @@
     "@internationalized/date": "^3.12.0",
     "bits-ui": "^2.17.2",
     "svelte": "^5.55.2",
-    "@iconify/svelte": "^5.2.1",
-    "dayjs": "^1.11.20"
+    "@iconify/svelte": "^5.2.1"
   },
   "keywords": [
     "svelte"

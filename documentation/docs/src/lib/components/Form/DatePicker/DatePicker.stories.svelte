@@ -34,6 +34,8 @@ import '@flightlesslabs/dodo-ui-date/styles/main.scss';
  import { DatePicker } from '@flightlesslabs/dodo-ui-date';
 
 import { CalendarDate, type DateValue } from '@internationalized/date';
+
+<DatePicker />
  \`\`\`
 `;
 

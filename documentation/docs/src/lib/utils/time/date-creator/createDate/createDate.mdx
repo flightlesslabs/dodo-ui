@@ -19,11 +19,10 @@ const now = createDate();
 console.log(now.format());
 ```
 
-
 ### Parse a Date
 
 ```ts
-const date = createDate("01-02-2025", "DD-MM-YYYY");
+const date = createDate('01-02-2025', 'DD-MM-YYYY');
 console.log(date.format());
 ```
 
@@ -32,7 +31,7 @@ console.log(date.format());
 ### UTC Mode
 
 ```ts
-const utcDate = createDate("2025-01-01T12:00:00Z", undefined, {
+const utcDate = createDate('2025-01-01T12:00:00Z', undefined, {
   utc: true,
 });
 ```
@@ -40,8 +39,8 @@ const utcDate = createDate("2025-01-01T12:00:00Z", undefined, {
 ### Timezone Conversion
 
 ```ts
-const indiaTime = createDate("01-01-2025", "DD-MM-YYYY", {
-  timezone: "Asia/Kolkata",
+const indiaTime = createDate('01-01-2025', 'DD-MM-YYYY', {
+  timezone: 'Asia/Kolkata',
 });
 ```
 
