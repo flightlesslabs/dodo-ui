@@ -1,25 +1,31 @@
 <script module lang="ts">
-  import { FormattedNumber, type FormattedNumberProps } from '@flightlesslabs/dodo-ui';
+  import { currencyCodes } from '@flightlesslabs/currency';
+  import { Money, type MoneyProps } from '@flightlesslabs/dodo-ui';
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
 
   const description = `
-A lightweight wrapper around 'Intl.NumberFormat' that formats numbers. based on locale and formatting options (currency, percent, unit, etc.).
+Formats numeric values as localized currency using the built-in \`Intl.NumberFormat\` API.
 
 \`\`\`ts
-import { FormattedNumber } from '@flightlesslabs/dodo-ui';
+import { Money } from '@flightlesslabs/dodo-ui';
 \`\`\`
 `;
 
   // ------------------------------
   // Storybook ArgTypes
   // ------------------------------
-  export const storyTextInputArgTypes: Partial<ArgTypes<FormattedNumberProps>> = {
+  export const storyTextInputArgTypes: Partial<ArgTypes<MoneyProps>> = {
     // ------------------------------
     // Core
     // ------------------------------
     value: {
       control: { type: 'number' },
+      table: { category: 'API', subcategory: 'Base' },
+    },
+    currency: {
+      control: { type: 'select' },
+      options: currencyCodes,
       table: { category: 'API', subcategory: 'Base' },
     },
     locale: { table: { category: 'API', subcategory: 'Base' } },
@@ -30,7 +36,7 @@ import { FormattedNumber } from '@flightlesslabs/dodo-ui';
   // Storybook Meta
   // ------------------------------
   const { Story } = defineMeta({
-    component: FormattedNumber,
+    component: Money,
     tags: ['autodocs'],
     argTypes: storyTextInputArgTypes,
     parameters: {
@@ -49,46 +55,16 @@ import { FormattedNumber } from '@flightlesslabs/dodo-ui';
 <!-- Stories -->
 <!-- ------------------------------ -->
 
-<Story name="Default" args={{ value: currencyValue }} />
+<Story name="USD" args={{ value: currencyValue, currency: 'USD' }} />
 
-<Story
-  name="Currency INR"
-  args={{
-    value: currencyValue,
-    locale: 'en-IN',
-    options: {
-      style: 'currency',
-      currency: 'INR',
-    },
-  }}
-/>
-
-<Story
-  name="Currency USD"
-  args={{
-    value: currencyValue,
-    locale: 'en-US',
-    options: {
-      style: 'currency',
-      currency: 'USD',
-    },
-  }}
-/>
-
-<Story
-  name="Percent"
-  args={{
-    value: 0.76,
-    options: {
-      style: 'percent',
-    },
-  }}
-/>
+<Story name="Indian Ruppee" args={{ value: currencyValue, currency: 'INR', locale: 'en-IN' }} />
 
 <Story
   name="No Decimals"
   args={{
+    locale: 'en-IN',
     value: currencyValue,
+    currency: 'INR',
     options: {
       maximumFractionDigits: 0,
     },
@@ -98,32 +74,11 @@ import { FormattedNumber } from '@flightlesslabs/dodo-ui';
 <Story
   name="No Commas"
   args={{
+    locale: 'en-IN',
     value: currencyValue,
+    currency: 'INR',
     options: {
       useGrouping: false,
-    },
-  }}
-/>
-
-<Story
-  name="Kilometers"
-  args={{
-    value: 50,
-    options: {
-      style: 'unit',
-      unit: 'kilometer',
-      unitDisplay: 'long',
-    },
-  }}
-/>
-
-<Story
-  name="Celsius"
-  args={{
-    value: 50,
-    options: {
-      style: 'unit',
-      unit: 'celsius',
     },
   }}
 />

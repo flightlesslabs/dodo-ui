@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui
 
+## 0.26.0
+
+### Minor Changes
+
+- \### Changed
+  - FormattedNumber class and ref removed
+  - Money component added
+
 ## 0.25.0
 
 ### Minor Changes
