@@ -167,29 +167,7 @@ export {
 // utils – Public API
 // =====================================================
 
-// =====================================================
-// time – Public API
-// =====================================================
-
-/**
- * createDateFactory and related prop types.
- */
-export { createDateFactory } from './utils/time/date-creator/createDateFactory/createDateFactory.js';
-export type {
-  CreateDateInput,
-  CreateDateFormat,
-  CreateDateOptions,
-} from './utils/time/date-creator/createDateFactory/types.js';
-
-/**
- * createDate and related prop types.
- */
-export { createDate } from './utils/time/date-creator/createDate/createDate.js';
-
-/**
- * timeout and related prop types.
- */
-export { timeout } from './utils/time/timeout/timeout.js';
+// ---
 
 // =====================================================
 // attributes – Public API

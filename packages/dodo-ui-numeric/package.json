@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui-numeric",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "publishConfig": {
     "access": "public"
   },
@@ -45,7 +45,7 @@
     }
   },
   "peerDependencies": {
-    "@flightlesslabs/dodo-ui": "^0.26.0",
+    "@flightlesslabs/dodo-ui": "^0.27.0",
     "bits-ui": "^2.0.0",
     "svelte": "^5.0.0",
     "svelte-number-format": "^1.1.1"
