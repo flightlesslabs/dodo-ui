@@ -9,19 +9,9 @@
 
   export interface FormattedNumberProps {
     /**
-     * Additional CSS class names to apply to the wrapper element.
-     */
-    class?: string;
-
-    /**
-     * Reference to the underlying <span> element.
-     * Useful for DOM access (e.g. measuring, focusing, etc.).
-     */
-    ref?: HTMLSpanElement | null;
-
-    /**
-     * Locale used for formatting.
-     * Controls number grouping, decimal separators, and currency style.
+     * BCP 47 locale used for number formatting.
+     *
+     * Controls grouping, decimal separators, and currency formatting rules.
      *
      * @example "en-US", "en-IN", "fr-FR"
      * @default "en-US"
@@ -54,25 +44,15 @@
 </script>
 
 <script lang="ts">
-  let {
-    class: className = '',
-    ref = $bindable(null),
-    locale = 'en-US',
-    options,
-    value,
-  }: FormattedNumberProps = $props();
+  let { locale = 'en-US', options, value }: FormattedNumberProps = $props();
 
   /**
    * Memoized Intl.NumberFormat instance.
    * Recomputes when locale or options change.
    */
   let formatter = $derived(new Intl.NumberFormat(locale, options));
-
-  const classes = $derived(['dodo-ui-FormattedNumber', className].filter(Boolean));
 </script>
 
-<span bind:this={ref} class={classes.join(' ')}>
-  {#if value !== null && value !== undefined}
-    {formatter.format(value)}
-  {/if}
-</span>
+{#if value !== null && value !== undefined}
+  {formatter.format(value)}
+{/if}

@@ -154,6 +154,15 @@ export {
   type TextProps,
 } from './components/Info/Text/Text.svelte';
 
+/**
+ * Money component and related prop types.
+ */
+export {
+  default as Money,
+  type MoneyProps,
+  type MoneyOptions,
+} from './components/Info/Money/Money.svelte';
+
 // =====================================================
 // utils – Public API
 // =====================================================
