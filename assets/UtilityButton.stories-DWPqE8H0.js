@@ -21,7 +21,7 @@ import{n as e}from"./chunk-BneVvdWh.js";import{A as t,Ct as n,K as r,N as i,O as
 </Theme>`}}}),T(s(x,2),{name:`Dark Theme`,asChild:!0,globals:{backgrounds:{value:`dark`}},children:(e,t)=>{f(e,{type:`dark`,children:(e,t)=>{p(e,{children:(e,t)=>{u(),a(e,i(`Click me!`))},$$slots:{default:!0}})},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Theme type="dark">
   <UtilityButton>Click me!</UtilityButton>
 </Theme>`}}}),a(e,n),o()}var S,C,w,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z;e((()=>{n(),d(),_(),c(),g(),S=`
- A flexible small sized button component based on bits-ui [button](https://bits-ui.com/docs/components/button).
+ A flexible small sized button component based.
 
  \`\`\`ts
  import { UtilityButton } from '@flightlesslabs/dodo-ui';

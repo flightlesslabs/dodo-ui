@@ -11,7 +11,7 @@ import{n as e}from"./chunk-BneVvdWh.js";import{A as t,Ct as n,K as r,O as i,lt a
 </Theme>`}}}),S(o(v,2),{name:`Dark Theme`,asChild:!0,globals:{backgrounds:{value:`dark`}},children:(e,t)=>{d(e,{type:`dark`,children:(e,t)=>{u(e,{placeholder:`Type something…`})},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Theme type="dark">
   <TextInput placeholder="Type something…" />
 </Theme>`}}}),i(e,n),a()}var y,b,x,S,C,w,T,E,D,O,k,A,j,M,N,P,F,I,L;e((()=>{n(),h(),l(),s(),m(),y=`
-  Input box with powers ⚡
+  Input box with super powers ⚡
 
  \`\`\`ts
  import { TextInput } from '@flightlesslabs/dodo-ui';

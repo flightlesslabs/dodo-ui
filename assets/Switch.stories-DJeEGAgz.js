@@ -1,4 +1,4 @@
-import{n as e}from"./chunk-BneVvdWh.js";import{$ as t,A as n,Ct as r,I as i,K as a,N as o,O as s,Z as c,lt as l,q as u,t as d,ut as f,vt as p}from"./client-Bd_pqFlz.js";import{M as m,S as h,c as g,j as _,l as v,n as y,r as b,s as x,t as S,x as C}from"./create-runtime-stories-XdMiYN-8.js";import{r as w,t as T}from"./dist-DXZFH604.js";function E(e,t){f(t,!0);var n=M(),r=a(n);A(r,{name:`Default`,args:{id:`Default`},children:(e,t)=>{p(),s(e,o(`Check this text`))},$$slots:{default:!0},parameters:{docs:{description:{story:`------------------------------`}},__svelteCsf:{rawCode:`<Switch {...args}>
+import{n as e}from"./chunk-BneVvdWh.js";import{$ as t,A as n,Ct as r,I as i,K as a,N as o,O as s,Z as c,lt as l,q as u,t as d,ut as f,vt as p}from"./client-Bd_pqFlz.js";import{M as m,S as h,c as g,j as _,l as v,n as y,r as b,s as x,t as S,x as C}from"./create-runtime-stories-XdMiYN-8.js";import{r as w,t as T}from"./dist-BERmByRE.js";function E(e,t){f(t,!0);var n=M(),r=a(n);A(r,{name:`Default`,args:{id:`Default`},children:(e,t)=>{p(),s(e,o(`Check this text`))},$$slots:{default:!0},parameters:{docs:{description:{story:`------------------------------`}},__svelteCsf:{rawCode:`<Switch {...args}>
   Check this text
 </Switch>`}}});var d=u(r,2);A(d,{name:`Controlled`,asChild:!0,children:(e,t)=>{w(e,{id:`Checked`,get checked(){return i(j)},set checked(e){c(j,e,!0)},children:(e,t)=>{p(),s(e,o(`Check this text`))},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Switch id="Checked" bind:checked={myValue}>Check this text</Switch>`}}});var m=u(d,2);A(m,{name:`Solid`,args:{id:`Solid`,variant:`solid`,checked:!0},children:(e,t)=>{p(),s(e,o(`Check this text`))},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Switch {...args}>
   Check this text
@@ -25,18 +25,7 @@ A Switch/toggle component based on bits-ui [switch](https://bits-ui.com/docs/com
  pnpm add bits-ui @flightlesslabs/dodo-ui-bits
   \`\`\`
 
-## 🎨 Add Styles
-
- Import global styles in your root component. use the root layout (+layout.svelte) for SvelteKit.
-
- \`\`\`ts
- import '@flightlesslabs/dodo-ui-bits/styles/main.css';
- \`\`\`
-
- or scss
- \`\`\`ts
-import '@flightlesslabs/dodo-ui-bits/styles/main.scss';
- \`\`\`
+For full setup (styles, themes, configuration), see the [Getting Started](https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-bits) guide.
 
 ## ✨ Usage
 

@@ -1,4 +1,4 @@
-import{n as e}from"./chunk-BneVvdWh.js";import{$ as t,A as n,Ct as r,I as i,K as a,N as o,O as s,Z as ee,lt as te,q as c,t as l,ut as ne,vt as u}from"./client-Bd_pqFlz.js";import{M as d,S as f,j as p,n as m,r as h,t as g}from"./create-runtime-stories-XdMiYN-8.js";import{a as _,i as v,t as y}from"./dist-DXZFH604.js";function b(e,t){ne(t,!0);var n=z(),r=a(n);w(r,{name:`Default`,asChild:!0,children:(e,t)=>{_(e,{id:`Default`,children:(e,t)=>{var n=E(),r=a(n);v(r,{id:`Default-1`,value:`1`,children:(e,t)=>{u(),s(e,o(`One`))},$$slots:{default:!0}});var i=c(r,2);v(i,{id:`Default-2`,value:`2`,children:(e,t)=>{u(),s(e,o(`Two`))},$$slots:{default:!0}}),v(c(i,2),{id:`Default-3`,value:`3`,children:(e,t)=>{u(),s(e,o(`Three`))},$$slots:{default:!0}}),s(e,n)},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{docs:{description:{story:`------------------------------`}},__svelteCsf:{rawCode:`<RadioGroup id="Default">
+import{n as e}from"./chunk-BneVvdWh.js";import{$ as t,A as n,Ct as r,I as i,K as a,N as o,O as s,Z as ee,lt as te,q as c,t as l,ut as ne,vt as u}from"./client-Bd_pqFlz.js";import{M as d,S as f,j as p,n as m,r as h,t as g}from"./create-runtime-stories-XdMiYN-8.js";import{a as _,i as v,t as y}from"./dist-BERmByRE.js";function b(e,t){ne(t,!0);var n=z(),r=a(n);w(r,{name:`Default`,asChild:!0,children:(e,t)=>{_(e,{id:`Default`,children:(e,t)=>{var n=E(),r=a(n);v(r,{id:`Default-1`,value:`1`,children:(e,t)=>{u(),s(e,o(`One`))},$$slots:{default:!0}});var i=c(r,2);v(i,{id:`Default-2`,value:`2`,children:(e,t)=>{u(),s(e,o(`Two`))},$$slots:{default:!0}}),v(c(i,2),{id:`Default-3`,value:`3`,children:(e,t)=>{u(),s(e,o(`Three`))},$$slots:{default:!0}}),s(e,n)},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{docs:{description:{story:`------------------------------`}},__svelteCsf:{rawCode:`<RadioGroup id="Default">
   <Radio id="Default-1" value="1">One</Radio>
   <Radio id="Default-2" value="2">Two</Radio>
   <Radio id="Default-3" value="3">Three</Radio>
@@ -66,26 +66,17 @@ import{n as e}from"./chunk-BneVvdWh.js";import{$ as t,A as n,Ct as r,I as i,K as
     <Radio id="Dark_theme-3" value="3">Three</Radio>
   </RadioGroup>
 </Theme>`}}}),s(e,n),te()}var x,S,C,w,T,E,D,O,k,A,j,M,N,P,F,I,L,R,re,z,B,V,H,U,W,G,K,q,J,Y,X,Z,Q,ie,ae,$;e((()=>{r(),h(),y(),d(),l(),m(),x=`
-    A styled Radio Group component based on bits-ui [radio-group](https://bits-ui.com/docs/components/radio-group). It acts as a container for Radio components
 
-## 🚀 Installation
+A styled Radio Group component based on bits-ui [radio-group](https://bits-ui.com/docs/components/radio-group). It acts as a container for Radio components
 
-  \`\`\`bash
- pnpm add bits-ui @flightlesslabs/dodo-ui-bits
-  \`\`\`
+ ## 🚀 Installation
 
-## 🎨 Add Styles
+\`\`\`bash
+pnpm add bits-ui @flightlesslabs/dodo-ui-bits
+\`\`\`
 
- Import global styles in your root component. use the root layout (+layout.svelte) for SvelteKit.
+For full setup (styles, themes, configuration), see the [Getting Started](https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-bits) guide.
 
- \`\`\`ts
- import '@flightlesslabs/dodo-ui-bits/styles/main.css';
- \`\`\`
-
- or scss
- \`\`\`ts
-import '@flightlesslabs/dodo-ui-bits/styles/main.scss';
- \`\`\`
 
 ## ✨ Usage
 
