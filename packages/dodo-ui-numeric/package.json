@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui-numeric",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "publishConfig": {
     "access": "public"
   },
@@ -19,7 +19,7 @@
   "homepage": "https://flightlesslabs.github.io/dodo-ui",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flightlesslabs/dodo-ui-numeric.git"
+    "url": "git+https://github.com/flightlesslabs/dodo-ui.git"
   },
   "license": "MIT",
   "files": [
@@ -45,7 +45,7 @@
     }
   },
   "peerDependencies": {
-    "@flightlesslabs/dodo-ui": "^0.27.1",
+    "@flightlesslabs/dodo-ui": "^0.28.0",
     "bits-ui": "^2.0.0",
     "svelte": "^5.0.0",
     "svelte-number-format": "^1.1.1"

@@ -1,14 +1,35 @@
 <script module lang="ts">
-  import type { RadioGroupProps } from '@flightlesslabs/dodo-ui';
-  import { RadioGroup, Radio, Theme } from '@flightlesslabs/dodo-ui';
+  import { Theme } from '@flightlesslabs/dodo-ui';
+  import { Radio, RadioGroup, type RadioGroupProps } from '@flightlesslabs/dodo-ui-bits';
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
 
   const description = `
- A styled Radio Group component based on bits-ui [radio-group](https://bits-ui.com/docs/components/radio-group). It acts as a container for Radio components
+    A styled Radio Group component based on bits-ui [radio-group](https://bits-ui.com/docs/components/radio-group). It acts as a container for Radio components
+
+## 🚀 Installation
+
+  \`\`\`bash
+ pnpm add bits-ui @flightlesslabs/dodo-ui-bits
+  \`\`\`
+
+## 🎨 Add Styles
+
+ Import global styles in your root component. use the root layout (+layout.svelte) for SvelteKit.
 
  \`\`\`ts
- import { RadioGroup, Radio } from '@flightlesslabs/dodo-ui';
+ import '@flightlesslabs/dodo-ui-bits/styles/main.css';
+ \`\`\`
+
+ or scss
+ \`\`\`ts
+import '@flightlesslabs/dodo-ui-bits/styles/main.scss';
+ \`\`\`
+
+## ✨ Usage
+
+ \`\`\`ts
+ import { RadioGroup, Radio } from '@flightlesslabs/dodo-ui-bits';
  \`\`\`
 `;
 

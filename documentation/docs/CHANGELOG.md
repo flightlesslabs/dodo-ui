@@ -1,5 +1,20 @@
 # @documentation/docs
 
+## 0.7.0
+
+### Minor Changes
+
+- Bits UI elements separated
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-numeric@1.0.0
+  - @flightlesslabs/dodo-ui-date@1.0.0
+  - @flightlesslabs/dodo-ui-bits@1.0.0
+  - @flightlesslabs/dodo-ui@0.28.0
+
 ## 0.6.1
 
 ### Patch Changes

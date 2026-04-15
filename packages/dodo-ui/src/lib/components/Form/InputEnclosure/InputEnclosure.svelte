@@ -1,13 +1,12 @@
 <script lang="ts" module>
   import type { Snippet } from 'svelte';
-  import type { HTMLAttributes } from 'svelte/elements';
 
-  interface InputEnclosureBaseProps {
+  export interface InputEnclosureProps {
     /** InputEnclosure contents (typically an input or control slot) */
     children?: Snippet;
 
     /** Reference to the underlying root div element */
-    ref?: HTMLDivElement;
+    ref?: HTMLDivElement | null;
 
     /** Visual size token (e.g. small, normal, large) */
     size?: ComponentSize;
@@ -55,8 +54,6 @@
      */
     after?: Snippet;
   }
-
-  export type InputEnclosureProps = InputEnclosureBaseProps & HTMLAttributes<HTMLDivElement>;
 </script>
 
 <script lang="ts">
@@ -75,7 +72,7 @@
     focused = false,
     before,
     after,
-    ref = $bindable<HTMLDivElement>(),
+    ref = $bindable(null),
     ...restProps
   }: InputEnclosureProps = $props();
 

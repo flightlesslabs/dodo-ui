@@ -1,5 +1,14 @@
 # @flightlesslabs/dodo-ui-numeric
 
+## 0.2.2
+
+### Patch Changes
+
+- Fix git entry
+- Bits UI elements separated
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.28.0
+
 ## 0.2.1
 
 ### Patch Changes

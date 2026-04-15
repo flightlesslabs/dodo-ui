@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.28.0
+
+### Minor Changes
+
+- Bits UI elements separated
+
 ## 0.27.1
 
 ### Patch Changes

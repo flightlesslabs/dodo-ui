@@ -2,9 +2,9 @@
   import type { Snippet } from 'svelte';
 
   /**
-   * Public props for Radio
+   * Public props for Switch
    */
-  export type RadioProps = RadioGroupItemProps & {
+  export type SwitchProps = SwitchRootProps & {
     /** Custom CSS class names */
     class?: string;
 
@@ -17,8 +17,8 @@
     /** Color theme token */
     color?: ComponentColor;
 
-    /** Border radius token (0–3, "pill", ""full) */
-    roundness?: ComponentRoundness;
+    /** Border radius token (0–3, "pill") */
+    roundness?: ComponentRoundnessShape;
 
     /** Visual variant (e.g. solid, text) */
     variant?: ComponentVariant;
@@ -29,13 +29,14 @@
 </script>
 
 <script lang="ts">
-  import { RadioGroup, type RadioGroupItemProps } from 'bits-ui';
-  import type { ComponentSize } from '$lib/attributes/size.js';
-  import type { ComponentColor } from '$lib/attributes/color.js';
-  import type { ComponentRoundness } from '$lib/attributes/roundness.js';
-  import type { ComponentVariant } from '$lib/attributes/variant.js';
-  import Icon from '@iconify/svelte';
-  import Label from '../../Label/Label.svelte';
+  import { Switch as SwitchBitUi, type SwitchRootProps } from 'bits-ui';
+  import { Label } from '@flightlesslabs/dodo-ui';
+  import type {
+    ComponentSize,
+    ComponentColor,
+    ComponentRoundnessShape,
+    ComponentVariant,
+  } from '@flightlesslabs/dodo-ui';
 
   let {
     class: className = '',
@@ -43,19 +44,21 @@
     name,
     size = 'normal',
     color = 'neutral',
-    roundness = 'full',
+    roundness = 'pill',
     id,
     outline = true,
     variant = 'text',
+    checked = $bindable(false),
+    ref = $bindable(null),
     ...restProps
-  }: RadioProps = $props();
+  }: SwitchProps = $props();
 
   /**
    * Computed class list
    */
   const classes = $derived(
     [
-      'dodo-ui-Radio',
+      'dodo-ui-Switch',
       `size--${size}`,
       `color--${color}`,
       `variant--${variant}`,
@@ -66,22 +69,29 @@
   );
 
   const classesCheckEnclosure = $derived(
-    ['CheckEnclosure', `color--${color}`, `variant--${variant}`, outline && 'outline'].filter(
-      Boolean,
-    ),
+    [
+      'CheckEnclosure',
+      'CheckEnclosureBackdrop',
+      `color--${color}`,
+      `variant--${variant}`,
+      outline && 'outline',
+    ].filter(Boolean),
   );
 </script>
 
 <div class={classes.join(' ')}>
-  <RadioGroup.Item {...restProps} {name} {id} class={classesCheckEnclosure.join(' ')}>
-    {#snippet children({ checked })}
-      <div class="CheckComponentCheckContainer">
-        {#if checked}
-          <Icon icon="material-symbols:circle" />
-        {/if}
-      </div>
-    {/snippet}
-  </RadioGroup.Item>
+  <SwitchBitUi.Root
+    {...restProps}
+    bind:checked
+    bind:ref
+    {name}
+    {id}
+    class={classesCheckEnclosure.join(' ')}
+  >
+    <SwitchBitUi.Thumb class="CheckThumb">
+      <span class="CheckThumbInternal"></span>
+    </SwitchBitUi.Thumb>
+  </SwitchBitUi.Root>
 
   {#if children}
     <Label class="CheckComponentLabel" for={id}>{@render children?.()}</Label>

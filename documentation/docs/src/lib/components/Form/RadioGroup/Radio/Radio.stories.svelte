@@ -2,14 +2,12 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
   import {
-    type RadioProps,
     componentColorOptions,
     componentVariantOptions,
     componentSizeOptions,
     componentRoundnessOptions,
-    Radio,
-    RadioGroup,
   } from '@flightlesslabs/dodo-ui';
+  import { Radio, RadioGroup, type RadioProps } from '@flightlesslabs/dodo-ui-bits';
 
   /**
    * Storybook controls for Radio

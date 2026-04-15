@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui-date",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "publishConfig": {
     "access": "public"
   },
@@ -21,7 +21,7 @@
   "homepage": "https://flightlesslabs.github.io/dodo-ui",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flightlesslabs/dodo-ui-date.git"
+    "url": "git+https://github.com/flightlesslabs/dodo-ui.git"
   },
   "license": "MIT",
   "files": [
@@ -55,7 +55,7 @@
     }
   },
   "peerDependencies": {
-    "@flightlesslabs/dodo-ui": "^0.27.1",
+    "@flightlesslabs/dodo-ui": "^0.28.0",
     "@internationalized/date": "^3.0.0",
     "bits-ui": "^2.0.0",
     "svelte": "^5.0.0"

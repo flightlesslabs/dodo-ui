@@ -24,9 +24,8 @@
 
 <script lang="ts">
   import { Combobox, type ComboboxInputProps, type ComboboxTriggerProps } from 'bits-ui';
-  import InputEnclosure from '../InputEnclosure/InputEnclosure.svelte';
-  import type { ComponentSize } from '$lib/attributes/size.js';
-  import type { ComponentRoundnessShape } from '$lib/attributes/roundness.js';
+  import { InputEnclosure, type ComponentSize } from '@flightlesslabs/dodo-ui';
+  import type { ComponentRoundnessShape } from '@flightlesslabs/dodo-ui';
   import Icon from '@iconify/svelte';
   import type { SelectOption } from './Select.svelte';
 

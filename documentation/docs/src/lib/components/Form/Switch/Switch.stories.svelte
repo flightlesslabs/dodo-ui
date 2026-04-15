@@ -2,20 +2,43 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
   import {
-    type SwitchProps,
     componentColorOptions,
     componentVariantOptions,
     componentSizeOptions,
     componenRoundnessShapeOptions,
     Theme,
-    Switch,
   } from '@flightlesslabs/dodo-ui';
+  import type { SwitchProps } from '@flightlesslabs/dodo-ui-bits';
+  import { Switch } from '@flightlesslabs/dodo-ui-bits';
 
   const description = `
- A Switch/toggle component based on bits-ui [switch](https://bits-ui.com/docs/components/switch).
+A Switch/toggle component based on bits-ui [switch](https://bits-ui.com/docs/components/switch).
+
+## 🚀 Installation
+
+  \`\`\`bash
+ pnpm add bits-ui @flightlesslabs/dodo-ui-bits
+  \`\`\`
+
+## 🎨 Add Styles
+
+ Import global styles in your root component. use the root layout (+layout.svelte) for SvelteKit.
 
  \`\`\`ts
- import { Switch } from '@flightlesslabs/dodo-ui';
+ import '@flightlesslabs/dodo-ui-bits/styles/main.css';
+ \`\`\`
+
+ or scss
+ \`\`\`ts
+import '@flightlesslabs/dodo-ui-bits/styles/main.scss';
+ \`\`\`
+
+## ✨ Usage
+
+ \`\`\`ts
+ import { Switch } from '@flightlesslabs/dodo-ui-bits';
+
+ <Switch />
  \`\`\`
 `;
 
