@@ -61,6 +61,12 @@
     /** is select searchable */
     searchable?: boolean;
 
+    /** is select clearable. */
+    clearable?: boolean;
+
+    /** onclear event */
+    onclear?: () => void;
+
     /** Select placeholder */
     placeholder?: string;
 
@@ -101,6 +107,7 @@
     after,
     options,
     searchable = false,
+    clearable = false,
     open = $bindable(false),
     value = $bindable(undefined),
     placeholder,
@@ -108,6 +115,7 @@
     comboboxInputProps,
     comboboxTriggerProps,
     searchResultPlaceholder,
+    onclear,
     ...restProps
   }: SelectProps = $props();
 
@@ -138,7 +146,8 @@
   }}
 >
   <SelectInput
-    {value}
+    bind:value
+    {onclear}
     {options}
     {size}
     {roundness}
@@ -153,6 +162,7 @@
     {comboboxTriggerProps}
     {placeholder}
     {searchable}
+    {clearable}
     {updateOpenState}
     bind:searchValue
     bind:ref={customAnchor}

@@ -2,28 +2,8 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
   import { componentSizeOptions, componentRoundnessOptions, Theme } from '@flightlesslabs/dodo-ui';
-  import type { SelectProps } from '@flightlesslabs/dodo-ui-bits';
-  import { Select } from '@flightlesslabs/dodo-ui-bits';
-
-  const description = `
- A searchable Select component based on bits-ui [combobox](https://bits-ui.com/docs/components/combobox).
-
- ## 🚀 Installation
-
-   \`\`\`bash
-  pnpm add bits-ui @flightlesslabs/dodo-ui-bits
-   \`\`\`
-
- For full setup (styles, themes, configuration), see the [Getting Started](https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-bits) guide.
-
-## ✨ Usage
-
- \`\`\`ts
- import { Select } from '@flightlesslabs/dodo-ui-bits';
-
- <Select />
- \`\`\`
-`;
+  import type { SelectProps } from './Select.svelte';
+  import Select from './Select.svelte';
 
   const options = [
     { value: 'one', label: 'One' },
@@ -138,13 +118,6 @@
     argTypes: storySelectArgTypes,
     args: {
       options,
-    },
-    parameters: {
-      docs: {
-        description: {
-          component: description,
-        },
-      },
     },
   });
 

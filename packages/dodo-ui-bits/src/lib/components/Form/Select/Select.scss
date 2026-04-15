@@ -15,6 +15,10 @@
     font-size: 1.5em;
   }
 
+  .SelectClear {
+    font-size: 1.25em;
+  }
+
   // ----------------------------------------
   // Sizes
   // ----------------------------------------
@@ -23,17 +27,29 @@
       button[data-combobox-trigger] {
         margin: 0 calc(var(--dodo-ui-space) / 2.5);
       }
+
+      .SelectClear {
+        margin-left: calc(var(--dodo-ui-space) / 2.5);
+      }
     }
 
     &--small {
       button[data-combobox-trigger] {
         margin: 0 calc(var(--dodo-ui-space--small) / 2.5);
       }
+
+      .SelectClear {
+        margin-left: calc(var(--dodo-ui-space--small) / 2.5);
+      }
     }
 
     &--large {
       button[data-combobox-trigger] {
         margin: 0 calc(var(--dodo-ui-space--large) / 2.5);
+      }
+
+      .SelectClear {
+        margin-left: calc(var(--dodo-ui-space--large) / 2.5);
       }
     }
   }
@@ -66,5 +82,9 @@
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
+  }
+
+  .NoResults {
+    padding: var(--dodo-ui-space);
   }
 }
