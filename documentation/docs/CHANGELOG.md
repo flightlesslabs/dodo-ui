@@ -1,5 +1,11 @@
 # @documentation/docs
 
+## 0.7.3
+
+### Patch Changes
+
+- Packages page added
+
 ## 0.7.2
 
 ### Patch Changes
