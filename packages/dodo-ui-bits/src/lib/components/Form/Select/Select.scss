@@ -40,14 +40,9 @@
 }
 
 .SelectPopup {
-  --SelectPopup-width-default: calc(
-    var(--dodo-ui-element-height-normal) / 1.2 + var(--bits-combobox-anchor-width) +
-      var(--dodo-ui-space)
-  );
-
-  width: var(--SelectPopup-width, var(--SelectPopup-width-default));
+  width: var(--SelectPopup-width, var(--bits-combobox-anchor-width));
   height: var(--SelectPopup-height, initial);
-  min-width: var(--SelectPopup-min-width, var(--SelectPopup-width-default));
+  min-width: var(--SelectPopup-min-width, var(--bits-combobox-anchor-width));
   min-height: var(--SelectPopup-min-height, initial);
   max-width: var(--SelectPopup-max-width, initial);
   max-height: var(--SelectPopup-max-height, 400px);

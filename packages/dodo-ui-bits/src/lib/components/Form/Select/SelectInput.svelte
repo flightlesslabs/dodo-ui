@@ -2,6 +2,7 @@
   import type { Snippet } from 'svelte';
 
   export type SelectInputProps = {
+    ref: HTMLDivElement | null;
     options: SelectOption[];
     value: string | undefined;
     size?: ComponentSize;
@@ -46,6 +47,7 @@
     updateOpenState,
     value,
     options,
+    ref = $bindable(null),
     ...restProps
   }: SelectInputProps = $props();
 
@@ -82,6 +84,7 @@
   {error}
   class={classes.join(' ')}
   focused={forcedFocused || isFocused}
+  bind:ref
   {...restProps}
 >
   <Combobox.Input
