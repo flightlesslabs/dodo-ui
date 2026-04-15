@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-date
 
+## 0.4.3
+
+### Patch Changes
+
+- ef3c3d3: Datepicker anchor fixed
+
 ## 0.4.2
 
 ### Patch Changes
