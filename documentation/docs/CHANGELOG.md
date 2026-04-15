@@ -1,5 +1,11 @@
 # @documentation/docs
 
+## 0.7.2
+
+### Patch Changes
+
+- Installation documents updated
+
 ## 0.7.1
 
 ### Patch Changes

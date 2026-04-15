@@ -11,7 +11,7 @@
   } from '@flightlesslabs/dodo-ui';
 
   const description = `
- A flexible small sized button component based on bits-ui [button](https://bits-ui.com/docs/components/button).
+ A flexible small sized button component based.
 
  \`\`\`ts
  import { UtilityButton } from '@flightlesslabs/dodo-ui';

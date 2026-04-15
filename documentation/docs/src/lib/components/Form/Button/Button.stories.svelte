@@ -12,7 +12,8 @@
   } from '@flightlesslabs/dodo-ui';
 
   const description = `
- A flexible Button component based on bits-ui [button](https://bits-ui.com/docs/components/button).
+ A flexible Button component .
+
  \`\`\`ts
  import { Button } from '@flightlesslabs/dodo-ui';
  \`\`\`

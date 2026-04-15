@@ -10,7 +10,7 @@
   import type { ArgTypes } from 'storybook/internal/csf';
 
   const description = `
-  Input box with powers ⚡
+  Input box with super powers ⚡
 
  \`\`\`ts
  import { TextInput } from '@flightlesslabs/dodo-ui';

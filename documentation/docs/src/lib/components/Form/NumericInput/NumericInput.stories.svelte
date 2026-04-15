@@ -14,6 +14,8 @@
  pnpm add svelte-number-format @flightlesslabs/dodo-ui-numeric
   \`\`\`
 
+For full setup (styles, themes, configuration), see the [Getting Started](https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-numeric) guide.
+
 ## ✨ Usage
 
  \`\`\`ts
