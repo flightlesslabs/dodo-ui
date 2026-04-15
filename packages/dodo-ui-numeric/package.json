@@ -46,13 +46,11 @@
   },
   "peerDependencies": {
     "@flightlesslabs/dodo-ui": "^0.28.0",
-    "bits-ui": "^2.0.0",
     "svelte": "^5.0.0",
     "svelte-number-format": "^1.1.1"
   },
   "dependencies": {
     "@flightlesslabs/dodo-ui": "workspace:*",
-    "bits-ui": "^2.17.2",
     "svelte": "^5.55.2",
     "svelte-number-format": "^1.1.1"
   },

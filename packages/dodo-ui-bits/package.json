@@ -56,7 +56,6 @@
   },
   "dependencies": {
     "@flightlesslabs/dodo-ui": "workspace:*",
-    "@flightlesslabs/currency": "^0.2.1",
     "@iconify/svelte": "^5.2.1",
     "bits-ui": "^2.17.2",
     "svelte": "^5.55.2"
