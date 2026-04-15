@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui-date
 
+## 0.4.4
+
+### Patch Changes
+
+- Storybook added
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.28.1
+
 ## 0.4.3
 
 ### Patch Changes

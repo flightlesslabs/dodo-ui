@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui-numeric",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "publishConfig": {
     "access": "public"
   },
@@ -12,9 +12,9 @@
     "svelte-check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint .",
-    "dev": "storybook dev -p 6006",
     "check": "pnpm run svelte-check && eslint . && pnpm run lint",
-    "check:fix": "pnpm run svelte-check && eslint . && pnpm run format"
+    "check:fix": "pnpm run svelte-check && eslint . && pnpm run format",
+    "dev": "storybook dev"
   },
   "homepage": "https://flightlesslabs.github.io/dodo-ui",
   "repository": {
@@ -45,7 +45,7 @@
     }
   },
   "peerDependencies": {
-    "@flightlesslabs/dodo-ui": "^0.28.0",
+    "@flightlesslabs/dodo-ui": "^0.28.1",
     "svelte": "^5.0.0",
     "svelte-number-format": "^1.1.1"
   },

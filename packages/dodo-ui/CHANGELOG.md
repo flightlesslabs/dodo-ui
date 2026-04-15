@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.28.1
+
+### Patch Changes
+
+- Text color modified
+
 ## 0.28.0
 
 ### Minor Changes

@@ -6,12 +6,27 @@
 $dodo-text-themes: neutral, primary, secondary, safe, warning, danger;
 
 // ----------------------------------------
+// Theme tokens (global CSS variables)
+// ----------------------------------------
+:root {
+  @each $theme in $dodo-text-themes {
+    @include textComponent.generate-dodo-ui-text-colors($theme, light);
+  }
+}
+
+.dodo-theme--dark {
+  @each $theme in $dodo-text-themes {
+    @include textComponent.generate-dodo-ui-text-colors($theme, dark);
+  }
+}
+
+// ----------------------------------------
 // Text styles
 // ----------------------------------------
 
 .dodo-ui-Text {
   font-size: inherit;
-  color: inherit;
+  color: var(--dodo-color-neutral-900);
   font-weight: inherit;
 
   // ----------------------------------------

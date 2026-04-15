@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui-numeric
 
+## 0.2.3
+
+### Patch Changes
+
+- Storybook added
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.28.1
+
 ## 0.2.2
 
 ### Patch Changes
