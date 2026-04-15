@@ -7,6 +7,7 @@ An extension for Dodo UI that provides accessible date and time components power
 - 📚 Docs: https://flightlesslabs.github.io/dodo-ui-date
 - 💻 GitHub: https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-date
 - 📦 npm: https://www.npmjs.com/package/@flightlesslabs/dodo-ui-date
+- 📝 Changelog: https://github.com/flightlesslabs/dodo-ui/blob/main/packages/dodo-ui-date/CHANGELOG.md
 
 ## 🚀 Installation
 
