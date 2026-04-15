@@ -7,6 +7,7 @@ An extension for Dodo UI that provides advanced, accessible components powered b
 - 📚 Docs: https://flightlesslabs.github.io/dodo-ui-bits
 - 💻 GitHub: https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-bits
 - 📦 npm: https://www.npmjs.com/package/@flightlesslabs/dodo-ui-bits
+- 📝 Changelog: https://github.com/flightlesslabs/dodo-ui/blob/main/packages/dodo-ui-bits/CHANGELOG.md
 
 ## 🚀 Installation
 

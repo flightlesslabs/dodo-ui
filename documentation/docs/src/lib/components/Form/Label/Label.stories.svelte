@@ -3,6 +3,15 @@
   import type { ArgTypes } from 'storybook/internal/csf';
   import { type LabelProps, Label, TextInput } from '@flightlesslabs/dodo-ui';
 
+  const description = `
+
+a no-frills label component
+
+ \`\`\`ts
+ import { Label } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+`;
+
   /**
    * Storybook controls for Label
    */
@@ -14,6 +23,13 @@
     component: Label,
     tags: ['autodocs'],
     argTypes: LabelArgTypes,
+    parameters: {
+      docs: {
+        description: {
+          component: description,
+        },
+      },
+    },
   });
 </script>
 

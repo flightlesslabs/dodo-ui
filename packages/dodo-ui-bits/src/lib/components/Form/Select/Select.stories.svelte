@@ -1,44 +1,60 @@
 <script module lang="ts">
-  import {
-    type TextInputProps,
-    componentSizeOptions,
-    componentRoundnessOptions,
-    TextInput,
-    Theme,
-  } from '@flightlesslabs/dodo-ui';
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
+  import { componentSizeOptions, componentRoundnessOptions, Theme } from '@flightlesslabs/dodo-ui';
+  import type { SelectProps } from './Select.svelte';
+  import Select from './Select.svelte';
 
-  const description = `
-  Input box with super powers ⚡
-
- \`\`\`ts
- import { TextInput } from '@flightlesslabs/dodo-ui';
- \`\`\`
-`;
+  const options = [
+    { value: 'one', label: 'One' },
+    { value: 'two', label: 'Two' },
+    { value: 'three', label: 'Three' },
+    { value: 'four', label: 'Four' },
+    { value: 'five', label: 'Five' },
+    { value: 'six', label: 'Six' },
+    { value: 'seven', label: 'Seven' },
+    { value: 'eight', label: 'Eight' },
+    { value: 'nine', label: 'Nine' },
+    { value: 'ten', label: 'Ten' },
+    { value: 'eleven', label: 'Eleven' },
+    { value: 'twelve', label: 'Twelve' },
+    { value: 'thirteen', label: 'Thirteen' },
+    { value: 'fourteen', label: 'Fourteen' },
+    { value: 'fifteen', label: 'Fifteen' },
+    { value: 'sixteen', label: 'Sixteen' },
+    { value: 'seventeen', label: 'Seventeen' },
+    { value: 'eighteen', label: 'Eighteen' },
+    { value: 'nineteen', label: 'Nineteen' },
+    { value: 'twenty', label: 'Twenty' },
+    { value: 'twentyOne', label: 'Twenty One' },
+    { value: 'twentyTwo', label: 'Twenty Two' },
+    { value: 'twentyThree', label: 'Twenty Three' },
+    { value: 'twentyFour', label: 'Twenty Four' },
+    { value: 'twentyFive', label: 'Twenty Five' },
+  ];
 
   // ------------------------------
   // Storybook ArgTypes
   // ------------------------------
-  export const storyTextInputArgTypes: Partial<ArgTypes<TextInputProps>> = {
-    children: {
-      table: { disable: true },
-      control: false,
-    },
-
+  export const storySelectArgTypes: Partial<ArgTypes<SelectProps>> = {
     // ------------------------------
     // Core
     // ------------------------------
     class: { table: { category: 'API', subcategory: 'Base' } },
-    placeholder: {
-      control: { type: 'text' },
-      table: { category: 'API', subcategory: 'Base' },
-    },
     value: {
       control: { type: 'text' },
       table: { category: 'API', subcategory: 'Base' },
     },
     name: { table: { category: 'API', subcategory: 'Base' } },
+    options: { table: { category: 'API', subcategory: 'Base' } },
+    searchable: {
+      control: { type: 'boolean' },
+      table: { category: 'API', subcategory: 'Base' },
+    },
+    clearable: {
+      control: { type: 'boolean' },
+      table: { category: 'API', subcategory: 'Base' },
+    },
 
     // ------------------------------
     // State
@@ -97,59 +113,55 @@
   // Storybook Meta
   // ------------------------------
   const { Story } = defineMeta({
-    component: TextInput,
+    component: Select,
     tags: ['autodocs'],
-    argTypes: storyTextInputArgTypes,
-    parameters: {
-      docs: {
-        description: {
-          component: description,
-        },
-      },
+    argTypes: storySelectArgTypes,
+    args: {
+      options,
     },
   });
+
+  let myValue = $state<string | undefined>(options[1].value);
+  let myValue2 = $state<string | undefined>(options[2].value);
 </script>
 
 <!-- ------------------------------ -->
 <!-- Stories -->
 <!-- ------------------------------ -->
 
-<Story name="Default" args={{ placeholder: 'Type something…' }} />
+<Story name="Default" args={{ placeholder: 'Select an option' }} />
 
-<Story name="Focused" args={{ placeholder: 'Focused state…', focused: true }} />
+<Story name="Searchable" args={{ searchable: true, placeholder: 'Search a number' }} />
 
-<Story name="Error" args={{ placeholder: 'Error state…', error: true }} />
+<Story
+  name="Clearable"
+  args={{ searchable: true, clearable: true, value: myValue2, placeholder: 'Search a number' }}
+/>
 
-<Story name="Large" args={{ placeholder: 'Type something…', size: 'large' }} />
-
-<Story name="Pill Shape" args={{ placeholder: 'Type something…', roundness: 'pill' }} />
-
-<Story name="Disabled" args={{ placeholder: 'Disabled state…', disabled: true }} />
-
-<Story name="With Before (Prefix Icon)" asChild>
-  <TextInput placeholder="Search…">
-    {#snippet before()}
-      <span style="color: #888; padding-left: 8px">🔍</span>
-    {/snippet}
-  </TextInput>
+<Story name="Controlled" asChild>
+  <Select {options} bind:value={myValue} />
 </Story>
 
-<Story name="With After (Suffix Text)" asChild>
-  <TextInput placeholder="Website">
-    {#snippet after()}
-      <span style="color: #888; padding-right: 8px">.com</span>
-    {/snippet}
-  </TextInput>
-</Story>
+<Story
+  name="OnChange (Actions)"
+  args={{
+    onValueChange: (val: string) => {
+      alert('OnChange');
+      console.log('OnChange', val);
+    },
+  }}
+/>
+
+<Story name="Disabled" args={{ placeholder: 'Select an option', disabled: true }} />
 
 <Story name="Light Theme" asChild>
   <Theme type="light">
-    <TextInput placeholder="Type something…" />
+    <Select {options} />
   </Theme>
 </Story>
 
 <Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
   <Theme type="dark">
-    <TextInput placeholder="Type something…" />
+    <Select {options} popupProps={{ theme: 'dark' }} />
   </Theme>
 </Story>

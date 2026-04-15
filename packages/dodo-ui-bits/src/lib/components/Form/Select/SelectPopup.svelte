@@ -80,7 +80,7 @@
           {option.label}
         </Combobox.Item>
       {:else}
-        <span>{searchResultPlaceholder}</span>
+        <div class="NoResults">{searchResultPlaceholder}</div>
       {/each}
     </Combobox.Viewport>
     <Combobox.ScrollDownButton>

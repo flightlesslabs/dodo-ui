@@ -19,18 +19,7 @@
  pnpm add bits-ui @flightlesslabs/dodo-ui-bits
   \`\`\`
 
-## 🎨 Add Styles
-
- Import global styles in your root component. use the root layout (+layout.svelte) for SvelteKit.
-
- \`\`\`ts
- import '@flightlesslabs/dodo-ui-bits/styles/main.css';
- \`\`\`
-
- or scss
- \`\`\`ts
-import '@flightlesslabs/dodo-ui-bits/styles/main.scss';
- \`\`\`
+For full setup (styles, themes, configuration), see the [Getting Started](https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-bits) guide.
 
 ## ✨ Usage
 

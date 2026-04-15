@@ -5,26 +5,17 @@
   import type { ArgTypes } from 'storybook/internal/csf';
 
   const description = `
-    A styled Radio Group component based on bits-ui [radio-group](https://bits-ui.com/docs/components/radio-group). It acts as a container for Radio components
 
-## 🚀 Installation
+A styled Radio Group component based on bits-ui [radio-group](https://bits-ui.com/docs/components/radio-group). It acts as a container for Radio components
 
-  \`\`\`bash
- pnpm add bits-ui @flightlesslabs/dodo-ui-bits
-  \`\`\`
+ ## 🚀 Installation
 
-## 🎨 Add Styles
+\`\`\`bash
+pnpm add bits-ui @flightlesslabs/dodo-ui-bits
+\`\`\`
 
- Import global styles in your root component. use the root layout (+layout.svelte) for SvelteKit.
+For full setup (styles, themes, configuration), see the [Getting Started](https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-bits) guide.
 
- \`\`\`ts
- import '@flightlesslabs/dodo-ui-bits/styles/main.css';
- \`\`\`
-
- or scss
- \`\`\`ts
-import '@flightlesslabs/dodo-ui-bits/styles/main.scss';
- \`\`\`
 
 ## ✨ Usage
 

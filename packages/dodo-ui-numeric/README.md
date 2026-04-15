@@ -7,6 +7,7 @@ An extension for Dodo UI that provides formatted numeric input components powere
 - 📚 Docs: https://flightlesslabs.github.io/dodo-ui-numeric
 - 💻 GitHub: https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-numeric
 - 📦 npm: https://www.npmjs.com/package/@flightlesslabs/dodo-ui-numeric
+- 📝 Changelog: https://github.com/flightlesslabs/dodo-ui/blob/main/packages/dodo-ui-numeric/CHANGELOG.md
 
 ## 🚀 Installation
 

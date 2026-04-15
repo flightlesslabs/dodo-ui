@@ -1,5 +1,25 @@
 # @documentation/docs
 
+## 0.7.4
+
+### Patch Changes
+
+- Select clerable option added. storybook support added
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-bits@0.1.2
+
+## 0.7.3
+
+### Patch Changes
+
+- Packages page added
+
+## 0.7.2
+
+### Patch Changes
+
+- Installation documents updated
+
 ## 0.7.1
 
 ### Patch Changes

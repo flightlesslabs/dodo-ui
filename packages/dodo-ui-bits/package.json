@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui-bits",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publishConfig": {
     "access": "public"
   },
@@ -16,7 +16,8 @@
     "lint": "prettier --check . && eslint .",
     "check": "pnpm run svelte-check && eslint . && pnpm run lint",
     "check:fix": "pnpm run svelte-check && eslint . && pnpm run format",
-    "test": "vitest run"
+    "test": "vitest run",
+    "dev": "storybook dev"
   },
   "homepage": "https://flightlesslabs.github.io/dodo-ui",
   "repository": {
@@ -30,7 +31,12 @@
     "!dist/**/*.spec.*",
     "src/lib",
     "!src/lib/**/*.test.*",
-    "!src/lib/**/*.spec.*"
+    "!src/lib/**/*.spec.*",
+    "!src/lib/stories/**/*.stories.*",
+    "!src/lib/stories/**/*.mdx",
+    "!src/lib/stories/assets/**/*.png",
+    "!src/lib/stories/assets/**/*.jpg",
+    "!src/lib/stories/philosophy"
   ],
   "sideEffects": [
     "**/*.css"

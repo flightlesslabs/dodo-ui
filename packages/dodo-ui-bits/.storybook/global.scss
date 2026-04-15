@@ -1,0 +1,17 @@
+@forward '@flightlesslabs/dodo-ui/styles/global/index.scss';
+@forward '@flightlesslabs/dodo-ui/styles/components.scss';
+@forward '../src/lib/styles/main.scss';
+
+html {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+}
+
+:where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)),
+:where(li:not(.sb-anchor, .sb-unstyled, .sb-unstyled li)) {
+  font-size: max(1em, 16px) !important;
+}
+
+pre.prismjs {
+  font-size: max(1em, 16px) !important;
+}

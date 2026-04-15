@@ -10,22 +10,11 @@
 
 ## 🚀 Installation
 
-  \`\`\`bash
- pnpm add bits-ui @flightlesslabs/dodo-ui-bits
-  \`\`\`
+   \`\`\`bash
+  pnpm add bits-ui @flightlesslabs/dodo-ui-bits
+   \`\`\`
 
-## 🎨 Add Styles
-
- Import global styles in your root component. use the root layout (+layout.svelte) for SvelteKit.
-
- \`\`\`ts
- import '@flightlesslabs/dodo-ui-bits/styles/main.css';
- \`\`\`
-
- or scss
- \`\`\`ts
-import '@flightlesslabs/dodo-ui-bits/styles/main.scss';
- \`\`\`
+ For full setup (styles, themes, configuration), see the [Getting Started](https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-bits) guide.
 
 ## ✨ Usage
 
@@ -79,6 +68,10 @@ import '@flightlesslabs/dodo-ui-bits/styles/main.scss';
     name: { table: { category: 'API', subcategory: 'Base' } },
     options: { table: { category: 'API', subcategory: 'Base' } },
     searchable: {
+      control: { type: 'boolean' },
+      table: { category: 'API', subcategory: 'Base' },
+    },
+    clearable: {
       control: { type: 'boolean' },
       table: { category: 'API', subcategory: 'Base' },
     },
@@ -156,6 +149,7 @@ import '@flightlesslabs/dodo-ui-bits/styles/main.scss';
   });
 
   let myValue = $state<string | undefined>(options[1].value);
+  let myValue2 = $state<string | undefined>(options[2].value);
 </script>
 
 <!-- ------------------------------ -->
@@ -165,6 +159,11 @@ import '@flightlesslabs/dodo-ui-bits/styles/main.scss';
 <Story name="Default" args={{ placeholder: 'Select an option' }} />
 
 <Story name="Searchable" args={{ searchable: true, placeholder: 'Search a number' }} />
+
+<Story
+  name="Clearable"
+  args={{ searchable: true, clearable: true, value: myValue2, placeholder: 'Search a number' }}
+/>
 
 <Story name="Controlled" asChild>
   <Select {options} bind:value={myValue} />
