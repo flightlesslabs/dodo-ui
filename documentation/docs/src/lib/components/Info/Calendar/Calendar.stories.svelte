@@ -16,7 +16,7 @@
   const description = `
  a plug and play Calendar component based on bits-ui [calendar](https://bits-ui.com/docs/components/calendar).
 
- ## 🚀 Installation
+## 🚀 Installation
 
    \`\`\`bash
   pnpm add bits-ui @internationalized/date @flightlesslabs/dodo-ui-date

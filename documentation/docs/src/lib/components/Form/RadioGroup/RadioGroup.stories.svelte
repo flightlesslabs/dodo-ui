@@ -5,9 +5,10 @@
   import type { ArgTypes } from 'storybook/internal/csf';
 
   const description = `
-    A styled Radio Group component based on bits-ui [radio-group](https://bits-ui.com/docs/components/radio-group). It acts as a container for Radio components
 
-## 🚀 Installation
+A styled Radio Group component based on bits-ui [radio-group](https://bits-ui.com/docs/components/radio-group). It acts as a container for Radio components
+
+ ## 🚀 Installation
 
 \`\`\`bash
 pnpm add bits-ui @flightlesslabs/dodo-ui-bits

@@ -8,7 +8,7 @@
   const description = `
  A searchable Select component based on bits-ui [combobox](https://bits-ui.com/docs/components/combobox).
 
- ## 🚀 Installation
+## 🚀 Installation
 
    \`\`\`bash
   pnpm add bits-ui @flightlesslabs/dodo-ui-bits
