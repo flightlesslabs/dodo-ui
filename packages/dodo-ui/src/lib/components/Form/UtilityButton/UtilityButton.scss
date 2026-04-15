@@ -112,7 +112,8 @@ $roundness: (
   // ----------------------------------------
   // Disabled
   // ----------------------------------------
-  &[disabled] {
+  &[disabled],
+  &[aria-disabled] {
     cursor: not-allowed;
     pointer-events: none;
     background-color: var(--dodo-ui-UtilityButton-disabled-bg);

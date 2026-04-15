@@ -90,11 +90,6 @@
       description: 'Accessible label (required for icon-only buttons)',
       table: { category: 'API', subcategory: 'Accessibility' },
     },
-
-    // ------------------------------
-    // Events (Svelte-style)
-    // ------------------------------
-    onclick: { table: { category: 'API', subcategory: 'Events' }, action: 'click' },
   };
 
   // ------------------------------

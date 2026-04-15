@@ -99,7 +99,7 @@
     {disabled}
     aria-label={ariaLabel}
     class={classes.join(' ')}
-    bind:ref
+    bind:ref={ref as HTMLAnchorElement | null}
     {href}
   />
 {:else}
@@ -108,7 +108,7 @@
     {disabled}
     aria-label={ariaLabel}
     class={classes.join(' ')}
-    bind:ref
+    bind:ref={ref as HTMLButtonElement | null}
     {type}
   />
 {/if}
