@@ -83,8 +83,8 @@
     type ComboboxTriggerProps,
     type SelectSingleRootPropsWithoutHTML,
   } from 'bits-ui';
-  import type { ComponentSize } from '$lib/attributes/size.js';
-  import type { ComponentRoundnessShape } from '$lib/attributes/roundness.js';
+  import type { ComponentSize } from '@flightlesslabs/dodo-ui';
+  import type { ComponentRoundnessShape } from '@flightlesslabs/dodo-ui';
   import SelectInput from './SelectInput.svelte';
   import SelectPopup, { type SelectPopupProps } from './SelectPopup.svelte';
 

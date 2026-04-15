@@ -1,19 +1,38 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import {
-    type SelectProps,
-    Select,
-    componentSizeOptions,
-    componentRoundnessOptions,
-    Theme,
-  } from '@flightlesslabs/dodo-ui';
+  import { componentSizeOptions, componentRoundnessOptions, Theme } from '@flightlesslabs/dodo-ui';
+  import type { SelectProps } from '@flightlesslabs/dodo-ui-bits';
+  import { Select } from '@flightlesslabs/dodo-ui-bits';
 
   const description = `
  A searchable Select component based on bits-ui [combobox](https://bits-ui.com/docs/components/combobox).
 
+## 🚀 Installation
+
+  \`\`\`bash
+ pnpm add bits-ui @flightlesslabs/dodo-ui-bits
+  \`\`\`
+
+## 🎨 Add Styles
+
+ Import global styles in your root component. use the root layout (+layout.svelte) for SvelteKit.
+
  \`\`\`ts
- import { Select } from '@flightlesslabs/dodo-ui';
+ import '@flightlesslabs/dodo-ui-bits/styles/main.css';
+ \`\`\`
+
+ or scss
+ \`\`\`ts
+import '@flightlesslabs/dodo-ui-bits/styles/main.scss';
+ \`\`\`
+
+## ✨ Usage
+
+ \`\`\`ts
+ import { Select } from '@flightlesslabs/dodo-ui-bits';
+
+ <Select />
  \`\`\`
 `;
 

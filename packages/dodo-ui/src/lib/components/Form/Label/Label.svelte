@@ -1,21 +1,23 @@
 <script lang="ts" module>
   import type { Snippet } from 'svelte';
+  import type { HTMLLabelAttributes } from 'svelte/elements';
 
   /**
    * Public props for Label
    */
-  export interface LabelProps extends LabelRootProps {
+  export interface LabelProps extends HTMLLabelAttributes {
     /** Custom CSS class names */
     class?: string;
 
     /** Slot content */
     children?: Snippet;
+
+    /** Reference to the underlying root div element */
+    ref?: HTMLLabelElement | null;
   }
 </script>
 
 <script lang="ts">
-  import { Label as LabelBitUi, type LabelRootProps } from 'bits-ui';
-
   let {
     class: className = '',
     children,
@@ -29,6 +31,6 @@
   const classes = $derived(['dodo-ui-Label', className].filter(Boolean));
 </script>
 
-<LabelBitUi.Root {...restProps} class={classes.join(' ')} bind:ref>
+<label {...restProps} class={classes.join(' ')} bind:this={ref}>
   {@render children?.()}
-</LabelBitUi.Root>
+</label>

@@ -2,9 +2,9 @@
   import type { Snippet } from 'svelte';
 
   /**
-   * Public props for Switch
+   * Public props for Checkbox
    */
-  export type SwitchProps = SwitchRootProps & {
+  export type CheckboxProps = CheckboxRootProps & {
     /** Custom CSS class names */
     class?: string;
 
@@ -29,12 +29,15 @@
 </script>
 
 <script lang="ts">
-  import { Switch as SwitchBitUi, type SwitchRootProps } from 'bits-ui';
-  import Label from '../Label/Label.svelte';
-  import type { ComponentSize } from '$lib/attributes/size.js';
-  import type { ComponentColor } from '$lib/attributes/color.js';
-  import type { ComponentRoundnessShape } from '$lib/attributes/roundness.js';
-  import type { ComponentVariant } from '$lib/attributes/variant.js';
+  import { Checkbox as CheckboxBitUi, type CheckboxRootProps } from 'bits-ui';
+  import Icon from '@iconify/svelte';
+  import { Label } from '@flightlesslabs/dodo-ui';
+  import type {
+    ComponentColor,
+    ComponentRoundnessShape,
+    ComponentVariant,
+    ComponentSize,
+  } from '@flightlesslabs/dodo-ui';
 
   let {
     class: className = '',
@@ -42,21 +45,19 @@
     name,
     size = 'normal',
     color = 'neutral',
-    roundness = 'pill',
+    roundness = 1,
     id,
     outline = true,
     variant = 'text',
     checked = $bindable(false),
+    indeterminate = $bindable(false),
     ref = $bindable(null),
     ...restProps
-  }: SwitchProps = $props();
+  }: CheckboxProps = $props();
 
-  /**
-   * Computed class list
-   */
   const classes = $derived(
     [
-      'dodo-ui-Switch',
+      'dodo-ui-Checkbox',
       `size--${size}`,
       `color--${color}`,
       `variant--${variant}`,
@@ -67,29 +68,32 @@
   );
 
   const classesCheckEnclosure = $derived(
-    [
-      'CheckEnclosure',
-      'CheckEnclosureBackdrop',
-      `color--${color}`,
-      `variant--${variant}`,
-      outline && 'outline',
-    ].filter(Boolean),
+    ['CheckEnclosure', `color--${color}`, `variant--${variant}`, outline && 'outline'].filter(
+      Boolean,
+    ),
   );
 </script>
 
 <div class={classes.join(' ')}>
-  <SwitchBitUi.Root
+  <CheckboxBitUi.Root
     {...restProps}
-    bind:checked
-    bind:ref
     {name}
     {id}
+    bind:checked
+    bind:indeterminate
+    bind:ref
     class={classesCheckEnclosure.join(' ')}
   >
-    <SwitchBitUi.Thumb class="CheckThumb">
-      <span class="CheckThumbInternal"></span>
-    </SwitchBitUi.Thumb>
-  </SwitchBitUi.Root>
+    {#snippet children({ checked, indeterminate })}
+      <div class="CheckComponentCheckContainer">
+        {#if indeterminate}
+          <Icon icon="material-symbols:check-indeterminate-small" />
+        {:else if checked}
+          <Icon icon="material-symbols:check-small" />
+        {/if}
+      </div>
+    {/snippet}
+  </CheckboxBitUi.Root>
 
   {#if children}
     <Label class="CheckComponentLabel" for={id}>{@render children?.()}</Label>

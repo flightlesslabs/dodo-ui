@@ -1,13 +1,13 @@
 # Dodo UI
 
-Opinionated UI framework for Svelte, based on [Bits UI](https://bits-ui.com/)
+Opinionated UI framework for Svelte.
 
 [Github](https://github.com/flightlesslabs/dodo-ui) - [npm](https://www.npmjs.com/package/@flightlesslabs/dodo-ui) - [Changelog](https://github.com/flightlesslabs/dodo-ui/blob/main/packages/dodo-ui/CHANGELOG.md)
 
 ## 🚀 Installation
 
 ```bash
-pnpm add bits-ui @flightlesslabs/dodo-ui
+pnpm add @flightlesslabs/dodo-ui
 ```
 
 ## 🎨 Add Styles

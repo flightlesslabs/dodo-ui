@@ -1,26 +1,13 @@
-import item from '../../package.json?raw';
-
-<main style={{ textAlign: 'center' }}>
-
-<img src="dodo-circle-6.png" style={{ width: 200, height: 'auto' }} />
-
 # Dodo UI
 
-<h3 style={{ fontWeight: 400 }}>
-  Opinionated UI framework for Svelte.
-</h3>
+Opinionated UI framework for Svelte, based on [Bits UI](https://bits-ui.com/)
 
-### [Github](https://github.com/flightlesslabs/dodo-ui) - [npm](https://www.npmjs.com/package/@flightlesslabs/dodo-ui) - [Changelog](https://github.com/flightlesslabs/dodo-ui/blob/main/packages/dodo-ui/CHANGELOG.md)
-
-</main>
-
-<br />
-<br />
+[Github](https://github.com/flightlesslabs/dodo-ui) - [npm](https://www.npmjs.com/package/@flightlesslabs/dodo-ui) - [Changelog](https://github.com/flightlesslabs/dodo-ui/blob/main/packages/dodo-ui/CHANGELOG.md)
 
 ## 🚀 Installation
 
 ```bash
-pnpm add @flightlesslabs/dodo-ui
+pnpm add bits-ui @flightlesslabs/dodo-ui
 ```
 
 ## 🎨 Add Styles
@@ -55,7 +42,7 @@ Recommended: Place this in your root layout (`+layout.svelte`) for SvelteKit.
 
 ## ✨ Usage
 
-Start by importing components like [Button](?path=/docs/components-form-button--docs).
+Start by importing components like Button.
 
 ```ts
 import { Button } '@flightlesslabs/dodo-ui';
@@ -63,8 +50,4 @@ import { Button } '@flightlesslabs/dodo-ui';
 <Button>Hello</Button>
 ```
 
-## Explore more
-
-- [Button](?path=/docs/components-form-button--docs)
-- [TextInput](?path=/docs/components-form-textinput--docs)
-- [Tailwind CSS Color Generator](https://uicolors.app/generate/1cc049)
+[Dodo UI](https://flightlesslabs.github.io/dodo-ui)

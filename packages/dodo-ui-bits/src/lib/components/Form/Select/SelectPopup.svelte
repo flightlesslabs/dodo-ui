@@ -10,8 +10,7 @@
   import { Combobox, type SelectContentProps } from 'bits-ui';
   import Icon from '@iconify/svelte';
   import type { SelectOption } from './Select.svelte';
-  import type { CardProps } from '$lib/components/Layout/Card/Card.svelte';
-  import { useThemeStore } from '$lib/components/Layout/Theme/ThemeSystem/theme.svelte.js';
+  import { useThemeStore, type CardProps } from '@flightlesslabs/dodo-ui';
 
   let {
     options = [],
