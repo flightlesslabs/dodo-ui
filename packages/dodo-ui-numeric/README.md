@@ -1,14 +1,45 @@
 # @flightlesslabs/dodo-ui-numeric
 
-Install the core library first [Dodo UI](https://flightlesslabs.github.io/dodo-ui)
+An extension for Dodo UI that provides formatted numeric input components powered by [svelte-number-format](https://github.com/pitis/svelte-number-format).
+
+## 🔗 Links
+
+- 📚 Docs: https://flightlesslabs.github.io/dodo-ui-numeric
+- 💻 GitHub: https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-numeric
+- 📦 npm: https://www.npmjs.com/package/@flightlesslabs/dodo-ui-numeric
 
 ## 🚀 Installation
 
 ```bash
-pnpm add svelte-number-format @flightlesslabs/dodo-ui-numeric
+pnpm add @flightlesslabs/dodo-ui svelte-number-format @flightlesslabs/dodo-ui-numeric
+```
+
+## 🎨 Add Styles
+
+Import global styles in your root component. use the root layout (`+layout.svelte`) for SvelteKit.
+
+```ts
+// Core (Dodo UI)
+import '@flightlesslabs/dodo-ui/styles/global.css';
+import '@flightlesslabs/dodo-ui/styles/components.css';
+
+// Addon (dodo-ui-numeric)
+import '@flightlesslabs/dodo-ui-numeric/styles/main.css';
+```
+
+or scss
+
+```ts
+// Core (Dodo UI)
+import '@flightlesslabs/dodo-ui/styles/global/index.scss';
+
+// Addon (dodo-ui-numeric)
+import '@flightlesslabs/dodo-ui-numeric/styles/main.scss';
 ```
 
 ## ✨ Usage
+
+Import components from the addon as needed:
 
 ```ts
 import { NumericInput } '@flightlesslabs/dodo-ui-numeric';

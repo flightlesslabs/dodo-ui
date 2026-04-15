@@ -1,13 +1,17 @@
-# Dodo UI
+# @flightlesslabs/dodo-ui-bits
 
-Opinionated UI framework for Svelte, based on [Bits UI](https://bits-ui.com/)
+An extension for Dodo UI that provides advanced, accessible components powered by [Bits UI](https://bits-ui.com/).
 
-[Github](https://github.com/flightlesslabs/dodo-ui) - [npm](https://www.npmjs.com/package/@flightlesslabs/dodo-ui) - [Changelog](https://github.com/flightlesslabs/dodo-ui/blob/main/packages/dodo-ui/CHANGELOG.md)
+## 🔗 Links
+
+- 📚 Docs: https://flightlesslabs.github.io/dodo-ui-bits
+- 💻 GitHub: https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-bits
+- 📦 npm: https://www.npmjs.com/package/@flightlesslabs/dodo-ui-bits
 
 ## 🚀 Installation
 
 ```bash
-pnpm add bits-ui @flightlesslabs/dodo-ui
+pnpm add @flightlesslabs/dodo-ui bits-ui @flightlesslabs/dodo-ui-bits
 ```
 
 ## 🎨 Add Styles
@@ -15,39 +19,30 @@ pnpm add bits-ui @flightlesslabs/dodo-ui
 Import global styles in your root component. use the root layout (`+layout.svelte`) for SvelteKit.
 
 ```ts
+// Core (Dodo UI)
 import '@flightlesslabs/dodo-ui/styles/global.css';
 import '@flightlesslabs/dodo-ui/styles/components.css';
+
+// Addon (dodo-ui-bits)
+import '@flightlesslabs/dodo-ui-bits/styles/main.css';
 ```
 
 or scss
 
 ```ts
+// Core (Dodo UI)
 import '@flightlesslabs/dodo-ui/styles/global/index.scss';
-import '@flightlesslabs/dodo-ui/styles/components.scss';
+
+// Addon (dodo-ui-bits)
+import '@flightlesslabs/dodo-ui-bits/styles/main.scss';
 ```
-
-## 🌗 Theme Setup
-
-Wrap your application with the [Theme](?path=/docs/components-layout-theme--docs) component at the root level.
-
-```ts
-import { Theme } from '@flightlesslabs/dodo-ui';
-
-<Theme global>
-  <!-- Your app -->
-</Theme>
-```
-
-Recommended: Place this in your root layout (`+layout.svelte`) for SvelteKit.
 
 ## ✨ Usage
 
-Start by importing components like Button.
+Import components from the addon as needed:
 
 ```ts
-import { Button } '@flightlesslabs/dodo-ui';
+import { Checkbox } '@flightlesslabs/dodo-ui-bits';
 
-<Button>Hello</Button>
+<Checkbox />
 ```
-
-[Dodo UI](https://flightlesslabs.github.io/dodo-ui)
