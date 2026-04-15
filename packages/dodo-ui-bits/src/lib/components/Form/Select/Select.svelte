@@ -122,6 +122,8 @@
       ? options
       : options.filter((option) => option.label.toLowerCase().includes(searchValue.toLowerCase())),
   );
+
+  let customAnchor = $state<HTMLDivElement | null>(null);
 </script>
 
 <Combobox.Root
@@ -153,6 +155,7 @@
     {searchable}
     {updateOpenState}
     bind:searchValue
+    bind:ref={customAnchor}
   />
-  <SelectPopup options={filteredOptions} {searchResultPlaceholder} {...popupProps} />
+  <SelectPopup options={filteredOptions} {searchResultPlaceholder} {...popupProps} {customAnchor} />
 </Combobox.Root>

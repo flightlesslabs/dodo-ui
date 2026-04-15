@@ -105,6 +105,8 @@
     popupProps,
     ...restProps
   }: DatePickerProps = $props();
+
+  let customAnchor = $state<HTMLDivElement | null>(null);
 </script>
 
 <DatePickerBitsUi.Root
@@ -129,6 +131,7 @@
     {after}
     {placeholder}
     {dateFormat}
+    bind:ref={customAnchor}
   />
-  <DatePickerPopup {...popupProps} />
+  <DatePickerPopup {...popupProps} {customAnchor} />
 </DatePickerBitsUi.Root>

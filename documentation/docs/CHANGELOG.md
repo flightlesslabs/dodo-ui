@@ -1,5 +1,14 @@
 # @documentation/docs
 
+## 0.7.1
+
+### Patch Changes
+
+- Updated dependencies [73f114a]
+- Updated dependencies [ef3c3d3]
+  - @flightlesslabs/dodo-ui-bits@0.1.1
+  - @flightlesslabs/dodo-ui-date@0.4.3
+
 ## 0.7.0
 
 ### Minor Changes

@@ -2,6 +2,7 @@
   import type { Snippet } from 'svelte';
 
   export type DatePickerInputProps = {
+    ref: HTMLDivElement | null;
     size?: ComponentSize;
     roundness?: ComponentRoundnessShape;
     outline?: boolean;
@@ -38,6 +39,7 @@
     dateFieldInputProps,
     datePickerTriggerProps,
     dateFormat = 'dd/mm/yyyy',
+    ref = $bindable(null),
     ...restProps
   }: DatePickerInputProps = $props();
 
@@ -72,6 +74,7 @@
   {error}
   class={classes.join(' ')}
   focused={forcedFocused || isFocused}
+  bind:ref
   {...restProps}
 >
   <DatePicker.Input
