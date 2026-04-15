@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.27.1
+
+### Patch Changes
+
+- Button bits ui dependency removed
+
 ## 0.27.0
 
 ### Minor Changes

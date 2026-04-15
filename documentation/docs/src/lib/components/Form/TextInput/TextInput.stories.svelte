@@ -91,14 +91,6 @@
       table: { category: 'API', subcategory: 'Slots' },
       description: 'Content rendered after the input',
     },
-
-    // ------------------------------
-    // Events
-    // ------------------------------
-    onfocus: { table: { category: 'API', subcategory: 'Events' }, action: 'focus' },
-    onblur: { table: { category: 'API', subcategory: 'Events' }, action: 'blur' },
-    oninput: { table: { category: 'API', subcategory: 'Events' }, action: 'input' },
-    onchange: { table: { category: 'API', subcategory: 'Events' }, action: 'change' },
   };
 
   // ------------------------------

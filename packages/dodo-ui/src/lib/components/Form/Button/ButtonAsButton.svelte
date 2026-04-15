@@ -1,24 +1,25 @@
 <script lang="ts" module>
   import type { HTMLButtonAttributes } from 'svelte/elements';
+  import type { Snippet } from 'svelte';
 
-  export type ButtonAsButtonProps = ButtonRootPropsWithoutHTML &
-    WithoutChildren<Omit<HTMLButtonAttributes, 'type' | 'href'>> & {
-      type?: HTMLButtonAttributes['type'];
-      href?: never;
-      disabled?: HTMLButtonAttributes['disabled'];
-    };
+  export type ButtonAsButtonProps = Omit<HTMLButtonAttributes, 'type' | 'href'> & {
+    children?: Snippet;
+    ref?: HTMLButtonElement | null;
+    type?: HTMLButtonAttributes['type'];
+    href?: never;
+    disabled?: HTMLButtonAttributes['disabled'];
+  };
 </script>
 
 <script lang="ts">
-  import {
-    Button as BitsUiButton,
-    type ButtonRootPropsWithoutHTML,
-    type WithoutChildren,
-  } from 'bits-ui';
-
-  let { children, ref = $bindable(null), ...restProps }: ButtonAsButtonProps = $props();
+  let {
+    children,
+    ref = $bindable(null),
+    type = 'button',
+    ...restProps
+  }: ButtonAsButtonProps = $props();
 </script>
 
-<BitsUiButton.Root {...restProps} bind:ref>
+<button {...restProps} bind:this={ref} {type}>
   {@render children?.()}
-</BitsUiButton.Root>
+</button>

@@ -1,5 +1,15 @@
 # @documentation/docs
 
+## 0.6.1
+
+### Patch Changes
+
+- Button bits ui dependency removed
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.27.1
+  - @flightlesslabs/dodo-ui-date@0.4.1
+  - @flightlesslabs/dodo-ui-numeric@0.2.1
+
 ## 0.6.0
 
 ### Minor Changes

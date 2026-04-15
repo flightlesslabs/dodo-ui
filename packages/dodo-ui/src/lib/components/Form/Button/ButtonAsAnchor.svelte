@@ -1,24 +1,26 @@
 <script lang="ts" module>
   import type { HTMLButtonAttributes, HTMLAnchorAttributes } from 'svelte/elements';
 
-  export type ButtonAsAnchorProps = ButtonRootPropsWithoutHTML &
-    WithoutChildren<Omit<HTMLAnchorAttributes, 'href' | 'type'>> & {
-      href: HTMLAnchorAttributes['href'];
-      type?: never;
-      disabled?: HTMLButtonAttributes['disabled'];
-    };
+  export type ButtonAsAnchorProps = Omit<HTMLAnchorAttributes, 'href' | 'type'> & {
+    children?: Snippet;
+    href: HTMLAnchorAttributes['href'];
+    type?: never;
+    disabled?: HTMLButtonAttributes['disabled'];
+    ref?: HTMLAnchorElement | null;
+  };
 </script>
 
 <script lang="ts">
-  import {
-    Button as BitsUiButton,
-    type ButtonRootPropsWithoutHTML,
-    type WithoutChildren,
-  } from 'bits-ui';
+  import type { Snippet } from 'svelte';
 
-  let { children, ref = $bindable(null), ...restProps }: ButtonAsAnchorProps = $props();
+  let {
+    children,
+    ref = $bindable(null),
+    disabled = false,
+    ...restProps
+  }: ButtonAsAnchorProps = $props();
 </script>
 
-<BitsUiButton.Root {...restProps} bind:ref>
+<a {...restProps} aria-disabled={disabled ? 'true' : undefined} bind:this={ref}>
   {@render children?.()}
-</BitsUiButton.Root>
+</a>
