@@ -1,0 +1,7 @@
+import{n as e}from"./chunk-BneVvdWh.js";import{A as t,Ct as n,K as r,N as i,O as a,lt as o,q as s,t as c,ut as l,vt as u}from"./client-r4VzY-6C.js";import{M as d,N as f,l as p,n as m,r as h,t as g,u as _}from"./create-runtime-stories-BC-k6Egj.js";function v(e,t){l(t,!0),x(e,{name:`Default`,children:(e,t)=>{var n=S(),o=r(n);_(o,{sm:4,children:(e,t)=>{u(),a(e,i(`Hello there`))},$$slots:{default:!0}});var c=s(o,2);_(c,{sm:4,children:(e,t)=>{u(),a(e,i(`Hello there`))},$$slots:{default:!0}});var l=s(c,2);_(l,{sm:4,children:(e,t)=>{u(),a(e,i(`Hello there`))},$$slots:{default:!0}});var d=s(l,2);_(d,{sm:4,children:(e,t)=>{u(),a(e,i(`Hello there`))},$$slots:{default:!0}}),_(s(d,2),{sm:4,children:(e,t)=>{u(),a(e,i(`Hello there`))},$$slots:{default:!0}}),a(e,n)},$$slots:{default:!0},parameters:{docs:{description:{story:`------------------------------`}},__svelteCsf:{rawCode:`<Row {...args}>
+  <Column sm={4}>Hello there</Column>
+<Column sm={4}>Hello there</Column>
+<Column sm={4}>Hello there</Column>
+<Column sm={4}>Hello there</Column>
+<Column sm={4}>Hello there</Column>
+</Row>`}}}),o()}var y,b,x,S,C,w,T;e((()=>{n(),h(),f(),c(),m(),y={children:{table:{category:`API`,subcategory:`Base`}},class:{table:{category:`API`,subcategory:`Base`}}},b={component:p,tags:[`autodocs`],argTypes:y,parameters:{docs:{description:{component:``}}}},{Story:x}=d(b),S=t(`<!> <!> <!> <!> <!>`,1),v.__docgen={data:[],name:`Row.stories.svelte`},C=g(v,b),w=[`Default`],T={...C.Default,tags:[`svelte-csf-v5`]}}))();export{T as Default,w as __namedExportsOrder,b as default,y as storyRowArgTypes};

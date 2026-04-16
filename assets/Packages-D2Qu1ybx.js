@@ -21,6 +21,12 @@ An extension for Dodo UI that provides accessible date and time components power
 An extension for Dodo UI that provides formatted numeric input components powered by `,(0,o.jsx)(t.a,{href:`https://github.com/pitis/svelte-number-format`,rel:`nofollow`,children:`svelte-number-format`}),`.`]}),`
 `]}),`
 `]}),`
+`,(0,o.jsx)(t.h2,{id:`-foundations`,children:`🧬 Foundations`}),`
+`,(0,o.jsx)(t.p,{children:`Low-level primitives and design tokens that power the entire system.`}),`
+`,(0,o.jsxs)(t.ul,{children:[`
+`,(0,o.jsxs)(t.li,{children:[(0,o.jsx)(t.strong,{children:(0,o.jsx)(t.a,{href:`https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-core-attributes`,rel:`nofollow`,children:`dodo-core-attributes`})}),`
+Core design token utilities providing standardized property variations such as color, roundness, and shape.`]}),`
+`]}),`
 `,(0,o.jsx)(t.h2,{id:`-utilities`,children:`📚 Utilities`}),`
 `,(0,o.jsx)(t.p,{children:`Small but mighty helpers you’ll reach for often.`}),`
 `,(0,o.jsxs)(t.ul,{children:[`
