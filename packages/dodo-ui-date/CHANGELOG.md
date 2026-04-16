@@ -1,5 +1,14 @@
 # @flightlesslabs/dodo-ui-date
 
+## 0.4.5
+
+### Patch Changes
+
+- 878e4c9: Packages updated
+- Updated dependencies [878e4c9]
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.29.0
+
 ## 0.4.4
 
 ### Patch Changes
