@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui-date
 
+## 0.4.7
+
+### Patch Changes
+
+- Fix lint script
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.30.0
+
 ## 0.4.6
 
 ### Patch Changes

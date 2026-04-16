@@ -2,7 +2,7 @@
   import { BROWSER } from 'esm-env';
 
   import type { Snippet } from 'svelte';
-  import type { ComponentTheme, ComponentThemeColors } from '$lib/attributes/theme.js';
+  import type { ComponentTheme, ComponentThemeColors } from '@flightlesslabs/dodo-core-attributes';
   import { setThemeContext } from './ThemeSystem/context.js';
   import { useThemeStore } from './ThemeSystem/theme.svelte.js';
 

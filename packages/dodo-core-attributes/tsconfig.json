@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "rewriteRelativeImportExtensions": true,
+    "allowJs": false,
+    "checkJs": false,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "composite": true
+  }
+}

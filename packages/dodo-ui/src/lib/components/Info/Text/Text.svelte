@@ -1,5 +1,5 @@
 <script lang="ts" module>
-  import { componentColorOptions, type ComponentColor } from '$lib/attributes/color.js';
+  import { componentColorOptions, type ComponentColor } from '@flightlesslabs/dodo-core-attributes';
   import type { Snippet } from 'svelte';
 
   export const TEXT_COLOR = {

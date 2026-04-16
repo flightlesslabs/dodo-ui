@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui-bits",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "publishConfig": {
     "access": "public"
   },
@@ -14,7 +14,7 @@
     "svelte-check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint .",
-    "check": "pnpm run svelte-check && eslint . && pnpm run lint",
+    "check": "pnpm run svelte-check && pnpm run lint",
     "check:fix": "pnpm run svelte-check && eslint . && pnpm run format",
     "dev": "storybook dev"
   },
@@ -55,7 +55,7 @@
     }
   },
   "peerDependencies": {
-    "@flightlesslabs/dodo-ui": "^0.29.1",
+    "@flightlesslabs/dodo-ui": "^0.30.0",
     "bits-ui": "^2.0.0",
     "svelte": "^5.0.0"
   },

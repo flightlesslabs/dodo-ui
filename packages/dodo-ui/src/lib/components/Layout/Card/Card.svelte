@@ -1,9 +1,9 @@
 <script lang="ts" module>
-  import { componentColorOptions, type ComponentColor } from '$lib/attributes/color.js';
-  import type { ComponentRoundness } from '$lib/attributes/roundness.js';
-  import type { ComponentShadow } from '$lib/attributes/shadow.js';
-  import type { ComponentThemeColors } from '$lib/attributes/theme.js';
-  import type { ComponentVariant } from '$lib/attributes/variant.js';
+  import { componentColorOptions, type ComponentColor } from '@flightlesslabs/dodo-core-attributes';
+  import type { ComponentRoundness } from '@flightlesslabs/dodo-core-attributes';
+  import type { ComponentShadow } from '@flightlesslabs/dodo-core-attributes';
+  import type { ComponentThemeColors } from '@flightlesslabs/dodo-core-attributes';
+  import type { ComponentVariant } from '@flightlesslabs/dodo-core-attributes';
   import type { Snippet } from 'svelte';
 
   export const CARD_COLOR = {

@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.1.6
+
+### Patch Changes
+
+- Fix lint script
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.30.0
+
 ## 0.1.5
 
 ### Patch Changes

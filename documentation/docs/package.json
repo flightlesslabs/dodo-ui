@@ -1,6 +1,6 @@
 {
   "name": "@documentation/docs",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "private": true,
   "scripts": {
     "preview": "vite preview",
@@ -11,7 +11,7 @@
     "lint": "prettier --check . && eslint .",
     "dev": "storybook dev -p 6006",
     "build": "storybook build && touch ./storybook-static/.nojekyll",
-    "check": "pnpm run svelte-check && eslint . && pnpm run lint",
+    "check": "pnpm run svelte-check && pnpm run lint",
     "check:fix": "pnpm run svelte-check && eslint . && pnpm run format",
     "create:component": "node --experimental-strip-types scripts/create-component/create-component.ts"
   },

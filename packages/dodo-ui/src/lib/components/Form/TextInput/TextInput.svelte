@@ -77,8 +77,8 @@
 </script>
 
 <script lang="ts">
-  import type { ComponentSize } from '$lib/attributes/size.js';
-  import type { ComponentRoundnessShape } from '$lib/attributes/roundness.js';
+  import type { ComponentSize } from '@flightlesslabs/dodo-core-attributes';
+  import type { ComponentRoundnessShape } from '@flightlesslabs/dodo-core-attributes';
   import InputEnclosure from '../InputEnclosure/InputEnclosure.svelte';
 
   let {
