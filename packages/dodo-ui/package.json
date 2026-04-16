@@ -59,7 +59,7 @@
     "@flightlesslabs/currency": "^0.2.1",
     "@iconify/svelte": "^5.2.1",
     "esm-env": "^1.2.2",
-    "svelte": "^5.55.2"
+    "svelte": "^5.55.4"
   },
   "keywords": [
     "svelte"

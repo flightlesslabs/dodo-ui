@@ -59,9 +59,9 @@
     "@flightlesslabs/dodo-ui-date": "workspace:*",
     "@flightlesslabs/dodo-ui-numeric": "workspace:*",
     "@iconify/svelte": "^5.2.1",
-    "@internationalized/date": "^3.12.0",
-    "bits-ui": "^2.17.2",
-    "svelte": "^5.55.2",
+    "@internationalized/date": "^3.12.1",
+    "bits-ui": "^2.17.3",
+    "svelte": "^5.55.4",
     "svelte-number-format": "^1.1.1"
   }
 }
