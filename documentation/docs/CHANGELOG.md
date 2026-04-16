@@ -1,5 +1,22 @@
 # @documentation/docs
 
+## 0.8.0
+
+### Minor Changes
+
+- Threshold component added
+
+### Patch Changes
+
+- 878e4c9: Packages updated
+- Updated dependencies [878e4c9]
+- Updated dependencies
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.29.0
+  - @flightlesslabs/dodo-ui-bits@1.0.0
+  - @flightlesslabs/dodo-ui-date@1.0.0
+  - @flightlesslabs/dodo-ui-numeric@1.0.0
+
 ## 0.7.5
 
 ### Patch Changes

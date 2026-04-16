@@ -1,5 +1,15 @@
 # @flightlesslabs/dodo-ui
 
+## 0.29.0
+
+### Minor Changes
+
+- Threshold component added
+
+### Patch Changes
+
+- 878e4c9: Packages updated
+
 ## 0.28.1
 
 ### Patch Changes

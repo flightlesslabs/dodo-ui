@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui-date",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "publishConfig": {
     "access": "public"
   },
@@ -55,17 +55,17 @@
     }
   },
   "peerDependencies": {
-    "@flightlesslabs/dodo-ui": "^0.28.1",
+    "@flightlesslabs/dodo-ui": "^0.29.0",
     "@internationalized/date": "^3.0.0",
     "bits-ui": "^2.0.0",
     "svelte": "^5.0.0"
   },
   "dependencies": {
     "@flightlesslabs/dodo-ui": "workspace:*",
-    "@internationalized/date": "^3.12.0",
-    "bits-ui": "^2.17.2",
-    "svelte": "^5.55.2",
-    "@iconify/svelte": "^5.2.1"
+    "@iconify/svelte": "^5.2.1",
+    "@internationalized/date": "^3.12.1",
+    "bits-ui": "^2.17.3",
+    "svelte": "^5.55.4"
   },
   "keywords": [
     "svelte"

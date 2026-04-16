@@ -128,6 +128,22 @@ export {
   type MoneyOptions,
 } from './components/Info/Money/Money.svelte';
 
+/**
+ * Threshold component and related prop types.
+ */
+export {
+  default as Threshold,
+  defaultThresholdColorMap,
+  type ThresholdProps,
+  type ThresholdColorMap,
+  type ThresholdCustomContentContext,
+} from './components/Info/Threshold/Threshold.svelte';
+
+export {
+  compareValueWithThreshold,
+  type ThresholdStatus,
+} from './components/Info/Threshold/compareValueWithThreshold/compareValueWithThreshold.js';
+
 // =====================================================
 // utils – Public API
 // =====================================================
