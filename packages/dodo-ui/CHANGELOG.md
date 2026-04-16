@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.30.1
+
+### Patch Changes
+
+- updated base colors (tailwind 4.2 colors)
+
 ## 0.30.0
 
 ### Minor Changes
