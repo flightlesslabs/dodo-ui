@@ -1,5 +1,16 @@
 # @documentation/docs
 
+## 0.8.1
+
+### Patch Changes
+
+- eslint and ts corrected
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-numeric@0.2.5
+  - @flightlesslabs/dodo-ui-bits@0.1.5
+  - @flightlesslabs/dodo-ui-date@0.4.6
+  - @flightlesslabs/dodo-ui@0.29.1
+
 ## 0.8.0
 
 ### Minor Changes

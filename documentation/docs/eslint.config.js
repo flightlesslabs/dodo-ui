@@ -26,10 +26,11 @@ export default defineConfig(
     },
   },
   {
-    files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
+    files: ['**/src/**/*.{ts,tsx,svelte}'],
     languageOptions: {
       parserOptions: {
         projectService: true,
+        tsconfigRootDir: import.meta.dirname,
         extraFileExtensions: ['.svelte'],
         parser: ts.parser,
         svelteConfig,

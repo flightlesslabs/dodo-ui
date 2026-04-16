@@ -1,0 +1,10 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./documentation/docs" },
+    { "path": "./packages/dodo-ui" },
+    { "path": "./packages/dodo-ui-bits" },
+    { "path": "./packages/dodo-ui-date" },
+    { "path": "./packages/dodo-ui-numeric" },
+  ],
+}

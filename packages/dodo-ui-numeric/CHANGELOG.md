@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui-numeric
 
+## 0.2.5
+
+### Patch Changes
+
+- eslint and ts corrected
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.29.1
+
 ## 0.2.4
 
 ### Patch Changes

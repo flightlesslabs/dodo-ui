@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.1.5
+
+### Patch Changes
+
+- eslint and ts corrected
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.29.1
+
 ## 0.1.4
 
 ### Patch Changes

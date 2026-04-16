@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.29.1
+
+### Patch Changes
+
+- eslint and ts corrected
+
 ## 0.29.0
 
 ### Minor Changes

@@ -9,7 +9,6 @@ Opinionated UI framework for Svelte.
 - 📦 npm: https://www.npmjs.com/package/@flightlesslabs/dodo-ui
 - 📝 Changelog: https://github.com/flightlesslabs/dodo-ui/blob/main/packages/dodo-ui/CHANGELOG.md
 
-
 ## 🚀 Installation
 
 ```bash
