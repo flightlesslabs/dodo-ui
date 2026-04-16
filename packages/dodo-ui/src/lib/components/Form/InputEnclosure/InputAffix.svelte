@@ -1,5 +1,5 @@
 <script lang="ts" module>
-  import type { ComponentSize } from '$lib/attributes/size.js';
+  import type { ComponentSize } from '@flightlesslabs/dodo-core-attributes';
   import type { Snippet } from 'svelte';
 
   /**

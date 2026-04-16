@@ -165,7 +165,7 @@ export {
   type ComponentColorPriority,
   type ComponentColorSeverity,
   type ComponentColor,
-} from './attributes/color.js';
+} from '@flightlesslabs/dodo-core-attributes';
 
 /**
  * roundness attribute related prop types.
@@ -178,12 +178,16 @@ export {
   type ComponentRoundnessNumerical,
   type ComponentRoundnessShape,
   type ComponentRoundness,
-} from './attributes/roundness.js';
+} from '@flightlesslabs/dodo-core-attributes';
 
 /**
  * size attribute related prop types.
  */
-export { COMPONENT_SIZE, componentSizeOptions, type ComponentSize } from './attributes/size.js';
+export {
+  COMPONENT_SIZE,
+  componentSizeOptions,
+  type ComponentSize,
+} from '@flightlesslabs/dodo-core-attributes';
 
 /**
  * variant attribute related prop types.
@@ -192,7 +196,7 @@ export {
   COMPONENT_VARIANT,
   componentVariantOptions,
   type ComponentVariant,
-} from './attributes/variant.js';
+} from '@flightlesslabs/dodo-core-attributes';
 
 /**
  * shadow attribute related prop types.
@@ -201,7 +205,7 @@ export {
   COMPONENT_SHADOW,
   ComponentShadowOptions,
   type ComponentShadow,
-} from './attributes/shadow.js';
+} from '@flightlesslabs/dodo-core-attributes';
 
 /**
  * theme attribute related prop types.
@@ -212,4 +216,4 @@ export {
   componentThemeColorsOptions,
   type ComponentThemeColors,
   type ComponentTheme,
-} from './attributes/theme.js';
+} from '@flightlesslabs/dodo-core-attributes';

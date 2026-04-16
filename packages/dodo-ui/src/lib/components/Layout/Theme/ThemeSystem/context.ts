@@ -1,4 +1,4 @@
-import type { ComponentThemeColors } from '$lib/attributes/theme.js';
+import type { ComponentThemeColors } from '@flightlesslabs/dodo-core-attributes';
 import { createContext } from 'svelte';
 
 export interface ThemeContext {

@@ -1,0 +1,23 @@
+{
+  "name": "@flightlesslabs/dodo-core-attributes",
+  "type": "module",
+  "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "format": "prettier --write .",
+    "lint": "prettier --check . && eslint .",
+    "check": "pnpm run lint",
+    "check:fix": "eslint . && pnpm run format"
+  }
+}

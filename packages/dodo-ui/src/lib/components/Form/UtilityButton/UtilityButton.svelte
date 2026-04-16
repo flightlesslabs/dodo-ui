@@ -35,9 +35,9 @@
 </script>
 
 <script lang="ts">
-  import type { ComponentSize } from '$lib/attributes/size.js';
-  import type { ComponentColor } from '$lib/attributes/color.js';
-  import type { ComponentRoundness } from '$lib/attributes/roundness.js';
+  import type { ComponentSize } from '@flightlesslabs/dodo-core-attributes';
+  import type { ComponentColor } from '@flightlesslabs/dodo-core-attributes';
+  import type { ComponentRoundness } from '@flightlesslabs/dodo-core-attributes';
   import ButtonAsAnchor from '../Button/ButtonAsAnchor.svelte';
   import type { ButtonAsAnchorProps as ButtonAsAnchorPropsBase } from '../Button/ButtonAsAnchor.svelte';
   import ButtonAsButton from '../Button/ButtonAsButton.svelte';
