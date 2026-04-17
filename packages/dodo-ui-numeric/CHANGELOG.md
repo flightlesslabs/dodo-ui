@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui-numeric
 
+## 0.2.8
+
+### Patch Changes
+
+- Dependancies updated
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.30.2
+
 ## 0.2.7
 
 ### Patch Changes
