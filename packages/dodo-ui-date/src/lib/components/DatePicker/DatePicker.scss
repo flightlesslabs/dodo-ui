@@ -18,6 +18,10 @@
     color: var(--dodo-color-neutral-500);
   }
 
+  .DatePickerClear {
+    font-size: 1.25em;
+  }
+
   // ----------------------------------------
   // Sizes
   // ----------------------------------------
@@ -30,6 +34,10 @@
       [data-date-field-segment] {
         padding: 0 calc(var(--dodo-ui-space) / 3);
       }
+
+      .DatePickerClear {
+        margin-left: calc(var(--dodo-ui-space) / 2.5);
+      }
     }
 
     &--small {
@@ -40,6 +48,10 @@
       [data-date-field-segment] {
         padding: 0 calc(var(--dodo-ui-space-small) / 3);
       }
+
+      .DatePickerClear {
+        margin-left: calc(var(--dodo-ui-space--small) / 2.5);
+      }
     }
 
     &--large {
@@ -49,6 +61,10 @@
 
       [data-date-field-segment] {
         padding: 0 calc(var(--dodo-ui-space-large) / 3);
+      }
+
+      .DatePickerClear {
+        margin-left: calc(var(--dodo-ui-space--large) / 2.5);
       }
     }
   }

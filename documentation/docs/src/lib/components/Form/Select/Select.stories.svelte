@@ -127,6 +127,9 @@
       table: { category: 'API', subcategory: 'Slots' },
       description: 'Content rendered after the input',
     },
+    customTriggerIcon: {
+      table: { category: 'API', subcategory: 'Slots' },
+    },
   };
 
   // ------------------------------
@@ -180,6 +183,14 @@
 />
 
 <Story name="Disabled" args={{ placeholder: 'Select an option', disabled: true }} />
+
+<Story name="Custom Trigger Icon" asChild>
+  <Select {options}>
+    {#snippet customTriggerIcon()}
+      O <!-- You can put any icon here -->
+    {/snippet}
+  </Select>
+</Story>
 
 <Story name="Light Theme" asChild>
   <Theme type="light">

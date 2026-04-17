@@ -30,3 +30,8 @@
 
 - **[dodo-ui-numeric](https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-numeric)**  
   An extension for Dodo UI that provides formatted numeric input components powered by [svelte-number-format](https://github.com/pitis/svelte-number-format).
+
+### 🧬 Foundations
+
+- **[dodo-core-attributes](https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-core-attributes)**
+    Core design token utilities providing standardized property variations such as color, roundness, and shape.

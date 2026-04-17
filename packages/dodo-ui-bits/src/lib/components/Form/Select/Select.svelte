@@ -78,6 +78,13 @@
 
     /** bits ui comboboxTriggerProps */
     comboboxTriggerProps?: ComboboxTriggerProps;
+
+    /**
+     * Custom Trigger Icon.
+     *
+     * Use {#snippet customTriggerIcon} in Svelte.
+     */
+    customTriggerIcon?: Snippet;
   };
 </script>
 
@@ -116,6 +123,7 @@
     comboboxTriggerProps,
     searchResultPlaceholder,
     onclear,
+    customTriggerIcon,
     ...restProps
   }: SelectProps = $props();
 
@@ -160,6 +168,7 @@
     focused={forcedFocused}
     {comboboxInputProps}
     {comboboxTriggerProps}
+    {customTriggerIcon}
     {placeholder}
     {searchable}
     {clearable}

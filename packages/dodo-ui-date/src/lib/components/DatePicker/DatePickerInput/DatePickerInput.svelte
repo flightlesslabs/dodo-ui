@@ -16,6 +16,10 @@
     datePickerTriggerProps?: DatePickerTriggerProps;
     disabled?: boolean;
     dateFormat?: DatePickerFormat;
+    customTriggerIcon?: Snippet;
+    clearable?: boolean;
+    onclear?: () => void;
+    value: DateValue | undefined;
   };
 </script>
 
@@ -25,7 +29,8 @@
   import Segments from './Segments.svelte';
   import type { DatePickerFormat } from './utils.js';
   import type { ComponentSize, ComponentRoundnessShape } from '@flightlesslabs/dodo-ui';
-  import { InputEnclosure } from '@flightlesslabs/dodo-ui';
+  import { InputEnclosure, UtilityButton } from '@flightlesslabs/dodo-ui';
+  import type { DateValue } from '@internationalized/date';
 
   let {
     size = 'normal',
@@ -40,6 +45,10 @@
     datePickerTriggerProps,
     dateFormat = 'dd/mm/yyyy',
     ref = $bindable(null),
+    customTriggerIcon,
+    clearable,
+    onclear,
+    value = $bindable(undefined),
     ...restProps
   }: DatePickerInputProps = $props();
 
@@ -53,7 +62,27 @@
     isFocused = false;
   }
 
+  function handleOnClear() {
+    value = undefined;
+
+    if (onclear) {
+      onclear();
+    }
+  }
+
   const classes = $derived(['dodo-ui-DatePicker', className].filter(Boolean));
+
+  const clearButtonClasses = $derived(
+    [
+      'DatePickerClear',
+      'dodo-ui-UtilityButton',
+      `size--${size}`,
+      'compact',
+      'color--primary',
+      'roundness--full',
+      disabled && 'disabled',
+    ].filter(Boolean),
+  );
 
   const triggerClasses = $derived(
     [
@@ -90,8 +119,18 @@
   </DatePicker.Input>
 
   {#snippet after()}
+    {#if clearable && value}
+      <UtilityButton class={clearButtonClasses.join(' ')} onclick={handleOnClear}>
+        <Icon icon="material-symbols:close-rounded" />
+      </UtilityButton>
+    {/if}
+
     <DatePicker.Trigger class={triggerClasses.join(' ')} {...datePickerTriggerProps}>
-      <Icon icon="material-symbols:calendar-month-sharp" />
+      {#if customTriggerIcon}
+        {@render customTriggerIcon?.()}
+      {:else}
+        <Icon icon="material-symbols:calendar-month-sharp" />
+      {/if}
     </DatePicker.Trigger>
     {@render after?.()}
   {/snippet}
