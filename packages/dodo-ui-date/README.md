@@ -43,7 +43,11 @@ import '@flightlesslabs/dodo-ui-date/styles/main.scss';
 Import components from the addon as needed:
 
 ```ts
-import { DatePicker } '@flightlesslabs/dodo-ui-date';
+import { DatePicker } from '@flightlesslabs/dodo-ui-date';
 
-<DatePicker />
+import { CalendarDate, type DateValue } from '@internationalized/date';
+
+let value = $state<DateValue>(new CalendarDate(2026, 4, 7));
+
+<DatePicker {value} />
 ```
