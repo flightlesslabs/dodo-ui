@@ -22,6 +22,7 @@
     disabled?: boolean;
     searchValue?: string;
     updateOpenState: (isOpen: boolean) => void;
+    customTriggerIcon?: Snippet;
   };
 </script>
 
@@ -44,7 +45,6 @@
     placeholder,
     comboboxInputProps,
     comboboxTriggerProps,
-    // eslint-disable-next-line no-useless-assignment
     searchValue = $bindable<string>(''),
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     after,
@@ -52,6 +52,7 @@
     value = $bindable(undefined),
     options,
     ref = $bindable(null),
+    customTriggerIcon,
     ...restProps
   }: SelectInputProps = $props();
 
@@ -137,8 +138,13 @@
     {/if}
 
     <Combobox.Trigger class={triggerClasses.join(' ')} {...comboboxTriggerProps}>
-      <Icon icon="material-symbols:arrow-drop-down-rounded" />
+      {#if customTriggerIcon}
+        {@render customTriggerIcon?.()}
+      {:else}
+        <Icon icon="material-symbols:arrow-drop-down-rounded" />
+      {/if}
     </Combobox.Trigger>
+   
     {@render after?.()}
   {/snippet}
 </InputEnclosure>

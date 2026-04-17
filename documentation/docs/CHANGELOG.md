@@ -1,5 +1,15 @@
 # @documentation/docs
 
+## 0.9.2
+
+### Patch Changes
+
+- Datepicker clearable and customTriggerIcon added
+- Select customTriggerIcon added
+- Updated dependencies
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-bits@0.1.8
+
 ## 0.9.1
 
 ### Patch Changes

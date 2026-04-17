@@ -65,6 +65,19 @@
 
     /** Props for Popup */
     popupProps?: DatePickerPopupProps;
+
+    /**
+     * Custom Trigger Icon.
+     *
+     * Use {#snippet customTriggerIcon} in Svelte.
+     */
+    customTriggerIcon?: Snippet;
+
+    /** is select clearable. */
+    clearable?: boolean;
+
+    /** onclear event */
+    onclear?: () => void;
   };
 </script>
 
@@ -103,6 +116,9 @@
     weekStartsOn = 1,
     dateFormat = 'dd/mm/yyyy',
     popupProps,
+    customTriggerIcon,
+    clearable,
+    onclear,
     ...restProps
   }: DatePickerProps = $props();
 
@@ -132,6 +148,10 @@
     {placeholder}
     {dateFormat}
     bind:ref={customAnchor}
+    {customTriggerIcon}
+    {clearable}
+    {onclear}
+    bind:value
   />
   <DatePickerPopup {...popupProps} {customAnchor} />
 </DatePickerBitsUi.Root>

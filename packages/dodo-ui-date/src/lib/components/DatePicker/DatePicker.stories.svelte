@@ -22,6 +22,10 @@
       control: { type: 'text' },
       table: { category: 'API', subcategory: 'Base', defaultValue: { summary: 'dd/mm/yyyy' } },
     },
+    clearable: {
+      control: { type: 'boolean' },
+      table: { category: 'API', subcategory: 'Base' },
+    },
 
     // ------------------------------
     // State
@@ -74,6 +78,9 @@
       table: { category: 'API', subcategory: 'Slots' },
       description: 'Content rendered after the input',
     },
+    customTriggerIcon: {
+      table: { category: 'API', subcategory: 'Slots' },
+    },
   };
 
   // ------------------------------
@@ -86,6 +93,7 @@
   });
 
   let myValue = $state<DateValue>(new CalendarDate(2026, 4, 7));
+  let myValue2 = $state<DateValue>(new CalendarDate(2026, 12, 1));
 </script>
 
 <!-- ------------------------------ -->
@@ -98,6 +106,8 @@
   <DatePicker bind:value={myValue} />
 </Story>
 
+<Story name="Clearable" args={{ clearable: true, value: myValue2 }} />
+
 <Story name="Starts On Sunday" args={{ weekStartsOn: 0 }} />
 
 <Story name="Date Format" args={{ dateFormat: 'mm/dd/yyyy' }} />
@@ -105,6 +115,14 @@
 <Story name="Min Date" args={{ minValue: new CalendarDate(2026, 4, 7) }} />
 
 <Story name="Max Date" args={{ maxValue: new CalendarDate(2026, 4, 7) }} />
+
+<Story name="Custom Trigger Icon" asChild>
+  <DatePicker>
+    {#snippet customTriggerIcon()}
+      🗓️
+    {/snippet}
+  </DatePicker>
+</Story>
 
 <Story name="Light Theme" asChild>
   <Theme type="light">
