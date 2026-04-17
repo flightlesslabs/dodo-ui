@@ -24,7 +24,9 @@ For full setup (styles, themes, configuration), see the [Getting Started](https:
 
 import { CalendarDate, type DateValue } from '@internationalized/date';
 
-<DatePicker />
+let value = $state<DateValue>(new CalendarDate(2026, 4, 7));
+
+<DatePicker {value} />
  \`\`\`
 `;
 
