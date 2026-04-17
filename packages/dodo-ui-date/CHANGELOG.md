@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-date
 
+## 0.4.9
+
+### Patch Changes
+
+- Datepicker clearable and customTriggerIcon added
+
 ## 0.4.8
 
 ### Patch Changes
