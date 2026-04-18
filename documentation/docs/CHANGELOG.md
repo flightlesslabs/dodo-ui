@@ -1,5 +1,11 @@
 # @documentation/docs
 
+## 0.9.5
+
+### Patch Changes
+
+- colors added to utils packages
+
 ## 0.9.4
 
 ### Patch Changes
