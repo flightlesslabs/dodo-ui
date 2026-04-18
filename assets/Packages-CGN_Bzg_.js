@@ -38,4 +38,8 @@ A lightweight TypeScript library providing country and currency mappings, includ
 `,(0,o.jsxs)(t.p,{children:[(0,o.jsx)(t.strong,{children:(0,o.jsx)(t.a,{href:`https://github.com/flightlesslabs/time-utils`,rel:`nofollow`,children:`@flightlesslabs/time-utils`})}),`
 Date and time utilities at your disposal.`]}),`
 `]}),`
+`,(0,o.jsxs)(t.li,{children:[`
+`,(0,o.jsxs)(t.p,{children:[(0,o.jsx)(t.strong,{children:(0,o.jsx)(t.a,{href:`https://github.com/flightlesslabs/colors`,rel:`nofollow`,children:`@flightlesslabs/colors`})}),`
+Colorset for everyone.`]}),`
+`]}),`
 `]})]})}function a(e={}){let{wrapper:t}={...n(),...e.components};return t?(0,o.jsx)(t,{...e,children:(0,o.jsx)(i,{...e})}):i(e)}var o;e((()=>{o=t(),r()}))();export{a as default};
