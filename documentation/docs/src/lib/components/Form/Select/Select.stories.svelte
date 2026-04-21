@@ -1,7 +1,12 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import { componentSizeOptions, componentRoundnessOptions, Theme } from '@flightlesslabs/dodo-ui';
+  import {
+    componentSizeOptions,
+    componentRoundnessOptions,
+    Theme,
+    componentAffixPlacementOptions,
+  } from '@flightlesslabs/dodo-ui';
   import type { SelectProps } from '@flightlesslabs/dodo-ui-bits';
   import { Select } from '@flightlesslabs/dodo-ui-bits';
 
@@ -94,6 +99,11 @@
       description: 'Error visual state',
       table: { category: 'API', subcategory: 'State', defaultValue: { summary: 'false' } },
     },
+    triggerPlacement: {
+      control: { type: 'select' },
+      options: componentAffixPlacementOptions,
+      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'after' } },
+    },
 
     // ------------------------------
     // Appearance
@@ -183,6 +193,11 @@
 />
 
 <Story name="Disabled" args={{ placeholder: 'Select an option', disabled: true }} />
+
+<Story
+  name="Trigger Placement Before"
+  args={{ placeholder: 'Select an option', triggerPlacement: 'before' }}
+/>
 
 <Story name="Custom Trigger Icon" asChild>
   <Select {options}>

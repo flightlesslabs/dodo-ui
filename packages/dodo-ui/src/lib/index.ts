@@ -217,3 +217,12 @@ export {
   type ComponentThemeColors,
   type ComponentTheme,
 } from '@flightlesslabs/dodo-core-attributes';
+
+/**
+ * affix placement attribute related prop types.
+ */
+export {
+  COMPONENT_AFFIX_PLACEMENT,
+  type ComponentAffixPlacement,
+  componentAffixPlacementOptions,
+} from '@flightlesslabs/dodo-core-attributes';

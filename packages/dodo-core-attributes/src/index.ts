@@ -61,3 +61,12 @@ export {
   type ComponentThemeColors,
   type ComponentTheme,
 } from './attributes/theme.js';
+
+/**
+ * affix placement attribute related prop types.
+ */
+export {
+  COMPONENT_AFFIX_PLACEMENT,
+  type ComponentAffixPlacement,
+  componentAffixPlacementOptions,
+} from './attributes/affix-placement.js';

@@ -1,5 +1,8 @@
 <script lang="ts" module>
-  import type { ComponentSize } from '@flightlesslabs/dodo-core-attributes';
+  import type {
+    ComponentSize,
+    ComponentAffixPlacement,
+  } from '@flightlesslabs/dodo-core-attributes';
   import type { Snippet } from 'svelte';
 
   /**
@@ -23,7 +26,7 @@
      * - "before": renders before the input control
      * - "after": renders after the input control
      */
-    placement: 'before' | 'after';
+    placement: ComponentAffixPlacement;
   }
 </script>
 
