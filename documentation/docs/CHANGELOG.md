@@ -1,5 +1,20 @@
 # @documentation/docs
 
+## 0.9.6
+
+### Patch Changes
+
+- a81b9c2: Datepicker trigger position added and disabled button issue fixed
+- 728fdb5: Fix prepare script
+- Updated dependencies [a81b9c2]
+- Updated dependencies [728fdb5]
+- Updated dependencies [728fdb5]
+- Updated dependencies [a81b9c2]
+  - @flightlesslabs/dodo-ui-date@0.4.11
+  - @flightlesslabs/dodo-ui-bits@0.1.10
+  - @flightlesslabs/dodo-ui-numeric@0.2.9
+  - @flightlesslabs/dodo-ui@0.30.3
+
 ## 0.9.5
 
 ### Patch Changes

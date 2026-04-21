@@ -1,5 +1,14 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.1.10
+
+### Patch Changes
+
+- 728fdb5: Select Trigger placement added
+- Updated dependencies [728fdb5]
+- Updated dependencies [a81b9c2]
+  - @flightlesslabs/dodo-ui@0.30.3
+
 ## 0.1.9
 
 ### Patch Changes
