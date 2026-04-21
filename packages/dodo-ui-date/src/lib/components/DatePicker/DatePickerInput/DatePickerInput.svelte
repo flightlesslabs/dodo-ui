@@ -20,6 +20,7 @@
     clearable?: boolean;
     onclear?: () => void;
     value: DateValue | undefined;
+    triggerPlacement?: ComponentAffixPlacement;
   };
 </script>
 
@@ -28,7 +29,11 @@
   import Icon from '@iconify/svelte';
   import Segments from './Segments.svelte';
   import type { DatePickerFormat } from './utils.js';
-  import type { ComponentSize, ComponentRoundnessShape } from '@flightlesslabs/dodo-ui';
+  import type {
+    ComponentSize,
+    ComponentRoundnessShape,
+    ComponentAffixPlacement,
+  } from '@flightlesslabs/dodo-ui';
   import { InputEnclosure, UtilityButton } from '@flightlesslabs/dodo-ui';
   import type { DateValue } from '@internationalized/date';
 
@@ -41,6 +46,8 @@
     placeholder,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     after,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    before,
     dateFieldInputProps,
     datePickerTriggerProps,
     dateFormat = 'dd/mm/yyyy',
@@ -49,6 +56,7 @@
     clearable,
     onclear,
     value = $bindable(undefined),
+    triggerPlacement = 'after',
     ...restProps
   }: DatePickerInputProps = $props();
 
@@ -97,6 +105,16 @@
   );
 </script>
 
+{#snippet triggerButton()}
+  <DatePicker.Trigger class={triggerClasses.join(' ')} {...datePickerTriggerProps}>
+    {#if customTriggerIcon}
+      {@render customTriggerIcon?.()}
+    {:else}
+      <Icon icon="material-symbols:calendar-month-sharp" />
+    {/if}
+  </DatePicker.Trigger>
+{/snippet}
+
 <InputEnclosure
   {size}
   {disabled}
@@ -118,6 +136,14 @@
     {/snippet}
   </DatePicker.Input>
 
+  {#snippet before()}
+    {#if triggerPlacement === 'before'}
+      {@render triggerButton()}
+    {/if}
+
+    {@render before?.()}
+  {/snippet}
+
   {#snippet after()}
     {#if clearable && value}
       <UtilityButton class={clearButtonClasses.join(' ')} onclick={handleOnClear}>
@@ -125,13 +151,10 @@
       </UtilityButton>
     {/if}
 
-    <DatePicker.Trigger class={triggerClasses.join(' ')} {...datePickerTriggerProps}>
-      {#if customTriggerIcon}
-        {@render customTriggerIcon?.()}
-      {:else}
-        <Icon icon="material-symbols:calendar-month-sharp" />
-      {/if}
-    </DatePicker.Trigger>
+    {#if triggerPlacement === 'after'}
+      {@render triggerButton()}
+    {/if}
+
     {@render after?.()}
   {/snippet}
 </InputEnclosure>

@@ -113,7 +113,7 @@ $roundness: (
   // Disabled
   // ----------------------------------------
   &[disabled],
-  &[aria-disabled] {
+  &[aria-disabled='true'] {
     cursor: not-allowed;
     pointer-events: none;
 

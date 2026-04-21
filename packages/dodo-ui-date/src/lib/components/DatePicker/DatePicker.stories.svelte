@@ -116,6 +116,11 @@
 
 <Story name="Max Date" args={{ maxValue: new CalendarDate(2026, 4, 7) }} />
 
+<Story
+  name="Trigger Placement Before"
+  args={{ triggerPlacement: 'before', popupProps: { align: 'start' } }}
+/>
+
 <Story name="Custom Trigger Icon" asChild>
   <DatePicker>
     {#snippet customTriggerIcon()}
