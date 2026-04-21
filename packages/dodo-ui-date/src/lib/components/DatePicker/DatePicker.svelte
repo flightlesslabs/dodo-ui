@@ -78,6 +78,14 @@
 
     /** onclear event */
     onclear?: () => void;
+
+    /**
+     * Placement of the trigger button.
+     *
+     * - "before": renders before control
+     * - "after": renders after control
+     */
+    triggerPlacement?: ComponentAffixPlacement;
   };
 </script>
 
@@ -94,7 +102,11 @@
   import DatePickerPopup, {
     type DatePickerPopupProps,
   } from './DatePickerPopup/DatePickerPopup.svelte';
-  import type { ComponentSize, ComponentRoundnessShape } from '@flightlesslabs/dodo-ui';
+  import type {
+    ComponentSize,
+    ComponentRoundnessShape,
+    ComponentAffixPlacement,
+  } from '@flightlesslabs/dodo-ui';
 
   let {
     size = 'normal',
@@ -119,6 +131,7 @@
     customTriggerIcon,
     clearable,
     onclear,
+    triggerPlacement = 'after',
     ...restProps
   }: DatePickerProps = $props();
 
@@ -152,6 +165,7 @@
     {clearable}
     {onclear}
     bind:value
+    {triggerPlacement}
   />
   <DatePickerPopup {...popupProps} {customAnchor} />
 </DatePickerBitsUi.Root>

@@ -1,5 +1,14 @@
 # @flightlesslabs/dodo-ui
 
+## 0.30.3
+
+### Patch Changes
+
+- 728fdb5: Fix prepare script
+- a81b9c2: Button aria disable color fixed
+- Updated dependencies [728fdb5]
+  - @flightlesslabs/dodo-core-attributes@0.2.0
+
 ## 0.30.2
 
 ### Patch Changes

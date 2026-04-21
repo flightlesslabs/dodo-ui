@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui",
-  "version": "0.30.2",
+  "version": "0.30.3",
   "publishConfig": {
     "access": "public"
   },
@@ -10,8 +10,8 @@
     "scss": "pnpm scss:global && pnpm scss:components",
     "build": "vite build && pnpm run prepack",
     "preview": "vite preview",
-    "prepare": "svelte-kit sync || echo ''",
-    "prepack": "svelte-kit sync && svelte-package && pnpm run scss && publint",
+    "prepare": "echo \"skip sync for library\"",
+    "prepack": "svelte-package && pnpm run scss && publint",
     "svelte-check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint .",

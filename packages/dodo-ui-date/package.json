@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui-date",
-  "version": "0.4.10",
+  "version": "0.4.11",
   "publishConfig": {
     "access": "public"
   },
@@ -9,8 +9,8 @@
     "scss": "pnpm scss:main",
     "build": "vite build && pnpm run prepack",
     "preview": "vite preview",
-    "prepare": "svelte-kit sync || echo ''",
-    "prepack": "svelte-kit sync && svelte-package && pnpm run scss && publint",
+    "prepare": "echo \"skip sync for library\"",
+    "prepack": "svelte-package && pnpm run scss && publint",
     "svelte-check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint .",
@@ -55,7 +55,7 @@
     }
   },
   "peerDependencies": {
-    "@flightlesslabs/dodo-ui": "^0.30.2",
+    "@flightlesslabs/dodo-ui": "^0.30.3",
     "@internationalized/date": "^3.0.0",
     "bits-ui": "^2.0.0",
     "svelte": "^5.0.0"

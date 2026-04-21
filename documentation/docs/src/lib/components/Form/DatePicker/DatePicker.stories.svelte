@@ -2,7 +2,12 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
   import { CalendarDate, type DateValue } from '@internationalized/date';
-  import { componentSizeOptions, componentRoundnessOptions, Theme } from '@flightlesslabs/dodo-ui';
+  import {
+    componentSizeOptions,
+    componentRoundnessOptions,
+    Theme,
+    componentAffixPlacementOptions,
+  } from '@flightlesslabs/dodo-ui';
 
   import { type DatePickerProps, DatePicker } from '@flightlesslabs/dodo-ui-date';
 
@@ -90,6 +95,11 @@ let value = $state<DateValue>(new CalendarDate(2026, 4, 7));
       description: 'Render outlined enclosure',
       table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'true' } },
     },
+    triggerPlacement: {
+      control: { type: 'select' },
+      options: componentAffixPlacementOptions,
+      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'after' } },
+    },
 
     // ------------------------------
     // Slots (Snippets)
@@ -147,6 +157,11 @@ let value = $state<DateValue>(new CalendarDate(2026, 4, 7));
 <Story name="Min Date" args={{ minValue: new CalendarDate(2026, 4, 7) }} />
 
 <Story name="Max Date" args={{ maxValue: new CalendarDate(2026, 4, 7) }} />
+
+<Story
+  name="Trigger Placement Before"
+  args={{ triggerPlacement: 'before', popupProps: { align: 'start' } }}
+/>
 
 <Story name="Custom Trigger Icon" asChild>
   <DatePicker>

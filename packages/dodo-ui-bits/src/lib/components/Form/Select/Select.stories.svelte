@@ -1,7 +1,12 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import { componentSizeOptions, componentRoundnessOptions, Theme } from '@flightlesslabs/dodo-ui';
+  import {
+    componentSizeOptions,
+    componentRoundnessOptions,
+    Theme,
+    componentAffixPlacementOptions,
+  } from '@flightlesslabs/dodo-ui';
   import type { SelectProps } from './Select.svelte';
   import Select from './Select.svelte';
 
@@ -95,6 +100,11 @@
       description: 'Render outlined enclosure',
       table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'true' } },
     },
+    triggerPlacement: {
+      control: { type: 'select' },
+      options: componentAffixPlacementOptions,
+      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'after' } },
+    },
 
     // ------------------------------
     // Slots (Snippets)
@@ -156,6 +166,11 @@
 />
 
 <Story name="Disabled" args={{ placeholder: 'Select an option', disabled: true }} />
+
+<Story
+  name="Trigger Placement Before"
+  args={{ placeholder: 'Select an option', triggerPlacement: 'before' }}
+/>
 
 <Story name="Custom Trigger Icon" asChild>
   <Select {options}>

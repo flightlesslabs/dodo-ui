@@ -85,6 +85,14 @@
      * Use {#snippet customTriggerIcon} in Svelte.
      */
     customTriggerIcon?: Snippet;
+
+    /**
+     * Placement of the trigger button.
+     *
+     * - "before": renders before control
+     * - "after": renders after control
+     */
+    triggerPlacement?: ComponentAffixPlacement;
   };
 </script>
 
@@ -96,7 +104,7 @@
     type ComboboxTriggerProps,
     type SelectSingleRootPropsWithoutHTML,
   } from 'bits-ui';
-  import type { ComponentSize } from '@flightlesslabs/dodo-ui';
+  import type { ComponentAffixPlacement, ComponentSize } from '@flightlesslabs/dodo-ui';
   import type { ComponentRoundnessShape } from '@flightlesslabs/dodo-ui';
   import SelectInput from './SelectInput.svelte';
   import SelectPopup, { type SelectPopupProps } from './SelectPopup.svelte';
@@ -124,6 +132,7 @@
     searchResultPlaceholder,
     onclear,
     customTriggerIcon,
+    triggerPlacement = 'after',
     ...restProps
   }: SelectProps = $props();
 
@@ -175,6 +184,7 @@
     {updateOpenState}
     bind:searchValue
     bind:ref={customAnchor}
+    {triggerPlacement}
   />
   <SelectPopup options={filteredOptions} {searchResultPlaceholder} {...popupProps} {customAnchor} />
 </Combobox.Root>

@@ -23,13 +23,14 @@
     searchValue?: string;
     updateOpenState: (isOpen: boolean) => void;
     customTriggerIcon?: Snippet;
+    triggerPlacement?: ComponentAffixPlacement;
   };
 </script>
 
 <script lang="ts">
   import { Combobox, type ComboboxInputProps, type ComboboxTriggerProps } from 'bits-ui';
   import { InputEnclosure, UtilityButton, type ComponentSize } from '@flightlesslabs/dodo-ui';
-  import type { ComponentRoundnessShape } from '@flightlesslabs/dodo-ui';
+  import type { ComponentAffixPlacement, ComponentRoundnessShape } from '@flightlesslabs/dodo-ui';
   import Icon from '@iconify/svelte';
   import type { SelectOption } from './Select.svelte';
 
@@ -48,11 +49,14 @@
     searchValue = $bindable<string>(''),
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     after,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    before,
     updateOpenState,
     value = $bindable(undefined),
     options,
     ref = $bindable(null),
     customTriggerIcon,
+    triggerPlacement = 'after',
     ...restProps
   }: SelectInputProps = $props();
 
@@ -106,6 +110,16 @@
   });
 </script>
 
+{#snippet triggerButton()}
+  <Combobox.Trigger class={triggerClasses.join(' ')} {...comboboxTriggerProps}>
+    {#if customTriggerIcon}
+      {@render customTriggerIcon?.()}
+    {:else}
+      <Icon icon="material-symbols:arrow-drop-down-rounded" />
+    {/if}
+  </Combobox.Trigger>
+{/snippet}
+
 <InputEnclosure
   {size}
   {disabled}
@@ -130,6 +144,14 @@
     class="InputBox"
   />
 
+  {#snippet before()}
+    {#if triggerPlacement === 'before'}
+      {@render triggerButton()}
+    {/if}
+
+    {@render before?.()}
+  {/snippet}
+
   {#snippet after()}
     {#if clearable && value}
       <UtilityButton class={clearButtonClasses.join(' ')} onclick={handleOnClear}>
@@ -137,14 +159,10 @@
       </UtilityButton>
     {/if}
 
-    <Combobox.Trigger class={triggerClasses.join(' ')} {...comboboxTriggerProps}>
-      {#if customTriggerIcon}
-        {@render customTriggerIcon?.()}
-      {:else}
-        <Icon icon="material-symbols:arrow-drop-down-rounded" />
-      {/if}
-    </Combobox.Trigger>
-   
+    {#if triggerPlacement === 'after'}
+      {@render triggerButton()}
+    {/if}
+
     {@render after?.()}
   {/snippet}
 </InputEnclosure>
