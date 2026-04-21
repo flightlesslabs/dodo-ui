@@ -12,7 +12,8 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "sass"
+      "@parcel/watcher",
+      "esbuild"
     ]
   },
   "devDependencies": {

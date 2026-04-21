@@ -12,7 +12,7 @@
     "preview": "vite preview",
     "prepare": "echo \"skip sync for library\"",
     "prepack": "svelte-package && pnpm run scss && publint",
-    "svelte-check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "svelte-check": "svelte-check --tsconfig ./tsconfig.json",
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint .",
     "check": "pnpm run svelte-check && pnpm run lint",
