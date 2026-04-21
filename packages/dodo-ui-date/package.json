@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui-date",
-  "version": "0.4.11",
+  "version": "0.4.12",
   "publishConfig": {
     "access": "public"
   },
@@ -64,7 +64,7 @@
     "@flightlesslabs/dodo-ui": "workspace:*",
     "@iconify/svelte": "^5.2.1",
     "@internationalized/date": "^3.12.1",
-    "bits-ui": "^2.17.3",
+    "bits-ui": "^2.18.0",
     "svelte": "^5.55.4"
   },
   "keywords": [
