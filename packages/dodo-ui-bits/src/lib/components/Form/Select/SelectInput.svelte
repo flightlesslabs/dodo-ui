@@ -127,6 +127,8 @@
   class={classes.join(' ')}
   focused={forcedFocused || isFocused}
   bind:ref
+  affixSpacingAfter={triggerPlacement === 'after' ? 'tight' : 'default'}
+  affixSpacingBefore={triggerPlacement === 'before' ? 'tight' : 'default'}
   {...restProps}
 >
   <Combobox.Input

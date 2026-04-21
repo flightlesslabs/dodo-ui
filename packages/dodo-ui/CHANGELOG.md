@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.30.4
+
+### Patch Changes
+
+- affixSpacingAfter, affixSpacingBefore added for InputEnclosure
+
 ## 0.30.3
 
 ### Patch Changes

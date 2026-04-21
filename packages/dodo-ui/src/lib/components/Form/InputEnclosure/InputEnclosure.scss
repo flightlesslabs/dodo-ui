@@ -137,3 +137,80 @@ $states: (
     }
   }
 }
+
+.dodo-ui-InputAffix {
+  display: inline-flex;
+  height: 100%;
+  align-items: center;
+  position: relative;
+
+  // ----------------------------------------
+  // Sizes
+  // ----------------------------------------
+  &.size {
+    &--normal {
+      &.placement {
+        &--before {
+          &.affixSpacing {
+            &--tight {
+              margin-right: calc(calc(var(--dodo-ui-space-small) * 2) * -1);
+            }
+          }
+        }
+
+        &--after {
+          &.affixSpacing {
+            &--tight {
+              margin-left: calc(calc(var(--dodo-ui-space-small) * 2) * -1);
+            }
+          }
+        }
+      }
+    }
+
+    &--small {
+      .InputBox {
+        padding: 0 var(--dodo-ui-space);
+        font-size: 0.9rem;
+      }
+
+      &.placement {
+        &--before {
+          &.affixSpacing {
+            &--tight {
+              margin-right: calc(var(--dodo-ui-space) * -1);
+            }
+          }
+        }
+
+        &--after {
+          &.affixSpacing {
+            &--tight {
+              margin-left: calc(var(--dodo-ui-space) * -1);
+            }
+          }
+        }
+      }
+    }
+
+    &--large {
+      &.placement {
+        &--before {
+          &.affixSpacing {
+            &--tight {
+              margin-right: calc(calc(var(--dodo-ui-space) * 2) * -1);
+            }
+          }
+        }
+
+        &--after {
+          &.affixSpacing {
+            &--tight {
+              margin-left: calc(calc(var(--dodo-ui-space) * 2) * -1);
+            }
+          }
+        }
+      }
+    }
+  }
+}

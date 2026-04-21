@@ -5,6 +5,8 @@
   } from '@flightlesslabs/dodo-core-attributes';
   import type { Snippet } from 'svelte';
 
+  export type InpuAffixSpacing = 'default' | 'tight';
+
   /**
    * InputAffix props.
    *
@@ -27,29 +29,36 @@
      * - "after": renders after the input control
      */
     placement: ComponentAffixPlacement;
+
+    /**
+     * Controls the spacing between the affix content
+     * and the input field.
+     */
+    affixSpacing?: InpuAffixSpacing;
   }
 </script>
 
 <script lang="ts">
-  let { children, size = 'normal', placement }: InputAffixProps = $props();
+  let {
+    children,
+    size = 'normal',
+    placement,
+    affixSpacing = 'default',
+  }: InputAffixProps = $props();
 
   /**
    * Computed class list for the InputAffix.
    */
   const classes = $derived(
-    ['dodo-ui-InputAffix', `size--${size}`, `placement--${placement}`].filter(Boolean),
+    [
+      'dodo-ui-InputAffix',
+      `size--${size}`,
+      `placement--${placement}`,
+      `affixSpacing--${affixSpacing}`,
+    ].filter(Boolean),
   );
 </script>
 
 <span class={classes.join(' ')}>
   {@render children?.()}
 </span>
-
-<style lang="scss">
-  .dodo-ui-InputAffix {
-    display: inline-flex;
-    height: 100%;
-    align-items: center;
-    position: relative;
-  }
-</style>

@@ -53,13 +53,32 @@
      * This content is rendered inside an internal affix wrapper.
      */
     after?: Snippet;
+
+    /**
+     * Content rendered before the input (e.g. icon, prefix, button).
+     *
+     * This content is rendered inside an internal affix wrapper.
+     */
+    spaceAdjustment?: Snippet;
+
+    /**
+     * Controls the spacing between the "before" affix content
+     * and the input field.
+     */
+    affixSpacingBefore?: InpuAffixSpacing;
+
+    /**
+     * Controls the spacing between the "after" affix content
+     * and the input field.
+     */
+    affixSpacingAfter?: InpuAffixSpacing;
   }
 </script>
 
 <script lang="ts">
   import type { ComponentSize } from '@flightlesslabs/dodo-core-attributes';
   import type { ComponentRoundnessShape } from '@flightlesslabs/dodo-core-attributes';
-  import InputAffix from './InputAffix.svelte';
+  import InputAffix, { type InpuAffixSpacing } from './InputAffix.svelte';
 
   let {
     children,
@@ -73,6 +92,8 @@
     before,
     after,
     ref = $bindable(null),
+    affixSpacingBefore = 'default',
+    affixSpacingAfter = 'default',
     ...restProps
   }: InputEnclosureProps = $props();
 
@@ -92,7 +113,7 @@
 
 <div {...restProps} class={classes.join(' ')} bind:this={ref}>
   {#if before}
-    <InputAffix placement="before">
+    <InputAffix placement="before" affixSpacing={affixSpacingBefore}>
       {@render before()}
     </InputAffix>
   {/if}
@@ -100,7 +121,7 @@
   {@render children?.()}
 
   {#if after}
-    <InputAffix placement="after">
+    <InputAffix placement="after" affixSpacing={affixSpacingAfter}>
       {@render after()}
     </InputAffix>
   {/if}

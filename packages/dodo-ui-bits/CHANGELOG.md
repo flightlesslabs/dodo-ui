@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.1.12
+
+### Patch Changes
+
+- Select fix trigger button spacing
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.30.4
+
 ## 0.1.11
 
 ### Patch Changes

@@ -30,6 +30,8 @@ export {
   type InputEnclosureProps,
 } from './components/Form/InputEnclosure/InputEnclosure.svelte';
 
+export { type InpuAffixSpacing } from './components/Form/InputEnclosure/InputAffix.svelte';
+
 /**
  * Label component and related prop types.
  */

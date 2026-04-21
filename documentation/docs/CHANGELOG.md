@@ -1,5 +1,18 @@
 # @documentation/docs
 
+## 0.9.8
+
+### Patch Changes
+
+- affixSpacingAfter, affixSpacingBefore added for InputEnclosure
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-bits@0.1.12
+  - @flightlesslabs/dodo-ui-date@0.4.13
+  - @flightlesslabs/dodo-ui@0.30.4
+  - @flightlesslabs/dodo-ui-numeric@0.2.10
+
 ## 0.9.7
 
 ### Patch Changes

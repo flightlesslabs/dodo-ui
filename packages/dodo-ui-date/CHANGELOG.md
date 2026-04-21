@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui-date
 
+## 0.4.13
+
+### Patch Changes
+
+- Datepicker trigger button spacing fixed
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.30.4
+
 ## 0.4.12
 
 ### Patch Changes

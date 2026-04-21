@@ -1,26 +1,14 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
-
+  import type { InputEnclosureProps } from './InputEnclosure.svelte';
+  import InputEnclosure from './InputEnclosure.svelte';
   import {
-    type InputEnclosureProps,
-    componentSizeOptions,
     componentRoundnessOptions,
-    InputEnclosure,
-    Theme,
-    UtilityButton,
-  } from '@flightlesslabs/dodo-ui';
-
-  const description = `
-  An extensive wrappwer for input boxes.
-
- \`\`\`ts
- import { InputEnclosure } from '@flightlesslabs/dodo-ui';
-
- // apply 'InputBox' class to the input
-  <input class="InputBox" />
- \`\`\`
- `;
+    componentSizeOptions,
+  } from '@flightlesslabs/dodo-core-attributes';
+  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
+  import UtilityButton from '../UtilityButton/UtilityButton.svelte';
 
   // ------------------------------
   // Storybook ArgTypes
@@ -100,13 +88,6 @@
     component: InputEnclosure,
     tags: ['autodocs'],
     argTypes: storyInputEnclosureArgTypes,
-    parameters: {
-      docs: {
-        description: {
-          component: description,
-        },
-      },
-    },
   });
 </script>
 
