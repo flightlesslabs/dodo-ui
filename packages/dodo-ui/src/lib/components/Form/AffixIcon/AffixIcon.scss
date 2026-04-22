@@ -1,0 +1,127 @@
+@use '../../../styles/scss/mixins/affix-icon-color' as affixIcon;
+
+// ----------------------------------------
+// Config
+// ----------------------------------------
+$dodo-affix-icon-themes: neutral, primary, secondary, safe, warning, danger;
+
+// ----------------------------------------
+// Theme tokens (global CSS variables)
+// ----------------------------------------
+:root {
+  @each $theme in $dodo-affix-icon-themes {
+    // Fixed: Added buttons. prefix
+    @include affixIcon.generate-dodo-ui-affix-icon-colors($theme, light);
+  }
+}
+
+.dodo-theme--dark {
+  @each $theme in $dodo-affix-icon-themes {
+    // Fixed: Added buttons. prefix
+    @include affixIcon.generate-dodo-ui-affix-icon-colors($theme, dark);
+  }
+}
+
+// ----------------------------------------
+// SCSS maps
+// ----------------------------------------
+
+$roundness: (
+  1: var(--dodo-ui-element-roundness-1),
+  2: var(--dodo-ui-element-roundness-2),
+  3: var(--dodo-ui-element-roundness-3),
+  pill: 999px,
+  full: 50%,
+);
+
+// ----------------------------------------
+// AffixIcon styles
+// ----------------------------------------
+
+.dodo-ui-AffixIcon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+  background-color: transparent;
+  border-style: solid;
+  border-width: var(--dodo-ui-element-border-width);
+  border-color: transparent;
+  color: var(--dodo-color-neutral-900);
+  letter-spacing: 0.3px;
+
+  // ----------------------------------------
+  // Sizes
+  // ----------------------------------------
+  &.size {
+    &--normal {
+      height: calc(var(--dodo-ui-element-height-normal) / 1.2);
+      min-width: 35px;
+      font-size: 1.45em;
+      padding: 0 calc(var(--dodo-ui-space-small) * 2);
+    }
+
+    &--small {
+      height: calc(var(--dodo-ui-element-height-small) / 1.2);
+      padding: 0 var(--dodo-ui-space);
+      min-width: 25px;
+      font-size: 1.25em;
+    }
+
+    &--large {
+      height: calc(var(--dodo-ui-element-height-large) / 1.2);
+      min-width: 55px;
+      padding: 0 calc(var(--dodo-ui-space) * 2);
+      font-size: 1.65em;
+    }
+  }
+
+  // ----------------------------------------
+  // Theme colors
+  // ----------------------------------------
+  &.color {
+    @each $theme in $dodo-affix-icon-themes {
+      @include affixIcon.generate-dodo-ui-affix-icon-color($theme);
+    }
+  }
+
+  // ----------------------------------------
+  // Roundness
+  // ----------------------------------------
+  &.roundness {
+    @each $name, $radius in $roundness {
+      &--#{$name} {
+        border-radius: $radius;
+      }
+    }
+  }
+
+  // ----------------------------------------
+  // Compact
+  // ----------------------------------------
+  &.compact {
+    &.size {
+      &--normal,
+      &--small,
+      &--large {
+        min-width: initial;
+        padding: 0;
+      }
+
+      &--normal {
+        width: calc(var(--dodo-ui-element-height-normal) / 1.2);
+        font-size: 1.3em;
+      }
+
+      &--small {
+        width: calc(var(--dodo-ui-element-height-small) / 1.2);
+        font-size: 1em;
+      }
+
+      &--large {
+        width: calc(var(--dodo-ui-element-height-large) / 1.2);
+        font-size: 1.5em;
+      }
+    }
+  }
+}

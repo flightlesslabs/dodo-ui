@@ -55,6 +55,16 @@ export {
   type UtilityButtonProps,
 } from './components/Form/UtilityButton/UtilityButton.svelte';
 
+/**
+ * UtilityButton component and related prop types.
+ */
+export {
+  default as AffixIcon,
+  type AffixIconProps,
+  type AffixIconColor,
+  AffixIconColorOptions,
+} from './components/Form/AffixIcon/AffixIcon.svelte';
+
 // =====================================================
 // Layout Components – Public API
 // =====================================================
@@ -73,7 +83,6 @@ export { useThemeStore } from './components/Layout/Theme/ThemeSystem/theme.svelt
  * Card component and related prop types.
  */
 export {
-  CARD_COLOR,
   default as Card,
   cardColorOptions,
   type CardColor,
@@ -115,7 +124,6 @@ export {
  */
 export {
   default as Text,
-  TEXT_COLOR,
   textColorOptions,
   type TextColor,
   type TextProps,

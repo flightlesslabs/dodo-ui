@@ -1,5 +1,17 @@
 # @flightlesslabs/dodo-ui
 
+## 0.31.0
+
+### Minor Changes
+
+- AffixIcon added
+- fbfabce: Text color and card color constant removed
+
+### Patch Changes
+
+- Updated dependencies [fbfabce]
+  - @flightlesslabs/dodo-core-attributes@0.2.1
+
 ## 0.30.4
 
 ### Patch Changes
