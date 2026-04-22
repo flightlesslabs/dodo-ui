@@ -2,6 +2,10 @@
 export const COMPONENT_COLOR = {
   priority: ['primary', 'secondary', 'neutral'],
   severity: ['safe', 'warning', 'danger'],
+
+  // special
+  default: ['default'],
+  opacity: ['transparent'],
 } as const;
 
 export type ComponentColorPriority = (typeof COMPONENT_COLOR.priority)[number];
@@ -17,3 +21,10 @@ export const componentColorOptions = [
 // Grouped options (no duplication)
 export const componentColorPriorityOptions = COMPONENT_COLOR.priority;
 export const componentColorSeverityOptions = COMPONENT_COLOR.severity;
+
+// special
+export type ComponentColorDefault = (typeof COMPONENT_COLOR.default)[number];
+export type ComponentColorOpacity = (typeof COMPONENT_COLOR.opacity)[number];
+
+export const componentColorDefaultOptions = COMPONENT_COLOR.default;
+export const componentColorOpacityOptions = COMPONENT_COLOR.opacity;

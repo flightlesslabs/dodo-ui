@@ -1,21 +1,27 @@
 <script lang="ts" module>
-  import { componentColorOptions, type ComponentColor } from '@flightlesslabs/dodo-core-attributes';
-  import type { ComponentRoundness } from '@flightlesslabs/dodo-core-attributes';
+  import {
+    componentColorDefaultOptions,
+    componentColorOpacityOptions,
+    componentColorOptions,
+    type ComponentColor,
+  } from '@flightlesslabs/dodo-core-attributes';
+  import type {
+    ComponentColorDefault,
+    ComponentColorOpacity,
+    ComponentRoundness,
+  } from '@flightlesslabs/dodo-core-attributes';
   import type { ComponentShadow } from '@flightlesslabs/dodo-core-attributes';
   import type { ComponentThemeColors } from '@flightlesslabs/dodo-core-attributes';
   import type { ComponentVariant } from '@flightlesslabs/dodo-core-attributes';
   import type { Snippet } from 'svelte';
 
-  export const CARD_COLOR = {
-    all: ['default', 'transparent'],
-  } as const;
-
-  export type CardColor = ComponentColor | (typeof CARD_COLOR.all)[number];
+  export type CardColor = ComponentColor | ComponentColorDefault | ComponentColorOpacity;
 
   // Flat options (for Storybook, selects, etc.)
   export const cardColorOptions = [
     ...componentColorOptions,
-    ...CARD_COLOR.all,
+    ...componentColorDefaultOptions,
+    ...componentColorOpacityOptions,
   ] as const satisfies readonly CardColor[];
 
   /**

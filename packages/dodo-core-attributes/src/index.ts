@@ -13,6 +13,10 @@ export {
   type ComponentColorPriority,
   type ComponentColorSeverity,
   type ComponentColor,
+  componentColorDefaultOptions,
+  componentColorOpacityOptions,
+  type ComponentColorDefault,
+  type ComponentColorOpacity,
 } from './attributes/color.js';
 
 /**

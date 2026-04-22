@@ -1,17 +1,18 @@
 <script lang="ts" module>
-  import { componentColorOptions, type ComponentColor } from '@flightlesslabs/dodo-core-attributes';
+  import {
+    componentColorDefaultOptions,
+    componentColorOptions,
+    type ComponentColor,
+    type ComponentColorDefault,
+  } from '@flightlesslabs/dodo-core-attributes';
   import type { Snippet } from 'svelte';
 
-  export const TEXT_COLOR = {
-    all: ['default'],
-  } as const;
-
-  export type TextColor = ComponentColor | (typeof TEXT_COLOR.all)[number];
+  export type TextColor = ComponentColor | ComponentColorDefault;
 
   // Flat options (for Storybook, selects, etc.)
   export const textColorOptions = [
     ...componentColorOptions,
-    ...TEXT_COLOR.all,
+    ...componentColorDefaultOptions,
   ] as const satisfies readonly TextColor[];
 
   /**
