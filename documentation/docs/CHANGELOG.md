@@ -1,5 +1,20 @@
 # @documentation/docs
 
+## 0.10.0
+
+### Minor Changes
+
+- AffixIcon added
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies [fbfabce]
+  - @flightlesslabs/dodo-ui@0.31.0
+  - @flightlesslabs/dodo-ui-bits@1.0.0
+  - @flightlesslabs/dodo-ui-date@1.0.0
+  - @flightlesslabs/dodo-ui-numeric@1.0.0
+
 ## 0.9.8
 
 ### Patch Changes

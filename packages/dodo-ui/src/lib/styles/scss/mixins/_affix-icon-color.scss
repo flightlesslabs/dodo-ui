@@ -1,0 +1,80 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:list';
+
+// ======================================================
+// 1. Token Maps (Defined first to avoid Undefined Variable errors)
+// ======================================================
+
+$dodo-ui-affix-icon-scale-light: (
+  outline: 400,
+  solid-bg: 500,
+);
+
+$dodo-ui-affix-icon-scale-dark: (
+  outline: (
+    300,
+    90%,
+    #fff,
+  ),
+  solid-bg: 400,
+);
+
+// ======================================================
+// 2. Helpers
+// ======================================================
+
+@function _dodo-ui-resolve-color($color-name, $value) {
+  @if meta.type-of($value) == list {
+    $shade: list.nth($value, 1);
+    $mix: list.nth($value, 2);
+    $mix-color: list.nth($value, 3);
+
+    @return color-mix(in oklab, var(--dodo-color-#{$color-name}-#{$shade}) #{$mix}, #{$mix-color});
+  }
+
+  @return var(--dodo-color-#{$color-name}-#{$value});
+}
+
+// ======================================================
+// 3. Mixins
+// ======================================================
+
+@mixin generate-dodo-ui-affix-icon-colors($color-name, $mode: light) {
+  // Fix for Deprecation Warning [if-function] and Undefined Variable
+  $scale: null;
+  @if $mode == dark {
+    $scale: $dodo-ui-affix-icon-scale-dark;
+  } @else {
+    $scale: $dodo-ui-affix-icon-scale-light;
+  }
+
+  --dodo-ui-AffixIcon-outline-#{$color-name}: #{_dodo-ui-resolve-color(
+      $color-name,
+      map.get($scale, outline)
+    )};
+
+  --dodo-ui-AffixIcon-solid-#{$color-name}-bg: #{_dodo-ui-resolve-color(
+      $color-name,
+      map.get($scale, solid-bg)
+    )};
+}
+
+@mixin generate-dodo-ui-affix-icon-color($theme) {
+  &--#{$theme} {
+    &.variant {
+      &--text {
+        color: var(--dodo-color-#{$theme}-500);
+
+        &.outline {
+          border-color: var(--dodo-ui-AffixIcon-outline-#{$theme});
+        }
+      }
+
+      &--solid {
+        color: var(--dodo-color-constant-white);
+        background-color: var(--dodo-ui-AffixIcon-solid-#{$theme}-bg);
+      }
+    }
+  }
+}

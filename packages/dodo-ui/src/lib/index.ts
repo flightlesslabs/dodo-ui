@@ -55,6 +55,16 @@ export {
   type UtilityButtonProps,
 } from './components/Form/UtilityButton/UtilityButton.svelte';
 
+/**
+ * UtilityButton component and related prop types.
+ */
+export {
+  default as AffixIcon,
+  type AffixIconProps,
+  type AffixIconColor,
+  AffixIconColorOptions,
+} from './components/Form/AffixIcon/AffixIcon.svelte';
+
 // =====================================================
 // Layout Components – Public API
 // =====================================================
