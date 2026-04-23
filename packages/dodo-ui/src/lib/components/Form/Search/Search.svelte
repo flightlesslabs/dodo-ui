@@ -187,7 +187,7 @@
 
   const clearButtonClasses = $derived(['SearchClear', 'AffixContentClearButton'].filter(Boolean));
 
-  const affixIconClasses = $derived(['SearchAffixIcon', 'AffixContentClearButton'].filter(Boolean));
+  const affixIconClasses = $derived(['SearchAffixIcon', 'AffixContentTrigger'].filter(Boolean));
 </script>
 
 {#snippet affixIcon()}
