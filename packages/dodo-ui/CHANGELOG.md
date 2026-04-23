@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.33.0
+
+### Minor Changes
+
+- TextArea component added, TextInput value binding fixed
+
 ## 0.32.0
 
 ### Minor Changes

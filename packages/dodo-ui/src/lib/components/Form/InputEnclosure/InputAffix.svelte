@@ -35,6 +35,13 @@
      * and the input field.
      */
     affixSpacing?: InpuAffixSpacing;
+
+    /**
+     * Enables multi-line layout support.
+     *
+     * Adjusts alignment and spacing for content like `<textarea>`.
+     */
+    multiline?: boolean;
   }
 </script>
 
@@ -44,6 +51,7 @@
     size = 'normal',
     placement,
     affixSpacing = 'default',
+    multiline = false,
   }: InputAffixProps = $props();
 
   /**
@@ -55,6 +63,7 @@
       `size--${size}`,
       `placement--${placement}`,
       `affixSpacing--${affixSpacing}`,
+      multiline && 'multiline',
     ].filter(Boolean),
   );
 </script>

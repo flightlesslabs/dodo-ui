@@ -72,6 +72,13 @@
      * and the input field.
      */
     affixSpacingAfter?: InpuAffixSpacing;
+
+    /**
+     * Enables multi-line layout support.
+     *
+     * Adjusts alignment and spacing for content like `<textarea>`.
+     */
+    multiline?: boolean;
   }
 </script>
 
@@ -94,6 +101,7 @@
     ref = $bindable(null),
     affixSpacingBefore = 'default',
     affixSpacingAfter = 'default',
+    multiline = false,
     ...restProps
   }: InputEnclosureProps = $props();
 
@@ -102,6 +110,7 @@
       'dodo-ui-InputEnclosure',
       `size--${size}`,
       `roundness--${roundness}`,
+      multiline && 'multiline',
       outline && 'outline',
       focused && 'focused',
       error && 'error',
@@ -113,7 +122,7 @@
 
 <div {...restProps} class={classes.join(' ')} bind:this={ref}>
   {#if before}
-    <InputAffix placement="before" affixSpacing={affixSpacingBefore}>
+    <InputAffix placement="before" affixSpacing={affixSpacingBefore} {multiline}>
       {@render before()}
     </InputAffix>
   {/if}
@@ -121,7 +130,7 @@
   {@render children?.()}
 
   {#if after}
-    <InputAffix placement="after" affixSpacing={affixSpacingAfter}>
+    <InputAffix placement="after" affixSpacing={affixSpacingAfter} {multiline}>
       {@render after()}
     </InputAffix>
   {/if}

@@ -71,6 +71,17 @@ export {
  */
 export { default as Search, type SearchProps } from './components/Form/Search/Search.svelte';
 
+/**
+ * TextArea component and related types/events.
+ */
+export {
+  default as TextArea,
+  type TextAreaEvent,
+  type TextAreaFocusEvent,
+  type TextAreaKeyboardEvent,
+  type TextAreaProps,
+} from './components/Form/TextArea/TextArea.svelte';
+
 // =====================================================
 // Layout Components – Public API
 // =====================================================
