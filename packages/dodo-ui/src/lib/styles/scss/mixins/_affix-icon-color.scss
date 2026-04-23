@@ -9,6 +9,7 @@
 $dodo-ui-affix-icon-scale-light: (
   outline: 400,
   solid-bg: 500,
+  color: 600,
 );
 
 $dodo-ui-affix-icon-scale-dark: (
@@ -18,6 +19,7 @@ $dodo-ui-affix-icon-scale-dark: (
     #fff,
   ),
   solid-bg: 400,
+  color: 700,
 );
 
 // ======================================================
@@ -58,13 +60,15 @@ $dodo-ui-affix-icon-scale-dark: (
       $color-name,
       map.get($scale, solid-bg)
     )};
+
+  --dodo-ui-AffixIcon-#{$color-name}: #{_dodo-ui-resolve-color($color-name, map.get($scale, color))};
 }
 
 @mixin generate-dodo-ui-affix-icon-color($theme) {
   &--#{$theme} {
     &.variant {
       &--text {
-        color: var(--dodo-color-#{$theme}-500);
+        color: var(--dodo-ui-AffixIcon-#{$theme});
 
         &.outline {
           border-color: var(--dodo-ui-AffixIcon-outline-#{$theme});

@@ -3,7 +3,7 @@
   import type { ArgTypes } from 'storybook/internal/csf';
   import type { TextProps } from './Text.svelte';
   import Text, { textColorOptions } from './Text.svelte';
-  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
+  import Theme from '../../Layout/Theme/Theme.svelte';
 
   // ------------------------------
   // Storybook ArgTypes

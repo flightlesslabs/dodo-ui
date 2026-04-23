@@ -1,5 +1,24 @@
 # @documentation/docs
 
+## 0.11.0
+
+### Minor Changes
+
+- Search input added
+- Select Trigger button hide option added
+- DatePicker trigger button hide added
+- Updated dependencies
+- @flightlesslabs/dodo-ui-bits@0.1.15
+- @flightlesslabs/dodo-ui-date@0.4.16
+
+### Patch Changes
+
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.32.0
+  - @flightlesslabs/dodo-ui-bits@1.0.0
+  - @flightlesslabs/dodo-ui-date@1.0.0
+  - @flightlesslabs/dodo-ui-numeric@1.0.0
+
 ## 0.10.0
 
 ### Minor Changes

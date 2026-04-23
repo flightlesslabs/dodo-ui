@@ -19,6 +19,7 @@ export {
   default as TextInput,
   type TextInputEvent,
   type TextInputFocusEvent,
+  type TextInputKeyboardEvent,
   type TextInputProps,
 } from './components/Form/TextInput/TextInput.svelte';
 
@@ -64,6 +65,11 @@ export {
   type AffixIconColor,
   AffixIconColorOptions,
 } from './components/Form/AffixIcon/AffixIcon.svelte';
+
+/**
+ * Search component and related prop types.
+ */
+export { default as Search, type SearchProps } from './components/Form/Search/Search.svelte';
 
 // =====================================================
 // Layout Components – Public API

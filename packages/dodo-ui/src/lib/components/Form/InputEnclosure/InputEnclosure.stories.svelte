@@ -7,7 +7,7 @@
     componentRoundnessOptions,
     componentSizeOptions,
   } from '@flightlesslabs/dodo-core-attributes';
-  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
+  import Theme from '../../Layout/Theme/Theme.svelte';
   import UtilityButton from '../UtilityButton/UtilityButton.svelte';
 
   // ------------------------------

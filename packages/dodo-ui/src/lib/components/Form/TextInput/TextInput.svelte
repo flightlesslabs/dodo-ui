@@ -8,6 +8,8 @@
 
   export type TextInputFocusEvent = FocusEvent & TextInputEvent;
 
+  export type TextInputKeyboardEvent = KeyboardEvent & TextInputEvent;
+
   /**
    * Shared base props for the TextInput component.
    *
