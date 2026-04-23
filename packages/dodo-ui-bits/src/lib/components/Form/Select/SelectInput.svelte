@@ -24,6 +24,7 @@
     updateOpenState: (isOpen: boolean) => void;
     customTriggerIcon?: Snippet;
     triggerPlacement?: ComponentAffixPlacement;
+    showTriggerButton?: boolean;
   };
 </script>
 
@@ -57,6 +58,7 @@
     ref = $bindable(null),
     customTriggerIcon,
     triggerPlacement = 'after',
+    showTriggerButton = true,
     ...restProps
   }: SelectInputProps = $props();
 
@@ -85,6 +87,7 @@
   const triggerClasses = $derived(
     [
       'dodo-ui-UtilityButton',
+      'AffixContentTrigger',
       `size--${size}`,
       'compact',
       'color--primary',
@@ -93,17 +96,7 @@
     ].filter(Boolean),
   );
 
-  const clearButtonClasses = $derived(
-    [
-      'SelectClear',
-      'dodo-ui-UtilityButton',
-      `size--${size}`,
-      'compact',
-      'color--primary',
-      'roundness--full',
-      disabled && 'disabled',
-    ].filter(Boolean),
-  );
+  const clearButtonClasses = $derived(['AffixContentClearButton', 'SelectClear'].filter(Boolean));
 
   $effect(() => {
     console.log(searchValue);
@@ -111,13 +104,15 @@
 </script>
 
 {#snippet triggerButton()}
-  <Combobox.Trigger class={triggerClasses.join(' ')} {...comboboxTriggerProps}>
-    {#if customTriggerIcon}
-      {@render customTriggerIcon?.()}
-    {:else}
-      <Icon icon="material-symbols:arrow-drop-down-rounded" />
-    {/if}
-  </Combobox.Trigger>
+  {#if showTriggerButton}
+    <Combobox.Trigger class={triggerClasses.join(' ')} {...comboboxTriggerProps}>
+      {#if customTriggerIcon}
+        {@render customTriggerIcon?.()}
+      {:else}
+        <Icon icon="material-symbols:arrow-drop-down-rounded" />
+      {/if}
+    </Combobox.Trigger>
+  {/if}
 {/snippet}
 
 <InputEnclosure
@@ -156,7 +151,15 @@
 
   {#snippet after()}
     {#if clearable && value}
-      <UtilityButton class={clearButtonClasses.join(' ')} onclick={handleOnClear}>
+      <UtilityButton
+        class={clearButtonClasses.join(' ')}
+        roundness="full"
+        {size}
+        compact
+        color="primary"
+        {disabled}
+        onclick={handleOnClear}
+      >
         <Icon icon="material-symbols:close-rounded" />
       </UtilityButton>
     {/if}

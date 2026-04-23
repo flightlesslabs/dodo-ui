@@ -199,6 +199,11 @@
   args={{ placeholder: 'Select an option', triggerPlacement: 'before' }}
 />
 
+<Story
+  name="No Trigger Button"
+  args={{ placeholder: 'Search a number', searchable: true, showTriggerButton: false }}
+/>
+
 <Story name="Custom Trigger Icon" asChild>
   <Select {options}>
     {#snippet customTriggerIcon()}

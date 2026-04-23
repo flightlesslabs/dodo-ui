@@ -5,6 +5,9 @@
 ### Minor Changes
 
 - Search input added
+- Select Trigger button hide option added
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-bits@0.1.15
 
 ### Patch Changes
 

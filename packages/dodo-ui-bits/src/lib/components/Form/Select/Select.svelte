@@ -93,6 +93,9 @@
      * - "after": renders after control
      */
     triggerPlacement?: ComponentAffixPlacement;
+
+    /** show Trigger Button */
+    showTriggerButton?: boolean;
   };
 </script>
 
@@ -133,6 +136,7 @@
     onclear,
     customTriggerIcon,
     triggerPlacement = 'after',
+    showTriggerButton = true,
     ...restProps
   }: SelectProps = $props();
 
@@ -185,6 +189,7 @@
     bind:searchValue
     bind:ref={customAnchor}
     {triggerPlacement}
+    {showTriggerButton}
   />
   <SelectPopup options={filteredOptions} {searchResultPlaceholder} {...popupProps} {customAnchor} />
 </Combobox.Root>

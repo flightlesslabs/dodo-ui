@@ -6,6 +6,7 @@
 
 - Updated dependencies
   - @flightlesslabs/dodo-ui@0.32.0
+- Select Trigger button hide option added
 
 ## 0.1.13
 
