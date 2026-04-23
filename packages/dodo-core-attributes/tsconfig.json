@@ -10,6 +10,6 @@
     "strict": true,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "composite": true
-  }
+    "composite": true,
+  },
 }
