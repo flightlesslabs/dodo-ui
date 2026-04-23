@@ -1,27 +1,27 @@
 <script lang="ts" module>
   import type { Snippet } from 'svelte';
-  import type { HTMLInputAttributes } from 'svelte/elements';
+  import type { HTMLTextareaAttributes } from 'svelte/elements';
 
-  export type TextInputEvent = {
-    currentTarget: EventTarget & HTMLInputElement;
+  export type TextAreaEvent = {
+    currentTarget: EventTarget & HTMLTextAreaElement;
   };
 
-  export type TextInputFocusEvent = FocusEvent & TextInputEvent;
+  export type TextAreaFocusEvent = FocusEvent & TextAreaEvent;
 
-  export type TextInputKeyboardEvent = KeyboardEvent & TextInputEvent;
+  export type TextAreaKeyboardEvent = KeyboardEvent & TextAreaEvent;
 
   /**
-   * Shared base props for the TextInput component.
+   * Shared base props for the TextArea component.
    *
    * These props control the visual wrapper (InputEnclosure) and
    * common text-input behaviors.
    */
-  interface TextInputBaseProps {
-    /** Input contents are not used (TextInput manages its own <input>) */
+  interface TextAreaBaseProps {
+    /** Input contents are not used (TextArea manages its own <input>) */
     children?: never;
 
     /** Reference to the underlying input element */
-    ref?: HTMLInputElement | null;
+    ref?: HTMLTextAreaElement | null;
 
     /** Visual size token (e.g. small, normal, large) */
     size?: ComponentSize;
@@ -69,14 +69,8 @@
     after?: Snippet;
   }
 
-  /**
-   * TextInput component props.
-   *
-   * Renders a semantic <input type="text"> wrapped in InputEnclosure.
-   * Inherits all native HTML input attributes (placeholder, value, name, etc.).
-   */
-  export type TextInputProps = TextInputBaseProps &
-    Omit<HTMLInputAttributes, 'size' | 'children' | 'value'> & {
+  export type TextAreaProps = TextAreaBaseProps &
+    Omit<HTMLTextareaAttributes, 'size' | 'children' | 'value'> & {
       value?: string;
     };
 </script>
@@ -101,7 +95,7 @@
     onfocus,
     onblur,
     ...restProps
-  }: TextInputProps = $props();
+  }: TextAreaProps = $props();
 
   /**
    * Local focus state used to drive InputEnclosure focus styling.
@@ -110,15 +104,15 @@
 
   function handleFocus(event: FocusEvent) {
     isFocused = true;
-    onfocus?.(event as TextInputFocusEvent);
+    onfocus?.(event as TextAreaFocusEvent);
   }
 
   function handleBlur(event: FocusEvent) {
     isFocused = false;
-    onblur?.(event as TextInputFocusEvent);
+    onblur?.(event as TextAreaFocusEvent);
   }
 
-  const classes = $derived(['dodo-ui-TextInput', className].filter(Boolean));
+  const classes = $derived(['dodo-ui-TextArea', className].filter(Boolean));
 </script>
 
 <InputEnclosure
@@ -131,14 +125,15 @@
   class={classes.join(' ')}
   {before}
   {after}
+  multiline
 >
-  <input
+  <textarea
     {...restProps}
-    bind:value
     bind:this={ref}
+    bind:value
     {disabled}
     onfocus={handleFocus}
     onblur={handleBlur}
     class="InputBox"
-  />
+  ></textarea>
 </InputEnclosure>

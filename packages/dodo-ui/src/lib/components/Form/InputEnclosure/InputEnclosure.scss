@@ -135,6 +135,42 @@ $states: (
     }
   }
 
+  &.multiline {
+    height: auto;
+
+    &.size {
+      @each $name, $height in $sizes {
+        &--#{$name} {
+          height: auto;
+          min-height: $height;
+        }
+      }
+
+      &--normal {
+        .InputBox {
+          padding: calc(var(--dodo-ui-space-small) * 2);
+        }
+      }
+
+      &--small {
+        .InputBox {
+          padding: var(--dodo-ui-space);
+        }
+      }
+
+      &--large {
+        .InputBox {
+          padding: calc(var(--dodo-ui-space) * 2);
+        }
+      }
+    }
+
+    .InputBox {
+      height: auto;
+      resize: vertical;
+    }
+  }
+
   // ----------------------------------------
   // Roundness
   // ----------------------------------------
@@ -178,11 +214,6 @@ $states: (
     }
 
     &--small {
-      .InputBox {
-        padding: 0 var(--dodo-ui-space);
-        font-size: 0.9rem;
-      }
-
       &.placement {
         &--before {
           &.affixSpacing {
