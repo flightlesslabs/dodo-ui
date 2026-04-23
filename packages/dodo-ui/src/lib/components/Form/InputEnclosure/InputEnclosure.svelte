@@ -55,13 +55,6 @@
     after?: Snippet;
 
     /**
-     * Content rendered before the input (e.g. icon, prefix, button).
-     *
-     * This content is rendered inside an internal affix wrapper.
-     */
-    spaceAdjustment?: Snippet;
-
-    /**
      * Controls the spacing between the "before" affix content
      * and the input field.
      */

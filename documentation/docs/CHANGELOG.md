@@ -1,5 +1,16 @@
 # @documentation/docs
 
+## 0.12.1
+
+### Patch Changes
+
+- InputEnclosure unused property removed
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.33.1
+  - @flightlesslabs/dodo-ui-bits@0.1.16
+  - @flightlesslabs/dodo-ui-date@0.4.17
+  - @flightlesslabs/dodo-ui-numeric@0.2.14
+
 ## 0.12.0
 
 ### Minor Changes

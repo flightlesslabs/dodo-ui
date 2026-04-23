@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.33.1
+
+### Patch Changes
+
+- InputEnclosure unused property removed
+
 ## 0.33.0
 
 ### Minor Changes

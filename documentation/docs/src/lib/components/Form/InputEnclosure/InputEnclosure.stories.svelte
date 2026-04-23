@@ -34,6 +34,7 @@
       description: 'InputEnclosure contents (typically an input or control)',
       table: { category: 'API', subcategory: 'Base' },
     },
+    multiline: { control: { type: 'boolean' }, table: { category: 'API', subcategory: 'Base' } },
     before: {
       description:
         'Content rendered before the input (prefix). Provided via {#snippet before} in Svelte.',
