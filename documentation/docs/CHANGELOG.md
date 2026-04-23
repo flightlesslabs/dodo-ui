@@ -6,8 +6,10 @@
 
 - Search input added
 - Select Trigger button hide option added
+- DatePicker trigger button hide added
 - Updated dependencies
-  - @flightlesslabs/dodo-ui-bits@0.1.15
+ - @flightlesslabs/dodo-ui-bits@0.1.15
+  - @flightlesslabs/dodo-ui-date@0.4.16
 
 ### Patch Changes
 

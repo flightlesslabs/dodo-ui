@@ -4,6 +4,7 @@
 
 ### Patch Changes
 
+- DatePicker trigger button hide added
 - Updated dependencies
   - @flightlesslabs/dodo-ui@0.32.0
 

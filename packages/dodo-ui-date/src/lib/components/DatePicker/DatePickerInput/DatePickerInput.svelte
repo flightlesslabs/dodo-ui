@@ -21,6 +21,7 @@
     onclear?: () => void;
     value: DateValue | undefined;
     triggerPlacement?: ComponentAffixPlacement;
+    showTriggerButton?: boolean;
   };
 </script>
 
@@ -57,6 +58,7 @@
     onclear,
     value = $bindable(undefined),
     triggerPlacement = 'after',
+    showTriggerButton = true,
     ...restProps
   }: DatePickerInputProps = $props();
 
@@ -81,20 +83,13 @@
   const classes = $derived(['dodo-ui-DatePicker', className].filter(Boolean));
 
   const clearButtonClasses = $derived(
-    [
-      'DatePickerClear',
-      'dodo-ui-UtilityButton',
-      `size--${size}`,
-      'compact',
-      'color--primary',
-      'roundness--full',
-      disabled && 'disabled',
-    ].filter(Boolean),
+    ['AffixContentClearButton', 'DatePickerClear'].filter(Boolean),
   );
 
   const triggerClasses = $derived(
     [
       'dodo-ui-UtilityButton',
+      'AffixContentTrigger',
       `size--${size}`,
       'compact',
       'color--primary',
@@ -106,13 +101,15 @@
 </script>
 
 {#snippet triggerButton()}
-  <DatePicker.Trigger class={triggerClasses.join(' ')} {...datePickerTriggerProps}>
-    {#if customTriggerIcon}
-      {@render customTriggerIcon?.()}
-    {:else}
-      <Icon icon="material-symbols:calendar-month-sharp" />
-    {/if}
-  </DatePicker.Trigger>
+  {#if showTriggerButton}
+    <DatePicker.Trigger class={triggerClasses.join(' ')} {...datePickerTriggerProps}>
+      {#if customTriggerIcon}
+        {@render customTriggerIcon?.()}
+      {:else}
+        <Icon icon="material-symbols:calendar-month-sharp" />
+      {/if}
+    </DatePicker.Trigger>
+  {/if}
 {/snippet}
 
 <InputEnclosure
@@ -148,7 +145,15 @@
 
   {#snippet after()}
     {#if clearable && value}
-      <UtilityButton class={clearButtonClasses.join(' ')} onclick={handleOnClear}>
+      <UtilityButton
+        class={clearButtonClasses.join(' ')}
+        roundness="full"
+        {size}
+        compact
+        color="primary"
+        {disabled}
+        onclick={handleOnClear}
+      >
         <Icon icon="material-symbols:close-rounded" />
       </UtilityButton>
     {/if}

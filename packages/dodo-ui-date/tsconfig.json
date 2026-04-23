@@ -1,5 +1,4 @@
 {
-  "extends": "./.svelte-kit/tsconfig.json",
   "compilerOptions": {
     "rewriteRelativeImportExtensions": true,
     "allowJs": false,
@@ -11,6 +10,6 @@
     "strict": true,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "composite": true
-  }
+    "composite": true,
+  },
 }

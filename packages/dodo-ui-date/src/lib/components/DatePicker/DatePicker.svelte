@@ -86,6 +86,9 @@
      * - "after": renders after control
      */
     triggerPlacement?: ComponentAffixPlacement;
+
+    /** show Trigger Button */
+    showTriggerButton?: boolean;
   };
 </script>
 
@@ -132,6 +135,7 @@
     clearable,
     onclear,
     triggerPlacement = 'after',
+    showTriggerButton = true,
     ...restProps
   }: DatePickerProps = $props();
 
@@ -166,6 +170,7 @@
     {onclear}
     bind:value
     {triggerPlacement}
+    {showTriggerButton}
   />
   <DatePickerPopup {...popupProps} {customAnchor} />
 </DatePickerBitsUi.Root>

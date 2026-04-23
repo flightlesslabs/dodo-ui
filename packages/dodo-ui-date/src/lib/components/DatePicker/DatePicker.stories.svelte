@@ -121,6 +121,8 @@
   args={{ triggerPlacement: 'before', popupProps: { align: 'start' } }}
 />
 
+<Story name="No Trigger Button" args={{ showTriggerButton: false }} />
+
 <Story name="Custom Trigger Icon" asChild>
   <DatePicker>
     {#snippet customTriggerIcon()}
