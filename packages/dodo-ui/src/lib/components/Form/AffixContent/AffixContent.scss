@@ -1,0 +1,54 @@
+// AffixContent
+
+.AffixContentTrigger {
+  // ----------------------------------------
+  // Sizes
+  // ----------------------------------------
+  &.size {
+    &--normal {
+      margin: 0 calc(var(--dodo-ui-space) / 2.5);
+    }
+
+    &--small {
+      margin: 0 calc(var(--dodo-ui-space--small) / 2.5);
+    }
+
+    &--large {
+      margin: 0 calc(var(--dodo-ui-space--large) / 2.5);
+    }
+  }
+}
+
+.AffixContentClearButton {
+  // ----------------------------------------
+  // Sizes
+  // ----------------------------------------
+  &.size {
+    &--normal {
+      font-size: 1.25em;
+      margin: 0 calc(var(--dodo-ui-space) / 2.5);
+
+      &.dodo-ui-UtilityButton {
+        font-size: 1.25em;
+      }
+    }
+
+    &--small {
+      font-size: 1.25em;
+      margin: 0 calc(var(--dodo-ui-space--small) / 2.5);
+
+      &.dodo-ui-UtilityButton {
+        font-size: 1.25em;
+      }
+    }
+
+    &--large {
+      font-size: 1.25em;
+      margin: 0 calc(var(--dodo-ui-space--large) / 2.5);
+
+      &.dodo-ui-UtilityButton {
+        font-size: 1.25em;
+      }
+    }
+  }
+}

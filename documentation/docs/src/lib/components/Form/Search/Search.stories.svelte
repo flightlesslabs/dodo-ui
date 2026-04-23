@@ -1,82 +1,50 @@
 <script module lang="ts">
-  import { defineMeta } from '@storybook/addon-svelte-csf';
-  import type { ArgTypes } from 'storybook/internal/csf';
   import {
+    type SearchProps,
     componentSizeOptions,
     componentRoundnessOptions,
-    Theme,
     componentAffixPlacementOptions,
+    Search,
+    Theme,
   } from '@flightlesslabs/dodo-ui';
-  import type { SelectProps } from '@flightlesslabs/dodo-ui-bits';
-  import { Select } from '@flightlesslabs/dodo-ui-bits';
+  import { defineMeta } from '@storybook/addon-svelte-csf';
+  import type { ArgTypes } from 'storybook/internal/csf';
 
   const description = `
- A searchable Select component based on bits-ui [combobox](https://bits-ui.com/docs/components/combobox).
-
-## 🚀 Installation
-
-   \`\`\`bash
-  pnpm add bits-ui @flightlesslabs/dodo-ui-bits
-   \`\`\`
-
- For full setup (styles, themes, configuration), see the [Getting Started](https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-bits) guide.
-
-## ✨ Usage
+ Search input that looks good
 
  \`\`\`ts
- import { Select } from '@flightlesslabs/dodo-ui-bits';
-
- <Select />
+ import { Search } from '@flightlesslabs/dodo-ui';
  \`\`\`
 `;
-
-  const options = [
-    { value: 'one', label: 'One' },
-    { value: 'two', label: 'Two' },
-    { value: 'three', label: 'Three' },
-    { value: 'four', label: 'Four' },
-    { value: 'five', label: 'Five' },
-    { value: 'six', label: 'Six' },
-    { value: 'seven', label: 'Seven' },
-    { value: 'eight', label: 'Eight' },
-    { value: 'nine', label: 'Nine' },
-    { value: 'ten', label: 'Ten' },
-    { value: 'eleven', label: 'Eleven' },
-    { value: 'twelve', label: 'Twelve' },
-    { value: 'thirteen', label: 'Thirteen' },
-    { value: 'fourteen', label: 'Fourteen' },
-    { value: 'fifteen', label: 'Fifteen' },
-    { value: 'sixteen', label: 'Sixteen' },
-    { value: 'seventeen', label: 'Seventeen' },
-    { value: 'eighteen', label: 'Eighteen' },
-    { value: 'nineteen', label: 'Nineteen' },
-    { value: 'twenty', label: 'Twenty' },
-    { value: 'twentyOne', label: 'Twenty One' },
-    { value: 'twentyTwo', label: 'Twenty Two' },
-    { value: 'twentyThree', label: 'Twenty Three' },
-    { value: 'twentyFour', label: 'Twenty Four' },
-    { value: 'twentyFive', label: 'Twenty Five' },
-  ];
 
   // ------------------------------
   // Storybook ArgTypes
   // ------------------------------
-  export const storySelectArgTypes: Partial<ArgTypes<SelectProps>> = {
+  export const storySearchArgTypes: Partial<ArgTypes<SearchProps>> = {
+    children: {
+      table: { disable: true },
+      control: false,
+    },
+
     // ------------------------------
     // Core
     // ------------------------------
     class: { table: { category: 'API', subcategory: 'Base' } },
+    placeholder: {
+      control: { type: 'text' },
+      table: { category: 'API', subcategory: 'Base' },
+    },
     value: {
       control: { type: 'text' },
       table: { category: 'API', subcategory: 'Base' },
     },
     name: { table: { category: 'API', subcategory: 'Base' } },
-    options: { table: { category: 'API', subcategory: 'Base' } },
-    searchable: {
+    clearable: {
       control: { type: 'boolean' },
       table: { category: 'API', subcategory: 'Base' },
     },
-    clearable: {
+    clearOnEscape: {
       control: { type: 'boolean' },
       table: { category: 'API', subcategory: 'Base' },
     },
@@ -97,6 +65,10 @@
     error: {
       control: { type: 'boolean' },
       description: 'Error visual state',
+      table: { category: 'API', subcategory: 'State', defaultValue: { summary: 'false' } },
+    },
+    highlightAffixIcon: {
+      control: { type: 'boolean' },
       table: { category: 'API', subcategory: 'State', defaultValue: { summary: 'false' } },
     },
 
@@ -120,10 +92,14 @@
       description: 'Render outlined enclosure',
       table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'true' } },
     },
-    triggerPlacement: {
+    affixPlacement: {
       control: { type: 'select' },
       options: componentAffixPlacementOptions,
-      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'after' } },
+      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'before' } },
+    },
+    showAffixIcon: {
+      control: { type: 'boolean' },
+      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'true' } },
     },
 
     // ------------------------------
@@ -137,7 +113,7 @@
       table: { category: 'API', subcategory: 'Slots' },
       description: 'Content rendered after the input',
     },
-    customTriggerIcon: {
+    customAffixIcon: {
       table: { category: 'API', subcategory: 'Slots' },
     },
   };
@@ -146,12 +122,9 @@
   // Storybook Meta
   // ------------------------------
   const { Story } = defineMeta({
-    component: Select,
+    component: Search,
     tags: ['autodocs'],
-    argTypes: storySelectArgTypes,
-    args: {
-      options,
-    },
+    argTypes: storySearchArgTypes,
     parameters: {
       docs: {
         description: {
@@ -161,60 +134,71 @@
     },
   });
 
-  let myValue = $state<string | undefined>(options[1].value);
-  let myValue2 = $state<string | undefined>(options[2].value);
+  let myValue = $state<string | undefined>('Hey there');
 </script>
 
 <!-- ------------------------------ -->
 <!-- Stories -->
 <!-- ------------------------------ -->
 
-<Story name="Default" args={{ placeholder: 'Select an option' }} />
-
-<Story name="Searchable" args={{ searchable: true, placeholder: 'Search a number' }} />
-
-<Story
-  name="Clearable"
-  args={{ searchable: true, clearable: true, value: myValue2, placeholder: 'Search a number' }}
-/>
+<Story name="Default" args={{ placeholder: 'Type something…' }} />
 
 <Story name="Controlled" asChild>
-  <Select {options} bind:value={myValue} />
+  <Search bind:value={myValue} placeholder="Type something…" />
 </Story>
 
+<Story name="Clearable" args={{ placeholder: 'Type something…', clearable: true }} />
+
 <Story
-  name="OnChange (Actions)"
+  name="Clear On Escape"
+  args={{ placeholder: 'Type something…', clearable: true, clearOnEscape: true }}
+/>
+
+<Story
+  name="OnSearch"
   args={{
-    onValueChange: (val: string) => {
-      alert('OnChange');
-      console.log('OnChange', val);
+    placeholder: 'Type something…',
+    onsearch: () => {
+      console.log('debug:', 'OnSearch');
     },
   }}
 />
 
-<Story name="Disabled" args={{ placeholder: 'Select an option', disabled: true }} />
+<Story name="Focused" args={{ placeholder: 'Focused state…', focused: true }} />
+
+<Story name="Error" args={{ placeholder: 'Error state…', error: true }} />
+
+<Story name="Large" args={{ placeholder: 'Type something…', size: 'large' }} />
+
+<Story name="Pill Shape" args={{ placeholder: 'Type something…', roundness: 'pill' }} />
+
+<Story name="Disabled" args={{ placeholder: 'Disabled state…', disabled: true }} />
 
 <Story
-  name="Trigger Placement Before"
-  args={{ placeholder: 'Select an option', triggerPlacement: 'before' }}
+  name="Highlight Affix Icon"
+  args={{ placeholder: 'Type something…', highlightAffixIcon: true }}
 />
 
-<Story name="Custom Trigger Icon" asChild>
-  <Select {options}>
-    {#snippet customTriggerIcon()}
-      O <!-- You can put any icon here -->
+<Story name="Affix Placement" args={{ placeholder: 'Type something…', affixPlacement: 'after' }} />
+
+<Story name="No Affix Icon" args={{ placeholder: 'Type something…', showAffixIcon: false }} />
+
+<Story name="Custom Affix Icon" asChild>
+  <Search placeholder="Type something…">
+    {#snippet customAffixIcon()}
+      🔍
     {/snippet}
-  </Select>
+  </Search>
 </Story>
 
 <Story name="Light Theme" asChild>
   <Theme type="light">
-    <Select {options} />
+    <Search placeholder="Type something…" />
   </Theme>
 </Story>
 
 <Story name="Dark Theme" asChild globals={{ backgrounds: { value: 'dark' } }}>
   <Theme type="dark">
-    <Select {options} popupProps={{ theme: 'dark' }} />
+    <Search placeholder="Type something…" />
   </Theme>
 </Story>

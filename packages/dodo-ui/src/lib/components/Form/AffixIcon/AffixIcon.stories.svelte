@@ -9,7 +9,7 @@
     componentVariantOptions,
   } from '@flightlesslabs/dodo-core-attributes';
   import Icon from '@iconify/svelte';
-  import Theme from '$lib/components/Layout/Theme/Theme.svelte';
+  import Theme from '../../Layout/Theme/Theme.svelte';
 
   const description = `
     A docorated icon component created for affix places (InputEnclosure)

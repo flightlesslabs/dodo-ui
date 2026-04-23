@@ -1,0 +1,8 @@
+.dodo-ui-Search {
+  .InputBox {
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+  }
+}

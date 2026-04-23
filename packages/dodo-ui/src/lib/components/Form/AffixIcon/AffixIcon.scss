@@ -41,6 +41,10 @@ $roundness: (
 .dodo-ui-AffixIcon {
   display: inline-flex;
   justify-content: center;
+  transition:
+    background-color 70ms,
+    color 70ms,
+    border-color 70ms;
   align-items: center;
   font-family: inherit;
   background-color: transparent;

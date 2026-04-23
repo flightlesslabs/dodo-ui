@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.32.0
+
+### Minor Changes
+
+- Search input added
+
 ## 0.31.0
 
 ### Minor Changes
