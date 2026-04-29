@@ -1,6 +1,7 @@
 // =====================================================
 // Form Components – Public API
 // =====================================================
+
 /**
  * Checkbox component and related prop types.
  */
@@ -35,3 +36,12 @@ export {
 export { type SelectInputProps } from './components/Form/Select/SelectInput.svelte';
 
 export { type SelectPopupProps } from './components/Form/Select/SelectPopup.svelte';
+
+// =====================================================
+// Feedback Components – Public API
+// =====================================================
+
+/**
+ * Modal component and related prop types.
+ */
+export { default as Modal, type ModalProps } from './components/Feedback/Modal/Modal.svelte';
