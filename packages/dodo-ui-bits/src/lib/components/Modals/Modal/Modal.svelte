@@ -7,7 +7,7 @@
     contentHolderProps?: DialogContentProps;
 
     /** Props Modal Content Card */
-    contentCardProps?: CardProps;
+    modalCardProps?: CardProps;
 
     /** Props Modal Overlay */
     overlayProps?: DialogOverlayProps;
@@ -16,11 +16,23 @@
     children?: Snippet;
 
     /**
-     * Content rendered title the input (prefix).
+     * title for the modal.
+     */
+    title?: string;
+
+    /**
+     * Content rendered title.
      *
      * Use {#snippet title} in Svelte.
      */
-    title?: Snippet;
+    customTitle?: Snippet;
+
+    /**
+     * Content rendered customModalCard.
+     *
+     * Use {#snippet customModalCard} in Svelte.
+     */
+    customModalCard?: Snippet;
 
     /**
      * Content rendered controls the input (prefix).
@@ -40,6 +52,9 @@
 
     /** min width */
     'min-width'?: string;
+
+    /** Controls Alignment */
+    controlsAlignment?: ComponentAlignmentX;
   };
 </script>
 
@@ -51,27 +66,30 @@
     type DialogRootProps,
   } from 'bits-ui';
 
-  import { type CardProps } from '@flightlesslabs/dodo-ui';
+  import { type CardProps, type ComponentAlignmentX } from '@flightlesslabs/dodo-ui';
   import type { Snippet } from 'svelte';
-  import ModalContentCard from './ModalContentCard.svelte';
+  import ModalCard from './ModalCard/ModalCard.svelte';
 
   let {
     class: className = '',
     contentHolderProps,
-    contentCardProps,
+    modalCardProps,
     open = $bindable(),
     children,
     title,
+    customTitle,
     controls,
     clearable = true,
     onclear,
     overlayProps,
     'min-width': minWidth = '400px',
     'max-width': maxWidth = '600px',
+    controlsAlignment = 'end',
+    customModalCard,
     ...restProps
   }: ModalProps = $props();
 
-  const classes = $derived(['dodo-ui-Modal', clearable && 'clearable', className].filter(Boolean));
+  const classes = $derived(['dodo-ui-Modal', className].filter(Boolean));
 
   function handleOnClear() {
     open = false;
@@ -86,16 +104,22 @@
   <Dialog.Portal>
     <Dialog.Overlay {...overlayProps} class="ModalOverlay" />
     <Dialog.Content {...contentHolderProps} class={classes.join(' ')}>
-      <ModalContentCard
-        {...contentCardProps}
-        onclear={handleOnClear}
-        {clearable}
-        {controls}
-        {title}
-        {children}
-        min-width={minWidth}
-        max-width={maxWidth}
-      />
+      {#if customModalCard}
+        {@render customModalCard?.()}
+      {:else}
+        <ModalCard
+          {...modalCardProps}
+          onclear={handleOnClear}
+          {clearable}
+          {controls}
+          {title}
+          {customTitle}
+          {children}
+          min-width={minWidth}
+          max-width={maxWidth}
+          {controlsAlignment}
+        />
+      {/if}
     </Dialog.Content>
   </Dialog.Portal>
 </Dialog.Root>

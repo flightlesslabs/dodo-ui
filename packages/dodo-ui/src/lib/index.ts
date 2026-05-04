@@ -253,3 +253,16 @@ export {
   type ComponentAffixPlacement,
   componentAffixPlacementOptions,
 } from '@flightlesslabs/dodo-core-attributes';
+
+/**
+ * alignment attribute related prop types.
+ */
+export {
+  COMPONENT_ALIGNMENT,
+  type ComponentAlignment,
+  componentAlignmentOptions,
+  type ComponentAlignmentX,
+  componentAlignmentXOptions,
+  type ComponentAlignmentY,
+  componentAlignmentYOptions,
+} from '@flightlesslabs/dodo-core-attributes';

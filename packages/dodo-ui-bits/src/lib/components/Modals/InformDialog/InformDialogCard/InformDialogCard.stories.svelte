@@ -1,14 +1,14 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import type { ModalProps } from './Modal.svelte';
-  import Modal from './Modal.svelte';
-  import { Button } from '@flightlesslabs/dodo-ui';
+  import type { InformDialogCardProps } from './InformDialogCard.svelte';
+  import InformDialogCard from './InformDialogCard.svelte';
+  import { componentAlignmentXOptions } from '@flightlesslabs/dodo-ui';
 
   // ------------------------------
   // Storybook ArgTypes
   // ------------------------------
-  export const storyModalArgTypes: Partial<ArgTypes<ModalProps>> = {
+  export const storyInformDialogCardArgTypes: Partial<ArgTypes<InformDialogCardProps>> = {
     // ------------------------------
     // Core
     // ------------------------------
@@ -17,14 +17,16 @@
       control: { type: 'boolean' },
       table: { category: 'API', subcategory: 'Base' },
     },
+    controlsAlignment: {
+      control: { type: 'select' },
+      options: componentAlignmentXOptions,
+      table: { category: 'API', subcategory: 'Base', defaultValue: { summary: 'end' } },
+    },
 
     // ------------------------------
     // Slots (Snippets)
     // ------------------------------
     title: {
-      table: { category: 'API', subcategory: 'Slots' },
-    },
-    controls: {
       table: { category: 'API', subcategory: 'Slots' },
     },
   };
@@ -33,15 +35,10 @@
   // Storybook Meta
   // ------------------------------
   const { Story } = defineMeta({
-    component: Modal,
+    component: InformDialogCard,
     tags: ['autodocs'],
-    argTypes: storyModalArgTypes,
-    parameters: {
-      layout: 'fullscreen',
-    },
+    argTypes: storyInformDialogCardArgTypes,
   });
-
-  let openDefault = $state<boolean>(false);
 </script>
 
 <!-- ------------------------------ -->
@@ -49,17 +46,5 @@
 <!-- ------------------------------ -->
 
 <Story name="Default" asChild>
-  <Button onclick={() => (openDefault = true)}>Open</Button>
-
-  <Modal bind:open={openDefault}>
-    {#snippet title()}
-      Hello there
-    {/snippet}
-
-    Hello there
-
-    {#snippet controls()}
-      <Button onclick={() => (openDefault = false)}>Okay</Button>
-    {/snippet}
-  </Modal>
+  <InformDialogCard title="Modal title">Hello there</InformDialogCard>
 </Story>
