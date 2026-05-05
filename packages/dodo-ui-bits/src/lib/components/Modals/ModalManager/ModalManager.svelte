@@ -37,15 +37,15 @@
 
 {#if modalDialogType && isMatch}
   {#if modalDialogType === 'confirm'}
-    <ConfirmDialog {...modals._activeModal?.config}>
+    <ConfirmDialog {...modals._activeModal?.config} open>
       {modals._activeModal?.config.description}
     </ConfirmDialog>
   {:else if modalDialogType === 'inform'}
-    <InformDialog {...modals._activeModal?.config}>
+    <InformDialog {...modals._activeModal?.config} open>
       {modals._activeModal?.config.description}
     </InformDialog>
   {:else}
-    <Modal {...modals._activeModal?.config}>
+    <Modal {...modals._activeModal?.config} open>
       {modals._activeModal?.config.description}
     </Modal>
   {/if}
