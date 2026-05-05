@@ -5,7 +5,8 @@ import type { ModalProps } from '../../Modal/Modal.svelte';
 export type ModalDialogType = 'modal' | 'inform' | 'confirm';
 
 export type ModalDialogBaseConfig = {
-  moddalManagerId?: string;
+  modalManagerId?: string;
+  description?: string;
 };
 
 export type ModalDialogModalConfig = ModalProps & ModalDialogBaseConfig;
@@ -14,22 +15,45 @@ export type ModalDialogInformConfig = InformDialogProps & ModalDialogBaseConfig;
 
 export type ModalDialogConfirmConfig = ConfirmDialogProps & ModalDialogBaseConfig;
 
+export type ModalDialogConfigMap = {
+  modal: ModalDialogModalConfig;
+  inform: ModalDialogInformConfig;
+  confirm: ModalDialogConfirmConfig;
+};
+
+export type ActiveModal = {
+  type: ModalDialogType;
+  config: ModalDialogConfigMap[ModalDialogType];
+} | null;
+
 function createModalsStore() {
-  let moddalManagerIds = $state<string[]>([]);
+  let modalManagerIds = $state<string[]>([]);
+  let activeModal = $state<ActiveModal>(null);
 
   return {
-    get moddalManagerIds() {
-      return moddalManagerIds;
+    get _moddalManagerIds() {
+      return modalManagerIds;
     },
-    addModalManagerId(id: string) {
-      if (!moddalManagerIds.includes(id)) {
-        moddalManagerIds.push(id);
+    get _activeModal() {
+      return activeModal;
+    },
+    _addModalManagerId(id: string) {
+      if (!modalManagerIds.includes(id)) {
+        modalManagerIds.push(id);
       }
     },
-    removeModalManagerId(id: string) {
-      moddalManagerIds = moddalManagerIds.filter((item) => item !== id);
+    _removeModalManagerId(id: string) {
+      modalManagerIds = modalManagerIds.filter((item) => item !== id);
     },
-    add(type: ModalDialogType) {},
+    add<T extends ModalDialogType>(type: T, config: ModalDialogConfigMap[T]) {
+      activeModal = {
+        type,
+        config,
+      };
+    },
+    clear() {
+      activeModal = null;
+    },
   };
 }
 
