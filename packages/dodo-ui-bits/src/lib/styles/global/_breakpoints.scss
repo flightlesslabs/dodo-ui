@@ -1,0 +1,38 @@
+@use 'sass:map';
+
+$breakpoints-default: (
+  sm: 40rem,
+  md: 48rem,
+  lg: 64rem,
+  xl: 80rem,
+  xxl: 96rem,
+);
+
+$breakpoints: () !default;
+
+$breakpoints: map.merge($breakpoints-default, $breakpoints);
+
+@function breakpoint($key) {
+  @if not map.has-key($breakpoints, $key) {
+    @error "Invalid breakpoint: #{$key}";
+  }
+  @return map.get($breakpoints, $key);
+}
+
+@mixin up($key) {
+  @media (min-width: breakpoint($key)) {
+    @content;
+  }
+}
+
+@mixin down($key) {
+  @media (max-width: breakpoint($key)) {
+    @content;
+  }
+}
+
+@mixin between($min, $max) {
+  @media (min-width: breakpoint($min)) and (max-width: breakpoint($max)) {
+    @content;
+  }
+}

@@ -1,5 +1,15 @@
 # @flightlesslabs/dodo-ui
 
+## 0.33.2
+
+### Patch Changes
+
+- 23edc50: Pacakges updated
+- 7a6ec52: Z index modified
+- Updated dependencies [3bab4b1]
+- Updated dependencies [23edc50]
+  - @flightlesslabs/dodo-core-attributes@0.3.0
+
 ## 0.33.1
 
 ### Patch Changes

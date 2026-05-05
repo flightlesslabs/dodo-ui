@@ -1,5 +1,15 @@
 # @flightlesslabs/dodo-ui-date
 
+## 0.4.18
+
+### Patch Changes
+
+- 23edc50: Pacakges updated
+- Updated dependencies [3bab4b1]
+- Updated dependencies [23edc50]
+- Updated dependencies [7a6ec52]
+  - @flightlesslabs/dodo-ui@0.33.2
+
 ## 0.4.17
 
 ### Patch Changes

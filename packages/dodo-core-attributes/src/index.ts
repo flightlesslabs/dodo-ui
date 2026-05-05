@@ -74,3 +74,16 @@ export {
   type ComponentAffixPlacement,
   componentAffixPlacementOptions,
 } from './attributes/affix-placement.js';
+
+/**
+ * alignment attribute related prop types.
+ */
+export {
+  COMPONENT_ALIGNMENT,
+  type ComponentAlignment,
+  componentAlignmentOptions,
+  type ComponentAlignmentX,
+  componentAlignmentXOptions,
+  type ComponentAlignmentY,
+  componentAlignmentYOptions,
+} from './attributes/alignment.ts';
