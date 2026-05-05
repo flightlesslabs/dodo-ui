@@ -54,6 +54,14 @@
     margin-top: calc(var(--dodo-ui-space) * 2);
     display: flex;
     flex-wrap: wrap;
+    margin-left: calc(calc(var(--dodo-ui-space) / 2) * -1);
+    margin-right: calc(calc(var(--dodo-ui-space) / 2) * -1);
+    margin-bottom: calc(calc(var(--dodo-ui-space) / 2) * -1);
+
+    button,
+    a {
+      margin: calc(var(--dodo-ui-space) / 2);
+    }
 
     &.alignmentX {
       &--start {

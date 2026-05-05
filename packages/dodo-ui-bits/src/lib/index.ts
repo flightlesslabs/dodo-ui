@@ -68,9 +68,18 @@ export {
 export {
   default as InformDialogCard,
   type InformDialogCardProps,
+  type ModalActionButtonProps,
 } from './components/Modals/InformDialog/InformDialogCard/InformDialogCard.svelte';
 
+/**
+ * ConfirmDialog component and related prop types.
+ */
 export {
-  default as ModalAcceptButton,
-  type ModalAcceptButtonProps,
-} from './components/Modals/ButtonControls/ModalAcceptButton.svelte';
+  default as ConfirmDialog,
+  type ConfirmDialogProps,
+} from './components/Modals/ConfirmDialog/ConfirmDialog.svelte';
+
+export {
+  default as ConfirmDialogCard,
+  type ConfirmDialogCardProps,
+} from './components/Modals/ConfirmDialog/ConfirmDialogCard/ConfirmDialogCard.svelte';

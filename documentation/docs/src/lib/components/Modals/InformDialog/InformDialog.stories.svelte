@@ -1,10 +1,36 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import type { InformDialogProps } from './InformDialog.svelte';
-  import InformDialog from './InformDialog.svelte';
   import { Button, componentAlignmentXOptions, Text } from '@flightlesslabs/dodo-ui';
-  import InformDialogCard from './InformDialogCard/InformDialogCard.svelte';
+
+  import {
+    InformDialogCard,
+    InformDialog,
+    type InformDialogProps,
+  } from '@flightlesslabs/dodo-ui-bits';
+
+  const description = `
+
+ InformDialog based on Modal
+
+## 🚀 Installation
+
+\`\`\`bash
+pnpm add bits-ui @flightlesslabs/dodo-ui-bits
+\`\`\`
+
+For full setup (styles, themes, configuration), see the [Getting Started](https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-bits) guide.
+
+## ✨ Usage
+
+ \`\`\`ts
+
+ import { InformDialog } from '@flightlesslabs/dodo-ui-bits';
+
+ <InformDialog />
+ \`\`\`
+
+ `;
 
   // ------------------------------
   // Storybook ArgTypes
@@ -45,6 +71,11 @@
     argTypes: storyInformDialogArgTypes,
     parameters: {
       layout: 'fullscreen',
+      docs: {
+        description: {
+          component: description,
+        },
+      },
     },
   });
 

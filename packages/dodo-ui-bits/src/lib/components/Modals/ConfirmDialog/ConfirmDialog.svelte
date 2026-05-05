@@ -1,5 +1,5 @@
 <script lang="ts" module>
-  export type InformDialogProps = DialogRootProps & {
+  export type ConfirmDialogProps = DialogRootProps & {
     /** Custom CSS class names applied to the InputEnclosure */
     class?: string;
 
@@ -46,6 +46,12 @@
     /** Clear modal on accept */
     clearOnAccept?: boolean;
 
+    /** onreject event */
+    onreject?: () => void;
+
+    /** Clear modal on reject */
+    clearOnReject?: boolean;
+
     /** max width */
     'max-width'?: string;
 
@@ -64,6 +70,16 @@
 
     /** onaccept Button props */
     acceptButtonProps?: ModalActionButtonProps;
+
+    /**
+     * Content rendered customRejectButton.
+     *
+     * Use {#snippet customRejectButton} in Svelte.
+     */
+    customRejectButton?: Snippet;
+
+    /** onreject Button props */
+    rejectButtonProps?: ModalActionButtonProps;
   };
 </script>
 
@@ -73,9 +89,8 @@
   import { type CardProps, type ComponentAlignmentX } from '@flightlesslabs/dodo-ui';
   import type { Snippet } from 'svelte';
   import Modal from '../Modal/Modal.svelte';
-  import InformDialogCard, {
-    type ModalActionButtonProps,
-  } from './InformDialogCard/InformDialogCard.svelte';
+  import ConfirmDialogCard from './ConfirmDialogCard/ConfirmDialogCard.svelte';
+  import type { ModalActionButtonProps } from '../InformDialog/InformDialogCard/InformDialogCard.svelte';
 
   let {
     class: className = '',
@@ -87,6 +102,7 @@
     clearable = true,
     onclear,
     onaccept,
+    onreject,
     'min-width': minWidth = '400px',
     'max-width': maxWidth = '600px',
     controlsAlignment = 'end',
@@ -94,10 +110,13 @@
     customAcceptButton,
     acceptButtonProps,
     clearOnAccept,
+    customRejectButton,
+    rejectButtonProps,
+    clearOnReject,
     ...restProps
-  }: InformDialogProps = $props();
+  }: ConfirmDialogProps = $props();
 
-  const classes = $derived(['dodo-ui-InformDialog', className].filter(Boolean));
+  const classes = $derived(['dodo-ui-ConfirmDialog', className].filter(Boolean));
 
   function handleOnClear() {
     open = false;
@@ -113,11 +132,14 @@
     {#if customModalCardMod}
       {@render customModalCardMod?.()}
     {:else}
-      <InformDialogCard
+      <ConfirmDialogCard
         {...modalCardProps}
         bind:open
         {acceptButtonProps}
         {customAcceptButton}
+        {customRejectButton}
+        {rejectButtonProps}
+        {clearOnReject}
         onclear={handleOnClear}
         {clearable}
         {title}
@@ -127,6 +149,7 @@
         max-width={maxWidth}
         {controlsAlignment}
         {onaccept}
+        {onreject}
         {clearOnAccept}
       />
     {/if}

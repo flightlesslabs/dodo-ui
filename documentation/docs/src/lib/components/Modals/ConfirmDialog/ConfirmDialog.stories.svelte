@@ -1,15 +1,42 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import type { InformDialogProps } from './InformDialog.svelte';
-  import InformDialog from './InformDialog.svelte';
   import { Button, componentAlignmentXOptions, Text } from '@flightlesslabs/dodo-ui';
-  import InformDialogCard from './InformDialogCard/InformDialogCard.svelte';
+
+  import {
+    ConfirmDialog,
+    ConfirmDialogCard,
+    type ConfirmDialogProps,
+  } from '@flightlesslabs/dodo-ui-bits';
+
+  const description = `
+
+ConfirmDialog based on Modal
+
+## 🚀 Installation
+
+\`\`\`bash
+pnpm add bits-ui @flightlesslabs/dodo-ui-bits
+\`\`\`
+
+
+For full setup (styles, themes, configuration), see the [Getting Started](https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-bits) guide.
+
+## ✨ Usage
+
+ \`\`\`ts
+
+ import { ConfirmDialog } from '@flightlesslabs/dodo-ui-bits';
+
+ <ConfirmDialog />
+ \`\`\`
+
+ `;
 
   // ------------------------------
   // Storybook ArgTypes
   // ------------------------------
-  export const storyInformDialogArgTypes: Partial<ArgTypes<InformDialogProps>> = {
+  export const storyConfirmDialogArgTypes: Partial<ArgTypes<ConfirmDialogProps>> = {
     // ------------------------------
     // Core
     // ------------------------------
@@ -40,11 +67,16 @@
   // Storybook Meta
   // ------------------------------
   const { Story } = defineMeta({
-    component: InformDialog,
+    component: ConfirmDialog,
     tags: ['autodocs'],
-    argTypes: storyInformDialogArgTypes,
+    argTypes: storyConfirmDialogArgTypes,
     parameters: {
       layout: 'fullscreen',
+      docs: {
+        description: {
+          component: description,
+        },
+      },
     },
   });
 
@@ -63,65 +95,65 @@
 <Story name="Default" asChild>
   <Button onclick={() => (openDefault = true)}>Open</Button>
 
-  <InformDialog bind:open={openDefault} title="Inform Dialog title">
-    This is a basic InformDialog with a title and a single action.
-  </InformDialog>
+  <ConfirmDialog bind:open={openDefault} title="Confirm Dialog title">
+    This is a basic ConfirmDialog with a title and a single action.
+  </ConfirmDialog>
 </Story>
 
 <Story name="Accept Button Props" asChild>
   <Button onclick={() => (openAcceptButtonProps = true)}>Open</Button>
 
-  <InformDialog
+  <ConfirmDialog
     bind:open={openAcceptButtonProps}
-    title="Inform Dialog title"
+    title="Confirm Dialog title"
     acceptButtonProps={{ label: 'Ok', color: 'safe' }}
   >
-    This is a basic InformDialog with a title and a single action.
-  </InformDialog>
+    This is a basic ConfirmDialog with a title and a single action.
+  </ConfirmDialog>
 </Story>
 
 <Story name="Custom Accept Button" asChild>
   <Button onclick={() => (openCustomAcceptButton = true)}>Open</Button>
 
-  <InformDialog bind:open={openCustomAcceptButton} title="Inform Dialog title">
-    This is a basic InformDialog with a title and a single action.
+  <ConfirmDialog bind:open={openCustomAcceptButton} title="Confirm Dialog title">
+    This is a basic ConfirmDialog with a title and a single action.
 
     {#snippet customAcceptButton()}
       <Button compact onclick={() => (openCustomAcceptButton = false)}>👍</Button>
     {/snippet}
-  </InformDialog>
+  </ConfirmDialog>
 </Story>
 
 <Story name="Controls Alignment" asChild>
   <Button onclick={() => (openControlsAlignment = true)}>Open</Button>
 
-  <InformDialog
+  <ConfirmDialog
     bind:open={openControlsAlignment}
     title="Alignment Example"
     controlsAlignment="start"
   >
     Controls can be aligned differently.
-  </InformDialog>
+  </ConfirmDialog>
 </Story>
 
 <Story name="Custom Title" asChild>
   <Button onclick={() => (openCustomTitle = true)}>Open</Button>
 
-  <InformDialog bind:open={openCustomTitle}>
+  <ConfirmDialog bind:open={openCustomTitle}>
     {#snippet customTitle()}
       <Text color="danger">⚠ Warning</Text>
     {/snippet}
 
     This action cannot be undone.
-  </InformDialog>
+  </ConfirmDialog>
 </Story>
 
 <Story name="Custom Modal Card" asChild>
   <Button onclick={() => (openCustomModalcard = true)}>Open</Button>
 
-  <InformDialog bind:open={openCustomModalcard}>
+  <ConfirmDialog bind:open={openCustomModalcard}>
     {#snippet customModalCard()}
-      <InformDialogCard
+      <ConfirmDialogCard
         onclear={() => (openCustomModalcard = false)}
         bind:open={openCustomModalcard}
       >
@@ -130,7 +162,7 @@
 
           <Text>Are you sure you want to delete this item? This action cannot be undone.</Text>
         </div>
-      </InformDialogCard>
+      </ConfirmDialogCard>
     {/snippet}
-  </InformDialog>
+  </ConfirmDialog>
 </Story>
