@@ -1,5 +1,19 @@
 # @documentation/docs
 
+## 0.12.2
+
+### Patch Changes
+
+- 23edc50: Pacakges updated
+- Updated dependencies [3bab4b1]
+- Updated dependencies [23edc50]
+- Updated dependencies [7a6ec52]
+- Updated dependencies [7a6ec52]
+  - @flightlesslabs/dodo-ui-bits@0.2.0
+  - @flightlesslabs/dodo-ui@0.33.2
+  - @flightlesslabs/dodo-ui-numeric@0.2.15
+  - @flightlesslabs/dodo-ui-date@0.4.18
+
 ## 0.12.1
 
 ### Patch Changes
