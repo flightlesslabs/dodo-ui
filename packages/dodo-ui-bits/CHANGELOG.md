@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.3.1
+
+### Patch Changes
+
+- Modals moved to feedback
+
 ## 0.3.0
 
 ### Minor Changes

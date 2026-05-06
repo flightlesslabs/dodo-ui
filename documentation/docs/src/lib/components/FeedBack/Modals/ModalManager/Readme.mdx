@@ -1,9 +1,6 @@
 # ModalManager
 
-A lightweight global modal system for Svelte that supports multiple\
-modal types (`modal`, `inform`, `confirm`) with a centralized store.
-
----
+A Global modal system with a centralized store.
 
 ## 🚀 Installation
 
@@ -11,23 +8,7 @@ modal types (`modal`, `inform`, `confirm`) with a centralized store.
 pnpm add bits-ui @flightlesslabs/dodo-ui-bits
 ```
 
-For full setup (styles, themes, configuration), see the
-https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-bits
-
----
-
-## ✨ Features
-
-- Global modal control via a store\
-- Supports multiple modal types:
-  - modal
-  - inform
-  - confirm
-- Optional multi-instance support using id\
-- Type-safe configuration\
-- Built-in lifecycle handling (accept, reject, clear)
-
----
+For full setup (styles, themes, configuration), see [link](https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-bits)
 
 ## 🚀 Usage
 
@@ -40,6 +21,8 @@ Import your root component. use the root layout (+layout.svelte) for SvelteKit.
 ```
 
 Or:
+
+with optional id
 
 ```svelte
 <ModalManager id="modal-master-2" />
@@ -100,7 +83,7 @@ modals.add('confirm', {
 
 Open a modal.
 
-- type: 'modal' \| 'inform' \| 'confirm'\
+- type: 'modal' | 'inform' | 'confirm'
 - config: Modal configuration
 
 ---
@@ -151,7 +134,7 @@ type ModalDialogBaseConfig = {
 
 ## 🏁 Summary
 
-- Use modals.add() to open modals\
-- Use ModalManager to render them\
-- Use modalManagerId for scoped control\
+- Use modals.add() to open modals
+- Use ModalManager to render them
+- Use modalManagerId for scoped control
 - Extend behavior with callbacks and payloads

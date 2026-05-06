@@ -1,5 +1,13 @@
 # @documentation/docs
 
+## 0.13.2
+
+### Patch Changes
+
+- Modals moved to feedback
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-bits@0.3.1
+
 ## 0.13.1
 
 ### Patch Changes
