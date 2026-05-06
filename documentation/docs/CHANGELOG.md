@@ -1,5 +1,13 @@
 # @documentation/docs
 
+## 0.13.3
+
+### Patch Changes
+
+- ModalManager API updated, breaks old API
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-bits@0.4.0
+
 ## 0.13.2
 
 ### Patch Changes

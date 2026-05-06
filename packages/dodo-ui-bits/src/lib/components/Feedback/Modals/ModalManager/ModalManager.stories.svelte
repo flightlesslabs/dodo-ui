@@ -5,6 +5,9 @@
   import ModalManager from './ModalManager.svelte';
   import { Button } from '@flightlesslabs/dodo-ui';
   import { modals } from './modals.svelte.ts';
+  import ConfirmDialogCard from '../ConfirmDialog/ConfirmDialogCard/ConfirmDialogCard.svelte';
+  import InformDialogCard from '../InformDialog/InformDialogCard/InformDialogCard.svelte';
+  import ModalCard from '../Modal/ModalCard/ModalCard.svelte';
 
   // ------------------------------
   // Storybook ArgTypes
@@ -61,4 +64,68 @@
   </Button>
 
   <ModalManager id="modal-master-2" />
+</Story>
+
+<Story name="Custom Modal Styles" asChild>
+  <Button
+    onclick={() => {
+      modals.add('modal', {
+        title: 'Hi There',
+        description: 'This is a basic Modal.',
+        modalManagerId: 'modal-master-3',
+      });
+    }}
+    color="secondary"
+  >
+    Add Modal
+  </Button>
+
+  <Button
+    onclick={() => {
+      modals.add('inform', {
+        title: 'Inform',
+        description: 'This is a basic Inform.',
+        modalManagerId: 'modal-master-3',
+      });
+    }}
+    color="safe"
+  >
+    Add Inform
+  </Button>
+
+  <Button
+    onclick={() => {
+      modals.add('confirm', {
+        title: 'Confirm',
+        description: 'This is a basic Confirm.',
+        modalManagerId: 'modal-master-3',
+      });
+    }}
+    color="warning"
+  >
+    Add Confirm
+  </Button>
+
+  <ModalManager id="modal-master-3">
+    {#snippet customCardModal({ description, modalProps, ...restProps })}
+      <ModalCard {...restProps} {...modalProps} {...modalProps?.modalCardProps}>
+        <b>Description:</b>
+        {description}
+      </ModalCard>
+    {/snippet}
+
+    {#snippet customCardInform({ description, modalProps, ...restProps })}
+      <InformDialogCard {...restProps} {...modalProps} {...modalProps?.modalCardProps}>
+        <b>Description:</b>
+        {description}
+      </InformDialogCard>
+    {/snippet}
+
+    {#snippet customCardConfirm({ description, modalProps, ...restProps })}
+      <ConfirmDialogCard {...restProps} {...modalProps} {...modalProps?.modalCardProps}>
+        <b>Description:</b>
+        {description}
+      </ConfirmDialogCard>
+    {/snippet}
+  </ModalManager>
 </Story>

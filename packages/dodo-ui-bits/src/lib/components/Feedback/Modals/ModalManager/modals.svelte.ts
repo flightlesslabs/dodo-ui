@@ -38,29 +38,11 @@ export type ActiveModal = {
 } | null;
 
 function createModalsStore() {
-  let modalManagerIds = $state<string[]>([]);
   let activeModal = $state<ActiveModal>(null);
 
   return {
-    get _moddalManagerIds() {
-      return modalManagerIds;
-    },
     get _activeModal() {
       return activeModal;
-    },
-    _addModalManagerId(id: string) {
-      if (modalManagerIds.includes(id)) {
-        return;
-      }
-
-      modalManagerIds = [...modalManagerIds, id];
-    },
-    _removeModalManagerId(id: string) {
-      if (!modalManagerIds.includes(id)) {
-        return;
-      }
-
-      modalManagerIds = modalManagerIds.filter((item) => item !== id);
     },
     add<T extends ModalDialogType>(type: T, config: ModalDialogConfigMap[T]) {
       activeModal = {

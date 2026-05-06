@@ -1,30 +1,52 @@
 <script lang="ts" module>
+  import type { Snippet } from 'svelte';
+
+  export type ModalManagerCustomCardBaseContext = {
+    open: boolean;
+    onclear: () => void;
+  };
+
   export type ModalManagerProps = {
     /** Optional unique ID, for multiple ModalManager */
     id?: string;
+
+    /**
+     * Content rendered customCardModal.
+     *
+     * Use {#snippet customCardModal} in Svelte.
+     */
+    customCardModal?: Snippet<[ModalManagerCustomCardModalContext]>;
+
+    /**
+     * Content rendered customCardConfirm.
+     *
+     * Use {#snippet customCardConfirm} in Svelte.
+     */
+    customCardConfirm?: Snippet<[ModalManagerCustomCardConfirmContext]>;
+
+    /**
+     * Content rendered customCardInform.
+     *
+     * Use {#snippet customCardInform} in Svelte.
+     */
+    customCardInform?: Snippet<[ModalManagerCustomCardInformContext]>;
   };
 </script>
 
 <script lang="ts">
-  import ConfirmDialog, { type ConfirmDialogProps } from '../ConfirmDialog/ConfirmDialog.svelte';
-  import InformDialog, { type InformDialogProps } from '../InformDialog/InformDialog.svelte';
-  import Modal from '../Modal/Modal.svelte';
+  import { type ConfirmDialogProps } from '../ConfirmDialog/ConfirmDialog.svelte';
+  import { type InformDialogProps } from '../InformDialog/InformDialog.svelte';
 
   import { modals } from './modals.svelte.ts';
+  import ModalRenderer, { type ModalManagerCustomCardModalContext } from './ModalRenderer.svelte';
+  import ConfirmRenderer, {
+    type ModalManagerCustomCardConfirmContext,
+  } from './ConfirmRenderer.svelte';
+  import InformRenderer, {
+    type ModalManagerCustomCardInformContext,
+  } from './InformRenderer.svelte';
 
-  let { id }: ModalManagerProps = $props();
-
-  $effect(() => {
-    if (!id) {
-      return;
-    }
-
-    modals._addModalManagerId(id);
-
-    return () => {
-      modals._removeModalManagerId(id);
-    };
-  });
+  let { id, customCardModal, customCardConfirm, customCardInform }: ModalManagerProps = $props();
 
   const modalManagerId = $derived(modals._activeModal?.config?.modalManagerId);
 
@@ -71,27 +93,23 @@
 
 {#if modalDialogType && isMatch}
   {#if modalDialogType === 'confirm'}
-    <ConfirmDialog
-      {...modals._activeModal?.config}
+    <ConfirmRenderer
       {open}
+      {config}
+      customCard={customCardConfirm}
       onclear={handleOnClear}
       onaccept={handleOnAccept}
       onreject={handleOnReject}
-    >
-      {modals._activeModal?.config.description}
-    </ConfirmDialog>
+    />
   {:else if modalDialogType === 'inform'}
-    <InformDialog
-      {...modals._activeModal?.config}
+    <InformRenderer
       {open}
+      {config}
+      customCard={customCardInform}
       onclear={handleOnClear}
       onaccept={handleOnAccept}
-    >
-      {modals._activeModal?.config.description}
-    </InformDialog>
+    />
   {:else}
-    <Modal {...modals._activeModal?.config} {open} onclear={handleOnClear}>
-      {modals._activeModal?.config.description}
-    </Modal>
+    <ModalRenderer {open} {config} customCard={customCardModal} onclear={handleOnClear} />
   {/if}
 {/if}
