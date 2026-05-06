@@ -1,5 +1,16 @@
 # @documentation/docs
 
+## 0.13.0
+
+### Minor Changes
+
+- ModalMaster added
+
+### Patch Changes
+
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-bits@0.3.0
+
 ## 0.12.2
 
 ### Patch Changes

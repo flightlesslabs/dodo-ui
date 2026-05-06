@@ -6,13 +6,25 @@
 </script>
 
 <script lang="ts">
-  import ConfirmDialog from '../ConfirmDialog/ConfirmDialog.svelte';
-  import InformDialog from '../InformDialog/InformDialog.svelte';
+  import ConfirmDialog, { type ConfirmDialogProps } from '../ConfirmDialog/ConfirmDialog.svelte';
+  import InformDialog, { type InformDialogProps } from '../InformDialog/InformDialog.svelte';
   import Modal from '../Modal/Modal.svelte';
 
-  import { modals } from './store/modals.svelte.ts';
+  import { modals } from './modals.svelte.ts';
 
   let { id }: ModalManagerProps = $props();
+
+  $effect(() => {
+    if (!id) {
+      return;
+    }
+
+    modals._addModalManagerId(id);
+
+    return () => {
+      modals._removeModalManagerId(id);
+    };
+  });
 
   const modalManagerId = $derived(modals._activeModal?.config?.modalManagerId);
 
@@ -21,31 +33,64 @@
   );
 
   const modalDialogType = $derived(modals._activeModal?.type);
+  const config = $derived(modals._activeModal?.config || {});
+  const { onclear } = $derived(config.modalProps || {});
+  const { onaccept, clearOnAccept = true } = $derived<InformDialogProps>(config.modalProps || {});
+  const { onreject, clearOnReject = true } = $derived<ConfirmDialogProps>(config.modalProps || {});
 
-  $effect(() => {
-    if (id) {
-      modals._addModalManagerId(id);
+  let open = $derived(modalDialogType ? true : false);
+
+  function handleOnClear() {
+    modals.clear();
+
+    if (onclear) {
+      onclear();
+    }
+  }
+
+  function handleOnAccept() {
+    if (clearOnAccept) {
+      modals.clear();
     }
 
-    return () => {
-      if (id) {
-        modals._removeModalManagerId(id);
-      }
-    };
-  });
+    if (onaccept) {
+      onaccept();
+    }
+  }
+
+  function handleOnReject() {
+    if (clearOnReject) {
+      modals.clear();
+    }
+
+    if (onreject) {
+      onreject();
+    }
+  }
 </script>
 
 {#if modalDialogType && isMatch}
   {#if modalDialogType === 'confirm'}
-    <ConfirmDialog {...modals._activeModal?.config} open>
+    <ConfirmDialog
+      {...modals._activeModal?.config}
+      {open}
+      onclear={handleOnClear}
+      onaccept={handleOnAccept}
+      onreject={handleOnReject}
+    >
       {modals._activeModal?.config.description}
     </ConfirmDialog>
   {:else if modalDialogType === 'inform'}
-    <InformDialog {...modals._activeModal?.config} open>
+    <InformDialog
+      {...modals._activeModal?.config}
+      {open}
+      onclear={handleOnClear}
+      onaccept={handleOnAccept}
+    >
       {modals._activeModal?.config.description}
     </InformDialog>
   {:else}
-    <Modal {...modals._activeModal?.config} open>
+    <Modal {...modals._activeModal?.config} {open} onclear={handleOnClear}>
       {modals._activeModal?.config.description}
     </Modal>
   {/if}

@@ -83,3 +83,21 @@ export {
   default as ConfirmDialogCard,
   type ConfirmDialogCardProps,
 } from './components/Modals/ConfirmDialog/ConfirmDialogCard/ConfirmDialogCard.svelte';
+
+/**
+ * ModalManager component and related prop types.
+ */
+export {
+  default as ModalManager,
+  type ModalManagerProps,
+} from './components/Modals/ModalManager/ModalManager.svelte';
+
+export {
+  modals,
+  type ModalDialogType,
+  type ModalDialogBaseConfig,
+  type ModalDialogModalConfig,
+  type ModalDialogInformConfig,
+  type ModalDialogConfirmConfig,
+  type ActiveModal,
+} from './components/Modals/ModalManager/modals.svelte.ts';

@@ -1,10 +1,8 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import type { ModalManagerProps } from './ModalManager.svelte';
-  import ModalManager from './ModalManager.svelte';
   import { Button } from '@flightlesslabs/dodo-ui';
-  import { modals } from './modals.svelte.ts';
+  import { ModalManager, ModalManagerProps, modals } from '@flightlesslabs/dodo-ui-bits';
 
   // ------------------------------
   // Storybook ArgTypes

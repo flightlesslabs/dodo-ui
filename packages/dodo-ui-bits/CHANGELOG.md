@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.3.0
+
+### Minor Changes
+
+- ModalMaster added
+
 ## 0.2.0
 
 ### Minor Changes
