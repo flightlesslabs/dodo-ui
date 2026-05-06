@@ -1,0 +1,157 @@
+# ModalManager
+
+A lightweight global modal system for Svelte that supports multiple\
+modal types (`modal`, `inform`, `confirm`) with a centralized store.
+
+---
+
+## 🚀 Installation
+
+```bash
+pnpm add bits-ui @flightlesslabs/dodo-ui-bits
+```
+
+For full setup (styles, themes, configuration), see the
+https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-bits
+
+---
+
+## ✨ Features
+
+- Global modal control via a store\
+- Supports multiple modal types:
+  - modal
+  - inform
+  - confirm
+- Optional multi-instance support using id\
+- Type-safe configuration\
+- Built-in lifecycle handling (accept, reject, clear)
+
+---
+
+## 🚀 Usage
+
+### 1. Add the ModalManager
+
+Import your root component. use the root layout (+layout.svelte) for SvelteKit.
+
+```svelte
+<ModalManager />
+```
+
+Or:
+
+```svelte
+<ModalManager id="modal-master-2" />
+```
+
+---
+
+### 2. Trigger a modal
+
+```ts
+import { modals } from '@flightlesslabs/dodo-ui-bits';
+
+modals.add('confirm', {
+  title: 'Confirm',
+  description: 'Are you sure?',
+});
+```
+
+---
+
+## 🧠 Modal Types
+
+### modal
+
+```ts
+modals.add('modal', {
+  title: 'My Modal',
+  description: 'Content here',
+});
+```
+
+### inform
+
+```ts
+modals.add('inform', {
+  title: 'Info',
+  description: 'Something happened',
+  onaccept: () => console.log('Accepted'),
+});
+```
+
+### confirm
+
+```ts
+modals.add('confirm', {
+  title: 'Delete',
+  description: 'Are you sure?',
+  onaccept: () => console.log('Confirmed'),
+  onreject: () => console.log('Cancelled'),
+});
+```
+
+---
+
+## 🧾 API
+
+### modals.add(type, config)
+
+Open a modal.
+
+- type: 'modal' \| 'inform' \| 'confirm'\
+- config: Modal configuration
+
+---
+
+### modals.clear()
+
+Closes the currently active modal.
+
+---
+
+## 🧩 Config Types
+
+### Base Config
+
+```ts
+type ModalDialogBaseConfig = {
+  modalManagerId?: string;
+  title?: string;
+  description?: string;
+  payload?: Record<string, unknown>;
+};
+```
+
+---
+
+## 🧪 Example
+
+```svelte
+<script lang="ts">
+  import { modals } from '@flightlesslabs/dodo-ui-bits';
+</script>
+
+<button
+  on:click={() => {
+    modals.add('confirm', {
+      title: 'Confirm',
+      description: 'Proceed?',
+    });
+  }}
+>
+  Open Confirm
+</button>
+
+<ModalManager />
+```
+
+---
+
+## 🏁 Summary
+
+- Use modals.add() to open modals\
+- Use ModalManager to render them\
+- Use modalManagerId for scoped control\
+- Extend behavior with callbacks and payloads
