@@ -21,6 +21,18 @@
     id: {
       table: { category: 'API', subcategory: 'Base' },
     },
+
+    // ------------------------------
+    // Slots (Snippets)
+    // ------------------------------
+
+    customCardModal: { table: { category: 'API', subcategory: 'Slots' } },
+    customCardInform: {
+      table: { category: 'API', subcategory: 'Slots' },
+    },
+    customCardConfirm: {
+      table: { category: 'API', subcategory: 'Slots' },
+    },
   };
 
   // ------------------------------

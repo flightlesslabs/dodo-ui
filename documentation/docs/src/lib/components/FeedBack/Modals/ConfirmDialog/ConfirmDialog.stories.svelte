@@ -55,10 +55,16 @@ For full setup (styles, themes, configuration), see the [Getting Started](https:
       table: { category: 'API', subcategory: 'Base', defaultValue: { summary: 'end' } },
     },
 
+    title: {
+      table: { category: 'API', subcategory: 'Base' },
+    },
+
     // ------------------------------
     // Slots (Snippets)
     // ------------------------------
-    title: {
+
+    customTitle: { table: { category: 'API', subcategory: 'Slots' } },
+    customModalCard: {
       table: { category: 'API', subcategory: 'Slots' },
     },
   };

@@ -45,14 +45,18 @@ For full setup (styles, themes, configuration), see the [Getting Started](https:
       options: componentAlignmentXOptions,
       table: { category: 'API', subcategory: 'Base', defaultValue: { summary: 'end' } },
     },
-
+    title: {
+      table: { category: 'API', subcategory: 'Base' },
+    },
     // ------------------------------
     // Slots (Snippets)
     // ------------------------------
-    title: {
+
+    customTitle: { table: { category: 'API', subcategory: 'Slots' } },
+    controls: {
       table: { category: 'API', subcategory: 'Slots' },
     },
-    controls: {
+    customModalCard: {
       table: { category: 'API', subcategory: 'Slots' },
     },
   };

@@ -1,5 +1,11 @@
 # @documentation/docs
 
+## 0.13.4
+
+### Patch Changes
+
+- Modals docs fixed
+
 ## 0.13.3
 
 ### Patch Changes
