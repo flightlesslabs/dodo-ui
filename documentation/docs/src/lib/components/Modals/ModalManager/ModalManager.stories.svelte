@@ -2,7 +2,7 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
   import { Button } from '@flightlesslabs/dodo-ui';
-  import { ModalManager, ModalManagerProps, modals } from '@flightlesslabs/dodo-ui-bits';
+  import { ModalManager, type ModalManagerProps, modals } from '@flightlesslabs/dodo-ui-bits';
 
   // ------------------------------
   // Storybook ArgTypes

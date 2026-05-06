@@ -1,5 +1,11 @@
 # @documentation/docs
 
+## 0.13.1
+
+### Patch Changes
+
+- Fix Modal Manger prop issue
+
 ## 0.13.0
 
 ### Minor Changes
