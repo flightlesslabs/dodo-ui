@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-core-attributes
 
+## 0.4.0
+
+### Minor Changes
+
+- 64c670e: convertOption added
+
 ## 0.3.0
 
 ### Minor Changes

@@ -87,3 +87,9 @@ export {
   type ComponentAlignmentY,
   componentAlignmentYOptions,
 } from './attributes/alignment.ts';
+
+// =====================================================
+// helpers – Public API
+// =====================================================
+
+export { convertOption } from './helpers/convertOption/convertOption.ts';

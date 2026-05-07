@@ -108,3 +108,12 @@ export {
   type ModalDialogConfirmConfig,
   type ActiveModal,
 } from './components/Feedback/Modals/ModalManager/modals.svelte.ts';
+
+/**
+ * Toast component and related prop types.
+ */
+export { default as Toast, type ToastProps } from './components/Feedback/Toasts/Toast/Toast.svelte';
+
+export { type ToastContentDescriptionProps } from './components/Feedback/Toasts/Toast/Description.svelte';
+
+export { type ToastContentTitleProps } from './components/Feedback/Toasts/Toast/Title.svelte';
