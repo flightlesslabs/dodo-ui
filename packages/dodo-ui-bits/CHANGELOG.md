@@ -1,5 +1,18 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.5.0
+
+### Minor Changes
+
+- 64c670e: Toast added
+
+### Patch Changes
+
+- a07db70: Modal dark theme fixed
+- Updated dependencies [64c670e]
+  - @flightlesslabs/dodo-core-attributes@0.4.0
+  - @flightlesslabs/dodo-ui@0.34.0
+
 ## 0.4.0
 
 ### Minor Changes

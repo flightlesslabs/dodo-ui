@@ -1,5 +1,20 @@
 # @documentation/docs
 
+## 0.13.5
+
+### Patch Changes
+
+- a66691b: Modal Manager example simplified
+- 64c670e: Toast added
+- a07db70: Modal dark theme fixed
+- Updated dependencies [64c670e]
+- Updated dependencies [64c670e]
+- Updated dependencies [a07db70]
+  - @flightlesslabs/dodo-ui@0.34.0
+  - @flightlesslabs/dodo-ui-bits@1.0.0
+  - @flightlesslabs/dodo-ui-date@1.0.0
+  - @flightlesslabs/dodo-ui-numeric@1.0.0
+
 ## 0.13.4
 
 ### Patch Changes
