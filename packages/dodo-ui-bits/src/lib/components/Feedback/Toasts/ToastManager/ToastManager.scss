@@ -1,0 +1,53 @@
+@use '../../../../styles/global/breakpoints' as breakpoints;
+
+// ToastManager
+.dodo-ui-ToastManager {
+  &:empty {
+    display: none;
+  }
+
+  .ToastManagerSection {
+    &:empty {
+      display: none;
+    }
+
+    display: inline-flex;
+    position: fixed;
+    padding: calc(var(--dodo-ui-space) * 2);
+    flex-direction: column-reverse;
+
+    &.alignmentX {
+      &--start {
+        left: 0;
+      }
+
+      &--center {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      &--end {
+        right: 0;
+      }
+    }
+
+    &.alignmentY {
+      &--top {
+        top: 0;
+      }
+
+      &--center {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &--bottom {
+        bottom: 0;
+      }
+    }
+  }
+
+  .dodo-ui-Toast {
+    margin-bottom: var(--dodo-ui-space);
+  }
+}

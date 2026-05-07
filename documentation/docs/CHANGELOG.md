@@ -1,5 +1,13 @@
 # @documentation/docs
 
+## 0.13.6
+
+### Patch Changes
+
+- ToastManager added
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-bits@0.6.0
+
 ## 0.13.5
 
 ### Patch Changes

@@ -1,0 +1,214 @@
+# ToastManager
+
+A global toast notification system with a centralized store, auto-dismiss support, and flexible positioning.
+
+## 🚀 Installation
+
+```bash
+pnpm add bits-ui @flightlesslabs/dodo-ui-bits
+```
+
+For full setup (styles, themes, configuration), see [link](https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-bits)
+
+## 🚀 Usage
+
+### 1. Add the ToastManager
+
+Import into your root component (e.g. `+layout.svelte` in SvelteKit):
+
+```svelte
+<ToastManager />
+```
+
+Or with optional ID (for scoped toasts):
+
+```svelte
+<ToastManager id="toast-master-2" />
+```
+
+### 2. Trigger a toast
+
+```ts
+import { toasts } from '@flightlesslabs/dodo-ui-bits';
+
+toasts.add({
+  title: 'Success',
+  description: 'Saved successfully',
+});
+```
+
+## 🧠 Features
+
+- Global toast store
+- Multiple ToastManagers via `id`
+- Auto-dismiss (with per-toast override)
+- Limit visible toasts
+- Alignment-based grouping
+- Batch clearing for performance
+
+## 🧾 API
+
+### toasts.add(config)
+
+Create a new toast.
+
+```ts
+toasts.add({
+  title: 'Saved',
+  description: 'Your changes were saved',
+});
+```
+
+### toasts.clear(id)
+
+Remove a specific toast.
+
+```ts
+toasts.clear(toastId);
+```
+
+### toasts.clearAll()
+
+Remove all toasts.
+
+```ts
+toasts.clearAll();
+```
+
+## 🧩 Config Types
+
+### ToastInput
+
+```ts
+type ToastInput = {
+  toastManagerId?: string;
+
+  title?: string;
+  description?: string;
+  payload?: Record<string, unknown>;
+
+  color?: CardColor;
+  variant?: ComponentVariant;
+
+  alignmentX?: ComponentAlignmentX;
+  alignmentY?: ComponentAlignmentY;
+
+  toastCardProps?: ToastProps;
+
+  onClear?: () => void;
+
+  /** Auto-dismiss duration in ms (overrides manager default) */
+  duration?: number;
+
+  /** Disable auto-dismiss */
+  autoDismiss?: boolean;
+
+  /** Allow manual clearing (UI-level control) */
+  clearable?: boolean;
+};
+```
+
+## ⚙️ ToastManager Props
+
+```ts
+type ToastManagerProps = {
+  class?: string;
+  id?: string;
+
+  alignmentX?: ComponentAlignmentX;
+  alignmentY?: ComponentAlignmentY;
+
+  shadow?: ComponentShadow;
+  outline?: boolean;
+  variant?: ComponentVariant;
+
+  'max-width'?: string;
+  'min-width'?: string;
+
+  /** Max visible toasts */
+  limit?: number;
+
+  /** Default auto-dismiss duration (ms) */
+  clearAfterDuration?: number;
+};
+```
+
+---
+
+## ⏱️ Auto Dismiss Behavior
+
+Priority order:
+
+1. `toast.autoDismiss === false` → ❌ never auto-dismiss
+2. `toast.duration` → ✅ use this
+3. `ToastManager.clearAfterDuration` → ✅ fallback
+4. none defined → ❌ no auto-dismiss
+
+---
+
+## 🧪 Examples
+
+### Basic toast
+
+```ts
+toasts.add({
+  title: 'Hello',
+  description: 'This is a toast',
+});
+```
+
+---
+
+### Custom duration
+
+```ts
+toasts.add({
+  title: 'Quick message',
+  duration: 1500,
+});
+```
+
+---
+
+### Persistent toast (no auto-dismiss)
+
+```ts
+toasts.add({
+  title: 'Uploading...',
+  autoDismiss: false,
+});
+```
+
+---
+
+### Scoped toast
+
+```ts
+toasts.add({
+  toastManagerId: 'toast-master-2',
+  title: 'Scoped toast',
+});
+```
+
+---
+
+### Positioned toast
+
+```ts
+toasts.add({
+  title: 'Bottom Start',
+  alignmentX: 'start',
+  alignmentY: 'bottom',
+});
+```
+
+---
+
+## 🏁 Summary
+
+- Use `toasts.add()` to trigger notifications
+- Use `ToastManager` to render them
+- Use `id` for scoped toast systems
+- Use `duration` for per-toast timing
+- Use `clearAfterDuration` for global default
+- Use `autoDismiss: false` for persistent toasts
