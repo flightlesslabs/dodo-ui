@@ -1,6 +1,6 @@
 {
   "name": "@documentation/docs",
-  "version": "0.13.5",
+  "version": "0.13.6",
   "private": true,
   "scripts": {
     "preview": "vite preview",

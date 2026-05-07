@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.6.0
+
+### Minor Changes
+
+- ToastManager added
+
 ## 0.5.0
 
 ### Minor Changes

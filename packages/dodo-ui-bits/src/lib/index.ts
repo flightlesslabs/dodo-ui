@@ -117,3 +117,17 @@ export { default as Toast, type ToastProps } from './components/Feedback/Toasts/
 export { type ToastContentDescriptionProps } from './components/Feedback/Toasts/Toast/Description.svelte';
 
 export { type ToastContentTitleProps } from './components/Feedback/Toasts/Toast/Title.svelte';
+
+/**
+ * ToastManager component and related prop types.
+ */
+export {
+  default as ToastManager,
+  type ToastManagerProps,
+} from './components/Feedback/Toasts/ToastManager/ToastManager.svelte';
+
+export {
+  toasts,
+  type ToastInput,
+  type ToastItem,
+} from './components/Feedback/Toasts/ToastManager/toasts.svelte.ts';

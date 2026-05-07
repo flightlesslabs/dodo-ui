@@ -57,6 +57,7 @@
     color,
     variant,
     'max-width': maxWidth = '300px',
+    'min-width': minWidth = '300px',
     ...restProps
   }: ToastProps = $props();
 
@@ -69,7 +70,15 @@
   );
 </script>
 
-<Card {...restProps} {theme} {variant} {color} max-width={maxWidth} class={classes.join(' ')}>
+<Card
+  {...restProps}
+  {theme}
+  {variant}
+  {color}
+  max-width={maxWidth}
+  min-width={minWidth}
+  class={classes.join(' ')}
+>
   <div class="ToastContentHeader">
     {#if clearable || customTitle || title}
       <Title {...toastContentTitleProps} {customTitle} {title} />
