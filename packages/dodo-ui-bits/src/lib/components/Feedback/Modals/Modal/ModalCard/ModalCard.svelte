@@ -42,6 +42,7 @@
 <script lang="ts">
   import {
     Card,
+    useThemeStore,
     UtilityButton,
     type CardProps,
     type ComponentAlignmentX,
@@ -64,13 +65,16 @@
     controlsAlignment = 'end',
     modalContentTitleProps,
     modalContentDescriptionProps,
+    theme: cardTheme,
     ...restProps
   }: ModalCardProps = $props();
+
+  const theme = $derived(cardTheme || useThemeStore.theme);
 
   const classes = $derived(['dodo-ui-ModalCard', className].filter(Boolean));
 </script>
 
-<Card {...restProps} class={classes.join(' ')}>
+<Card {...restProps} {theme} class={classes.join(' ')}>
   <div class="ModalContentHeader">
     {#if clearable || customTitle || title}
       <Title {...modalContentTitleProps} {customTitle} {title} />
