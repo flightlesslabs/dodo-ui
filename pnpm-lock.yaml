@@ -184,6 +184,9 @@ importers:
 
   packages/dodo-ui-bits:
     dependencies:
+      '@flightlesslabs/dodo-core-attributes':
+        specifier: workspace:*
+        version: link:../dodo-core-attributes
       '@flightlesslabs/dodo-ui':
         specifier: workspace:*
         version: link:../dodo-ui

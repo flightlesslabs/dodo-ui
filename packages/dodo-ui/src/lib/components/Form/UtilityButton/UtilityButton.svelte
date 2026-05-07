@@ -25,6 +25,9 @@
 
     /** Accessible label (required for icon-only UtilityButtons) */
     'aria-label'?: string;
+
+    /** Theme color */
+    theme?: ComponentThemeColors;
   }
 
   export type UtilityButtonAsButtonProps = UtilityButtonBaseProps & ButtonAsButtonPropsBase;
@@ -35,7 +38,7 @@
 </script>
 
 <script lang="ts">
-  import type { ComponentSize } from '@flightlesslabs/dodo-core-attributes';
+  import type { ComponentSize, ComponentThemeColors } from '@flightlesslabs/dodo-core-attributes';
   import type { ComponentColor } from '@flightlesslabs/dodo-core-attributes';
   import type { ComponentRoundness } from '@flightlesslabs/dodo-core-attributes';
   import ButtonAsAnchor from '../Button/ButtonAsAnchor.svelte';
@@ -55,6 +58,7 @@
     href,
     type,
     ref = $bindable(null),
+    theme,
     ...restProps
   }: UtilityButtonProps = $props();
 
@@ -66,6 +70,7 @@
       `roundness--${roundness}`,
       outline && 'outline',
       compact && 'compact',
+      theme ? `dodo-theme--${theme}` : '',
       className,
     ].filter(Boolean),
   );

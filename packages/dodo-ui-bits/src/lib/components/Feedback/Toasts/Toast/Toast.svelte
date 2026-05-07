@@ -1,10 +1,10 @@
 <script lang="ts" module>
-  export type ModalCardProps = CardProps & {
+  export type ToastProps = CardProps & {
     /** Slot content */
     children?: Snippet;
 
     /**
-     * title for the modal.
+     * title for the toast.
      */
     title?: string;
 
@@ -15,27 +15,17 @@
      */
     customTitle?: Snippet;
 
-    /**
-     * Content rendered controls.
-     *
-     * Use {#snippet controls} in Svelte.
-     */
-    controls?: Snippet;
-
-    /** is modal clearable. */
+    /** is toast clearable. */
     clearable?: boolean;
 
     /** onclear event */
     onclear?: () => void;
 
-    /** Controls Alignment */
-    controlsAlignment?: ComponentAlignmentX;
+    /** Toast content title props */
+    toastContentTitleProps?: ToastContentTitleProps;
 
-    /** Modal content title props */
-    modalContentTitleProps?: ModalContentTitleProps;
-
-    /** Modal content title props */
-    modalContentDescriptionProps?: ModalContentDescriptionProps;
+    /** Toast content title props */
+    toastContentDescriptionProps?: ToastContentDescriptionProps;
   };
 </script>
 
@@ -46,50 +36,47 @@
     useThemeStore,
     UtilityButton,
     type CardProps,
-    type ComponentAlignmentX,
   } from '@flightlesslabs/dodo-ui';
+  import { componentColorOptions, convertOption } from '@flightlesslabs/dodo-core-attributes';
   import type { Snippet } from 'svelte';
   import Icon from '@iconify/svelte';
-  import Title, { type ModalContentTitleProps } from './Title.svelte';
-  import type { ModalContentDescriptionProps } from './Description.svelte';
+  import Title, { type ToastContentTitleProps } from './Title.svelte';
+  import type { ToastContentDescriptionProps } from './Description.svelte';
   import Description from './Description.svelte';
-  import Controls from './Controls.svelte';
-  import { componentColorOptions, convertOption } from '@flightlesslabs/dodo-core-attributes';
 
   let {
     class: className = '',
     children,
     title,
     customTitle,
-    controls,
     clearable = true,
     onclear,
-    controlsAlignment = 'end',
-    modalContentTitleProps,
-    modalContentDescriptionProps,
+    toastContentTitleProps,
+    toastContentDescriptionProps,
     theme: cardTheme,
     color,
     variant,
+    'max-width': maxWidth = '300px',
     ...restProps
-  }: ModalCardProps = $props();
+  }: ToastProps = $props();
 
   const theme = $derived(cardTheme || useThemeStore.theme);
 
-  const classes = $derived(['dodo-ui-ModalCard', className].filter(Boolean));
+  const classes = $derived(['dodo-ui-Toast', className].filter(Boolean));
 
   const utilityButtonColor = $derived(
     convertOption(cardColorOptions, componentColorOptions, color || 'primary', 'primary'),
   );
 </script>
 
-<Card {...restProps} {theme} {variant} {color} class={classes.join(' ')}>
-  <div class="ModalContentHeader">
+<Card {...restProps} {theme} {variant} {color} max-width={maxWidth} class={classes.join(' ')}>
+  <div class="ToastContentHeader">
     {#if clearable || customTitle || title}
-      <Title {...modalContentTitleProps} {customTitle} {title} />
+      <Title {...toastContentTitleProps} {customTitle} {title} />
 
       {#if clearable}
         <UtilityButton
-          class="ModalClose"
+          class="ToastClose"
           onclick={onclear}
           roundness="full"
           compact
@@ -102,7 +89,5 @@
     {/if}
   </div>
 
-  <Description {...modalContentDescriptionProps} description={children} />
-
-  <Controls {controls} alignmentX={controlsAlignment} />
+  <Description {...toastContentDescriptionProps} description={children} />
 </Card>

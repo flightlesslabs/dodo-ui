@@ -18,6 +18,7 @@
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint .",
     "check": "pnpm run lint",
-    "check:fix": "eslint . && pnpm run format"
+    "check:fix": "eslint . && pnpm run format",
+    "test": "vitest run"
   }
 }
