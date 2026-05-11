@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui-date
 
+## 0.4.20
+
+### Patch Changes
+
+- Indicator added
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.34.0
+
 ## 0.4.19
 
 ### Patch Changes

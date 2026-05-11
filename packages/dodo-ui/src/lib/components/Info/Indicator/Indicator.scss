@@ -1,0 +1,56 @@
+@use '../../../styles/scss/mixins/indicator-color' as textComponent;
+
+// ----------------------------------------
+// Config
+// ----------------------------------------
+$dodo-indicator-themes: neutral, primary, secondary, safe, warning, danger;
+
+// ----------------------------------------
+// Theme tokens (global CSS variables)
+// ----------------------------------------
+:root {
+  @each $theme in $dodo-indicator-themes {
+    @include textComponent.generate-dodo-ui-indicator-colors($theme, light);
+  }
+}
+
+.dodo-theme--dark {
+  @each $theme in $dodo-indicator-themes {
+    @include textComponent.generate-dodo-ui-indicator-colors($theme, dark);
+  }
+}
+
+// ----------------------------------------
+// indicator styles
+// ----------------------------------------
+
+.dodo-ui-Indicator {
+  display: inline-flex;
+  border-radius: 50%;
+
+  // ----------------------------------------
+  // Theme colors
+  // ----------------------------------------
+  &.color {
+    @each $theme in $dodo-indicator-themes {
+      @include textComponent.generate-dodo-ui-indicator-color($theme);
+    }
+  }
+
+  &.size {
+    &--normal {
+      height: calc(var(--dodo-ui-track-element-height-normal) * 1.8);
+      width: calc(var(--dodo-ui-track-element-height-normal) * 1.8);
+    }
+
+    &--small {
+      height: calc(var(--dodo-ui-track-element-height-small) * 1.8);
+      width: calc(var(--dodo-ui-track-element-height-small) * 1.8);
+    }
+
+    &--large {
+      height: calc(var(--dodo-ui-track-element-height-large) * 1.8);
+      width: calc(var(--dodo-ui-track-element-height-large) * 1.8);
+    }
+  }
+}

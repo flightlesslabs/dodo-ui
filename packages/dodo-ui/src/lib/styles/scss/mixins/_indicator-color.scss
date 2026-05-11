@@ -1,0 +1,56 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:list';
+
+// ======================================================
+// 1. Token Maps (Defined first to avoid Undefined Variable errors)
+// ======================================================
+
+$dodo-ui-indicator-scale-light: (
+  color: 400,
+);
+
+$dodo-ui-indicator-scale-dark: (
+  color: 600,
+);
+
+// ======================================================
+// 2. Helpers
+// ======================================================
+
+@function _dodo-ui-resolve-color($color-name, $value) {
+  @if meta.type-of($value) == list {
+    $shade: list.nth($value, 1);
+    $mix: list.nth($value, 2);
+    $mix-color: list.nth($value, 3);
+
+    @return color-mix(in oklab, var(--dodo-color-#{$color-name}-#{$shade}) #{$mix}, #{$mix-color});
+  }
+
+  @return var(--dodo-color-#{$color-name}-#{$value});
+}
+
+// ======================================================
+// 3. Mixins
+// ======================================================
+
+@mixin generate-dodo-ui-indicator-colors($color-name, $mode: light) {
+  // Fix for Deprecation Warning [if-function] and Undefined Variable
+  $scale: null;
+  @if $mode == dark {
+    $scale: $dodo-ui-indicator-scale-dark;
+  } @else {
+    $scale: $dodo-ui-indicator-scale-light;
+  }
+
+  --dodo-ui-indicator-#{$color-name}-bg: #{_dodo-ui-resolve-color(
+      $color-name,
+      map.get($scale, color)
+    )};
+}
+
+@mixin generate-dodo-ui-indicator-color($theme) {
+  &--#{$theme} {
+    background-color: var(--dodo-ui-indicator-#{$theme}-bg);
+  }
+}
