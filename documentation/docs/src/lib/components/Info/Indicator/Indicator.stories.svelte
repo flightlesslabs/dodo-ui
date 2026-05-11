@@ -5,9 +5,9 @@
     Indicator,
     type IndicatorProps,
     componentColorOptions,
-    componentSizeOptions,
     Theme,
   } from '@flightlesslabs/dodo-ui';
+  import Icon from '@iconify/svelte';
 
   const description = `
  A status indicator (dot) component.
@@ -16,7 +16,6 @@
  import { Indicator } from '@flightlesslabs/dodo-ui';
  \`\`\`
 `;
-
   // ------------------------------
   // Storybook ArgTypes
   // ------------------------------
@@ -35,11 +34,13 @@
       description: 'Color theme token',
       table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'default' } },
     },
-    size: {
-      control: { type: 'select' },
-      options: componentSizeOptions,
-      description: 'Visual size token',
-      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'normal' } },
+    'font-size': { table: { category: 'API', subcategory: 'Appearance' } },
+
+    // ------------------------------
+    // Slots (Snippets)
+    // ------------------------------
+    customIndicatorIcon: {
+      table: { category: 'API', subcategory: 'Slots' },
     },
   };
 
@@ -66,13 +67,21 @@
 
 <Story name="Default"></Story>
 
-<Story name="Large" args={{ size: 'large' }}></Story>
+<Story name="Font Size" args={{ 'font-size': '2em' }}></Story>
 
 <Story name="Safe" args={{ color: 'safe' }}></Story>
 
 <Story name="Danger" args={{ color: 'danger' }}></Story>
 
 <Story name="Warning" args={{ color: 'warning' }}></Story>
+
+<Story name="Custom Icon" asChild>
+  <Indicator color="danger">
+    {#snippet customIndicatorIcon()}
+      <Icon icon="material-symbols:square" />
+    {/snippet}
+  </Indicator>
+</Story>
 
 <Story name="Light Theme" asChild>
   <Theme type="light">

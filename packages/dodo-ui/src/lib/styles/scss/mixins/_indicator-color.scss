@@ -43,14 +43,11 @@ $dodo-ui-indicator-scale-dark: (
     $scale: $dodo-ui-indicator-scale-light;
   }
 
-  --dodo-ui-indicator-#{$color-name}-bg: #{_dodo-ui-resolve-color(
-      $color-name,
-      map.get($scale, color)
-    )};
+  --dodo-ui-indicator-#{$color-name}: #{_dodo-ui-resolve-color($color-name, map.get($scale, color))};
 }
 
 @mixin generate-dodo-ui-indicator-color($theme) {
   &--#{$theme} {
-    background-color: var(--dodo-ui-indicator-#{$theme}-bg);
+    color: var(--dodo-ui-indicator-#{$theme});
   }
 }

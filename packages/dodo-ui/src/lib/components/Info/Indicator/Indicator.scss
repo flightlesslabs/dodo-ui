@@ -26,7 +26,7 @@ $dodo-indicator-themes: neutral, primary, secondary, safe, warning, danger;
 
 .dodo-ui-Indicator {
   display: inline-flex;
-  border-radius: 50%;
+  font-size: var(--Indicator-font-size, 1.15em);
 
   // ----------------------------------------
   // Theme colors
@@ -34,23 +34,6 @@ $dodo-indicator-themes: neutral, primary, secondary, safe, warning, danger;
   &.color {
     @each $theme in $dodo-indicator-themes {
       @include textComponent.generate-dodo-ui-indicator-color($theme);
-    }
-  }
-
-  &.size {
-    &--normal {
-      height: calc(var(--dodo-ui-track-element-height-normal) * 1.8);
-      width: calc(var(--dodo-ui-track-element-height-normal) * 1.8);
-    }
-
-    &--small {
-      height: calc(var(--dodo-ui-track-element-height-small) * 1.8);
-      width: calc(var(--dodo-ui-track-element-height-small) * 1.8);
-    }
-
-    &--large {
-      height: calc(var(--dodo-ui-track-element-height-large) * 1.8);
-      width: calc(var(--dodo-ui-track-element-height-large) * 1.8);
     }
   }
 }

@@ -1,5 +1,7 @@
 <script lang="ts" module>
-  import { type ComponentColor, type ComponentSize } from '@flightlesslabs/dodo-core-attributes';
+  import { type ComponentColor } from '@flightlesslabs/dodo-core-attributes';
+  import Icon from '@iconify/svelte';
+  import type { Snippet } from 'svelte';
 
   /**
    * Public props for Indicator
@@ -17,8 +19,15 @@
     /** Color theme token */
     color?: ComponentColor;
 
-    /** Visual size token */
-    size?: ComponentSize;
+    /** font size for Indicator icon */
+    'font-size'?: string;
+
+    /**
+     * custom IndicatorIcon.
+     *
+     * Use {#snippet customIndicatorIcon} in Svelte.
+     */
+    customIndicatorIcon?: Snippet;
   };
 </script>
 
@@ -27,15 +36,24 @@
     class: className = '',
     color = 'neutral',
     ref = $bindable(null),
-    size = 'normal',
+    'font-size': fontSize,
+    customIndicatorIcon,
   }: IndicatorProps = $props();
 
   /**
    * Computed class list
    */
-  const classes = $derived(
-    ['dodo-ui-Indicator', `color--${color}`, `size--${size}`, className].filter(Boolean),
+  const classes = $derived(['dodo-ui-Indicator', `color--${color}`, className].filter(Boolean));
+
+  const inlineStyles = $derived(
+    [fontSize ? `--Indicator-font-size: ${fontSize}` : ''].filter(Boolean),
   );
 </script>
 
-<span bind:this={ref} class={classes.join(' ')}></span>
+<span bind:this={ref} class={classes.join(' ')} style={inlineStyles.join(';')}>
+  {#if customIndicatorIcon}
+    {@render customIndicatorIcon?.()}
+  {:else}
+    <Icon icon="material-symbols:circle" />
+  {/if}
+</span>

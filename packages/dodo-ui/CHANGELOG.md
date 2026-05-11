@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.35.0
+
+### Minor Changes
+
+- Indicator API changed
+
 ## 0.34.1
 
 ### Patch Changes
