@@ -171,6 +171,14 @@ export {
   type ThresholdStatus,
 } from './components/Info/Threshold/compareValueWithThreshold/compareValueWithThreshold.js';
 
+/**
+ * Indicator component and related prop types.
+ */
+export {
+  default as Indicator,
+  type IndicatorProps,
+} from './components/Info/Indicator/Indicator.svelte';
+
 // =====================================================
 // utils – Public API
 // =====================================================
