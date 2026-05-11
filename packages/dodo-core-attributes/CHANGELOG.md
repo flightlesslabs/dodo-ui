@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-core-attributes
 
+## 0.4.1
+
+### Patch Changes
+
+- Dependancies upgraded
+
 ## 0.4.0
 
 ### Minor Changes
