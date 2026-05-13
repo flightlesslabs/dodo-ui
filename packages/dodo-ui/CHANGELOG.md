@@ -1,5 +1,16 @@
 # @flightlesslabs/dodo-ui
 
+## 0.36.0
+
+### Minor Changes
+
+- Group added
+
+### Patch Changes
+
+- Updated dependencies
+  - @flightlesslabs/dodo-core-attributes@0.4.2
+
 ## 0.35.0
 
 ### Minor Changes
