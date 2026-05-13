@@ -82,6 +82,11 @@ export {
   type TextAreaProps,
 } from './components/Form/TextArea/TextArea.svelte';
 
+/**
+ * Group component and related types/events.
+ */
+export { default as Group, type GroupProps } from './components/Form/Group/Group.svelte';
+
 // =====================================================
 // Layout Components – Public API
 // =====================================================

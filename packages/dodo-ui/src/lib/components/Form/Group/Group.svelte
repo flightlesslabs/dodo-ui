@@ -19,6 +19,18 @@
 
     /** Stretch container to full container width */
     fullWidth?: boolean;
+
+    /**  Merge children into a single grouped appearance */
+    attached?: boolean;
+
+    /** gap between the inner contents */
+    gap?: number;
+
+    /** flex inner contents in a full width container */
+    flex?: boolean;
+
+    /** outline for the container */
+    outline?: boolean;
   };
 </script>
 
@@ -31,15 +43,27 @@
     ref = $bindable(null),
     children,
     fullWidth = false,
+    attached = false,
+    gap = 1,
+    flex = false,
+    outline = false,
   }: GroupProps = $props();
 
   const classes = $derived(
-    ['dodo-ui-Group', `roundness--${roundness}`, fullWidth && 'fullWidth', className].filter(
-      Boolean,
-    ),
+    [
+      'dodo-ui-Group',
+      `roundness--${roundness}`,
+      fullWidth && 'fullWidth',
+      flex && 'flex',
+      attached && 'attached',
+      outline && 'outline',
+      className,
+    ].filter(Boolean),
   );
+
+  const inlineStyles = $derived([`--Group-gap: ${gap}`].filter(Boolean));
 </script>
 
-<div bind:this={ref} class={classes.join(' ')}>
+<div bind:this={ref} class={classes.join(' ')} style={inlineStyles.join(';')}>
   {@render children?.()}
 </div>

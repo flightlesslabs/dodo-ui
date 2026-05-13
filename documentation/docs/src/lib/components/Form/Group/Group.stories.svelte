@@ -1,11 +1,14 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
-  import type { GroupProps } from './Group.svelte';
-  import Group from './Group.svelte';
-  import { componentRoundnessOptions } from '@flightlesslabs/dodo-core-attributes';
-  import Button from '../Button/Button.svelte';
-  import TextInput from '../TextInput/TextInput.svelte';
+
+  import {
+    type GroupProps,
+    Group,
+    Button,
+    TextInput,
+    componentRoundnessOptions,
+  } from '@flightlesslabs/dodo-ui';
 
   const description = `
  An input/button Group component .
@@ -92,44 +95,44 @@
   <Button variant="text" outline>Tres</Button>
 </Story>
 
-<Story name="Long List" args={{ gap: 3 }}>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-  <Button variant="text" outline>Item</Button>
-</Story>
-
 <Story name="TextInputs" args={{ attached: true }}>
   <TextInput placeholder="type something" />
   <TextInput placeholder="type something" />
   <TextInput placeholder="type something" />
+</Story>
+
+<Story name="Multi Button Container" args={{ gap: 3 }}>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
+  <Button variant="text" outline>Item</Button>
 </Story>
