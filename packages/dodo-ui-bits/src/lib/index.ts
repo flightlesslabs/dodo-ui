@@ -37,6 +37,19 @@ export { type SelectInputProps } from './components/Form/Select/SelectInput.svel
 
 export { type SelectPopupProps } from './components/Form/Select/SelectPopup.svelte';
 
+/**
+ * ToggleGroup component and related prop types.
+ */
+export {
+  default as ToggleGroup,
+  type ToggleGroupProps,
+  type ToggleGroupOption,
+  type ToggleGroupSingleProps,
+  type ToggleGroupMultipleProps,
+} from './components/Form/ToggleGroup/ToggleGroup.svelte';
+
+export { type ToggleGroupItemProps } from './components/Form/ToggleGroup/ToggleGroupItem.svelte';
+
 // =====================================================
 // Feedback Components – Public API
 // =====================================================

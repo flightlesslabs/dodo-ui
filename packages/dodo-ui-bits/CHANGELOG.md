@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.7.0
+
+### Minor Changes
+
+- ToggleGroup added
+
 ## 0.6.4
 
 ### Patch Changes
