@@ -1,5 +1,13 @@
 # @documentation/docs
 
+## 0.13.16
+
+### Patch Changes
+
+- svelte-number-format upgraded
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-numeric@0.2.23
+
 ## 0.13.15
 
 ### Patch Changes
