@@ -75,6 +75,7 @@
     },
     gap: { table: { category: 'API', subcategory: 'Appearance' } },
     buttonProps: { table: { category: 'API', subcategory: 'Appearance' } },
+    inactiveButtonProps: { table: { category: 'API', subcategory: 'Appearance' } },
     activeButtonProps: { table: { category: 'API', subcategory: 'Appearance' } },
   };
 
@@ -115,8 +116,13 @@
     buttonProps={{
       color: 'safe',
     }}
-    activeButtonProps={{
-      color: 'safe',
-    }}
   />
+</Story>
+
+<Story name="Custom Content" asChild>
+  <ToggleGroup options={options1} type="single" bind:value={value1} buttonProps={{ compact: true }}>
+    {#snippet customContent()}
+      ⚡
+    {/snippet}
+  </ToggleGroup>
 </Story>

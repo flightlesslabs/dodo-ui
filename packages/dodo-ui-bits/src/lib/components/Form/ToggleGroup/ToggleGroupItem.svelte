@@ -1,7 +1,11 @@
 <script lang="ts" module>
+  export type ToggleGroupItemCustomContentContext = ToggleGroupOption & {
+    isActive?: boolean;
+  };
+
   type ToggleGroupItemBaseProps = ToggleGroupOption & {
     isActive?: boolean;
-    customContent?: Snippet;
+    customContent?: Snippet<[ToggleGroupItemCustomContentContext]>;
   };
 
   type WithoutChildren<T> = Omit<T, 'children'>;
@@ -25,6 +29,7 @@
     isActive = false,
     buttonProps,
     activeButtonProps,
+    inactiveButtonProps,
     ...restProps
   }: ToggleGroupItemProps = $props();
 
@@ -37,23 +42,32 @@
     background: 'subtle',
   };
 
-  const buttonPropsDefaults: Partial<ButtonAsButtonProps> = {
+  const inactivebuttonPropsDefaults: Partial<ButtonAsButtonProps> = {
     ...defaultPropsAllButton,
     color: 'primary',
     variant: 'text',
   };
+
   const activebuttonPropsDefaults: Partial<ButtonAsButtonProps> = {
     ...defaultPropsAllButton,
     color: 'primary',
     variant: 'solid',
   };
 
-  const mergedButtonProps = $derived({ ...buttonPropsDefaults, ...buttonProps });
+  const mergedInactiveButtonProps = $derived({
+    ...buttonProps,
+    ...inactivebuttonPropsDefaults,
+    ...inactiveButtonProps,
+  });
 
-  const mergedActiveButtonProps = $derived({ ...activebuttonPropsDefaults, ...activeButtonProps });
+  const mergedActiveButtonProps = $derived({
+    ...buttonProps,
+    ...activebuttonPropsDefaults,
+    ...activeButtonProps,
+  });
 
   const { size, color, variant, roundness, outline, compact, fullWidth, background } = $derived(
-    isActive ? mergedActiveButtonProps : mergedButtonProps,
+    isActive ? mergedActiveButtonProps : mergedInactiveButtonProps,
   );
 
   const classes = $derived(
@@ -74,7 +88,14 @@
 
 <ToggleGroupBitUi.Item {...restProps} class={classes.join(' ')}>
   {#if customContent}
-    {@render customContent?.()}
+    {@render customContent?.({
+      ...restProps,
+      label,
+      isActive,
+      buttonProps,
+      activeButtonProps,
+      inactiveButtonProps,
+    })}
   {:else}
     {label}
   {/if}

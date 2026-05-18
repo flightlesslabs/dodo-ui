@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.7.2
+
+### Patch Changes
+
+- Toggle Group custom content added
+
 ## 0.7.1
 
 ### Patch Changes

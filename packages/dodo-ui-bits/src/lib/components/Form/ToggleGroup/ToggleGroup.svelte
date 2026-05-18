@@ -8,8 +8,11 @@
     /** Disable this option */
     disabled?: boolean;
 
-    /** Props applied when NOT active */
+    /** Common props applied to all buttons */
     buttonProps?: Partial<ButtonAsButtonProps>;
+
+    /** Props applied when NOT active */
+    inactiveButtonProps?: Partial<ButtonAsButtonProps>;
 
     /** Props applied when active */
     activeButtonProps?: Partial<ButtonAsButtonProps>;
@@ -19,14 +22,19 @@
     /** Custom CSS class names */
     class?: string;
 
-    /** Props applied when NOT active */
+    /** Common props applied to all buttons */
     buttonProps?: Partial<ButtonAsButtonProps>;
+
+    /** Props applied when NOT active */
+    inactiveButtonProps?: Partial<ButtonAsButtonProps>;
 
     /** Props applied when active */
     activeButtonProps?: Partial<ButtonAsButtonProps>;
 
     /** List of toggle buttons */
     options: ToggleGroupOption[];
+
+    customContent?: Snippet<[ToggleGroupItemCustomContentContext]>;
   } & GroupProps;
 
   type WithoutChildren<T> = Omit<T, 'children'>;
@@ -45,7 +53,10 @@
   import ToggleGroupSingle from './ToggleGroupSingle.svelte';
   import ToggleGroupMultiple from './ToggleGroupMultiple.svelte';
   import { Group, type ButtonAsButtonProps, type GroupProps } from '@flightlesslabs/dodo-ui';
-  import ToggleGroupItem from './ToggleGroupItem.svelte';
+  import ToggleGroupItem, {
+    type ToggleGroupItemCustomContentContext,
+  } from './ToggleGroupItem.svelte';
+  import type { Snippet } from 'svelte';
 
   let {
     class: className = '',
@@ -60,8 +71,10 @@
     roundness = 1,
     options,
     buttonProps,
+    inactiveButtonProps,
     activeButtonProps,
     disabled,
+    customContent,
     ...restProps
   }: ToggleGroupProps = $props();
 
@@ -77,9 +90,11 @@
       <ToggleGroupItem
         {buttonProps}
         {activeButtonProps}
+        {inactiveButtonProps}
         {...option}
         {disabled}
         isActive={type === 'single' ? option.value === value : value?.includes(option.value)}
+        {customContent}
       />
     {/each}
   </Group>

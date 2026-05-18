@@ -1,5 +1,13 @@
 # @documentation/docs
 
+## 0.13.13
+
+### Patch Changes
+
+- ToggleGroup customContent added
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-bits@0.7.2
+
 ## 0.13.12
 
 ### Patch Changes

@@ -96,6 +96,14 @@
     gap: { table: { category: 'API', subcategory: 'Appearance' } },
     buttonProps: { table: { category: 'API', subcategory: 'Appearance' } },
     activeButtonProps: { table: { category: 'API', subcategory: 'Appearance' } },
+
+    // ------------------------------
+    // Slots (Snippets)
+    // ------------------------------
+
+    customContent: {
+      table: { category: 'API', subcategory: 'Slots' },
+    },
   };
 
   // ------------------------------
