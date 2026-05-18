@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui-date
 
+## 0.4.24
+
+### Patch Changes
+
+- Button background added
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.36.1
+
 ## 0.4.23
 
 ### Patch Changes

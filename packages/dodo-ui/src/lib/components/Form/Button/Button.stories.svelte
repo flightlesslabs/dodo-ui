@@ -2,7 +2,7 @@
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import type { ArgTypes } from 'storybook/internal/csf';
   import type { ButtonProps } from './Button.svelte';
-  import Button from './Button.svelte';
+  import Button, { buttonBackgroundOptions } from './Button.svelte';
   import {
     componentColorOptions,
     componentRoundnessOptions,
@@ -54,6 +54,11 @@
       options: componentVariantOptions,
       description: 'Visual variant of the button',
       table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'solid' } },
+    },
+    background: {
+      control: { type: 'select' },
+      options: buttonBackgroundOptions,
+      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'subtle' } },
     },
     size: {
       control: { type: 'select' },
@@ -143,7 +148,7 @@
 
 <Story name="Text" args={{ variant: 'text' }}>Click me!</Story>
 
-<Story name="Text Neutral" args={{ variant: 'text', color: 'neutral' }}>Click me!</Story>
+<Story name="No Background" args={{ variant: 'text', background: 'none' }}>Click me!</Story>
 
 <Story name="Outline" args={{ variant: 'text', outline: true }}>Click me!</Story>
 

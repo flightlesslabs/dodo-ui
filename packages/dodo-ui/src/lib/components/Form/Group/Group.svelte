@@ -61,7 +61,13 @@
     ].filter(Boolean),
   );
 
-  const inlineStyles = $derived([`--Group-gap: ${gap}`].filter(Boolean));
+  function normalizeGap(value: number) {
+    return value === 0 ? 0 : value / 2;
+  }
+
+  const gapHalf = $derived(normalizeGap(gap));
+
+  const inlineStyles = $derived([`--Group-gap: ${gapHalf}`].filter(Boolean));
 </script>
 
 <div bind:this={ref} class={classes.join(' ')} style={inlineStyles.join(';')}>

@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.36.1
+
+### Patch Changes
+
+- Button background added
+
 ## 0.36.0
 
 ### Minor Changes

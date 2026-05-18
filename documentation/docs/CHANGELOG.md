@@ -1,5 +1,16 @@
 # @documentation/docs
 
+## 0.13.12
+
+### Patch Changes
+
+- Button background added
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-bits@0.7.1
+  - @flightlesslabs/dodo-ui-date@0.4.24
+  - @flightlesslabs/dodo-ui@0.36.1
+  - @flightlesslabs/dodo-ui-numeric@0.2.21
+
 ## 0.13.11
 
 ### Patch Changes

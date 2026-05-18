@@ -34,6 +34,7 @@
     outline: false,
     compact: false,
     fullWidth: false,
+    background: 'subtle',
   };
 
   const buttonPropsDefaults: Partial<ButtonAsButtonProps> = {
@@ -51,7 +52,7 @@
 
   const mergedActiveButtonProps = $derived({ ...activebuttonPropsDefaults, ...activeButtonProps });
 
-  const { size, color, variant, roundness, outline, compact, fullWidth } = $derived(
+  const { size, color, variant, roundness, outline, compact, fullWidth, background } = $derived(
     isActive ? mergedActiveButtonProps : mergedButtonProps,
   );
 
@@ -62,6 +63,7 @@
       `size--${size}`,
       `color--${color}`,
       `variant--${variant}`,
+      `background--${background}`,
       `roundness--${roundness}`,
       outline && 'outline',
       compact && 'compact',

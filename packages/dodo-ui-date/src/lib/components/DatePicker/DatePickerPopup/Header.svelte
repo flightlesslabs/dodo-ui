@@ -8,6 +8,7 @@
       'compact',
       'size--normal',
       'variant--text',
+      'background--subtle',
       'color--primary',
       'roundness--1',
     ].filter(Boolean),

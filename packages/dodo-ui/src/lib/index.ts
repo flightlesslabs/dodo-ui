@@ -10,6 +10,9 @@ export {
   type ButtonAsButtonProps,
   type ButtonAsAnchorProps,
   type ButtonProps,
+  type ButtonBackground,
+  BUTTON_BACKGROUND,
+  buttonBackgroundOptions,
 } from './components/Form/Button/Button.svelte';
 
 /**

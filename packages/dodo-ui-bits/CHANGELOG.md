@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.7.1
+
+### Patch Changes
+
+- Button background added
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.36.1
+
 ## 0.7.0
 
 ### Minor Changes

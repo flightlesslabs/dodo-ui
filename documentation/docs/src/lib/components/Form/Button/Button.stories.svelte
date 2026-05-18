@@ -9,6 +9,7 @@
     componentSizeOptions,
     componentRoundnessOptions,
     Theme,
+    buttonBackgroundOptions,
   } from '@flightlesslabs/dodo-ui';
 
   const description = `
@@ -54,6 +55,11 @@
       options: componentVariantOptions,
       description: 'Visual variant of the button',
       table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'solid' } },
+    },
+    background: {
+      control: { type: 'select' },
+      options: buttonBackgroundOptions,
+      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'subtle' } },
     },
     size: {
       control: { type: 'select' },
@@ -142,6 +148,8 @@
 <Story name="Color" args={{ color: 'safe' }}>Click me</Story>
 
 <Story name="Text" args={{ variant: 'text' }}>Click me!</Story>
+
+<Story name="No Background" args={{ variant: 'text', background: 'none' }}>Click me!</Story>
 
 <Story name="Outline" args={{ variant: 'text', outline: true }}>Click me!</Story>
 

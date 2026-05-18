@@ -108,7 +108,12 @@ $dodo-ui-button-scale-dark: (
     &.variant {
       &--text {
         color: var(--dodo-color-#{$theme}-800);
-        background-color: var(--dodo-ui-Button-text-#{$theme}-bg);
+
+        &.background {
+          &--subtle {
+            background-color: var(--dodo-ui-Button-text-#{$theme}-bg);
+          }
+        }
 
         &:hover {
           background-color: var(--dodo-ui-Button-text-#{$theme}-hover-bg);

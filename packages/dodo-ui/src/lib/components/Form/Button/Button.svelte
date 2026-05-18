@@ -1,6 +1,15 @@
 <script lang="ts" module>
   import type { Snippet } from 'svelte';
 
+  export const BUTTON_BACKGROUND = {
+    all: ['subtle', 'none'],
+  } as const;
+
+  export type ButtonBackground = (typeof BUTTON_BACKGROUND.all)[number];
+
+  // Flat options (for Storybook, selects, etc.)
+  export const buttonBackgroundOptions = BUTTON_BACKGROUND.all;
+
   /**
    * Shared base props for the Button component.
    *
@@ -24,6 +33,9 @@
 
     /** Visual variant (e.g. solid, text) */
     variant?: ComponentVariant;
+
+    /** Backgound stytle for  text variant */
+    background?: ButtonBackground;
 
     /** Add a border around the button */
     outline?: boolean;
@@ -75,6 +87,7 @@
     href,
     ref = $bindable(null),
     type,
+    background = 'subtle',
     ...restProps
   }: ButtonProps = $props();
 
@@ -84,6 +97,7 @@
       `size--${size}`,
       `color--${color}`,
       `variant--${variant}`,
+      `background--${background}`,
       `roundness--${roundness}`,
       outline && 'outline',
       compact && 'compact',
