@@ -1,5 +1,13 @@
 # @documentation/docs
 
+## 0.13.15
+
+### Patch Changes
+
+- ToggleGroupItem added, customToggleGroupItem option added to ToggleGroup
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-bits@0.8.0
+
 ## 0.13.14
 
 ### Patch Changes

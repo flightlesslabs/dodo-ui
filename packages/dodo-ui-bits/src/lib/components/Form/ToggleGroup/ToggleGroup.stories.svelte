@@ -4,6 +4,7 @@
   import { componentRoundnessOptions } from '@flightlesslabs/dodo-ui';
   import type { ToggleGroupProps } from './ToggleGroup.svelte';
   import ToggleGroup from './ToggleGroup.svelte';
+  import ToggleGroupItem from './ToggleGroupItem/ToggleGroupItem.svelte';
 
   const options1 = [
     { value: 'one', label: 'Uno' },
@@ -120,9 +121,19 @@
 </Story>
 
 <Story name="Custom Content" asChild>
-  <ToggleGroup options={options1} type="single" bind:value={value1} buttonProps={{ compact: true }}>
-    {#snippet customContent()}
-      ⚡
+  <ToggleGroup options={options1} type="single" bind:value={value1}>
+    {#snippet customContent({ label })}
+      ⚡{label}
+    {/snippet}
+  </ToggleGroup>
+</Story>
+
+<Story name="Custom ToggleGroupItem" asChild>
+  <ToggleGroup options={options1} type="single" bind:value={value1}>
+    {#snippet customToggleGroupItem({ label, ...props })}
+      <ToggleGroupItem {...props}>
+        ⚡{label}
+      </ToggleGroupItem>
     {/snippet}
   </ToggleGroup>
 </Story>

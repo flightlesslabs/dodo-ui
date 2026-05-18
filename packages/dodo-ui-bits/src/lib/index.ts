@@ -46,9 +46,13 @@ export {
   type ToggleGroupOption,
   type ToggleGroupSingleProps,
   type ToggleGroupMultipleProps,
+  type ToggleGroupCustomContentContext,
 } from './components/Form/ToggleGroup/ToggleGroup.svelte';
 
-export { type ToggleGroupItemProps } from './components/Form/ToggleGroup/ToggleGroupItem.svelte';
+export {
+  default as ToggleGroupItem,
+  type ToggleGroupItemProps,
+} from './components/Form/ToggleGroup/ToggleGroupItem/ToggleGroupItem.svelte';
 
 // =====================================================
 // Feedback Components – Public API

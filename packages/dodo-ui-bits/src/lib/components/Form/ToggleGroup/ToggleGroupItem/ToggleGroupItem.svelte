@@ -1,17 +1,28 @@
 <script lang="ts" module>
-  export type ToggleGroupItemCustomContentContext = ToggleGroupOption & {
+  type ToggleGroupItemBaseProps = {
+    /** option value */
+    value: string;
+
+    /** Disable this option */
+    disabled?: boolean;
+
+    /** Common props applied to all buttons */
+    buttonProps?: Partial<ButtonAsButtonProps>;
+
+    /** Props applied when NOT active */
+    inactiveButtonProps?: Partial<ButtonAsButtonProps>;
+
+    /** Props applied when active */
+    activeButtonProps?: Partial<ButtonAsButtonProps>;
+
+    /** is the item in active list */
     isActive?: boolean;
+
+    /** Custom CSS class names applied to the ToggleGroupItem */
+    class?: string;
   };
 
-  type ToggleGroupItemBaseProps = ToggleGroupOption & {
-    isActive?: boolean;
-    customContent?: Snippet<[ToggleGroupItemCustomContentContext]>;
-  };
-
-  type WithoutChildren<T> = Omit<T, 'children'>;
-
-  export type ToggleGroupItemProps = ToggleGroupItemBaseProps &
-    WithoutChildren<ToggleGroupItemBitUiProps>;
+  export type ToggleGroupItemProps = ToggleGroupItemBaseProps & ToggleGroupItemBitUiProps;
 </script>
 
 <script lang="ts">
@@ -19,13 +30,9 @@
     ToggleGroup as ToggleGroupBitUi,
     type ToggleGroupItemProps as ToggleGroupItemBitUiProps,
   } from 'bits-ui';
-  import type { Snippet } from 'svelte';
-  import type { ToggleGroupOption } from './ToggleGroup.svelte';
   import type { ButtonAsButtonProps } from '@flightlesslabs/dodo-ui';
 
   let {
-    customContent,
-    label,
     isActive = false,
     buttonProps,
     activeButtonProps,
@@ -86,17 +93,4 @@
   );
 </script>
 
-<ToggleGroupBitUi.Item {...restProps} class={classes.join(' ')}>
-  {#if customContent}
-    {@render customContent?.({
-      ...restProps,
-      label,
-      isActive,
-      buttonProps,
-      activeButtonProps,
-      inactiveButtonProps,
-    })}
-  {:else}
-    {label}
-  {/if}
-</ToggleGroupBitUi.Item>
+<ToggleGroupBitUi.Item {...restProps} class={classes.join(' ')} />

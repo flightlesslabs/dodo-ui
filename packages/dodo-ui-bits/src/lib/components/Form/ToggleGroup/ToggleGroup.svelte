@@ -1,5 +1,6 @@
 <script lang="ts" module>
   export type ToggleGroupOption = {
+    /** option value */
     value: string;
 
     /** Simple label */
@@ -18,6 +19,10 @@
     activeButtonProps?: Partial<ButtonAsButtonProps>;
   };
 
+  export type ToggleGroupCustomContentContext = ToggleGroupOption & {
+    isActive?: boolean;
+  };
+
   type ToggleGroupBaseProps = {
     /** Custom CSS class names */
     class?: string;
@@ -34,7 +39,19 @@
     /** List of toggle buttons */
     options: ToggleGroupOption[];
 
-    customContent?: Snippet<[ToggleGroupItemCustomContentContext]>;
+    /**
+     * Content content for the Toggle Group Item.
+     *
+     * Use {#snippet customContent} in Svelte.
+     */
+    customContent?: Snippet<[ToggleGroupCustomContentContext]>;
+
+    /**
+     * Content ToggleGroupItem.
+     *
+     * Use {#snippet customToggleGroupItem} in Svelte.
+     */
+    customToggleGroupItem?: Snippet<[ToggleGroupCustomContentContext]>;
   } & GroupProps;
 
   type WithoutChildren<T> = Omit<T, 'children'>;
@@ -53,9 +70,7 @@
   import ToggleGroupSingle from './ToggleGroupSingle.svelte';
   import ToggleGroupMultiple from './ToggleGroupMultiple.svelte';
   import { Group, type ButtonAsButtonProps, type GroupProps } from '@flightlesslabs/dodo-ui';
-  import ToggleGroupItem, {
-    type ToggleGroupItemCustomContentContext,
-  } from './ToggleGroupItem.svelte';
+  import ToggleGroupItem from './ToggleGroupItem/ToggleGroupItem.svelte';
   import type { Snippet } from 'svelte';
 
   let {
@@ -75,6 +90,7 @@
     activeButtonProps,
     disabled,
     customContent,
+    customToggleGroupItem,
     ...restProps
   }: ToggleGroupProps = $props();
 
@@ -84,18 +100,45 @@
   const classes = $derived(['dodo-ui-ToggleGroup', className].filter(Boolean));
 </script>
 
+{#snippet toggleGroupItem(option: ToggleGroupOption)}
+  <ToggleGroupItem
+    {buttonProps}
+    {activeButtonProps}
+    {inactiveButtonProps}
+    {...option}
+    {disabled}
+    isActive={type === 'single' ? option.value === value : value?.includes(option.value)}
+  >
+    {#if customContent}
+      {@render customContent?.({
+        buttonProps,
+        activeButtonProps,
+        inactiveButtonProps,
+        ...option,
+        disabled,
+        isActive: type === 'single' ? option.value === value : value?.includes(option.value),
+      })}
+    {:else}
+      {option.label}
+    {/if}
+  </ToggleGroupItem>
+{/snippet}
+
 {#snippet group()}
   <Group {fullWidth} {attached} {gap} {flex} {outline} {roundness} class="ToggleGroupModifiedGroup">
     {#each options as option (option.value)}
-      <ToggleGroupItem
-        {buttonProps}
-        {activeButtonProps}
-        {inactiveButtonProps}
-        {...option}
-        {disabled}
-        isActive={type === 'single' ? option.value === value : value?.includes(option.value)}
-        {customContent}
-      />
+      {#if customToggleGroupItem}
+        {@render customToggleGroupItem?.({
+          buttonProps,
+          activeButtonProps,
+          inactiveButtonProps,
+          ...option,
+          disabled,
+          isActive: type === 'single' ? option.value === value : value?.includes(option.value),
+        })}
+      {:else}
+        {@render toggleGroupItem(option)}
+      {/if}
     {/each}
   </Group>
 {/snippet}
