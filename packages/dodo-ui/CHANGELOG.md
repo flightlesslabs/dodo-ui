@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.36.2
+
+### Patch Changes
+
+- Dependencies updated
+
 ## 0.36.1
 
 ### Patch Changes
