@@ -1,6 +1,7 @@
 {
   "name": "dodo-ui",
   "version": "0.1.0",
+  "packageManager": "pnpm@11.0.0",
   "scripts": {
     "dev": "pnpm --filter @documentation/docs dev",
     "build": "pnpm -r build",
