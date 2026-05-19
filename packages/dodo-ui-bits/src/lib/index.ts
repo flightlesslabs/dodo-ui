@@ -55,6 +55,35 @@ export {
 } from './components/Form/ToggleGroup/ToggleGroupItem/ToggleGroupItem.svelte';
 
 // =====================================================
+// Layout Components – Public API
+// =====================================================
+
+/**
+ * Accordion component and related prop types.
+ */
+export {
+  default as Accordion,
+  type AccordionProps,
+} from './components/Layout/Accordion/Accordion.svelte';
+
+export {
+  default as AccordionItem,
+  type AccordionItemProps,
+} from './components/Layout/Accordion/AccordionItem/AccordionItem.svelte';
+
+export {
+  default as AccordionTrigger,
+  type AccordionTriggerProps,
+} from './components/Layout/Accordion/AccordionItem/AccordionTrigger.svelte';
+
+export {
+  getAccordionContext,
+  setAccordionContext,
+  useAccordionContext,
+  type AccordionContext,
+} from './components/Layout/Accordion/context.js';
+
+// =====================================================
 // Feedback Components – Public API
 // =====================================================
 

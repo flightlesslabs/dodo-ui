@@ -1,5 +1,16 @@
 # @documentation/docs
 
+## 0.14.0
+
+### Minor Changes
+
+- Accordion component added
+
+### Patch Changes
+
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-bits@0.10.0
+
 ## 0.13.17
 
 ### Patch Changes
