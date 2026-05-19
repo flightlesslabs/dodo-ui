@@ -78,6 +78,9 @@
       },
     },
   });
+
+  let value1 = $state('item-2');
+  let value2 = $state(['item-2', 'item-3']);
 </script>
 
 <!-- ------------------------------ -->
@@ -98,6 +101,22 @@
   </AccordionItem>
 </Story>
 
+<Story name="Controlled" asChild>
+  <Accordion type="single" bind:value={value1}>
+    <AccordionItem title="Item 1" value="item-1">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </AccordionItem>
+
+    <AccordionItem title="Item 2" value="item-2">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </AccordionItem>
+
+    <AccordionItem title="Item 3" value="item-3">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </AccordionItem>
+  </Accordion>
+</Story>
+
 <Story name="Multiple" args={{ type: 'multiple' }}>
   <AccordionItem title="Item 1">
     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -110,6 +129,22 @@
   <AccordionItem title="Item 3">
     Lorem ipsum dolor sit amet consectetur adipisicing elit.
   </AccordionItem>
+</Story>
+
+<Story name="Multiple Controlled" asChild>
+  <Accordion type="multiple" bind:value={value2}>
+    <AccordionItem title="Item 1" value="item-1">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </AccordionItem>
+
+    <AccordionItem title="Item 2" value="item-2">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </AccordionItem>
+
+    <AccordionItem title="Item 3" value="item-3">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </AccordionItem>
+  </Accordion>
 </Story>
 
 <Story name="Custom Header" args={{ type: 'single' }}>
