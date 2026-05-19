@@ -39,6 +39,7 @@
     options: { table: { category: 'API', subcategory: 'Base' } },
     type: {
       control: { type: 'text' },
+      description: `The type of the component, used to determine the type of the value, when 'multiple' the value will be an array.`,
       table: { category: 'API', subcategory: 'Base' },
     },
     attached: { table: { category: 'API', subcategory: 'Base' } },

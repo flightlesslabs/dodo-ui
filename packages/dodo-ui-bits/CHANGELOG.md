@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.10.0
+
+### Minor Changes
+
+- Accordion component added
+
 ## 0.9.0
 
 ### Minor Changes

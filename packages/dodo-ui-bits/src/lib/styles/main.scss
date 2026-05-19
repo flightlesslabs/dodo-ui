@@ -4,6 +4,9 @@
 @use '../components/Form/Switch/Switch.scss';
 @use '../components/Form/Select/Select.scss';
 @use '../components/Form/ToggleGroup/ToggleGroup.scss';
+@use '../components/Layout/Accordion/Accordion.scss';
+@use '../components/Layout/Accordion/AccordionItem/AccordionItem.scss';
+@use '../components/Layout/Accordion/AccordionItem/AccordionTrigger.scss';
 @use '../components/Feedback/Modals/Modal/Modal.scss';
 @use '../components/Feedback/Modals/Modal/ModalCard/ModalCard.scss';
 @use '../components/Feedback/Toasts/Toast/Toast.scss';

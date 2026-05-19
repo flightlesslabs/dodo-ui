@@ -1,0 +1,33 @@
+// ----------------------------------------
+// Theme tokens (global CSS variables)
+// ----------------------------------------
+:root {
+  --dodo-ui-AccordionItem-border-color: var(--dodo-color-neutral-200);
+}
+
+.dodo-theme--dark {
+  --dodo-ui-AccordionItem-border-color: var(--dodo-color-neutral-400);
+}
+
+// AccordionItem
+.dodo-ui-AccordionItem {
+  color: var(--dodo-color-neutral-900);
+  margin-bottom: calc(var(--dodo-ui-space) * 4);
+  padding-bottom: calc(var(--dodo-ui-space) * 2);
+  border-bottom: var(--dodo-ui-element-border-width) solid var(--dodo-ui-AccordionItem-border-color);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .AccordionItemHeader {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  [data-accordion-content] {
+    padding-top: calc(var(--dodo-ui-space) * 2);
+  }
+}
