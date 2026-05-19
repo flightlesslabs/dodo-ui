@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.9.0
+
+### Minor Changes
+
+- ToggleGroup single type behaviour updated, styles fixed
+
 ## 0.8.0
 
 ### Minor Changes

@@ -124,6 +124,7 @@
 
   let value1 = $state(options1[0].value);
   let value2 = $state([options1[0].value]);
+  let value3 = $state(undefined);
 </script>
 
 <!-- ------------------------------ -->
@@ -140,8 +141,16 @@
   <ToggleGroup options={options1} type="single" bind:value={value1} attached />
 </Story>
 
+<Story name="Allow Deselect" asChild>
+  <ToggleGroup options={options1} type="single" bind:value={value3} allowDeselect />
+</Story>
+
 <Story name="Mutiple" asChild>
   <ToggleGroup options={options2} type="multiple" bind:value={value2} outline />
+</Story>
+
+<Story name="Full Width and flex" asChild>
+  <ToggleGroup options={options1} type="single" bind:value={value1} fullWidth flex />
 </Story>
 
 <Story name="Button Style" asChild>

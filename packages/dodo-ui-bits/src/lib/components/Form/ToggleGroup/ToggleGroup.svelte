@@ -52,6 +52,9 @@
      * Use {#snippet customToggleGroupItem} in Svelte.
      */
     customToggleGroupItem?: Snippet<[ToggleGroupCustomContentContext]>;
+
+    /** Allow deselecting ToggleGroup single type */
+    allowDeselect?: boolean;
   } & GroupProps;
 
   type WithoutChildren<T> = Omit<T, 'children'>;
@@ -97,7 +100,9 @@
   /**
    * Computed class list
    */
-  const classes = $derived(['dodo-ui-ToggleGroup', className].filter(Boolean));
+  const classes = $derived(
+    ['dodo-ui-ToggleGroup', fullWidth && 'fullWidth', className].filter(Boolean),
+  );
 </script>
 
 {#snippet toggleGroupItem(option: ToggleGroupOption)}

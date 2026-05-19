@@ -1,0 +1,11 @@
+// ToggleGroup
+.dodo-ui-ToggleGroup {
+  display: inline-flex;
+
+  // ----------------------------------------
+  // Full width
+  // ----------------------------------------
+  &.fullWidth {
+    width: 100%;
+  }
+}

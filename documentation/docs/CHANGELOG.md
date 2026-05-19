@@ -1,5 +1,13 @@
 # @documentation/docs
 
+## 0.13.17
+
+### Patch Changes
+
+- ToggleGroup single type behaviour updated, styles fixed
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-bits@0.9.0
+
 ## 0.13.16
 
 ### Patch Changes

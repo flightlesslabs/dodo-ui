@@ -62,14 +62,14 @@
   };
 
   const mergedInactiveButtonProps = $derived({
-    ...buttonProps,
     ...inactivebuttonPropsDefaults,
+    ...buttonProps,
     ...inactiveButtonProps,
   });
 
   const mergedActiveButtonProps = $derived({
-    ...buttonProps,
     ...activebuttonPropsDefaults,
+    ...buttonProps,
     ...activeButtonProps,
   });
 
@@ -79,7 +79,7 @@
 
   const classes = $derived(
     [
-      'ToggleGroupItem',
+      'dodo-ui-ToggleGroupItem',
       'dodo-ui-Button',
       `size--${size}`,
       `color--${color}`,
