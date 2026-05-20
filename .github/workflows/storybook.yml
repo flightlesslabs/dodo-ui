@@ -16,19 +16,18 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # 1. Setup Node first so Node 24 is active globally
+      # 1. Use Node.js 24 and configure the pnpm dependency cache
       - name: Use Node.js 24
         uses: actions/setup-node@v4
         with:
           node-version: 24
+          cache: 'pnpm'
 
-      # 2. Setup pnpm now that a compatible Node version is available
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 11
-          # Optional: You can move the cache option here if desired, 
-          # but setup-node + pnpm setup handles it fine once ordered like this.
+      # 2. Use Corepack to reliably activate pnpm 11 within Node 24
+      - name: Setup pnpm 11
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest-11 --activate
 
       - name: Install Dependencies
         run: pnpm install
