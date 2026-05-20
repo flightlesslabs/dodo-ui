@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="https://flightlesslabs.github.io/dodo-ui"><strong>Homepage</strong></a> ·
+  <a href="https://flightlesslabs.github.io/dodo-ui-homepage/"><strong>Homepage</strong></a> ·
   <a href="https://github.com/flightlesslabs/dodo-ui"><strong>GitHub</strong></a>
 </p>
 
