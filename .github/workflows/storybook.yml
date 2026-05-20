@@ -16,19 +16,22 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-
+      # 1. Setup Node first so Node 24 is active globally
       - name: Use Node.js 24
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: 'pnpm'
+
+      # 2. Setup pnpm now that a compatible Node version is available
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
+          # Optional: You can move the cache option here if desired, 
+          # but setup-node + pnpm setup handles it fine once ordered like this.
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Build UI Packages
         run: pnpm --filter @flightlesslabs/* build
