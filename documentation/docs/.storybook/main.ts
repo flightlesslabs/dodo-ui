@@ -10,6 +10,5 @@ const config: StorybookConfig = {
     '@storybook/addon-docs',
   ],
   framework: '@storybook/sveltekit',
-  staticDirs: ['../static'],
 };
 export default config;

@@ -1,5 +1,11 @@
 # @documentation/docs
 
+## 0.14.2
+
+### Patch Changes
+
+- branding images added
+
 ## 0.14.1
 
 ### Patch Changes

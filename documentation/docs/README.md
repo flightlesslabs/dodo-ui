@@ -1,4 +1,4 @@
-![Dodo logo](https://flightlesslabs.github.io/dodo-ui/og.png)
+![Dodo logo](https://flightlesslabs.github.io/branding/og.png)
 
 Opinionated UI framework for Svelte, based on [Bits UI](https://bits-ui.com/)
 
