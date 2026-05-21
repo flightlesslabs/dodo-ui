@@ -10,12 +10,6 @@
     "check": "pnpm -r check",
     "check:fix": "pnpm -r check:fix"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "esbuild"
-    ]
-  },
   "devDependencies": {
     "@changesets/cli": "^2.31.0",
     "@chromatic-com/storybook": "^5.2.1",

@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui-numeric",
-  "version": "0.2.24",
+  "version": "0.2.25",
   "publishConfig": {
     "access": "public"
   },
