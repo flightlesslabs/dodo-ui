@@ -1,5 +1,16 @@
 # @documentation/docs
 
+## 0.14.3
+
+### Patch Changes
+
+- homepage added
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-numeric@0.2.24
+  - @flightlesslabs/dodo-ui-bits@0.10.1
+  - @flightlesslabs/dodo-ui-date@0.4.26
+  - @flightlesslabs/dodo-ui@0.36.3
+
 ## 0.14.2
 
 ### Patch Changes

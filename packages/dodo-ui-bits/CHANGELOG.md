@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.10.1
+
+### Patch Changes
+
+- homepage added
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.36.3
+
 ## 0.10.0
 
 ### Minor Changes
