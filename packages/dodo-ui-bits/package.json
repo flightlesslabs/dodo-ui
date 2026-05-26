@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui-bits",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "publishConfig": {
     "access": "public"
   },
@@ -55,7 +55,7 @@
     }
   },
   "peerDependencies": {
-    "@flightlesslabs/dodo-ui": "^0.36.3",
+    "@flightlesslabs/dodo-ui": "^0.36.4",
     "bits-ui": "^2.0.0",
     "svelte": "^5.0.0"
   },
@@ -65,7 +65,7 @@
     "@iconify/svelte": "^5.2.1",
     "bits-ui": "^2.18.1",
     "nanoid": "^5.1.11",
-    "svelte": "^5.55.7"
+    "svelte": "^5.55.9"
   },
   "keywords": [
     "svelte"

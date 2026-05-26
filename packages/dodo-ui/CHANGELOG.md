@@ -1,5 +1,12 @@
 # @flightlesslabs/dodo-ui
 
+## 0.36.4
+
+### Patch Changes
+
+- Grid width bug fixed
+- Pacakges updated
+
 ## 0.36.3
 
 ### Patch Changes

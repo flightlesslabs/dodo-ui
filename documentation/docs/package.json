@@ -1,6 +1,6 @@
 {
   "name": "@documentation/docs",
-  "version": "0.14.4",
+  "version": "0.14.5",
   "private": true,
   "scripts": {
     "preview": "vite preview",
@@ -61,7 +61,7 @@
     "@iconify/svelte": "^5.2.1",
     "@internationalized/date": "^3.12.1",
     "bits-ui": "^2.18.1",
-    "svelte": "^5.55.7",
+    "svelte": "^5.55.9",
     "svelte-number-format": "^2.0.0"
   }
 }

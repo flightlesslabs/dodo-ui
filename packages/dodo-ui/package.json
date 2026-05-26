@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui",
-  "version": "0.36.3",
+  "version": "0.36.4",
   "publishConfig": {
     "access": "public"
   },
@@ -60,7 +60,7 @@
     "@flightlesslabs/dodo-core-attributes": "workspace:*",
     "@iconify/svelte": "^5.2.1",
     "esm-env": "^1.2.2",
-    "svelte": "^5.55.7"
+    "svelte": "^5.55.9"
   },
   "keywords": [
     "svelte"
