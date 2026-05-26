@@ -1,5 +1,11 @@
 # @documentation/docs
 
+## 0.14.6
+
+### Patch Changes
+
+- Logo fixed
+
 ## 0.14.5
 
 ### Patch Changes
