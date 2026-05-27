@@ -22,6 +22,29 @@ $roundness: (
   full: 50%,
 );
 
+@mixin attached-item-selectors {
+  > [class^='dodo-ui-'],
+  > button,
+  > input,
+  > textarea,
+  > div,
+  > section,
+  > article,
+  > span,
+  > header,
+  > footer,
+  > table,
+  > p,
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6 {
+    @content;
+  }
+}
+
 // ----------------------------------------
 // Component CSS
 // ----------------------------------------
@@ -31,7 +54,7 @@ $roundness: (
   padding-top: calc(var(--dodo-ui-space) * var(--Group-gap));
   padding-left: calc(var(--dodo-ui-space) * var(--Group-gap));
 
-  & * {
+  @include attached-item-selectors {
     margin-bottom: calc(var(--dodo-ui-space) * var(--Group-gap));
     margin-right: calc(var(--dodo-ui-space) * var(--Group-gap));
   }
@@ -47,7 +70,7 @@ $roundness: (
     flex-wrap: nowrap;
     padding: 0;
 
-    & * {
+    @include attached-item-selectors {
       position: relative;
       margin: 0;
     }
@@ -74,7 +97,7 @@ $roundness: (
         &--#{$name} {
           border-radius: 0;
 
-          & * {
+          @include attached-item-selectors {
             border-top-left-radius: 0;
             border-top-right-radius: 0;
             border-bottom-left-radius: 0;
@@ -102,7 +125,7 @@ $roundness: (
     width: 100%;
 
     &.flex {
-      & * {
+      @include attached-item-selectors {
         flex: 1;
       }
     }
