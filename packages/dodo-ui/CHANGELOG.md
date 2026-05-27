@@ -1,5 +1,12 @@
 # @flightlesslabs/dodo-ui
 
+## 0.36.5
+
+### Patch Changes
+
+- 6e6cc1d: Group content detection fixed
+- Input enclosure input width fixed
+
 ## 0.36.4
 
 ### Patch Changes

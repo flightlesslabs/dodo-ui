@@ -1,5 +1,17 @@
 # @documentation/docs
 
+## 0.14.7
+
+### Patch Changes
+
+- 6e6cc1d: Customize link added
+- Updated dependencies [6e6cc1d]
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.36.5
+  - @flightlesslabs/dodo-ui-bits@0.10.3
+  - @flightlesslabs/dodo-ui-date@0.4.28
+  - @flightlesslabs/dodo-ui-numeric@0.2.27
+
 ## 0.14.6
 
 ### Patch Changes
