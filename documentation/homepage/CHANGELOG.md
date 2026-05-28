@@ -5,6 +5,7 @@
 ### Minor Changes
 
 - Homepage added
+- Homepage repo made private to prevent accidential push
 
 ### Patch Changes
 
