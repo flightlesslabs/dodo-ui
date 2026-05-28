@@ -6,6 +6,7 @@
     componentRoundnessOptions,
     Theme,
     componentAffixPlacementOptions,
+    Button,
   } from '@flightlesslabs/dodo-ui';
   import type { SelectProps } from '@flightlesslabs/dodo-ui-bits';
   import { Select } from '@flightlesslabs/dodo-ui-bits';
@@ -180,6 +181,7 @@
 
 <Story name="Controlled" asChild>
   <Select {options} bind:value={myValue} />
+  <Button onclick={() => (myValue = options[1].value)}>Reset</Button>
 </Story>
 
 <Story

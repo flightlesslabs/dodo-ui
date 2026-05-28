@@ -153,6 +153,17 @@
   );
 
   let customAnchor = $state<HTMLDivElement | null>(null);
+  let input = $state<HTMLInputElement | null>(null);
+
+  $effect(() => {
+    if (!input) {
+      return;
+    }
+
+    const label = options.find((item) => item.value === value)?.label || '';
+
+    input.value = label;
+  });
 </script>
 
 <Combobox.Root
@@ -187,7 +198,8 @@
     {clearable}
     {updateOpenState}
     bind:searchValue
-    bind:ref={customAnchor}
+    bind:ref={input}
+    bind:customAnchor
     {triggerPlacement}
     {showTriggerButton}
   />

@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.10.4
+
+### Patch Changes
+
+- Select control value not changing bug fixed
+
 ## 0.10.3
 
 ### Patch Changes

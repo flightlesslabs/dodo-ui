@@ -2,7 +2,8 @@
   import type { Snippet } from 'svelte';
 
   export type SelectInputProps = {
-    ref: HTMLDivElement | null;
+    ref: HTMLInputElement | null;
+    customAnchor: HTMLDivElement | null;
     options: SelectOption[];
     value: string | undefined;
     size?: ComponentSize;
@@ -47,6 +48,7 @@
     placeholder,
     comboboxInputProps,
     comboboxTriggerProps,
+    // eslint-disable-next-line no-useless-assignment
     searchValue = $bindable<string>(''),
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     after,
@@ -56,6 +58,7 @@
     value = $bindable(undefined),
     options,
     ref = $bindable(null),
+    customAnchor = $bindable(null),
     customTriggerIcon,
     triggerPlacement = 'after',
     showTriggerButton = true,
@@ -97,10 +100,6 @@
   );
 
   const clearButtonClasses = $derived(['AffixContentClearButton', 'SelectClear'].filter(Boolean));
-
-  $effect(() => {
-    console.log(searchValue);
-  });
 </script>
 
 {#snippet triggerButton()}
@@ -121,7 +120,7 @@
   {error}
   class={classes.join(' ')}
   focused={forcedFocused || isFocused}
-  bind:ref
+  bind:ref={customAnchor}
   affixSpacingAfter={triggerPlacement === 'after' ? 'tight' : 'default'}
   affixSpacingBefore={triggerPlacement === 'before' ? 'tight' : 'default'}
   {...restProps}
@@ -139,6 +138,7 @@
     {placeholder}
     {defaultValue}
     class="InputBox"
+    bind:ref
   />
 
   {#snippet before()}
