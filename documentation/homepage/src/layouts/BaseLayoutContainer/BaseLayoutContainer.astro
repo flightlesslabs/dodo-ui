@@ -1,0 +1,41 @@
+---
+import { Font } from 'astro:assets';
+import HeadTags from './HeadTags.astro';
+import OpenGraph from './OpenGraph.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <HeadTags />
+    <Font cssVariable="--font-nunito" />
+    <OpenGraph />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style lang="scss">
+  :root {
+    --TheHeader-height: 60px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @media (min-width: 800px) {
+      --TheHeader-height: 80px;
+    }
+  }
+
+  html,
+  body {
+    margin: 0;
+    font-size: 16px;
+    font-family: var(--font-nunito);
+    overflow: hidden;
+  }
+</style>

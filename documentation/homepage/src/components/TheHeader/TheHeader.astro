@@ -1,0 +1,71 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import LogoLink from './LogoLink.astro';
+
+interface Props {
+  variant?: 'solid' | 'text';
+  class?: string;
+}
+
+const { variant = 'solid', class: className = '' } = Astro.props as Props;
+
+const base = import.meta.env.BASE_URL;
+---
+
+<header class={['TheHeader', `variant--${variant}`, className].filter(Boolean).join(' ')}>
+  <div class="left">
+    <LogoLink variant={variant} />
+  </div>
+
+  <div class="right">
+    <HeaderLink href={`${base}/docs`}>Docs</HeaderLink>
+    <HeaderLink href={`${base}/customize`}>Customize</HeaderLink>
+    <HeaderLink href="https://github.com/flightlesslabs/dodo-ui" target="_blank">Github</HeaderLink>
+  </div>
+</header>
+
+<style lang="scss">
+  header {
+    --card-shadow-color: rgba(0, 0, 0, 0.11);
+    --card-shadow: 0 3px 6px var(--card-shadow-color), 0 3px 6px var(--card-shadow-color);
+
+    height: var(--TheHeader-height);
+    position: relative;
+    z-index: 200;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    transition:
+      background-color 70ms,
+      color 70ms,
+      border-color 70ms;
+    overflow: hidden;
+
+    &.variant {
+      &--solid {
+        box-shadow: var(--card-shadow);
+        background-color: #fff;
+        color: #000;
+      }
+
+      &--text {
+        background-color: transparent;
+        color: #fff;
+      }
+    }
+
+    .left,
+    .right {
+      display: flex;
+    }
+
+    .right {
+      margin: 0 -8px;
+
+      @media (min-width: 800px) {
+        margin: 0 -12px;
+      }
+    }
+  }
+</style>

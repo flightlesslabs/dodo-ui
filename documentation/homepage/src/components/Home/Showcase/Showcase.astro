@@ -1,0 +1,25 @@
+---
+import { Calendar } from '@flightlesslabs/dodo-ui-date';
+import CurruncyCard from './CurruncyCard.svelte';
+import BudsConnection from './BudsConnection/BudsConnection.svelte';
+---
+
+<div class="Showcase">
+  <CurruncyCard client:only />
+  <Calendar client:only shadow={2} outline={false} class="ShowcaseItem" />
+  <BudsConnection client:only />
+</div>
+
+<style lang="scss">
+  .Showcase {
+    position: absolute;
+    display: block;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .ShowcaseItem {
+      margin: 0 calc(var(--dodo-ui-space) * 2);
+    }
+  }
+</style>

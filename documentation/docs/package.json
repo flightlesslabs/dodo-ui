@@ -1,6 +1,6 @@
 {
   "name": "@documentation/docs",
-  "version": "0.14.8",
+  "version": "0.14.9",
   "private": true,
   "scripts": {
     "preview": "vite preview",
@@ -15,7 +15,7 @@
     "check:fix": "pnpm run svelte-check && eslint . && pnpm run format",
     "create:component": "node --experimental-strip-types scripts/create-component/create-component.ts"
   },
-  "homepage": "https://flightlesslabs.github.io/dodo-ui-homepage",
+  "homepage": "https://flightlesslabs.github.io/dodo-ui",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/flightlesslabs/dodo-ui.git"

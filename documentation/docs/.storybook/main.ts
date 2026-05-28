@@ -2,6 +2,7 @@ import type { StorybookConfig } from '@storybook/sveltekit';
 
 const config: StorybookConfig = {
   stories: ['../src/lib/**/*.mdx', '../src/lib/**/*.stories.@(js|ts|svelte)'],
+
   addons: [
     '@storybook/addon-svelte-csf',
     '@chromatic-com/storybook',
@@ -9,6 +10,15 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-docs',
   ],
+
   framework: '@storybook/sveltekit',
+
+  async viteFinal(config) {
+    return {
+      ...config,
+      base: '/dodo-ui/docs/',
+    };
+  },
 };
+
 export default config;

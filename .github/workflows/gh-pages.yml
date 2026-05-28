@@ -1,4 +1,4 @@
-name: Deploy Storybook to GitHub Pages
+name: Deploy Website
 
 on:
   push:
@@ -16,19 +16,16 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # 1. Boot up Node 24 safely without trying to look for an uninstalled pnpm
       - name: Use Node.js 24
         uses: actions/setup-node@v4
         with:
           node-version: 24
 
-      # 2. Safely configure pnpm 11 under the clean Node 24 environment
       - name: Setup pnpm 11
         run: |
           corepack enable
           corepack prepare pnpm@latest-11 --activate
 
-      # 3. Handle dependency caching manually now that pnpm safely exists in the PATH
       - name: Cache pnpm files
         uses: actions/cache@v4
         with:
@@ -40,14 +37,38 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
+      # Build shared packages FIRST
       - name: Build UI Packages
         run: pnpm --filter @flightlesslabs/* build
 
+      # Build homepage
+      - name: Build Homepage
+        run: pnpm --filter @documentation/homepage build
+
+      # Build Storybook
       - name: Build Storybook
-        run: pnpm --filter @documentation/docs... build
+        run: pnpm --filter @documentation/docs build
+
+      # Merge outputs
+      - name: Merge Storybook into Homepage
+        run: |
+          mkdir -p deploy
+
+          # Copy homepage
+          cp -r documentation/homepage/dist/* deploy/
+
+          # Create docs folder
+          mkdir -p deploy/docs
+
+          # Copy storybook
+          cp -r documentation/docs/storybook-static/* deploy/docs/
+
+      # Prevent Jekyll processing
+      - name: Add .nojekyll
+        run: touch deploy/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: documentation/docs/storybook-static
+          folder: deploy

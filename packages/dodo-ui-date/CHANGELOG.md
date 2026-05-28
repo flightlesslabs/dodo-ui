@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui-date
 
+## 0.4.29
+
+### Patch Changes
+
+- Homepage description fixed
+- Updated dependencies
+  - @flightlesslabs/dodo-ui@0.36.6
+
 ## 0.4.28
 
 ### Patch Changes

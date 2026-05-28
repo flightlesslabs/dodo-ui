@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  variant: 'solid' | 'text';
+}
+
+const { variant } = Astro.props as Props;
+const logo =
+  variant === 'solid'
+    ? 'https://flightlesslabs.github.io/branding/dodo-circle-2.png'
+    : 'https://flightlesslabs.github.io/branding/dodo-circle-1.png';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<a href={`${base}/`} class={['LogoLink', `variant--${variant}`].filter(Boolean).join(' ')}>
+  <Image src={logo} alt="Dodo UI logo" width={38} height={38} class="image image--mobile" />
+  <Image src={logo} alt="Dodo UI logo" width={52} height={52} class="image image--desktop" />
+</a>
+
+<style lang="scss">
+  .LogoLink {
+    display: inline-flex;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+
+    .image {
+      &--mobile {
+        @media (min-width: 800px) {
+          display: none;
+        }
+      }
+
+      &--desktop {
+        display: none;
+
+        @media (min-width: 800px) {
+          display: block;
+        }
+      }
+    }
+  }
+</style>

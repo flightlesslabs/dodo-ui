@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui-bits",
-  "version": "0.10.4",
+  "version": "0.10.5",
   "publishConfig": {
     "access": "public"
   },
@@ -18,7 +18,7 @@
     "check:fix": "pnpm run svelte-check && eslint . && pnpm run format",
     "dev": "storybook dev"
   },
-  "homepage": "https://flightlesslabs.github.io/dodo-ui-homepage",
+  "homepage": "https://flightlesslabs.github.io/dodo-ui",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/flightlesslabs/dodo-ui.git"
@@ -55,7 +55,7 @@
     }
   },
   "peerDependencies": {
-    "@flightlesslabs/dodo-ui": "^0.36.5",
+    "@flightlesslabs/dodo-ui": "^0.36.6",
     "bits-ui": "^2.0.0",
     "svelte": "^5.0.0"
   },

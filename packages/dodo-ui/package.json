@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui",
-  "version": "0.36.5",
+  "version": "0.36.6",
   "publishConfig": {
     "access": "public"
   },
@@ -20,7 +20,7 @@
     "test": "vitest run",
     "dev": "storybook dev"
   },
-  "homepage": "https://flightlesslabs.github.io/dodo-ui-homepage",
+  "homepage": "https://flightlesslabs.github.io/dodo-ui",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/flightlesslabs/dodo-ui.git"

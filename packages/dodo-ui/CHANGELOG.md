@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.36.6
+
+### Patch Changes
+
+- Homepage description fixed
+
 ## 0.36.5
 
 ### Patch Changes

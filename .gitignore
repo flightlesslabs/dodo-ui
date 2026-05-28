@@ -28,3 +28,6 @@ vite.config.ts.timestamp-*
 storybook-static
 
 *.tsbuildinfo
+
+# astro files
+.astro

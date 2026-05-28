@@ -1,0 +1,33 @@
+{
+  "name": "@documentation/homepage",
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier --write .",
+    "lint": "prettier --check . && eslint .",
+    "check": "pnpm run lint",
+    "check:fix": "eslint . && pnpm run format"
+  },
+  "dependencies": {
+    "@astrojs/svelte": "^8.1.1",
+    "@flightlesslabs/currency": "^0.2.1",
+    "@flightlesslabs/dodo-core-attributes": "workspace:*",
+    "@flightlesslabs/dodo-ui": "workspace:*",
+    "@flightlesslabs/dodo-ui-bits": "workspace:*",
+    "@flightlesslabs/dodo-ui-date": "workspace:*",
+    "@flightlesslabs/dodo-ui-numeric": "workspace:*",
+    "@iconify-svelte/material-symbols": "^1.0.34",
+    "@iconify/svelte": "^5.2.1",
+    "@internationalized/date": "^3.12.1",
+    "astro": "^6.3.7",
+    "bits-ui": "^2.18.1",
+    "highlight.js": "^11.11.1",
+    "svelte": "^5.55.9",
+    "svelte-number-format": "^2.0.0",
+    "sharp": "^0.34.5"
+  }
+}
