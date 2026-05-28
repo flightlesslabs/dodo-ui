@@ -1,0 +1,25 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";import{Ht as t,St as n,Ut as r,et as i,f as a,ln as o,nt as s,wt as c}from"./iframe-BwoblnGw.js";import{B as l,J as u,L as d,Q as f,R as p,T as m,Y as h,ht as g,mt as _,n as v,r as y,t as b,z as x}from"./create-runtime-stories-BtvKpReg.js";function S(e,a){r(a,!0);var o=D(),s=n(o);E(s,{name:`Default`,children:(e,t)=>{d(e,{icon:`material-symbols:search`})},$$slots:{default:!0},parameters:{docs:{description:{story:`------------------------------`}},__svelteCsf:{rawCode:`<AffixIcon {...args}>
+  <Icon icon="material-symbols:search" />
+</AffixIcon>`}}});var l=c(s,2);E(l,{name:`Neutral`,args:{color:`neutral`},children:(e,t)=>{d(e,{icon:`material-symbols:search`})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<AffixIcon {...args}>
+  <Icon icon="material-symbols:search" />
+</AffixIcon>`}}});var u=c(l,2);E(u,{name:`Primary`,args:{color:`primary`},children:(e,t)=>{d(e,{icon:`material-symbols:search`})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<AffixIcon {...args}>
+  <Icon icon="material-symbols:search" />
+</AffixIcon>`}}});var f=c(u,2);E(f,{name:`Solid`,args:{color:`primary`,variant:`solid`},children:(e,t)=>{d(e,{icon:`material-symbols:search`})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<AffixIcon {...args}>
+  <Icon icon="material-symbols:search" />
+</AffixIcon>`}}});var p=c(f,2);E(p,{name:`Compact`,args:{color:`primary`,variant:`solid`,compact:!0},children:(e,t)=>{d(e,{icon:`material-symbols:search`})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<AffixIcon {...args}>
+  <Icon icon="material-symbols:search" />
+</AffixIcon>`}}});var h=c(p,2);E(h,{name:`Rounded`,args:{color:`primary`,variant:`solid`,compact:!0,roundness:`full`},children:(e,t)=>{d(e,{icon:`material-symbols:search`})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<AffixIcon {...args}>
+  <Icon icon="material-symbols:search" />
+</AffixIcon>`}}});var g=c(h,2);E(g,{name:`Large`,args:{size:`large`},children:(e,t)=>{d(e,{icon:`material-symbols:search`})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<AffixIcon {...args}>
+  <Icon icon="material-symbols:search" />
+</AffixIcon>`}}});var _=c(g,2);E(_,{name:`Light Theme`,asChild:!0,children:(e,t)=>{m(e,{type:`light`,children:(e,t)=>{x(e,{children:(e,t)=>{d(e,{icon:`material-symbols:search`})},$$slots:{default:!0}})},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Theme type="light">
+  <AffixIcon><Icon icon="material-symbols:search" /></AffixIcon>
+</Theme>`}}}),E(c(_,2),{name:`Dark Theme`,asChild:!0,globals:{backgrounds:{value:`dark`}},children:(e,t)=>{m(e,{type:`dark`,children:(e,t)=>{x(e,{children:(e,t)=>{d(e,{icon:`material-symbols:search`})},$$slots:{default:!0}})},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Theme type="dark">
+  <AffixIcon><Icon icon="material-symbols:search" /></AffixIcon>
+</Theme>`}}}),i(e,o),t()}var C,w,T,E,D,O,k,A,j,M,N,P,F,I,L,R;e((()=>{o(),y(),p(),g(),a(),v(),C=`
+A docorated icon component created for affix places (InputEnclosure)
+
+ \`\`\`ts
+ import { AffixIcon } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+`,w={children:{table:{category:`API`,subcategory:`Base`}},class:{table:{category:`API`,subcategory:`Base`}},color:{control:{type:`select`},options:l,description:`Color theme token`,table:{category:`API`,subcategory:`Appearance`,defaultValue:{summary:`default`}}},variant:{control:{type:`select`},options:f,description:`Visual variant of the AffixIcon`,table:{category:`API`,subcategory:`Appearance`,defaultValue:{summary:`text`}}},size:{control:{type:`select`},options:h,description:`Visual size token`,table:{category:`API`,subcategory:`Appearance`,defaultValue:{summary:`normal`}}},roundness:{control:{type:`select`},options:u,description:`Border radius token`,table:{category:`API`,subcategory:`Appearance`}},compact:{control:{type:`boolean`},description:`Compact spacing (icon AffixIcons)`,table:{category:`API`,subcategory:`Appearance`}},outline:{control:{type:`boolean`},description:`Render outlined style`,table:{category:`API`,subcategory:`Appearance`}}},T={component:x,tags:[`autodocs`],argTypes:w,parameters:{docs:{description:{component:C}}}},{Story:E}=_(T),D=s(`<!> <!> <!> <!> <!> <!> <!> <!> <!>`,1),S.__docgen={data:[],name:`AffixIcon.stories.svelte`},O=b(S,T),k=[`Default`,`Neutral`,`Primary`,`Solid`,`Compact`,`Rounded`,`Large`,`LightTheme`,`DarkTheme`],A={...O.Default,tags:[`svelte-csf-v5`]},j={...O.Neutral,tags:[`svelte-csf-v5`]},M={...O.Primary,tags:[`svelte-csf-v5`]},N={...O.Solid,tags:[`svelte-csf-v5`]},P={...O.Compact,tags:[`svelte-csf-v5`]},F={...O.Rounded,tags:[`svelte-csf-v5`]},I={...O.Large,tags:[`svelte-csf-v5`]},L={...O.LightTheme,tags:[`svelte-csf-v5`]},R={...O.DarkTheme,tags:[`svelte-csf-v5`]}}))();export{P as Compact,R as DarkTheme,A as Default,I as Large,L as LightTheme,j as Neutral,M as Primary,F as Rounded,N as Solid,k as __namedExportsOrder,T as default,w as storyAffixIconArgTypes};
