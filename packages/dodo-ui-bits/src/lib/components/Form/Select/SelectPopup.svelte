@@ -1,8 +1,15 @@
 <script lang="ts" module>
+  export type SelectPopupCustomListItemContentContext = {
+    option: SelectOption;
+    selectedValue: string | undefined;
+  };
+
   export type SelectPopupProps = SelectContentProps &
     Omit<CardProps, 'children' | 'ref'> & {
       options?: SelectOption[];
       searchResultPlaceholder?: string;
+      customListItemContent?: Snippet<[SelectPopupCustomListItemContentContext]>;
+      selectedValue?: string | undefined;
     };
 </script>
 
@@ -11,6 +18,7 @@
   import Icon from '@iconify/svelte';
   import type { SelectOption } from './Select.svelte';
   import { useThemeStore, type CardProps } from '@flightlesslabs/dodo-ui';
+  import type { Snippet } from 'svelte';
 
   let {
     options = [],
@@ -31,6 +39,8 @@
     align = 'start',
     searchResultPlaceholder = 'No results found, try again.',
     theme: cardTheme,
+    customListItemContent,
+    selectedValue,
     ...restProps
   }: SelectPopupProps = $props();
 
@@ -77,7 +87,11 @@
     <Combobox.Viewport>
       {#each options as option, i (i + option.value)}
         <Combobox.Item value={option.value} label={option.label}>
-          {option.label}
+          {#if customListItemContent}
+            {@render customListItemContent?.({ option, selectedValue })}
+          {:else}
+            {option.label}
+          {/if}
         </Combobox.Item>
       {:else}
         <div class="NoResults">{searchResultPlaceholder}</div>

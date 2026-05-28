@@ -179,6 +179,17 @@
   args={{ placeholder: 'Search a number', searchable: true, showTriggerButton: false }}
 />
 
+<Story name="Custom Popup Custom List Item Content" asChild>
+  <Select {options}>
+    {#snippet customListItemContent({ option, selectedValue })}
+      {#if selectedValue === option.value}
+        ✅
+      {/if}
+      {option.label} ✨
+    {/snippet}
+  </Select>
+</Story>
+
 <Story name="Custom Trigger Icon" asChild>
   <Select {options}>
     {#snippet customTriggerIcon()}

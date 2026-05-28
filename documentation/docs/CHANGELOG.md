@@ -1,5 +1,13 @@
 # @documentation/docs
 
+## 0.14.10
+
+### Patch Changes
+
+- Select customListItemContent added
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-bits@0.10.6
+
 ## 0.14.9
 
 ### Patch Changes

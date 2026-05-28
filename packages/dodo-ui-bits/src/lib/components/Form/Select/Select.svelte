@@ -80,6 +80,13 @@
     comboboxTriggerProps?: ComboboxTriggerProps;
 
     /**
+     * Popup Custom List Item Content.
+     *
+     * Use {#snippet customListItemContent} in Svelte.
+     */
+    customListItemContent?: Snippet<[SelectPopupCustomListItemContentContext]>;
+
+    /**
      * Custom Trigger Icon.
      *
      * Use {#snippet customTriggerIcon} in Svelte.
@@ -110,7 +117,10 @@
   import type { ComponentAffixPlacement, ComponentSize } from '@flightlesslabs/dodo-ui';
   import type { ComponentRoundnessShape } from '@flightlesslabs/dodo-ui';
   import SelectInput from './SelectInput.svelte';
-  import SelectPopup, { type SelectPopupProps } from './SelectPopup.svelte';
+  import SelectPopup, {
+    type SelectPopupCustomListItemContentContext,
+    type SelectPopupProps,
+  } from './SelectPopup.svelte';
 
   let {
     size = 'normal',
@@ -137,6 +147,7 @@
     customTriggerIcon,
     triggerPlacement = 'after',
     showTriggerButton = true,
+    customListItemContent,
     ...restProps
   }: SelectProps = $props();
 
@@ -203,5 +214,12 @@
     {triggerPlacement}
     {showTriggerButton}
   />
-  <SelectPopup options={filteredOptions} {searchResultPlaceholder} {...popupProps} {customAnchor} />
+  <SelectPopup
+    options={filteredOptions}
+    {searchResultPlaceholder}
+    selectedValue={value}
+    {customListItemContent}
+    {...popupProps}
+    {customAnchor}
+  />
 </Combobox.Root>

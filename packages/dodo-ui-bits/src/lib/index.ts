@@ -35,7 +35,10 @@ export {
 
 export { type SelectInputProps } from './components/Form/Select/SelectInput.svelte';
 
-export { type SelectPopupProps } from './components/Form/Select/SelectPopup.svelte';
+export {
+  type SelectPopupProps,
+  type SelectPopupCustomListItemContentContext,
+} from './components/Form/Select/SelectPopup.svelte';
 
 /**
  * ToggleGroup component and related prop types.

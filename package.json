@@ -6,6 +6,7 @@
     "build": "pnpm -r build",
     "build:documentation": "pnpm --filter @documentation/* build",
     "build:packages": "pnpm --filter @flightlesslabs/* build",
+    "build:i": "pnpm i && pnpm build:packages",
     "test": "pnpm -r test",
     "check": "pnpm -r check",
     "check:fix": "pnpm -r check:fix"
