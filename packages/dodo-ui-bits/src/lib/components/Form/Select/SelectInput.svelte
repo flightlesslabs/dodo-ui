@@ -1,6 +1,11 @@
 <script lang="ts" module>
   import type { Snippet } from 'svelte';
 
+  export type SelectInputCustomSelectedContentContext = {
+    value: string | undefined;
+    options: SelectOption[];
+  };
+
   export type SelectInputProps = {
     ref: HTMLInputElement | null;
     customAnchor: HTMLDivElement | null;
@@ -24,6 +29,7 @@
     searchValue?: string;
     updateOpenState: (isOpen: boolean) => void;
     customTriggerIcon?: Snippet;
+    customSelectedContent?: Snippet<[SelectInputCustomSelectedContentContext]>;
     triggerPlacement?: ComponentAffixPlacement;
     showTriggerButton?: boolean;
   };
@@ -42,7 +48,7 @@
     disabled = false,
     error = false,
     focused: forcedFocused = false,
-    searchable,
+    searchable: searchableRaw,
     clearable,
     onclear,
     placeholder,
@@ -60,12 +66,15 @@
     ref = $bindable(null),
     customAnchor = $bindable(null),
     customTriggerIcon,
+    customSelectedContent,
     triggerPlacement = 'after',
     showTriggerButton = true,
     ...restProps
   }: SelectInputProps = $props();
 
   let defaultValue = $derived(options.find((item) => item.value === value)?.label);
+
+  let searchable = $derived(customSelectedContent ? false : searchableRaw);
 
   let isFocused = $state(false);
 
@@ -85,6 +94,11 @@
     }
   }
 
+  function handleTriggerInput() {
+    ref?.click();
+    ref?.focus();
+  }
+
   const classes = $derived(['dodo-ui-Select', `size--${size}`, className].filter(Boolean));
 
   const triggerClasses = $derived(
@@ -100,6 +114,10 @@
   );
 
   const clearButtonClasses = $derived(['AffixContentClearButton', 'SelectClear'].filter(Boolean));
+
+  const selectInputClasses = $derived(
+    ['SelectInput', 'InputBox', customSelectedContent ? 'customContent' : ''].filter(Boolean),
+  );
 </script>
 
 {#snippet triggerButton()}
@@ -125,6 +143,12 @@
   affixSpacingBefore={triggerPlacement === 'before' ? 'tight' : 'default'}
   {...restProps}
 >
+  {#if customSelectedContent}
+    <button class="InputBox SelectInputCustomSelectedContent" onclick={handleTriggerInput}>
+      {@render customSelectedContent({ value, options })}
+    </button>
+  {/if}
+
   <Combobox.Input
     {...comboboxInputProps}
     clearOnDeselect
@@ -137,7 +161,7 @@
     onclick={!searchable && !disabled ? () => updateOpenState(true) : undefined}
     {placeholder}
     {defaultValue}
-    class="InputBox"
+    class={selectInputClasses.join(' ')}
     bind:ref
   />
 

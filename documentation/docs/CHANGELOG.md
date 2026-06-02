@@ -1,5 +1,13 @@
 # @documentation/docs
 
+## 0.14.11
+
+### Patch Changes
+
+- customSelectedContent added
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-bits@0.10.7
+
 ## 0.14.10
 
 ### Patch Changes

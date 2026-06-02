@@ -33,7 +33,10 @@ export {
   type SelectOption,
 } from './components/Form/Select/Select.svelte';
 
-export { type SelectInputProps } from './components/Form/Select/SelectInput.svelte';
+export {
+  type SelectInputProps,
+  type SelectInputCustomSelectedContentContext,
+} from './components/Form/Select/SelectInput.svelte';
 
 export {
   type SelectPopupProps,

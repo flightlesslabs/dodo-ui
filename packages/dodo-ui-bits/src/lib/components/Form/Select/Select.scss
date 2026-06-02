@@ -88,3 +88,19 @@
     padding: var(--dodo-ui-space);
   }
 }
+
+.SelectInput {
+  &.customContent {
+    position: fixed;
+    z-index: -1000;
+    opacity: 0;
+  }
+}
+
+.SelectInputCustomSelectedContent {
+  display: flex;
+  align-items: center;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}

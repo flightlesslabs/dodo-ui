@@ -87,6 +87,13 @@
     customListItemContent?: Snippet<[SelectPopupCustomListItemContentContext]>;
 
     /**
+     * Selected Custom Content.
+     *
+     * Use {#snippet customSelectedContent} in Svelte.
+     */
+    customSelectedContent?: Snippet<[SelectInputCustomSelectedContentContext]>;
+
+    /**
      * Custom Trigger Icon.
      *
      * Use {#snippet customTriggerIcon} in Svelte.
@@ -116,7 +123,7 @@
   } from 'bits-ui';
   import type { ComponentAffixPlacement, ComponentSize } from '@flightlesslabs/dodo-ui';
   import type { ComponentRoundnessShape } from '@flightlesslabs/dodo-ui';
-  import SelectInput from './SelectInput.svelte';
+  import SelectInput, { type SelectInputCustomSelectedContentContext } from './SelectInput.svelte';
   import SelectPopup, {
     type SelectPopupCustomListItemContentContext,
     type SelectPopupProps,
@@ -148,6 +155,7 @@
     triggerPlacement = 'after',
     showTriggerButton = true,
     customListItemContent,
+    customSelectedContent,
     ...restProps
   }: SelectProps = $props();
 
@@ -213,6 +221,7 @@
     bind:customAnchor
     {triggerPlacement}
     {showTriggerButton}
+    {customSelectedContent}
   />
   <SelectPopup
     options={filteredOptions}

@@ -144,6 +144,9 @@
     customListItemContent: {
       table: { category: 'API', subcategory: 'Slots' },
     },
+    customSelectedContent: {
+      table: { category: 'API', subcategory: 'Slots' },
+    },
   };
 
   // ------------------------------
@@ -216,6 +219,18 @@
         ✅
       {/if}
       {option.label} ✨
+    {/snippet}
+  </Select>
+</Story>
+
+<Story name="Custom Selected Content" asChild>
+  <Select {options}>
+    {#snippet customSelectedContent({ value, options })}
+      {#if value}
+        ✨ {options.find((item) => item.value === value)?.label}
+      {:else}
+        No Options selected
+      {/if}
     {/snippet}
   </Select>
 </Story>
