@@ -140,6 +140,9 @@ importers:
 
   documentation/customize:
     dependencies:
+      '@flightlesslabs/dodo-core-attributes':
+        specifier: workspace:*
+        version: link:../../packages/dodo-core-attributes
       '@flightlesslabs/dodo-ui':
         specifier: workspace:*
         version: link:../../packages/dodo-ui
