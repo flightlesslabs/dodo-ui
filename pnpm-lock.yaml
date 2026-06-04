@@ -138,6 +138,39 @@ importers:
         specifier: ^4.1.7
         version: 4.1.7(@types/node@24.12.4)(@vitest/browser-playwright@4.1.7)(@vitest/coverage-v8@4.1.7)(jsdom@29.1.1)(vite@8.0.14(@types/node@24.12.4)(esbuild@0.27.7)(sass@1.100.0))
 
+  documentation/customize:
+    dependencies:
+      '@flightlesslabs/dodo-core-attributes':
+        specifier: workspace:*
+        version: link:../../packages/dodo-core-attributes
+      '@flightlesslabs/dodo-ui':
+        specifier: workspace:*
+        version: link:../../packages/dodo-ui
+      '@flightlesslabs/dodo-ui-bits':
+        specifier: workspace:*
+        version: link:../../packages/dodo-ui-bits
+      '@flightlesslabs/dodo-ui-date':
+        specifier: workspace:*
+        version: link:../../packages/dodo-ui-date
+      '@flightlesslabs/dodo-ui-numeric':
+        specifier: workspace:*
+        version: link:../../packages/dodo-ui-numeric
+      '@iconify/svelte':
+        specifier: ^5.2.1
+        version: 5.2.1(svelte@5.55.9(@typescript-eslint/types@8.59.4))
+      '@internationalized/date':
+        specifier: ^3.12.1
+        version: 3.12.1
+      bits-ui:
+        specifier: ^2.18.1
+        version: 2.18.1(@internationalized/date@3.12.1)(@sveltejs/kit@2.61.1(@sveltejs/vite-plugin-svelte@7.1.2(svelte@5.55.9(@typescript-eslint/types@8.59.4))(vite@8.0.14(@types/node@24.12.4)(esbuild@0.27.7)(sass@1.100.0)))(svelte@5.55.9(@typescript-eslint/types@8.59.4))(typescript@6.0.3)(vite@8.0.14(@types/node@24.12.4)(esbuild@0.27.7)(sass@1.100.0)))(svelte@5.55.9(@typescript-eslint/types@8.59.4))
+      svelte:
+        specifier: ^5.55.9
+        version: 5.55.9(@typescript-eslint/types@8.59.4)
+      svelte-number-format:
+        specifier: ^2.0.0
+        version: 2.0.0(svelte@5.55.9(@typescript-eslint/types@8.59.4))
+
   documentation/docs:
     dependencies:
       '@flightlesslabs/currency':

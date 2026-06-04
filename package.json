@@ -9,7 +9,9 @@
     "build:i": "pnpm i && pnpm build:packages",
     "test": "pnpm -r test",
     "check": "pnpm -r check",
-    "check:fix": "pnpm -r check:fix"
+    "check:fix": "pnpm -r check:fix",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "devDependencies": {
     "@changesets/cli": "^2.31.0",

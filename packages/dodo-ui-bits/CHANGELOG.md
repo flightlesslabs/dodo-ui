@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.10.8
+
+### Patch Changes
+
+- Before after bug fixed for Select
+
 ## 0.10.7
 
 ### Patch Changes

@@ -56,10 +56,8 @@
     comboboxTriggerProps,
     // eslint-disable-next-line no-useless-assignment
     searchValue = $bindable<string>(''),
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    after,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    before,
+    before: beforeContent,
+    after: afterContent,
     updateOpenState,
     value = $bindable(undefined),
     options,
@@ -170,7 +168,7 @@
       {@render triggerButton()}
     {/if}
 
-    {@render before?.()}
+    {@render beforeContent?.()}
   {/snippet}
 
   {#snippet after()}
@@ -192,6 +190,6 @@
       {@render triggerButton()}
     {/if}
 
-    {@render after?.()}
+    {@render afterContent?.()}
   {/snippet}
 </InputEnclosure>

@@ -1,6 +1,6 @@
-import type { SelectOption } from '@flightlesslabs/dodo-ui-bits';
 
-export const colors: SelectOption[] = [
+
+export const colors: ToolOption[] = [
   { value: 'red', label: 'Red' },
   { value: 'orange', label: 'Orange' },
   { value: 'amber', label: 'Amber' },
@@ -29,7 +29,7 @@ export const colors: SelectOption[] = [
   { value: 'taupe', label: 'Taupe' },
 ];
 
-export const colorsNeutral: SelectOption[] = [
+export const colorsNeutral: ToolOption[] = [
   { value: 'slate', label: 'Slate' },
   { value: 'gray', label: 'Gray' },
   { value: 'zinc', label: 'Zinc' },
@@ -41,21 +41,21 @@ export const colorsNeutral: SelectOption[] = [
   { value: 'taupe', label: 'Taupe' },
 ];
 
-export const colorsSafe: SelectOption[] = [
+export const colorsSafe: ToolOption[] = [
   { value: 'lime', label: 'Lime' },
   { value: 'green', label: 'Green' },
   { value: 'emerald', label: 'Emerald' },
   { value: 'teal', label: 'Teal' },
 ];
 
-export const colorsWarning: SelectOption[] = [
+export const colorsWarning: ToolOption[] = [
   { value: 'orange', label: 'Orange' },
   { value: 'amber', label: 'Amber' },
   { value: 'yellow', label: 'Yellow' },
   { value: 'lime', label: 'Lime' },
 ];
 
-export const colorsDanger: SelectOption[] = [
+export const colorsDanger: ToolOption[] = [
   { value: 'red', label: 'Red' },
   { value: 'orange', label: 'Orange' },
   { value: 'pink', label: 'Pink' },
