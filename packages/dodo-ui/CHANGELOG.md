@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.36.7
+
+### Patch Changes
+
+- Fix Button disabled color
+
 ## 0.36.6
 
 ### Patch Changes

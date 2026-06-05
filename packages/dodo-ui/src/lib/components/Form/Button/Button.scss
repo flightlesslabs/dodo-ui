@@ -117,15 +117,15 @@ $roundness: (
     cursor: not-allowed;
     pointer-events: none;
 
-    &.variant {
-      &--text,
-      &--solid {
-        background-color: var(--dodo-ui-Button-disabled-bg);
-        color: var(--dodo-ui-Button-disabled-color);
+    &.variant--text.background--subtle,
+    &.variant--text.background--none,
+    &.variant--solid.background--subtle,
+    &.variant--solid.background--none {
+      background-color: var(--dodo-ui-Button-disabled-bg);
+      color: var(--dodo-ui-Button-disabled-color);
 
-        &.outline {
-          border-color: transparent;
-        }
+      &.outline {
+        border-color: transparent;
       }
     }
   }
