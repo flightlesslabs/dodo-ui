@@ -1,48 +1,29 @@
 <script>
-  import { Button, Card } from '@flightlesslabs/dodo-ui';
+  import { Card } from '@flightlesslabs/dodo-ui';
   import DodoLogo from './DodoLogo.svelte';
   import { Accordion } from '@flightlesslabs/dodo-ui-bits';
   import PageTitle from '../PageTitle.svelte';
   import Colors from './Colors.svelte';
   import Spacing from './Spacing.svelte';
-  import Icon from '@iconify/svelte';
-  import { useResetStore } from '$lib/store/reset.svelte';
-  import { useSpaceStore } from '$lib/store/space.svelte';
-  import { useSizeStore } from '$lib/store/size.svelte';
-  import { useRoundnessStore } from '$lib/store/roundness.svelte';
-  import { useColorStore } from '$lib/store/colors.svelte';
-
-  let anyFilterActive = $derived(
-    useRoundnessStore.isActive ||
-      useSizeStore.isActive ||
-      useSpaceStore.isActive ||
-      useColorStore.isActive,
-  );
+  import Controls from './Controls/Controls.svelte';
 </script>
 
 <aside class="ControlBox">
   <Card class="ControlBoxCard" shadow={2}>
-    <header>
-      <DodoLogo />
-      <Button
-        compact
-        roundness="full"
-        variant="text"
-        onclick={() => useResetStore.reset()}
-        class="ResetButton"
-        aria-label="Reset"
-        disabled={!anyFilterActive}
-      >
-        <Icon icon="material-symbols:refresh-rounded" />
-      </Button>
-    </header>
-    <div class="title">
-      <PageTitle>Customize</PageTitle>
+    <div class="top">
+      <header>
+        <DodoLogo />
+      </header>
+      <div class="title">
+        <PageTitle>Customize</PageTitle>
+      </div>
+      <Accordion type="multiple">
+        <Colors />
+        <Spacing />
+      </Accordion>
     </div>
-    <Accordion type="multiple">
-      <Colors />
-      <Spacing />
-    </Accordion>
+
+    <Controls />
   </Card>
 </aside>
 
@@ -65,6 +46,9 @@
       padding: 16px;
       height: 100%;
       overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 
