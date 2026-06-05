@@ -1,9 +1,12 @@
+import * as prettier from 'prettier/standalone';
+import * as cssPlugin from 'prettier/plugins/postcss';
+
 type CreateTextInput = {
   variables?: string[];
   variablesDark?: string[];
 };
 
-export function createCssText(data: CreateTextInput) {
+export async function createCssText(data: CreateTextInput) {
   if (!data.variablesDark?.length && !data.variables?.length) {
     return '';
   }
@@ -30,5 +33,10 @@ export function createCssText(data: CreateTextInput) {
     text += `\n } \n`;
   }
 
-  return text;
+  const formattedCss = await prettier.format(text, {
+    parser: 'css',
+    plugins: [cssPlugin],
+  });
+
+  return formattedCss;
 }

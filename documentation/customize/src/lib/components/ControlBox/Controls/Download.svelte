@@ -4,6 +4,7 @@
   import { generateRoundnessVariables } from '$lib/helpers/generateRoundnessVariables';
   import { generateSizeVariables } from '$lib/helpers/generateSizeVariables';
   import { generateSpaceVariables } from '$lib/helpers/generateSpaceVariables';
+  import { downloadTextFile } from '$lib/helpers/downloadTextFile';
   import { useColorStore } from '$lib/store/colors.svelte';
   import { useRoundnessStore } from '$lib/store/roundness.svelte';
   import { useSizeStore } from '$lib/store/size.svelte';
@@ -22,7 +23,7 @@
     const roundness = generateRoundnessVariables(useRoundnessStore.roundness || 1);
     const size = generateSizeVariables(useSizeStore.size);
     const space = generateSpaceVariables(useSpaceStore.space);
-    const css = createCssText({
+    const css = await createCssText({
       variables: [
         ...colors.variables,
         ...roundness.variables,
@@ -32,7 +33,11 @@
       variablesDark: [...colors.variablesDark],
     });
 
-    console.log('debug:', css);
+    downloadTextFile(css, {
+      fileName: 'dodo-ui-customized',
+      extension: 'css',
+      mimeType: 'text/css',
+    });
   }
 </script>
 
