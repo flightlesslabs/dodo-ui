@@ -2,9 +2,9 @@
   import { Card } from '@flightlesslabs/dodo-ui';
   import DodoLogo from './DodoLogo.svelte';
   import { Accordion } from '@flightlesslabs/dodo-ui-bits';
-  import FieldAccordianItem from '../FieldAccordianItem.svelte';
   import PageTitle from '../PageTitle.svelte';
   import Colors from './Colors.svelte';
+  import Spacing from './Spacing.svelte';
 </script>
 
 <aside class="ControlBox">
@@ -17,7 +17,7 @@
     </div>
     <Accordion type="multiple">
       <Colors />
-      <FieldAccordianItem title="Spacing">Spacing</FieldAccordianItem>
+      <Spacing />
     </Accordion>
   </Card>
 </aside>
@@ -25,7 +25,7 @@
 <style lang="scss">
   .ControlBox {
     width: 100%;
-    height: 400px;
+    max-height: 600px;
     margin-bottom: 16px;
 
     @media (min-width: 64rem) {
@@ -34,6 +34,7 @@
       height: 100%;
       margin-right: 24px;
       margin-bottom: 0;
+      max-height: initial;
     }
 
     :global(.ControlBoxCard) {

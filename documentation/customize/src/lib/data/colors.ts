@@ -1,6 +1,9 @@
+export type ColorOption = {
+  value: string;
+  label: string;
+};
 
-
-export const colors: ToolOption[] = [
+export const colors: ColorOption[] = [
   { value: 'red', label: 'Red' },
   { value: 'orange', label: 'Orange' },
   { value: 'amber', label: 'Amber' },
@@ -29,7 +32,7 @@ export const colors: ToolOption[] = [
   { value: 'taupe', label: 'Taupe' },
 ];
 
-export const colorsNeutral: ToolOption[] = [
+export const colorsNeutral: ColorOption[] = [
   { value: 'slate', label: 'Slate' },
   { value: 'gray', label: 'Gray' },
   { value: 'zinc', label: 'Zinc' },
@@ -41,21 +44,21 @@ export const colorsNeutral: ToolOption[] = [
   { value: 'taupe', label: 'Taupe' },
 ];
 
-export const colorsSafe: ToolOption[] = [
+export const colorsSafe: ColorOption[] = [
   { value: 'lime', label: 'Lime' },
   { value: 'green', label: 'Green' },
   { value: 'emerald', label: 'Emerald' },
   { value: 'teal', label: 'Teal' },
 ];
 
-export const colorsWarning: ToolOption[] = [
+export const colorsWarning: ColorOption[] = [
   { value: 'orange', label: 'Orange' },
   { value: 'amber', label: 'Amber' },
   { value: 'yellow', label: 'Yellow' },
   { value: 'lime', label: 'Lime' },
 ];
 
-export const colorsDanger: ToolOption[] = [
+export const colorsDanger: ColorOption[] = [
   { value: 'red', label: 'Red' },
   { value: 'orange', label: 'Orange' },
   { value: 'pink', label: 'Pink' },

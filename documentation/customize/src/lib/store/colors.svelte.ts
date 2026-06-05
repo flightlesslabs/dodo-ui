@@ -22,10 +22,19 @@ function createColorStore() {
     get colors() {
       return colors;
     },
-    reset() {
-      colors = {
-        ...colorsDefaultValues(),
-      };
+    get isActive() {
+      const defaults = colorsDefaultValues();
+
+      return Object.entries(defaults).some(
+        ([key, value]) => colors[key as ComponentColor] !== value,
+      );
+    },
+    get activeColors(): ComponentColor[] {
+      const defaults = colorsDefaultValues();
+
+      return (Object.keys(defaults) as ComponentColor[]).filter(
+        (color) => colors[color] !== defaults[color],
+      );
     },
     updateColor(color: ComponentColor, value: string) {
       const newColors = {
@@ -36,6 +45,11 @@ function createColorStore() {
 
       colors = {
         ...newColors,
+      };
+    },
+    reset() {
+      colors = {
+        ...colorsDefaultValues(),
       };
     },
   };

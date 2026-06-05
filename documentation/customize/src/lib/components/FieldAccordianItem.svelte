@@ -1,5 +1,11 @@
+<script lang="ts" module>
+  export type FieldAccordianItemProps = AccordionItemProps & {
+    isActive?: boolean;
+  };
+</script>
+
 <script lang="ts">
-  import { UtilityButton } from '@flightlesslabs/dodo-ui';
+  import { Indicator, UtilityButton } from '@flightlesslabs/dodo-ui';
   import {
     AccordionItem,
     AccordionTrigger,
@@ -7,7 +13,13 @@
   } from '@flightlesslabs/dodo-ui-bits';
   import Icon from '@iconify/svelte';
 
-  let { class: className = '', title, children, ...restProps }: AccordionItemProps = $props();
+  let {
+    class: className = '',
+    title,
+    children,
+    isActive = false,
+    ...restProps
+  }: FieldAccordianItemProps = $props();
 </script>
 
 <AccordionItem {...restProps} class={`FieldAccordian ${className}`}>
@@ -18,6 +30,10 @@
       </UtilityButton>
 
       {title}
+
+      {#if isActive}
+        <Indicator color="danger" font-size="0.6rem" />
+      {/if}
     </AccordionTrigger>
   {/snippet}
 
@@ -32,5 +48,9 @@
 
   :global(.FieldAccordian .TriggerArrowButton) {
     margin-right: 6px;
+  }
+
+  :global(.FieldAccordian .dodo-ui-Indicator) {
+    margin-left: 4px;
   }
 </style>
