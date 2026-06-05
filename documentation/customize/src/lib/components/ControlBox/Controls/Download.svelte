@@ -43,4 +43,24 @@
 
 <div>
   <Button onclick={handleDownload} disabled={!anyFilterActive}>Download</Button>
+
+  <section>
+    *Import the downloaded <b>dodo-ui-customized.css</b> right after <b>global.css (Dodo UI)</b> in
+    your root component.
+    <br />use the root layout (+layout.svelte) for SvelteKit.
+  </section>
 </div>
+
+<style lang="scss">
+  section {
+    font-size: 0.85rem;
+    line-height: 24px;
+    color: var(--dodo-color-neutral-700);
+    margin-top: 8px;
+
+    b {
+      font-weight: 600;
+      color: var(--dodo-color-neutral-800);
+    }
+  }
+</style>

@@ -27,6 +27,6 @@
 
 <style lang="scss">
   .ResetButton {
-    margin-top: 24px;
+    margin-top: 32px;
   }
 </style>
