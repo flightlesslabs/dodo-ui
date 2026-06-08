@@ -54,7 +54,7 @@ jobs:
         run: pnpm --filter @documentation/customize build
 
       # Merge outputs
-      - name: Merge Storybook into Homepage
+      - name: Merge Sub apps into Homepage
         run: |
           mkdir -p deploy
 
@@ -64,12 +64,12 @@ jobs:
           # Create docs folder
           mkdir -p deploy/docs
 
-          # Copy storybook
+          # Copy storybook static
           cp -r documentation/docs/storybook-static/* deploy/docs/
 
-           # Customize app
-           mkdir -p deploy/customize
-           cp -r documentation/customize/build/* deploy/customize/
+          # Copy Customize app
+          mkdir -p deploy/customize
+          cp -r documentation/customize/build/* deploy/customize/
 
       # Prevent Jekyll processing
       - name: Add .nojekyll
