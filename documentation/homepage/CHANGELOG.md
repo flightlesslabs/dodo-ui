@@ -1,5 +1,11 @@
 # @documentation/homepage
 
+## 0.2.0
+
+### Minor Changes
+
+- Customize removed from homepage app
+
 ## 0.1.4
 
 ### Patch Changes
