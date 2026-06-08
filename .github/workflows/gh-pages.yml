@@ -67,6 +67,10 @@ jobs:
           # Copy storybook
           cp -r documentation/docs/storybook-static/* deploy/docs/
 
+           # Customize app
+           mkdir -p deploy/customize
+           cp -r documentation/customize/build/* deploy/customize/
+
       # Prevent Jekyll processing
       - name: Add .nojekyll
         run: touch deploy/.nojekyll
