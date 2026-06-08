@@ -1,10 +1,21 @@
 <script>
-  import { Card } from '@flightlesslabs/dodo-ui';
+  import { Card, Column, Grid } from '@flightlesslabs/dodo-ui';
   import PageTitle from '../PageTitle.svelte';
+  import Playground from './PlayGround/PlayGround.svelte';
 </script>
 
 <div class="Preview">
-  <Card class="PreviewCard" shadow={2}><PageTitle>Preview</PageTitle></Card>
+  <Card class="PreviewCard" shadow={2}>
+    <Grid gap={2}>
+      <Column>
+        <PageTitle>Preview</PageTitle>
+      </Column>
+
+      <Column>
+        <Playground />
+      </Column>
+    </Grid>
+  </Card>
 </div>
 
 <style lang="scss">

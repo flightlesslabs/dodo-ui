@@ -3,6 +3,10 @@
   import Preview from '$lib/components/Preview/Preview.svelte';
 </script>
 
+<svelte:head>
+  <title>Customize</title>
+</svelte:head>
+
 <div class="indexPage">
   <ControlBox />
   <Preview />

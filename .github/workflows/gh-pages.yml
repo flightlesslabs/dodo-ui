@@ -41,13 +41,17 @@ jobs:
       - name: Build UI Packages
         run: pnpm --filter @flightlesslabs/* build
 
-      # Build homepage
+      # Build Homepage
       - name: Build Homepage
         run: pnpm --filter @documentation/homepage build
 
-      # Build Storybook
-      - name: Build Storybook
+      # Build Docs
+      - name: Build Docs
         run: pnpm --filter @documentation/docs build
+
+      # Build Customize
+      - name: Build Customize
+        run: pnpm --filter @documentation/customize build
 
       # Merge outputs
       - name: Merge Storybook into Homepage

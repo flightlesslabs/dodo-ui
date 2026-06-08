@@ -1,0 +1,82 @@
+$button-colors: (
+  primary: primary,
+  secondary: secondary,
+  neutral: neutral,
+  safe: safe,
+  warning: warning,
+  danger: danger,
+);
+
+.PreviewButton {
+  @each $name, $token in $button-colors {
+    &.color--#{$name} {
+      &.variant--solid {
+        background-color: var(--dodo-color-#{$token}-500);
+
+        &:hover {
+          background-color: var(--dodo-color-#{$token}-600);
+        }
+
+        &:active {
+          background-color: var(--dodo-color-#{$token}-700);
+        }
+      }
+
+      &.variant--text {
+        &.background--subtle {
+          background-color: var(--dodo-color-#{$token}-100);
+
+          &:hover {
+            background-color: var(--dodo-color-#{$token}-200);
+          }
+
+          &:active {
+            background-color: var(--dodo-color-#{$token}-300);
+          }
+        }
+
+        &.outline {
+          border-color: var(--dodo-color-#{$token}-400);
+        }
+      }
+    }
+  }
+}
+
+.dodo-theme--dark {
+  .PreviewButton {
+    @each $name, $token in $button-colors {
+      &.color--#{$name} {
+        &.variant--solid {
+          background-color: var(--dodo-color-#{$token}-400);
+
+          &:hover {
+            background-color: var(--dodo-color-#{$token}-300);
+          }
+
+          &:active {
+            background-color: var(--dodo-color-#{$token}-200);
+          }
+        }
+
+        &.variant--text {
+          &.background--subtle {
+            background-color: color-mix(in oklab, var(--dodo-color-#{$token}-50) 90%, #fff);
+
+            &:hover {
+              background-color: color-mix(in oklab, var(--dodo-color-#{$token}-100) 90%, #fff);
+            }
+
+            &:active {
+              background-color: color-mix(in oklab, var(--dodo-color-#{$token}-200) 90%, #fff);
+            }
+          }
+
+          &.outline {
+            border-color: color-mix(in oklab, var(--dodo-color-#{$token}-300) 90%, #fff);
+          }
+        }
+      }
+    }
+  }
+}
