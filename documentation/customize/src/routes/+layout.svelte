@@ -33,9 +33,11 @@
     height: 100vh;
     background-color: var(--dodo-color-neutral-200);
     padding: 16px;
+    overflow-x: auto;
 
     @media (min-width: 64rem) {
       padding: 24px;
+      overflow-x: hidden;
     }
   }
 </style>

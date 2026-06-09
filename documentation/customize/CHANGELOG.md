@@ -1,5 +1,11 @@
 # @documentation/customize
 
+## 0.0.4
+
+### Patch Changes
+
+- Scrolling fixed for mobile
+
 ## 0.0.3
 
 ### Patch Changes

@@ -13,10 +13,10 @@
     <div class="top">
       <header>
         <DodoLogo />
+        <div class="title">
+          <PageTitle>Customize</PageTitle>
+        </div>
       </header>
-      <div class="title">
-        <PageTitle>Customize</PageTitle>
-      </div>
       <Accordion type="multiple">
         <Colors />
         <Spacing />
@@ -30,7 +30,6 @@
 <style lang="scss">
   .ControlBox {
     width: 100%;
-    max-height: 600px;
     margin-bottom: 16px;
 
     @media (min-width: 64rem) {
@@ -39,7 +38,6 @@
       height: 100%;
       margin-right: 24px;
       margin-bottom: 0;
-      max-height: initial;
     }
 
     :global(.ControlBoxCard) {
@@ -56,14 +54,13 @@
     margin-bottom: 16px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 
     :global(.ResetButton) {
       font-size: 1.3rem;
     }
-  }
 
-  .title {
-    margin-bottom: 36px;
+    .title {
+      margin-left: 16px;
+    }
   }
 </style>

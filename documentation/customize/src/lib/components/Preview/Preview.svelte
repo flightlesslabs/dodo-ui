@@ -21,7 +21,6 @@
 <style lang="scss">
   .Preview {
     width: 100%;
-    height: 600px;
 
     @media (min-width: 64rem) {
       flex: 1;
