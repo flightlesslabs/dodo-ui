@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.36.8
+
+### Patch Changes
+
+- Group border fixed for attached
+
 ## 0.36.7
 
 ### Patch Changes
