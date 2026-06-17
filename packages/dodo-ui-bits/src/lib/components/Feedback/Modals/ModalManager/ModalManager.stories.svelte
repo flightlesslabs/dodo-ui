@@ -66,6 +66,27 @@
   <ModalManager id="modal-master-2" />
 </Story>
 
+<Story name="Confirm Actions Demo" asChild>
+  <Button
+    onclick={() => {
+      modals.add('confirm', {
+        title: 'Confirm Actions Demo',
+        description: 'Demo for testing actions',
+        onaccept: () => {
+          alert('onaccept clicked');
+        },
+        onreject: () => {
+          alert('onreject clicked');
+        },
+      });
+    }}
+  >
+    Add Modal
+  </Button>
+
+  <ModalManager />
+</Story>
+
 <Story name="Custom Modal Styles" asChild>
   <Button
     onclick={() => {

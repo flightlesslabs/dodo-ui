@@ -37,7 +37,7 @@
   import { type ConfirmDialogProps } from '../ConfirmDialog/ConfirmDialog.svelte';
   import { type InformDialogProps } from '../InformDialog/InformDialog.svelte';
 
-  import { modals } from './modals.svelte.ts';
+  import { modals, type ModalDialogConfirmConfig } from './modals.svelte.ts';
   import ModalRenderer, { type ModalManagerCustomCardModalContext } from './ModalRenderer.svelte';
   import ConfirmRenderer, {
     type ModalManagerCustomCardConfirmContext,
@@ -57,8 +57,8 @@
   const modalDialogType = $derived(modals._activeModal?.type);
   const config = $derived(modals._activeModal?.config || {});
   const { onclear } = $derived(config.modalProps || {});
-  const { onaccept, clearOnAccept = true } = $derived<InformDialogProps>(config.modalProps || {});
-  const { onreject, clearOnReject = true } = $derived<ConfirmDialogProps>(config.modalProps || {});
+  const { clearOnAccept = true } = $derived<InformDialogProps>(config.modalProps || {});
+  const { clearOnReject = true } = $derived<ConfirmDialogProps>(config.modalProps || {});
 
   let open = $derived(modalDialogType ? true : false);
 
@@ -71,6 +71,8 @@
   }
 
   function handleOnAccept() {
+    const onaccept = (modals._activeModal?.config as ModalDialogConfirmConfig).onaccept;
+
     if (clearOnAccept) {
       modals.clear();
     }
@@ -81,6 +83,8 @@
   }
 
   function handleOnReject() {
+    const onreject = (modals._activeModal?.config as ModalDialogConfirmConfig).onreject;
+
     if (clearOnReject) {
       modals.clear();
     }

@@ -1,5 +1,13 @@
 # @documentation/docs
 
+## 0.14.15
+
+### Patch Changes
+
+- Modal manager accept/reject action fixed
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-bits@0.10.11
+
 ## 0.14.14
 
 ### Patch Changes

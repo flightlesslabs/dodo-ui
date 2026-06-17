@@ -49,6 +49,7 @@
   });
 
   let openDefault = $state<boolean>(false);
+  let openActionsDemo = $state<boolean>(false);
   let openAcceptButtonProps = $state<boolean>(false);
   let openCustomAcceptButton = $state<boolean>(false);
   let openControlsAlignment = $state<boolean>(false);
@@ -65,6 +66,19 @@
 
   <ConfirmDialog bind:open={openDefault} title="Confirm Dialog title">
     This is a basic ConfirmDialog with a title and a single action.
+  </ConfirmDialog>
+</Story>
+
+<Story name="Actions Demo" asChild>
+  <Button onclick={() => (openActionsDemo = true)}>Open</Button>
+
+  <ConfirmDialog
+    bind:open={openActionsDemo}
+    title="Actions Demo"
+    onaccept={() => alert('onaccept clicked')}
+    onreject={() => alert('onreject clicked')}
+  >
+    Demo for testing actions
   </ConfirmDialog>
 </Story>
 
