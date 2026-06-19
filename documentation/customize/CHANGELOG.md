@@ -1,5 +1,22 @@
 # @documentation/customize
 
+## 0.0.6
+
+### Patch Changes
+
+- d16f202: Files formatted
+- 8c21ca3: Pacakages updated
+- Updated dependencies [d16f202]
+- Updated dependencies [04ec9e7]
+- Updated dependencies [8c21ca3]
+- Updated dependencies [bff77d6]
+- Updated dependencies [d16f202]
+- Updated dependencies [f004ff6]
+  - @flightlesslabs/dodo-ui-numeric@0.2.31
+  - @flightlesslabs/dodo-ui-bits@0.10.12
+  - @flightlesslabs/dodo-ui-date@0.4.32
+  - @flightlesslabs/dodo-ui@0.36.9
+
 ## 0.0.5
 
 ### Patch Changes

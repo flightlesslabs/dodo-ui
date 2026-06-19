@@ -1,5 +1,19 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.10.12
+
+### Patch Changes
+
+- d16f202: Files formatted
+- 04ec9e7: Confirm Dialog default button text and style changed
+- 8c21ca3: Pacakages updated
+- bff77d6: Select Floating UI fixed for Modals
+- d16f202: Fix ModalManger Overlay issue
+- f004ff6: Modal Manger properties forward fixed
+- Updated dependencies [d16f202]
+- Updated dependencies [8c21ca3]
+  - @flightlesslabs/dodo-ui@0.36.9
+
 ## 0.10.11
 
 ### Patch Changes

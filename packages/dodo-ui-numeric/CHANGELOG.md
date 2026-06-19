@@ -1,5 +1,15 @@
 # @flightlesslabs/dodo-ui-numeric
 
+## 0.2.31
+
+### Patch Changes
+
+- d16f202: Files formatted
+- 8c21ca3: Pacakages updated
+- Updated dependencies [d16f202]
+- Updated dependencies [8c21ca3]
+  - @flightlesslabs/dodo-ui@0.36.9
+
 ## 0.2.30
 
 ### Patch Changes

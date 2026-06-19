@@ -1,5 +1,12 @@
 # @flightlesslabs/dodo-ui
 
+## 0.36.9
+
+### Patch Changes
+
+- d16f202: Files formatted
+- 8c21ca3: Pacakages updated
+
 ## 0.36.8
 
 ### Patch Changes
