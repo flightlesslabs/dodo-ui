@@ -27,6 +27,7 @@
     {#snippet customModalCard()}
       {@render customCard?.({
         ...config,
+        ...config?.modalProps,
         onclear,
         onaccept,
         onreject,
@@ -35,7 +36,7 @@
     {/snippet}
   </ConfirmDialog>
 {:else}
-  <ConfirmDialog {...config} {open} {onclear} {onaccept} {onreject}>
+  <ConfirmDialog {...config} {...config?.modalProps} {open} {onclear} {onaccept} {onreject}>
     {config?.description}
   </ConfirmDialog>
 {/if}

@@ -26,6 +26,7 @@
     {#snippet customModalCard()}
       {@render customCard?.({
         ...config,
+        ...config?.modalProps,
         onclear,
         onaccept,
         open,
@@ -33,7 +34,7 @@
     {/snippet}
   </InformDialog>
 {:else}
-  <InformDialog {...config} {open} {onclear} {onaccept}>
+  <InformDialog {...config} {...config?.modalProps} {open} {onclear} {onaccept}>
     {config?.description}
   </InformDialog>
 {/if}

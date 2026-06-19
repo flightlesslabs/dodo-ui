@@ -26,13 +26,14 @@
     {#snippet customModalCard()}
       {@render customCard?.({
         ...config,
+        ...config?.modalProps,
         onclear,
         open,
       })}
     {/snippet}
   </Modal>
 {:else}
-  <Modal {...config} {open} {onclear}>
+  <Modal {...config} {...config?.modalProps} {open} {onclear}>
     {config?.description}
   </Modal>
 {/if}
