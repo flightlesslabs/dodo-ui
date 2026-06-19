@@ -58,9 +58,9 @@
   "dependencies": {
     "@flightlesslabs/currency": "^0.2.1",
     "@flightlesslabs/dodo-core-attributes": "workspace:*",
-    "@iconify/svelte": "^5.2.1",
+    "@iconify/svelte": "^5.2.2",
     "esm-env": "^1.2.2",
-    "svelte": "^5.55.9"
+    "svelte": "^5.56.3"
   },
   "keywords": [
     "svelte"

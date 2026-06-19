@@ -102,7 +102,7 @@
   });
 
   const rejectConfig = $derived(() => {
-    const { label = 'Reject', ...rest } = rejectButtonProps ?? {};
+    const { label = 'Cancel', ...rest } = rejectButtonProps ?? {};
 
     return {
       label,
@@ -136,17 +136,15 @@
     {#if customAcceptButton}
       {@render customAcceptButton?.()}
     {:else}
-      <Button color="safe" {...acceptConfig().rest} onclick={handleOnAccept}
-        >{acceptConfig().label}</Button
-      >
+      <Button {...acceptConfig().rest} onclick={handleOnAccept}>{acceptConfig().label}</Button>
     {/if}
 
     {#if customRejectButton}
       {@render customRejectButton?.()}
     {:else}
-      <Button color="danger" {...rejectConfig().rest} onclick={handleOnReject}
-        >{rejectConfig().label}</Button
-      >
+      <Button variant="text" {...rejectConfig().rest} onclick={handleOnReject}>
+        {rejectConfig().label}
+      </Button>
     {/if}
   {/snippet}
 </ModalCard>

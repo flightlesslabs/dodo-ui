@@ -98,9 +98,17 @@
       onclear();
     }
   }
+
+  function handleCloseCleanupForOverlays(openState: boolean) {
+    if (openState === false) {
+      console.log('debug:', 'yo');
+
+      handleOnClear();
+    }
+  }
 </script>
 
-<Dialog.Root {...restProps} bind:open>
+<Dialog.Root {...restProps} bind:open onOpenChange={handleCloseCleanupForOverlays}>
   <Dialog.Portal>
     <Dialog.Overlay {...overlayProps} class="ModalOverlay" />
     <Dialog.Content {...contentHolderProps} class={classes.join(' ')}>

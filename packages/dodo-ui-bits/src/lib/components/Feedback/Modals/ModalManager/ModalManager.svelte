@@ -60,6 +60,10 @@
   const { clearOnAccept = true } = $derived<InformDialogProps>(config.modalProps || {});
   const { clearOnReject = true } = $derived<ConfirmDialogProps>(config.modalProps || {});
 
+  $effect(() => {
+    console.log('debug:', config);
+  });
+
   let open = $derived(modalDialogType ? true : false);
 
   function handleOnClear() {

@@ -5,9 +5,9 @@ import BudsConnection from './BudsConnection/BudsConnection.svelte';
 ---
 
 <div class="Showcase">
-  <CurruncyCard client:only />
-  <Calendar client:only shadow={2} outline={false} class="ShowcaseItem" />
-  <BudsConnection client:only />
+  <CurruncyCard client:only="svelte" />
+  <Calendar client:only="svelte" shadow={2} outline={false} class="ShowcaseItem" />
+  <BudsConnection client:only="svelte" />
 </div>
 
 <style lang="scss">

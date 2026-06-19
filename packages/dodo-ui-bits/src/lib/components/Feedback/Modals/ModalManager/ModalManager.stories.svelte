@@ -87,6 +87,26 @@
   <ModalManager />
 </Story>
 
+<Story name="Custom Modal props" asChild>
+  <Button
+    onclick={() => {
+      modals.add('confirm', {
+        title: 'Confirm',
+        description: 'This is a basic confirm.',
+        modalProps: {
+          acceptButtonProps: {
+            label: 'Hey',
+          },
+        },
+      });
+    }}
+  >
+    Add Modal
+  </Button>
+
+  <ModalManager />
+</Story>
+
 <Story name="Custom Modal Styles" asChild>
   <Button
     onclick={() => {
