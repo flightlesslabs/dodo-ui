@@ -8,8 +8,8 @@
     "build:packages": "pnpm --filter @flightlesslabs/* build",
     "build:i": "pnpm i && pnpm build:packages",
     "test": "pnpm -r test",
-    "check": "pnpm -r check",
-    "check:fix": "pnpm -r check:fix",
+    "check": "pnpm --filter @flightlesslabs/* check",
+    "check:fix": "pnpm --filter @flightlesslabs/* check:fix",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

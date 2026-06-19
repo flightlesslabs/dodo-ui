@@ -134,6 +134,5 @@
     {disabled}
     onfocus={handleFocus}
     onblur={handleBlur}
-    class="InputBox"
-  ></textarea>
+    class="InputBox"></textarea>
 </InputEnclosure>

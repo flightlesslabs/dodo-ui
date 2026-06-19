@@ -108,7 +108,7 @@
   }
 </script>
 
-<Modal {...restProps} class={classes.join(' ')} bind:open>
+<Modal {...restProps} {onclear} class={classes.join(' ')} bind:open>
   {#snippet customModalCard()}
     {#if customModalCardMod}
       {@render customModalCardMod?.()}
