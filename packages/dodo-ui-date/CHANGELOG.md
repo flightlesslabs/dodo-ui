@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-date
 
+## 0.4.33
+
+### Patch Changes
+
+- DatePicker types exported
+
 ## 0.4.32
 
 ### Patch Changes

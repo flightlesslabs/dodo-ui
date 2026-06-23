@@ -8,6 +8,12 @@ export {
 
 export { type DatePickerInputProps } from './components/DatePicker/DatePickerInput/DatePickerInput.svelte';
 
+export {
+  type DatePickerFormat,
+  type DateSegment,
+  type FormatToken,
+} from './components/DatePicker/DatePickerInput/utils.ts';
+
 export { type DatePickerPopupProps } from './components/DatePicker/DatePickerPopup/DatePickerPopup.svelte';
 
 /**

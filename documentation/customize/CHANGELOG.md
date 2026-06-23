@@ -1,5 +1,12 @@
 # @documentation/customize
 
+## 0.0.7
+
+### Patch Changes
+
+- Updated dependencies
+  - @flightlesslabs/dodo-ui-date@0.4.33
+
 ## 0.0.6
 
 ### Patch Changes
