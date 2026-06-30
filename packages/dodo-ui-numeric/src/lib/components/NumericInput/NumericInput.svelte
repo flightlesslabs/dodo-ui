@@ -50,6 +50,9 @@
      * Use {#snippet after} in Svelte.
      */
     after?: Snippet;
+
+    /** Input Enclosure Props */
+    inputEnclosureProps?: InputEnclosureProps;
   }
 
   type NumericFormatLibraryProps = ComponentProps<typeof NumericFormat>;
@@ -66,6 +69,7 @@
     InputEnclosure,
     type ComponentRoundnessShape,
     type ComponentSize,
+    type InputEnclosureProps,
     type TextInputFocusEvent,
   } from '@flightlesslabs/dodo-ui';
 
@@ -82,6 +86,7 @@
     after,
     onfocus,
     onblur,
+    inputEnclosureProps,
     ...restProps
   }: NumericInputProps = $props();
 
@@ -110,6 +115,7 @@
   class={classes.join(' ')}
   {before}
   {after}
+  {...inputEnclosureProps}
 >
   <NumericFormat
     {...restProps}

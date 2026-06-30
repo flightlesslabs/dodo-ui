@@ -89,6 +89,9 @@
 
     /** show Trigger Button */
     showTriggerButton?: boolean;
+
+    /** Input Enclosure Props */
+    inputEnclosureProps?: InputEnclosureProps;
   };
 </script>
 
@@ -109,6 +112,7 @@
     ComponentSize,
     ComponentRoundnessShape,
     ComponentAffixPlacement,
+    InputEnclosureProps,
   } from '@flightlesslabs/dodo-ui';
 
   let {
@@ -136,6 +140,7 @@
     onclear,
     triggerPlacement = 'after',
     showTriggerButton = true,
+    inputEnclosureProps,
     ...restProps
   }: DatePickerProps = $props();
 
@@ -171,6 +176,7 @@
     bind:value
     {triggerPlacement}
     {showTriggerButton}
+    {inputEnclosureProps}
   />
   <DatePickerPopup {...popupProps} {customAnchor} />
 </DatePickerBitsUi.Root>

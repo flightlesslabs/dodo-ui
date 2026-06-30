@@ -67,6 +67,9 @@
      * Use {#snippet after} in Svelte.
      */
     after?: Snippet;
+
+    /** Input Enclosure Props */
+    inputEnclosureProps?: InputEnclosureProps;
   }
 
   export type TextAreaProps = TextAreaBaseProps &
@@ -78,7 +81,9 @@
 <script lang="ts">
   import type { ComponentSize } from '@flightlesslabs/dodo-core-attributes';
   import type { ComponentRoundnessShape } from '@flightlesslabs/dodo-core-attributes';
-  import InputEnclosure from '../InputEnclosure/InputEnclosure.svelte';
+  import InputEnclosure, {
+    type InputEnclosureProps,
+  } from '../InputEnclosure/InputEnclosure.svelte';
 
   let {
     ref = $bindable(null),
@@ -94,6 +99,7 @@
     after,
     onfocus,
     onblur,
+    inputEnclosureProps,
     ...restProps
   }: TextAreaProps = $props();
 
@@ -126,6 +132,7 @@
   {before}
   {after}
   multiline
+  {...inputEnclosureProps}
 >
   <textarea
     {...restProps}

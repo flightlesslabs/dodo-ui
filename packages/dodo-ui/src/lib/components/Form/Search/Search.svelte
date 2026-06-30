@@ -91,6 +91,9 @@
 
     /** clear on Escape */
     clearOnEscape?: boolean;
+
+    /** Input Enclosure Props */
+    inputEnclosureProps?: InputEnclosureProps;
   }
 
   /**
@@ -111,7 +114,9 @@
     ComponentSize,
   } from '@flightlesslabs/dodo-core-attributes';
   import type { ComponentRoundnessShape } from '@flightlesslabs/dodo-core-attributes';
-  import InputEnclosure from '../InputEnclosure/InputEnclosure.svelte';
+  import InputEnclosure, {
+    type InputEnclosureProps,
+  } from '../InputEnclosure/InputEnclosure.svelte';
   import Icon from '@iconify/svelte';
   import UtilityButton from '../UtilityButton/UtilityButton.svelte';
   import type { TextInputFocusEvent, TextInputKeyboardEvent } from '../TextInput/TextInput.svelte';
@@ -143,6 +148,7 @@
     clearOnEscape = false,
     onsearch,
     onkeydown,
+    inputEnclosureProps,
     ...restProps
   }: SearchProps = $props();
 
@@ -218,6 +224,7 @@
   class={classes.join(' ')}
   affixSpacingBefore={showAffixIcon && affixPlacement === 'before' ? 'tight' : 'default'}
   affixSpacingAfter={showAffixIcon && affixPlacement === 'after' ? 'tight' : 'default'}
+  {...inputEnclosureProps}
 >
   <input
     {...restProps}

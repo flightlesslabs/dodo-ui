@@ -22,6 +22,7 @@
     value: DateValue | undefined;
     triggerPlacement?: ComponentAffixPlacement;
     showTriggerButton?: boolean;
+    inputEnclosureProps?: InputEnclosureProps;
   };
 </script>
 
@@ -34,6 +35,7 @@
     ComponentSize,
     ComponentRoundnessShape,
     ComponentAffixPlacement,
+    InputEnclosureProps,
   } from '@flightlesslabs/dodo-ui';
   import { InputEnclosure, UtilityButton } from '@flightlesslabs/dodo-ui';
   import type { DateValue } from '@internationalized/date';
@@ -59,6 +61,7 @@
     value = $bindable(undefined),
     triggerPlacement = 'after',
     showTriggerButton = true,
+    inputEnclosureProps,
     ...restProps
   }: DatePickerInputProps = $props();
 
@@ -122,6 +125,7 @@
   affixSpacingAfter={triggerPlacement === 'after' ? 'tight' : 'default'}
   affixSpacingBefore={triggerPlacement === 'before' ? 'tight' : 'default'}
   {...restProps}
+  {...inputEnclosureProps}
 >
   <DatePicker.Input
     onfocus={handleFocus}
