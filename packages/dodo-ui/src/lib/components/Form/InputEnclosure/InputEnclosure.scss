@@ -2,24 +2,32 @@
 // Theme tokens (global CSS variables)
 // ----------------------------------------
 :root {
-  --dodo-ui-InputEnclosure-border-color: var(--dodo-color-neutral-500);
+  --dodo-ui-InputEnclosure-border-default-color: var(--dodo-color-neutral-400);
+  --dodo-ui-InputEnclosure-border-light-color: var(--dodo-color-neutral-300);
+  --dodo-ui-InputEnclosure-border-dark-color: var(--dodo-color-neutral-500);
   --dodo-ui-InputEnclosure-focus-border-color: var(--dodo-color-primary-500);
   --dodo-ui-InputEnclosure-error-border-color: var(--dodo-color-danger-500);
   --dodo-ui-InputEnclosure-safe-border-color: var(--dodo-color-safe-500);
 
   --dodo-ui-InputBox-placeholder-color: var(--dodo-color-neutral-500);
 
+  --dodo-ui-InputEnclosure-background-neutral: var(--dodo-color-neutral-100);
+
   --dodo-ui-InputEnclosure-disabled-color: var(--dodo-color-neutral-400);
   --dodo-ui-InputEnclosure-disabled-bg: var(--dodo-color-neutral-200);
 }
 
 .dodo-theme--dark {
-  --dodo-ui-InputEnclosure-border-color: var(--dodo-color-neutral-600);
+  --dodo-ui-InputEnclosure-border-default-color: var(--dodo-color-neutral-500);
+  --dodo-ui-InputEnclosure-border-light-color: var(--dodo-color-neutral-300);
+  --dodo-ui-InputEnclosure-border-dark-color: var(--dodo-color-neutral-600);
   --dodo-ui-InputEnclosure-focus-border-color: var(--dodo-color-primary-600);
   --dodo-ui-InputEnclosure-error-border-color: var(--dodo-color-danger-600);
   --dodo-ui-InputEnclosure-safe-border-color: var(--dodo-color-safe-600);
 
   --dodo-ui-InputBox-placeholder-color: var(--dodo-color-neutral-600);
+
+  --dodo-ui-InputEnclosure-background-neutral: var(--dodo-color-neutral-200);
 
   --dodo-ui-InputEnclosure-disabled-bg: var(--dodo-color-neutral-100);
   --dodo-ui-InputEnclosure-disabled-color: var(--dodo-color-neutral-500);
@@ -63,7 +71,20 @@ $states: (
   &.outline {
     border-style: solid;
     border-width: var(--dodo-ui-element-border-width);
-    border-color: var(--dodo-ui-InputEnclosure-border-color);
+  }
+
+  &.outlineVariant {
+    &--default {
+      border-color: var(--dodo-ui-InputEnclosure-border-default-color);
+    }
+
+    &--light {
+      border-color: var(--dodo-ui-InputEnclosure-border-light-color);
+    }
+
+    &--dark {
+      border-color: var(--dodo-ui-InputEnclosure-border-dark-color);
+    }
   }
 
   // input tag is styled here
@@ -82,6 +103,15 @@ $states: (
     &::placeholder {
       color: var(--dodo-ui-InputBox-placeholder-color);
       opacity: 1;
+    }
+  }
+
+  // ----------------------------------------
+  // background colors
+  // ----------------------------------------
+  &.background {
+    &--neutral {
+      background-color: var(--dodo-ui-InputEnclosure-background-neutral);
     }
   }
 

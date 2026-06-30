@@ -72,6 +72,14 @@
      * Adjusts alignment and spacing for content like `<textarea>`.
      */
     multiline?: boolean;
+
+    /**
+     * outline color style
+     */
+    outlineVariant?: InputEnclosureOutlineVariant;
+
+    /** Backgound stytle */
+    background?: InputEnclosureBackground;
   }
 </script>
 
@@ -79,6 +87,7 @@
   import type { ComponentSize } from '@flightlesslabs/dodo-core-attributes';
   import type { ComponentRoundnessShape } from '@flightlesslabs/dodo-core-attributes';
   import InputAffix, { type InpuAffixSpacing } from './InputAffix.svelte';
+  import type { InputEnclosureBackground, InputEnclosureOutlineVariant } from './types.ts';
 
   let {
     children,
@@ -95,6 +104,8 @@
     affixSpacingBefore = 'default',
     affixSpacingAfter = 'default',
     multiline = false,
+    outlineVariant = 'default',
+    background = 'none',
     ...restProps
   }: InputEnclosureProps = $props();
 
@@ -103,6 +114,8 @@
       'dodo-ui-InputEnclosure',
       `size--${size}`,
       `roundness--${roundness}`,
+      `outlineVariant--${outlineVariant}`,
+      `background--${background}`,
       multiline && 'multiline',
       outline && 'outline',
       focused && 'focused',

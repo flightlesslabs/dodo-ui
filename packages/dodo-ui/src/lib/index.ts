@@ -30,6 +30,15 @@ export {
  * InputEnclosure component and related prop types.
  */
 export {
+  type InputEnclosureOutlineVariant,
+  type InputEnclosureBackground,
+  INPUT_ENCLOSURE_OUTLINE_VARIANT,
+  INPUT_ENCLOSURE_BACKGROUND,
+  inputEnclosureOutlineVariantOptions,
+  inputEnclosureBackgroundOptions,
+} from './components/Form/InputEnclosure/types.ts';
+
+export {
   default as InputEnclosure,
   type InputEnclosureProps,
 } from './components/Form/InputEnclosure/InputEnclosure.svelte';

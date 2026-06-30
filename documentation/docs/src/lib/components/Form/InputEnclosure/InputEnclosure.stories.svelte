@@ -9,6 +9,8 @@
     InputEnclosure,
     Theme,
     UtilityButton,
+    inputEnclosureOutlineVariantOptions,
+    inputEnclosureBackgroundOptions,
   } from '@flightlesslabs/dodo-ui';
 
   const description = `
@@ -86,6 +88,17 @@
       description: 'Render outlined enclosure',
       table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'true' } },
     },
+    outlineVariant: {
+      control: { type: 'select' },
+      options: inputEnclosureOutlineVariantOptions,
+      description: 'Outlined color token',
+      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'default' } },
+    },
+    background: {
+      control: { type: 'select' },
+      options: inputEnclosureBackgroundOptions,
+      table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'none' } },
+    },
     affixSpacingBefore: {
       table: { category: 'API', subcategory: 'Appearance', defaultValue: { summary: 'default' } },
     },
@@ -119,6 +132,14 @@
   <input placeholder="Type something…" class="InputBox" />
 </Story>
 
+<Story name="Light outline" args={{ outlineVariant: 'light' }}>
+  <input placeholder="Light outline…" class="InputBox" />
+</Story>
+
+<Story name="Dark outline" args={{ outlineVariant: 'dark' }}>
+  <input placeholder="Dark outline…" class="InputBox" />
+</Story>
+
 <Story name="No Outline" args={{ outline: false }}>
   <input placeholder="No outline…" class="InputBox" />
 </Story>
@@ -129,6 +150,10 @@
 
 <Story name="Error" args={{ error: true }}>
   <input placeholder="Error state…" class="InputBox" />
+</Story>
+
+<Story name="Grey backdrop" args={{ background: 'neutral' }}>
+  <input placeholder="Grey backdrop…" class="InputBox" />
 </Story>
 
 <Story name="Disabled" args={{ disabled: true }}>
