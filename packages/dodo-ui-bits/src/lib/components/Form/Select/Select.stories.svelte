@@ -167,7 +167,10 @@
   }}
 />
 
-<Story name="Disabled" args={{ placeholder: 'Select an option', disabled: true }} />
+<Story
+  name="Disabled"
+  args={{ placeholder: 'Select an option', disabled: true, searchable: true, clearable: true }}
+/>
 
 <Story
   name="Trigger Placement Before"

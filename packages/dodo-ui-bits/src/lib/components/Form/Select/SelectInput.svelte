@@ -32,13 +32,18 @@
     customSelectedContent?: Snippet<[SelectInputCustomSelectedContentContext]>;
     triggerPlacement?: ComponentAffixPlacement;
     showTriggerButton?: boolean;
+    inputEnclosureProps?: InputEnclosureProps;
   };
 </script>
 
 <script lang="ts">
   import { Combobox, type ComboboxInputProps, type ComboboxTriggerProps } from 'bits-ui';
   import { InputEnclosure, UtilityButton, type ComponentSize } from '@flightlesslabs/dodo-ui';
-  import type { ComponentAffixPlacement, ComponentRoundnessShape } from '@flightlesslabs/dodo-ui';
+  import type {
+    ComponentAffixPlacement,
+    ComponentRoundnessShape,
+    InputEnclosureProps,
+  } from '@flightlesslabs/dodo-ui';
   import Icon from '@iconify/svelte';
   import type { SelectOption } from './Select.svelte';
 
@@ -67,6 +72,7 @@
     customSelectedContent,
     triggerPlacement = 'after',
     showTriggerButton = true,
+    inputEnclosureProps,
     ...restProps
   }: SelectInputProps = $props();
 
@@ -120,7 +126,7 @@
 
 {#snippet triggerButton()}
   {#if showTriggerButton}
-    <Combobox.Trigger class={triggerClasses.join(' ')} {...comboboxTriggerProps}>
+    <Combobox.Trigger class={triggerClasses.join(' ')} {disabled} {...comboboxTriggerProps}>
       {#if customTriggerIcon}
         {@render customTriggerIcon?.()}
       {:else}
@@ -140,6 +146,7 @@
   affixSpacingAfter={triggerPlacement === 'after' ? 'tight' : 'default'}
   affixSpacingBefore={triggerPlacement === 'before' ? 'tight' : 'default'}
   {...restProps}
+  {...inputEnclosureProps}
 >
   {#if customSelectedContent}
     <button class="InputBox SelectInputCustomSelectedContent" onclick={handleTriggerInput}>
@@ -159,6 +166,7 @@
     onclick={!searchable && !disabled ? () => updateOpenState(true) : undefined}
     {placeholder}
     {defaultValue}
+    {disabled}
     class={selectInputClasses.join(' ')}
     bind:ref
   />

@@ -110,6 +110,9 @@
 
     /** show Trigger Button */
     showTriggerButton?: boolean;
+
+    /** Input Enclosure Props */
+    inputEnclosureProps?: InputEnclosureProps;
   };
 </script>
 
@@ -121,7 +124,11 @@
     type ComboboxTriggerProps,
     type SelectSingleRootPropsWithoutHTML,
   } from 'bits-ui';
-  import type { ComponentAffixPlacement, ComponentSize } from '@flightlesslabs/dodo-ui';
+  import type {
+    ComponentAffixPlacement,
+    ComponentSize,
+    InputEnclosureProps,
+  } from '@flightlesslabs/dodo-ui';
   import type { ComponentRoundnessShape } from '@flightlesslabs/dodo-ui';
   import SelectInput, { type SelectInputCustomSelectedContentContext } from './SelectInput.svelte';
   import SelectPopup, {
@@ -156,6 +163,7 @@
     showTriggerButton = true,
     customListItemContent,
     customSelectedContent,
+    inputEnclosureProps,
     ...restProps
   }: SelectProps = $props();
 
@@ -222,6 +230,7 @@
     {triggerPlacement}
     {showTriggerButton}
     {customSelectedContent}
+    {inputEnclosureProps}
   />
   <SelectPopup
     options={filteredOptions}
