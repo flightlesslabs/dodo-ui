@@ -1,5 +1,20 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.11.0
+
+### Minor Changes
+
+- ff2497a: Dropdown added
+
+### Patch Changes
+
+- bd2f615: Select disable bug fixed
+- 3fdf76f: Dependencies upgraded
+- Updated dependencies [b1c97d9]
+- Updated dependencies [3fdf76f]
+- Updated dependencies [4aad1ab]
+  - @flightlesslabs/dodo-ui@0.36.10
+
 ## 0.10.12
 
 ### Patch Changes

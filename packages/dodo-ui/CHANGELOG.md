@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui
 
+## 0.36.10
+
+### Patch Changes
+
+- b1c97d9: inputEnclosureProps added to all input fields
+- 3fdf76f: Dependencies upgraded
+- 4aad1ab: Input Enclosure border and background styles added
+
 ## 0.36.9
 
 ### Patch Changes

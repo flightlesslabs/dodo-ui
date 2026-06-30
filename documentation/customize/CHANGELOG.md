@@ -1,5 +1,20 @@
 # @documentation/customize
 
+## 0.0.8
+
+### Patch Changes
+
+- 3fdf76f: Dependencies upgraded
+- Updated dependencies [ff2497a]
+- Updated dependencies [b1c97d9]
+- Updated dependencies [bd2f615]
+- Updated dependencies [3fdf76f]
+- Updated dependencies [4aad1ab]
+  - @flightlesslabs/dodo-ui-bits@0.11.0
+  - @flightlesslabs/dodo-ui-numeric@0.2.32
+  - @flightlesslabs/dodo-ui-date@0.4.34
+  - @flightlesslabs/dodo-ui@0.36.10
+
 ## 0.0.7
 
 ### Patch Changes

@@ -1,5 +1,16 @@
 # @flightlesslabs/dodo-ui-date
 
+## 0.4.34
+
+### Patch Changes
+
+- b1c97d9: inputEnclosureProps added to all input fields
+- 3fdf76f: Dependencies upgraded
+- Updated dependencies [b1c97d9]
+- Updated dependencies [3fdf76f]
+- Updated dependencies [4aad1ab]
+  - @flightlesslabs/dodo-ui@0.36.10
+
 ## 0.4.33
 
 ### Patch Changes
