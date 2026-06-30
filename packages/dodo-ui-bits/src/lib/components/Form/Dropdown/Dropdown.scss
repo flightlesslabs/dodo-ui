@@ -1,0 +1,28 @@
+// ----------------------------------------
+// Theme tokens (global CSS variables)
+// ----------------------------------------
+:root {
+  --dodo-ui-DropdownMenu-color: var(--dodo-color-black);
+}
+
+.dodo-theme--dark {
+  --dodo-ui-DropdownMenu-color: var(--dodo-color-neutral-800);
+}
+
+.dodo-ui-DropdownMenu {
+  width: var(--DropdownMenu-width, initial);
+  height: var(--DropdownMenu-height, initial);
+  min-width: var(--DropdownMenu-min-width, 100px);
+  min-height: var(--DropdownMenu-min-height, initial);
+  max-width: var(--DropdownMenu-max-width, initial);
+  max-height: var(--DropdownMenu-max-height, 400px);
+  color: var(--dodo-ui-DropdownMenu-color);
+}
+
+.dodo-ui-DropdownMenuItem {
+  padding: var(--dodo-ui-space);
+
+  &:hover {
+    background-color: var(--dodo-color-primary-200);
+  }
+}

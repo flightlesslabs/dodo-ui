@@ -60,6 +60,31 @@ export {
   type ToggleGroupItemProps,
 } from './components/Form/ToggleGroup/ToggleGroupItem/ToggleGroupItem.svelte';
 
+/**
+ * Dropdown component and related prop types.
+ */
+export {
+  default as Dropdown,
+  type DropdownProps,
+  type DropdownMenuOption,
+  type DropdownCustomMenuItemContentContext,
+} from './components/Form/Dropdown/Dropdown.svelte';
+
+export {
+  default as DropdownTrigger,
+  type DropdownTriggerProps,
+} from './components/Form/Dropdown/DropdownTrigger/DropdownTrigger.svelte';
+
+export {
+  default as DropdownMenu,
+  type DropdownMenuProps,
+} from './components/Form/Dropdown/DropdownMenu/DropdownMenu.svelte';
+
+export {
+  default as DropdownMenuItem,
+  type DropdownMenuItemProps,
+} from './components/Form/Dropdown/DropdownMenuItem/DropdownMenuItem.svelte';
+
 // =====================================================
 // Layout Components – Public API
 // =====================================================
