@@ -21,14 +21,14 @@
     "@flightlesslabs/dodo-ui-bits": "workspace:*",
     "@flightlesslabs/dodo-ui-date": "workspace:*",
     "@flightlesslabs/dodo-ui-numeric": "workspace:*",
-    "@iconify-svelte/material-symbols": "^1.0.38",
+    "@iconify-svelte/material-symbols": "^1.0.41",
     "@iconify/svelte": "^5.2.2",
     "@internationalized/date": "^3.12.2",
     "astro": "^6.4.8",
     "bits-ui": "^2.18.1",
     "highlight.js": "^11.11.1",
     "sharp": "^0.34.5",
-    "svelte": "^5.56.3",
+    "svelte": "^5.56.4",
     "svelte-number-format": "^2.0.0"
   }
 }

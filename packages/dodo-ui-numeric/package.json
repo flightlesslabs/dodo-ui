@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "@flightlesslabs/dodo-ui": "workspace:*",
-    "svelte": "^5.56.3",
+    "svelte": "^5.56.4",
     "svelte-number-format": "^2.0.0"
   },
   "keywords": [

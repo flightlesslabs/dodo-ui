@@ -60,7 +60,7 @@
     "@flightlesslabs/dodo-core-attributes": "workspace:*",
     "@iconify/svelte": "^5.2.2",
     "esm-env": "^1.2.2",
-    "svelte": "^5.56.3"
+    "svelte": "^5.56.4"
   },
   "keywords": [
     "svelte"
