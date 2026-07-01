@@ -1,5 +1,12 @@
 # @documentation/docs
 
+## 0.15.2
+
+### Patch Changes
+
+- Updated dependencies [8f2f952]
+  - @flightlesslabs/dodo-ui-bits@0.11.2
+
 ## 0.15.1
 
 ### Patch Changes

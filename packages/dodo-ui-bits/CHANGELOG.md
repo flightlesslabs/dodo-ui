@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.11.2
+
+### Patch Changes
+
+- 8f2f952: Made Dropdown bigger
+
 ## 0.11.1
 
 ### Patch Changes
