@@ -20,7 +20,11 @@
 }
 
 .dodo-ui-DropdownMenuItem {
-  padding: var(--dodo-ui-space);
+  padding: calc(var(--dodo-ui-space) * 2);
+  display: flex;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
 
   &:hover {
     background-color: var(--dodo-color-primary-200);
