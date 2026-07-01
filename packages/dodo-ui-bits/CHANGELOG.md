@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.11.3
+
+### Patch Changes
+
+- fbe791c: Drawer menu outline style added
+
 ## 0.11.2
 
 ### Patch Changes
