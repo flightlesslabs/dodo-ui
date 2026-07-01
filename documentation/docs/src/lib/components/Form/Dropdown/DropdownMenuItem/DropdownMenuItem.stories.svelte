@@ -12,6 +12,14 @@
     // Core
     // ------------------------------
     class: { table: { category: 'API', subcategory: 'Base' } },
+
+    // ------------------------------
+    // Appearance
+    // ------------------------------
+    outline: {
+      control: { type: 'boolean' },
+      table: { category: 'API', subcategory: 'Appearance' },
+    },
   };
 
   // ------------------------------

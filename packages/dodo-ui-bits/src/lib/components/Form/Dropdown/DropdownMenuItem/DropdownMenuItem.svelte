@@ -4,15 +4,20 @@
   /**
    * Public props for Dropdown menu item
    */
-  export type DropdownMenuItemProps = ComponentProps<typeof DropdownMenuBitUi.Item>;
+  export type DropdownMenuItemProps = ComponentProps<typeof DropdownMenuBitUi.Item> & {
+    /** Bottom outline for menu item */
+    outline?: boolean;
+  };
 </script>
 
 <script lang="ts">
   import { DropdownMenu as DropdownMenuBitUi } from 'bits-ui';
 
-  let props: DropdownMenuItemProps = $props();
+  let { class: className = '', outline = false, ...restProps }: DropdownMenuItemProps = $props();
 
-  const classes = $derived(['dodo-ui-DropdownMenuItem'].filter(Boolean));
+  const classes = $derived(
+    ['dodo-ui-DropdownMenuItem', outline && 'outline', className].filter(Boolean),
+  );
 </script>
 
-<DropdownMenuBitUi.Item {...props} class={classes.join(' ')} />
+<DropdownMenuBitUi.Item {...restProps} class={classes.join(' ')} />

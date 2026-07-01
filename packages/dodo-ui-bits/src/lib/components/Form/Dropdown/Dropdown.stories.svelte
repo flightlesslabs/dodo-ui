@@ -82,6 +82,8 @@
 
 <Story name="Disabled" args={{ disabled: true }}>Dropdown</Story>
 
+<Story name="Menu Item outline" args={{ menuItemProps: { outline: true } }}>Dropdown</Story>
+
 <Story name="Button styles" args={{ triggerProps: { color: 'danger' } }}>Dropdown</Story>
 
 <Story

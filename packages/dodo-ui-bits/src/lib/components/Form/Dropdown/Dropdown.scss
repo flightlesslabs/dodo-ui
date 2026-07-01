@@ -20,7 +20,7 @@
 }
 
 .dodo-ui-DropdownMenuItem {
-  padding: calc(var(--dodo-ui-space) * 2);
+  padding: calc(var(--dodo-ui-space) * 1.8);
   display: flex;
   align-items: center;
   user-select: none;
@@ -28,5 +28,14 @@
 
   &:hover {
     background-color: var(--dodo-color-primary-200);
+  }
+
+  &.outline {
+    border-bottom: 1px solid;
+    border-color: var(--dodo-color-neutral-300);
+
+    &:last-child {
+      border-bottom: 0;
+    }
   }
 }

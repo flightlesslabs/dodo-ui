@@ -65,12 +65,14 @@
 </script>
 
 <script lang="ts">
-  import { DropdownMenu as DropdownMenuBitUi, type DropdownMenuItemProps } from 'bits-ui';
+  import { DropdownMenu as DropdownMenuBitUi } from 'bits-ui';
   import DropdownTrigger, {
     type DropdownTriggerProps,
   } from './DropdownTrigger/DropdownTrigger.svelte';
   import DropdownMenu, { type DropdownMenuProps } from './DropdownMenu/DropdownMenu.svelte';
-  import DropdownMenuItem from './DropdownMenuItem/DropdownMenuItem.svelte';
+  import DropdownMenuItem, {
+    type DropdownMenuItemProps,
+  } from './DropdownMenuItem/DropdownMenuItem.svelte';
 
   let {
     class: className = '',
