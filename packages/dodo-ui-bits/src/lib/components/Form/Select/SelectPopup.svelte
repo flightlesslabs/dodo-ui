@@ -63,12 +63,12 @@
 
   const popupInlineStyles = $derived(
     [
-      width ? `--SelectPopup-width: ${width}` : '',
-      height ? `--SelectPopup-height: ${height}` : '',
-      minHeight ? `--SelectPopup-min-height: ${minHeight}` : '',
-      minWidth ? `--SelectPopup-min-width: ${minWidth}` : '',
-      maxHeight ? `--SelectPopup-max-height: ${maxHeight}` : '',
-      maxWidth ? `--SelectPopup-max-width: ${maxWidth}` : '',
+      width ? `--select-popup-width: ${width}` : '',
+      height ? `--select-popup-height: ${height}` : '',
+      minHeight ? `--select-popup-min-height: ${minHeight}` : '',
+      minWidth ? `--select-popup-min-width: ${minWidth}` : '',
+      maxHeight ? `--select-popup-max-height: ${maxHeight}` : '',
+      maxWidth ? `--select-popup-max-width: ${maxWidth}` : '',
     ].filter(Boolean),
   );
 </script>

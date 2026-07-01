@@ -10,12 +10,12 @@
 }
 
 .dodo-ui-DropdownMenu {
-  width: var(--DropdownMenu-width, initial);
-  height: var(--DropdownMenu-height, initial);
-  min-width: var(--DropdownMenu-min-width, 100px);
-  min-height: var(--DropdownMenu-min-height, initial);
-  max-width: var(--DropdownMenu-max-width, initial);
-  max-height: var(--DropdownMenu-max-height, 400px);
+  width: var(--dropdown-menu-width, initial);
+  height: var(--dropdown-menu-height, initial);
+  min-width: var(--dropdown-menu-min-width, 100px);
+  min-height: var(--dropdown-menu-min-height, initial);
+  max-width: var(--dropdown-menu-max-width, initial);
+  max-height: var(--dropdown-menu-max-height, 400px);
   color: var(--dodo-ui-DropdownMenu-color);
 }
 

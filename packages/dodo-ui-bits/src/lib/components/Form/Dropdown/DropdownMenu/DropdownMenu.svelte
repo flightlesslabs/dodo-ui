@@ -52,12 +52,12 @@
 
   const menuInlineStyles = $derived(
     [
-      width ? `--DropdownMenu-width: ${width}` : '',
-      height ? `--DropdownMenu-height: ${height}` : '',
-      minHeight ? `--DropdownMenu-min-height: ${minHeight}` : '',
-      minWidth ? `--DropdownMenu-min-width: ${minWidth}` : '',
-      maxHeight ? `--DropdownMenu-max-height: ${maxHeight}` : '',
-      maxWidth ? `--DropdownMenu-max-width: ${maxWidth}` : '',
+      width ? `--dropdown-menu-width: ${width}` : '',
+      height ? `--dropdown-menu-height: ${height}` : '',
+      minHeight ? `--dropdown-menu-min-height: ${minHeight}` : '',
+      minWidth ? `--dropdown-menu-min-width: ${minWidth}` : '',
+      maxHeight ? `--dropdown-menu-max-height: ${maxHeight}` : '',
+      maxWidth ? `--dropdown-menu-max-width: ${maxWidth}` : '',
     ].filter(Boolean),
   );
 </script>

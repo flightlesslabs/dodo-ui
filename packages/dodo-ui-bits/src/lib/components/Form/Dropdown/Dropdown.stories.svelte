@@ -84,7 +84,10 @@
 
 <Story name="Button styles" args={{ triggerProps: { color: 'danger' } }}>Dropdown</Story>
 
-<Story name="Menu styles" args={{ menuProps: { outline: true, color: 'primary' } }}>Dropdown</Story>
+<Story
+  name="Menu styles"
+  args={{ menuProps: { outline: true, color: 'primary', 'min-width': '300px' } }}>Dropdown</Story
+>
 
 <Story name="Custom Trigger" asChild>
   <Dropdown {options}>
