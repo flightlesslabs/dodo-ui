@@ -1,0 +1,24 @@
+import{i as e}from"./preload-helper-CuCQULJj.js";import{Gt as t,Wt as n,dn as r,et as i,f as a,ot as o,tn as s}from"./iframe-CApopm_P.js";import{G as c,_t as l,n as u,r as d,t as f,vt as p}from"./create-runtime-stories-BluKH7db.js";import{m,t as h}from"./dist-1glt4kwT.js";function g(e,r){t(r,!0),b(e,{name:`Default`,asChild:!0,children:(e,t)=>{m(e,{title:`Modal title`,children:(e,t)=>{s(),i(e,o(`Hello there`))},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{docs:{description:{story:`------------------------------`}},__svelteCsf:{rawCode:`<ConfirmDialogCard title="Modal title">Hello there</ConfirmDialogCard>`}}}),n()}var _,v,y,b,x,S,C;e((()=>{r(),p(),d(),h(),a(),u(),_=`
+
+  ConfirmDialogCard for customizing ConfirmDialog
+
+
+## 🚀 Installation
+
+\`\`\`bash
+pnpm add bits-ui @flightlesslabs/dodo-ui-bits
+\`\`\`
+
+
+For full setup (styles, themes, configuration), see the [Getting Started](https://github.com/flightlesslabs/dodo-ui/tree/main/packages/dodo-ui-bits) guide.
+
+## ✨ Usage
+
+ \`\`\`ts
+
+ import { ConfirmDialogCard } from '@flightlesslabs/dodo-ui-bits';
+
+ <ConfirmDialogCard />
+ \`\`\`
+
+ `,v={class:{table:{category:`API`,subcategory:`Base`}},clearable:{control:{type:`boolean`},table:{category:`API`,subcategory:`Base`}},controlsAlignment:{control:{type:`select`},options:c,table:{category:`API`,subcategory:`Base`,defaultValue:{summary:`end`}}},title:{table:{category:`API`,subcategory:`Base`}},customTitle:{table:{category:`API`,subcategory:`Slots`}}},y={component:m,tags:[`autodocs`],argTypes:v,parameters:{docs:{description:{component:_}}}},{Story:b}=l(y),g.__docgen={data:[],name:`ConfirmDialogCard.stories.svelte`},x=f(g,y),S=[`Default`],C={...x.Default,tags:[`svelte-csf-v5`]}}))();export{C as Default,S as __namedExportsOrder,y as default,v as storyConfirmDialogCardArgTypes};
