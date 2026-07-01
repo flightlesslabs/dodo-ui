@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.11.1
+
+### Patch Changes
+
+- a0dbac2: Select and dropdown popup min max card dimentions fixed
+
 ## 0.11.0
 
 ### Minor Changes
