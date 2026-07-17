@@ -1,1 +1,0 @@
-import{i as e}from"./preload-helper-CuCQULJj.js";import{t}from"./react-BynncI18.js";var n=e((()=>{t()}));export{n as t};
