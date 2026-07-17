@@ -48,10 +48,8 @@
     error = false,
     focused: forcedFocused = false,
     placeholder,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    after,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    before,
+    after: afterProp,
+    before: beforeProp,
     dateFieldInputProps,
     datePickerTriggerProps,
     dateFormat = 'dd/mm/yyyy',
@@ -123,7 +121,7 @@
       />
     {/if}
 
-    {@render before?.()}
+    {@render beforeProp?.()}
   {/snippet}
 
   {#snippet after()}
@@ -140,6 +138,6 @@
       />
     {/if}
 
-    {@render after?.()}
+    {@render afterProp?.()}
   {/snippet}
 </InputEnclosure>

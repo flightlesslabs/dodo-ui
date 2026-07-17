@@ -58,13 +58,13 @@
      * Controls the spacing between the "before" affix content
      * and the input field.
      */
-    affixSpacingBefore?: InpuAffixSpacing;
+    affixSpacingBefore?: InputAffixSpacing;
 
     /**
      * Controls the spacing between the "after" affix content
      * and the input field.
      */
-    affixSpacingAfter?: InpuAffixSpacing;
+    affixSpacingAfter?: InputAffixSpacing;
 
     /**
      * Enables multi-line layout support.
@@ -86,7 +86,7 @@
 <script lang="ts">
   import type { ComponentSize } from '@flightlesslabs/dodo-core-attributes';
   import type { ComponentRoundnessShape } from '@flightlesslabs/dodo-core-attributes';
-  import InputAffix, { type InpuAffixSpacing } from './InputAffix.svelte';
+  import InputAffix, { type InputAffixSpacing } from './InputAffix.svelte';
   import type { InputEnclosureBackground, InputEnclosureOutlineVariant } from './types.ts';
 
   let {

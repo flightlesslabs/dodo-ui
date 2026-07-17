@@ -132,10 +132,8 @@
     disabled = false,
     error = false,
     focused: forcedFocused = false,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    before,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    after,
+    before: beforeProp,
+    after: afterProp,
     onfocus,
     onblur,
     affixPlacement = 'before',
@@ -226,7 +224,7 @@
       />
     {/if}
 
-    {@render before?.()}
+    {@render beforeProp?.()}
   {/snippet}
 
   {#snippet after()}
@@ -242,6 +240,6 @@
       />
     {/if}
 
-    {@render after?.()}
+    {@render afterProp?.()}
   {/snippet}
 </InputEnclosure>

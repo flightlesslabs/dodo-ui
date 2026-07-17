@@ -5,7 +5,7 @@
   } from '@flightlesslabs/dodo-core-attributes';
   import type { Snippet } from 'svelte';
 
-  export type InpuAffixSpacing = 'default' | 'tight';
+  export type InputAffixSpacing = 'default' | 'tight';
 
   /**
    * InputAffix props.
@@ -34,7 +34,7 @@
      * Controls the spacing between the affix content
      * and the input field.
      */
-    affixSpacing?: InpuAffixSpacing;
+    affixSpacing?: InputAffixSpacing;
 
     /**
      * Enables multi-line layout support.
