@@ -1,5 +1,19 @@
 # @documentation/customize
 
+## 0.0.12
+
+### Patch Changes
+
+- 642af52: Libraries updated
+- Updated dependencies [642af52]
+- Updated dependencies [e650d6b]
+- Updated dependencies [deebe72]
+- Updated dependencies [4f463c6]
+  - @flightlesslabs/dodo-ui-numeric@0.2.33
+  - @flightlesslabs/dodo-ui-bits@0.11.4
+  - @flightlesslabs/dodo-ui-date@0.4.35
+  - @flightlesslabs/dodo-ui@0.36.11
+
 ## 0.0.11
 
 ### Patch Changes

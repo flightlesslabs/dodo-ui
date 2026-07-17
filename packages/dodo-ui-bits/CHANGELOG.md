@@ -1,5 +1,15 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.11.4
+
+### Patch Changes
+
+- 642af52: Libraries updated
+- 4f463c6: Iconify removed
+- Updated dependencies [642af52]
+- Updated dependencies [deebe72]
+  - @flightlesslabs/dodo-ui@0.36.11
+
 ## 0.11.3
 
 ### Patch Changes

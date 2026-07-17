@@ -1,5 +1,12 @@
 # @flightlesslabs/dodo-ui
 
+## 0.36.11
+
+### Patch Changes
+
+- 642af52: Libraries updated
+- deebe72: Iconify removed
+
 ## 0.36.10
 
 ### Patch Changes
