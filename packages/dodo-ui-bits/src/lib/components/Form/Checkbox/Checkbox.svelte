@@ -30,7 +30,6 @@
 
 <script lang="ts">
   import { Checkbox as CheckboxBitUi, type CheckboxRootProps } from 'bits-ui';
-  import Icon from '@iconify/svelte';
   import { Label } from '@flightlesslabs/dodo-ui';
   import type {
     ComponentColor,
@@ -87,9 +86,15 @@
     {#snippet children({ checked, indeterminate })}
       <div class="CheckComponentCheckContainer">
         {#if indeterminate}
-          <Icon icon="material-symbols:check-indeterminate-small" />
+          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path fill="currentColor" d="M6 13v-2h12v2z" />
+          </svg>
         {:else if checked}
-          <Icon icon="material-symbols:check-small" />
+          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path fill="currentColor" d="m10 16.4l-4-4L7.4 11l2.6 2.6L16.6 7L18 8.4z" />
+          </svg>
         {/if}
       </div>
     {/snippet}

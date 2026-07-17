@@ -15,7 +15,6 @@
 
 <script lang="ts">
   import { Combobox, type SelectContentProps } from 'bits-ui';
-  import Icon from '@iconify/svelte';
   import type { SelectOption } from './Select.svelte';
   import { useThemeStore, type CardProps } from '@flightlesslabs/dodo-ui';
   import type { Snippet } from 'svelte';
@@ -82,7 +81,17 @@
     class={popupClasses.join(' ')}
   >
     <Combobox.ScrollUpButton>
-      <Icon icon="icon-park-outline:double-up" />
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
+        <path d="M0 0h48v48H0z" fill="none" />
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="4"
+          d="m12 24l12-12l12 12M12 36l12-12l12 12"
+        />
+      </svg>
     </Combobox.ScrollUpButton>
     <Combobox.Viewport>
       {#each options as option, i (i + option.value)}
@@ -98,7 +107,17 @@
       {/each}
     </Combobox.Viewport>
     <Combobox.ScrollDownButton>
-      <Icon icon="icon-park-outline:double-down" />
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
+        <path d="M0 0h48v48H0z" fill="none" />
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="4"
+          d="M36 12L24 24L12 12m24 12L24 36L12 24"
+        />
+      </svg>
     </Combobox.ScrollDownButton>
   </Combobox.Content>
 </Combobox.Portal>

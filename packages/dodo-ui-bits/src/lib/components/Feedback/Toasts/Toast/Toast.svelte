@@ -30,19 +30,12 @@
 </script>
 
 <script lang="ts">
-  import {
-    Card,
-    cardColorOptions,
-    useThemeStore,
-    UtilityButton,
-    type CardProps,
-  } from '@flightlesslabs/dodo-ui';
-  import { componentColorOptions, convertOption } from '@flightlesslabs/dodo-core-attributes';
+  import { Card, useThemeStore, type CardProps } from '@flightlesslabs/dodo-ui';
   import type { Snippet } from 'svelte';
-  import Icon from '@iconify/svelte';
   import Title, { type ToastContentTitleProps } from './Title.svelte';
   import type { ToastContentDescriptionProps } from './Description.svelte';
   import Description from './Description.svelte';
+  import ToastCloseButton from './ToastCloseButton.svelte';
 
   let {
     class: className = '',
@@ -64,10 +57,6 @@
   const theme = $derived(cardTheme || useThemeStore.theme);
 
   const classes = $derived(['dodo-ui-Toast', className].filter(Boolean));
-
-  const utilityButtonColor = $derived(
-    convertOption(cardColorOptions, componentColorOptions, color || 'primary', 'primary'),
-  );
 </script>
 
 <Card
@@ -83,18 +72,7 @@
     {#if clearable || customTitle || title}
       <Title {...toastContentTitleProps} {customTitle} {title} />
 
-      {#if clearable}
-        <UtilityButton
-          class="ToastClose"
-          onclick={onclear}
-          roundness="full"
-          compact
-          color={utilityButtonColor}
-          theme={variant === 'solid' ? 'dark' : undefined}
-        >
-          <Icon icon="ri:close-large-fill" />
-        </UtilityButton>
-      {/if}
+      <ToastCloseButton {color} {variant} onclick={onclear} {clearable} />
     {/if}
   </div>
 

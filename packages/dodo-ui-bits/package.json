@@ -62,10 +62,9 @@
   "dependencies": {
     "@flightlesslabs/dodo-core-attributes": "workspace:*",
     "@flightlesslabs/dodo-ui": "workspace:*",
-    "@iconify/svelte": "^5.2.2",
     "bits-ui": "^2.18.1",
-    "nanoid": "^5.1.16",
-    "svelte": "^5.56.4"
+    "nanoid": "^6.0.0",
+    "svelte": "^5.56.5"
   },
   "keywords": [
     "svelte"
