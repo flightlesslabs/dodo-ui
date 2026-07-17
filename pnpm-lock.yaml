@@ -265,9 +265,6 @@ importers:
       '@flightlesslabs/dodo-core-attributes':
         specifier: workspace:*
         version: link:../dodo-core-attributes
-      '@iconify/svelte':
-        specifier: ^5.2.2
-        version: 5.2.2(svelte@5.56.4(@typescript-eslint/types@8.62.0))
       esm-env:
         specifier: ^1.2.2
         version: 1.2.2

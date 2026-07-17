@@ -117,11 +117,10 @@
   import InputEnclosure, {
     type InputEnclosureProps,
   } from '../InputEnclosure/InputEnclosure.svelte';
-  import Icon from '@iconify/svelte';
-  import UtilityButton from '../UtilityButton/UtilityButton.svelte';
   import type { TextInputFocusEvent, TextInputKeyboardEvent } from '../TextInput/TextInput.svelte';
-  import AffixIcon from '../AffixIcon/AffixIcon.svelte';
   import type { HTMLInputAttributes } from 'svelte/elements';
+  import SearchIcon from './SearchIcon.svelte';
+  import SearchClearableButton from './SearchClearableButton.svelte';
 
   let {
     ref = $bindable(null),
@@ -190,29 +189,7 @@
   }
 
   const classes = $derived(['dodo-ui-Search', className].filter(Boolean));
-
-  const clearButtonClasses = $derived(['SearchClear', 'AffixContentClearButton'].filter(Boolean));
-
-  const affixIconClasses = $derived(['SearchAffixIcon', 'AffixContentTrigger'].filter(Boolean));
 </script>
-
-{#snippet affixIcon()}
-  {#if showAffixIcon}
-    <AffixIcon
-      class={affixIconClasses.join(' ')}
-      roundness="full"
-      color={highlightAffixIcon && (forcedFocused || isFocused) ? 'primary' : 'default'}
-      {size}
-      compact
-    >
-      {#if customAffixIcon}
-        {@render customAffixIcon?.()}
-      {:else}
-        <Icon icon="boxicons:search" />
-      {/if}
-    </AffixIcon>
-  {/if}
-{/snippet}
 
 <InputEnclosure
   {size}
@@ -240,29 +217,29 @@
 
   {#snippet before()}
     {#if affixPlacement === 'before'}
-      {@render affixIcon()}
+      <SearchIcon
+        {size}
+        {highlightAffixIcon}
+        focused={forcedFocused || isFocused}
+        {customAffixIcon}
+        {showAffixIcon}
+      />
     {/if}
 
     {@render before?.()}
   {/snippet}
 
   {#snippet after()}
-    {#if clearable && value}
-      <UtilityButton
-        class={clearButtonClasses.join(' ')}
-        onclick={handleOnClear}
-        roundness="full"
-        {size}
-        compact
-        color="primary"
-        {disabled}
-      >
-        <Icon icon="material-symbols:close-rounded" />
-      </UtilityButton>
-    {/if}
+    <SearchClearableButton onclick={handleOnClear} {size} {disabled} {clearable} {value} />
 
     {#if affixPlacement === 'after'}
-      {@render affixIcon()}
+      <SearchIcon
+        {size}
+        {highlightAffixIcon}
+        focused={forcedFocused || isFocused}
+        {customAffixIcon}
+        {showAffixIcon}
+      />
     {/if}
 
     {@render after?.()}
