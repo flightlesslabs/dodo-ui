@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.36.12
+
+### Patch Changes
+
+- e8dfa7f: before and after infinite loading bug fixed
+
 ## 0.36.11
 
 ### Patch Changes

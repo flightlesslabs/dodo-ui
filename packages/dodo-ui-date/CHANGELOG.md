@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui-date
 
+## 0.4.36
+
+### Patch Changes
+
+- e8dfa7f: before and after infinite loading bug fixed
+- Updated dependencies [e8dfa7f]
+  - @flightlesslabs/dodo-ui@0.36.12
+
 ## 0.4.35
 
 ### Patch Changes
