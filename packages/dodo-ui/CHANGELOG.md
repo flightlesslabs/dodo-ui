@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui
 
+## 0.36.13
+
+### Patch Changes
+
+- a4a6228: Fix dev deps
+
 ## 0.36.12
 
 ### Patch Changes

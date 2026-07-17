@@ -1,5 +1,13 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.11.6
+
+### Patch Changes
+
+- a4a6228: Fix dev deps
+- Updated dependencies [a4a6228]
+  - @flightlesslabs/dodo-ui@0.36.13
+
 ## 0.11.5
 
 ### Patch Changes
