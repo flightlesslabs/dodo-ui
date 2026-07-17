@@ -42,19 +42,16 @@
 <script lang="ts">
   import {
     Card,
-    cardColorOptions,
     useThemeStore,
-    UtilityButton,
     type CardProps,
     type ComponentAlignmentX,
   } from '@flightlesslabs/dodo-ui';
   import type { Snippet } from 'svelte';
-  import Icon from '@iconify/svelte';
   import Title, { type ModalContentTitleProps } from './Title.svelte';
   import type { ModalContentDescriptionProps } from './Description.svelte';
   import Description from './Description.svelte';
   import Controls from './Controls.svelte';
-  import { componentColorOptions, convertOption } from '@flightlesslabs/dodo-core-attributes';
+  import ModalCloseButton from './ModalCloseButton.svelte';
 
   let {
     class: className = '',
@@ -76,10 +73,6 @@
   const theme = $derived(cardTheme || useThemeStore.theme);
 
   const classes = $derived(['dodo-ui-ModalCard', className].filter(Boolean));
-
-  const utilityButtonColor = $derived(
-    convertOption(cardColorOptions, componentColorOptions, color || 'primary', 'primary'),
-  );
 </script>
 
 <Card {...restProps} {theme} {variant} {color} class={classes.join(' ')}>
@@ -87,18 +80,7 @@
     {#if clearable || customTitle || title}
       <Title {...modalContentTitleProps} {customTitle} {title} />
 
-      {#if clearable}
-        <UtilityButton
-          class="ModalClose"
-          onclick={onclear}
-          roundness="full"
-          compact
-          color={utilityButtonColor}
-          theme={variant === 'solid' ? 'dark' : undefined}
-        >
-          <Icon icon="ri:close-large-fill" />
-        </UtilityButton>
-      {/if}
+      <ModalCloseButton {color} {variant} {clearable} onclick={onclear} />
     {/if}
   </div>
 

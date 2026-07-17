@@ -38,14 +38,15 @@
 
 <script lang="ts">
   import { Combobox, type ComboboxInputProps, type ComboboxTriggerProps } from 'bits-ui';
-  import { InputEnclosure, UtilityButton, type ComponentSize } from '@flightlesslabs/dodo-ui';
+  import { InputEnclosure, type ComponentSize } from '@flightlesslabs/dodo-ui';
   import type {
     ComponentAffixPlacement,
     ComponentRoundnessShape,
     InputEnclosureProps,
   } from '@flightlesslabs/dodo-ui';
-  import Icon from '@iconify/svelte';
   import type { SelectOption } from './Select.svelte';
+  import SelectTriggerButton from './SelectTriggerButton.svelte';
+  import SelectClearButton from './SelectClearButton.svelte';
 
   let {
     size = 'normal',
@@ -105,36 +106,10 @@
 
   const classes = $derived(['dodo-ui-Select', `size--${size}`, className].filter(Boolean));
 
-  const triggerClasses = $derived(
-    [
-      'dodo-ui-UtilityButton',
-      'AffixContentTrigger',
-      `size--${size}`,
-      'compact',
-      'color--primary',
-      'roundness--full',
-      disabled && 'disabled',
-    ].filter(Boolean),
-  );
-
-  const clearButtonClasses = $derived(['AffixContentClearButton', 'SelectClear'].filter(Boolean));
-
   const selectInputClasses = $derived(
     ['SelectInput', 'InputBox', customSelectedContent ? 'customContent' : ''].filter(Boolean),
   );
 </script>
-
-{#snippet triggerButton()}
-  {#if showTriggerButton}
-    <Combobox.Trigger class={triggerClasses.join(' ')} {disabled} {...comboboxTriggerProps}>
-      {#if customTriggerIcon}
-        {@render customTriggerIcon?.()}
-      {:else}
-        <Icon icon="material-symbols:arrow-drop-down-rounded" />
-      {/if}
-    </Combobox.Trigger>
-  {/if}
-{/snippet}
 
 <InputEnclosure
   {size}
@@ -173,29 +148,29 @@
 
   {#snippet before()}
     {#if triggerPlacement === 'before'}
-      {@render triggerButton()}
+      <SelectTriggerButton
+        {disabled}
+        {customTriggerIcon}
+        {showTriggerButton}
+        {size}
+        {...comboboxTriggerProps}
+      />
     {/if}
 
     {@render beforeContent?.()}
   {/snippet}
 
   {#snippet after()}
-    {#if clearable && value}
-      <UtilityButton
-        class={clearButtonClasses.join(' ')}
-        roundness="full"
-        {size}
-        compact
-        color="primary"
-        {disabled}
-        onclick={handleOnClear}
-      >
-        <Icon icon="material-symbols:close-rounded" />
-      </UtilityButton>
-    {/if}
+    <SelectClearButton {disabled} onclick={handleOnClear} {size} {clearable} {value} />
 
     {#if triggerPlacement === 'after'}
-      {@render triggerButton()}
+      <SelectTriggerButton
+        {disabled}
+        {customTriggerIcon}
+        {showTriggerButton}
+        {size}
+        {...comboboxTriggerProps}
+      />
     {/if}
 
     {@render afterContent?.()}
