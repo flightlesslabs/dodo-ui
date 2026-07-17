@@ -49,7 +49,7 @@
     "svelte": "^5.0.0",
     "svelte-number-format": "^2.0.0"
   },
-  "dependencies": {
+  "devDependencies": {
     "@flightlesslabs/dodo-ui": "workspace:*",
     "svelte": "^5.56.5",
     "svelte-number-format": "^2.0.0"

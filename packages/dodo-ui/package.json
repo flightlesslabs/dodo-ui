@@ -55,11 +55,13 @@
   "peerDependencies": {
     "svelte": "^5.0.0"
   },
+  "devDependencies": {
+    "svelte": "^5.56.5"
+  },
   "dependencies": {
     "@flightlesslabs/currency": "^0.2.1",
     "@flightlesslabs/dodo-core-attributes": "workspace:*",
-    "esm-env": "^1.2.2",
-    "svelte": "^5.56.5"
+    "esm-env": "^1.2.2"
   },
   "keywords": [
     "svelte"
