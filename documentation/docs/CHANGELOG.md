@@ -1,5 +1,18 @@
 # @documentation/docs
 
+## 0.15.7
+
+### Patch Changes
+
+- 29f6be8: testing jsdom removed
+- b2a1b9d: Libraries upgraded
+- Updated dependencies [29f6be8]
+- Updated dependencies [b2a1b9d]
+  - @flightlesslabs/dodo-ui-numeric@0.2.36
+  - @flightlesslabs/dodo-ui-bits@0.11.7
+  - @flightlesslabs/dodo-ui-date@0.4.38
+  - @flightlesslabs/dodo-ui@0.36.14
+
 ## 0.15.6
 
 ### Patch Changes

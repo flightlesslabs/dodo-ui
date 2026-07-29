@@ -1,5 +1,12 @@
 # @flightlesslabs/dodo-ui
 
+## 0.36.14
+
+### Patch Changes
+
+- 29f6be8: testing jsdom removed
+- b2a1b9d: Libraries upgraded
+
 ## 0.36.13
 
 ### Patch Changes
