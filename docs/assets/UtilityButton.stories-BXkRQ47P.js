@@ -1,0 +1,29 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{Ct as t,Gt as n,Kt as r,Tt as i,ln as a,nn as o,p as s,rt as c,st as l,tt as u}from"./iframe-CvWSf_Hq.js";import{i as d,n as f,r as p,t as m}from"./create-runtime-stories-CMZqfqE5.js";import{n as h,t as g}from"./UtilityButton-DYavnrrt.js";import{c as _,h as v,l as y,u as b}from"./dist-BYSjHjmV.js";import{n as x,t as S}from"./Theme-BPi75P-E.js";function C(e,a){r(a,!0);var s=O(),c=t(s);D(c,{name:`Default`,children:(e,t)=>{o();var n=l(`Click me!`);u(e,n)},$$slots:{default:!0},parameters:{docs:{description:{story:`------------------------------`}},__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  Click me!
+</UtilityButton>`}}});var d=i(c,2);D(d,{name:`Link Button`,args:{href:`https://www.w3schools.com/tags/tag_a.asp`,target:`_blank`},children:(e,t)=>{o();var n=l(`Click me!`);u(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  Click me!
+</UtilityButton>`}}});var f=i(d,2);D(f,{name:`OnClick (Actions)`,args:{onclick:e=>{let t=e.target;alert(`Button Clicked`),console.log(`Button Clicked`,t)}},children:(e,t)=>{o();var n=l(`Click me`);u(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  Click me
+</UtilityButton>`}}});var p=i(f,2);D(p,{name:`Color`,args:{color:`safe`},children:(e,t)=>{o();var n=l(`Click me`);u(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  Click me
+</UtilityButton>`}}});var m=i(p,2);D(m,{name:`Outline`,args:{outline:!0},children:(e,t)=>{o();var n=l(`Click me!`);u(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  Click me!
+</UtilityButton>`}}});var h=i(m,2);D(h,{name:`Size`,args:{size:`large`},children:(e,t)=>{o();var n=l(`Click me!`);u(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  Click me!
+</UtilityButton>`}}});var _=i(h,2);D(_,{name:`Disabled`,args:{disabled:!0},children:(e,t)=>{o();var n=l(`Click me!`);u(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  Click me!
+</UtilityButton>`}}});var v=i(_,2);D(v,{name:`Submit Button`,args:{type:`submit`},children:(e,t)=>{o();var n=l(`Click me!`);u(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  Click me!
+</UtilityButton>`}}});var y=i(v,2);D(y,{name:`Compact`,args:{compact:!0,"aria-label":`Add item`},children:(e,t)=>{o();var n=l(`+`);u(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<UtilityButton {...args}>
+  +
+</UtilityButton>`}}});var b=i(y,2);D(b,{name:`Light Theme`,asChild:!0,children:(e,t)=>{S(e,{type:`light`,children:(e,t)=>{g(e,{children:(e,t)=>{o();var n=l(`Click me!`);u(e,n)},$$slots:{default:!0}})},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Theme type="light">
+  <UtilityButton>Click me!</UtilityButton>
+</Theme>`}}});var x=i(b,2);D(x,{name:`Dark Theme`,asChild:!0,globals:{backgrounds:{value:`dark`}},children:(e,t)=>{S(e,{type:`dark`,children:(e,t)=>{g(e,{children:(e,t)=>{o();var n=l(`Click me!`);u(e,n)},$$slots:{default:!0}})},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Theme type="dark">
+  <UtilityButton>Click me!</UtilityButton>
+</Theme>`}}}),u(e,s),n()}var w,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V;function H(){return(H=e((()=>{a(),d(),v(),h(),x(),s(),f(),w=`
+ A flexible small sized button component based.
+
+ \`\`\`ts
+ import { UtilityButton } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+`,T={children:{table:{category:`API`,subcategory:`Base`}},href:{control:{type:`text`},description:`Render as Anchor when provided`,table:{category:`API`,subcategory:`Base`}},disabled:{control:{type:`boolean`},description:`Disable interactions`,table:{category:`API`,subcategory:`Base`}},class:{table:{category:`API`,subcategory:`Base`}},type:{table:{category:`API`,subcategory:`Base`}},color:{control:{type:`select`},options:_,description:`Color theme token`,table:{category:`API`,subcategory:`Appearance`,defaultValue:{summary:`primary`}}},size:{control:{type:`select`},options:b,description:`Visual size token`,table:{category:`API`,subcategory:`Appearance`,defaultValue:{summary:`normal`}}},roundness:{control:{type:`select`},options:y,description:`Border radius token`,table:{category:`API`,subcategory:`Appearance`}},compact:{control:{type:`boolean`},description:`Compact spacing (icon buttons)`,table:{category:`API`,subcategory:`Appearance`}},outline:{control:{type:`boolean`},description:`Render outlined style`,table:{category:`API`,subcategory:`Appearance`}},"aria-label":{control:{type:`text`},description:`Accessible label (required for icon-only buttons)`,table:{category:`API`,subcategory:`Accessibility`}}},E={component:g,tags:[`autodocs`],argTypes:T,parameters:{docs:{description:{component:w}}}},{Story:D}=p(E),O=c(`<!> <!> <!> <!> <!> <!> <!> <!> <!> <!> <!>`,1),C.__docgen={data:[],name:`UtilityButton.stories.svelte`},k=m(C,E),A=[`Default`,`LinkButton`,`OnClickActions`,`Color`,`Outline`,`Size`,`Disabled`,`SubmitButton`,`Compact`,`LightTheme`,`DarkTheme`],j={...k.Default,tags:[`svelte-csf-v5`]},M={...k.LinkButton,tags:[`svelte-csf-v5`]},N={...k.OnClickActions,tags:[`svelte-csf-v5`]},P={...k.Color,tags:[`svelte-csf-v5`]},F={...k.Outline,tags:[`svelte-csf-v5`]},I={...k.Size,tags:[`svelte-csf-v5`]},L={...k.Disabled,tags:[`svelte-csf-v5`]},R={...k.SubmitButton,tags:[`svelte-csf-v5`]},z={...k.Compact,tags:[`svelte-csf-v5`]},B={...k.LightTheme,tags:[`svelte-csf-v5`]},V={...k.DarkTheme,tags:[`svelte-csf-v5`]}})))()}H();export{P as Color,z as Compact,V as DarkTheme,j as Default,L as Disabled,B as LightTheme,M as LinkButton,N as OnClickActions,F as Outline,I as Size,R as SubmitButton,A as __namedExportsOrder,E as default,T as storyUtilityButtonArgTypes};
