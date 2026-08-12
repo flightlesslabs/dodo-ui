@@ -1,5 +1,15 @@
 # @documentation/homepage
 
+## 0.2.13
+
+### Patch Changes
+
+- 3d6e440: Libraries updated
+- Updated dependencies [d3cbcdd]
+- Updated dependencies [3d6e440]
+  - @flightlesslabs/dodo-ui-date@0.4.39
+  - @flightlesslabs/dodo-ui-bits@0.11.8
+
 ## 0.2.12
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @flightlesslabs/dodo-ui-bits
 
+## 0.11.8
+
+### Patch Changes
+
+- 3d6e440: Libraries updated
+
 ## 0.11.7
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @flightlesslabs/dodo-ui-date
 
+## 0.4.39
+
+### Patch Changes
+
+- d3cbcdd: Unavailable date format added
+- 3d6e440: Libraries updated
+
 ## 0.4.38
 
 ### Patch Changes
