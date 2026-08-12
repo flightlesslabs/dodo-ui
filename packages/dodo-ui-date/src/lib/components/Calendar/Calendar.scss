@@ -131,7 +131,8 @@
     }
 
     &[data-outside-month],
-    &[data-disabled] {
+    &[data-disabled],
+    &[data-unavailable] {
       color: var(--dodo-color-neutral-400);
 
       &:hover {

@@ -61,7 +61,7 @@
   },
   "dependencies": {
     "@flightlesslabs/dodo-core-attributes": "workspace:*",
-    "nanoid": "^6.0.0"
+    "nanoid": "^6.0.1"
   },
   "devDependencies": {
     "@flightlesslabs/dodo-ui": "workspace:*",

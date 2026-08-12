@@ -94,6 +94,17 @@
 
   let myValue = $state<DateValue>(new CalendarDate(2026, 4, 7));
   let myValue2 = $state<DateValue>(new CalendarDate(2026, 12, 1));
+
+  function isDateUnavailable(date: DateValue): boolean {
+    const dateString = date.toString();
+    const newDate = '2026-04-06';
+
+    if (dateString === newDate) {
+      return true;
+    }
+
+    return false;
+  }
 </script>
 
 <!-- ------------------------------ -->
@@ -115,6 +126,8 @@
 <Story name="Min Date" args={{ minValue: new CalendarDate(2026, 4, 7) }} />
 
 <Story name="Max Date" args={{ maxValue: new CalendarDate(2026, 4, 7) }} />
+
+<Story name="Dates Unavailable" args={{ value: new CalendarDate(2026, 4, 7), isDateUnavailable }} />
 
 <Story
   name="Trigger Placement Before"
