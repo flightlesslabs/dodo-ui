@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{It as t,Rt as n,_t as r,p as i}from"./iframe-Dx_RV1xH.js";function a(){let e=n(`light`);return{get theme(){return r(e)},updateSystemTheme(n){t(e,n,!0)}}}var o;function s(){return(s=e((()=>{i(),o=a()})))()}export{o as n,s as t};

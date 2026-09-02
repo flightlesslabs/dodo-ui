@@ -1,0 +1,9 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{G as t,Ot as n,Vt as r,Xt as i,Yt as a,_t as o,ft as s,h as c,nt as l,ot as u,p as d,pn as f,st as p,wt as m}from"./iframe-Dx_RV1xH.js";function h(e,d){i(d,!0);let f=c(d,`locale`,3,`en-US`),h=r(()=>new Intl.NumberFormat(f(),d.options));var g=p(),_=n(g),v=e=>{var t=s();m(e=>l(t,e),[()=>o(h).format(d.value)]),u(e,t)};t(_,e=>{d.value!==null&&d.value!==void 0&&e(v)}),u(e,g),a()}function g(){return(g=e((()=>{f(),d(),h.__docgen={data:[{name:`locale`,visibility:`public`,description:`BCP 47 locale used for number formatting.
+
+Controls grouping, decimal separators, and currency formatting rules.`,keywords:[],kind:`let`,type:{kind:`type`,type:`string`,text:`string`},static:!1,readonly:!1,defaultValue:`"en-US"`},{name:`options`,visibility:`public`,description:`Options passed directly to \`Intl.NumberFormat\`.
+
+Supports all formatting styles:
+- decimal (default)
+- currency (requires \`currency\`)
+- percent
+- unit (requires \`unit\`)`,keywords:[],kind:`let`,type:{kind:`union`,type:[{kind:`type`,type:`intersection`,text:`NumberFormatOptions & { style?: "decimal" | undefined; }`},{kind:`type`,type:`intersection`,text:`NumberFormatOptions & { style: "percent"; }`},{kind:`type`,type:`intersection`,text:`NumberFormatOptions & { style: "currency"; currency: string; }`},{kind:`type`,type:`intersection`,text:`NumberFormatOptions & { style: "unit"; unit: string; }`}],text:`NumberFormatOptions & { style?: "decimal" | undefined; } | NumberFormatOptions & { style: "percent"; } | NumberFormatOptions & { style: "currency"; currency: string; } | NumberFormatOptions & { style: "unit"; unit: string; }`},static:!1,readonly:!1},{name:`value`,visibility:`public`,description:"The numeric value to format.\n\nIf `null` or `undefined`, nothing will be rendered.",keywords:[],kind:`let`,type:{kind:`type`,type:`number`,text:`number`},static:!1,readonly:!1}],name:`FormattedNumber.svelte`}})))()}export{g as n,h as t};

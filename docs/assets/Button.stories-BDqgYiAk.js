@@ -1,0 +1,35 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{Ot as t,Xt as n,Yt as r,ct as i,ft as a,jt as o,on as s,ot as c,p as l,pn as u}from"./iframe-Dx_RV1xH.js";import{i as d,n as f,r as p,t as m}from"./create-runtime-stories-BmbbgM7A.js";import{n as h,r as g,t as _}from"./Button-Bc-cLDhd.js";import{c as v,h as y,l as b,p as x,u as S}from"./dist-BYSjHjmV.js";import{n as C,t as w}from"./Theme-zBf_QvP8.js";function T(e,i){n(i,!0);var l=A(),u=t(l);k(u,{name:`Default`,children:(e,t)=>{s();var n=a(`Click me!`);c(e,n)},$$slots:{default:!0},parameters:{docs:{description:{story:`------------------------------`}},__svelteCsf:{rawCode:`<Button {...args}>
+  Click me!
+</Button>`}}});var d=o(u,2);k(d,{name:`Link Button`,args:{href:`https://www.w3schools.com/tags/tag_a.asp`,target:`_blank`},children:(e,t)=>{s();var n=a(`Click me!`);c(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  Click me!
+</Button>`}}});var f=o(d,2);k(f,{name:`OnClick (Actions)`,args:{onclick:e=>{let t=e.target;alert(`Button Clicked`),console.log(`Button Clicked`,t)}},children:(e,t)=>{s();var n=a(`Click me`);c(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  Click me
+</Button>`}}});var p=o(f,2);k(p,{name:`Color`,args:{color:`safe`},children:(e,t)=>{s();var n=a(`Click me`);c(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  Click me
+</Button>`}}});var m=o(p,2);k(m,{name:`Text`,args:{variant:`text`},children:(e,t)=>{s();var n=a(`Click me!`);c(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  Click me!
+</Button>`}}});var h=o(m,2);k(h,{name:`No Background`,args:{variant:`text`,background:`none`},children:(e,t)=>{s();var n=a(`Click me!`);c(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  Click me!
+</Button>`}}});var g=o(h,2);k(g,{name:`Outline`,args:{variant:`text`,outline:!0},children:(e,t)=>{s();var n=a(`Click me!`);c(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  Click me!
+</Button>`}}});var v=o(g,2);k(v,{name:`Size`,args:{size:`large`},children:(e,t)=>{s();var n=a(`Click me!`);c(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  Click me!
+</Button>`}}});var y=o(v,2);k(y,{name:`Disabled`,args:{disabled:!0},children:(e,t)=>{s();var n=a(`Click me!`);c(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  Click me!
+</Button>`}}});var b=o(y,2);k(b,{name:`Submit Button`,args:{type:`submit`},children:(e,t)=>{s();var n=a(`Click me!`);c(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  Click me!
+</Button>`}}});var x=o(b,2);k(x,{name:`Full Width`,args:{fullWidth:!0},children:(e,t)=>{s();var n=a(`Click me!`);c(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  Click me!
+</Button>`}}});var S=o(x,2);k(S,{name:`Compact`,args:{compact:!0,"aria-label":`Add item`},children:(e,t)=>{s();var n=a(`+`);c(e,n)},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Button {...args}>
+  +
+</Button>`}}});var C=o(S,2);k(C,{name:`Light Theme`,asChild:!0,children:(e,t)=>{w(e,{type:`light`,children:(e,t)=>{_(e,{children:(e,t)=>{s();var n=a(`Click me!`);c(e,n)},$$slots:{default:!0}})},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Theme type="light">
+  <Button>Click me!</Button>
+</Theme>`}}});var T=o(C,2);k(T,{name:`Dark Theme`,asChild:!0,globals:{backgrounds:{value:`dark`}},children:(e,t)=>{w(e,{type:`dark`,children:(e,t)=>{_(e,{children:(e,t)=>{s();var n=a(`Click me!`);c(e,n)},$$slots:{default:!0}})},$$slots:{default:!0}})},$$slots:{default:!0},parameters:{__svelteCsf:{rawCode:`<Theme type="dark">
+  <Button>Click me!</Button>
+</Theme>`}}}),c(e,l),r()}var E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U,W,G,K;function q(){return(q=e((()=>{u(),d(),g(),y(),C(),l(),f(),E=`
+ A flexible Button component .
+
+ \`\`\`ts
+ import { Button } from '@flightlesslabs/dodo-ui';
+ \`\`\`
+`,D={children:{table:{category:`API`,subcategory:`Base`}},href:{control:{type:`text`},description:`Render as Anchor when provided`,table:{category:`API`,subcategory:`Base`}},disabled:{control:{type:`boolean`},description:`Disable interactions`,table:{category:`API`,subcategory:`Base`}},class:{table:{category:`API`,subcategory:`Base`}},type:{table:{category:`API`,subcategory:`Base`}},color:{control:{type:`select`},options:v,description:`Color theme token`,table:{category:`API`,subcategory:`Appearance`,defaultValue:{summary:`primary`}}},variant:{control:{type:`select`},options:x,description:`Visual variant of the button`,table:{category:`API`,subcategory:`Appearance`,defaultValue:{summary:`solid`}}},background:{control:{type:`select`},options:h,table:{category:`API`,subcategory:`Appearance`,defaultValue:{summary:`subtle`}}},size:{control:{type:`select`},options:S,description:`Visual size token`,table:{category:`API`,subcategory:`Appearance`,defaultValue:{summary:`normal`}}},roundness:{control:{type:`select`},options:b,description:`Border radius token`,table:{category:`API`,subcategory:`Appearance`}},fullWidth:{control:{type:`boolean`},description:`Stretch button to full container width`,table:{category:`API`,subcategory:`Appearance`}},compact:{control:{type:`boolean`},description:`Compact spacing (icon buttons)`,table:{category:`API`,subcategory:`Appearance`}},outline:{control:{type:`boolean`},description:`Render outlined style`,table:{category:`API`,subcategory:`Appearance`}},"aria-label":{control:{type:`text`},description:`Accessible label (required for icon-only buttons)`,table:{category:`API`,subcategory:`Accessibility`}}},O={component:_,tags:[`autodocs`],argTypes:D,parameters:{docs:{description:{component:E}}}},{Story:k}=p(O),A=i(`<!> <!> <!> <!> <!> <!> <!> <!> <!> <!> <!> <!> <!> <!>`,1),T.__docgen={data:[],name:`Button.stories.svelte`},j=m(T,O),M=[`Default`,`LinkButton`,`OnClickActions`,`Color`,`Text`,`NoBackground`,`Outline`,`Size`,`Disabled`,`SubmitButton`,`FullWidth`,`Compact`,`LightTheme`,`DarkTheme`],N={...j.Default,tags:[`svelte-csf-v5`]},P={...j.LinkButton,tags:[`svelte-csf-v5`]},F={...j.OnClickActions,tags:[`svelte-csf-v5`]},I={...j.Color,tags:[`svelte-csf-v5`]},L={...j.Text,tags:[`svelte-csf-v5`]},R={...j.NoBackground,tags:[`svelte-csf-v5`]},z={...j.Outline,tags:[`svelte-csf-v5`]},B={...j.Size,tags:[`svelte-csf-v5`]},V={...j.Disabled,tags:[`svelte-csf-v5`]},H={...j.SubmitButton,tags:[`svelte-csf-v5`]},U={...j.FullWidth,tags:[`svelte-csf-v5`]},W={...j.Compact,tags:[`svelte-csf-v5`]},G={...j.LightTheme,tags:[`svelte-csf-v5`]},K={...j.DarkTheme,tags:[`svelte-csf-v5`]}})))()}q();export{I as Color,W as Compact,K as DarkTheme,N as Default,V as Disabled,U as FullWidth,G as LightTheme,P as LinkButton,R as NoBackground,F as OnClickActions,z as Outline,B as Size,H as SubmitButton,L as Text,M as __namedExportsOrder,O as default,D as storyButtonArgTypes};
