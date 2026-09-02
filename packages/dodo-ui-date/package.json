@@ -1,6 +1,6 @@
 {
   "name": "@flightlesslabs/dodo-ui-date",
-  "version": "0.4.39",
+  "version": "0.4.40",
   "publishConfig": {
     "access": "public"
   },
@@ -55,7 +55,7 @@
     }
   },
   "peerDependencies": {
-    "@flightlesslabs/dodo-ui": "^0.36.14",
+    "@flightlesslabs/dodo-ui": "^0.36.15",
     "@internationalized/date": "^3.12.2",
     "bits-ui": "^2.0.0",
     "svelte": "^5.0.0"
